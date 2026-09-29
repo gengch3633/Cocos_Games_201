@@ -1,0 +1,55 @@
+
+waring.png
+size: 840,169
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+img/困难
+  rotate: true
+  xy: 709, 54
+  size: 113, 60
+  orig: 113, 60
+  offset: 0, 0
+  index: -1
+img/矩形 1109
+  rotate: false
+  xy: 174, 51
+  size: 424, 116
+  orig: 424, 116
+  offset: 0, 0
+  index: -1
+img/矩形 1113
+  rotate: true
+  xy: 2, 2
+  size: 165, 170
+  orig: 165, 170
+  offset: 0, 0
+  index: -1
+img/箭头
+  rotate: false
+  xy: 600, 55
+  size: 92, 112
+  orig: 92, 112
+  offset: 0, 0
+  index: -1
+img/组 100
+  rotate: false
+  xy: 174, 5
+  size: 533, 44
+  orig: 533, 44
+  offset: 0, 0
+  index: -1
+img/骷髅
+  rotate: true
+  xy: 771, 92
+  size: 75, 67
+  orig: 75, 67
+  offset: 0, 0
+  index: -1
+ad0cf9d50d43fdd94b342e1634f4d36db
+  rotate: false
+  xy: 0, 0
+  size: 1, 1
+  orig: 1, 1
+  offset: 1, 1
+  index: -1
