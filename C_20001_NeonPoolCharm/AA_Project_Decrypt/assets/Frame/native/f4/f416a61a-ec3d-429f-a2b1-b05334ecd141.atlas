@@ -1,0 +1,69 @@
+
+taiq_zhib1.png
+size: 904,799
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1shuzi_taiq
+  rotate: true
+  xy: 607, 2
+  size: 795, 121
+  orig: 801, 123
+  offset: 3, 1
+  index: -1
+1zhi1_taiq
+  rotate: true
+  xy: 397, 28
+  size: 162, 205
+  orig: 165, 207
+  offset: 2, 1
+  index: -1
+1zhi2_taiq
+  rotate: false
+  xy: 730, 178
+  size: 124, 162
+  orig: 128, 168
+  offset: 3, 0
+  index: -1
+1zhi3_taiq
+  rotate: true
+  xy: 730, 342
+  size: 195, 172
+  orig: 198, 174
+  offset: 2, 1
+  index: -1
+1zhi4_taiq
+  rotate: true
+  xy: 730, 539
+  size: 258, 163
+  orig: 260, 167
+  offset: 1, 0
+  index: -1
+1zhi5_taiq
+  rotate: true
+  xy: 730, 539
+  size: 258, 163
+  orig: 260, 167
+  offset: 1, 0
+  index: -1
+1zhi6_taiq
+  rotate: false
+  xy: 2, 14
+  size: 393, 176
+  orig: 395, 178
+  offset: 1, 1
+  index: -1
+star_taiq
+  rotate: true
+  xy: 730, 6
+  size: 170, 106
+  orig: 194, 147
+  offset: 12, 20
+  index: -1
+zhuanguang_event_taiq
+  rotate: false
+  xy: 2, 192
+  size: 603, 605
+  orig: 605, 607
+  offset: 1, 1
+  index: -1

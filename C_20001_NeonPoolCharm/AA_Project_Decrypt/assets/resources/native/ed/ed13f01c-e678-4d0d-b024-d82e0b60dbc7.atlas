@@ -1,0 +1,69 @@
+
+defeat.png
+size: 930,619
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2
+  rotate: false
+  xy: 800, 11
+  size: 123, 123
+  orig: 125, 125
+  offset: 1, 1
+  index: -1
+3
+  rotate: true
+  xy: 664, 2
+  size: 132, 134
+  orig: 134, 136
+  offset: 1, 1
+  index: -1
+gan
+  rotate: false
+  xy: 2, 136
+  size: 462, 263
+  orig: 462, 263
+  offset: 0, 0
+  index: -1
+gan2
+  rotate: false
+  xy: 466, 136
+  size: 462, 263
+  orig: 462, 263
+  offset: 0, 0
+  index: -1
+hengfu
+  rotate: false
+  xy: 2, 401
+  size: 699, 216
+  orig: 706, 218
+  offset: 5, 2
+  index: -1
+huanguan
+  rotate: true
+  xy: 487, 21
+  size: 113, 175
+  orig: 115, 177
+  offset: 1, 1
+  index: -1
+huanguan2
+  rotate: false
+  xy: 703, 434
+  size: 123, 183
+  orig: 125, 185
+  offset: 1, 1
+  index: -1
+zi
+  rotate: false
+  xy: 249, 25
+  size: 236, 109
+  orig: 239, 112
+  offset: 2, 2
+  index: -1
+zi2
+  rotate: false
+  xy: 2, 26
+  size: 245, 108
+  orig: 248, 111
+  offset: 1, 2
+  index: -1

@@ -1,0 +1,55 @@
+
+qiu_jindong.png
+size: 935,300
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2
+  rotate: true
+  xy: 564, 223
+  size: 75, 369
+  orig: 88, 413
+  offset: 6, 32
+  index: -1
+black
+  rotate: false
+  xy: 564, 24
+  size: 211, 197
+  orig: 280, 280
+  offset: 34, 49
+  index: -1
+black6
+  rotate: true
+  xy: 777, 108
+  size: 113, 94
+  orig: 150, 150
+  offset: 17, 34
+  index: -1
+black7
+  rotate: false
+  xy: 777, 28
+  size: 81, 78
+  orig: 100, 93
+  offset: 8, 7
+  index: -1
+black8
+  rotate: false
+  xy: 302, 38
+  size: 260, 260
+  orig: 300, 300
+  offset: 20, 20
+  index: -1
+jltuowei04
+  rotate: false
+  xy: 860, 60
+  size: 46, 46
+  orig: 50, 50
+  offset: 2, 2
+  index: -1
+yx_0
+  rotate: true
+  xy: 2, 2
+  size: 296, 298
+  orig: 300, 300
+  offset: 0, 0
+  index: -1

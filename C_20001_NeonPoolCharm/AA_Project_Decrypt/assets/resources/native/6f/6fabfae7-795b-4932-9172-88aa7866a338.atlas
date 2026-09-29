@@ -1,0 +1,132 @@
+
+cue20.png
+size: 453,78
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+japan
+  rotate: true
+  xy: 2, 47
+  size: 29, 414
+  orig: 31, 416
+  offset: 1, 1
+  index: -1
+japansg_00
+  rotate: true
+  xy: 236, 2
+  size: 6, 14
+  orig: 45, 52
+  offset: 9, 21
+  index: -1
+japansg_01
+  rotate: false
+  xy: 418, 52
+  size: 30, 24
+  orig: 45, 52
+  offset: 5, 14
+  index: -1
+japansg_02
+  rotate: true
+  xy: 371, 13
+  size: 32, 27
+  orig: 45, 52
+  offset: 3, 14
+  index: -1
+japansg_03
+  rotate: true
+  xy: 339, 11
+  size: 34, 30
+  orig: 45, 52
+  offset: 2, 13
+  index: -1
+japansg_04
+  rotate: true
+  xy: 271, 11
+  size: 34, 33
+  orig: 45, 52
+  offset: 2, 12
+  index: -1
+japansg_05
+  rotate: false
+  xy: 135, 9
+  size: 34, 36
+  orig: 45, 52
+  offset: 2, 10
+  index: -1
+japansg_06
+  rotate: false
+  xy: 171, 7
+  size: 32, 38
+  orig: 45, 52
+  offset: 4, 8
+  index: -1
+japansg_07
+  rotate: false
+  xy: 37, 5
+  size: 31, 40
+  orig: 45, 52
+  offset: 5, 6
+  index: -1
+japansg_08
+  rotate: false
+  xy: 205, 5
+  size: 29, 40
+  orig: 45, 52
+  offset: 8, 6
+  index: -1
+japansg_09
+  rotate: false
+  xy: 103, 4
+  size: 30, 41
+  orig: 45, 52
+  offset: 9, 5
+  index: -1
+japansg_10
+  rotate: false
+  xy: 70, 5
+  size: 31, 40
+  orig: 45, 52
+  offset: 10, 6
+  index: -1
+japansg_11
+  rotate: false
+  xy: 2, 6
+  size: 33, 39
+  orig: 45, 52
+  offset: 10, 6
+  index: -1
+japansg_12
+  rotate: false
+  xy: 236, 10
+  size: 33, 35
+  orig: 45, 52
+  offset: 10, 8
+  index: -1
+japansg_13
+  rotate: true
+  xy: 306, 11
+  size: 34, 31
+  orig: 45, 52
+  offset: 10, 10
+  index: -1
+japansg_14
+  rotate: true
+  xy: 400, 12
+  size: 33, 26
+  orig: 45, 52
+  offset: 10, 12
+  index: -1
+japansg_15
+  rotate: true
+  xy: 428, 19
+  size: 31, 23
+  orig: 45, 52
+  offset: 11, 14
+  index: -1
+japansg_16
+  rotate: false
+  xy: 428, 6
+  size: 10, 11
+  orig: 45, 52
+  offset: 29, 18
+  index: -1
