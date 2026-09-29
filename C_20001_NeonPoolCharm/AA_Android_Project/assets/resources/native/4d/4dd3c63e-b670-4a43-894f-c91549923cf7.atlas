@@ -1,0 +1,97 @@
+
+cueb_kldy.png
+size: 588,93
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cueb_kldy
+  rotate: true
+  xy: 2, 54
+  size: 37, 521
+  orig: 40, 524
+  offset: 1, 1
+  index: -1
+jinguang5_5_00001
+  rotate: true
+  xy: 477, 28
+  size: 24, 37
+  orig: 24, 231
+  offset: 0, 2
+  index: -1
+jinguang5_5_00002
+  rotate: true
+  xy: 87, 2
+  size: 24, 63
+  orig: 24, 231
+  offset: 0, 1
+  index: -1
+jinguang5_5_00003
+  rotate: true
+  xy: 382, 3
+  size: 24, 85
+  orig: 24, 231
+  offset: 0, 3
+  index: -1
+jinguang5_5_00004
+  rotate: true
+  xy: 2, 28
+  size: 24, 93
+  orig: 24, 231
+  offset: 0, 20
+  index: -1
+jinguang5_5_00005
+  rotate: true
+  xy: 97, 28
+  size: 24, 93
+  orig: 24, 231
+  offset: 0, 44
+  index: -1
+jinguang5_5_00006
+  rotate: true
+  xy: 192, 28
+  size: 24, 93
+  orig: 24, 231
+  offset: 0, 69
+  index: -1
+jinguang5_5_00007
+  rotate: true
+  xy: 287, 28
+  size: 24, 93
+  orig: 24, 231
+  offset: 0, 94
+  index: -1
+jinguang5_5_00008
+  rotate: true
+  xy: 382, 29
+  size: 23, 93
+  orig: 24, 231
+  offset: 0, 118
+  index: -1
+jinguang5_5_00009
+  rotate: true
+  xy: 2, 4
+  size: 22, 83
+  orig: 24, 231
+  offset: 1, 143
+  index: -1
+jinguang5_5_00010
+  rotate: true
+  xy: 152, 4
+  size: 22, 62
+  orig: 24, 231
+  offset: 1, 167
+  index: -1
+jinguang5_5_00011
+  rotate: true
+  xy: 216, 6
+  size: 20, 36
+  orig: 24, 231
+  offset: 2, 193
+  index: -1
+xingyue5_5
+  rotate: false
+  xy: 525, 29
+  size: 61, 62
+  orig: 70, 80
+  offset: 4, 5
+  index: -1
