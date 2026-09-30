@@ -119,6 +119,20 @@ def is_encrypted(data: bytes, config: CryptoConfig) -> bool:
     return len(config.tag) > 0 and data.startswith(config.tag)
 
 
+def find_project_json(input_path: Path) -> Optional[Path]:
+    """从输入路径所在目录向上查找 project.json。"""
+    start = input_path.parent if input_path.is_file() else input_path
+    for directory in [start, *start.parents]:
+        candidate = directory / "project.json"
+        if candidate.is_file():
+            return candidate
+
+    cwd_candidate = Path.cwd() / "project.json"
+    if cwd_candidate.is_file():
+        return cwd_candidate
+    return None
+
+
 def load_crypto_from_project(project_path: Path) -> tuple[CryptoConfig, CryptoConfig]:
     """
     从 project.json 读取 tag/key。
@@ -228,12 +242,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="输出文件或目录 (不指定则原地覆盖源文件)",
     )
     parser.add_argument(
-        "-p",
-        "--project",
-        default="project.json",
-        help="project.json 路径 (默认: project.json)",
-    )
-    parser.add_argument(
         "--tag",
         help="手动指定 tag (覆盖 project.json)",
     )
@@ -254,16 +262,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser = build_arg_parser()
     args = parser.parse_args(argv)
 
+    input_path = Path(args.input)
+
     if args.tag and args.key:
         png_cfg = CryptoConfig.from_strings(args.tag, args.key, "manual_png")
         crypto_cfg = CryptoConfig.from_strings(args.tag, args.key, "manual_crypto")
     else:
-        project_path = Path(args.project)
-        if not project_path.is_file():
-            parser.error(f"找不到 project.json: {project_path}")
-        png_cfg, crypto_cfg = load_crypto_from_project(project_path)
-
-    input_path = Path(args.input)
+        project_path = find_project_json(input_path.resolve())
+        if project_path is not None:
+            png_cfg, crypto_cfg = load_crypto_from_project(project_path)
+        else:
+            png_cfg, crypto_cfg = DEFAULT_PNG_CONFIG, DEFAULT_CRYPTO_CONFIG
 
     if input_path.is_file():
         output_path = Path(args.output) if args.output else None
