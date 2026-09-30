@@ -1,0 +1,232 @@
+.text:0000000000ABFF54 ; =============== S U B R O U T I N E =======================================
+.text:0000000000ABFF54
+.text:0000000000ABFF54 ; Attributes: bp-based frame
+.text:0000000000ABFF54
+.text:0000000000ABFF54 ; cocos2d::FileUtils::getDataFromFile(std::string const&)
+.text:0000000000ABFF54                 EXPORT _ZN7cocos2d9FileUtils15getDataFromFileERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+.text:0000000000ABFF54 _ZN7cocos2d9FileUtils15getDataFromFileERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+.text:0000000000ABFF54                                         ; DATA XREF: LOAD:00000000000A2730↑o
+.text:0000000000ABFF54                                         ; .data.rel.ro:0000000001AC2348↓o ...
+.text:0000000000ABFF54
+.text:0000000000ABFF54 var_18          = -0x18
+.text:0000000000ABFF54 var_8           = -8
+.text:0000000000ABFF54 var_s0          =  0
+.text:0000000000ABFF54 var_s10         =  0x10
+.text:0000000000ABFF54 var_s20         =  0x20
+.text:0000000000ABFF54 var_s30         =  0x30
+.text:0000000000ABFF54
+.text:0000000000ABFF54 ; __unwind { // __gxx_personality_v0
+.text:0000000000ABFF54                 SUB             SP, SP, #0x60
+.text:0000000000ABFF58                 STP             X29, X30, [SP,#0x20+var_s0]
+.text:0000000000ABFF5C                 STP             X24, X23, [SP,#0x20+var_s10]
+.text:0000000000ABFF60                 STP             X22, X21, [SP,#0x20+var_s20]
+.text:0000000000ABFF64                 STP             X20, X19, [SP,#0x20+var_s30]
+.text:0000000000ABFF68                 ADD             X29, SP, #0x20
+.text:0000000000ABFF6C                 MRS             X23, TPIDR_EL0
+.text:0000000000ABFF70                 MOV             X19, X8
+.text:0000000000ABFF74                 MOV             X21, X0
+.text:0000000000ABFF78                 LDR             X8, [X23,#0x28]
+.text:0000000000ABFF7C                 MOV             X0, X19
+.text:0000000000ABFF80                 MOV             X20, X1
+.text:0000000000ABFF84                 STUR            X8, [X29,#var_8]
+.text:0000000000ABFF88                 BL              ._ZN7cocos2d4DataC1Ev ; cocos2d::Data::Data(void)
+.text:0000000000ABFF8C                 ADRP            X8, #_ZTVN7cocos2d22ResizableBufferAdapterINS_4DataEEE_ptr@PAGE
+.text:0000000000ABFF90                 LDR             X8, [X8,#_ZTVN7cocos2d22ResizableBufferAdapterINS_4DataEEE_ptr@PAGEOFF] ; `vtable for'cocos2d::ResizableBufferAdapter<cocos2d::Data> ...
+.text:0000000000ABFF94                 LDR             X9, [X21]
+.text:0000000000ABFF98                 ADD             X8, X8, #0x10
+.text:0000000000ABFF9C                 LDR             X9, [X9,#0x30]
+.text:0000000000ABFFA0                 STP             X8, X19, [SP,#0x20+var_18]
+.text:0000000000ABFFA4 ;   try {
+.text:0000000000ABFFA4                 ADD             X2, SP, #0x20+var_18
+.text:0000000000ABFFA8                 MOV             X0, X21
+.text:0000000000ABFFAC                 MOV             X1, X20
+.text:0000000000ABFFB0                 BLR             X9
+.text:0000000000ABFFB0 ;   } // starts at ABFFA4
+.text:0000000000ABFFB4 ;   try {
+.text:0000000000ABFFB4                 MOV             X0, X19
+.text:0000000000ABFFB8                 BL              ._ZNK7cocos2d4Data8getBytesEv ; cocos2d::Data::getBytes(void)
+.text:0000000000ABFFB8 ;   } // starts at ABFFB4
+.text:0000000000ABFFBC                 ADRP            X21, #_ZN7cocos2d16png_encrypt_flagE_ptr@PAGE
+.text:0000000000ABFFC0                 MOV             X20, X0
+.text:0000000000ABFFC4                 LDR             X21, [X21,#_ZN7cocos2d16png_encrypt_flagE_ptr@PAGEOFF] ; cocos2d::png_encrypt_flag ...
+.text:0000000000ABFFC8                 LDRB            W8, [X21] ; cocos2d::png_encrypt_flag
+.text:0000000000ABFFCC                 LDR             X9, [X21,#(qword_1B9CB00 - 0x1B9CAF8)]
+.text:0000000000ABFFD0                 LSR             X10, X8, #1
+.text:0000000000ABFFD4                 TST             W8, #1
+.text:0000000000ABFFD8                 CSEL            X2, X10, X9, EQ ; n
+.text:0000000000ABFFDC                 CBZ             X2, loc_ABFFF8
+.text:0000000000ABFFE0                 LDR             X9, [X21,#(qword_1B9CB08 - 0x1B9CAF8)]
+.text:0000000000ABFFE4                 TST             W8, #1
+.text:0000000000ABFFE8                 MOV             X0, X20 ; s1
+.text:0000000000ABFFEC                 CSINC           X1, X9, X21, NE ; s2
+.text:0000000000ABFFF0                 BL              .memcmp
+.text:0000000000ABFFF4                 CBZ             W0, loc_AC00D8
+.text:0000000000ABFFF8
+.text:0000000000ABFFF8 loc_ABFFF8                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+88↑j
+.text:0000000000ABFFF8                 ADRP            X21, #_ZN7cocos2d11_crypto_tagE_ptr@PAGE
+.text:0000000000ABFFFC                 LDR             X21, [X21,#_ZN7cocos2d11_crypto_tagE_ptr@PAGEOFF] ; cocos2d::_crypto_tag ...
+.text:0000000000AC0000                 LDRB            W8, [X21] ; cocos2d::_crypto_tag
+.text:0000000000AC0004                 LDR             X9, [X21,#(_ZN7cocos2d11_crypto_tagE+8 - 0x1B9CB10)] ; cocos2d::_crypto_tag
+.text:0000000000AC0008                 LSR             X10, X8, #1
+.text:0000000000AC000C                 TST             W8, #1
+.text:0000000000AC0010                 CSEL            X2, X10, X9, EQ ; n
+.text:0000000000AC0014                 CBZ             X2, loc_AC017C
+.text:0000000000AC0018                 LDR             X9, [X21,#(qword_1B9CB20 - 0x1B9CB10)]
+.text:0000000000AC001C                 TST             W8, #1
+.text:0000000000AC0020                 MOV             X0, X20 ; s1
+.text:0000000000AC0024                 CSINC           X1, X9, X21, NE ; s2
+.text:0000000000AC0028                 BL              .memcmp
+.text:0000000000AC002C                 CBNZ            W0, loc_AC017C
+.text:0000000000AC0030 ;   try {
+.text:0000000000AC0030                 MOV             X0, X19
+.text:0000000000AC0034                 BL              ._ZNK7cocos2d4Data7getSizeEv ; cocos2d::Data::getSize(void)
+.text:0000000000AC0034 ;   } // starts at AC0030
+.text:0000000000AC0038                 LDRB            W8, [X21] ; cocos2d::_crypto_tag
+.text:0000000000AC003C                 LDR             X9, [X21,#(_ZN7cocos2d11_crypto_tagE+8 - 0x1B9CB10)] ; cocos2d::_crypto_tag
+.text:0000000000AC0040                 LSR             X10, X8, #1
+.text:0000000000AC0044                 TST             W8, #1
+.text:0000000000AC0048                 CSEL            X24, X10, X9, EQ
+.text:0000000000AC004C                 SUB             X21, X0, X24
+.text:0000000000AC0050                 MOV             W0, #1  ; nmemb
+.text:0000000000AC0054                 MOV             X1, X21 ; size
+.text:0000000000AC0058                 BL              .calloc
+.text:0000000000AC005C                 ADD             X1, X20, X24 ; src
+.text:0000000000AC0060                 MOV             X2, X21 ; n
+.text:0000000000AC0064                 MOV             X22, X0
+.text:0000000000AC0068                 BL              .memcpy
+.text:0000000000AC006C                 CMP             X21, #1
+.text:0000000000AC0070                 B.LT            loc_AC00C4
+.text:0000000000AC0074                 ADRP            X10, #_ZN7cocos2d11_crypto_keyE_ptr@PAGE
+.text:0000000000AC0078                 MOV             W9, WZR
+.text:0000000000AC007C                 LDR             X10, [X10,#_ZN7cocos2d11_crypto_keyE_ptr@PAGEOFF] ; cocos2d::_crypto_key ...
+.text:0000000000AC0080                 LDRB            W8, [X10] ; cocos2d::_crypto_key
+.text:0000000000AC0084                 LDP             X12, X13, [X10,#(qword_1B9CB30 - 0x1B9CB28)]
+.text:0000000000AC0088                 LSR             X11, X8, #1
+.text:0000000000AC008C                 TST             W8, #1
+.text:0000000000AC0090                 CSINC           X10, X13, X10, NE
+.text:0000000000AC0094                 CSEL            X8, X11, X12, EQ
+.text:0000000000AC0098                 MOV             X11, X21
+.text:0000000000AC009C                 MOV             X12, X22
+.text:0000000000AC00A0
+.text:0000000000AC00A0 loc_AC00A0                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+16C↓j
+.text:0000000000AC00A0                 CMP             X8, W9,SXTW
+.text:0000000000AC00A4                 LDRB            W14, [X12]
+.text:0000000000AC00A8                 CSEL            W9, W9, WZR, HI
+.text:0000000000AC00AC                 SUBS            X11, X11, #1
+.text:0000000000AC00B0                 LDRB            W13, [X10,W9,SXTW]
+.text:0000000000AC00B4                 ADD             W9, W9, #1
+.text:0000000000AC00B8                 EOR             W13, W14, W13
+.text:0000000000AC00BC                 STRB            W13, [X12],#1
+.text:0000000000AC00C0                 B.NE            loc_AC00A0
+.text:0000000000AC00C4
+.text:0000000000AC00C4 loc_AC00C4                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+11C↑j
+.text:0000000000AC00C4 ;   try {
+.text:0000000000AC00C4                 MOV             X0, X19
+.text:0000000000AC00C8                 MOV             X1, X22
+.text:0000000000AC00CC                 MOV             X2, X21
+.text:0000000000AC00D0                 BL              ._ZN7cocos2d4Data7fastSetEPhl ; cocos2d::Data::fastSet(uchar *,long)
+.text:0000000000AC00D0 ;   } // starts at AC00C4
+.text:0000000000AC00D4                 B               loc_AC017C
+.text:0000000000AC00D8 ; ---------------------------------------------------------------------------
+.text:0000000000AC00D8
+.text:0000000000AC00D8 loc_AC00D8                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+A0↑j
+.text:0000000000AC00D8 ;   try {
+.text:0000000000AC00D8                 MOV             X0, X19
+.text:0000000000AC00DC                 BL              ._ZNK7cocos2d4Data7getSizeEv ; cocos2d::Data::getSize(void)
+.text:0000000000AC00DC ;   } // starts at AC00D8
+.text:0000000000AC00E0                 LDRB            W8, [X21] ; cocos2d::png_encrypt_flag
+.text:0000000000AC00E4                 LDR             X9, [X21,#(qword_1B9CB00 - 0x1B9CAF8)]
+.text:0000000000AC00E8                 LSR             X10, X8, #1
+.text:0000000000AC00EC                 TST             W8, #1
+.text:0000000000AC00F0                 CSEL            X24, X10, X9, EQ
+.text:0000000000AC00F4                 SUB             X21, X0, X24
+.text:0000000000AC00F8                 MOV             W0, #1  ; nmemb
+.text:0000000000AC00FC                 MOV             X1, X21 ; size
+.text:0000000000AC0100                 BL              .calloc
+.text:0000000000AC0104                 ADD             X1, X20, X24 ; src
+.text:0000000000AC0108                 MOV             X2, X21 ; n
+.text:0000000000AC010C                 MOV             X22, X0
+.text:0000000000AC0110                 BL              .memcpy
+.text:0000000000AC0114                 CMP             X21, #1
+.text:0000000000AC0118                 B.LT            loc_AC016C
+.text:0000000000AC011C                 ADRP            X10, #_ZN7cocos2d16FILE_ENCRYPT_KEYE_ptr@PAGE
+.text:0000000000AC0120                 MOV             W9, WZR
+.text:0000000000AC0124                 LDR             X10, [X10,#_ZN7cocos2d16FILE_ENCRYPT_KEYE_ptr@PAGEOFF] ; cocos2d::FILE_ENCRYPT_KEY ...
+.text:0000000000AC0128                 LDRB            W8, [X10] ; cocos2d::FILE_ENCRYPT_KEY
+.text:0000000000AC012C                 LDP             X12, X13, [X10,#(qword_1B9CAD0 - 0x1B9CAC8)]
+.text:0000000000AC0130                 LSR             X11, X8, #1
+.text:0000000000AC0134                 TST             W8, #1
+.text:0000000000AC0138                 CSINC           X10, X13, X10, NE
+.text:0000000000AC013C                 CSEL            X8, X11, X12, EQ
+.text:0000000000AC0140                 MOV             X11, X21
+.text:0000000000AC0144                 MOV             X12, X22
+.text:0000000000AC0148
+.text:0000000000AC0148 loc_AC0148                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+214↓j
+.text:0000000000AC0148                 CMP             X8, W9,SXTW
+.text:0000000000AC014C                 LDRB            W14, [X12]
+.text:0000000000AC0150                 CSEL            W9, W9, WZR, HI
+.text:0000000000AC0154                 SUBS            X11, X11, #1
+.text:0000000000AC0158                 LDRB            W13, [X10,W9,SXTW]
+.text:0000000000AC015C                 ADD             W9, W9, #1
+.text:0000000000AC0160                 EOR             W13, W14, W13
+.text:0000000000AC0164                 STRB            W13, [X12],#1
+.text:0000000000AC0168                 B.NE            loc_AC0148
+.text:0000000000AC016C
+.text:0000000000AC016C loc_AC016C                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+1C4↑j
+.text:0000000000AC016C ;   try {
+.text:0000000000AC016C                 MOV             X0, X19
+.text:0000000000AC0170                 MOV             X1, X22
+.text:0000000000AC0174                 MOV             X2, X21
+.text:0000000000AC0178                 BL              ._ZN7cocos2d4Data7fastSetEPhl ; cocos2d::Data::fastSet(uchar *,long)
+.text:0000000000AC0178 ;   } // starts at AC016C
+.text:0000000000AC017C
+.text:0000000000AC017C loc_AC017C                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+C0↑j
+.text:0000000000AC017C                                         ; cocos2d::FileUtils::getDataFromFile(std::string const&)+D8↑j ...
+.text:0000000000AC017C                 LDR             X8, [X23,#0x28]
+.text:0000000000AC0180                 LDUR            X9, [X29,#var_8]
+.text:0000000000AC0184                 CMP             X8, X9
+.text:0000000000AC0188                 B.NE            loc_AC01DC
+.text:0000000000AC018C                 LDP             X20, X19, [SP,#0x20+var_s30]
+.text:0000000000AC0190                 LDP             X22, X21, [SP,#0x20+var_s20]
+.text:0000000000AC0194                 LDP             X24, X23, [SP,#0x20+var_s10]
+.text:0000000000AC0198                 LDP             X29, X30, [SP,#0x20+var_s0]
+.text:0000000000AC019C                 ADD             SP, SP, #0x60 ; '`'
+.text:0000000000AC01A0                 RET
+.text:0000000000AC01A4 ; ---------------------------------------------------------------------------
+.text:0000000000AC01A4 ;   cleanup() // owned by AC00C4
+.text:0000000000AC01A4                 B               loc_AC01B8
+.text:0000000000AC01A8 ; ---------------------------------------------------------------------------
+.text:0000000000AC01A8 ;   cleanup() // owned by AC0030
+.text:0000000000AC01A8                 B               loc_AC01B8
+.text:0000000000AC01AC ; ---------------------------------------------------------------------------
+.text:0000000000AC01AC ;   cleanup() // owned by AC016C
+.text:0000000000AC01AC                 B               loc_AC01B8
+.text:0000000000AC01B0 ; ---------------------------------------------------------------------------
+.text:0000000000AC01B0 ;   cleanup() // owned by AC00D8
+.text:0000000000AC01B0                 B               loc_AC01B8
+.text:0000000000AC01B4 ; ---------------------------------------------------------------------------
+.text:0000000000AC01B4 ;   cleanup() // owned by ABFFB4
+.text:0000000000AC01B4                 B               loc_AC01B8
+.text:0000000000AC01B8 ; ---------------------------------------------------------------------------
+.text:0000000000AC01B8
+.text:0000000000AC01B8 loc_AC01B8                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+250↑j
+.text:0000000000AC01B8                                         ; cocos2d::FileUtils::getDataFromFile(std::string const&)+254↑j ...
+.text:0000000000AC01B8 ;   cleanup() // owned by ABFFA4
+.text:0000000000AC01B8                 MOV             X20, X0
+.text:0000000000AC01BC                 MOV             X0, X19
+.text:0000000000AC01C0                 BL              ._ZN7cocos2d4DataD1Ev ; cocos2d::Data::~Data()
+.text:0000000000AC01C4                 LDR             X8, [X23,#0x28]
+.text:0000000000AC01C8                 LDUR            X9, [X29,#var_8]
+.text:0000000000AC01CC                 CMP             X8, X9
+.text:0000000000AC01D0                 B.NE            loc_AC01DC
+.text:0000000000AC01D4                 MOV             X0, X20
+.text:0000000000AC01D8                 BL              sub_1A6401C
+.text:0000000000AC01DC ; ---------------------------------------------------------------------------
+.text:0000000000AC01DC
+.text:0000000000AC01DC loc_AC01DC                              ; CODE XREF: cocos2d::FileUtils::getDataFromFile(std::string const&)+234↑j
+.text:0000000000AC01DC                                         ; cocos2d::FileUtils::getDataFromFile(std::string const&)+27C↑j
+.text:0000000000AC01DC                 BL              .__stack_chk_fail
+.text:0000000000AC01DC ; } // starts at ABFF54
+.text:0000000000AC01DC ; End of function cocos2d::FileUtils::getDataFromFile(std::string const&)
+.text:0000000000AC01DC
+.text:0000000000AC01E0

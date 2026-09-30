@@ -1,0 +1,222 @@
+__int64 __usercall cocos2d::FileUtils::getStringFromFile@<X0>(__int64 *a1@<X0>, __int64 a2@<X1>, _QWORD *a3@<X8>)
+{
+  __int64 v4; // x9
+  __int64 (__fastcall *v5)(__int64 *, __int64, _QWORD *); // x9
+  __int64 result; // x0
+  signed __int64 v7; // x20
+  unsigned __int64 v8; // x11
+  signed __int64 v9; // x8
+  _QWORD *v10; // x26
+  __int64 *v11; // x21
+  signed __int64 v12; // x20
+  unsigned __int64 v13; // x11
+  signed __int64 v14; // x8
+  _QWORD *v15; // x26
+  __int128 *v16; // x21
+  int v17; // w22
+  char *v18; // x27
+  signed __int64 v19; // x8
+  __int64 v20; // x23
+  int v21; // w22
+  char *v22; // x27
+  signed __int64 v23; // x8
+  __int64 v24; // x23
+  unsigned __int64 v25; // x8
+  bool v26; // zf
+  unsigned __int64 v27; // x8
+  bool v28; // w10
+  unsigned __int64 v29; // x8
+  int v30; // w11
+  unsigned __int64 v31; // x13
+  char *v32; // x12
+  char *v33; // x10
+  char v34; // w12
+  unsigned __int64 v35; // x10
+  unsigned __int64 v36; // x12
+  unsigned __int64 v37; // x13
+  unsigned __int64 v38; // x8
+  bool v39; // zf
+  __int64 v40; // x8
+  bool v41; // w10
+  unsigned __int64 v42; // x8
+  int v43; // w11
+  unsigned __int64 v44; // x13
+  char *v45; // x12
+  char *v46; // x10
+  char v47; // w12
+  unsigned __int64 v48; // x10
+  unsigned __int64 v49; // x12
+  unsigned __int64 v50; // x13
+  _QWORD v51[3]; // [xsp+8h] [xbp-18h] BYREF
+
+  v51[2] = *(_QWORD *)(_ReadStatusReg(TPIDR_EL0) + 40);
+  v4 = *a1;
+  *a3 = 0;
+  a3[1] = 0;
+  a3[2] = 0;
+  v5 = *(__int64 (__fastcall **)(__int64 *, __int64, _QWORD *))(v4 + 48);
+  v51[0] = &off_1AC2F98;
+  v51[1] = a3;
+  result = v5(a1, a2, v51);
+  if ( (cocos2d::png_encrypt_flag & 1) != 0 )
+    v7 = qword_1B9CB00;
+  else
+    v7 = (unsigned __int64)(unsigned __int8)cocos2d::png_encrypt_flag >> 1;
+  if ( v7 )
+  {
+    v8 = *(unsigned __int8 *)a3;
+    v9 = a3[1];
+    if ( (v8 & 1) == 0 )
+      v9 = v8 >> 1;
+    if ( v9 > (unsigned __int64)v7 )
+    {
+      v10 = (v8 & 1) != 0 ? (_QWORD *)a3[2] : (_QWORD *)((char *)a3 + 1);
+      v11 = (cocos2d::png_encrypt_flag & 1) != 0
+          ? (__int64 *)qword_1B9CB08
+          : (__int64 *)((char *)&cocos2d::png_encrypt_flag + 1);
+      if ( v9 >= v7 )
+      {
+        v17 = *(char *)v11;
+        v18 = (char *)v10 + v9;
+        result = (__int64)v10;
+        do
+        {
+          v19 = v9 - v7;
+          if ( v19 == -1 )
+            break;
+          result = (__int64)memchr((const void *)result, v17, v19 + 1);
+          if ( !result )
+            break;
+          v20 = result;
+          result = memcmp((const void *)result, v11, v7);
+          if ( !(_DWORD)result )
+          {
+            if ( (char *)v20 == v18 || (_QWORD *)v20 != v10 )
+              break;
+            result = std::string::erase(a3, 0, v7);
+            v25 = *(unsigned __int8 *)a3;
+            v26 = (v25 & 1) == 0;
+            if ( (v25 & 1) != 0 )
+              v27 = a3[1];
+            else
+              v27 = v25 >> 1;
+            v28 = v26;
+            if ( v27 )
+            {
+              v29 = 0;
+              v30 = 0;
+              do
+              {
+                v31 = (unsigned __int64)(unsigned __int8)cocos2d::FILE_ENCRYPT_KEY >> 1;
+                v32 = (char *)qword_1B9CAD8;
+                if ( (cocos2d::FILE_ENCRYPT_KEY & 1) != 0 )
+                  v31 = qword_1B9CAD0;
+                else
+                  v32 = (char *)&cocos2d::FILE_ENCRYPT_KEY + 1;
+                if ( v31 <= v30 )
+                  v30 = 0;
+                if ( v28 )
+                  v33 = (char *)a3 + 1;
+                else
+                  v33 = (char *)a3[2];
+                v34 = v32[v30++];
+                v33[v29++] ^= v34;
+                v35 = *(unsigned __int8 *)a3;
+                v36 = a3[1];
+                v37 = v35 >> 1;
+                v28 = (v35 & 1) == 0;
+                if ( v28 )
+                  v36 = v37;
+              }
+              while ( v36 > v29 );
+            }
+            return result;
+          }
+          result = v20 + 1;
+          v9 = (signed __int64)&v18[-v20 - 1];
+        }
+        while ( v9 >= v7 );
+      }
+    }
+  }
+  if ( (cocos2d::_crypto_tag & 1) != 0 )
+    v12 = *((_QWORD *)&cocos2d::_crypto_tag + 1);
+  else
+    v12 = (unsigned __int64)(unsigned __int8)cocos2d::_crypto_tag >> 1;
+  if ( v12 )
+  {
+    v13 = *(unsigned __int8 *)a3;
+    v14 = a3[1];
+    if ( (v13 & 1) == 0 )
+      v14 = v13 >> 1;
+    if ( v14 > (unsigned __int64)v12 )
+    {
+      v15 = (v13 & 1) != 0 ? (_QWORD *)a3[2] : (_QWORD *)((char *)a3 + 1);
+      v16 = (cocos2d::_crypto_tag & 1) != 0
+          ? (__int128 *)qword_1B9CB20
+          : (__int128 *)((char *)&cocos2d::_crypto_tag + 1);
+      if ( v14 >= v12 )
+      {
+        v21 = *(char *)v16;
+        v22 = (char *)v15 + v14;
+        result = (__int64)v15;
+        do
+        {
+          v23 = v14 - v12;
+          if ( v23 == -1 )
+            break;
+          result = (__int64)memchr((const void *)result, v21, v23 + 1);
+          if ( !result )
+            break;
+          v24 = result;
+          result = memcmp((const void *)result, v16, v12);
+          if ( !(_DWORD)result )
+          {
+            if ( (char *)v24 != v22 && (_QWORD *)v24 == v15 )
+            {
+              result = std::string::erase(a3, 0, v12);
+              v38 = *(unsigned __int8 *)a3;
+              v39 = (v38 & 1) == 0;
+              v40 = (v38 & 1) != 0 ? a3[1] : v38 >> 1;
+              v41 = v39;
+              if ( v40 )
+              {
+                v42 = 0;
+                v43 = 0;
+                do
+                {
+                  v44 = (unsigned __int64)(unsigned __int8)cocos2d::_crypto_key >> 1;
+                  v45 = (char *)qword_1B9CB38;
+                  if ( (cocos2d::_crypto_key & 1) != 0 )
+                    v44 = qword_1B9CB30;
+                  else
+                    v45 = (char *)&cocos2d::_crypto_key + 1;
+                  if ( v44 <= v43 )
+                    v43 = 0;
+                  if ( v41 )
+                    v46 = (char *)a3 + 1;
+                  else
+                    v46 = (char *)a3[2];
+                  v47 = v45[v43++];
+                  v46[v42++] ^= v47;
+                  v48 = *(unsigned __int8 *)a3;
+                  v49 = a3[1];
+                  v50 = v48 >> 1;
+                  v41 = (v48 & 1) == 0;
+                  if ( v41 )
+                    v49 = v50;
+                }
+                while ( v49 > v42 );
+              }
+            }
+            return result;
+          }
+          result = v24 + 1;
+          v14 = (signed __int64)&v22[-v24 - 1];
+        }
+        while ( v14 >= v12 );
+      }
+    }
+  }
+  return result;
+}
