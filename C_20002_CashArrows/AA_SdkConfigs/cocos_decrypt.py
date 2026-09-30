@@ -193,8 +193,11 @@ def decrypt_directory(
                 continue
 
             src_path = Path(root) / filename
-            rel_path = src_path.relative_to(src_dir)
-            dst_path = dst_dir / rel_path
+            if dst_dir == src_dir:
+                dst_path = src_path
+            else:
+                rel_path = src_path.relative_to(src_dir)
+                dst_path = dst_dir / rel_path
 
             total_count += 1
             _, was_encrypted = decrypt_file(
@@ -222,7 +225,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-o",
         "--output",
-        help="输出文件或目录 (目录模式必填)",
+        help="输出文件或目录 (不指定则原地覆盖源文件)",
     )
     parser.add_argument(
         "-p",
@@ -275,15 +278,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not input_path.is_dir():
         parser.error(f"输入路径不存在: {input_path}")
 
-    if not args.output:
-        parser.error("目录模式必须指定 -o/--output")
-
-    dst_dir = Path(args.output)
+    dst_dir = Path(args.output) if args.output else input_path
     exts = {e if e.startswith(".") else f".{e}" for e in args.ext}
     dec, skip, total = decrypt_directory(
         input_path, dst_dir, png_cfg, crypto_cfg, exts
     )
-    print(f"完成: 共 {total} 个文件, 解密 {dec} 个, 跳过 {skip} 个 -> {dst_dir}")
+    if dst_dir == input_path:
+        print(f"完成: 共 {total} 个文件, 解密 {dec} 个, 跳过 {skip} 个 (已覆盖源文件)")
+    else:
+        print(f"完成: 共 {total} 个文件, 解密 {dec} 个, 跳过 {skip} 个 -> {dst_dir}")
     return 0
 
 
