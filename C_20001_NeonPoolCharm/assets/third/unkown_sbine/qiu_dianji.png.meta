@@ -12,7 +12,7 @@
   "height": 113,
   "platformSettings": {},
   "subMetas": {
-    "qiu_dianji.png": {
+    "qiu_dianji": {
       "ver": "1.0.6",
       "uuid": "c5dab1d2-53f3-48cf-9056-1b9e1df2d582",
       "importer": "sprite-frame",
@@ -22,10 +22,10 @@
       "rotated": false,
       "offsetX": 0,
       "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 209,
-      "height": 113,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 205,
+      "height": 109,
       "rawWidth": 209,
       "rawHeight": 113,
       "borderTop": 0,

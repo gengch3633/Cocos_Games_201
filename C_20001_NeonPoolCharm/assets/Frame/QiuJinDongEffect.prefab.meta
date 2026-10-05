@@ -1,9 +1,9 @@
 {
-      "ver": "1.3.2",
-      "uuid": "c29f30ff-7229-4fa9-a5aa-97fdb3269887",
-      "importer": "prefab",
-      "optimizationPolicy": "AUTO",
-      "asyncLoadAssets": false,
-      "readonly": false,
-      "subMetas": {}
+  "ver": "1.3.2",
+  "uuid": "c29f30ff-7229-4fa9-a5aa-97fdb3269887",
+  "importer": "prefab",
+  "optimizationPolicy": "AUTO",
+  "asyncLoadAssets": false,
+  "readonly": false,
+  "subMetas": {}
 }

@@ -12,7 +12,7 @@
   "height": 35,
   "platformSettings": {},
   "subMetas": {
-    "baiqiu.png": {
+    "baiqiu": {
       "ver": "1.0.6",
       "uuid": "42fb3be9-297c-4e50-801b-83fc46361969",
       "importer": "sprite-frame",
@@ -22,10 +22,10 @@
       "rotated": false,
       "offsetX": 0,
       "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 56,
-      "height": 35,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 52,
+      "height": 31,
       "rawWidth": 56,
       "rawHeight": 35,
       "borderTop": 0,
