@@ -1,0 +1,16 @@
+{
+  "__type__": "cc.Material",
+  "_name": "aim_line",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "140d3d97-460e-4ba0-ad4f-7a143b9f9fae"
+  },
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_TEXTURE": true
+      }
+    }
+  }
+}

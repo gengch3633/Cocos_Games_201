@@ -1,0 +1,151 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "data": {
+      "__id__": 1
+    },
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GodFinger",
+    "_parent": null,
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 5
+      }
+    ],
+    "_components": [
+      {
+        "__id__": 8
+      }
+    ],
+    "_prefab": {
+      "__id__": 9
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "yondaoshou",
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_components": [
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 515.82,
+      "height": 241.72
+    }
+  },
+  {
+    "__type__": "sp.Skeleton",
+    "node": {
+      "__id__": 2
+    },
+    "defaultSkin": "default",
+    "defaultAnimation": "you",
+    "_preCacheMode": 0,
+    "_animationName": "you",
+    "_materials": [
+      {
+        "__uuid__": "7afd064b-113f-480e-b793-8817d19f63c3"
+      }
+    ],
+    "_N$skeletonData": {
+      "__uuid__": "de22d816-455c-471b-ac28-4345dd7635c1"
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "e940db49-11a3-4416-9500-c7be1af90825"
+    },
+    "fileId": "4f9nvCbgpBbrFUn9U3a4Uj"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "jiantou",
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": false,
+    "_components": [
+      {
+        "__id__": 6
+      }
+    ],
+    "_prefab": {
+      "__id__": 7
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 603.75,
+      "height": 537.56
+    }
+  },
+  {
+    "__type__": "sp.Skeleton",
+    "node": {
+      "__id__": 5
+    },
+    "defaultSkin": "default",
+    "defaultAnimation": "heng",
+    "_preCacheMode": 0,
+    "_animationName": "heng",
+    "_materials": [
+      {
+        "__uuid__": "7afd064b-113f-480e-b793-8817d19f63c3"
+      }
+    ],
+    "_N$skeletonData": {
+      "__uuid__": "7e640d1b-c179-4aa8-90b1-c598c26c6c93"
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "e940db49-11a3-4416-9500-c7be1af90825"
+    },
+    "fileId": "f7fhED1FpHfJIbzj98sx8q"
+  },
+  {
+    "__type__": "e4a5f69rKBBSZupsYIZVLJs",
+    "node": {
+      "__id__": 1
+    },
+    "light": {
+      "__id__": 6
+    },
+    "finger": {
+      "__id__": 3
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "e940db49-11a3-4416-9500-c7be1af90825"
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_objFlags": 0,
+  "_native": "",
+  "curveData": {
+    "props": {
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 50
+        },
+        {
+          "frame": 0.2,
+          "value": 255
+        }
+      ],
+      "scaleY": [
+        {
+          "frame": 0,
+          "value": 0.1,
+          "curve": [
+            0.18,
+            0.89,
+            0.31,
+            1.21
+          ]
+        },
+        {
+          "frame": 0.31666666666666665,
+          "value": 1
+        }
+      ]
+    }
+  },
+  "events": [],
+  "_name": "scene_unlock_icon_ani",
+  "_duration": 0.31666666666666665
+}

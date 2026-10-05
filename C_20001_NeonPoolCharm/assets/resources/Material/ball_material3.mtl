@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.Material",
+  "_name": "ball_material3",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "5e020877-c0b0-4152-8960-fecb3a1bbe6a"
+  },
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_DIFFUSE_TEXTURE": true,
+        "INPUT_IS_GAMMA": false,
+        "USE_ALPHA_TEST": false
+      },
+      "props": {
+        "diffuseColor": {
+          "__type__": "cc.Color",
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 255
+        }
+      }
+    }
+  }
+}

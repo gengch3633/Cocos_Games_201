@@ -1,0 +1,139 @@
+
+cue25.png
+size: 418,245
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mexico
+  rotate: true
+  xy: 2, 198
+  size: 45, 414
+  orig: 47, 416
+  offset: 1, 1
+  index: -1
+mexih_00
+  rotate: false
+  xy: 279, 101
+  size: 43, 95
+  orig: 64, 101
+  offset: 11, 4
+  index: -1
+mexih_01
+  rotate: false
+  xy: 141, 101
+  size: 44, 95
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_02
+  rotate: false
+  xy: 2, 100
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_03
+  rotate: false
+  xy: 2, 2
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_04
+  rotate: false
+  xy: 233, 5
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_05
+  rotate: false
+  xy: 324, 102
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_06
+  rotate: false
+  xy: 279, 5
+  size: 43, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_07
+  rotate: false
+  xy: 370, 102
+  size: 44, 94
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_08
+  rotate: false
+  xy: 140, 4
+  size: 44, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_09
+  rotate: false
+  xy: 48, 100
+  size: 44, 96
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_10
+  rotate: false
+  xy: 187, 101
+  size: 44, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_11
+  rotate: false
+  xy: 48, 2
+  size: 44, 96
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_12
+  rotate: false
+  xy: 94, 101
+  size: 45, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_13
+  rotate: false
+  xy: 186, 5
+  size: 45, 94
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_14
+  rotate: false
+  xy: 324, 6
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_15
+  rotate: false
+  xy: 370, 6
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_16
+  rotate: false
+  xy: 233, 101
+  size: 44, 95
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_17
+  rotate: false
+  xy: 94, 3
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1

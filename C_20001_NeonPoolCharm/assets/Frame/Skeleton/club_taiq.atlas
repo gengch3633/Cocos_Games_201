@@ -1,0 +1,41 @@
+
+club_taiq.png
+size: 335,503
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+board_taiq
+  rotate: true
+  xy: 2, 27
+  size: 474, 102
+  orig: 474, 102
+  offset: 0, 0
+  index: -1
+deng1_taiq
+  rotate: false
+  xy: 2, 2
+  size: 22, 23
+  orig: 22, 23
+  offset: 0, 0
+  index: -1
+deng2_taiq
+  rotate: false
+  xy: 300, 118
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: true
+  xy: 106, 6
+  size: 145, 192
+  orig: 145, 192
+  offset: 0, 0
+  index: -1
+star_taiq2
+  rotate: true
+  xy: 106, 153
+  size: 348, 208
+  orig: 348, 208
+  offset: 0, 0
+  index: -1

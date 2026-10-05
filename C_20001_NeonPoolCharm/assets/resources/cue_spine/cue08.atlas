@@ -1,0 +1,27 @@
+
+cue08.png
+size: 489,38
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+italy
+  rotate: true
+  xy: 2, 20
+  size: 16, 414
+  orig: 18, 416
+  offset: 1, 1
+  index: -1
+italya01
+  rotate: true
+  xy: 418, 5
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1
+italya0103
+  rotate: false
+  xy: 2, 2
+  size: 86, 16
+  orig: 92, 20
+  offset: 3, 2
+  index: -1

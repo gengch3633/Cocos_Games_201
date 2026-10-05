@@ -1,0 +1,46 @@
+{
+  "__type__": "cc.Material",
+  "_name": "ball_material_num011",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "12ad9bdb-9bc5-4838-8663-78d317c2ac9a"
+  },
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_DIFFUSE_TEXTURE": true,
+        "INPUT_IS_GAMMA": false,
+        "USE_ALPHA_TEST": false,
+        "USE_SPECULAR": true,
+        "USE_EMISSIVE": false,
+        "USE_EMISSIVE_TEXTURE": false,
+        "OUTPUT_TO_GAMMA": false
+      },
+      "props": {
+        "glossiness": 1,
+        "diffuseColor": {
+          "__type__": "cc.Color",
+          "r": 42,
+          "g": 42,
+          "b": 42,
+          "a": 255
+        },
+        "specularColor": {
+          "__type__": "cc.Color",
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 255
+        },
+        "emissiveColor": {
+          "__type__": "cc.Color",
+          "r": 13,
+          "g": 13,
+          "b": 13,
+          "a": 10
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+
+cue13.png
+size: 454,47
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dengx_01
+  rotate: false
+  xy: 99, 2
+  size: 20, 21
+  orig: 24, 84
+  offset: 2, 2
+  index: -1
+dengx_02
+  rotate: true
+  xy: 71, 2
+  size: 21, 26
+  orig: 24, 84
+  offset: 2, 3
+  index: -1
+dengx_03
+  rotate: true
+  xy: 38, 2
+  size: 21, 31
+  orig: 24, 84
+  offset: 2, 5
+  index: -1
+dengx_04
+  rotate: true
+  xy: 121, 3
+  size: 20, 34
+  orig: 24, 84
+  offset: 2, 8
+  index: -1
+dengx_05
+  rotate: true
+  xy: 238, 5
+  size: 18, 36
+  orig: 24, 84
+  offset: 3, 13
+  index: -1
+dengx_06
+  rotate: true
+  xy: 199, 5
+  size: 18, 37
+  orig: 24, 84
+  offset: 3, 18
+  index: -1
+dengx_07
+  rotate: true
+  xy: 276, 6
+  size: 17, 39
+  orig: 24, 84
+  offset: 3, 24
+  index: -1
+dengx_08
+  rotate: true
+  xy: 157, 5
+  size: 18, 40
+  orig: 24, 84
+  offset: 3, 29
+  index: -1
+dengx_09
+  rotate: false
+  xy: 2, 4
+  size: 16, 41
+  orig: 24, 84
+  offset: 4, 34
+  index: -1
+dengx_10
+  rotate: false
+  xy: 20, 4
+  size: 16, 41
+  orig: 24, 84
+  offset: 4, 39
+  index: -1
+dengx_11
+  rotate: true
+  xy: 317, 7
+  size: 16, 37
+  orig: 24, 84
+  offset: 4, 44
+  index: -1
+dengx_12
+  rotate: true
+  xy: 356, 7
+  size: 16, 34
+  orig: 24, 84
+  offset: 4, 48
+  index: -1
+dengx_13
+  rotate: true
+  xy: 392, 8
+  size: 15, 28
+  orig: 24, 84
+  offset: 4, 54
+  index: -1
+dengx_14
+  rotate: true
+  xy: 422, 10
+  size: 13, 27
+  orig: 24, 84
+  offset: 4, 55
+  index: -1
+denmark
+  rotate: true
+  xy: 38, 25
+  size: 20, 414
+  orig: 22, 416
+  offset: 1, 1
+  index: -1

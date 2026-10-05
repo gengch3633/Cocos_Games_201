@@ -1,0 +1,20 @@
+
+cue21.png
+size: 712,26
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+20240321-195603
+  rotate: false
+  xy: 2, 9
+  size: 682, 15
+  orig: 682, 15
+  offset: 0, 0
+  index: -1
+egy_00
+  rotate: true
+  xy: 686, 2
+  size: 22, 24
+  orig: 26, 28
+  offset: 2, 2
+  index: -1

@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_objFlags": 0,
+  "_native": "",
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": -2.5046999999735817
+        },
+        {
+          "frame": 1,
+          "value": -3
+        }
+      ]
+    }
+  },
+  "events": [],
+  "_name": "normal_updown",
+  "_duration": 1,
+  "wrapMode": 22
+}
