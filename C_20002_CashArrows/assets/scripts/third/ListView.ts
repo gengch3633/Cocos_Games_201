@@ -227,7 +227,7 @@ this.content.y = this.content.parent.height * this.content.parent.anchorY);
 this._items || (this._items = new cc.NodePool(this.comp));
 var i = this._items.get() || this.resLoader.instantiate(this.itemTemplate ? this.itemTemplate : this.itemPrefabTemplate);
 ClickAudio.addClickAudio(i);
-export const active =  !0;
+i.active = !0;
 this._items.put(i);
 this._itemHeight = i.height || 10;
 this._itemWidth = i.width || 10;

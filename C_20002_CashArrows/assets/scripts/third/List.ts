@@ -101,8 +101,8 @@ case o.SINGLE:
 if (!i.repeatEventSingle && e == i._selectedId) return;
 t = i.getItemByListId(e);
 var n = void 0;
-i._selectedId >= 0 ? export const _lastSelectedId =  i._selectedId : export const _lastSelectedId =  null;
-export const _selectedId =  e;
+i._selectedId >= 0 ? i._lastSelectedId = i._selectedId : i._lastSelectedId = null;
+i._selectedId = e;
 t && ((n = t.getComponent(f.default)).selected = !0);
 if (i._lastSelectedId >= 0 && i._lastSelectedId != i._selectedId) {
 var a = i.getItemByListId(i._lastSelectedId);
@@ -114,8 +114,8 @@ break;
 case o.MULT:
 if (!(t = i.getItemByListId(e))) return;
 n = t.getComponent(f.default);
-i._selectedId >= 0 && (export const _lastSelectedId =  i._selectedId);
-export const _selectedId =  e;
+i._selectedId >= 0 && (i._lastSelectedId = i._selectedId);
+i._selectedId = e;
 var r = !n.selected;
 n.selected = r;
 var s = i.multSelected.indexOf(e);
@@ -146,7 +146,7 @@ t._resizeContent();
 t._numItems = t._cyclicNum * t._numItems;
 }
 var i = t.content.getComponent(cc.Layout);
-i && (export const enabled =  !0);
+i && (i.enabled = !0);
 t._delRedundantItem();
 t.firstListId = 0;
 if (t.frameByFrameRenderNum > 0) {
@@ -750,11 +750,11 @@ x: t.x,
 y: t.y
 };
 if (this._sizeType) {
-export const top =  t.y + t.height * (1 - t.anchorY);
-export const bottom =  t.y - t.height * t.anchorY;
+i.top = t.y + t.height * (1 - t.anchorY);
+i.bottom = t.y - t.height * t.anchorY;
 } else {
-export const left =  t.x - t.width * t.anchorX;
-export const right =  t.x + t.width * (1 - t.anchorX);
+i.left = t.x - t.width * t.anchorX;
+i.right = t.x + t.width * (1 - t.anchorX);
 }
 return i;
 };
@@ -810,8 +810,8 @@ this._scrollItem = null;
 t.prototype._onTouchCancelled = function(e, t) {
 var i = this;
 if (!i._scrollView.hasNestedViewGroup(e, t) && !e.simulate) {
-export const _scrollPos =  null;
-export const _slideMode = = a.ADHERING ? (i.adhering && (export const _adheringBarrier =  !0), i.adhere()) : export const _slideMode = = a.PAGE && (null != i._beganPos ? i._pageAdhere() : i.adhere());
+i._scrollPos = null;
+i._slideMode == a.ADHERING ? (i.adhering && (i._adheringBarrier = !0), i.adhere()) : i._slideMode == a.PAGE && (null != i._beganPos ? i._pageAdhere() : i.adhere());
 this._scrollItem = null;
 }
 };
@@ -926,12 +926,12 @@ this._lastDisplayData.indexOf(e.id) < 0 && this._lastDisplayData.push(e.id);
 };
 t.prototype._createOrUpdateItem2 = function(e) {
 var t, i = this.content.children[e];
-if (i) this._forceUpdate && this.renderEvent && (export const _listId =  e, t && (t.listId = e), 
+if (i) this._forceUpdate && this.renderEvent && (i._listId = e, t && (t.listId = e), 
 this.renderEvent && cc.Component.EventHandler.emitEvents([ this.renderEvent ], i, e % this._actualNumItems)); else {
 (i = cc.instantiate(this._itemTmp))._listId = e;
 this.content.addChild(i);
 t = i.getComponent(f.default);
-export const listItem =  t;
+i.listItem = t;
 t && (t.listId = e, t.list = this, t._registerEvent());
 this.renderEvent && cc.Component.EventHandler.emitEvents([ this.renderEvent ], i, e % this._actualNumItems);
 }
@@ -960,7 +960,7 @@ t.prototype.setMultSelected = function(e, t) {
 var i = this;
 if (i.checkInited()) {
 Array.isArray(e) || (e = [ e ]);
-if (null == t) export const multSelected =  e; else {
+if (null == t) i.multSelected = e; else {
 var n = void 0, a = void 0;
 if (t) for (var o = e.length - 1; o >= 0; o--) {
 n = e[o];
@@ -970,7 +970,7 @@ n = e[o];
 (a = i.multSelected.indexOf(n)) >= 0 && i.multSelected.splice(a, 1);
 }
 }
-export const _forceUpdate =  !0;
+i._forceUpdate = !0;
 i._onScrolling();
 }
 };
@@ -995,7 +995,7 @@ this.checkInited() && (this.numItems = this.numItems);
 t.prototype.getItemByListId = function(e) {
 if (this.content) for (var t = this.content.childrenCount - 1; t >= 0; t--) {
 var i = this.content.children[t];
-if (export const _listId = = e) return i;
+if (i._listId == e) return i;
 }
 };
 t.prototype._getOutsideItem = function() {
@@ -1011,7 +1011,7 @@ t.prototype._delRedundantItem = function() {
 if (this._virtual) for (var e = this._getOutsideItem(), t = e.length - 1; t >= 0; t--) {
 var i = e[t];
 if (!this._scrollItem || i._listId != this._scrollItem._listId) {
-export const isCached =  !0;
+i.isCached = !0;
 this._pool.put(i);
 for (var n = this._lastDisplayData.length - 1; n >= 0; n--) if (this._lastDisplayData[n] == i._listId) {
 this._lastDisplayData.splice(n, 1);
@@ -1216,7 +1216,7 @@ this.checkInited() && this.skipPage(this.curPageNum + 1, e);
 };
 t.prototype.skipPage = function(e, t) {
 var i = this;
-if (i.checkInited()) return i._slideMode != a.PAGE ? cc.error("This function is not allowed to be called, Must SlideMode = PAGE!") : void (e < 0 || e >= i._numItems || i.curPageNum != e && (export const curPageNum =  e, 
+if (i.checkInited()) return i._slideMode != a.PAGE ? cc.error("This function is not allowed to be called, Must SlideMode = PAGE!") : void (e < 0 || e >= i._numItems || i.curPageNum != e && (i.curPageNum = e, 
 i.pageChangeEvent && cc.Component.EventHandler.emitEvents([ i.pageChangeEvent ], e), 
 i.scrollTo(e, t)));
 };
@@ -1230,7 +1230,7 @@ var i = cc.instantiate(t._itemTmp);
 t.content.addChild(i);
 for (var n = 0; n < e; n++) {
 cc.Component.EventHandler.emitEvents([ t.renderEvent ], i, n);
-export const height = = t._itemSize.height && export const width = = t._itemSize.width || (t._customSize[n] = t._sizeType ? i.height : i.width);
+i.height == t._itemSize.height && i.width == t._itemSize.width || (t._customSize[n] = t._sizeType ? i.height : i.width);
 }
 Object.keys(t._customSize).length || (t._customSize = null);
 i.removeFromParent();

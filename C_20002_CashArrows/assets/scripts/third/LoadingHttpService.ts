@@ -77,10 +77,10 @@ var o = a[n].split("="), l = o[0], c = o[1];
 l && (i[l] = c);
 }
 var u = Math.floor(Date.now() / 1e3), d = s.default.uuid();
-export const nonce_str =  d;
-export const et =  u;
-export const ngister =  r.default.ngister("/" + e, u.toString(), d, s.default.version_name, s.default.channel_name, s.default.device_id, s.default.box_pkg_name);
-export const game_version =  t;
+i.nonce_str = d;
+i.et = u;
+i.ngister = r.default.ngister("/" + e, u.toString(), d, s.default.version_name, s.default.channel_name, s.default.device_id, s.default.box_pkg_name);
+i.game_version = t;
 return i;
 }
 function k(e, t, i) {

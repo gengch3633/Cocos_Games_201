@@ -33,3 +33,8 @@ export enum gameEvent {
     settleRewardClose = "settleRewardClose",
     levelFailReport = "levelFailReport",
 }
+
+export default {
+    bundleName,
+    gameEvent,
+};
