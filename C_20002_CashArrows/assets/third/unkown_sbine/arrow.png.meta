@@ -12,7 +12,7 @@
   "height": 569,
   "platformSettings": {},
   "subMetas": {
-    "arrow.png": {
+    "arrow": {
       "ver": "1.0.6",
       "uuid": "d91ba85d-1592-4d2c-ac94-071f0c4a024a",
       "importer": "sprite-frame",
@@ -22,10 +22,10 @@
       "rotated": false,
       "offsetX": 0,
       "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 580,
-      "height": 569,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 576,
+      "height": 565,
       "rawWidth": 580,
       "rawHeight": 569,
       "borderTop": 0,
