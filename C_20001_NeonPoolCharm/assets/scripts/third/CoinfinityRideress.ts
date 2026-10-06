@@ -163,10 +163,14 @@ export class CoinfinityRideress {
                 }
             })
             .catch((error) => {
+                console.error(error);
+                if (cc.sys.isBrowser || this.intranet) {
+                    this.disorganiser();
+                    return;
+                }
                 setTimeout(() => {
                     this.electroretinogram(_unused, onReady, callback);
                 }, 1000);
-                console.error(error);
             });
     }
 

@@ -294,8 +294,19 @@ export default class loadingCN extends cc.Component {
         this.redLoadScene()
             .then(() => {
                 return new Promise<void>((resolve) => {
-                    cc.assetManager.loadBundle("Frame", (_err, bundle) => {
-                        GameHelper.frameSDK?.init(
+                    cc.assetManager.loadBundle("Frame", (err, bundle) => {
+                        if (err || !bundle) {
+                            console.error("Frame bundle load failed", err);
+                            resolve();
+                            return;
+                        }
+                        const frameSDK = GameHelper.frameSDK;
+                        if (!frameSDK) {
+                            console.error("FrameSDK not registered");
+                            resolve();
+                            return;
+                        }
+                        frameSDK.init(
                             {
                                 isDeBug: false,
                                 sdkFuc: {

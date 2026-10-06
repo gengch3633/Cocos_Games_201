@@ -22,7 +22,7 @@ class BaseSystem {
                 return success.runWith(result);
             },
             function (err: any) {
-                return fail == null ? void 0 : fail(err);
+                return fail == null ? void 0 : fail.runWith(err);
             }
         );
     }

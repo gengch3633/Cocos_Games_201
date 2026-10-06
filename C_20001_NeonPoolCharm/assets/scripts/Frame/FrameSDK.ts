@@ -1598,3 +1598,5 @@ export class FrameSDK {
         return webViewNode.getComponent(cc.WebView) ?? webViewNode.addComponent(cc.WebView);
     }
 }
+
+cc.js.setClassName("FrameSDK", FrameSDK);
