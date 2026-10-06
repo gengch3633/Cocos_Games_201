@@ -198,7 +198,7 @@ class ConfigDataSys extends ConfigDataMgr {
             if (!this.stage_layerMap.has(layerConfigName)) {
                 this.stage_layerMap.set(layerConfigName, this.parseStageLayerConfig(data[layerConfigName]));
             }
-            itemConfigName.split("#").forEach((name) => {
+            itemConfigName.split("#").forEach((name: string) => {
                 if (!this.stage_itemConfigMap.has(name)) {
                     this.stage_itemConfigMap.set(name, this.parseStageItemConfig(data[name]));
                 }

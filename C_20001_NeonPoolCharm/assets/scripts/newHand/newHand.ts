@@ -474,7 +474,7 @@ export default class NewHand extends cc.Component {
         this.progress.fillRange = 0;
         cc.tween(this.progress)
             .to(5, { fillRange: 0.95 }, {
-                progress: (start, end, _current, ratio) => {
+                progress: (start: number, end: number, _current: number, ratio: number) => {
                     const value = start + (end - start) * ratio;
                     this.labelBar.string = Math.floor(100 * value) + "%";
                     return value;

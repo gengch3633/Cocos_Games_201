@@ -4,8 +4,8 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_settting extends cc.Component {
-    callback: () => void = null;
-    callback_ok: () => void = null;
+    callback: (() => void) = null;
+    callback_ok: (() => void) = null;
 
     closeAndDestroy(): void {
         this.node.parent = null;

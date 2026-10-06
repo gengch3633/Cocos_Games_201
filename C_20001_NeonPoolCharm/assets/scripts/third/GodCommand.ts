@@ -23,7 +23,7 @@ interface GodCommandStep {
 
 interface GodGuideInstance {
     _targetNode: cc.Node;
-    _clickDelegate: (() => void) | null;
+    _clickDelegate: (() => void) = null;
     VIDEO: cc.VideoPlayer;
     showText(
         text: unknown,

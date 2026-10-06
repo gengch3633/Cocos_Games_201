@@ -5,7 +5,7 @@ export default class RankListItemComp extends cc.Component {
     @property()
     idx = 0;
 
-    shop: { showTip: (msg: string) => void } = null;
+    shop: { showTip: (msg: string) => void } | null = null;
 
     update(): void {}
 

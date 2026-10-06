@@ -13,9 +13,9 @@ const { ccclass, menu } = cc._decorator;
 @menu("UI/pages/SetPageInGameCtrl")
 export default class SetPageInGameCtrl extends BasePageCtrl {
     ui: SetPageInGame = null;
-    _exitCB: () => void = null;
+    _exitCB: (() => void) = null;
     _debugFlag: number = 0;
-    _debugScheduleFunc: () => void = null;
+    _debugScheduleFunc: (() => void) = null;
 
     onDisable(): void {
         super.onDisable();

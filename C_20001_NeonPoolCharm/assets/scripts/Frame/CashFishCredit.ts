@@ -41,7 +41,7 @@ export default class CashFishCredit extends cc.Component {
                     0.5,
                     { num: e.num },
                     {
-                        progress: (start, end, _current, ratio) => {
+                        progress: (start: number, end: number, _current: number, ratio: number) => {
                             const val = start + (end - start) * ratio;
                             if (cc.isValid(this.node)) {
                                 this.updatecreditString(val);

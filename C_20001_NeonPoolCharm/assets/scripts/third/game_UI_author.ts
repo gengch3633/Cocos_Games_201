@@ -4,7 +4,7 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_author extends cc.Component {
-    callback: (ok: boolean, msg?: string) => void = null;
+    callback: ((ok: boolean, msg?: string) => void) = null;
 
     close(): void {
         this.node.parent = null;
@@ -22,7 +22,7 @@ export default class game_UI_author extends cc.Component {
         cc.find("button_close", this.node).on("click", () => {
             this.closeAndDestroy();
         });
-        DB.get_userInfo((ok, msg) => {
+        DB.get_userInfo((ok: boolean, msg: string) => {
             this.closeAndDestroy();
             this.callback(ok, msg);
         });

@@ -4,9 +4,9 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_alert_ad extends cc.Component {
-    callback: () => void = null;
-    callback_ok: () => void = null;
-    callback_no: () => void = null;
+    callback: (() => void) = null;
+    callback_ok: (() => void) = null;
+    callback_no: (() => void) = null;
     stay_ok: boolean = null;
 
     setOKStay(): void {

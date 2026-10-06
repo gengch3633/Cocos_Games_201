@@ -11,7 +11,7 @@ export default class RollScrollComp extends cc.Component {
     @property(cc.Node)
     rolleNode: cc.Node = null;
 
-    callback: (delta: number, total: number) => void = null;
+    callback: ((delta: number, total: number) => void) = null;
     valueY = 0;
 
     setCallBack(cb: (delta: number, total: number) => void): void {

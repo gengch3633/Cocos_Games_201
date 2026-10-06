@@ -4,9 +4,9 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_reward extends cc.Component {
-    callback: () => void = null;
+    callback: (() => void) = null;
     hall: any = null;
-    callback_ok: () => void = null;
+    callback_ok: (() => void) = null;
 
     close(): void {
         this.node.parent = null;

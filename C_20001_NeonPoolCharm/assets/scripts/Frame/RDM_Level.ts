@@ -131,7 +131,7 @@ export default class RDM_Level extends cc.Component {
             "</c>&value2==<color= #8AFF77>" +
             FrameSDK.convertCoinToStr(rate, true) +
             "</c>";
-        FrameData.FRAME_CONF.CoinConf.forEach((conf, index) => {
+        FrameData.FRAME_CONF.CoinConf.forEach((conf: any, index: number) => {
             const item =
                 this.scrollview.content.children[index] ??
                 cc.instantiate(this.scrollview.content.children[0]);

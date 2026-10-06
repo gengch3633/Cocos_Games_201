@@ -253,7 +253,7 @@ export default class GameTable extends cc.Component {
                           this.ball_white_ball2dCtr = l;
                           this._whiteBallRestitution = r.getComponent(cc.PhysicsCircleCollider).restitution;
                           this.ball_white_pos_node = r;
-                          l.stopCallback = function (e) {
+                          l.stopCallback = function (e: any) {
                             l.isOnDeapMoving() || setTimeout(function () {
                               i.oneBallIsStop(e);
                             }, .02);
@@ -298,7 +298,7 @@ export default class GameTable extends cc.Component {
                           console.log("game_table onLoad 9");
                           f = cc.find("bottom_area", this.node);
                           g = 1;
-                          cc.find("node_roll", f).getChildByName("roll_scroll").getComponent("RollScrollComp").setCallBack(function (e) {
+                          cc.find("node_roll", f).getChildByName("roll_scroll").getComponent("RollScrollComp").setCallBack(function (e: any) {
                             if (i.checkCanOP()) {
                               GlobalConfig.sens_toggle_get();
                               var t = i._isAimTarget ? GlobalConfig.gan_move_roll_multy_aim : GlobalConfig.gan_move_roll_multy;
@@ -310,11 +310,11 @@ export default class GameTable extends cc.Component {
                               i.oneRadStep(0, e);
                             }
                           });
-                          cc.find("node_power2", f).getComponent("PowerBar2Comp").setCallBack(function (e) {
+                          cc.find("node_power2", f).getComponent("PowerBar2Comp").setCallBack(function (e: any) {
                             console.log("percent", e);
                             i.checkCanOP() && i.btn_go(e);
                           });
-                          cc.find("node_power2", f).getComponent("PowerBar2Comp").setCallBack_update(function (e) {
+                          cc.find("node_power2", f).getComponent("PowerBar2Comp").setCallBack_update(function (e: any) {
                             i.checkCanOP() && i.CuePosByPower(100 * e);
                           });
                           b = cc.find("bottom_area", this.node);
@@ -337,14 +337,14 @@ export default class GameTable extends cc.Component {
                           U = util.x - k.x;
                           G = util.y - k.y;
                           F = new cc.Rect(k.x, k.y, U, G);
-                          j = function (e) {
+                          j = function (e: any) {
                             var t = e.sub(F.center),
                               o = t.x / (U / 2) * I.width / 2,
                               n = t.y / (G / 2) * I.height / 2;
                             return cc.v2(o, n);
                           };
                           H = [];
-                          I.childrenCount > 0 && I.children.forEach(function (e) {
+                          I.childrenCount > 0 && I.children.forEach(function (e: any) {
                             var t = e.getComponent(cc.PolygonCollider);
                             t ? H.push({
                               type: 1,
@@ -355,7 +355,7 @@ export default class GameTable extends cc.Component {
                             });
                           });
                           V = H.length;
-                          DEG_TO_RAD = function (e, t) {
+                          DEG_TO_RAD = function (e: any, t: any) {
                             for (var o = e.x, n = e.y, i = !1, a = 0, r = t.length - 1; a < t.length; r = a++) {
                               var l = t[a].x,
                                 s = t[a].y,
@@ -365,7 +365,7 @@ export default class GameTable extends cc.Component {
                             }
                             return i;
                           };
-                          K = function (e) {
+                          K = function (e: any) {
                             if (V < 1) return GameMgr.contains(e);
                             for (var t = 0; t < V; t++) {
                               var o = H[t];
@@ -377,7 +377,7 @@ export default class GameTable extends cc.Component {
                           };
                           X = 0;
                           Q = cc.v2(0, 0);
-                          I.on(cc.Node.EventType.TOUCH_START, function (e) {
+                          I.on(cc.Node.EventType.TOUCH_START, function (e: any) {
                             if (!e.touch || 0 == e.touch.getID()) {
                               EventMgr.trigger(GameEventType.HIDE_GAMETIP);
                               X = 0;
@@ -400,7 +400,7 @@ export default class GameTable extends cc.Component {
                               }
                             }
                           });
-                          I.on(cc.Node.EventType.TOUCH_MOVE, function (e) {
+                          I.on(cc.Node.EventType.TOUCH_MOVE, function (e: any) {
                             if (!e.touch || 0 == e.touch.getID()) {
                               EventMgr.trigger(GameEventType.HIDE_GAMETIP);
                               if (i.checkCanOP() && !i.lockTouchNode) {
@@ -419,7 +419,7 @@ export default class GameTable extends cc.Component {
                               }
                             }
                           });
-                          I.on(cc.Node.EventType.TOUCH_END, function (e) {
+                          I.on(cc.Node.EventType.TOUCH_END, function (e: any) {
                             if (!e.touch || 0 == e.touch.getID()) {
                               EventMgr.trigger(GameEventType.HIDE_GAMETIP);
                               if (i.checkCanOP() && !i.lockTouchNode) {
@@ -465,7 +465,7 @@ export default class GameTable extends cc.Component {
                           });
                           cc.find("node_btn_radBall", f).getComponent("game_btn_radBall").setClickCB(function () {
                             BallLogicMgr.playUIClick();
-                            i.ui_radPage_Prefab && cc.instantiate(i.ui_radPage_Prefab).getComponent("game_UI_radPage").show(i.node, function (e, t) {
+                            i.ui_radPage_Prefab && cc.instantiate(i.ui_radPage_Prefab).getComponent("game_UI_radPage").show(i.node, function (e: any, t: any) {
                               i.oneCue_rad_value = e;
                               i.oneCue_rad_angle = t;
                               i.updateRadBallBtnInfo();
@@ -489,14 +489,14 @@ export default class GameTable extends cc.Component {
         this.ball_white;
     }
 
-    callback2(e) {
+    callback2(e: any) {
         var t = 2 * (e.progress - .5),
                     o = cc.find("plane_table", this.node);
                   console.log("slider target", o);
                   this.do_orbit2(o, t);
     }
 
-    allStopTodo(e, t) {
+    allStopTodo(e: any, t: any) {
         var o,
                     n = this;
                   if (this.isAutoPlaying) {
@@ -546,7 +546,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    onBallEffect(e) {
+    onBallEffect(e: any) {
         var t,
                     o = GameConfigurations.customConfig.bonusPerBall;
                   Array.isArray(o) && (o = 2 + Math.floor(Math.random() * (o[1] - o[0] + 1)));
@@ -558,11 +558,11 @@ export default class GameTable extends cc.Component {
                   BallLogicMgr.gotoHall();
     }
 
-    onXiaoQiuEffectComplete(e, t) {
+    onXiaoQiuEffectComplete(e: any, t: any) {
         t.loop || (e.active = !1);
     }
 
-    applyByRad(e) {
+    applyByRad(e: any) {
         this.circle_target;
                   this.rad = e;
                   this.rad = Math.floor(1e5 * this.rad) / 1e5;
@@ -572,7 +572,7 @@ export default class GameTable extends cc.Component {
                   this.applyRayByRad(e, o);
     }
 
-    getWhiteBallFuHuoP(e) {
+    getWhiteBallFuHuoP(e: any) {
         for (var t, o = 2 * (GlobalConfig.ball_radius + 3), n = iterateEntries(this.ballMgr.entries()); !(t = n()).done;) {
                     var i = t.value,
                       a = i[0],
@@ -596,7 +596,7 @@ export default class GameTable extends cc.Component {
         
     }
 
-    onSlider(e) {
+    onSlider(e: any) {
         this.oneRadStep(2 * (e.progress - .5));
     }
 
@@ -625,7 +625,7 @@ export default class GameTable extends cc.Component {
                   BallLogicMgr.gotoInfoList();
     }
 
-    calculateRotationDirection(e, t, o) {
+    calculateRotationDirection(e: any, t: any, o: any) {
         var n = e.x - t.x,
                     i = e.y - t.y;
                   return n * (t.y - o.y) - i * (t.x - o.x) > 0 ? -1 : 1;
@@ -669,7 +669,7 @@ export default class GameTable extends cc.Component {
         
     }
 
-    onPropUsedStateChanged(e) {
+    onPropUsedStateChanged(e: any) {
         var t = e.prop_type,
                     o = e.state,
                     n = e.isUsedProp;
@@ -679,7 +679,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    oneRadStep(e, t) {
+    oneRadStep(e: any, t: any) {
         if (!this.lockTouchNode) {
                     t = t || 0;
                     cc.v3(0, 0, 1);
@@ -692,7 +692,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    playOneMV(e) {
+    playOneMV(e: any) {
         if (e) {
                     this.oneMV = e;
                     this.oneMV_cues_idx = this.oneMV_cues_idx || 0;
@@ -729,7 +729,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    recv_ballDestroy(e) {
+    recv_ballDestroy(e: any) {
         for (var t, o = e.ballID, n = iterateEntries(this.ballMgr.entries()); !(t = n()).done;) {
                     var i = t.value,
                       a = i[0],
@@ -751,7 +751,7 @@ export default class GameTable extends cc.Component {
                   return e ? CueHelper.applyByTargetBall(e) : CueHelper.randomDirToBall();
     }
 
-    checkBallClicked3D(e, t, o) {
+    checkBallClicked3D(e: any, t: any, o: any) {
         void 0 === o && (o = 2 * GlobalConfig.ball_radius);
                   for (var n, i = o, a = null, r = iterateEntries(this.ballMgr.entries()); !(n = r()).done;) {
                     var l = n.value,
@@ -770,7 +770,7 @@ export default class GameTable extends cc.Component {
                   return a;
     }
 
-    do_orbit2(e, t) {
+    do_orbit2(e: any, t: any) {
         var o = e,
                     n = new cc.Mat4();
                   n = o.getWorldRotation(n);
@@ -791,7 +791,7 @@ export default class GameTable extends cc.Component {
                   PropDataSys.propUsedComplete(ConfigDataMgr.ETaiQiuPropType.E_BaiQiu);
     }
 
-    applyByPower(e) {
+    applyByPower(e: any) {
         var t = -Math.cos(this.oneCue_rad_angle * DEG_TO_RAD) * e,
                     o = Math.sin(this.oneCue_rad_angle * DEG_TO_RAD) * e,
                     n = this.ball_white.getChildByName("New Sphere").getComponent("3D_ballRoll").pos_node;
@@ -823,14 +823,14 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    playOneMV_moves(e) {
+    playOneMV_moves(e: any) {
         if (e && e.length > 0) {
                     this.mv_oneCue_moves = e;
                     this.mv_moves_starTimer = e[0].time;
                   }
     }
 
-    recv_ballMove(e) {
+    recv_ballMove(e: any) {
         var t = this.ballMgr.get(e.ballID);
                   if (t) {
                     t.x = e.x;
@@ -858,7 +858,7 @@ export default class GameTable extends cc.Component {
                   return o;
     }
 
-    oneCueActionFinish(e) {
+    oneCueActionFinish(e: any) {
         var t = this;
                   if (this.isIngame && !this.doOneCueFinished) {
                     this.doOneCueFinished = !0;
@@ -1061,7 +1061,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    challangeFail(e, t) {
+    challangeFail(e: any, t: any) {
         var o = this;
                   if (this.ballMgr.size <= 1) this.doChallangeFail(e);else {
                     if (t && this.ganNum < this.editingConditionInfo.ganNum) return 2;
@@ -1071,7 +1071,7 @@ export default class GameTable extends cc.Component {
                       object_notes: PlayerDataSys.table
                     });
                     PageMgr.showPage("FuHuoPage", {
-                      exitCB: function (t) {
+                      exitCB: function (t: any) {
                         t ? o.fuhuo() : o.doChallangeFail(e);
                       }
                     });
@@ -1079,7 +1079,7 @@ export default class GameTable extends cc.Component {
                   return 1;
     }
 
-    doChallangeFail(e) {
+    doChallangeFail(e: any) {
         var t = this;
                   e = e || "";
                   this.stopTimer();
@@ -1138,7 +1138,7 @@ export default class GameTable extends cc.Component {
                   }, .01);
     }
 
-    playJinDongEffect(e) {
+    playJinDongEffect(e: any) {
         var t = e.parent.children.indexOf(e);
                   if (t >= 0 && t < this._jinDongEffectArray.length) {
                     var o = this._jinDongEffectArray[t],
@@ -1148,7 +1148,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    oneBallIsStop(e, t) {
+    oneBallIsStop(e: any, t: any) {
         var o = this;
                   console.log("oneBallIsStop", e, t);
                   for (var n, i = !1, a = iterateEntries(this.ballMgr.entries()); !(n = a()).done;) {
@@ -1164,7 +1164,7 @@ export default class GameTable extends cc.Component {
                   }, .01);
     }
 
-    destroyBall(e, t, o) {
+    destroyBall(e: any, t: any, o: any) {
         var n = this;
                   console.log("destroyBall size", this.ballMgr.size, e.getComponent("Ball2DControl").ballID, o);
                   var i = e.getComponent("Ball2DControl").ballID,
@@ -1231,7 +1231,7 @@ export default class GameTable extends cc.Component {
                   a || this.onBallEffect(e);
     }
 
-    loadEditingTableInfo(e) {
+    loadEditingTableInfo(e: any) {
         console.log("loadEditingTableInfo", e);
                   this.mode = BallLogicMgr.game_mode;
                   console.log("this.mode", this.mode);
@@ -1275,7 +1275,7 @@ export default class GameTable extends cc.Component {
                   return e;
     }
 
-    fuhuo(e) {
+    fuhuo(e: any) {
         PoolLogger.instance.logGameEvent("thepool_game_table", {
                     object_action: "show",
                     object_name: "table_open",
@@ -1316,7 +1316,7 @@ export default class GameTable extends cc.Component {
                   }, .01);
     }
 
-    applyOneCueMV_oneBallMove(e) {
+    applyOneCueMV_oneBallMove(e: any) {
         var t = this.ballMgr.get(e.ballID);
                   if (t) {
                     t.x = e.x;
@@ -1326,7 +1326,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    setupWhiteBallEffect(e, t) {
+    setupWhiteBallEffect(e: any, t: any) {
         console.log("setupWhiteBallEffect", e, t);
                   if (e && t) {
                     this.ball_white;
@@ -1352,7 +1352,7 @@ export default class GameTable extends cc.Component {
         this.node.getComponent("CircleRayComp").clear();
     }
 
-    getUpVector(e, t) {
+    getUpVector(e: any, t: any) {
         t.x = e.m04;
                   t.y = e.m05;
                   t.z = e.m06;
@@ -1360,7 +1360,7 @@ export default class GameTable extends cc.Component {
                   console.log("dst", t);
     }
 
-    setAutoPlayingMode(e) {
+    setAutoPlayingMode(e: any) {
         if (this.isAutoPlaying != e) {
                     this.isAutoPlaying = e;
                     for (var t, o = iterateEntries(this.ballMgr.entries()); !(t = o()).done;) {
@@ -1373,7 +1373,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    createOneBall(e, t) {
+    createOneBall(e: any, t: any) {
         void 0 === t && (t = !1);
                   var o = this,
                     n = o.ballParent || o.node;
@@ -1386,7 +1386,7 @@ export default class GameTable extends cc.Component {
                       var a = i.getComponent("Ball2DControl");
                       a.ballID = e.ballID;
                       a.isAutoPlaying = o.isAutoPlaying;
-                      a.stopCallback = function (e) {
+                      a.stopCallback = function (e: any) {
                         o.oneBallIsStop(e);
                       };
                       i.getComponent("Ball2DControl").sensor_value = !1;
@@ -1421,7 +1421,7 @@ export default class GameTable extends cc.Component {
                       CueHelper.restitution = this._whiteBallRestitution;
                       u.node.group = "default";
                       u.ball3D.group = "3d";
-                      u.ball3D.children.forEach(function (e) {
+                      u.ball3D.children.forEach(function (e: any) {
                         e.group = "3d";
                       });
                       u.ball3D.children[0].getComponent("3D_ballRoll").setShowShadow(!0);
@@ -1463,12 +1463,12 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    ballEnterHole(e, t) {
+    ballEnterHole(e: any, t: any) {
         this.playJinDongEffect(t);
                   this.destroyBall(e, t);
     }
 
-    reloadEditingTableInfo(e) {
+    reloadEditingTableInfo(e: any) {
         e = e || BallLogicMgr.editingTableInfo;
                   this.loadEditingTableInfo(e);
     }
@@ -1477,7 +1477,7 @@ export default class GameTable extends cc.Component {
         
     }
 
-    onXiaoQiuEnd(e) {
+    onXiaoQiuEnd(e: any) {
         this.levelDataStatis.xiaoqiu_count++;
                   PlayerDataSys.xiaoqiuADCount++;
                   BallLogicMgr.playSound("pool_ball_xiao");
@@ -1486,7 +1486,7 @@ export default class GameTable extends cc.Component {
                   this.destroyBall(e.node, null, !0);
     }
 
-    update(e) {
+    update(e: any) {
         if (this.do_update) {
                     this.frame_idx = this.frame_idx + 1;
                     if (this.frame_idx >= 10) {
@@ -1529,7 +1529,7 @@ export default class GameTable extends cc.Component {
                   EventMgr.trigger(GameEventType.HIDE_MAIN_UI_TOUCH_BLOCK, "game-shooting");
     }
 
-    recv_ballInit(e) {
+    recv_ballInit(e: any) {
         console.log("recv_ballInit", e);
                   var t = this.ballParent || this.node,
                     o = this;
@@ -1540,7 +1540,7 @@ export default class GameTable extends cc.Component {
                     n.y = e.y;
                     n.getComponent("Ball2DControl").ballID = o.ballID;
                     n.getComponent("Ball2DControl").isAutoPlaying = o.isAutoPlaying;
-                    n.getComponent("Ball2DControl").stopCallback = function (e) {
+                    n.getComponent("Ball2DControl").stopCallback = function (e: any) {
                       o.oneBallIsStop(e);
                     };
                     n.getComponent("Ball2DControl").sensor_value = !0;
@@ -1573,7 +1573,7 @@ export default class GameTable extends cc.Component {
                   this._cueXiaoQiuSk = o;
     }
 
-    reportGameDataStatis(e) {
+    reportGameDataStatis(e: any) {
         if (!this.isReportGameDataStatis) {
                     this.isReportGameDataStatis = !0;
                     var t = TimeDataSys.getTimeCuration(!0);
@@ -1594,7 +1594,7 @@ export default class GameTable extends cc.Component {
                   console.log("updateRadBallBtnInfo", this.oneCue_rad_value, this.oneCue_rad_angle);
     }
 
-    updateHart(e) {
+    updateHart(e: any) {
         e = null != e ? e : this.ganNum;
                   var t = Number(this.heartNumLabel.string);
                   isNaN(t) && (t = 0);
@@ -1635,7 +1635,7 @@ export default class GameTable extends cc.Component {
                   cc.find("node_roll", t).getChildByName("roll_scroll").getComponent("RollScrollComp").updateLabel(e);
     }
 
-    onModifyBallMoveToHole(e) {
+    onModifyBallMoveToHole(e: any) {
         for (var t = e.moveDir, o = e.ball2DCtrl, n = e.cb, i = o.ball3D, a = cc.v2(i.x, i.y), r = null, l = 0; l < this._xiaoQiuHoleEffectArray.length; l++) {
                     var c = this._xiaoQiuHoleEffectArray[l].parent,
                       u = cc.v2(c.x, c.y).subSelf(a);
@@ -1713,7 +1713,7 @@ export default class GameTable extends cc.Component {
                   EventMgr.listen(GameEventType.ON_LEVEL_SWITCH_UI_HIDE, this.onLevelSwitchUIHide, this);
     }
 
-    doAftOneCueActionFinish(e) {
+    doAftOneCueActionFinish(e: any) {
         if (e && this.oneCueLock && !this._isXiaoQiuStart) {
                     this.oneCueLock = !1;
                     this.mode == BallLogicMgr.MODE.ME_PlayMV && this.continueOneMV();
@@ -1721,7 +1721,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    checkEnterXiaoQiu(e) {
+    checkEnterXiaoQiu(e: any) {
         var t = !1;
                   if (!this._cueXiaoQiuSk || this._isXiaoQiuStart) return t;
                   var o = e.parent.children.indexOf(e);
@@ -1740,7 +1740,7 @@ export default class GameTable extends cc.Component {
                   this.destroyAllBall();
     }
 
-    applyRayByRad(e, t) {
+    applyRayByRad(e: any, t: any) {
         if (this.isGuideLevel && !this.lockTouchNode && this.top_guide_touch_block.active) {
                     var o = Math.atan2(this.dir.y, this.dir.x);
                     if (o >= -1.929735555 && o <= -1.9222755) {
@@ -1764,7 +1764,7 @@ export default class GameTable extends cc.Component {
                   this.updateRadLabel();
     }
 
-    recv_gameStart(e) {
+    recv_gameStart(e: any) {
         var t = e.myTurn;
                   this.setAutoPlayingMode(1 != t);
                   this.pvpCueLock = 1 != t;
@@ -1779,7 +1779,7 @@ export default class GameTable extends cc.Component {
                     r.y = 100;
                     r.getComponent("Ball2DControl").ballID = n.ballID;
                     r.getComponent("Ball2DControl").isAutoPlaying = n.isAutoPlaying;
-                    r.getComponent("Ball2DControl").stopCallback = function (e) {
+                    r.getComponent("Ball2DControl").stopCallback = function (e: any) {
                       n.oneBallIsStop(e);
                     };
                     r.getComponent("Ball2DControl").sensor_value = !0;
@@ -1801,7 +1801,7 @@ export default class GameTable extends cc.Component {
                   this.tableIsReset();
     }
 
-    onShowTopTouchBlock(e) {
+    onShowTopTouchBlock(e: any) {
         this._topTouchBlockHandlerSet.add(e);
                   this.top_touch_block.active = !0;
     }
@@ -1811,7 +1811,7 @@ export default class GameTable extends cc.Component {
                   this.setAutoPlayingMode(!0);
     }
 
-    checkBallMatIdxInMap(e) {
+    checkBallMatIdxInMap(e: any) {
         for (var t, o = iterateEntries(this.ballMgr.entries()); !(t = o()).done;) {
                     var n = t.value,
                       i = (n[0], n[1]);
@@ -1837,7 +1837,7 @@ export default class GameTable extends cc.Component {
         BallLogicMgr.isWin = !1;
     }
 
-    getNearestHodeIndexForBall(e) {
+    getNearestHodeIndexForBall(e: any) {
         for (var t = null, o = cc.v2(e.x, e.y), n = this.ball_white_pos_node.getComponent("Ball2DControl").ball3D, i = cc.v2(n.x, n.y), a = o.sub(i), r = .04 * a.len(), l = a.len(), s = null, c = 0, u = 0; u < this._xiaoQiuHoleEffectArray.length; u++) {
                     var p = this._xiaoQiuHoleEffectArray[u].parent,
                       d = cc.v2(CueHelper.x, CueHelper.y),
@@ -1860,7 +1860,7 @@ export default class GameTable extends cc.Component {
                   };
     }
 
-    doXiaoQiu(e) {
+    doXiaoQiu(e: any) {
         if (this.ballMgr.size <= 1) return !1;
                   for (var t = Array.from(this.ballMgr.values()), o = 0;;) {
                     var n = t[EngineUtil.randomInt(0, t.length - 1)],
@@ -1885,12 +1885,12 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    onXiaoQiuGuiJiEffectComplete(e, t) {
+    onXiaoQiuGuiJiEffectComplete(e: any, t: any) {
         "qiuxiaoshi" == t.animation.name && (e.x = -2e4);
                   t.loop || (e.getChildByName("xiaoqiu").active = !1);
     }
 
-    initHart(e) {
+    initHart(e: any) {
         this.heartNumLabel.string = "" + (null != e ? e : BallLogicMgr.editingTableInfo.condition.ganNum);
     }
 
@@ -1902,7 +1902,7 @@ export default class GameTable extends cc.Component {
                   this._sprite_virtualBall.children[2].active = e;
     }
 
-    CuePosByPower(e) {
+    CuePosByPower(e: any) {
         e /= CueDataSys.getUsedCuePower();
                   var t,
                     o = Math.min(1, e / .2);
@@ -1914,7 +1914,7 @@ export default class GameTable extends cc.Component {
                   CueHelper.CuePosByPower(e);
     }
 
-    onUseLineProp(e) {
+    onUseLineProp(e: any) {
         if (CueHelper.isShow()) {
                     this.applyByRad(this.rad);
                     this.updateAimBall();
@@ -1922,7 +1922,7 @@ export default class GameTable extends cc.Component {
                   e && this.levelDataStatis.line_count++;
     }
 
-    addTableNode(e) {
+    addTableNode(e: any) {
         var t = cc.find("plane_table", this.node),
                     o = t.getChildByName("table_layers");
                   o.removeAllChildren(!0);
@@ -1973,7 +1973,7 @@ export default class GameTable extends cc.Component {
                   }, .01);
     }
 
-    checkBallClicked(e, t, o) {
+    checkBallClicked(e: any, t: any, o: any) {
         void 0 === o && (o = 25);
                   console.log("check touch p(scren p) : " + e);
                   for (var n, i = o, a = null, r = iterateEntries(this.ballMgr.entries()); !(n = r()).done;) {
@@ -1996,7 +1996,7 @@ export default class GameTable extends cc.Component {
                   return a;
     }
 
-    btn_go(e) {
+    btn_go(e: any) {
         var t = this;
                   if (!this.oneCueLock && 0 != e) if (this.pvpCueLock) {
                     this.setText("现在是对方击球");
@@ -2030,7 +2030,7 @@ export default class GameTable extends cc.Component {
                   }
     }
 
-    onHideTopTouchBlock(e) {
+    onHideTopTouchBlock(e: any) {
         if (this._topTouchBlockHandlerSet.has(e)) {
                     this._topTouchBlockHandlerSet.delete(e);
                     this._topTouchBlockHandlerSet.size < 1 && (this.top_touch_block.active = !1);
@@ -2070,7 +2070,7 @@ export default class GameTable extends cc.Component {
                   this.turnProgressBar.node.active = PlayerDataSys.level_info.turnCount > 1;
     }
 
-    doGameSuccess(e) {
+    doGameSuccess(e: any) {
         void 0 === e && (e = !1);
                   e || PoolLogger.instance.logGameEvent("thepool_game_table", {
                     object_action: "show",
@@ -2087,7 +2087,7 @@ export default class GameTable extends cc.Component {
                   BallLogicMgr.saveFreeModeFinishIdx();
     }
 
-    onJinDongEffectComplete(e) {
+    onJinDongEffectComplete(e: any) {
         e.active = !1;
     }
 

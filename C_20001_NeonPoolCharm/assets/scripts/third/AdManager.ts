@@ -10,8 +10,8 @@ import TimeUtils from "./TimeUtils";
 export default class AdManager {
     static _instance: AdManager = null;
 
-    videoSuccessFun: (...args: any[]) => void = null;
-    videoFailFun: (...args: any[]) => void = null;
+    videoSuccessFun: ((...args: any[]) => void) = null;
+    videoFailFun: ((...args: any[]) => void) = null;
     splash_timer: any = null;
     splash_finished: boolean = false;
     video_timer: any = null;

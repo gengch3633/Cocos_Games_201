@@ -1,7 +1,7 @@
 export class PoolNative {
     private static _gaid = "00000000-0000-0000-0000-000000000000";
     private static _isLimitTrackingEnabled = true;
-    private static _fetchGAIDCallback: (() => void) | null = null;
+    private static _fetchGAIDCallback: (() => void) = null;
 
     static setAppLifecycleChangeCallback(callback: string): void {
         if (cc.sys.os === cc.sys.OS_ANDROID) {

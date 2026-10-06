@@ -2,8 +2,8 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class PowerBarComp extends cc.Component {
-    callback: (percent: number) => void = null;
-    callback_update: (percent: number) => void = null;
+    callback: ((percent: number) => void) = null;
+    callback_update: ((percent: number) => void) = null;
     valueY = 0;
 
     onLoad(): void {

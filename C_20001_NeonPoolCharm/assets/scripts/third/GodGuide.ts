@@ -148,8 +148,8 @@ export default class GodGuide extends cc.Component {
     _mask: cc.Mask = null;
     _maskBg: cc.Node = null;
     _task: GuideTask = null;
-    _dispatchEvent: typeof cc.Node.prototype.dispatchEvent = null;
-    _clickDelegate: (() => void) | null = null;
+    _dispatchEvent: typeof cc.Node.prototype.dispatchEvent | null = null;
+    _clickDelegate: (() => void) = null;
     _finger: cc.Node = null;
     _text: cc.Node = null;
     _recordSteps: RecordStep[] = null;

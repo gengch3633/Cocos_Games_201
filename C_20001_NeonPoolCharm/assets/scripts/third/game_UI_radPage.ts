@@ -8,7 +8,7 @@ export default class game_UI_radPage extends cc.Component {
     pos_value: cc.Vec2 = null;
     nodeCircle: cc.Node = null;
     angle: number = null;
-    cb_yes: (pos: cc.Vec2, angle: number) => void = null;
+    cb_yes: ((pos: cc.Vec2, angle: number) => void) = null;
 
     getPosValue(): cc.Vec2 {
         return this.pos_value;

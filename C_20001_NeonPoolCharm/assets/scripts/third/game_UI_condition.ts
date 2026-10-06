@@ -8,7 +8,7 @@ export default class game_UI_condition extends cc.Component {
     ball_model_Prefab: cc.Prefab = null;
 
     ballMatIdxs: number[] = null;
-    callback: (result: any) => void = null;
+    callback: ((result: any) => void) = null;
     ball_model_arr: cc.Node[] = null;
     ganNum: number = null;
 

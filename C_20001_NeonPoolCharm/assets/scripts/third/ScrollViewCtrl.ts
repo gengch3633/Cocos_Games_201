@@ -47,7 +47,7 @@ export default class ScrollViewCtrl extends cc.Component {
     mat4: cc.Mat4 = null;
     isInit: boolean = null;
     data: unknown[] = null;
-    callbackList: Array<(index: number, visible: boolean) => void> = null;
+    callbackList: Array<(index: number, visible: boolean) => void> | null = null;
     extData: unknown = null;
     firstX: number = null;
     firstY: number = null;

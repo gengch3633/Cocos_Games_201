@@ -94,7 +94,7 @@ export default class RDM_Charity extends cc.Component {
         this.paymentRootNode.children.forEach((child, index) => {
             child.getComponent(PaymentItem).paymentID = cashIds[index] ?? 0;
         });
-        FrameData.FRAME_CONF.CharityConf.forEach((conf, index) => {
+        FrameData.FRAME_CONF.CharityConf.forEach((conf: any, index: number) => {
             const item =
                 this.scrollview.content.children[index] ??
                 cc.instantiate(this.scrollview.content.children[0]);

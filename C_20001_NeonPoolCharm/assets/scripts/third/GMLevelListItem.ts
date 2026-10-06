@@ -8,7 +8,7 @@ export default class GMLevelListItem extends cc.Component {
     @property(cc.Label)
     item_name_label: cc.Label = null;
 
-    onClickCB: (item: GMLevelListItem) => void = null;
+    onClickCB: ((item: GMLevelListItem) => void) = null;
 
     private _label: string = null;
 

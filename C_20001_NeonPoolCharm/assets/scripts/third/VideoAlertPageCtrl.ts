@@ -8,7 +8,7 @@ const { ccclass, menu } = cc._decorator;
 @menu("UI/pages/VideoAlertPageCtrl")
 export default class VideoAlertPageCtrl extends BasePageCtrl {
     ui: VideoAlertPage = null;
-    _exitCB: (confirmed: boolean) => void = null;
+    _exitCB: ((confirmed: boolean) => void) = null;
 
     _init(e?: { exitCB?: (confirmed: boolean) => void }): void {
         this._exitCB = e ? e.exitCB : null;

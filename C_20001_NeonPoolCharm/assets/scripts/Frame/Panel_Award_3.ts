@@ -155,7 +155,7 @@ export default class Panel_Award_3 extends cc.Component {
         this.updataBeiShe();
     }
 
-    close(callback: (() => void) | null = null): void {
+    close(callback: (() => void) = null): void {
         if (Date.now() - this.hideTime <= 300) {
             console.log("wait!!!，return");
         } else {
@@ -216,7 +216,7 @@ export default class Panel_Award_3 extends cc.Component {
             cc.tween(this.finalCoinNode)
                 .to(0.1, { opacity: 255 })
                 .to(0.3, {}, {
-                    onUpdate: (_target, ratio) => {
+                    onUpdate: (_target: any, ratio: number) => {
                         this.finalCoinLabel.string = FrameSDK.convertCoinToStr(
                             this.getYCoin + (rewardCoin - this.getYCoin) * ratio
                         );

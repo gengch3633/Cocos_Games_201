@@ -4,7 +4,7 @@ const { ccclass } = cc._decorator;
 export default class game_btn_radBall extends cc.Component {
     pos_value: cc.Vec2 = null;
     angle: number = null;
-    cb_click: () => void = null;
+    cb_click: (() => void) = null;
 
     getPosValue(): cc.Vec2 {
         return this.pos_value;

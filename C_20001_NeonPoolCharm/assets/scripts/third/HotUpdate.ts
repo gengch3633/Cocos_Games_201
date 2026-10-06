@@ -18,7 +18,7 @@ export default class HotUpdate {
     private _isOnlineRelease: boolean = null;
     private _storagePath: string = null;
     private _am: any = null;
-    versionCompareHandle: (versionA: string, versionB: string) => number = null;
+    versionCompareHandle: ((versionA: string, versionB: string) => number) = null;
 
     constructor() {
         if (!cc.sys.isBrowser && cc.sys.isNative) {
@@ -308,7 +308,7 @@ export default class HotUpdate {
                         if (result && result.code == 1) {
                             const downloader = new jsb.Downloader();
                             downloader.createDownloadFileTask(result.url, tempVersionPath, "@temp_version");
-                            downloader.setOnTaskError((task, errorCode, internalCode, errorStr) => {
+                            downloader.setOnTaskError((task: any, errorCode: number, internalCode: number, errorStr: string) => {
                                 console.log("errorCode = ", errorCode);
                                 console.log("errorCodeInternal = ", internalCode);
                                 console.log("errorStr = ", errorStr);
@@ -316,7 +316,7 @@ export default class HotUpdate {
                                 self._updating = false;
                                 callback && callback(false);
                             });
-                            downloader.setOnTaskProgress((task, bytesReceived, totalBytesReceived, totalBytesExpected) => {
+                            downloader.setOnTaskProgress((task: any, bytesReceived: number, totalBytesReceived: number, totalBytesExpected: number) => {
                                 if (task.identifier == "@temp_manifest") {
                                     console.log("manifest downloaded ", bytesReceived);
                                     console.log("manifest total received", totalBytesReceived);
@@ -327,7 +327,7 @@ export default class HotUpdate {
                                     console.log("version total expected ", totalBytesExpected);
                                 }
                             });
-                            downloader.setOnFileTaskSuccess((task) => {
+                            downloader.setOnFileTaskSuccess((task: any) => {
                                 if (task.identifier == "@temp_manifest") {
                                     console.log("manifest download success");
                                     const remoteManifest = new jsb.Manifest(tempProjectPath);

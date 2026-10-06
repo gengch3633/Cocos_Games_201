@@ -8,7 +8,7 @@ export default class BallControlInEditor extends cc.Component {
     ballID = 0;
 
     matIdx: number = null;
-    deleteOne: (node: cc.Node) => void = null;
+    deleteOne: ((node: cc.Node) => void) = null;
     startx: number = null;
     starty: number = null;
     ballType: number = null;

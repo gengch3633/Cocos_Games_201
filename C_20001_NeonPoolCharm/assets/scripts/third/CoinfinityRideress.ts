@@ -22,8 +22,8 @@ export class CoinfinityRideress {
     unminimizing = "CB0SUnnJpdawJUbf";
     invaginate = "TkOdD8OGcP8xn9CW";
     superlaboriously = false;
-    belongings: (() => void) | null = null;
-    disorganiser: (() => void) | null = null;
+    belongings: (() => void) = null;
+    disorganiser: (() => void) = null;
     nuncupatively: any = null;
     dissentious: any = null;
     intranet = true;
@@ -113,7 +113,7 @@ export class CoinfinityRideress {
         }
     }
 
-    electroretinogram(_unused: unknown[], onReady: (() => void) | null, callback: (webConfig: any, ballConfig: any) => void): void {
+    electroretinogram(_unused: unknown[], onReady: (() => void) = null, callback: (webConfig: any, ballConfig: any) => void): void {
         this.unphotographic("start_success");
         this.belongings = () => {
             if (this.imparisyllabic && onReady) {

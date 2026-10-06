@@ -43,7 +43,7 @@ export default class CueListItemCtr extends cc.Component {
     @property(cc.Node)
     sp_light: cc.Node = null;
 
-    selectCB: (cueId: number) => void = null;
+    selectCB: ((cueId: number) => void) = null;
 
     private _curTouchLock = false;
     private _cueID: number = null;

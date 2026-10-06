@@ -20,8 +20,8 @@ export default class PowerBar2Comp extends cc.Component {
     cueNode: cc.Node = null;
 
     percent = 0;
-    callback: (percent: number) => void = null;
-    callback_update: (percent: number) => void = null;
+    callback: ((percent: number) => void) = null;
+    callback_update: ((percent: number) => void) = null;
     private _indicatorToCueDiffY = 0;
 
     applyByPower(power: string | number): void {

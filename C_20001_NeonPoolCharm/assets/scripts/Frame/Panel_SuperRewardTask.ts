@@ -28,7 +28,7 @@ export default class Panel_SuperRewardTask extends cc.Component {
     webViewAttachedNode: cc.Node = null;
 
     viewData: any = null;
-    _scheduleFunc: (() => void) | null = null;
+    _scheduleFunc: (() => void) = null;
     _config: any = null;
     _interval: number = 0;
     _targetTime: number = 0;
@@ -132,7 +132,7 @@ export default class Panel_SuperRewardTask extends cc.Component {
             parent.y = 0;
         }
         FrameSDK.openEffect(this);
-        this._config = FrameData.FRAME_CONF.SuperRewardTask.find((item) => item.task_id === this.viewData.taskID);
+        this._config = FrameData.FRAME_CONF.SuperRewardTask.find((item: any) => item.task_id === this.viewData.taskID);
         this.bonus1Label.string = FrameSDK.convertCoinToStr(this._config.task_coin);
         this.bonus2Label.string = FrameSDK.convertCoinToStr(this._config.task_coin, true);
         this._targetTime = 0;

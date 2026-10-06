@@ -8,7 +8,7 @@ export default class GodText extends cc.Component {
     @property(cc.Node)
     group: cc.Node = null;
 
-    callback: () => void = null;
+    callback: (() => void) = null;
     canClick = false;
 
     setText(text: string, _offset?: unknown, callback?: () => void): void {

@@ -97,7 +97,7 @@ export default class WithdrawItemCtrl extends cc.Component {
                 0.7,
                 { a: this.cash_balance },
                 {
-                    progress: (_start, end, _current, ratio) => {
+                    progress: (_start: number, end: number, _current: number, ratio: number) => {
                         const value = Math.round(end * ratio);
                         label.string = String(PlayerDataSys.getCashWithUnit(value));
                         return value;

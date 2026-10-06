@@ -63,7 +63,7 @@ export default class loadingCN extends cc.Component {
                 5,
                 {},
                 {
-                    onUpdate: (_target, ratio) => {
+                    onUpdate: (_target: any, ratio: number) => {
                         this.label_progress.string = Math.floor(100 * ratio) + "%";
                     },
                 }
@@ -434,7 +434,7 @@ export default class loadingCN extends cc.Component {
             .then((newHandPrefab) => {
                 cc.Tween.stopAllByTarget(this.label_progress);
                 this.label_progress.string = "100%";
-                cc.director.loadScene("game_main", (_err, scene) => {
+                cc.director.loadScene("game_main", (_err: any, scene: cc.SceneAsset) => {
                     if (newHandPrefab) {
                         const newHandNode = cc.instantiate(newHandPrefab);
                         newHandNode.getComponent("newHand").init(
@@ -464,7 +464,7 @@ export default class loadingCN extends cc.Component {
                 10,
                 { persent: target },
                 {
-                    progress: (start, end, _current, ratio) => {
+                    progress: (start: number, end: number, _current: number, ratio: number) => {
                         this.setProgress(end);
                         return start + (end - start) * ratio;
                     },

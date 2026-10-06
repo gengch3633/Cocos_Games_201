@@ -96,7 +96,7 @@ class PlayerDataSys extends PlayerDataMgr {
     get sucai_ballArr(): number[] {
         const stored = cc.sys.localStorage.getItem("sucai_ballArr");
         return stored
-            ? stored.split(",").map((item) => Number(item))
+            ? stored.split(",").map((item: any) => Number(item))
             : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
     set sucai_ballArr(value: number[]) {
@@ -160,7 +160,7 @@ class PlayerDataSys extends PlayerDataMgr {
         const stored = cc.sys.localStorage.getItem("saveWdExtract");
         let list: number[] = [];
         if (stored) {
-            list = stored.split(",").map((item) => Number(item));
+            list = stored.split(",").map((item: any) => Number(item));
         }
         list.unshift(value);
         cc.sys.localStorage.setItem("saveWdExtract", list.join(","));
@@ -170,7 +170,7 @@ class PlayerDataSys extends PlayerDataMgr {
         const stored = cc.sys.localStorage.getItem("saveWdExtract");
         let list: number[] = [];
         if (stored) {
-            list = stored.split(",").map((item) => Number(item));
+            list = stored.split(",").map((item: any) => Number(item));
         }
         return list;
     }
@@ -192,7 +192,7 @@ class PlayerDataSys extends PlayerDataMgr {
         const stored = cc.sys.localStorage.getItem("saveWdExtract");
         let list: number[] = [];
         if (stored) {
-            list = stored.split(",").map((item) => Number(item));
+            list = stored.split(",").map((item: any) => Number(item));
         }
         if (list.length) {
             list.splice(index, 1);

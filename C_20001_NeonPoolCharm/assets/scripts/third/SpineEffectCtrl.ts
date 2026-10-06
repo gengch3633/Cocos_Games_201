@@ -9,7 +9,7 @@ export default class SpineEffectCtrl extends cc.Component {
     @property(cc.Node)
     effect_container: cc.Node = null;
 
-    private _cb: (node: cc.Node) => void = null;
+    private _cb: ((node: cc.Node) => void) = null;
     private _curEffectNode: cc.Node = null;
 
     onLoad(): void {

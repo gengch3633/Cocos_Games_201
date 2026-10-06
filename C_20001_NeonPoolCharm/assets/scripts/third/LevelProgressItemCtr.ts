@@ -54,7 +54,7 @@ export default class LevelProgressItemCtr extends cc.Component {
         this._maxCount = Number(parts[0]);
         const thresholds = parts[1].split(",");
         this._curData = [];
-        thresholds.forEach((item) => {
+        thresholds.forEach((item: any) => {
             const value = Number(item);
             if (!isNaN(value) && value) {
                 this._curData.push(value);

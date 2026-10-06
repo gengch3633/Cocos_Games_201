@@ -2,9 +2,9 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_alert extends cc.Component {
-    callback: () => void = null;
-    callback_ok: () => void = null;
-    callback_no: () => void = null;
+    callback: (() => void) = null;
+    callback_ok: (() => void) = null;
+    callback_no: (() => void) = null;
 
     closeAndDestroy(): void {
         this.node.parent = null;

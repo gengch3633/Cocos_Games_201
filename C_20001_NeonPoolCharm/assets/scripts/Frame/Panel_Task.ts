@@ -68,8 +68,7 @@ export default class Panel_Task extends cc.Component {
 
     static isTaskFinish(): boolean {
         if (FrameData.saveData.lvAwardinfo) {
-            const pending = FrameData.FRAME_CONF.TaskConfig.filter(
-                (task) => FrameData.saveData.lvAwardinfo.indexOf(task.task_id) == -1
+            const pending = FrameData.FRAME_CONF.TaskConfig.filter((task: any) => FrameData.saveData.lvAwardinfo.indexOf(task.task_id) == -1
             );
             for (const task of pending) {
                 if (FrameSDK.frameData.gameData.passLevel >= task.task_lv) {

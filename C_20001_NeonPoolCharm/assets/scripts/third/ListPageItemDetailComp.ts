@@ -17,7 +17,7 @@ export default class ListPageItemDetailComp extends cc.Component {
 
     publictableInfo: any = null;
     createBalls: cc.Node[] = null;
-    callback: () => void = null;
+    callback: (() => void) = null;
     isEditing = false;
 
     closeAndDestroy(): void {

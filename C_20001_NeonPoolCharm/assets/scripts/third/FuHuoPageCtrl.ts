@@ -13,7 +13,7 @@ const { ccclass, menu } = cc._decorator;
 @menu("UI/pages/FuHuoPageCtrl")
 export default class FuHuoPageCtrl extends BasePageCtrl {
     ui: FuHuoPage = null;
-    _exitCB: (success?: boolean) => void = null;
+    _exitCB: ((success?: boolean) => void) = null;
     _curTouchLock: boolean = false;
 
     onDisable(): void {

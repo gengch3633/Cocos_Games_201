@@ -49,8 +49,8 @@ export default class Panel_SuperReward extends cc.Component {
                 task.task_type === taskType &&
                 !(
                     (task.task_zone.length > 0 &&
-                        task.task_zone.findIndex((zone) => zone.toUpperCase() === country) < 0) ||
-                    (task.task_ban.length > 0 && task.task_ban.findIndex((zone) => zone.toUpperCase() === country) >= 0)
+                        task.task_zone.findIndex((zone: string) => zone.toUpperCase() === country) < 0) ||
+                    (task.task_ban.length > 0 && task.task_ban.findIndex((zone: string) => zone.toUpperCase() === country) >= 0)
                 )
             ) {
                 const totalComplete = superReward.totalComplete[task.task_id] ?? 0;
@@ -87,8 +87,8 @@ export default class Panel_SuperReward extends cc.Component {
             const grouped: { [key: number]: { tasks: any[]; totalWeight: number } } = {};
             for (const task of FrameData.FRAME_CONF.SuperRewardTask) {
                 if (
-                    (task.task_zone.length > 0 && task.task_zone.findIndex((zone) => zone.toUpperCase() === country) < 0) ||
-                    (task.task_ban.length > 0 && task.task_ban.findIndex((zone) => zone.toUpperCase() === country) >= 0) ||
+                    (task.task_zone.length > 0 && task.task_zone.findIndex((zone: string) => zone.toUpperCase() === country) < 0) ||
+                    (task.task_ban.length > 0 && task.task_ban.findIndex((zone: string) => zone.toUpperCase() === country) >= 0) ||
                     (superReward.totalComplete[task.task_id] ?? 0) >= task.task_total
                 ) {
                     continue;
@@ -193,7 +193,7 @@ export default class Panel_SuperReward extends cc.Component {
         const tasks = Object.keys(superReward.currentTask)
             .map((key) => {
                 const current = superReward.currentTask[parseInt(key)];
-                return FrameData.FRAME_CONF.SuperRewardTask.find((item) => item.task_id === current.id);
+                return FrameData.FRAME_CONF.SuperRewardTask.find((item: any) => item.task_id === current.id);
             })
             .sort((a, b) => b.task_coin - a.task_coin);
         const announceNumbers: number[] = [];

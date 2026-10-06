@@ -2,8 +2,8 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class game_UI_tips extends cc.Component {
-    callback: () => void = null;
-    callback_ok: () => void = null;
+    callback: (() => void) = null;
+    callback_ok: (() => void) = null;
 
     show(content: string, callbackOk?: () => void, labelOk?: string): void {
         this.callback_ok = callbackOk;

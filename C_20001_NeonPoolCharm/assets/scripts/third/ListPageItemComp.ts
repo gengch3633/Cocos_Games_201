@@ -20,7 +20,7 @@ export default class ListPageItemComp extends cc.Component {
     ui_detail_Prefab: cc.Prefab = null;
 
     publictableInfo: any = null;
-    delCb: (sID: string) => void = null;
+    delCb: ((sID: string) => void) = null;
     createBalls: cc.Node[] = null;
     isEditing: boolean = null;
     isAllowDel: boolean = null;

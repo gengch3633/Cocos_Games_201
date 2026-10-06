@@ -23,7 +23,7 @@ export default class Ball2DControl extends cc.Component {
     state: string = null;
     dir = 0;
     isAutoPlaying = false;
-    stopCallback: (ballID: number) => void = null;
+    stopCallback: ((ballID: number) => void) = null;
     sensor_value = false;
     accele_dir: cc.Vec3 = null;
     last_vel_angle: number = null;
@@ -35,7 +35,7 @@ export default class Ball2DControl extends cc.Component {
     accele_negOrPos_xy: number = null;
     accele_negOrPos_yx: number = null;
     accele_negOrPos_yy: number = null;
-    private _destroyCB: () => void = null;
+    private _destroyCB: (() => void) = null;
     private _rollTargetNodeWP: cc.Vec2 = null;
     private _onBeginContactZheShe: cc.Vec2 = null;
     private _onBeginContactLinearVelocityOther: cc.Vec2 = null;

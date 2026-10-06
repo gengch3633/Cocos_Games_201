@@ -46,13 +46,13 @@ export default class JellyTween extends cc.Component {
                     .to(phase3, {
                         scaleX: {
                             value: this.originalScale,
-                            progress: (_start, current, _end, ratio) => {
+                            progress: (_start: number, current: number, _end: number, ratio: number) => {
                                 return current - this.getDifference(rate, ratio);
                             },
                         },
                         scaleY: {
                             value: this.originalScale,
-                            progress: (_start, current, _end, ratio) => {
+                            progress: (_start: number, current: number, _end: number, ratio: number) => {
                                 return current + this.getDifference(rate, ratio);
                             },
                         },

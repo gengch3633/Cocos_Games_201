@@ -27,7 +27,7 @@ export default class game_table_editor extends cc.Component {
     onLoad(): void {
         GlobalConfig.debug_alpha && (this.node.opacity = 25);
         this.ui_condition = cc.instantiate(this.ui_condition_Prefab);
-        this.ui_condition.getComponent("game_UI_condition").setCallback((conditionInfo) => {
+        this.ui_condition.getComponent("game_UI_condition").setCallback((conditionInfo: any) => {
             const tableInfo = this.saveTableInfo(0);
             console.log("tableInfo && conditionInfo", tableInfo, conditionInfo);
             if (tableInfo && conditionInfo) {
@@ -185,7 +185,7 @@ export default class game_table_editor extends cc.Component {
                 ballNode.getComponent("BallControlInEditor").ballType = ballInfo.ballType;
                 ballNode.getComponent("BallControlInEditor").ballID = ballInfo.ballID;
                 ballNode.getComponent("BallControlInEditor").setMatIdx(ballInfo.ballMatIdx);
-                ballNode.getComponent("BallControlInEditor").deleteFun((node) => {
+                ballNode.getComponent("BallControlInEditor").deleteFun((node: cc.Node) => {
                     self.delleteOne(node);
                 });
                 ballNode.x = Math.floor(ballInfo.x);
@@ -342,7 +342,7 @@ export default class game_table_editor extends cc.Component {
             draggingBall.getComponent("BallControlInEditor").node_editor = this;
             draggingBall.getComponent("BallControlInEditor").ballType = ballType;
             draggingBall.getComponent("BallControlInEditor").setMatIdx(source.getComponent("BallMaterialComp").getMatIdx());
-            draggingBall.getComponent("BallControlInEditor").deleteFun((node) => {
+            draggingBall.getComponent("BallControlInEditor").deleteFun((node: cc.Node) => {
                 this.delleteOne(node);
             });
             draggingBall.x = Math.floor(localPos.x);

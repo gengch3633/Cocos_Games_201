@@ -33,7 +33,7 @@ export default class Panel_AdAlternate extends cc.Component {
     webViewAttachedNode: cc.Node = null;
 
     viewData: any = null;
-    _scheduleFunc: (() => void) | null = null;
+    _scheduleFunc: (() => void) = null;
     _targetTime: number = 0;
     _success: boolean = true;
     hideTime: number = 0;

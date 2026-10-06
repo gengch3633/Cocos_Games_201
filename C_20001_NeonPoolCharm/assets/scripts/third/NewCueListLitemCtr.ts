@@ -50,7 +50,7 @@ export default class NewCueListLitemCtr extends ListItem {
     aimNode: cc.Node = null;
 
     private _curTouchLock = false;
-    cb: () => void = null;
+    cb: (() => void) = null;
     private _cueID: number = null;
     configData: any = null;
 
@@ -104,7 +104,7 @@ export default class NewCueListLitemCtr extends ListItem {
             GameHelper.instance.showVideo(
                 "unlock_cue",
                 false,
-                (adType) => {
+                (adType: any) => {
                     PoolLogger.instance.logGameEvent("thepool_game_ad", {
                         object_action: "show",
                         object_name: "new_cue",

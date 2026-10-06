@@ -20,7 +20,7 @@ export default class LinePropBtnItemCtr extends cc.Component {
     @property(cc.Node)
     addSpriteNode: cc.Node = null;
 
-    private _scheduleFunc: () => void = undefined;
+    private _scheduleFunc: (() => void) | undefined = undefined;
 
     onEnable(): void {
         EventMgr.listen(GameEventType.ON_LINE_PROP_USED_STATE_CHANGED, this.updateState, this);

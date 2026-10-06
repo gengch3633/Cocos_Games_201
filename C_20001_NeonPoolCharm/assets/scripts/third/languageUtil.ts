@@ -21,7 +21,7 @@ class languageUtil {
     updateSpriteFrameByPath(
         path: string,
         sprite: cc.Sprite = null,
-        callback: (frame: cc.SpriteFrame) => void = null
+        callback: ((frame: cc.SpriteFrame) => void) = null
     ): void {
         cc.loader.loadRes(path, cc.SpriteFrame, (err, frame: cc.SpriteFrame) => {
             if (err) {

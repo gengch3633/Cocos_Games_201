@@ -20,7 +20,7 @@ export default class GameEndPageCtrl extends BasePageCtrl {
 
     ui: GameEndPage = null;
     private _isSuccess = false;
-    private _timeoutCB: (success: boolean) => void = null;
+    private _timeoutCB: ((success: boolean) => void) = null;
     ballCount: number = null;
 
     addButtonListen(): void {}

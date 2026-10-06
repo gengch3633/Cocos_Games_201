@@ -92,7 +92,7 @@ export default class CocosHelper {
             return null;
         }
         return new Promise(function (resolve) {
-            bundle.load(assetUrl, function (err, asset) {
+            bundle.load(assetUrl, function (err: any, asset: any) {
                 if (err) {
                     cc.error("加载bundle中的资源失败, 未找到asset, url:" + assetUrl + ", err:" + err);
                     resolve(null);
@@ -155,7 +155,7 @@ export default class CocosHelper {
 
     static loadAssetSync(url: string): Promise<any> {
         return new Promise(function (resolve) {
-            cc.resources.load(url, function (err, asset) {
+            cc.resources.load(url, function (err: any, asset: any) {
                 if (err) {
                     CocosHelper.addRef(asset);
                     resolve(asset);
