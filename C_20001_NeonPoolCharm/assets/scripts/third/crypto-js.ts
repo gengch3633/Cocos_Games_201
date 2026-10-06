@@ -1,6 +1,6 @@
 // @ts-nocheck
 "use strict";
-n = function() {
+var n = function() {
   var e,
   t,
   o,
