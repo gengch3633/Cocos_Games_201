@@ -1,0 +1,48 @@
+
+win.png
+size: 792,521
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+img/发光
+  rotate: false
+  xy: 2, 61
+  size: 458, 458
+  orig: 470, 470
+  offset: 6, 6
+  index: -1
+img/徽章
+  rotate: false
+  xy: 567, 272
+  size: 223, 247
+  orig: 230, 252
+  offset: 3, 4
+  index: -1
+img/成功通关
+  rotate: true
+  xy: 567, 33
+  size: 237, 59
+  orig: 237, 59
+  offset: 0, 0
+  index: -1
+img/横幅
+  rotate: true
+  xy: 462, 2
+  size: 517, 103
+  orig: 525, 106
+  offset: 4, 2
+  index: -1
+img/稻穗
+  rotate: false
+  xy: 628, 174
+  size: 68, 96
+  orig: 68, 97
+  offset: 0, 0
+  index: -1
+ad0cf9d50d43fdd94b342e1634f4d36db
+  rotate: false
+  xy: 0, 0
+  size: 1, 1
+  orig: 1, 1
+  offset: 1, 1
+  index: -1
