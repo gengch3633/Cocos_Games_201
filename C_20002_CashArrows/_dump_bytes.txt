@@ -1,0 +1,92 @@
+
+######## GuideMaskNode.js ########
+--- b'split' at 916 ---
+b' if(! e) return null;\n    for(var t = e.split(/ \\[(\\ d+) \\]/ g), i = null;\n    t.length > 0;\n) {\n      var n = t.shift();\n      if(n) {\n        0 == n.indexOf("'
+--- b'split' at 1395 ---
+b' if(! e) return null;\n    for(var i = e.split(/ \\[(\\ d+) \\]/ g), n = null != t? t: cc.Canvas.instance.node, a = function() {\n      var e = i.shift();\n      if(!'
+--- b'indexOf' at 1027 ---
+b't.shift();\n      if(n) {\n        0 == n.indexOf("/")&& (n = n.substring(1));\n        var a = Number.parseInt(n);\n        if(isNaN(a)) i = cc.find(n, i);\n       '
+--- b'indexOf' at 1551 ---
+b'if(! e) return "continue";\n      0 == e.indexOf("/")&& (e = e.substring(1));\n      var t = Number.parseInt(e);\n      if(isNaN(t)) n = cc.find(e, n);\n      else '
+--- b'continue' at 1527 ---
+b'ar e = i.shift();\n      if(! e) return "continue";\n      0 == e.indexOf("/")&& (e = e.substring(1));\n      var t = Number.parseInt(e);\n      if(isNaN(t)) n = cc'
+--- b'object' at 1920 ---
+b'h > 0;\n) {\n      var o = a();\n      if("object" == typeof o) return o.value;\n    }\n    n|| (n = cc.find(e, t));\n    return n;\n  }\n;\n  Object.defineProperty(t.pr'
+
+######## GlobalErrorHandler.js ########
+--- b'setRequestHeader' at 726 ---
+b'_COMMON_CONFIG.feishuWebhookUrl, !0);\ni.setRequestHeader(" Content- Type ", " application/ json;\ncharset = utf- 8 ");\nvar l = {\ngame: r.default.gameName,\nhot_ve'
+--- b'replace' at 439 ---
+b') {\nreturn !(e = null == e ? void 0 : e.replace(/\\([^)]*\\)/g, " ")) || e.length < 200 ? e || " " : e.slice(0, 199);\n}\nfunction u(e, t) {\nvoid 0 === t && (t = " '
+--- b'stringify' at 1019 ---
+b'r_id,\nyid: o.default.yid\n};\ni.send(JSON.stringify({\nmsg_type: " post ",\ncontent: {\npost: {\nzh_ch: {\ntitle: t,\ncontent: [ [ {\ntag: " text ",\ntext: JSON.stringify'
+--- b'stringify' at 1130 ---
+b'ontent: [ [ {\ntag: " text ",\ntext: JSON.stringify(l, null, " \\ t ")\n}, {\ntag: " text ",\ntext: JSON.stringify(e, null, " \\ t ")\n} ] ]\n}\n}\n}\n}));\n} catch (e) {}\n}'
+--- b'stringify' at 1189 ---
+b'" \\ t ")\n}, {\ntag: " text ",\ntext: JSON.stringify(e, null, " \\ t ")\n} ] ]\n}\n}\n}\n}));\n} catch (e) {}\n}\ni.globalErrorRegister = function(e) {\nif (!cc.sys.isBrowse'
+--- b'Content' at 745 ---
+b'huWebhookUrl, !0);\ni.setRequestHeader(" Content- Type ", " application/ json;\ncharset = utf- 8 ");\nvar l = {\ngame: r.default.gameName,\nhot_version: s.default.ge'
+
+######## HotUpdateManager.js ########
+--- b'projectCfg' at 1938 ---
+b'IOS) {\nif (!jsb.fileUtils.isFileExist(" projectCfg.json ")) return " ";\nvar e = jsb.fileUtils.getStringFromFile(" projectCfg.json ");\nif (e) {\nvar t = JSON.pars'
+--- b'projectCfg' at 2012 ---
+b'r e = jsb.fileUtils.getStringFromFile(" projectCfg.json ");\nif (e) {\nvar t = JSON.parse(e);\nthis._isOnlineRelease = " release " === t.version || " prod " === t.'
+--- b'_temp' at 4851 ---
+b'var a = this, o = this._storagePath + " _temp/ version.manifest.temp ", r = this._storagePath + " _temp/ project.manifest.temp ";\nthis.getGrayVersion(e, t, func'
+--- b'_temp' at 4909 ---
+b'ifest.temp ", r = this._storagePath + " _temp/ project.manifest.temp ";\nthis.getGrayVersion(e, t, function(e) {\nif (1 == e.code) {\nvar t = new jsb.Downloader();'
+--- b'Content- type' at 6078 ---
+b'(" POST ", e, !0);\nn.setRequestHeader(" Content- type ", " text/ plain ");\nn.send(t);\nn.addEventListener(" abort ", function() {\nreturn i(!1);\n});\nn.addEventLis'
+--- b'remote- asset' at 673 ---
+b'fileUtils.getWritablePath() : "/ ") + " remote- asset ";\nthis.versionCompareHandle = function(e, t) {\nfor (var i = e.split("."), n = t.split("."), a = 0; a < i.'
+--- b'1.0.0' at 1581 ---
+b'is._curVersion = t ? t.getVersion() : " 1.0.0.0 ";\nreturn this._curVersion;\n}\n};\ne.prototype.getVersion = function() {\nreturn null != this._curVersion ? this._c'
+--- b'1.0.0' at 1756 ---
+b'sys.isNative ? this._initManifest() : " 1.0.0.18 ";\n};\ne.prototype.getBaseVersion = function() {\nif (null != this._baseVersion) return this._baseVersion;\nif (cc'
+
+######## FlyRewardAnimMgr.js ########
+--- b'flyIcon' at 315 ---
+b'._iconPool.pop();\nvar e = new cc.Node(" flyIcon ");\ne.addComponent(cc.Sprite);\ne.setContentSize(40, 40);\nreturn e;\n},\n_putIconNode: function(e) {\ncc.Tween.stopA'
+--- b'backOut' at 2011 ---
+b'en(n).to(.15, {\nscale: m\n}, {\neasing: " backOut "\n}).delay(e * u).parallel(cc.tween().bezierTo(.45, S, S, o), cc.tween().to(.45, {\nscale: c\n})).call(function() '
+--- b'AudioMgr' at 149 ---
+b'\nvar i = e("LanguageService.js"),\nn = e(AudioMgr "\n} ].js), a = {\n_iconPool: [],\n_labelPool: [],\n_getIconNode: function() {\nif (this._iconPool.length > 0) retur'
+--- b'game ' at 1426 ---
+b' _ = e.sfx || " ", f = e.sfxBundle || " game ";\nif (r && r.isValid && i && o) {\n_ && n.default.getInstance().playEffect(_, f);\nfor (var g = 0, m = (l + c) / 2, '
+
+######## I18nGroup.js ########
+--- b'function' at 441 ---
+b',\nrecursive: {\ndefault: !0\n}\n},\nonLoad: function() {\nthis.bindLanguageEvent();\nthis.refreshOnLoad && this.refreshChildren();\n},\nonDestroy: function() {\nthis.unb'
+--- b'function' at 540 ---
+b'& this.refreshChildren();\n},\nonDestroy: function() {\nthis.unbindLanguageEvent();\n},\nbindLanguageEvent: function() {\ni.default.getInstance().on(n.gameEvent.langu'
+--- b'function' at 603 ---
+b'dLanguageEvent();\n},\nbindLanguageEvent: function() {\ni.default.getInstance().on(n.gameEvent.languageChanged, this.onLanguageChanged, this);\n},\nunbindLanguageEve'
+--- b'function' at 727 ---
+b'Changed, this);\n},\nunbindLanguageEvent: function() {\ni.default.getInstance().off(n.gameEvent.languageChanged, this.onLanguageChanged, this);\n},\nonLanguageChange'
+--- b'function' at 850 ---
+b'geChanged, this);\n},\nonLanguageChanged: function() {\nthis.refreshOnLanguageChanged && this.refreshChildren();\n},\nrefreshChildren: function() {\nthis.refreshNode('
+--- b'function' at 940 ---
+b'.refreshChildren();\n},\nrefreshChildren: function() {\nthis.refreshNode(this.node);\n},\nrefreshNode: function(e) {\nif (e && e.isValid && (e === this.node || this.i'
+--- b'function' at 998 ---
+b'refreshNode(this.node);\n},\nrefreshNode: function(e) {\nif (e && e.isValid && (e === this.node || this.includeInactive || e.active)) {\nthis.refreshNodeI18n(e);\nif'
+--- b'tooltip' at 287 ---
+b'efreshOnLanguageChanged: {\ndefault: !1,\ntooltip: " set true to trigger all i18n children refresh on language changed "\n},\nincludeInactive: {\ndefault: !1\n},\nrecu'
+--- b'InterfaceMgr' at 138 ---
+b'p");\nvar i = e("GlobalEventMgr"),\nn = e(InterfaceMgr "\n} ].js), a = cc.Class({\nextends: cc.Component,\nproperties: {\nrefreshOnLoad: {\ndefault: !0\n},\nrefreshOnLan'
+
+######## I18nSprite.js ########
+--- b'tooltip' at 286 ---
+b'\nproperties: {\ni18nKey: {\ndefault: " ",\ntooltip: " i18n key whose value is sprite path "\n},\nfallbackPath: {\ndefault: " ",\ntooltip: " fallback sprite path when k'
+--- b'tooltip' at 368 ---
+b'path "\n},\nfallbackPath: {\ndefault: " ",\ntooltip: " fallback sprite path when key missing or empty "\n},\nbundleName: {\ndefault: " ui ",\ntooltip: " bundle name for'
+--- b'tooltip' at 462 ---
+b'pty "\n},\nbundleName: {\ndefault: " ui ",\ntooltip: " bundle name for sprite loading "\n},\ntargetSprite: {\ndefault: null,\ntype: cc.Sprite\n}\n},\nonLoad: function() {\n'
+--- b'loadRes failed' at 1921 ---
+b'tch(function(i) {\ncc.warn("[I18nSprite] loadRes failed: ", t, e.bundleName, i);\n});\n}\n}\n}\n});\nt.exports = r;\nt.exports.default = r;\ncc._RF.pop();\n'
+--- b'ResMgr' at 191 ---
+b'r"),\na = e("LanguageService.js"),\no = e(ResMgr "\n} ].js), r = cc.Class({\nextends: cc.Component,\nproperties: {\ni18nKey: {\ndefault: " ",\ntooltip: " i18n key whose'
+--- b'ui ' at 456 ---
+b' or empty "\n},\nbundleName: {\ndefault: " ui ",\ntooltip: " bundle name for sprite loading "\n},\ntargetSprite: {\ndefault: null,\ntype: cc.Sprite\n}\n},\nonLoad: functio'
+--- b'ui ' at 1243 ---
+b'id 0 !== i && (this.bundleName = i || " ui ");\nthis.refreshSprite();\n},\ngetSpritePath: function() {\nvar e = String(this.i18nKey || " ").trim();\nif (!e) return S'
