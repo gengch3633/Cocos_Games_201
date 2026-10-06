@@ -72,9 +72,3 @@ export function globalErrorRegister(e: any) {
         });
     }
 }
-
-const GlobalErrorHandler = {
-    globalErrorRegister
-};
-
-export default GlobalErrorHandler;

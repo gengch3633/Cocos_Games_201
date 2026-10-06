@@ -64,7 +64,7 @@ export default class NumberUtils {
     }
 
     static toFixed(e: number, t: number = 1) {
-        if ("number" != typeof e) return 0;
+        if (" number " != typeof e) return 0;
         if (isNaN(e) || null == e || null == e) return 0;
         if (Infinity == e) return 0;
         if (t <= 0) return Math.round(e);

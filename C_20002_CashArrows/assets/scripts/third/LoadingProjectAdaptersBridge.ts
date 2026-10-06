@@ -158,7 +158,7 @@ export function runMiddleCountry(onEnter: any, onBan: any, onBackstop: any, onSh
             backstop: onBackstop
         };
 
-        const dispatchCallback = function(type: string, payload?: any) {
+        function dispatchCallback(type: string, payload?: any) {
             if (callbackLocked) console.warn(logPrefix, "重复 " + type + " 回调，忽略。");
             else if (umpShowing) console.warn(logPrefix, "UMP 仍在展示，忽略 " + type + " 回调。");
             else {
@@ -183,7 +183,7 @@ export function runMiddleCountry(onEnter: any, onBan: any, onBackstop: any, onSh
             }
         }
 
-        const resolveDefaultCountry = function() {
+        function resolveDefaultCountry() {
             let country = cachedCountry || fallbackCountry;
             country = persistCountry(country) || country;
             clientStore && country && applyCountryToClient(clientStore, country);
@@ -293,7 +293,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
     const stepDone = "function" == typeof onStepDone ? onStepDone : function () { };
 
     try {
-        const setCache = function(key: string, value: any) {
+        function setCache(key: string, value: any) {
             if (null != value) {
                 try {
                     cc.sys.localStorage.setItem(key, JSON.stringify(value));
@@ -303,7 +303,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             }
         }
 
-        const getCache = function(key: string) {
+        function getCache(key: string) {
             try {
                 const raw = cc.sys.localStorage.getItem(key);
                 return raw ? JSON.parse(raw) : null;
@@ -313,7 +313,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             }
         }
 
-        const warnAndFail = function(message: string, err?: any) {
+        function warnAndFail(message: string, err?: any) {
             err ? console.warn(logPrefix, message, err) : console.warn(logPrefix, message);
             onFail && onFail();
         }
@@ -334,7 +334,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
         const handlerFactory = Handler.default;
         const netErrorPopup = NetErrorPopupService.default || NetErrorPopupService;
 
-        const report = function(eventName: string, payload?: any) {
+        function report(eventName: string, payload?: any) {
             try {
                 analytics && "function" == typeof analytics.reportData && analytics.reportData(eventName, payload || {});
             } catch (t) {
@@ -354,7 +354,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             USER_INFO: "MB_CACHE_USER_INFO"
         };
 
-        const getUserInfo = function() {
+        function getUserInfo() {
             console.log(logPrefix, "getUserInfo");
             report("page_loading_getUserInfo");
             httpService.getUserInfo(handlerFactory.create(null, function (response) {
@@ -395,7 +395,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             }));
         }
 
-        const getGameConfig = function() {
+        function getGameConfig() {
             console.log(logPrefix, " getGameConfig ");
             report(" page_loading_getGameConfig ");
             httpService.getGameConfig(handlerFactory.create(null, function (response) {
@@ -431,7 +431,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             }));
         }
 
-        const touristsLogin = function() {
+        function touristsLogin() {
             console.log(logPrefix, " touristsLogin ");
             report(" page_loading_touristsLogin ");
             httpService.touristsLogin(null, handlerFactory.create(null, function (response) {
@@ -479,7 +479,7 @@ export function runBaseFlow(onFail: any, onComplete: any, onStepDone: any) {
             }));
         }
 
-        const getSystemConfig = function() {
+        function getSystemConfig() {
             console.log(logPrefix, " getSystemConfig ");
             report(" page_loading_getSystemConfig ");
             httpService.getSystemConfig(handlerFactory.create(null, function (response) {

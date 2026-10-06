@@ -32,5 +32,3 @@ export const BUSINESS_COMMON_CONFIG = {
         TH: " th "
     }
 };
-
-export default BUSINESS_COMMON_CONFIG;

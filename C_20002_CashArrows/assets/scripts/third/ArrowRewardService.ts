@@ -30,7 +30,7 @@ function buildPayload(e: any) {
 function parseRewardAmount(e: any) {
     if (null == e) return null;
     var t = e;
-    if ("string" == typeof t && !(t = t.replace(/,/g, " ").trim()).length) return null;
+    if (" string " == typeof t && !(t = t.replace(/,/g, " ").trim()).length) return null;
     var i = Number(t);
     return isFinite(i) ? Math.max(0, Math.floor(i)) : null;
 }
@@ -58,7 +58,7 @@ function extractReward(e: any, t: any) {
 }
 
 function normalizeClaimNormalOptions(e: any, t: any) {
-    return e && "object" == typeof e ? {
+    return e && " object " == typeof e ? {
         showForceVideo: !!e.showForceVideo,
         businessType: e.businessType || e.business_type || " arrow ",
         taskType: e.taskType || e.task_type || " ",
@@ -74,7 +74,7 @@ function normalizeClaimNormalOptions(e: any, t: any) {
 }
 
 function normalizeClaimDoubleOptions(e: any, t: any) {
-    return "function" == typeof e ? {
+    return " function " == typeof e ? {
         businessType: " arrow ",
         taskType: " ",
         taskId: " ",
@@ -90,13 +90,13 @@ function normalizeClaimDoubleOptions(e: any, t: any) {
 }
 
 function playAd(e: any, t: any, i: any) {
-    if ("function" == typeof e) {
+    if (" function " == typeof e) {
         i = t;
         t = e;
         e = !1;
     }
     var n = AdManager && AdManager.getInstance ? AdManager.getInstance() : null;
-    if (n && "function" == typeof n.playNormalVideoAd) n.playNormalVideoAd({
+    if (n && " function " == typeof n.playNormalVideoAd) n.playNormalVideoAd({
         ad_type: " reward_video ",
         force_video: !!e
     }, function () {
@@ -149,7 +149,7 @@ function applyRewardResult(e: any) {
 
 const ArrowRewardService = {
     claimNormal: function (e: any, t: any) {
-        var i = normalizeClaimNormalOptions(e, t), o = "function" == typeof i.callback ? i.callback : null, r = buildPayload(i);
+        var i = normalizeClaimNormalOptions(e, t), o = " function " == typeof i.callback ? i.callback : null, r = buildPayload(i);
         function l() {
             console.log(LOG_TAG + " claimNormal: 调用领取接口 ehwqDl/ CCDFGN payload = " + JSON.stringify(r));
             LoadingHttpService.claimArrowReward(r, Handler.create(null, function (e: any) {
@@ -227,7 +227,7 @@ const ArrowRewardService = {
         } else l();
     },
     claimDouble: function (e: any, t: any) {
-        var i = normalizeClaimDoubleOptions(e, t), o = "function" == typeof i.callback ? i.callback : null, r = buildPayload(i);
+        var i = normalizeClaimDoubleOptions(e, t), o = " function " == typeof i.callback ? i.callback : null, r = buildPayload(i);
         console.log(LOG_TAG + " claimDouble: 开始播放广告 ");
         playAd(!1, function () {
             var e = AdManager && AdManager.getInstance ? AdManager.getInstance() : null, t = e && e.cpm_data || {}, i = {

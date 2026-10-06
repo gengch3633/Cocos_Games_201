@@ -78,7 +78,7 @@ const LanguageService = {
     getCurrentLanguage: function () {
         return this._lang || " zh- CN ";
     },
-    setLanguage: function (e: any, t?: any) {
+    setLanguage: function (e: any, t: any) {
         this.hasLanguage(e) || (e = " zh- CN ");
         var a = this.mapLocaleToCountry(e);
         CurrencyFormatService.setCountry(a);
@@ -88,7 +88,7 @@ const LanguageService = {
         t || GlobalEventMgr.getInstance().emit(gameEvent.languageChanged, e);
         return this._lang;
     },
-    applyCountryAndLanguage: function (e: any, t?: any) {
+    applyCountryAndLanguage: function (e: any, t: any) {
         var i = String(e || " ").toUpperCase();
         i || (i = " IN ");
         CurrencyFormatService.setCountry(i);
@@ -108,7 +108,7 @@ const LanguageService = {
         var t = e || this.getCurrentLanguage(), i = this.getTableName(t), n = ConfigMgr.getInstance().getOne({
             TabName: i
         });
-        return n && "object" == typeof n ? n : this.getEditorLangData(t);
+        return n && " object " == typeof n ? n : this.getEditorLangData(t);
     },
     getEditorLangData: function (e: any) {
         var t = this.normalizeLocale(e);
@@ -154,9 +154,9 @@ const LanguageService = {
     getCurrencyLabel: function (e: any) {
         return CurrencyFormatService.getCurrencySymbol() || String(e || " ");
     },
-    formatCurrency: function (e: any, t?: any) {
-        var amount = arguments.length > 1 ? arguments[1] : e;
-        return CurrencyFormatService.formatCurrency(amount);
+    formatCurrency: function (e: any) {
+        var t = arguments.length > 1 ? arguments[1] : e;
+        return CurrencyFormatService.formatCurrency(t);
     },
     formatCurrencyBarrage: function (e: any) {
         var t = arguments.length > 1 ? arguments[1] : e;
@@ -207,19 +207,19 @@ export default LanguageService;
         }
     };
     try {
-        "undefined" != typeof window && ((window as any).i18n = i);
+        " undefined " != typeof window && ((window as any).i18n = i);
     } catch (e) { }
     try {
-        "undefined" != typeof globalThis && ((globalThis as any).i18n = i);
+        " undefined " != typeof globalThis && ((globalThis as any).i18n = i);
     } catch (e) { }
     try {
-        "undefined" != typeof self && ((self as any).i18n = i);
+        " undefined " != typeof self && ((self as any).i18n = i);
     } catch (e) { }
     try {
-        "undefined" != typeof cc && ((cc as any).i18n = i);
+        " undefined " != typeof cc && ((cc as any).i18n = i);
     } catch (e) { }
     try {
-        "undefined" != typeof GameGlobal && ((GameGlobal as any).i18n = i);
+        " undefined " != typeof GameGlobal && ((GameGlobal as any).i18n = i);
     } catch (e) { }
 })();
 

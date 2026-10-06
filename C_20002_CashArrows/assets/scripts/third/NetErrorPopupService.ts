@@ -6,11 +6,11 @@ const FORCE_RETRY_CODES = [-777];
 const NETWORK_ERROR_HINTS = [" xhr.status ", " xhr.error ", " onXhr.", " timeout ", " 返回数据不存在 ", " 响应解析失败 ", " response parse fail ", " http status ", " network error ", " 网络错误 "];
 
 function extractCode(error: any) {
-    if (error && "object" == typeof error) {
-        if ("number" == typeof error.code) {
+    if (error && " object " == typeof error) {
+        if (" number " == typeof error.code) {
             return error.code;
         }
-        if ("string" == typeof error.code) {
+        if (" string " == typeof error.code) {
             var parsed = Number(error.code);
             return isNaN(parsed) ? void 0 : parsed;
         }
@@ -42,7 +42,7 @@ function matchesNetworkHint(message: any) {
 }
 
 function shouldPopByPayload(error: any) {
-    if (!error || "object" != typeof error) {
+    if (!error || " object " != typeof error) {
         return false;
     }
     if (matchesNetworkHint(error.message)) {
@@ -73,7 +73,7 @@ const NetErrorPopupService = {
         if (this._isShowing) {
             console.log(LOG_TAG, " popup already showing, merge retryFn into queue ");
             var pending = this._pendingRetry;
-            "function" == typeof retryFn && (this._pendingRetry = "function" == typeof pending ? function () {
+            " function " == typeof retryFn && (this._pendingRetry = " function " == typeof pending ? function () {
                 try {
                     pending();
                 } catch (e) {
@@ -86,7 +86,7 @@ const NetErrorPopupService = {
                 }
             } : retryFn);
         } else {
-            this._pendingRetry = "function" == typeof retryFn ? retryFn : null;
+            this._pendingRetry = " function " == typeof retryFn ? retryFn : null;
             var self = this;
             self._isShowing = true;
             var uiMgr = UIMgr.getInstance(),
@@ -128,28 +128,28 @@ const NetErrorPopupService = {
         return {
             success: function (result: any) {
                 if (skipForceRetryCode || !isForceRetryCode(extractCode(result))) {
-                    "function" == typeof onSuccess && onSuccess(result);
+                    " function " == typeof onSuccess && onSuccess(result);
                 } else {
                     console.warn(LOG_TAG, " success branch hit force- retry code, route to retry popup, code = " + extractCode(result));
-                    "function" == typeof retry ? self._showPopup(retry) : "function" == typeof onFail && onFail(result);
+                    " function " == typeof retry ? self._showPopup(retry) : " function " == typeof onFail && onFail(result);
                 }
             },
             fail: function (error: any) {
-                if (self.shouldPop(error) && "function" == typeof retry) {
+                if (self.shouldPop(error) && " function " == typeof retry) {
                     console.warn(LOG_TAG, " fail branch triggers retry popup, err = " + JSON.stringify(error));
                     self._showPopup(retry);
                 } else {
-                    "function" == typeof onFail && onFail(error);
+                    " function " == typeof onFail && onFail(error);
                 }
             }
         };
     },
     handle: function (error: any, retryFn: (() => void) | null, onFail?: (error: any) => void) {
-        if (this.shouldPop(error) && "function" == typeof retryFn) {
+        if (this.shouldPop(error) && " function " == typeof retryFn) {
             this._showPopup(retryFn);
             return true;
         }
-        "function" == typeof onFail && onFail(error);
+        " function " == typeof onFail && onFail(error);
         return false;
     },
     showAndRetry: function (retryFn: () => void) {

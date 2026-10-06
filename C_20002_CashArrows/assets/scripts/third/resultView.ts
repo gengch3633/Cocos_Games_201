@@ -156,7 +156,7 @@ export default class resultView extends cc.Component {
         var e = this.entryData || {}, t = {
             level: this.winLevel
         };
-        if ("function" != typeof e.requestPassReward) {
+        if (" function " != typeof e.requestPassReward) {
             return {
                 reward_amount: this.safeNum(e.mockRewardAmount, 500),
                 ad_reward_amount: this.safeNum(e.mockAdRewardAmount, 1e3),
@@ -173,7 +173,7 @@ export default class resultView extends cc.Component {
             settlement_id: t.settlementId || " ",
             reward_amount: t.adReward || 0
         };
-        if ("function" != typeof e.requestWatchAdReward) return !0;
+        if (" function " != typeof e.requestWatchAdReward) return !0;
         var n = await e.requestWatchAdReward(i);
         return !!n || void 0 === n;
     }
@@ -184,7 +184,7 @@ export default class resultView extends cc.Component {
             settlement_id: t.settlementId || " ",
             reward_amount: t.baseReward || 0
         };
-        if ("function" != typeof e.requestClaimReward) return !0;
+        if (" function " != typeof e.requestClaimReward) return !0;
         var n = await e.requestClaimReward(i);
         return !!n || void 0 === n;
     }
@@ -207,7 +207,7 @@ export default class resultView extends cc.Component {
     }
 
     unwrapData(e: any) {
-        for (var t = e, i = 0; t && "object" == typeof t && i < 4 && void 0 !== t.data;) {
+        for (var t = e, i = 0; t && " object " == typeof t && i < 4 && void 0 !== t.data;) {
             t = t.data;
             i++;
         }

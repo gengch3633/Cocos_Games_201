@@ -672,7 +672,7 @@ f.encodeURIComponent = function(e) {
 }
 ;
 f.utf8Encode = function(e) {
-  for(var t, i = "", n = t = 0, a = (e = (e+ "").replace(/\r\n/g, "\n").replace(/\r/g, "\n")).length, o = 0;
+  for(var t, i = "", n = t = 0, a = (e = (e+ "").replace(/ \ r \ n/ g, "\n").replace(/ \ r/ g, "\n")).length, o = 0;
   o < a;
   o++) {
     var r = e.charCodeAt(o),
@@ -747,7 +747,7 @@ f.UUID = function() {
 }
 ;
 f.UUIDv4 = function() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(e) {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/ g, function(e) {
     var t = 16* Math.random()| 0;
     return("x" === e? t: 3& t| 8).toString(16);
   }
@@ -775,11 +775,11 @@ f.createExtraHeaders = function() {
 f.checkAppId = function(e) {
   if("number" == typeof e) e = String(e);
   else if("string" != typeof e) return "";
-  return e.replace(/\s*/g, "");
+  return e.replace(/ \ s*/ g, "");
 }
 ;
 f.checkUrl = function(e) {
-  e = e.replace(/\s*/g, "");
+  e = e.replace(/ \ s*/ g, "");
   return f.url("basic", e);
 }
 ;
@@ -797,8 +797,8 @@ f.url = function() {
     }
 , s = e.substring(1), l = 0, c = a.length;
     l < c;
-    l++) if("" !== (o = (o = a[l].match(/(.*?)=(.*)/))|| [a[l], a[l], ""])[1].replace(/\s/g, "")) {
-      o[2] = (i = o[2]|| "", f.decodeURIComponent(i.replace(/\+/g, " ")));
+    l++) if("" !== (o = (o = a[l].match(/(.*?) = (.*)/))|| [a[l], a[l], ""])[1].replace(/ \ s/ g, "")) {
+      o[2] = (i = o[2]|| "", f.decodeURIComponent(i.replace(/ \+/ g, " ")));
       if(s === o[1]) return o[2];
       if(i = o[1].match(/(.*) \[([0- 9]+) \]/)) {
         r[i[1]] = r[i[1]]|| [];
@@ -1000,7 +1000,7 @@ var T = function() {
 , {
     key: "_getOs", value: function() {
       var e = navigator.userAgent;
-      return /Windows/i.test(e) ? /Phone/.test(e) || /WPDesktop/.test(e) ? "Windows Phone" : "Windows" : /(iPhone|iPad|iPod)/.test(e) ? "iOS" : /Android/.test(e) ? "Android" : /(BlackBerry|PlayBook|BB10)/i.test(e) ? "BlackBerry" : /Mac/i.test(e) ? "MacOS" : /Linux/.test(e) ? "Linux" : /CrOS/.test(e) ? "ChromeOS" : "";
+      return/ Windows/ i.test(e)?/ Phone/.test(e)|| / WPDesktop/.test(e)? "Windows Phone": "Windows":/(iPhone| iPad| iPod)/.test(e)? "iOS":/ Android/.test(e)? "Android":/(BlackBerry| PlayBook| BB10)/ i.test(e)? "BlackBerry":/ Mac/ i.test(e)? "MacOS":/ Linux/.test(e)? "Linux":/ CrOS/.test(e)? "ChromeOS": "";
     }
   }
 , {
@@ -2198,7 +2198,11 @@ D = function() {
   return e;
 }
 (),
-x = /^\$?[a-zA-Z][a-zA-Z0-9_]{0,49}$/,
+x = / ^ \ $?[a- zA- Z][a- zA- Z0- 9_] {
+  0,
+  49
+}
+$/,
 O = function() {
   function e() {
     l(this, e);
@@ -2249,7 +2253,10 @@ O = function() {
   }
 , {
     key: "userId", value: function(e) {
-      return !(! f.isString(e)|| !/^.{1,64}$/.test(e))|| (C.warn("The user ID must be a string of less than 64 characters and cannot be null"), ! 1);
+      return !(! f.isString(e)|| !/ ^.{
+        1, 64
+      }
+      $/.test(e))|| (C.warn("The user ID must be a string of less than 64 characters and cannot be null"), ! 1);
     }
   }
 , {

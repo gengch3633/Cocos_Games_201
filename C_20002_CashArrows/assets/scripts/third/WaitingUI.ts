@@ -4,9 +4,9 @@ const { ccclass } = cc._decorator;
 export default class WaitingUI extends cc.Component {
     _hideLoadingText() {
         var e: sp.Skeleton[] = [];
-        "function" == typeof this.getComponentsInChildren && (e = this.getComponentsInChildren(sp.Skeleton) || []);
-        (!e || e.length <= 0) && this.node && "function" == typeof this.node.getComponentsInChildren && (e = this.node.getComponentsInChildren(sp.Skeleton) || []);
-        if ((!e || e.length <= 0) && "function" == typeof this.getComponent) {
+        " function " == typeof this.getComponentsInChildren && (e = this.getComponentsInChildren(sp.Skeleton) || []);
+        (!e || e.length <= 0) && this.node && " function " == typeof this.node.getComponentsInChildren && (e = this.node.getComponentsInChildren(sp.Skeleton) || []);
+        if ((!e || e.length <= 0) && " function " == typeof this.getComponent) {
             var t = this.getComponent(sp.Skeleton);
             t && (e = [t]);
         }
@@ -15,7 +15,7 @@ export default class WaitingUI extends cc.Component {
             if (o && o.isValid) {
                 for (var r = 0; r < i.length; r++) {
                     var s = i[r],
-                        l = "function" == typeof o.findBone ? o.findBone(s) : null;
+                        l = " function " == typeof o.findBone ? o.findBone(s) : null;
                     if (l) {
                         l.scaleX = 0;
                         l.scaleY = 0;
@@ -23,10 +23,10 @@ export default class WaitingUI extends cc.Component {
                 }
                 for (var c = 0; c < n.length; c++) {
                     var u = n[c],
-                        d = "function" == typeof o.findSlot ? o.findSlot(u) : null;
+                        d = " function " == typeof o.findSlot ? o.findSlot(u) : null;
                     d && d.color && (d.color.a = 0);
                 }
-                "function" == typeof o.invalidAnimationCache && o.invalidAnimationCache();
+                " function " == typeof o.invalidAnimationCache && o.invalidAnimationCache();
             }
         }
     }

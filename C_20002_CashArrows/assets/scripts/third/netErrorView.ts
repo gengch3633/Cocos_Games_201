@@ -31,7 +31,7 @@ export default class netErrorView extends cc.Component {
 
     onLoad() {
         var e = NetErrorPopupService;
-        e && "function" == typeof e.consumePendingRetry && (this._retryFn = e.consumePendingRetry());
+        e && " function " == typeof e.consumePendingRetry && (this._retryFn = e.consumePendingRetry());
         this._cacheNodes();
         this._bindButtons();
         this._refreshTexts();
@@ -42,7 +42,7 @@ export default class netErrorView extends cc.Component {
         this._unbindButtons();
         this._unbindLanguageEvent();
         var e = NetErrorPopupService;
-        e && "function" == typeof e.notifyClosed && e.notifyClosed();
+        e && " function " == typeof e.notifyClosed && e.notifyClosed();
     }
 
     _cacheNodes() {
@@ -92,7 +92,7 @@ export default class netErrorView extends cc.Component {
 
     _hasServerAttribution() {
         try {
-            if (!u || "function" != typeof u.getRegionalState) return !1;
+            if (!u || " function " != typeof u.getRegionalState) return !1;
             var e = u.getRegionalState();
             return !(!e || !e.hasServerCountry);
         } catch (e) {
@@ -106,7 +106,7 @@ export default class netErrorView extends cc.Component {
             var i = LanguageService;
             if (i) {
                 var n: string;
-                this._hasServerAttribution() || "function" != typeof i.tWithLanguage ? "function" == typeof i.t && (n = i.t(e, [], t)) : n = i.tWithLanguage(" en- US ", e, [], t);
+                this._hasServerAttribution() || " function " != typeof i.tWithLanguage ? " function " == typeof i.t && (n = i.t(e, [], t)) : n = i.tWithLanguage(" en- US ", e, [], t);
                 return n || t || e;
             }
         } catch (t) {
@@ -146,7 +146,7 @@ export default class netErrorView extends cc.Component {
         } catch (e) {
             cc.warn(p, " OnClickFuhuo hide 失败 ", e);
         }
-        if ("function" == typeof e) try {
+        if (" function " == typeof e) try {
             e();
         } catch (e) {
             cc.warn(p, " retryFn 执行异常 ", e);

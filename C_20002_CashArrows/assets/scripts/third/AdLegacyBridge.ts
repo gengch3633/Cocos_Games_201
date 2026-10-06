@@ -11,7 +11,7 @@ export default class AdLegacyBridge {
         EventSystem.listen(eventName, callback, target);
     }
 
-    static trigger(eventName: any, data?: any) {
+    static trigger(eventName: any, data: any) {
         EventSystem.trigger(eventName, data);
     }
 

@@ -9,11 +9,3 @@ export class GametimeConfig {
 export class VipListConfig {
     static TabName = "vipList";
 }
-
-const ConfigDefine = {
-    ConstantConfig,
-    GametimeConfig,
-    VipListConfig
-};
-
-export default ConfigDefine;

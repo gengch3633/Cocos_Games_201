@@ -1,7 +1,7 @@
 import MiddleTrackManager from "./MiddleTrackManager";
 
 export default class BusinessAnalyticsService {
-    static reportData(eventName: any, data: any = {}, forceRedirect: boolean = false) {
+    static reportData(eventName: any, data: any, forceRedirect: boolean = false) {
         console.log(" BusinessAnalyticsService.reportData ", eventName, data, forceRedirect);
         const payload = data || {};
         let redirectType = payload.redirect_type;

@@ -22,7 +22,7 @@ function now() {
 }
 
 function resolvePageName(e: string, t: cc.Node | null) {
-    if (e && "string" == typeof e) for (var i = Object.keys(PAGE_MAP), n = 0; n < i.length; n++) {
+    if (e && " string " == typeof e) for (var i = Object.keys(PAGE_MAP), n = 0; n < i.length; n++) {
         var a = i[n];
         if (e === a || e.indexOf(a) >= 0) return PAGE_MAP[a];
     }
@@ -32,7 +32,7 @@ function resolvePageName(e: string, t: cc.Node | null) {
 function report(e: string, t: any) {
     try {
         var i = BusinessAnalyticsService;
-        i && "function" == typeof i.reportData && i.reportData(e, t);
+        i && " function " == typeof i.reportData && i.reportData(e, t);
     } catch (t) {
         console.warn(LOG_PREFIX + " report error ", e, t);
     }

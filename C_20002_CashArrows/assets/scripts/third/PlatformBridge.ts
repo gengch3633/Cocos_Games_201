@@ -46,14 +46,14 @@ function c(e: any) {
 }
 
 function u(e: any) {
-    if (e && "object" == typeof e) return e;
-    if ("string" != typeof e) return {};
+    if (e && " object " == typeof e) return e;
+    if (" string " != typeof e) return {};
     var t = e.trim();
     if (!t) return {};
     var i = l(t);
-    if (i && "object" == typeof i) return i;
+    if (i && " object " == typeof i) return i;
     var n = c(t);
-    if (n && "object" == typeof n) return n;
+    if (n && " object " == typeof n) return n;
     console.warn("[PlatformBridge] getClientInfo parse failed, fallback to {\n}\n", t.slice(0, 120));
     return {};
 }

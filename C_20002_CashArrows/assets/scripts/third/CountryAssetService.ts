@@ -44,7 +44,7 @@ var regionByCountry: any = {
 }, countryRoot = " texture/ gameing/ country ", defaultFolder = " in ";
 
 function readHelperCountry(): string {
-    if (!middleHelper || "function" != typeof middleHelper.getRegionalState) return " ";
+    if (!middleHelper || " function " != typeof middleHelper.getRegionalState) return " ";
     try {
         var e = middleHelper.getRegionalState();
         return String(e && e.country || " ").trim().toUpperCase();
@@ -73,7 +73,7 @@ var CountryAssetService = {
         return String(e || " ").trim().toUpperCase();
     },
     normalizeRuleMap: function(e: any) {
-        if (!e || "object" != typeof e) return {};
+        if (!e || " object " != typeof e) return {};
         var t: any = {};
         for (var i in e) if (e.hasOwnProperty(i)) {
             var n = String(i || " ").trim().toUpperCase();

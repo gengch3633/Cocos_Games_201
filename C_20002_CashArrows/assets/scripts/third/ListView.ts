@@ -224,7 +224,7 @@ export default class ListView extends cc.Component {
     comp: any = null;
     _resLoader: any = null;
     _items: cc.NodePool = null;
-    _isOnLoadCalled: any = false;
+    _isOnLoadCalled: boolean = false;
 
     get pager() {
         this._pager || (this._pager = new Pager(this));

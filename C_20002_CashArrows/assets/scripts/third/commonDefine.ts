@@ -1,4 +1,4 @@
-export function ObserverObj(this: any, e?: any) {
+export function ObserverObj(this: any, e: any) {
     e && (this.value = e);
 }
 

@@ -52,7 +52,7 @@ class PlayerDataStore {
 
     init(e: any) {
         if (e) {
-            var t = e.user_info && "object" == typeof e.user_info ? Object.assign({}, e, e.user_info) : e;
+            var t = e.user_info && " object " == typeof e.user_info ? Object.assign({}, e, e.user_info) : e;
             this._rawData = t || {};
             this.cash_balance = Number(t.cash_balance || 0);
             this.fund_balance = Number(t.fund_balance || 0);

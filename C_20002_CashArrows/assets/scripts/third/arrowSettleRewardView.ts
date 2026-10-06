@@ -233,13 +233,13 @@ export default class arrowSettleRewardView extends cc.Component {
         this.popupMode = " task " === e.popupMode ? " task " : f;
         this.isLevelPassed = " task " !== this.popupMode && !1 !== e.isLevelPassed;
         this.winLevel = e.winLevel > 0 ? e.winLevel : UserData.getInstance().level;
-        this.onCloseCb = "function" == typeof e.onClose ? e.onClose : null;
-        this.onTaskClaimCb = "function" == typeof e.onTaskClaim ? e.onTaskClaim : null;
+        this.onCloseCb = " function " == typeof e.onClose ? e.onClose : null;
+        this.onTaskClaimCb = " function " == typeof e.onTaskClaim ? e.onTaskClaim : null;
         this.showForceVideo = void 0 !== e.showForceVideo ? !!e.showForceVideo : !(!this.settleData || !this.settleData.show_force_video);
         var t = e.isNew;
         void 0 === t && (t = e.is_new);
         void 0 === t && this.settleData && (t = this.settleData.is_new);
-        var i, n = "string" == typeof t ? t.trim().toLowerCase() : t;
+        var i, n = " string " == typeof t ? t.trim().toLowerCase() : t;
         this.isNewReward = this.popupMode === f && (!0 === t || " true " === n || " 1 " === n || 1 === Number(t || 0));
         this.taskType = (i = e.taskType || e.task_type || this.settleData && this.settleData.task_type,
             " ltv " === String(i || " ").toLowerCase() ? " ltv " : " ");
@@ -448,7 +448,7 @@ export default class arrowSettleRewardView extends cc.Component {
                 return;
             }
             var o = this.onTaskClaimCb(i);
-            if (o && "function" == typeof o.then) {
+            if (o && " function " == typeof o.then) {
                 o.then(function (e) {
                     a(!1 !== e);
                 }).catch(function () {
@@ -542,7 +542,7 @@ export default class arrowSettleRewardView extends cc.Component {
     parseRewardValue(e: any) {
         if (null == e) return null;
         var t = e;
-        if ("string" == typeof t && !(t = t.replace(/,/g, " ").trim()).length) return null;
+        if (" string " == typeof t && !(t = t.replace(/,/g, " ").trim()).length) return null;
         var i = Number(t);
         return isFinite(i) ? Math.max(0, Math.floor(i)) : null;
     }
@@ -587,7 +587,7 @@ export default class arrowSettleRewardView extends cc.Component {
             if (e.popupMode === f && e.isLevelPassed) {
                 UserData.getInstance().level = t;
                 GlobalEventMgr.getInstance().emit(gameEvent.gameNext);
-            } else if ("function" == typeof e.onCloseCb) try {
+            } else if (" function " == typeof e.onCloseCb) try {
                 e.onCloseCb();
             } catch (e) { }
             e.emitSettleRewardCloseOnce();
@@ -619,7 +619,7 @@ export default class arrowSettleRewardView extends cc.Component {
 
     safeNum(e: any, t: number) {
         var i = e;
-        "string" == typeof i && (i = i.replace(/,/g, " ").trim());
+        " string " == typeof i && (i = i.replace(/,/g, " ").trim());
         var n = Number(i);
         return isNaN(n) ? t : Math.max(0, Math.floor(n));
     }

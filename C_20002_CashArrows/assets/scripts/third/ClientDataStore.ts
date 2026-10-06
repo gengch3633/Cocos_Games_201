@@ -37,7 +37,7 @@ class ClientDataStore {
     init(e: any) {
         var t = this;
         Object.keys(this).filter(function(e) {
-            return "function" != typeof t[e];
+            return " function " != typeof t[e];
         }).forEach(function(i) {
             null !== e[i] && void 0 !== e[i] && " " !== e[i] && (t[i] = e[i]);
         });
@@ -59,7 +59,7 @@ class ClientDataStore {
                         e[s] && (this[r] = e[s]);
                         continue;
                     }
-                    this[r] = e[s] || ("number" == typeof this[r] ? 0 : " ");
+                    this[r] = e[s] || (" number " == typeof this[r] ? 0 : " ");
                 }
             }
             var l = this.device_status;
@@ -84,7 +84,7 @@ class ClientDataStore {
     }
 
     parseDsData() {
-        this.device_status && (this.ds = "string" == typeof this.device_status ? JSON.parse(this.device_status) : this.device_status);
+        this.device_status && (this.ds = " string " == typeof this.device_status ? JSON.parse(this.device_status) : this.device_status);
     }
 
     buildCommonUrlStr() {

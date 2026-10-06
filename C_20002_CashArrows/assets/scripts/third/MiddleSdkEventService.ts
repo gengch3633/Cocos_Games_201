@@ -30,8 +30,8 @@ export default class MiddleSdkEventService {
                     }, -1, i);
                     return;
                 }
-                var a = n && n.data && "object" == typeof n.data ? n.data : n;
-                if (!a || "object" != typeof a) {
+                var a = n && n.data && " object " == typeof n.data ? n.data : n;
+                if (!a || " object " != typeof a) {
                     t.reportBehaviorConfigEvent({
                         message: " invalid_response_payload ",
                         raw: n
@@ -58,7 +58,7 @@ export default class MiddleSdkEventService {
                 true === r && PlatformBridge.getNativeBridge().reportFirebase(r + " ");
                 Array.isArray(s) && s.length > 0 && s.forEach(function (e: any) {
                     var i = t.findEventToken(e, u), n = t.findEventParams(e, d), a = PlatformBridge.getNativeBridge();
-                    a && "function" == typeof a.reportEventByAdjust && a.reportEventByAdjust(e, i, n);
+                    a && " function " == typeof a.reportEventByAdjust && a.reportEventByAdjust(e, i, n);
                 });
                 t.reportBehaviorConfigEvent(a, 1, i);
             } catch (e) {

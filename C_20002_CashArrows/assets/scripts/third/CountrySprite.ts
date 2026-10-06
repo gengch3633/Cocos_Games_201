@@ -90,7 +90,7 @@ export default class CountrySprite extends cc.Component {
 
     refreshSprite() {
         if (this.targetSprite && this.targetSprite.isValid) {
-            ("number" != typeof this._requestVersion || isNaN(this._requestVersion)) && (this._requestVersion = 0);
+            (" number " != typeof this._requestVersion || isNaN(this._requestVersion)) && (this._requestVersion = 0);
             var e = this.getSpritePath();
             if (e) {
                 var t = ++this._requestVersion, i = this.getDefaultSpritePath();
