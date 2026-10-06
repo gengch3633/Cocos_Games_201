@@ -1,5 +1,4 @@
-declare const CryptoJS: any;
-
+import { getCryptoJS } from "./cryptoUtil";
 import SystemDataSys from "./SystemDataSys";
 import ClientData from "./ClientData";
 import SdkHelper from "./SdkHelper";
@@ -27,6 +26,7 @@ export default class Service {
         }
         signStr += " " + signKey;
         signStr += " gohell";
+        const CryptoJS = getCryptoJS();
         return CryptoJS.enc.Base64.stringify(CryptoJS.MD5(signStr))
             .replace(new RegExp("\\+", "g"), "-")
             .replace(new RegExp("/", "g"), "_")

@@ -1,5 +1,4 @@
-declare const CryptoJS: any;
-
+import { getCryptoJS } from "./cryptoUtil";
 import { PoolNative } from "./PoolNative";
 import { PoolWrapper } from "./PoolWrapper";
 
@@ -56,7 +55,7 @@ export class CoinfinityRideress {
     }
 
     get LayoversSmerkingPrespur(): any {
-        return CryptoJS;
+        return getCryptoJS();
     }
 
     get unforbadeSemiaceticPrediscontinuance(): boolean {
@@ -231,6 +230,7 @@ export class CoinfinityRideress {
     }
 
     subdistrict(value: string): string {
+        const CryptoJS = getCryptoJS();
         const key = CryptoJS.enc.Utf8.parse(this.unminimizing);
         const iv = CryptoJS.enc.Utf8.parse(this.invaginate);
         const data = CryptoJS.enc.Utf8.parse(value);
@@ -309,6 +309,7 @@ export class CoinfinityRideress {
     }
 
     uplaidDecapitating(value: string, parseJson = true): any {
+        const CryptoJS = getCryptoJS();
         const key = CryptoJS.enc.Utf8.parse(this.unminimizing);
         const iv = CryptoJS.enc.Utf8.parse(this.invaginate);
         const decrypted = CryptoJS.AES.decrypt(value, key, {

@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use strict";
-var n = function() {
+var n;
+n = function() {
   var e,
   t,
   o,
@@ -1974,5 +1975,7 @@ var n = function() {
 }
 ,
 module.exports = n();
-(globalThis as any).CryptoJS = module.exports;
+if (!(globalThis as any).CryptoJS?.enc) {
+  (globalThis as any).CryptoJS = module.exports;
+}
 export = module.exports;
