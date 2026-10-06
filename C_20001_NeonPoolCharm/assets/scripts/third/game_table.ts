@@ -214,7 +214,7 @@ export default class GameTable extends cc.Component {
                             level_file: PlayerDataSys.getLevelTableFileName()
                           });
                           const tablePrefabPath = "prefabs/tables/table_" + BallLogicMgr.editingTableInfo.tableID;
-                const o = await UiManager.loaderPrefabInDeepPath(tablePrefabPath);
+                o = await UiManager.loaderPrefabInDeepPath(tablePrefabPath);
                 if (!o) {
                     return;
                 }
