@@ -1,6 +1,4 @@
 // @ts-nocheck
-const module: any = { exports: {} };
-const exports: any = module.exports;
 "use strict";
 n = function() {
   var e,

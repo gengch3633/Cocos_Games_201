@@ -1,6 +1,4 @@
 // @ts-nocheck
-const module: any = { exports: {} };
-const exports: any = module.exports;
 "use strict";
 function o(e) {
   return(o = "function" == typeof Symbol&& "symbol" == typeof Symbol.iterator? function(e) {

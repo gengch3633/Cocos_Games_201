@@ -1,6 +1,4 @@
 // @ts-nocheck
-const module: any = { exports: {} };
-const exports: any = module.exports;
 "use strict";
 module.exports = function() {
   this|| window;
