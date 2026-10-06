@@ -73,7 +73,7 @@ n = function() {
         a < i;
         a++) {
           var r = o[a >>> 2] >>> 24- a% 4* 8& 255;
-          t[n+ a >>> 2]| = r << 24-(n+ a)% 4* 8;
+          t[n+ a >>> 2]|= r << 24-(n+ a)% 4* 8;
         } else for(a = 0;
         a < i;
         a+= 4) t[n+ a >>> 2] = o[a >>> 2];
@@ -82,7 +82,7 @@ n = function() {
       }
 , clamp: function() {
         var t = this.words, o = this.sigBytes;
-        t[o >>> 2]& = 4294967295 << 32- o% 4* 8;
+        t[o >>> 2]&= 4294967295 << 32- o% 4* 8;
         t.length = e.ceil(o/ 4);
       }
 , clone: function() {
@@ -130,7 +130,7 @@ n = function() {
       parse: function(e) {
         for(var t = e.length, o = [], n = 0;
         n < t;
-        n+= 2) o[n >>> 3]| = parseInt(e.substr(n, 2), 16) << 24- n% 8* 4;
+        n+= 2) o[n >>> 3]|= parseInt(e.substr(n, 2), 16) << 24- n% 8* 4;
         return new a.init(o, t/ 2);
       }
     }
@@ -149,7 +149,7 @@ n = function() {
       parse: function(e) {
         for(var t = e.length, o = [], n = 0;
         n < t;
-        n++) o[n >>> 2]| = (255& e.charCodeAt(n)) << 24- n% 4* 8;
+        n++) o[n >>> 2]|= (255& e.charCodeAt(n)) << 24- n% 4* 8;
         return new a.init(o, t);
       }
     }
@@ -274,7 +274,7 @@ n = function() {
       r < o;
       r++) if(r% 4) {
         var l = n[e.charCodeAt(r- 1)] << r% 4* 2, s = n[e.charCodeAt(r)] >>> 6- r% 4* 2;
-        i[a >>> 2]| = (l| s) << 24- a% 4* 8;
+        i[a >>> 2]|= (l| s) << 24- a% 4* 8;
         a++;
       }
       return t.create(i, a);
@@ -369,7 +369,7 @@ n = function() {
       }
 , _doFinalize: function() {
         var t = this._data, o = t.words, n = 8* this._nDataBytes, i = 8* t.sigBytes;
-        o[i >>> 5]| = 128 << 24- i% 32;
+        o[i >>> 5]|= 128 << 24- i% 32;
         var a = e.floor(n/ 4294967296), r = n;
         o[15+(i+ 64 >>> 9 << 4)] = 16711935& (a << 8| a >>> 24)| 4278255360& (a << 24| a >>> 8);
         o[14+(i+ 64 >>> 9 << 4)] = 16711935& (r << 8| r >>> 24)| 4278255360& (r << 24| r >>> 8);
@@ -440,7 +440,7 @@ n = function() {
       }
 , _doFinalize: function() {
         var e = this._data, t = e.words, o = 8* this._nDataBytes, n = 8* e.sigBytes;
-        t[n >>> 5]| = 128 << 24- n% 32;
+        t[n >>> 5]|= 128 << 24- n% 32;
         t[14+(n+ 64 >>> 9 << 4)] = Math.floor(o/ 4294967296);
         t[15+(n+ 64 >>> 9 << 4)] = o;
         e.sigBytes = 4* t.length;
@@ -516,7 +516,7 @@ n = function() {
       }
 , _doFinalize: function() {
         var t = this._data, o = t.words, n = 8* this._nDataBytes, i = 8* t.sigBytes;
-        o[i >>> 5]| = 128 << 24- i% 32;
+        o[i >>> 5]|= 128 << 24- i% 32;
         o[14+(i+ 64 >>> 9 << 4)] = e.floor(n/ 4294967296);
         o[15+(i+ 64 >>> 9 << 4)] = n;
         t.sigBytes = 4* o.length;
@@ -549,7 +549,7 @@ n = function() {
 , parse: function(e) {
         for(var o = e.length, n = [], i = 0;
         i < o;
-        i++) n[i >>> 1]| = e.charCodeAt(i) << 16- i% 2* 16;
+        i++) n[i >>> 1]|= e.charCodeAt(i) << 16- i% 2* 16;
         return t.create(n, 2* o);
       }
     }
@@ -567,7 +567,7 @@ n = function() {
 , parse: function(e) {
         for(var o = e.length, n = [], a = 0;
         a < o;
-        a++) n[a >>> 1]| = i(e.charCodeAt(a) << 16- a% 2* 16);
+        a++) n[a >>> 1]|= i(e.charCodeAt(a) << 16- a% 2* 16);
         return t.create(n, 2* o);
       }
     }
@@ -586,7 +586,7 @@ n = function() {
         if(e instanceof Uint8Array) {
           for(var o = e.byteLength, n = [], i = 0;
           i < o;
-          i++) n[i >>> 2]| = e[i] << 24- i% 4* 8;
+          i++) n[i >>> 2]|= e[i] << 24- i% 4* 8;
           t.call(this, n, o);
         } else t.apply(this, arguments);
       }
@@ -617,7 +617,7 @@ n = function() {
         o+= 1) {
           T = a+ e[t+ N[o]]| 0;
           T+= o < 16? _(d, m, b)+ O[0]: o < 32? f(d, m, b)+ O[1]: o < 48? h(d, m, b)+ O[2]: o < 64? g(d, m, b)+ O[3]: y(d, m, b)+ O[4];
-          T = (T = v(T| = 0, R[o]))+ C| 0;
+          T = (T = v(T|= 0, R[o]))+ C| 0;
           a = C;
           C = b;
           b = v(m, 10);
@@ -625,7 +625,7 @@ n = function() {
           d = T;
           T = P+ e[t+ L[o]]| 0;
           T+= o < 16? y(S, I, D)+ M[0]: o < 32? g(S, I, D)+ M[1]: o < 48? h(S, I, D)+ M[2]: o < 64? f(S, I, D)+ M[3]: _(S, I, D)+ M[4];
-          T = (T = v(T| = 0, B[o]))+ E| 0;
+          T = (T = v(T|= 0, B[o]))+ E| 0;
           P = E;
           E = D;
           D = v(I, 10);
@@ -641,7 +641,7 @@ n = function() {
       }
 , _doFinalize: function() {
         var e = this._data, t = e.words, o = 8* this._nDataBytes, n = 8* e.sigBytes;
-        t[n >>> 5]| = 128 << 24- n% 32;
+        t[n >>> 5]|= 128 << 24- n% 32;
         t[14+(n+ 64 >>> 9 << 4)] = 16711935& (o << 8| o >>> 24)| 4278255360& (o << 24| o >>> 8);
         e.sigBytes = 4*(t.length+ 1);
         this._process();
@@ -694,8 +694,8 @@ n = function() {
       for(var a = this._oKey = t.clone(), r = this._iKey = t.clone(), l = a.words, s = r.words, c = 0;
       c < n;
       c++) {
-        l[c] ^ = 1549556828;
-        s[c] ^ = 909522486;
+        l[c] ^= 1549556828;
+        s[c] ^= 909522486;
       }
       a.sigBytes = r.sigBytes = i;
       this.reset();
@@ -737,7 +737,7 @@ n = function() {
             n.reset();
             for(var y = h.words, v = 0;
             v < f;
-            v++) _[v] ^ = y[v];
+            v++) _[v] ^= y[v];
           }
           a.concat(d);
           c[0]++;
@@ -862,7 +862,7 @@ n = function() {
         d++) {
           if(1& i) {
             var _ = (1 << d)- 1;
-            _ < 32? p ^ = 1 << _: l ^ = 1 << _- 32;
+            _ < 32? p ^= 1 << _: l ^= 1 << _- 32;
           }
           128& i? i = i << 1 ^ 113: i <<= 1;
         }
@@ -894,8 +894,8 @@ n = function() {
           var a = e[t+ 2* i], r = e[t+ 2* i+ 1];
           a = 16711935& (a << 8| a >>> 24)| 4278255360& (a << 24| a >>> 8);
           r = 16711935& (r << 8| r >>> 24)| 4278255360& (r << 24| r >>> 8);
-(w = o[i]).high ^ = r;
-          w.low ^ = a;
+(w = o[i]).high ^= r;
+          w.low ^= a;
         }
         for(var l = 0;
         l < 24;
@@ -906,8 +906,8 @@ n = function() {
             for(var _ = 0, f = 0, h = 0;
             h < 5;
             h++) {
-              _ ^ = (w = o[d+ 5* h]).high;
-              f ^ = w.low;
+              _ ^= (w = o[d+ 5* h]).high;
+              f ^= w.low;
             }
             var g = p[d];
             g.high = _;
@@ -920,8 +920,8 @@ n = function() {
             for(_ = y.high ^(m << 1| b >>> 31), f = y.low ^(b << 1| m >>> 31), h = 0;
             h < 5;
             h++) {
-(w = o[d+ 5* h]).high ^ = _;
-              w.low ^ = f;
+(w = o[d+ 5* h]).high ^= _;
+              w.low ^= f;
             }
           }
           for(var C = 1;
@@ -947,14 +947,14 @@ n = function() {
           }
           w = o[0];
           var L = u[l];
-          w.high ^ = L.high;
-          w.low ^ = L.low;
+          w.high ^= L.high;
+          w.low ^= L.low;
         }
       }
 , _doFinalize: function() {
         var t = this._data, o = t.words, n = (this._nDataBytes, 8* t.sigBytes), a = 32* this.blockSize;
-        o[n >>> 5]| = 1 << 24- n% 32;
-        o[(e.ceil((n+ 1)/ a)* a >>> 5)- 1]| = 128;
+        o[n >>> 5]|= 1 << 24- n% 32;
+        o[(e.ceil((n+ 1)/ a)* a >>> 5)- 1]|= 128;
         t.sigBytes = 4* o.length;
         this._process();
         for(var r = this._state, l = this.cfg.outputLength/ 8, s = l/ 8, c = [], u = 0;
@@ -1043,7 +1043,7 @@ n = function() {
       }
 , _doFinalize: function() {
         var e = this._data, t = e.words, o = 8* this._nDataBytes, n = 8* e.sigBytes;
-        t[n >>> 5]| = 128 << 24- n% 32;
+        t[n >>> 5]|= 128 << 24- n% 32;
         t[30+(n+ 128 >>> 10 << 5)] = Math.floor(o/ 4294967296);
         t[31+(n+ 128 >>> 10 << 5)] = o;
         e.sigBytes = 4* t.length;
@@ -1182,7 +1182,7 @@ n = function() {
         } else a = this._prevBlock;
         for(var r = 0;
         r < n;
-        r++) t[o+ r] ^ = a[r];
+        r++) t[o+ r] ^= a[r];
       }
       return t;
     }
@@ -1362,7 +1362,7 @@ n = function() {
       n.encryptBlock(a, 0);
       for(var r = 0;
       r < o;
-      r++) e[t+ r] ^ = a[r];
+      r++) e[t+ r] ^= a[r];
     }
     return e;
   }
@@ -1391,7 +1391,7 @@ n = function() {
       i = n- o% n,
       a = o+ i- 1;
       e.clamp();
-      e.words[a >>> 2]| = i << 24- a% 4* 8;
+      e.words[a >>> 2]|= i << 24- a% 4* 8;
       e.sigBytes+= i;
     }
 ,
@@ -1438,7 +1438,7 @@ n = function() {
         o.encryptBlock(a, 0);
         for(var r = 0;
         r < n;
-        r++) e[t+ r] ^ = a[r];
+        r++) e[t+ r] ^= a[r];
       }
     }
 );
@@ -1497,7 +1497,7 @@ n = function() {
         _[f] = v;
         if(o) {
           o = h ^ e[e[e[y ^ h]]];
-          n ^ = e[e[n]];
+          n ^= e[e[n]];
         } else o = n = 1;
       }
     }
@@ -1513,7 +1513,7 @@ n = function() {
             if(r% o) o > 6&& r% o == 4&& (l = i[l >>> 24] << 24| i[l >>> 16& 255] << 16| i[l >>> 8& 255] << 8| i[255& l]);
             else {
               l = i[(l = l << 8| l >>> 24) >>> 24] << 24| i[l >>> 16& 255] << 16| i[l >>> 8& 255] << 8| i[255& l];
-              l ^ = f[r/ o| 0] << 24;
+              l ^= f[r/ o| 0] << 24;
             }
             a[r] = a[r- o] ^ l;
           }
@@ -1600,8 +1600,8 @@ n = function() {
           for(o = 0;
           o < 24;
           o++) {
-            c[o/ 6| 0]| = t[(l[o]- 1+ u)% 28] << 31- o% 6;
-            c[4+(o/ 6| 0)]| = t[28+(l[o+ 24]- 1+ u)% 28] << 31- o% 6;
+            c[o/ 6| 0]|= t[(l[o]- 1+ u)% 28] << 31- o% 6;
+            c[4+(o/ 6| 0)]|= t[28+(l[o+ 24]- 1+ u)% 28] << 31- o% 6;
           }
           c[0] = c[0] << 1| c[0] >>> 31;
           for(o = 1;
@@ -1633,7 +1633,7 @@ n = function() {
         n++) {
           for(var i = o[n], a = this._lBlock, r = this._rBlock, l = 0, s = 0;
           s < 8;
-          s++) l| = c[s][((r ^ i[s])& u[s]) >>> 0];
+          s++) l|= c[s][((r ^ i[s])& u[s]) >>> 0];
           this._lBlock = r;
           this._rBlock = a ^ l;
         }
@@ -1653,13 +1653,13 @@ n = function() {
 );
     function d(e, t) {
       var o = (this._lBlock >>> e ^ this._rBlock)& t;
-      this._rBlock ^ = o;
-      this._lBlock ^ = o << e;
+      this._rBlock ^= o;
+      this._lBlock ^= o << e;
     }
     function _(e, t) {
       var o = (this._rBlock >>> e ^ this._lBlock)& t;
-      this._lBlock ^ = o;
-      this._rBlock ^ = o << e;
+      this._lBlock ^= o;
+      this._rBlock ^= o << e;
     }
     e.DES = i._createHelper(p);
     var f = a.TripleDES = i.extend({
@@ -1704,7 +1704,7 @@ n = function() {
         this._i = this._j = 0;
       }
 , _doProcessBlock: function(e, t) {
-        e[t] ^ = a.call(this);
+        e[t] ^= a.call(this);
       }
 , keySize: 8, ivSize: 0
     }
@@ -1717,7 +1717,7 @@ n = function() {
         var a = e[t];
         e[t] = e[o];
         e[o] = a;
-        n| = e[(e[t]+ e[o])% 256] << 24- 8* i;
+        n|= e[(e[t]+ e[o])% 256] << 24- 8* i;
       }
       this._i = t;
       this._j = o;
@@ -1776,7 +1776,7 @@ n = function() {
         n.encryptBlock(l, 0);
         for(var s = 0;
         s < i;
-        s++) e[t+ s] ^ = l[s];
+        s++) e[t+ s] ^= l[s];
       }
     }
 );
@@ -1797,17 +1797,17 @@ n = function() {
         o++) s.call(this);
         for(o = 0;
         o < 8;
-        o++) i[o] ^ = n[o+ 4& 7];
+        o++) i[o] ^= n[o+ 4& 7];
         if(t) {
           var a = t.words, r = a[0], l = a[1], c = 16711935& (r << 8| r >>> 24)| 4278255360& (r << 24| r >>> 8), u = 16711935& (l << 8| l >>> 24)| 4278255360& (l << 24| l >>> 8), p = c >>> 16| 4294901760& u, d = u << 16| 65535& c;
-          i[0] ^ = c;
-          i[1] ^ = p;
-          i[2] ^ = u;
-          i[3] ^ = d;
-          i[4] ^ = c;
-          i[5] ^ = p;
-          i[6] ^ = u;
-          i[7] ^ = d;
+          i[0] ^= c;
+          i[1] ^= p;
+          i[2] ^= u;
+          i[3] ^= d;
+          i[4] ^= c;
+          i[5] ^= p;
+          i[6] ^= u;
+          i[7] ^= d;
           for(o = 0;
           o < 4;
           o++) s.call(this);
@@ -1824,7 +1824,7 @@ n = function() {
         n < 4;
         n++) {
           i[n] = 16711935& (i[n] << 8| i[n] >>> 24)| 4278255360& (i[n] << 24| i[n] >>> 8);
-          e[t+ n] ^ = i[n];
+          e[t+ n] ^= i[n];
         }
       }
 , blockSize: 4, ivSize: 2
@@ -1875,7 +1875,7 @@ n = function() {
         a[n- 1] = a[n- 1]+ 1| 0;
         for(var l = 0;
         l < n;
-        l++) e[t+ l] ^ = r[l];
+        l++) e[t+ l] ^= r[l];
       }
     }
 );
@@ -1893,17 +1893,17 @@ n = function() {
         i++) s.call(this);
         for(i = 0;
         i < 8;
-        i++) n[i] ^ = o[i+ 4& 7];
+        i++) n[i] ^= o[i+ 4& 7];
         if(t) {
           var a = t.words, r = a[0], l = a[1], c = 16711935& (r << 8| r >>> 24)| 4278255360& (r << 24| r >>> 8), u = 16711935& (l << 8| l >>> 24)| 4278255360& (l << 24| l >>> 8), p = c >>> 16| 4294901760& u, d = u << 16| 65535& c;
-          n[0] ^ = c;
-          n[1] ^ = p;
-          n[2] ^ = u;
-          n[3] ^ = d;
-          n[4] ^ = c;
-          n[5] ^ = p;
-          n[6] ^ = u;
-          n[7] ^ = d;
+          n[0] ^= c;
+          n[1] ^= p;
+          n[2] ^= u;
+          n[3] ^= d;
+          n[4] ^= c;
+          n[5] ^= p;
+          n[6] ^= u;
+          n[7] ^= d;
           for(i = 0;
           i < 4;
           i++) s.call(this);
@@ -1920,7 +1920,7 @@ n = function() {
         n < 4;
         n++) {
           i[n] = 16711935& (i[n] << 8| i[n] >>> 24)| 4278255360& (i[n] << 24| i[n] >>> 8);
-          e[t+ n] ^ = i[n];
+          e[t+ n] ^= i[n];
         }
       }
 , blockSize: 4, ivSize: 2
@@ -1977,6 +1977,4 @@ n = function() {
 ,
 module.exports = n();
 (globalThis as any).CryptoJS = module.exports;
-export = module.exports;
-
 export = module.exports;

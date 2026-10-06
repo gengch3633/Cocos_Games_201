@@ -29,7 +29,7 @@ const exports: any = module.exports;
     return i;
   }
   function n(e) {
-    return e.replace(/ ^ \ s+| \ s+ $/ g, "");
+    return e.replace(/^\s+|\s+$/g, "");
   }
   function i(e, t, o) {
     var i;
