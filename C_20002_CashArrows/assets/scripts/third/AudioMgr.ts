@@ -39,12 +39,12 @@ export default class AudioMgr extends Singleton {
         try {
             if (e instanceof cc.AudioClip) {
                 a = e;
-                " number " == typeof t && (r = t);
-                " boolean " == typeof i && (l = i);
+                "number" == typeof t && (r = t);
+                "boolean" == typeof i && (l = i);
             } else {
-                var bundle = " string " == typeof t ? t : this.option.bundleName;
-                r = " number " == typeof i ? i : r;
-                l = " boolean " == typeof n ? n : l;
+                var bundle = "string" == typeof t ? t : this.option.bundleName;
+                r = "number" == typeof i ? i : r;
+                l = "boolean" == typeof n ? n : l;
                 a = await ResMgr.getInstance().loadRes(e, cc.AudioClip, null, bundle);
             }
             return a ? this.handlePlayEffect(a, r, l) : -1;
@@ -78,14 +78,14 @@ export default class AudioMgr extends Singleton {
 
     async playMusic(e: any, t?: any, i: boolean = true): Promise<any> {
         if (!e) return -1;
-        var n: any = " boolean " != typeof t || t;
+        var n: any = "boolean" != typeof t || t;
         var a: any = null;
         try {
             if (e instanceof cc.AudioClip) {
                 a = e;
-                n = " boolean " == typeof t ? t : n;
+                n = "boolean" == typeof t ? t : n;
             } else {
-                var r = " string " == typeof t ? t : this.option.bundleName;
+                var r = "string" == typeof t ? t : this.option.bundleName;
                 a = await ResMgr.getInstance().loadRes(e, cc.AudioClip, null, r);
             }
             return a ? cc.audioEngine.playMusic(a, n) : (console.error(" AudioMgr.playMusic: clip is null ", e, t, i), -1);

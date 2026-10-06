@@ -55,8 +55,8 @@ export default class I18nGroup extends cc.Component {
         for (var t = e.getComponents(cc.Component) || [], i = 0; i < t.length; i++) {
             var n = t[i];
             if (n && n !== this) {
-                n.refreshText && " function " == typeof n.refreshText && n.refreshText();
-                n.refreshSprite && " function " == typeof n.refreshSprite && n.refreshSprite();
+                n.refreshText && "function" == typeof n.refreshText && n.refreshText();
+                n.refreshSprite && "function" == typeof n.refreshSprite && n.refreshSprite();
             }
         }
     }

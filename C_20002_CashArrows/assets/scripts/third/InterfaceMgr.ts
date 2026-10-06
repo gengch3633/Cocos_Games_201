@@ -33,3 +33,10 @@ export enum gameEvent {
     settleRewardClose = "settleRewardClose",
     levelFailReport = "levelFailReport"
 }
+
+const InterfaceMgr = {
+    bundleName,
+    gameEvent
+};
+
+export default InterfaceMgr;

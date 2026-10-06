@@ -5,7 +5,7 @@ import InterfaceMgr from "./InterfaceMgr";
 import UserData from "./UserData";
 import heidong from "./heidong";
 import NodePoolMgr from "./NodePoolMgr";
-import snake from "./snake";
+import snake, { snakeState } from "./snake";
 import zhanai from "./zhanai";
 
 export enum ClickState {
@@ -173,7 +173,7 @@ this.node.x = Math.min(a, Math.max(-a, this.node.x));
 this.node.y = Math.min(o, Math.max(-o, this.node.y));
 };
 
-    restrictNodePosition() {
+    restrictNodePosition(_parent?: any, _node?: any) {
 var e = (this.node.scale - this.num_minScale) * this.obj_size.width / 2, t = (this.node.scale - this.num_minScale) * this.obj_size.height / 2, i = e + this.node.parent.width / 2, n = t + this.node.parent.height / 2;
 this.node.x > i ? this.node.x = i : this.node.x < -i && (this.node.x = -i);
 this.node.y > n ? this.node.y = n : this.node.y < -n && (this.node.y = -n);
@@ -270,7 +270,7 @@ GlobalEventMgr.getInstance().emit(InterfaceMgr.gameEvent.notifySnakeNumChange);
 for (var t = this.snakes.indexOf(e), i = this.snakes[t].snakeInfo2, n = 0; n < i.length; n++) this.num_mapInfo[i[n].x][i[n].y] = " 0 ";
 this.num_audioID++;
 this.num_audioID > 7 && (this.num_audioID = 1);
-AudioMgr.getInstance().playEffect(" audio/ snakeMove/ " + this.num_audioID, c.bundleName.game);
+AudioMgr.getInstance().playEffect(" audio/ snakeMove/ " + this.num_audioID, InterfaceMgr.bundleName.game);
 };
 
     showTips() {

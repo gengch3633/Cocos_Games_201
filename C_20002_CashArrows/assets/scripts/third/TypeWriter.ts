@@ -76,7 +76,7 @@ export default class TypeWriter extends cc.Component {
             this.strArr = null !== (parts = null == str ? void 0 : str.split(" ")) && void 0 !== parts ? parts : [];
             this.unscheduleAllCallbacks();
             this.label.string = " ";
-            voice && (" string " == typeof voice ? (this.voiceType = VoiceType.Url, this.voiceUrl = voice, this.voiceBundleName = bundleName) : (this.voiceType = VoiceType.Clip, this.voiceClip = voice));
+            voice && ("string" == typeof voice ? (this.voiceType = VoiceType.Url, this.voiceUrl = voice, this.voiceBundleName = bundleName) : (this.voiceType = VoiceType.Clip, this.voiceClip = voice));
             this.voiceType !== VoiceType.None && (this.voiceType === VoiceType.Clip && this.voiceClip ? AudioMgr.getInstance().playEffect(this.voiceClip).then(function (id) {
                 self._audioId = id;
                 self.isCompleted && AudioMgr.getInstance().stopEffect(id);

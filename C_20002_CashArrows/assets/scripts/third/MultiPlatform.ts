@@ -201,7 +201,7 @@ export default class MultiPlatform extends Singleton {
         var n = this;
         return new Promise(function (a) {
             var o = AdManager && AdManager.getInstance ? AdManager.getInstance() : null, r: any = null, c: any = null;
-            if (o && " function " == typeof o.playNormalVideoAd) {
+            if (o && "function" == typeof o.playNormalVideoAd) {
                 var u = new Date().getTime() / 1e3, d = Number(o.interval || 1.5);
                 if (o.lastTouchDate && u - o.lastTouchDate < d) {
                     Tips.show(" 广告点击太频繁 ");
@@ -247,7 +247,7 @@ export default class MultiPlatform extends Singleton {
                     UIMgr.getInstance().showWatingUI();
                     n.event.emit(MultiPlatform.EventType.REWARED_VIDEO_SHOW, e, i);
                     n.reportVideo(e, 0);
-                    if ((r = AdLegacyBridge ? AdLegacyBridge : null) && r.events && " function " == typeof r.listen) {
+                    if ((r = AdLegacyBridge ? AdLegacyBridge : null) && r.events && "function" == typeof r.listen) {
                         c = function (e: any) {
                             v(RewardVideoState.PlaySuccess, !1, e);
                         };

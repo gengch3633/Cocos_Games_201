@@ -78,12 +78,12 @@ class LanguageHelperImpl {
             }
         };
         try {
-            if (cc.resources && " function " == typeof cc.resources.load) {
+            if (cc.resources && "function" == typeof cc.resources.load) {
                 cc.resources.load(n, cc.Font, o);
                 return;
             }
             var s = cc.assetManager, l = s && s._bundles && s._bundles.get && s._bundles.get(" resources ");
-            if (l && " function " == typeof l.load) {
+            if (l && "function" == typeof l.load) {
                 l.load(n, cc.Font, o);
                 return;
             }
@@ -103,7 +103,7 @@ class LanguageHelperImpl {
         for (var t = [], i = 1; i < arguments.length; i++) t[i - 1] = arguments[i];
         if (!this.languageJson) return e;
         for (var n = this.languageJson, a = e.split("."); a.length; ) if (void 0 === (n = n[a.shift()])) return e;
-        if (" string " == typeof n && t.length > 0) for (var o = 0; o < t.length; o++) n = n.replace("% {\n  " + o + "\n}\n", t[o]);
+        if ("string" == typeof n && t.length > 0) for (var o = 0; o < t.length; o++) n = n.replace("% {\n  " + o + "\n}\n", t[o]);
         return n;
     }
 

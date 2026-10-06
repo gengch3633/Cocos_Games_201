@@ -24,13 +24,13 @@ function safeParse(e: any) {
 }
 
 function invokeHandler(e: any, t: any) {
-    e && (" function " != typeof e ? e && " function " == typeof e.runWith && e.runWith(t) : e(t));
+    e && ("function" != typeof e ? e && "function" == typeof e.runWith && e.runWith(t) : e(t));
 }
 
 const regionalExtraKeys = [ " referrer_url ", " referrer_timestamp_server ", " install_timestamp_server ", " oaid " ];
 
 function mergeRegionalExtras(e: any, t: any) {
-    if (!t || " object " != typeof t) return e;
+    if (!t || "object" != typeof t) return e;
     for (var i = 0, n = regionalExtraKeys; i < n.length; i++) {
         var a = n[i], o = t[a];
         null != o && (e[a] = o);
@@ -86,7 +86,7 @@ function resolveBaseVersion() {
 
 function fillClientDataFields(e: any) {
     for (var t = ClientDataStore, i = Object.keys(t).filter(function (e) {
-        return " function " != typeof (t as any)[e];
+        return "function" != typeof (t as any)[e];
     }), n = 0; n < i.length; n++) {
         var o = i[n];
         e[o] = (t as any)[o];
@@ -102,7 +102,7 @@ function fillClientDataFields(e: any) {
 function enrichPayloadList(e: any) {
     if (!Array.isArray(e) || e.length <= 0) return e || [];
     e.forEach(function (e) {
-        (t = e) && " object " == typeof t && fillClientDataFields(t);
+        (t = e) && "object" == typeof t && fillClientDataFields(t);
         var t;
     });
     return e;
@@ -124,7 +124,7 @@ function buildRequestBody(e: string, t: any) {
         id: " 0 ",
         ids: " 0 "
     };
-    if (" string " == typeof a.query) {
+    if ("string" == typeof a.query) {
         if (isPayloadRequestType(e)) return JSON.stringify({
             payload: extractPayloadList(a),
             query: a.query,
@@ -158,7 +158,7 @@ function buildRequestBody(e: string, t: any) {
         var b = v[g];
         if (" query " !== b && " ds " !== b && void 0 === p[b]) {
             var w = a[b];
-            null != w && " object " != typeof w && (p[b] = String(w));
+            null != w && "object" != typeof w && (p[b] = String(w));
         }
     }
     return isPayloadRequestType(e) ? JSON.stringify({

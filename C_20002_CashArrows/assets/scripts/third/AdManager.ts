@@ -142,8 +142,8 @@ export default class AdManager {
 
     showLongTapToastBeforeVideoAd() {
         if (cc.sys.isNative && cc.sys.os === cc.sys.OS_ANDROID) try {
-            var t: any = LanguageService || null, i = t && " function " == typeof t.t ? t.t(AdManager.LONG_TAP_TOAST_I18N_KEY, null, AdManager.LONG_TAP_TOAST_FALLBACK) : AdManager.LONG_TAP_TOAST_FALLBACK, bridge: any = NativeSdkBridgeAdapter || null, a = bridge && " function " == typeof bridge.getBridge ? bridge.getBridge() : null;
-            a && " function " == typeof a.showAppLongTapToast && a.showAppLongTapToast(i, 1);
+            var t: any = LanguageService || null, i = t && "function" == typeof t.t ? t.t(AdManager.LONG_TAP_TOAST_I18N_KEY, null, AdManager.LONG_TAP_TOAST_FALLBACK) : AdManager.LONG_TAP_TOAST_FALLBACK, bridge: any = NativeSdkBridgeAdapter || null, a = bridge && "function" == typeof bridge.getBridge ? bridge.getBridge() : null;
+            a && "function" == typeof a.showAppLongTapToast && a.showAppLongTapToast(i, 1);
         } catch (e) {
             console.warn("[AdManager] showAppLongTapToast failed ", e);
         }
@@ -210,13 +210,13 @@ export default class AdManager {
         this.stopVideoTimer();
         AdToolbox.destroyAdManageToast();
         var t = e;
-        if (" string " == typeof t) try {
+        if ("string" == typeof t) try {
             t = JSON.parse(t);
         } catch (e) {
             t = {};
         }
-        t && " object " == typeof t || (t = {});
-        var i = (null == t ? void 0 : t.ferryBulkTierAgate) && " object " == typeof t.ferryBulkTierAgate ? t.ferryBulkTierAgate : {}, merged = Object.assign(Object.assign({}, i), t), dateText = AdToolbox.formatDate(new Date().getTime());
+        t && "object" == typeof t || (t = {});
+        var i = (null == t ? void 0 : t.ferryBulkTierAgate) && "object" == typeof t.ferryBulkTierAgate ? t.ferryBulkTierAgate : {}, merged = Object.assign(Object.assign({}, i), t), dateText = AdToolbox.formatDate(new Date().getTime());
         this.cpm_data.activity_date = dateText;
         void 0 !== merged.cpm && (this.cpm_data.cpm = Number(merged.cpm || 0));
         void 0 === merged.source && void 0 === merged.dsp || (this.cpm_data.source = merged.source || merged.dsp || " ");

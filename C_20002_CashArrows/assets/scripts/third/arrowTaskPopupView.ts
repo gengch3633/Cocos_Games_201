@@ -271,7 +271,7 @@ export default class arrowTaskPopupView extends cc.Component {
     parseClaimableCount(e) {
     
         var t = Number(e);
-        return ! isFinite(t)|| t < 0? 0: MatCountryAssetService.floor(t);
+        return ! isFinite(t)|| t < 0? 0: Math.floor(t);
       }
 
     initClaimableCountsFromInfo() {
@@ -540,13 +540,13 @@ export default class arrowTaskPopupView extends cc.Component {
     parseAmount(e) {
     
         var t = Number(e);
-        return isFinite(t)?(t = MatCountryAssetService.floor(t)) < 0? 0: t: null;
+        return isFinite(t)?(t = Math.floor(t)) < 0? 0: t: null;
       }
 
     parseTaskType(e) {
     
         var t = String(e|| "").toLowerCase();
-        return(t = t.replace(/ \ s+/ g, ""))? "daily_login" === t|| "signin" === t|| "sign" === t|| "login" === t? "login": "pass_level" === t|| "clear_level" === t|| "passlevel" === t|| "clearlevel" === t|| "level" === t? "level": "watch_ad" === t|| "watchad" === t|| "watch_video" === t|| "watchvideo" === t|| "video" === t|| "ads" === t|| "ad" === t? "ad": t: "";
+        return(t = t.replace(/\s+/g, ""))? "daily_login" === t|| "signin" === t|| "sign" === t|| "login" === t? "login": "pass_level" === t|| "clear_level" === t|| "passlevel" === t|| "clearlevel" === t|| "level" === t? "level": "watch_ad" === t|| "watchad" === t|| "watch_video" === t|| "watchvideo" === t|| "video" === t|| "ads" === t|| "ad" === t? "ad": t: "";
       }
 
     sortClaimedToTail(e) {
@@ -726,7 +726,7 @@ export default class arrowTaskPopupView extends cc.Component {
 
     refreshTaskProgress(e, t) {
     
-        var i = MatCountryAssetService.max(1, Number(e.taskNum|| 1)), n = Number(e.finishedNum|| 0);
+        var i = Math.max(1, Number(e.taskNum|| 1)), n = Number(e.finishedNum|| 0);
         n < 0&& (n = 0);
         n > i&& (n = i);
         var a = n/ i;
@@ -828,7 +828,7 @@ export default class arrowTaskPopupView extends cc.Component {
 
     submitTaskClaim(e, t, i) {
         var n = this;
-        i = " function " == typeof i ? i : function () { };
+        i = "function" == typeof i ? i : function () { };
         var a = t || {}, o = String(a.taskId || e && e.id || " "), r = String(a.taskType || e && e.claimTaskType || " ");
         if (o) if (this.isTaskClaiming) i(!1); else {
             this.isTaskClaiming = !0;
@@ -848,9 +848,9 @@ export default class arrowTaskPopupView extends cc.Component {
                         n.syncTaskRedDotToGameView();
                         try {
                             var a = UserInfoService;
-                            if (a && " function " == typeof a.getInstance) {
+                            if (a && "function" == typeof a.getInstance) {
                                 var o = a.getInstance();
-                                o && " function " == typeof o.fetch && o.fetch();
+                                o && "function" == typeof o.fetch && o.fetch();
                             }
                         } catch (e) {
                             cc.warn("[arrowTaskPopupView] UserInfoService.fetch after claim failed: ", e);
@@ -867,7 +867,7 @@ export default class arrowTaskPopupView extends cc.Component {
 
     playTaskRewardVideo(e, t) {
         var i = AdManager && AdManager.getInstance ? AdManager.getInstance() : null;
-        i && " function " == typeof i.playNormalVideoAd ? i.playNormalVideoAd({
+        i && "function" == typeof i.playNormalVideoAd ? i.playNormalVideoAd({
             ad_type: " reward_video ",
             force_video: !1
         }, function (n) {

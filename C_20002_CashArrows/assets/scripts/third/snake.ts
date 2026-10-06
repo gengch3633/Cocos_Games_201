@@ -3,10 +3,14 @@ import GlobalEventMgr from "./GlobalEventMgr";
 import MultiPlatform from "./MultiPlatform";
 import ResMgr from "./ResMgr";
 import SpriteFrames from "./SpriteFrames";
-import InterfaceMgr from "./InterfaceMgr";
+import { bundleName, gameEvent } from "./InterfaceMgr";
 import UserData from "./UserData";
 import game from "./game";
 import { ClickState } from "./game";
+
+const l = __awaiter;
+const c = __generator;
+const u = __spreadArrays;
 
 export enum Bodyparts {
     "头_上" = 0,
@@ -78,7 +82,7 @@ export default class Snake extends cc.Component {
     bool_isLongtimeTouch: any = !1;
 
     _parseHexColor(e) {
-if (!e || " string " != typeof e || e.length < 6) return cc.color(17, 20, 51);
+if (!e || "string" != typeof e || e.length < 6) return cc.color(17, 20, 51);
 var t = parseInt(e.substring(0, 2), 16), i = parseInt(e.substring(2, 4), 16), n = parseInt(e.substring(4, 6), 16);
 return isNaN(t) || isNaN(i) || isNaN(n) ? cc.color(17, 20, 51) : cc.color(t, i, n);
 };
@@ -90,19 +94,17 @@ this.levelInfo = t;
 this.node_map = n;
 this.parent_snake = i;
 var o = this.levelInfo.Arrows[this.id];
-UserData.getInstance().colorMode && o && " string " == typeof snakeState.Color && (this.snakeColor = this._parseHexColor(snakeState.Color));
-ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
-}
-].js).then(function(e) {
+UserData.getInstance().colorMode && o && "string" == typeof o.Color && (this.snakeColor = this._parseHexColor(o.Color));
+ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, " game ").then(function(e) {
   if(e) {
-    Direction.prefab_item = e;
-    Direction.ShowSnake();
-    Direction.getNodePos({
+    a.prefab_item = e;
+    a.ShowSnake();
+    a.getNodePos({
       x: 1, y: 1
     }
 );
-    Direction.determineDirection();
-    Direction.ShowFuzhuline2();
+    a.determineDirection();
+    a.ShowFuzhuline2();
   }
 }
 );
@@ -163,13 +165,13 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
       this.gameManager.setState(ClickState.norlmal);
     } else if(this.bool_isLongtimeTouch) {
       this.bool_longtouchShowFuzhulline&& this.node_fuzhuline&& (this.node_fuzhuline.active = ! 1);
-      GlobalEventMgr.getInstance().emit(g.gameEvent.notifyGameCanMove);
+      GlobalEventMgr.getInstance().emit(gameEvent.notifyGameCanMove);
       this.bool_isLongtimeTouch = ! 1;
       for(var e = 0;
       e < this.node_allbody.length;
       e++) this.node_allbody[e].getChildByName("show").color = this.bool_iserrored? this.color_red: this.snakeColor;
     } else this.snakeMove();
-    GlobalEventMgr.getInstance().emit(g.gameEvent.notifySnakeTouch, this.id);
+    GlobalEventMgr.getInstance().emit(gameEvent.notifySnakeTouch, this.id);
   }
 }
 ;
@@ -180,7 +182,7 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
   this.unschedule(this.showFuzhuline);
   this.node_fuzhuline&& (this.node_fuzhuline.active = ! 1);
   this.bool_isLongtimeTouch = ! 1;
-  GlobalEventMgr.getInstance().emit(g.gameEvent.notifyGameCanMove);
+  GlobalEventMgr.getInstance().emit(gameEvent.notifyGameCanMove);
   for(var e = 0;
   e < this.node_allbody.length;
   e++) this.node_allbody[e].getChildByName("show").color = this.snakeColor;
@@ -195,11 +197,11 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
     n = cc.instantiate(this.prefab_item);
     this.parent_snake.addChild(n);
     this.gameManager.Layout_map.node.children[i].getChildByName("dian").opacity = 255;
-    Bodyparts.active = ! 1;
+    n.active = ! 1;
     var a = i% this.levelInfo.XSize,
     o = Math.floor(i/ this.levelInfo.XSize);
     this.gameManager.num_mapInfo[a][o] = this.id+ "_"+ t;
-    Bodyparts.setPosition(this.getNodePos({
+    n.setPosition(this.getNodePos({
       x: a, y: o
     }
 ));
@@ -208,17 +210,17 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
     }
 );
     this.node_allbody.push(n);
-    Bodyparts.getChildByName("show").color = this.snakeColor;
-    Bodyparts.on(cc.Node.EventType.TOUCH_START, this.touch_start, this);
-    Bodyparts.on(cc.Node.EventType.TOUCH_MOVE, this.touch_move, this);
-    Bodyparts.on(cc.Node.EventType.TOUCH_END, this.touch_end, this);
-    Bodyparts.on(cc.Node.EventType.TOUCH_CANCEL, this.touch_cancle, this);
+    n.getChildByName("show").color = this.snakeColor;
+    n.on(cc.Node.EventType.TOUCH_START, this.touch_start, this);
+    n.on(cc.Node.EventType.TOUCH_MOVE, this.touch_move, this);
+    n.on(cc.Node.EventType.TOUCH_END, this.touch_end, this);
+    n.on(cc.Node.EventType.TOUCH_CANCEL, this.touch_cancle, this);
   }
   for(var r = 0, s = .3/ this.levelInfo.Arrows[this.id].Indices.length, l = function(t, i) {
     var n = c.node_allbody[t];
     c.scheduleOnce(function() {
       r+= 1;
-      Bodyparts.active = ! 0;
+      n.active = ! 0;
       r > 1&& e.updatePartialSnakeSkin();
     }
 , s* i);
@@ -264,7 +266,7 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
     var e = this;
     return c(this, function() {
       MultiPlatform.getInstance().vibrateEnabled&& UserData.getInstance().shake&& MultiPlatform.getInstance().vibrateLong();
-      AudioMgr.getInstance().playEffect("audio/click_wrong_arrow", InterfaceMgr.bundleName.game);
+      AudioMgr.getInstance().playEffect("audio/click_wrong_arrow", bundleName.game);
       return[2, new Promise(function(t) {
         var i = 0, n = 0;
         switch(e.direction) {
@@ -308,35 +310,35 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
   return l(this, void 0, void 0, function() {
     var e, t, i, n;
     return c(this, function(a) {
-      switch(Direction.label) {
+      switch(a.label) {
         case 0: MultiPlatform.getInstance().vibrateEnabled&& UserData.getInstance().shake&& MultiPlatform.getInstance().vibrateShort();
         this.bool_moveflag = ! 0;
         if(!(e = this.checkZhanai()).hasCollision) return[3, 10];
         if(!(e.distance > 0)) return[3, 7];
         t = e.distance;
         n = 0;
-        Direction.label = 1;
+        a.label = 1;
         case 1: return n < e.distance?[4, this.move()]:[3, 6];
-        case 2: Direction.sent();
+        case 2: a.sent();
         if(-- t <= 0) {
           this._vibrateOnCollision();
-          return GlobalEventMgr.getInstance().emit(g.gameEvent.snakeTouchSnake, e.collisionPos), [4, this.errorAni()];
+          return GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, e.collisionPos), [4, this.errorAni()];
         }
         return[3, 5];
-        case 3: Direction.sent();
-        GlobalEventMgr.getInstance().emit(g.gameEvent.gameFail, this.id);
+        case 3: a.sent();
+        GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
         return[4, this.huitui()];
-        case 4: Direction.sent();
-        Direction.label = 5;
+        case 4: a.sent();
+        a.label = 5;
         case 5: n++;
         return[3, 1];
         case 6: return[3, 9];
         case 7: this._vibrateOnCollision();
-        GlobalEventMgr.getInstance().emit(g.gameEvent.snakeTouchSnake, e.collisionPos);
+        GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, e.collisionPos);
         return[4, this.errorAni()];
-        case 8: Direction.sent();
-        GlobalEventMgr.getInstance().emit(g.gameEvent.gameFail, this.id);
-        Direction.label = 9;
+        case 8: a.sent();
+        GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
+        a.label = 9;
         case 9: this.bool_moveflag = ! 1;
         return[3, 19];
         case 10: this.snakeState = snakeState.dead;
@@ -356,10 +358,10 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
 ).start();
         }
         n = 0;
-        Direction.label = 11;
+        a.label = 11;
         case 11: return n < 200?[4, this.move()]:[3, 14];
-        case 12: Direction.sent();
-        Direction.label = 13;
+        case 12: a.sent();
+        a.label = 13;
         case 13: n++;
         return[3, 11];
         case 14: return[3, 19];
@@ -376,10 +378,10 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
 ).start();
         }
         n = 0;
-        Direction.label = 16;
+        a.label = 16;
         case 16: return n < 200?[4, this.move()]:[3, 19];
-        case 17: Direction.sent();
-        Direction.label = 18;
+        case 17: a.sent();
+        a.label = 18;
         case 18: n++;
         return[3, 16];
         case 19: return[2];
@@ -506,21 +508,21 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
   return l(this, void 0, void 0, function() {
     var e, t, i, n = this;
     return c(this, function(a) {
-      switch(Direction.label) {
+      switch(a.label) {
         case 0: e = function(e) {
           var i, a;
           return c(this, function(o) {
-            switch(snakeState.label) {
+            switch(o.label) {
               case 0: i = [];
               a = t.action[e];
               t.snakeInfo2 = a;
-              Direction.forEach(function(e, t) {
-                var a = Bodyparts.node_allbody[t], o = Bodyparts.getNodePos(e);
-                i.push(Bodyparts.moveBody(a, o));
+              a.forEach(function(e, t) {
+                var a = n.node_allbody[t], o = n.getNodePos(e);
+                i.push(n.moveBody(a, o));
               }
 );
               return[4, Promise.all(i)];
-              case 1: snakeState.sent();
+              case 1: o.sent();
               return[2];
             }
           }
@@ -529,10 +531,10 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
 ;
         t = this;
         i = this.action.length- 1;
-        Direction.label = 1;
+        a.label = 1;
         case 1: return i >= 0?[5, e(i)]:[3, 4];
-        case 2: Direction.sent();
-        Direction.label = 3;
+        case 2: a.sent();
+        a.label = 3;
         case 3: i--;
         return[3, 1];
         case 4: this.action = [];
@@ -927,9 +929,9 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
     n < e.node_allbody.length;
     n++) {
       var a = e.node_allbody[n], o = e.getNodePos(e.snakeInfo2[n]);
-      Direction.setPosition(o);
-      Direction.getChildByName("show").color = e.snakeColor;
-      Direction.setSiblingIndex(n);
+      a.setPosition(o);
+      a.getChildByName("show").color = e.snakeColor;
+      a.setSiblingIndex(n);
       e.updateSnakeBody(a);
     }
     e.determineDirection();
@@ -953,7 +955,7 @@ ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, "game")
     n < e.node_allbody.length;
     n++) {
 (a = e.node_allbody[n]).off(cc.Node.EventType.TOUCH_END, e.touch_end, e);
-      Direction.on(cc.Node.EventType.TOUCH_END, e.touch_end, e);
+      a.on(cc.Node.EventType.TOUCH_END, e.touch_end, e);
     }
   }
 , .4);

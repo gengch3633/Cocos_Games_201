@@ -1386,8 +1386,5 @@ const I18nPreviewTables = {
   }
 }
 ;
-t.exports = i;
-t.exports.default = i;
-cc._RF.pop();
 
 export default I18nPreviewTables;

@@ -94,9 +94,9 @@ export default class cashArrowCheckView extends cc.Component {
             this.channelData = e.channelData || null;
             this.bindInfo = e.bindInfo || null;
             !this.bindInfo && Array.isArray(e.txBindInfo) && e.txBindInfo.length > 0 && (this.bindInfo = e.txBindInfo[0]);
-            this.onRevise = " function " == typeof e.onRevise ? e.onRevise : null;
-            this.onWithdraw = " function " == typeof e.onWithdraw ? e.onWithdraw : null;
-            this.onClose = " function " == typeof e.onClose ? e.onClose : null;
+            this.onRevise = "function" == typeof e.onRevise ? e.onRevise : null;
+            this.onWithdraw = "function" == typeof e.onWithdraw ? e.onWithdraw : null;
+            this.onClose = "function" == typeof e.onClose ? e.onClose : null;
             this.refreshUI();
         }
     }

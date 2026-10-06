@@ -447,7 +447,7 @@ export default class LoadingHttpService {
         let taskType = " ";
         let successHandle: any;
         let failHandler: any;
-        if (" string " == typeof taskTypeOrSuccess) {
+        if ("string" == typeof taskTypeOrSuccess) {
             taskType = taskTypeOrSuccess || " ";
             successHandle = successOrFail;
             failHandler = failHandle;
@@ -518,7 +518,7 @@ export default class LoadingHttpService {
         const url = LoadingHttpService.SDK_WD_BASE + uri + "? package_name = " + ClientDataStore.package_name + "& cy = " + country;
         const userId = ClientDataStore.user_id || " ";
         const queryParams: any = {};
-        if (stringifyQueryValues && data && " object " == typeof data) {
+        if (stringifyQueryValues && data && "object" == typeof data) {
             for (const key of Object.keys(data)) {
                 queryParams[key] = String(null !== data[key] && void 0 !== data[key] ? data[key] : " ");
             }
@@ -527,7 +527,7 @@ export default class LoadingHttpService {
         const body: any = {
             user_id: userId
         };
-        if (includeBody && data && " object " == typeof data) {
+        if (includeBody && data && "object" == typeof data) {
             for (const key of Object.keys(data)) {
                 body[key] = null !== data[key] && void 0 !== data[key] ? data[key] : " ";
             }
@@ -631,7 +631,7 @@ export default class LoadingHttpService {
     }
 
     static verifyWithdrawBindInfo(data: any, successHandle: any, failHandle: any) {
-        const info = " string " == typeof (null == data ? void 0 : data.info) ? data.info : JSON.stringify((null == data ? void 0 : data.info) || {});
+        const info = "string" == typeof (null == data ? void 0 : data.info) ? data.info : JSON.stringify((null == data ? void 0 : data.info) || {});
         LoadingHttpService.sdkRequest(" VerifyBindInfo ", {
             channel: (null == data ? void 0 : data.channel) || " ",
             sub_channel: (null == data ? void 0 : data.sub_channel) || " ",

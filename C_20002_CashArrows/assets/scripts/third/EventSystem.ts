@@ -95,7 +95,7 @@ class EventDispatcher {
 }
 
 export default class EventSystem {
-    static listen(e: any, t: any, i: any, n: any) {
+    static listen(e: any, t: any, i: any, n: any = null) {
         this.dispatcher.off(e, i, t);
         this.dispatcher.on(e, i, t, n);
     }

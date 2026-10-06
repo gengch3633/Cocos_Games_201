@@ -227,9 +227,9 @@ start() {
       if(e.isViewAlive()) {
         var t = PlayerDataStore.arrow_level;
         console.log("[LevelVerify] start: 即将加载 level_"+ e.num_rellyLevel+ ".json | 显示第"+(t&& t.arrow_level_id|| "?")+ "关 | level_index="+(t&& t.level_index|| "未配置")+ " | arrow_count(服务器)="+(t&& t.arrow_count|| "?"));
-        Handler.getInstance().loadLevelData("level_"+ e.num_rellyLevel, ! 1).then(function() {
+        ConfigMgr.getInstance().loadLevelData("level_"+ e.num_rellyLevel, ! 1).then(function() {
           if(e.isViewAlive()) {
-            e.data_levelinfo = Handler.getInstance().getLevelById(e.num_rellyLevel);
+            e.data_levelinfo = ConfigMgr.getInstance().getLevelById(e.num_rellyLevel);
             e._eliminateCounter = 0;
             var t = e.data_levelinfo&& e.data_levelinfo.Arrows? e.data_levelinfo.Arrows.length: "加载失败";
             console.log("[LevelVerify] start 加载完成: level_"+ e.num_rellyLevel+ ".json | 本地实际箭头数="+ t+ " | 服务器下发 arrow_count="+(PlayerDataStore.arrow_level.arrow_count|| "?")+(String(t) !== String(PlayerDataStore.arrow_level.arrow_count)? " ⚠️ 箭头数不匹配，请检查 level_index 是否正确": " ✅ 箭头数匹配"));
@@ -365,7 +365,7 @@ start() {
         t = n;
         console.log("[fuzhuline] clear limit from userinfo guideline_eliminate_num =", t);
       } else {
-        var a = Handler.getInstance().getOne(ConfigDefine.ConstantConfig)|| {
+        var a = ConfigMgr.getInstance().getOne(ConfigDefine.ConstantConfig)|| {
         }
 ,
         o = Number(a.fuzhuline_clear_limit|| a.fuzhuxian_clear_limit|| a.help_line_clear_limit|| a.help_line_limit|| 0);
@@ -583,7 +583,7 @@ start() {
       this.lbl_balanceText&& t.push("lbl_balanceText<=money_text");
     } else i.push("lbl_balanceText<=money_text");
     if(! this.rich_bubbleText&& c) if(n) {
-      this.rich_bubbleText = UIMgr.getComponent(cc.RichText);
+      this.rich_bubbleText = c.getComponent(cc.RichText);
       this.rich_bubbleText&& t.push("rich_bubbleText<=pop_text");
     } else i.push("rich_bubbleText<=pop_text");
     if(! this.node_bigBarragePanel&& u) if(n) {
@@ -1181,7 +1181,7 @@ start() {
     parseRewardNumValue(e) {
     if(null == e) return null;
     var t = e;
-    if("string" == typeof t&& !(t = t.replace(/, / g, "").trim()).length) return null;
+    if("string" == typeof t&& !(t = t.replace(/,/g, "").trim()).length) return null;
     var i = Number(t);
     return isFinite(i)? Math.max(0, Math.floor(i)): null;
   }
@@ -1634,7 +1634,7 @@ start() {
       e._updateRichText&& e._updateRichText();
       var c = this.getTopBubbleRenderedSize(),
       u = 1;
-      UIMgr.width > 0&& UIMgr.height > 0&& (u = Math.min(1, s/ UIMgr.width, l/ UIMgr.height));
+      c.width > 0&& c.height > 0&& (u = Math.min(1, s/ c.width, l/ c.height));
       var d = i;
       u < 1&& (d = Math.max(a, Math.floor(i* u)));
       e.fontSize = d;
@@ -1648,7 +1648,7 @@ start() {
       }
       e.node&& e.node.setScale(p, p);
       console.log("[top_bubble_fit] result", {
-        text: e.string, containerW: t.width, containerH: t.height, preRenderedW: UIMgr.width, preRenderedH: UIMgr.height, fitRatio: u, renderedW: h.width, renderedH: h.height, fitPaddingRatio: r, maxAllowedW: s, maxAllowedH: l, maxLines: o, baseFont: i, minFont: a, targetFont: d, finalFont: e.fontSize, finalLineHeight: e.lineHeight, finalScale: p, effectiveFont: Math.round(e.fontSize* p* 100)/ 100
+        text: e.string, containerW: t.width, containerH: t.height, preRenderedW: c.width, preRenderedH: c.height, fitRatio: u, renderedW: h.width, renderedH: h.height, fitPaddingRatio: r, maxAllowedW: s, maxAllowedH: l, maxLines: o, baseFont: i, minFont: a, targetFont: d, finalFont: e.fontSize, finalLineHeight: e.lineHeight, finalScale: p, effectiveFont: Math.round(e.fontSize* p* 100)/ 100
       }
 );
     } else console.log("[top_bubble_fit] skip fit: rich text missing");
@@ -1762,10 +1762,7 @@ start() {
 ;
   
     formatTopBalance(e) {
-    return Math.max(0, Math.floor(e)).toString().replace(/ \ B(? = (\ d {
-      3
-    }
-)+(? ! \ d))/ g, ",");
+    return Math.max(0, Math.floor(e)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 ;
   
@@ -1859,7 +1856,7 @@ start() {
     this.ensureRuntimeNodeRefs();
     var t = e;
     "string" != typeof t&& (t = this.i18n("key_newbie_guide_step7_banner", [], "过关即可获得现金奖励，过关越多奖励越多"));
-    if(t = String(t|| "").replace(/ \ r \ n/ g, "\n").replace(/ \ r/ g, "\n")) {
+    if(t = String(t|| "").replace(/\r\n/g, "\n").replace(/\r/g, "\n")) {
       this.lbl_step7GuideTextBack&& (this.lbl_step7GuideTextBack.string = t);
       this.lbl_step7GuideTextFront&& (this.lbl_step7GuideTextFront.string = t);
     }
@@ -1995,9 +1992,7 @@ start() {
     a = UserData.getInstance();
     console.log("[prop] _consumeProp: prop_type="+ t+ " hint="+ a.hint_prop_count+ " guideline="+ a.guideline_prop_count);
     try {
-      var o = e("LoadingHttpService.js"),
-      r = e("Handler.js"),
-      s = LoadingHttpService,
+      var s = LoadingHttpService,
       l = Handler;
       s.consumeArrowProp({
         prop_type: t
@@ -2032,9 +2027,7 @@ start() {
     2 === t|| "2" === t? a = "hint_prop": 3 !== t&& "3" !== t|| (a = "guideline_prop");
     console.log("[prop] _claimPropVideoReward: video_type="+ t+ " request_video_type="+ a);
     try {
-      var o = e("LoadingHttpService.js"),
-      r = e("Handler.js"),
-      s = LoadingHttpService,
+      var s = LoadingHttpService,
       l = Handler;
       s.claimArrowAdReward({
         video_type: a
@@ -2136,7 +2129,7 @@ start() {
       var e = PlayerDataStore.arrow_level.time_limit|| 0;
       if(e > 0) this.num_gametime = e;
       else {
-        var t = Handler.getInstance().getById(ConfigDefine.GametimeConfig, this.num_rellyLevel);
+        var t = ConfigMgr.getInstance().getById(ConfigDefine.GametimeConfig, this.num_rellyLevel);
         this.num_gametime = t&& t.leveltime? t.leveltime: 525;
       }
       this.txt_time.string = NumberUtils.formatSeconds(this.num_gametime);
@@ -2491,8 +2484,7 @@ start() {
 ,
       p = function() {
         if(l&& o&& u&& u.isValid) try {
-          var t = e("arrowSettleRewardView"),
-          i = t&& arrowSettleRewardView? arrowSettleRewardView: t,
+          var i = arrowSettleRewardView,
           n = u.getComponent(i);
           n&& n.setEntryData&& n.setEntryData(d());
           var r = a.getNewbieGuideFlow();
@@ -2690,9 +2682,9 @@ start() {
       action: "restart_game", module: "level_"+ n, is_ad: 0
     }
 );
-    Handler.getInstance().loadLevelData("level_"+ this.num_rellyLevel, ! 1).then(function() {
+    ConfigMgr.getInstance().loadLevelData("level_"+ this.num_rellyLevel, ! 1).then(function() {
       if(e.isViewAlive()) {
-        e.data_levelinfo = Handler.getInstance().getLevelById(e.num_rellyLevel);
+        e.data_levelinfo = ConfigMgr.getInstance().getLevelById(e.num_rellyLevel);
         e._eliminateCounter = 0;
         e._totalEliminated = 0;
         var n = e.data_levelinfo&& e.data_levelinfo.Arrows? e.data_levelinfo.Arrows.length: "加载失败";
@@ -2716,9 +2708,9 @@ start() {
     this._resetLevelBehaviorStats();
     var t = PlayerDataStore.arrow_level;
     console.log("[LevelVerify] showNext: 即将加载 level_"+ this.num_rellyLevel+ ".json | 显示第"+(t&& t.arrow_level_id|| "?")+ "关 | level_index="+(t&& t.level_index|| "未配置"));
-    Handler.getInstance().loadLevelData("level_"+ this.num_rellyLevel, ! 1).then(function() {
+    ConfigMgr.getInstance().loadLevelData("level_"+ this.num_rellyLevel, ! 1).then(function() {
       if(e.isViewAlive()) {
-        e.data_levelinfo = Handler.getInstance().getLevelById(e.num_rellyLevel);
+        e.data_levelinfo = ConfigMgr.getInstance().getLevelById(e.num_rellyLevel);
         e._eliminateCounter = 0;
         e._totalEliminated = 0;
         var t = e.data_levelinfo&& e.data_levelinfo.Arrows? e.data_levelinfo.Arrows.length: "加载失败";
@@ -2744,7 +2736,7 @@ start() {
     var t = this;
     UIMgr.getInstance().show(UIDefine.arrowTaskPopupView).then(function(i) {
       if(t.isViewAlive()&& i&& i.isValid) {
-        var n = e("arrowTaskPopupView"), a = arrowTaskPopupView || n, o = i.getComponent(a);
+        var a = arrowTaskPopupView, o = i.getComponent(a);
 o || (o = i.addComponent(a));
 }
 });
@@ -2915,9 +2907,9 @@ this.num_rellyLevel = this.getRellyLevel();
 this._resetLevelBehaviorStats();
 var t = PlayerDataStore.arrow_level;
 console.log("[LevelVerify] jumpLevel: 即将加载 level_ " + this.num_rellyLevel + ".json| 显示第 " + (t && t.arrow_level_id || "? ") + " 关| level_index = " + (t && t.level_index || " 未配置 "));
-Handler.getInstance().loadLevelData(" level_ " + this.num_rellyLevel, !1).then(function() {
+ConfigMgr.getInstance().loadLevelData(" level_ " + this.num_rellyLevel, !1).then(function() {
 if (e.isViewAlive()) {
-e.data_levelinfo = Handler.getInstance().getLevelById(e.num_rellyLevel);
+e.data_levelinfo = ConfigMgr.getInstance().getLevelById(e.num_rellyLevel);
 e._eliminateCounter = 0;
 e._totalEliminated = 0;
 var t = e.data_levelinfo && e.data_levelinfo.Arrows ? e.data_levelinfo.Arrows.length : " 加载失败 ";
@@ -2980,7 +2972,7 @@ this._levelStartTs = Date.now();
 console.log("[ArrowStats] 重开本关 ， retry_count = " + this._retryCount);
 };
 
-    _buildBehaviorStatsFields() {
+    _buildBehaviorStatsFields(): any {
 var e = PlayerDataStore.arrow_level || {}, t = e.arrow_level_id, i = e.level_index || this.num_rellyLevel || 0, n = Number(this._mistakeCount || 0), a = Number(this._reviveCount || 0), o = this._levelStartTs ? Math.max(0, Math.round((Date.now() - this._levelStartTs) / 1e3)) : 0;
 return {
 arrow_level_id: t || this.num_rellyLevel,
@@ -3016,7 +3008,7 @@ console.warn("[ArrowLevel][失败上报] 请求失败 ", e);
 
     _settleArrowReward(e, t, i) {
 var n = 0, a = i;
-" function " == typeof t ? a = t : n = Number(t || 0);
+"function" == typeof t ? a = t : n = Number(t || 0);
 var o = this, r = PlayerDataStore, s = this._buildBehaviorStatsFields();
 if (e) {
 s.level_passed = 1;
@@ -3108,17 +3100,17 @@ a && a(null);
 
     _refreshUserInfoAfterLevelPass() {
 try {
-var e = R && UserInfoService ? UserInfoService : R;
-if (!e || " function " != typeof e.getInstance) return;
+var e = UserInfoService;
+if (!e || "function" != typeof e.getInstance) return;
 var t = e.getInstance();
-t && " function " == typeof t.fetch && t.fetch();
+t && "function" == typeof t.fetch && t.fetch();
 } catch (e) {
 console.warn("[ArrowLevel] _refreshUserInfoAfterLevelPass error ", e);
 }
 };
 
     getRellyLevel2() {
-return UserData.getInstance().level > Handler.getInstance().getAll(ConfigDefine.GametimeConfig).length ? Random.range(19, Handler.getInstance().getAll(ConfigDefine.GametimeConfig).length) : UserData.getInstance().level;
+return UserData.getInstance().level > ConfigMgr.getInstance().getAll(ConfigDefine.GametimeConfig).length ? Random.range(19, ConfigMgr.getInstance().getAll(ConfigDefine.GametimeConfig).length) : UserData.getInstance().level;
 };
 
     getRellyLevel() {
@@ -3138,7 +3130,7 @@ if (i && i > 0) {
 console.warn("[LevelVerify] getRellyLevel → level_index 未配置 ， 降级使用 arrow_level_id = " + i + " 加载 level_ " + i + ".json （ 旧兼容模式 ） ");
 return i;
 }
-var n = Handler.getInstance().getAll(ConfigDefine.GametimeConfig).length;
+var n = ConfigMgr.getInstance().getAll(ConfigDefine.GametimeConfig).length;
 console.log(n);
 if (UserData.getInstance().level > n) {
 for (var a, o = UserData.getInstance().recentRandomLevels || [], s = [], l = 19; l <= n; l++) o.includes(l) || s.push(l);
@@ -3174,7 +3166,7 @@ e ? console.error(" 纹理资源预加载失败: ", e) : console.log(" 成功预
 
     showHard() {
 var e = this;
-LoadingHttpService.getInstance().playEffect(" audio/ difficulty_warning ", InterfaceMgr.bundleName.game);
+AudioMgr.getInstance().playEffect(" audio/ difficulty_warning ", InterfaceMgr.bundleName.game);
 this.node_hardsp.active = !0;
 this.node_red.active = !0;
 this.node_red.opacity = 0;

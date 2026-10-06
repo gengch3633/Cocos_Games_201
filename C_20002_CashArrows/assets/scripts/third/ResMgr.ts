@@ -17,7 +17,7 @@ export default class ResMgr extends Singleton {
         return this.resLoader.getBundle(e);
     }
 
-    loadRes(e: string, t: typeof cc.Asset, i: any = null, n: string, a: any) {
+    loadRes(e: string, t: typeof cc.Asset, i: any = null, n?: string, a?: any) {
         var o = i ? this.getKeeper(i) : this.resLoader;
         return null == o ? void 0 : o.loadRes(e, t, n, a);
     }

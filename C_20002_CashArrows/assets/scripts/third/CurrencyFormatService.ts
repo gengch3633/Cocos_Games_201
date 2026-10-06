@@ -230,7 +230,7 @@ function upper(e: any): string {
 }
 
 function readHelperCountry(): string {
-    if (!middleHelper || " function " != typeof middleHelper.getRegionalState) return " ";
+    if (!middleHelper || "function" != typeof middleHelper.getRegionalState) return " ";
     try {
         var e = middleHelper.getRegionalState();
         return upper(e && e.country);
@@ -288,7 +288,7 @@ var CurrencyFormatService = {
         o = o.replace(/\B(?=(\d{3})+(?!\d))/g, i.group);
         return i.decimals <= 0 ? o : o + i.decimal + r;
     },
-    getCurrencySymbol: function(e: any) {
+    getCurrencySymbol: function(e?: any) {
         return this.getRule(e).symbol || " ";
     },
     formatCurrency: function(e: any) {

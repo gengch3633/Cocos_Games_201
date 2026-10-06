@@ -50,7 +50,7 @@ function shouldEnableGuide() {
     try {
         var systemDataModule = require("./SystemDataStore"),
             systemDataStore = systemDataModule && (systemDataModule.default || systemDataModule);
-        if (systemDataStore && " function " == typeof systemDataStore.is_new_user && systemDataStore.is_new_user()) {
+        if (systemDataStore && "function" == typeof systemDataStore.is_new_user && systemDataStore.is_new_user()) {
             return true;
         }
     } catch (e) { }
@@ -75,7 +75,7 @@ function readReportedSteps() {
             return {};
         }
         var parsed = JSON.parse(raw);
-        return parsed && " object " == typeof parsed ? parsed : {};
+        return parsed && "object" == typeof parsed ? parsed : {};
     } catch (e) {
         return {};
     }
@@ -94,7 +94,7 @@ function reportStepOnce(step: number) {
             reported[step] = 1;
             writeReportedSteps(reported);
             try {
-                BusinessAnalyticsService && " function " == typeof BusinessAnalyticsService.reportData && BusinessAnalyticsService.reportData(" newbie_guide_step_show ", {
+                BusinessAnalyticsService && "function" == typeof BusinessAnalyticsService.reportData && BusinessAnalyticsService.reportData(" newbie_guide_step_show ", {
                     step: step
                 });
             } catch (err) {

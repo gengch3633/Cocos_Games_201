@@ -1119,7 +1119,7 @@ export default class withMoodView extends cc.Component {
                     onClose: o || null,
                     onRevise: function (e) {
                         r.showSetView(t, i, e || a, o);
-                    }
+                    },
                     onWithdraw: function (e, i, o) {
                         r.tryAdvanceToStep6();
                         r.submitWithdrawFlow({
@@ -1303,9 +1303,9 @@ export default class withMoodView extends cc.Component {
     fetchUserInfoByService() {
         try {
             var e = UserInfoService;
-            if (!e || " function " != typeof e.getInstance) return;
+            if (!e || "function" != typeof e.getInstance) return;
             var t = e.getInstance();
-            t && " function " == typeof t.fetch && t.fetch();
+            t && "function" == typeof t.fetch && t.fetch();
         } catch (e) {
             cc.warn("[withMoodView] fetch user info error: ", e && (e as any).message);
         }
@@ -1358,8 +1358,8 @@ export default class withMoodView extends cc.Component {
             var i = String(t);
             try {
                 if (cc.sys.isNative && cc.sys.os === cc.sys.OS_ANDROID) {
-                    var a = NativeSdkBridgeAdapter && (NativeSdkBridgeAdapter), o = a && " function " == typeof a.getBridge ? a.getBridge() : null;
-                    if (o && " function " == typeof o.showAppLongTapToast) {
+                    var a = NativeSdkBridgeAdapter && (NativeSdkBridgeAdapter), o = a && "function" == typeof a.getBridge ? a.getBridge() : null;
+                    if (o && "function" == typeof o.showAppLongTapToast) {
                         o.showAppLongTapToast(i, 0);
                         return;
                     }

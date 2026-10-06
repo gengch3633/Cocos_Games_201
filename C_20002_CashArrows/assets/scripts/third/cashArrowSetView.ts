@@ -91,8 +91,8 @@ export default class cashArrowSetView extends cc.Component {
     this.selectedOpt = e.selectedOpt || null;
     this.channelData = e.channelData || null;
     this.initialBindInfo = e.initialBindInfo || null;
-    this.onValidated = " function " == typeof e.onValidated ? e.onValidated : null;
-    this.onClose = " function " == typeof e.onClose ? e.onClose : null;
+    this.onValidated = "function" == typeof e.onValidated ? e.onValidated : null;
+    this.onClose = "function" == typeof e.onClose ? e.onClose : null;
     this.parseChannelData();
     this.seedInitialInputCache();
     this.refreshUI();
@@ -578,13 +578,13 @@ export default class cashArrowSetView extends cc.Component {
     
     e && e.stopPropagation && e.stopPropagation();
     var t = e && e.currentTarget, i = t && t._cashArrowBoundEditBox;
-    i && " function " == typeof i.focus && i.focus();
+    i && "function" == typeof i.focus && i.focus();
     }
 
     onClickChannelCard(e) {
     
     var t = e && e.currentTarget && e.currentTarget._channelCardIndex;
-    if (" number " == typeof t && !(t < 0 || t >= this.channelList.length) && t !== this.selectedChannelIndex) {
+    if ("number" == typeof t && !(t < 0 || t >= this.channelList.length) && t !== this.selectedChannelIndex) {
     this.saveCurrentInputCache();
     this.selectedChannelIndex = t;
     this.refreshUI();
@@ -844,13 +844,13 @@ export default class cashArrowSetView extends cc.Component {
     if (!e || !e.data) return {};
     var t = e.data.check_info;
     if (!t) return {};
-    if (" string " == typeof t) try {
+    if ("string" == typeof t) try {
     return JSON.parse(t);
     } catch (e) {
     cc.warn("[cashArrowSetView] parse check_info failed ", e);
     return {};
     }
-    return " object " == typeof t ? t : {};
+    return "object" == typeof t ? t : {};
     }
 
     isCheckPass(e) {
@@ -880,7 +880,7 @@ export default class cashArrowSetView extends cc.Component {
     sub_channel: t.sub_channel || " ",
     info: i
     }, l = LoadingHttpService.verifyWithdrawBindInfo;
-    if (" function " == typeof l) {
+    if ("function" == typeof l) {
     var c = NetErrorPopupService, u = function() {
     e.isSubmitting = !1;
     e.onClickSubmit();
@@ -949,11 +949,12 @@ export default class cashArrowSetView extends cc.Component {
     return LanguageService.t(e, t || [], i);
     }
 
-    showToast(t) {
-    
-    try {
-    Tips.show(t);
-    }
+    showToast(t: string) {
+        try {
+            Tips.show(t);
+        } catch (e) {
+            cc.log("[cashArrowSetView] toast: ", t);
+        }
     }
 
     onClickClose() {

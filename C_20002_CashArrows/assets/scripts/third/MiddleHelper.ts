@@ -64,8 +64,8 @@ class MiddleHelperImpl {
         t || (t = this.resolveDefaultCountry());
         this.saveLocalCountry(t);
         ClientDataStore.local_country = t;
-        " function " == typeof ClientDataStore.buildCommonUrlStr && ClientDataStore.buildCommonUrlStr();
-        " function " == typeof ClientDataStore.buildMiddleCommonUrlStr && ClientDataStore.buildMiddleCommonUrlStr();
+        "function" == typeof ClientDataStore.buildCommonUrlStr && ClientDataStore.buildCommonUrlStr();
+        "function" == typeof ClientDataStore.buildMiddleCommonUrlStr && ClientDataStore.buildMiddleCommonUrlStr();
         return t;
     }
 

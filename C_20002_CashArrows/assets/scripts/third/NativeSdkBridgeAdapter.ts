@@ -8,9 +8,9 @@ const l = "[NativeSdkBridgeAdapter] ";
 let c = !0;
 
 function u(e: any) {
-    if (" string " == typeof e) return e.length <= 180 ? e : e.slice(0, 180) + "...(len = " + e.length + ") ";
+    if ("string" == typeof e) return e.length <= 180 ? e : e.slice(0, 180) + "...(len = " + e.length + ") ";
     if (null == e) return e;
-    if (" number " == typeof e || " boolean " == typeof e) return e;
+    if ("number" == typeof e || "boolean" == typeof e) return e;
     try {
         return JSON.parse(JSON.stringify(e));
     } catch (t) {
@@ -67,7 +67,7 @@ class AndroidBridge {
         });
         try {
             var a = (typeof jsb !== "undefined" ? jsb : null) && (jsb as any).reflection;
-            if (!a || " function " != typeof a.callStaticMethod) {
+            if (!a || "function" != typeof a.callStaticMethod) {
                 h(" invokeMoveTo skipped(no jsb.reflection.callStaticMethod) ", {
                     methodName: e
                 });
@@ -158,7 +158,7 @@ class AndroidBridge {
     exitApp() {
         try {
             var e = (typeof jsb !== "undefined" ? jsb : null) && (jsb as any).reflection;
-            if (!e || " function " != typeof e.callStaticMethod) {
+            if (!e || "function" != typeof e.callStaticMethod) {
                 h(" exitApp skipped(no jsb.reflection.callStaticMethod) ");
                 return;
             }
@@ -239,8 +239,8 @@ export default class NativeSdkBridgeAdapter {
     static parseEncodedJson(e: any, t?: boolean) {
         void 0 === t && (t = !1);
         if (null == e) return null;
-        if (" object " == typeof e) return e;
-        if (" string " != typeof e) return null;
+        if ("object" == typeof e) return e;
+        if ("string" != typeof e) return null;
         var i = String(e || " ").trim();
         if (!i) return t ? " " : null;
         try {
@@ -285,7 +285,7 @@ export default class NativeSdkBridgeAdapter {
             var bindHandler = function (eventName: string, handler: (...args: any[]) => void) {
                 var n = i[eventName];
                 h(" bind branch." + eventName, {
-                    hasPrevious: " function " == typeof n
+                    hasPrevious: "function" == typeof n
                 });
                 i[eventName] = function () {
                     for (var a = [], o = 0; o < arguments.length; o++) a[o] = arguments[o];
@@ -295,7 +295,7 @@ export default class NativeSdkBridgeAdapter {
                     } catch (t) {
                         console.error("[NativeSdkBridgeAdapter] branch." + eventName + " failed ", t);
                     }
-                    if (" function " == typeof n && n !== i[eventName]) try {
+                    if ("function" == typeof n && n !== i[eventName]) try {
                         h(" branch." + eventName + "- > previous handler ", d(a));
                         n.apply(i, a);
                     } catch (t) {
@@ -309,8 +309,8 @@ export default class NativeSdkBridgeAdapter {
                 void 0 !== a && (ClientDataStore.referrer_url = String(a));
                 void 0 !== o && (ClientDataStore.referrer_timestamp_server = Number(o) || 0);
                 void 0 !== s && (ClientDataStore.install_timestamp_server = Number(s) || 0);
-                " function " == typeof (ClientDataStore as any).buildCommonUrlStr && (ClientDataStore as any).buildCommonUrlStr();
-                " function " == typeof (ClientDataStore as any).buildMiddleCommonUrlStr && (ClientDataStore as any).buildMiddleCommonUrlStr();
+                "function" == typeof (ClientDataStore as any).buildCommonUrlStr && (ClientDataStore as any).buildCommonUrlStr();
+                "function" == typeof (ClientDataStore as any).buildMiddleCommonUrlStr && (ClientDataStore as any).buildMiddleCommonUrlStr();
                 h(" branch.moduleSerialNailed applied to ClientDataStore ", {
                     androidId: n ? String(n) : " ",
                     referrerUrl: a || " ",
@@ -322,7 +322,7 @@ export default class NativeSdkBridgeAdapter {
                 var i = e.parseEncodedJson(t);
                 h(" branch.relayFragmentaryNote parsed ", u(i));
                 var n;
-                h(" branch.relayFragmentaryNote- > BusinessAnalyticsService.onTrack ", u(n = i && " object " == typeof i ? JSON.stringify(i) : " string " == typeof t ? t : null != t ? JSON.stringify(t) : " {\n}\n"));
+                h(" branch.relayFragmentaryNote- > BusinessAnalyticsService.onTrack ", u(n = i && "object" == typeof i ? JSON.stringify(i) : "string" == typeof t ? t : null != t ? JSON.stringify(t) : " {\n}\n"));
                 BusinessAnalyticsService.onTrack(n);
             });
             bindHandler(" unloadHeapedNotes ", function () {
@@ -348,12 +348,12 @@ export default class NativeSdkBridgeAdapter {
                 });
             });
             bindHandler(" backedFeatureRipened ", function (t) {
-                var i = e.parseEncodedJson(t), o = i && (i.ferryBulkTierAgate || i.data) || {}, r = i && " object " == typeof i ? Object.assign(Object.assign({}, o), i) : o && " object " == typeof o ? o : {};
+                var i = e.parseEncodedJson(t), o = i && (i.ferryBulkTierAgate || i.data) || {}, r = i && "object" == typeof i ? Object.assign(Object.assign({}, o), i) : o && "object" == typeof o ? o : {};
                 h(" branch.backedFeatureRipened- > EventMgr.trigger(VIDEO_OPEN_SUCCESS) ", u(r));
                 EventSystem.trigger(AdEventType.VIDEO_OPEN_SUCCESS, r);
             });
             bindHandler(" pushTokenInitialized ", function (t) {
-                var i = e.parseEncodedJson(t, !0), n = " string " == typeof i ? i.trim() : " string " == typeof t ? t.trim() : " ";
+                var i = e.parseEncodedJson(t, !0), n = "string" == typeof i ? i.trim() : "string" == typeof t ? t.trim() : " ";
                 h(" branch.pushTokenInitialized parsed ", {
                     raw: u(t),
                     token: u(n)
@@ -385,21 +385,21 @@ export default class NativeSdkBridgeAdapter {
             this.ANDROID_CALLBACK_MAP.forEach(function (i) {
                 var n = i.source, a = i.target, o = t[n];
                 h(" bind callAndroid." + n + "- > branch." + a, {
-                    hasPrevious: " function " == typeof o
+                    hasPrevious: "function" == typeof o
                 });
                 t[n] = function () {
                     for (var i = [], r = 0; r < arguments.length; r++) i[r] = arguments[r];
                     h(" callAndroid." + n + " invoked ", d(i));
                     try {
                         var s = e.branch, l = s && s[a];
-                        if (" function " == typeof l) {
+                        if ("function" == typeof l) {
                             h(" forward callAndroid." + n + "- > branch." + a, d(i));
                             l.apply(s, i);
                         } else h(" branch." + a + " missing, skip forward ");
                     } catch (e) {
                         console.error("[NativeSdkBridgeAdapter] forward " + n + "- > branch." + a + " failed ", e);
                     }
-                    if (" function " == typeof o && o !== t[n]) try {
+                    if ("function" == typeof o && o !== t[n]) try {
                         h(" callAndroid." + n + "- > previous handler ", d(i));
                         o.apply(t, i);
                     } catch (e) {

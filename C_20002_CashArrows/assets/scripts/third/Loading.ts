@@ -91,7 +91,7 @@ function patchNativeSpineBlendGuard() {
     if (cc.sys && cc.sys.isNative && !(cc as any).__spineBlendGuardPatched) {
         const gfx = cc.gfx || {};
         const prototype = cc.Material && cc.Material.prototype;
-        if (prototype && " function " == typeof prototype.setBlend) {
+        if (prototype && "function" == typeof prototype.setBlend) {
             const originalSetBlend = prototype.setBlend;
             const blendOpAdd = null != gfx.BLEND_FUNC_ADD ? gfx.BLEND_FUNC_ADD : gfx.BLEND_OP_ADD;
             const srcAlpha = null != gfx.BLEND_SRC_ALPHA ? gfx.BLEND_SRC_ALPHA : cc.macro.SRC_ALPHA;
@@ -282,8 +282,8 @@ export default class Loading extends cc.Component {
                 const platformBridge = PlatformBridge && PlatformBridge.default ? PlatformBridge.default : PlatformBridge;
                 const clientStore = ClientDataStore && ClientDataStore.default ? ClientDataStore.default : ClientDataStore;
                 const localCountry = clientStore && clientStore.local_country;
-                const nativeBridge = platformBridge && " function " == typeof platformBridge.getNativeBridge ? platformBridge.getNativeBridge() : null;
-                if (nativeBridge && " function " == typeof nativeBridge.initSMSdk) {
+                const nativeBridge = platformBridge && "function" == typeof platformBridge.getNativeBridge ? platformBridge.getNativeBridge() : null;
+                if (nativeBridge && "function" == typeof nativeBridge.initSMSdk) {
                     nativeBridge.initSMSdk(" MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKP9X+ CjUjA2ijFyOPVAqmXPOuQl39+ 2KRHZZMydD/ TuOEL/ SzZqE9A+ BT49r41twoDHp/ bNc7OjTYjclIkCDp8CAwEAAQ == ", localCountry);
                     console.log("[Loading] initSMSdk called country = " + localCountry);
                 }
@@ -358,7 +358,7 @@ export default class Loading extends cc.Component {
             const branch = win.branch = win.branch || {};
             const originalModuleSerialNailed = branch.moduleSerialNailed;
             branch.moduleSerialNailed = function () {
-                " function " == typeof originalModuleSerialNailed && originalModuleSerialNailed.apply(branch, arguments);
+                "function" == typeof originalModuleSerialNailed && originalModuleSerialNailed.apply(branch, arguments);
                 resolveGaid(" callback ");
             };
             gaidTimeout = setTimeout(function () {

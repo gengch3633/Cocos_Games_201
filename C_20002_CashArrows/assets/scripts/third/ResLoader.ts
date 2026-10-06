@@ -32,7 +32,7 @@ export default class ResLoader extends Singleton {
         });
     }
 
-    loadRes(e: string, t: typeof cc.Asset, i: string, n: any) {
+    loadRes(e: string, t: typeof cc.Asset, i?: string, n?: any) {
         var r = this;
         return new Promise<any>(function (s) {
             (i ? r.getBundle(i) : Promise.resolve(cc.resources)).then(function (i) {
