@@ -991,6 +991,6 @@ snake.prototype.showPengzhuan = function() {
 }
 ;
 return __decorate([ ccclass ], snake);
-}(cc.Component);
+})(cc.Component);
 
 export default snake;

@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": false,
+    "checkJs": false,
+    "noImplicitAny": false,
+    "strict": false,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": [
+    "assets/scripts/**/*.ts",
+    "creator.d.ts"
+  ]
+}

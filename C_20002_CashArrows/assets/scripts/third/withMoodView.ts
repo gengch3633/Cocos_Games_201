@@ -233,7 +233,7 @@ const withMoodView = cc.Class({
   }
 , getOptionNodeIndex: function(e, t) {
     if(! e|| ! e.name) return t|| 0;
-    var i = e.name.match(/ ^ option_(\ d+) $/);
+    var i = e.name.match(/^option_(\d+)$/);
     if(! i) return t|| 0;
     var n = parseInt(i[1], 10);
     return isNaN(n)? t|| 0: n;

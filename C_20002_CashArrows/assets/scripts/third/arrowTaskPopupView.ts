@@ -456,7 +456,7 @@ const ArrowTaskPopupView = cc.Class({
   }
 , parseTaskType: function(e) {
     var t = String(e|| "").toLowerCase();
-    return(t = t.replace(/ \ s+/ g, ""))? "daily_login" === t|| "signin" === t|| "sign" === t|| "login" === t? "login": "pass_level" === t|| "clear_level" === t|| "passlevel" === t|| "clearlevel" === t|| "level" === t? "level": "watch_ad" === t|| "watchad" === t|| "watch_video" === t|| "watchvideo" === t|| "video" === t|| "ads" === t|| "ad" === t? "ad": t: "";
+    return(t = t.replace(/\s+/g, ""))? "daily_login" === t|| "signin" === t|| "sign" === t|| "login" === t? "login": "pass_level" === t|| "clear_level" === t|| "passlevel" === t|| "clearlevel" === t|| "level" === t? "level": "watch_ad" === t|| "watchad" === t|| "watch_video" === t|| "watchvideo" === t|| "video" === t|| "ads" === t|| "ad" === t? "ad": t: "";
   }
 , sortClaimedToTail: function(e) {
     for(var t = [], i = [], n = 0;
@@ -676,21 +676,20 @@ const ArrowTaskPopupView = cc.Class({
       i&& a.onClickClose();
       UIMgr.getInstance().show(UIDefine.arrowSettleRewardView).then(function(i) {
         if(i&& i.isValid) {
-          var n = e(arrowSettleRewardView "
-} ].js), s = UIMgr || n, l = i.getComponent(s);
-l || (l = i.addComponent(s));
-l && l.setEntryData && l.setEntryData({
-popupMode: " task ",
-isLevelPassed: !1,
-taskId: t.id || " ",
-showAmount: o,
-taskReward: r,
-onTaskClaim: function(e, i) {
-a.submitTaskClaim(t, e, i);
-}
-});
-}
-});
+          var l = i.getComponent(ArrowSettleRewardView);
+          l || (l = i.addComponent(ArrowSettleRewardView));
+          l && l.setEntryData && l.setEntryData({
+            popupMode: "task",
+            isLevelPassed: !1,
+            taskId: t.id || "",
+            showAmount: o,
+            taskReward: r,
+            onTaskClaim: function(e, i) {
+              a.submitTaskClaim(t, e, i);
+            }
+          });
+        }
+      });
 }
 },
 submitTaskClaim: function(e, t, i) {

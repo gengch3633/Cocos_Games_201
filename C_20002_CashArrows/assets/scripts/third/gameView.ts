@@ -1096,7 +1096,7 @@ const GameView = (function (_super) {
   GameView.prototype.parseRewardNumValue = function(e) {
     if(null == e) return null;
     var t = e;
-    if("string" == typeof t&& !(t = t.replace(/, / g, "").trim()).length) return null;
+    if("string" == typeof t&& !(t = t.replace(/,/g, "").trim()).length) return null;
     var i = Number(t);
     return isFinite(i)? Math.max(0, Math.floor(i)): null;
   }
@@ -1648,10 +1648,7 @@ const GameView = (function (_super) {
   }
 ;
   GameView.prototype.formatTopBalance = function(e) {
-    return Math.max(0, Math.floor(e)).toString().replace(/ \ B(? = (\ d {
-      3
-    }
-)+(? ! \ d))/ g, ",");
+    return Math.max(0, Math.floor(e)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 ;
   GameView.prototype.getCurrencyText = function(e, t) {
@@ -1731,7 +1728,7 @@ const GameView = (function (_super) {
     this.ensureRuntimeNodeRefs();
     var t = e;
     "string" != typeof t&& (t = this.i18n("key_newbie_guide_step7_banner", [], "过关即可获得现金奖励，过关越多奖励越多"));
-    if(t = String(t|| "").replace(/ \ r \ n/ g, "\n").replace(/ \ r/ g, "\n")) {
+    if(t = String(t|| "").replace(/\r\n/g, "\n").replace(/\r/g, "\n")) {
       this.lbl_step7GuideTextBack&& (this.lbl_step7GuideTextBack.string = t);
       this.lbl_step7GuideTextFront&& (this.lbl_step7GuideTextFront.string = t);
     }
@@ -3013,6 +3010,6 @@ __decorate([ property(cc.RichText) ], GameView.prototype, " rich_bubbleText ", v
 __decorate([ property(cc.Node) ], GameView.prototype, " node_bigBarragePanel ", void 0);
 __decorate([ property(cc.RichText) ], GameView.prototype, " rich_bigBarrageText ", void 0);
 return __decorate([ ccclass, menu("业务逻辑/gameView") ], GameView);
-}(cc.Component);
+})(cc.Component);
 
 export default GameView;

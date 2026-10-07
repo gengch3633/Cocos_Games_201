@@ -480,7 +480,7 @@ sp.Skeleton.__assembler__.cacheTraverse = function(e) {
 ;
 sp.Skeleton.__assembler__.fillBuffers = function(e, t) {
   var a = e.node;
-  a._renderFlag| = cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
+  a._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
   if(e._skeleton) {
     var o = a._color;
     u = o.r/ 255;
@@ -501,12 +501,12 @@ sp.Skeleton.__assembler__.fillBuffers = function(e, t) {
     re = ! 1;
     se = e._effectDelegate&& e._effectDelegate._vertexEffect;
 (4294967295 !== o._val|| i)&& (re = ! 0);
-    r&& (S| = 1);
+    r&& (S |= 1);
     var s = void 0;
     if(ie.enableBatch) {
       s = oe._worldMatrix;
       B = ! 1;
-      S| = 16;
+      S |= 16;
     }
     if(e.isAnimationCached()) this.cacheTraverse(s);
     else {

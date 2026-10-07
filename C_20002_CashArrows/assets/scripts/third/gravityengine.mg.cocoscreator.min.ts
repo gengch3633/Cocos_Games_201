@@ -671,7 +671,7 @@ f.encodeURIComponent = function(e) {
 }
 ;
 f.utf8Encode = function(e) {
-  for(var t, i = "", n = t = 0, a = (e = (e+ "").replace(/ \ r \ n/ g, "\n").replace(/ \ r/ g, "\n")).length, o = 0;
+  for(var t, i = "", n = t = 0, a = (e = (e+ "").replace(/\r\n/g, "\n").replace(/\r/g, "\n")).length, o = 0;
   o < a;
   o++) {
     var r = e.charCodeAt(o),
@@ -746,7 +746,7 @@ f.UUID = function() {
 }
 ;
 f.UUIDv4 = function() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/ g, function(e) {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(e) {
     var t = 16* Math.random()| 0;
     return("x" === e? t: 3& t| 8).toString(16);
   }
@@ -774,11 +774,11 @@ f.createExtraHeaders = function() {
 f.checkAppId = function(e) {
   if("number" == typeof e) e = String(e);
   else if("string" != typeof e) return "";
-  return e.replace(/ \ s*/ g, "");
+  return e.replace(/\s*/g, "");
 }
 ;
 f.checkUrl = function(e) {
-  e = e.replace(/ \ s*/ g, "");
+  e = e.replace(/\s*/g, "");
   return f.url("basic", e);
 }
 ;
@@ -815,25 +815,25 @@ f.url = function() {
     a = a|| window.location.toString();
     if(! n) return a;
     n = n.toString();
-    if(a.match(/ ^ mailto:([^/].+)/)) {
-      o = a.match(/ ^ mailto:([^/].+)/);
+    if(a.match(/^mailto:([^\/].+)/)) {
+      o = a.match(/^mailto:([^\/].+)/);
       r.protocol = "mailto";
       r.email = o[1];
     } else {
-      if((a = a.match(/(.*?) \/ # !(.*)/)?(o = a.match(/(.*?) \/ # !(.*)/))[1]+ o[2]: a).match(/(.*?) #(.*)/)) {
-        o = a.match(/(.*?) #(.*)/);
+      if((a = a.match(/(.*?)\/#!(.*)/)?(o = a.match(/(.*?)\/#!(.*)/))[1]+ o[2]: a).match(/(.*?)#(.*)/)) {
+        o = a.match(/(.*?)#(.*)/);
         r.hash = o[2];
         a = o[1];
       }
-      if(r.hash&& n.match(/ ^ #/)) return i(n, r.hash);
-      if(a.match(/(.*?) \?(.*)/)) {
-        o = a.match(/(.*?) \?(.*)/);
+      if(r.hash&& n.match(/^#/)) return i(n, r.hash);
+      if(a.match(/(.*?)\?(.*)/)) {
+        o = a.match(/(.*?)\?(.*)/);
         r.query = o[2];
         a = o[1];
       }
-      if(r.query&& n.match(/ ^ \?/)) return i(n, r.query);
-      if(a.match(/(.*?):? \/ \/(.*)/)) {
-        o = a.match(/(.*?):? \/ \/(.*)/);
+      if(r.query&& n.match(/^\?/)) return i(n, r.query);
+      if(a.match(/(.*?):?\/\/(.*)/)) {
+        o = a.match(/(.*?):?\/\/(.*)/);
         r.protocol = o[1].toLowerCase();
         a = o[2];
       }
@@ -842,15 +842,15 @@ f.url = function() {
         r.path = o[2];
         a = o[1];
       }
-      r.path = (r.path|| "").replace(/ ^([^/])/, "/$1").replace(/ \/ $/, "");
-      if((n = n.match(/ ^[-0-9]+ $/)? n.replace(/ ^([^/])/, "/$1"): n).match(/ ^ \//)) return t(n, r.path.substring(1));
-      if(o = (o = t("/-1", r.path.substring(1)))&& o.match(/(.*?) \.(.*)/)) {
+      r.path = (r.path|| "").replace(/^([^/])/, "/$1").replace(/\/$/, "");
+      if((n = n.match(/^[-0-9]+$/)? n.replace(/^([^/])/, "/$1"): n).match(/^\//)) return t(n, r.path.substring(1));
+      if(o = (o = t("/-1", r.path.substring(1)))&& o.match(/(.*?)\.(.*)/)) {
         r.file = o[0];
         r.filename = o[1];
         r.fileext = o[2];
       }
-      if(a.match(/(.*):([0-9]+) $/)) {
-        o = a.match(/(.*):([0-9]+) $/);
+      if(a.match(/(.*):([0-9]+)$/)) {
+        o = a.match(/(.*):([0-9]+)$/);
         r.port = o[2];
         a = o[1];
       }
@@ -999,7 +999,7 @@ var T = function() {
 , {
     key: "_getOs", value: function() {
       var e = navigator.userAgent;
-      return/ Windows/ i.test(e)?/ Phone/.test(e)|| / WPDesktop/.test(e)? "Windows Phone": "Windows":/(iPhone| iPad| iPod)/.test(e)? "iOS":/ Android/.test(e)? "Android":/(BlackBerry| PlayBook| BB10)/ i.test(e)? "BlackBerry":/ Mac/ i.test(e)? "MacOS":/ Linux/.test(e)? "Linux":/ CrOS/.test(e)? "ChromeOS": "";
+      return /Windows/i.test(e) ? /Phone/.test(e) || /WPDesktop/.test(e) ? "Windows Phone" : "Windows" : /(iPhone|iPad|iPod)/.test(e) ? "iOS" : /Android/.test(e) ? "Android" : /(BlackBerry|PlayBook|BB10)/i.test(e) ? "BlackBerry" : /Mac/i.test(e) ? "MacOS" : /Linux/.test(e) ? "Linux" : /CrOS/.test(e) ? "ChromeOS" : "";
     }
   }
 , {
@@ -1242,7 +1242,7 @@ N = function() {
   }
 , {
     key: "_getPath", value: function(e) {
-      return "string" == typeof e? e.replace(/ ^ \//, ""): "Abnormal values";
+      return "string" == typeof e? e.replace(/^\//, ""): "Abnormal values";
     }
   }
 , {
@@ -2194,11 +2194,7 @@ D = function() {
   return e;
 }
 (),
-x = / ^ \ $?[a- zA- Z][a- zA- Z0- 9_] {
-  0,
-  49
-}
-$/,
+x = /^\$?[a-zA-Z][a-zA-Z0-9_]{0,49}$/,
 O = function() {
   function e() {
     l(this, e);
@@ -2249,10 +2245,7 @@ O = function() {
   }
 , {
     key: "userId", value: function(e) {
-      return !(! f.isString(e)|| !/ ^.{
-        1, 64
-      }
-      $/.test(e))|| (C.warn("The user ID must be a string of less than 64 characters and cannot be null"), ! 1);
+      return !(! f.isString(e)|| !/^.{1,64}$/.test(e))|| (C.warn("The user ID must be a string of less than 64 characters and cannot be null"), ! 1);
     }
   }
 , {
