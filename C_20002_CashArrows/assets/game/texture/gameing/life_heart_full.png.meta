@@ -33,6 +33,28 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
+    },
+    "life_heart_full_e0562af8-f38b-4aad-b40e-58f0428726be": {
+      "ver": "1.0.6",
+      "uuid": "e0562af8-f38b-4aad-b40e-58f0428726be",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3b192a2a-2608-43b9-914c-76be777ad250",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 50,
+      "height": 47,
+      "rawWidth": 50,
+      "rawHeight": 47,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
     }
   }
 }

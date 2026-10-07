@@ -33,6 +33,28 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
+    },
+    "reward_bg_058b0ee1-4ebe-4fce-acd7-2dd2513a85a8": {
+      "ver": "1.0.6",
+      "uuid": "058b0ee1-4ebe-4fce-acd7-2dd2513a85a8",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7f35c222-4706-4eed-b60d-663e3366f21f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 359,
+      "height": 273,
+      "rawWidth": 359,
+      "rawHeight": 273,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
     }
   }
 }

@@ -33,6 +33,28 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
+    },
+    "with_progress_53cd00d3-11d7-45e4-9514-fb71fdeff94f": {
+      "ver": "1.0.6",
+      "uuid": "53cd00d3-11d7-45e4-9514-fb71fdeff94f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "944699b6-5f67-4ec0-8ac0-e0c83b457558",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 154,
+      "height": 188,
+      "rawWidth": 154,
+      "rawHeight": 188,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
     }
   }
 }

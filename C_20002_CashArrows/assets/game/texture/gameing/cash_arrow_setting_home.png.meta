@@ -33,6 +33,28 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
+    },
+    "cash_arrow_setting_home_a1cedf37-19c8-4ed0-b702-818ca04e82c4": {
+      "ver": "1.0.6",
+      "uuid": "a1cedf37-19c8-4ed0-b702-818ca04e82c4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a7b8cf0f-eaee-4695-a9b5-839d1c008a82",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 81,
+      "height": 88,
+      "rawWidth": 81,
+      "rawHeight": 88,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
     }
   }
 }

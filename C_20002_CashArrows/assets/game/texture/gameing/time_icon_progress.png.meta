@@ -33,6 +33,28 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
+    },
+    "time_icon_progress_b941664a-ba2e-4d59-9d6e-0d7f29f853fb": {
+      "ver": "1.0.6",
+      "uuid": "b941664a-ba2e-4d59-9d6e-0d7f29f853fb",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a930b48f-4ed2-4ad6-b488-7e511b2ab1ee",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 25,
+      "height": 25,
+      "rawWidth": 25,
+      "rawHeight": 25,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
     }
   }
 }
