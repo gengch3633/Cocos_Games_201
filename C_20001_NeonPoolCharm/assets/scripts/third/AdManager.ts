@@ -333,3 +333,5 @@ export class AdManager {
         this.stopVideoTimer();
     }
 }
+
+export default AdManager;

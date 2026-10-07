@@ -8,3 +8,5 @@ export class AdvertEventType {
     static ONGETADINFO = "ONGETADINFO";
     static ON_SPLASH_FINISH = "ON_SPLASH_FINISH";
 }
+
+export default AdvertEventType;

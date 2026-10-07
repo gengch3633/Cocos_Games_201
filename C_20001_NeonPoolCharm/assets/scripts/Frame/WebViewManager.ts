@@ -93,8 +93,8 @@ export default class WebViewManager {
         if (parent !== this._webViewNode?.parent) {
             if (!this._webViewNode) {
                 this._webViewNode = new cc.Node();
-                this._webViewNode.on(cc.WebView.EventType.LOADED, this._onWebViewLoaded, this);
-                this._webViewNode.on(cc.WebView.EventType.ERROR, this._onWebViewError, this);
+                this._webViewNode.on(cc.WebView.EventType.LOADED as any, this._onWebViewLoaded, this);
+                this._webViewNode.on(cc.WebView.EventType.ERROR as any, this._onWebViewError, this);
                 const widget = this._webViewNode.addComponent(cc.Widget);
                 widget.alignMode = cc.Widget.AlignMode.ON_WINDOW_RESIZE;
                 widget.isAlignBottom = true;

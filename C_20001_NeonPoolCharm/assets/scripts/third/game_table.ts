@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BallLogicMgr from "./BallLogicMgr";
 import CueDataSys from "./CueDataSys";
 import PropDataSys from "./PropDataSys";

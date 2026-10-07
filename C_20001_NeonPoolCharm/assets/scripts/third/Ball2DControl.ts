@@ -1,8 +1,8 @@
-import * as BallLogicMgr from "./BallLogicMgr";
+import BallLogicMgr from "./BallLogicMgr";
 import { ETaiQiuPropType } from "./ConfigDataMgr";
 import EventMgr from "./EventMgr";
 import GameEventType from "./GameEventType";
-import * as GlobalConfig from "./GlobalConfig";
+import GlobalConfig from "./GlobalConfig";
 import SdkHelper from "./SdkHelper";
 import * as WSCMD from "./WSCMD";
 
@@ -139,7 +139,7 @@ export default class Ball2DControl extends cc.Component {
     }
 
     getVelMag(velocity: cc.Vec2): number {
-        return cc.Vec2.mag(velocity);
+        return velocity.mag();
     }
 
     isAcceleDirValid(): boolean {

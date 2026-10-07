@@ -174,7 +174,8 @@ class CallAndroid {
         EventMgr.trigger(GameEventType.SHOW_YSDK_TOAST);
     }
 
-    isRoot(): void {
+    isRoot(): boolean {
+        return false;
     }
 
     getClientInfo(): void {
@@ -209,8 +210,9 @@ class CallAndroid {
     preLoadImgAd(): void {
     }
 
-    isEmulator(): void {
+    isEmulator(): boolean {
         console.log("isEmulator");
+        return false;
     }
 
     onVideoOpensuccess(data: any): void {
@@ -338,7 +340,8 @@ class CallAndroid {
         EventMgr.trigger(NativeEventType.APP_RESTART);
     }
 
-    getHSToken(): void {
+    getHSToken(): string {
+        return "";
     }
 
     getDeviceStatus(): void {
@@ -416,7 +419,8 @@ class CallAndroid {
         EventMgr.trigger(NativeEventType.APP_PAUSE);
     }
 
-    isRunningInVirtualApk(): void {
+    isRunningInVirtualApk(): boolean {
+        return false;
     }
 
     playMusic(): void {

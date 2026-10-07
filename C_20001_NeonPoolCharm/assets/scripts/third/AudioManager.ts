@@ -200,3 +200,5 @@ export class AudioManager extends cc.Component {
         cc.audioEngine.setEffectsVolume(vol);
     }
 }
+
+export default AudioManager;

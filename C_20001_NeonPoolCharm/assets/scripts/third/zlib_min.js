@@ -1,4 +1,8 @@
-export default function() {
+let e = require;
+let t = module;
+"use strict";
+cc._RF.push(t, "d53e4HtJVJBhbqWTPhO7RUM", "zlib_min");
+t.exports = function() {
   this|| window;
   function e(e) {
     throw e;
@@ -73,7 +77,7 @@ export default function() {
     for(var c = p = l, u = 7, p = p >>> 1;
     p;
     p >>>= 1) c <<= 1,
-    c| = 1& p,
+    c|= 1& p,
     -- u;
     s[l] = (c << u& 255) >>> 0;
   }
@@ -954,7 +958,7 @@ export default function() {
     for(var n, i = t.g, a = t.e, r = t.input, l = t.c, s = r.length;
     a < o;
 ) l >= s&& e(Error("input buffer is broken")),
-    i| = r[l++] << a,
+    i|= r[l++] << a,
     a+= 8;
     n = i& (1 << o)- 1;
     t.g = i >>> o;
@@ -965,7 +969,7 @@ export default function() {
   function J(t, o) {
     for(var n, i, a = t.g, r = t.e, l = t.input, s = t.c, c = l.length, u = o[0], p = o[1];
     r < p&& !(s >= c);
-) a| = l[s++] << r,
+) a|= l[s++] << r,
     r+= 8;
 (i = (n = u[a& (1 << p)- 1]) >>> 16) > r&& e(Error("invalid code length: "+ i));
     t.g = a >> i;
@@ -1115,8 +1119,8 @@ export default function() {
         r+= a+= e[s++];
       }
       while(-- i);
-      a% = 65521;
-      r% = 65521;
+      a%= 65521;
+      r%= 65521;
     }
     return(r << 16| a) >>> 0;
   }
@@ -1235,3 +1239,4 @@ export default function() {
 );
 }
 ;
+cc._RF.pop();

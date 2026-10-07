@@ -1,4 +1,4 @@
-import * as GlobalConfig from "./GlobalConfig";
+import GlobalConfig from "./GlobalConfig";
 
 const { ccclass, property } = cc._decorator;
 

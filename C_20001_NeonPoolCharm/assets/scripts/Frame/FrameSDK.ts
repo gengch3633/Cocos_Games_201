@@ -1341,36 +1341,38 @@ export class FrameSDK {
         cc.director.on(FrameSDK.frameData.ListenKeys.FRESH_STRING, () => {
             (FrameSDK.i18n ?? i18).updataString();
         });
-        if (!cc.__$_WebView_onEnable_$__) {
-            cc.__$_WebView_onEnable_$__ = cc.WebView.prototype.onEnable;
+        const ccAny = cc as any;
+        if (!ccAny.__$_WebView_onEnable_$__) {
+            ccAny.__$_WebView_onEnable_$__ = (cc.WebView.prototype as any).onEnable;
             cc.WebView.prototype.onEnable = function (this: cc.WebView) {
-                cc.__$_WebView_onEnable_$__.call(this);
-                if (!this.__splashEventListened) {
+                ccAny.__$_WebView_onEnable_$__.call(this);
+                const webView = this as any;
+                if (!webView.__splashEventListened) {
                     cc.director.on("SHOW_SPLASH", () => {
                         if (this.node) {
-                            if (this.__scaleX == null) {
-                                this.__scaleX = this.node.scaleX;
+                            if (webView.__scaleX == null) {
+                                webView.__scaleX = this.node.scaleX;
                                 this.node.scaleX = 0;
                             }
-                            if (this.__scaleY == null) {
-                                this.__scaleY = this.node.scaleY;
+                            if (webView.__scaleY == null) {
+                                webView.__scaleY = this.node.scaleY;
                                 this.node.scaleY = 0;
                             }
                         }
                     });
                     cc.director.on("HIDE_SPLASH", () => {
                         if (this.node) {
-                            if (this.__scaleX != null) {
-                                this.node.scaleX = this.__scaleX;
-                                this.__scaleX = undefined;
+                            if (webView.__scaleX != null) {
+                                this.node.scaleX = webView.__scaleX;
+                                webView.__scaleX = undefined;
                             }
-                            if (this.__scaleY != null) {
-                                this.node.scaleY = this.__scaleY;
-                                this.__scaleY = undefined;
+                            if (webView.__scaleY != null) {
+                                this.node.scaleY = webView.__scaleY;
+                                webView.__scaleY = undefined;
                             }
                         }
                     });
-                    this.__splashEventListened = true;
+                    webView.__splashEventListened = true;
                 }
             };
         }

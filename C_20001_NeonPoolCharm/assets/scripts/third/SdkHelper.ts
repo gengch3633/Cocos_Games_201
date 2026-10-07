@@ -170,7 +170,7 @@ class SdkHelper {
         );
         return cc.sys.os === cc.sys.OS_ANDROID
             ? !!(CallAndroid.getInstance().isRoot() || CallAndroid.getInstance().isEmulator() || CallAndroid.getInstance().isRunningInVirtualApk())
-            : void 0;
+            : false;
     }
 
     getUrlSplicingString(): string {
@@ -203,6 +203,7 @@ class SdkHelper {
             console.log("ClientData.version_name: ", ClientData.version_name);
             return CallAndroid.getInstance().getHSToken() || "";
         }
+        return "";
     }
 
     showForceToast(message: string): void {
