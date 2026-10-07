@@ -356,8 +356,8 @@ export default class Loading extends cc.Component {
         const startBaseFlow = () => {
             runMiddleCountry(() => {
                 progressTracker.stepDone("middleCountry");
-                runBaseFlow(launchConfig, launchConfig, (stepName: string) => {
-                    progressTracker.stepDone(stepName);
+                runBaseFlow(doLaunch, undefined, (stepName: string) => {
+                    progressTracker.stepDone(String(stepName || "").trim());
                 });
             }, null, () => {
                 progressTracker.batchDone(["middleCountry", "systemConfig", "login", "gameConfig", "userInfo"]);

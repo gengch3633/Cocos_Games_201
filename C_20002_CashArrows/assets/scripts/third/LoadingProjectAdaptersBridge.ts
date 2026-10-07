@@ -71,6 +71,10 @@ export function initProjectLoadingAdapters(): void {
 
 export function initSystem(): void {
     try {
+        LoadingHttpService.init((message: any, retry: () => void) => {
+            console.warn("[LoadingProjectAdaptersBridge] HTTP request failed, auto retry", message);
+            retry && retry();
+        });
         if (PlatformBridge && ClientDataStore) {
             const clientInfo = PlatformBridge.getClientInfo();
             console.log("[LoadingProjectAdaptersBridge] initSystem clientInfo type=", Object.prototype.toString.call(clientInfo));
@@ -349,6 +353,15 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
         const handler = Handler;
         const netErrorPopup = NetErrorPopupService;
 
+        const skipLoadingNetErrorPopup = (tag: string, retryFn?: () => void, fallbackFn?: () => void): void => {
+            console.warn(logPrefix, tag + ", skip netErrorView during loading");
+            if (typeof fallbackFn === "function") {
+                fallbackFn();
+            } else if (typeof retryFn === "function") {
+                retryFn();
+            }
+        };
+
         const report = (event: string, data?: any): void => {
             try {
                 if (analytics && typeof analytics.reportData === "function") {
@@ -379,8 +392,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, "getUserInfo force-retry code=", response && response.code);
-                    netErrorPopup.showAndRetry(getUserInfo);
+                    skipLoadingNetErrorPopup("getUserInfo force-retry code=" + (response && response.code), getUserInfo);
                 } else {
                     console.log(logPrefix, "getUserInfo success", JSON.stringify(response));
                     PlayerDataStore.init(response.data);
@@ -403,8 +415,10 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     reportStep("userInfo");
                     onComplete && onComplete();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, "getUserInfo 无缓存 + 网络异常，弹重试窗");
-                    netErrorPopup.showAndRetry(getUserInfo);
+                    skipLoadingNetErrorPopup("getUserInfo 无缓存 + 网络异常", null, () => {
+                        reportStep("userInfo");
+                        warnAndComplete("getUserInfo 无缓存，兜底进入游戏", err);
+                    });
                 } else {
                     reportStep("userInfo");
                     warnAndComplete("getUserInfo 无缓存，兜底进入游戏", err);
@@ -420,8 +434,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, "getGameConfig force-retry code =", response && response.code);
-                    netErrorPopup.showAndRetry(getGameConfig);
+                    skipLoadingNetErrorPopup("getGameConfig force-retry code=" + (response && response.code), getGameConfig);
                 } else {
                     console.log(logPrefix, "getGameConfig success", JSON.stringify(response));
                     GameConfigStore.init(response.data);
@@ -438,8 +451,10 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     reportStep("gameConfig");
                     getUserInfo();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, "getGameConfig 无缓存 + 网络异常，弹重试窗");
-                    netErrorPopup.showAndRetry(getGameConfig);
+                    skipLoadingNetErrorPopup("getGameConfig 无缓存 + 网络异常", null, () => {
+                        reportStep("gameConfig");
+                        getUserInfo();
+                    });
                 } else {
                     console.warn(logPrefix, "getGameConfig 无缓存，继续 getUserInfo");
                     reportStep("gameConfig");
@@ -454,8 +469,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
             httpService.touristsLogin(null, handler.create(null, (response: any) => {
                 report("page_loading_touristsLogin_res", response);
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, "touristsLogin force-retry code =", response && response.code);
-                    netErrorPopup.showAndRetry(touristsLogin);
+                    skipLoadingNetErrorPopup("touristsLogin force-retry code=" + (response && response.code), touristsLogin);
                 } else {
                     console.log(logPrefix, "touristsLogin success", JSON.stringify(response));
                     report("register_success", {
@@ -481,8 +495,15 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     reportStep("login");
                     getSystemConfig();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, "touristsLogin 无缓存 + 网络异常，弹重试窗");
-                    netErrorPopup.showAndRetry(touristsLogin);
+                    skipLoadingNetErrorPopup("touristsLogin 无缓存 + 网络异常", null, () => {
+                        report("register_fail", {
+                            login_type: "tourists",
+                            err_code: err && err.code !== undefined ? err.code : "",
+                            err_msg: err && err.message ? err.message : ""
+                        });
+                        reportStep("login");
+                        getSystemConfig();
+                    });
                 } else {
                     report("register_fail", {
                         login_type: "tourists",
@@ -504,8 +525,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, "getSystemConfig force-retry code =", response && response.code);
-                    netErrorPopup.showAndRetry(getSystemConfig);
+                    skipLoadingNetErrorPopup("getSystemConfig force-retry code=" + (response && response.code), getSystemConfig);
                 } else {
                     console.log(logPrefix, "getSystemConfig success", JSON.stringify(response));
                     SystemDataStore.init_config(response.data);
@@ -558,8 +578,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     timeStemp: Date.now()
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, "autoLogin force-retry code =", response && response.code);
-                    netErrorPopup.showAndRetry(autoLoginFlow);
+                    skipLoadingNetErrorPopup("autoLogin force-retry code=" + (response && response.code), autoLoginFlow);
                 } else {
                     let responseJson = "";
                     try {
