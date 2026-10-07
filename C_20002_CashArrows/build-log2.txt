@@ -1,0 +1,239 @@
+﻿
+CocosCreator.exe : (node:6916) Warning: Accessing non-existent property 'padLevels' of module exports inside circular d
+ependency
+所在位置 C:\Users\Administrator\AppData\Local\Temp\ps-script-f31653a9-5d65-45cd-bc3e-23a03ed7932b.ps1:94 字符: 1
++ & "C:\ProgramData\cocos\editors\Creator\2.4.13\CocosCreator.exe" --pa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:6916) War...ular dependency:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `CocosCreator --trace-warnings ...` to show where the warning was created)
+Error: EPERM: operation not permitted, unlink 'C:\Users\Administrator\.CocosCreator\logs\CocosCreator.log'
+    at Object.unlinkSync (fs.js:1210:3)
+    at App.<anonymous> (C:\ProgramData\cocos\editors\Creator\2.4.13\resources\app.asar\editor-framework\index.ccc:1:3300)
+    at App.emit (events.js:315:20)
+    at App.emit (domain.js:467:12) {
+  errno: -4048,
+  syscall: 'unlink',
+  code: 'EPERM',
+  path: 'C:\\Users\\Administrator\\.CocosCreator\\logs\\CocosCreator.log'
+}
+[35m===== Initializing Editor =====[39m
+[35marguments: 
+  --path
+  D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows
+  --build
+  platform=web-mobile;debug=false;buildPath=./build;md5Cache=false
+[39m
+[44m[6916][49m [32mprotocol editor-framework registered[39m
+[44m[6916][49m [32mprotocol app registered[39m
+[44m[6916][49m [32mprotocol theme registered[39m
+[44m[6916][49m [32mprotocol packages registered[39m
+[44m[6916][49m Load ~/.CocosCreator/settings.json
+[44m[6916][49m [32mprotocol uuid registerred[39m
+[44m[6916][49m [32mprotocol db registerred[39m
+[44m[6916][49m [32mprotocol thumbnail registerred[39m
+[44m[6916][49m Initializing Asset Database
+[44m[6916][49m checking language setting...
+[44m[6916][49m Language: zh
+[44m[6916][49m [32mprotocol unpack registerred[39m
+[44m[6916][49m [32mprotocol disable-commonjs registerred[39m
+Load profile failed: local://settings.json
+Load profile failed: local://settings.json
+Load profile failed: local://settings.json
+[44m[6916][49m connected!
+[44m[6916][49m Check project D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows
+[44m[6916][49m Initializing project D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows
+[44m[6916][49m [32madapters loaded[39m
+[44m[6916][49m [32masset-db-debugger loaded[39m
+[44m[6916][49m [32mfb-audience-network loaded[39m
+[44m[6916][49m [32mfb-live-stream loaded[39m
+[44m[6916][49m [32mgoogle-play-instant loaded[39m
+[44m[6916][49m [32mjsb-adapter loaded[39m
+[44m[6916][49m [32mpackage-manager loaded[39m
+[44m[6916][49m [32mruntime-adapters loaded[39m
+[44m[6916][49m [32mruntime-dev-tools loaded[39m
+[44m[6916][49m [32mui-kit-preview-extra loaded[39m
+[44m[6916][49m [32mui-kit-preview loaded[39m
+[44m[6916][49m [32malipay-minigame loaded[39m
+[44m[6916][49m [32massets loaded[39m
+[44m[6916][49m [32mbaidugame-opendata loaded[39m
+[44m[6916][49m [32mbaidugame loaded[39m
+[44m[6916][49m [32mbuilder loaded[39m
+[44m[6916][49m [32mbytedance-opendata loaded[39m
+[44m[6916][49m [32mbytedance loaded[39m
+[44m[6916][49m [32mchannel-upload-tools loaded[39m
+[44m[6916][49m [32mcloud-function loaded[39m
+Cocos Service Version 0.6.9
+[44m[6916][49m [32mcocos-services loaded[39m
+[44m[6916][49m [32mconsole loaded[39m
+[44m[6916][49m [32mcurve-editor loaded[39m
+[44m[6916][49m [32mfb-instant-games loaded[39m
+[44m[6916][49m [32mgame-window loaded[39m
+[44m[6916][49m [32mgoogle-instant-games loaded[39m
+[44m[6916][49m [32mhierarchy loaded[39m
+[44m[6916][49m [32mhuawei-agc loaded[39m
+[44m[6916][49m [32mhuawei-runtime loaded[39m
+[44m[6916][49m [32minspector loaded[39m
+[44m[6916][49m [32mcpk-publish loaded[39m
+[44m[6916][49m [32mkeystore loaded[39m
+[44m[6916][49m [32mlink-sure-runtime loaded[39m
+[44m[6916][49m [32mnode-library loaded[39m
+[44m[6916][49m [32mopen-recent-items loaded[39m
+[44m[6916][49m [32mopenharmony loaded[39m
+[44m[6916][49m [32moppo-runtime loaded[39m
+[44m[6916][49m [32mpackage-asset loaded[39m
+[44m[6916][49m [32mpreferences loaded[39m
+[44m[6916][49m [32mproject-importer loaded[39m
+[44m[6916][49m [32mproject-settings loaded[39m
+[44m[6916][49m [32mqtt-runtime loaded[39m
+[44m[6916][49m [32mscene loaded[39m
+[44m[6916][49m [32msimulator-debugger loaded[39m
+[44m[6916][49m [32msprite-editor loaded[39m
+[44m[6916][49m [32mstore loaded[39m
+[44m[6916][49m [32mtaobao-creativeapp loaded[39m
+[44m[6916][49m [32mtaobao-minigame loaded[39m
+[44m[6916][49m [32mtimeline loaded[39m
+[44m[6916][49m [32mvivo-runtime loaded[39m
+[44m[6916][49m [32mwechatgame-opendata loaded[39m
+[44m[6916][49m [32mwechatgame loaded[39m
+[44m[6916][49m [32mxiaomi-runtime loaded[39m
+[44m[6916][49m [32mim-plugin loaded[39m
+(node:6916) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the B
+uffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+[44m[6916][49m Initializing Cocos2d
+[44m[6916][49m Initializing engine extends
+build jsb-adapter: 6.174ms
+[44m[6916][49m [36mCocos Service load base data![39m
+Cannot resolve module [crypto-js] when parse [D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows\temp\quick-scripts\src\assets\scripts\third\CryptoHelper.js]
+Parse [D:/work/github/Unity_Games/Cocos_Games_201/C_20002_CashArrows/temp/quick-scripts/src/__qc_index__.js]: walk 205  files.
+Parse [D:/work/github/Unity_Games/Cocos_Games_201/C_20002_CashArrows/temp/quick-scripts/src/__qc_index__.js]: 3.956s
+Generate QUICK_COMPILE_BUNDLE: 33.203ms
+QuickCompiler compileFinished: 42.12ms
+QuickCompiler rebuild finished: 4.084s
+Init project script: 4.768s
+Start to build platform [web-mobile]
+[44m[6916][49m Start building with options : {
+  "excludeScenes": [],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.helloworld",
+  "startScene": "d85830a8-eb46-400d-ba8f-8dfc89866caa",
+  "title": "hello_world",
+  "webOrientation": "auto",
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "mainCompressionType": "default",
+  "mainIsRemote": false,
+  "optimizeHotUpdate": false,
+  "md5Cache": false,
+  "encryptJs": true,
+  "xxteaKey": "fa770af0-3797-4a",
+  "zipCompressJs": true,
+  "fb-instant-games": {},
+  "android": {
+    "packageName": "org.cocos2d.demo",
+    "REMOTE_SERVER_ROOT": ""
+  },
+  "ios": {
+    "packageName": "org.cocos2d.demo",
+    "REMOTE_SERVER_ROOT": "",
+    "ios_enable_jit": true
+  },
+  "mac": {
+    "packageName": "org.cocos2d.demo",
+    "REMOTE_SERVER_ROOT": "",
+    "width": 1280,
+    "height": 720
+  },
+  "win32": {
+    "REMOTE_SERVER_ROOT": "",
+    "width": 1280,
+    "height": 720
+  },
+  "android-instant": {
+    "packageName": "org.cocos2d.demo",
+    "REMOTE_SERVER_ROOT": "",
+    "pathPattern": "",
+    "scheme": "https",
+    "host": "",
+    "skipRecord": false,
+    "recordPath": ""
+  },
+  "openharmony": {
+    "packageName": "com.cocos.openharmony",
+    "REMOTE_SERVER_ROOT": ""
+  },
+  "appBundle": false,
+  "agreements": {},
+  "platform": "web-mobile",
+  "actualPlatform": "web-mobile",
+  "template": "link",
+  "buildPath": "D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build",
+  "debug": false,
+  "sourceMaps": false,
+  "embedWebDebugger": false,
+  "previewWidth": "1280",
+  "previewHeight": "720",
+  "useDebugKeystore": true,
+  "apiLevel": "",
+  "appABIs": [],
+  "vsVersion": "auto",
+  "buildScriptsOnly": false,
+  "dest": "D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile",
+  "excludedModules": [],
+  "autoCompile": false,
+  "scenes": [
+    "d85830a8-eb46-400d-ba8f-8dfc89866caa",
+    "ec5570cc-fb8a-48a9-a598-ff4655ddb3a4"
+  ],
+  "project": "D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows",
+  "projectName": "hello_world",
+  "debugBuildWorker": false
+}
+Builder: do custom process [build-start]
+[44m[6916][49m Building D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows
+[44m[6916][49m Destination D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows\build\web-mobile
+[44m[6916][49m Start spawn build-worker
+[44m[6916][49m Finish spawn build-worker
+[44m[6916][49m Delete D:/work/github/Unity_Games/Cocos_Games_201/C_20002_CashArrows/build/web-mobile/**/*
+[44m[6916][49m [33m[7m[1mWarning:[22m[27m[39m [33m鏈湪妯″潡璁剧疆閲岃缃墿鐞嗘ā鍧楋紝榛樿浣跨敤 cannon.js銆?[39m
+[44m[6916][49m Building 3D physics modules...
+[44m[6916][49m Compiling D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows
+[44m[6916][49m Start init build-worker
+[44m[6916][49m Finish init build-worker
+[44m[6916][49m Start build-assets in worker
+[44m[6916][49m 
+--- build-asset: {"root":"db://internal/resources","name":"internal","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\internal","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\internal","priority":11,"scenes":[],"compressionType":"merge_all_json"}
+
+[44m[6916][49m 
+--- build-asset: {"root":null,"priority":7,"dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\main","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\main","name":"main","scenes":["d85830a8-eb46-400d-ba8f-8dfc89866caa"],"compressionType":"default","optimizeHotUpdate":false,"inlineSpriteFrames":true,"isRemote":false}
+
+[44m[6916][49m 
+--- build-asset: {"root":"db://assets/cocos-module-common","name":"cocos-module-common","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\cocos-module-common","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\cocos-module-common","priority":1,"scenes":[],"compressionType":"default"}
+
+[44m[6916][49m 
+--- build-asset: {"root":"db://assets/config","name":"config","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\config","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\config","priority":1,"scenes":[],"compressionType":"default"}
+
+[44m[6916][49m 
+--- build-asset: {"root":"db://assets/game","name":"game","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\game","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\game","priority":1,"scenes":[],"compressionType":"default"}
+
+[44m[6916][49m 
+--- build-asset: {"root":"db://assets/lobby","name":"lobby","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\lobby","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\lobby","priority":1,"scenes":["ec5570cc-fb8a-48a9-a598-ff4655ddb3a4"],"compressionType":"default"}
+
+[44m[6916][49m 
+--- build-asset: {"root":"db://assets/ui","name":"ui","dest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\ui","scriptDest":"D:\\work\\github\\Unity_Games\\Cocos_Games_201\\C_20002_CashArrows\\build\\web-mobile\\assets\\ui","priority":1,"scenes":[],"compressionType":"default"}
+
+[44m[6916][49m Finish build-assets in worker
+[44m[6916][49m Start building plugin scripts
+[44m[6916][49m Generating main.js from C:\ProgramData\cocos\editors\Creator\2.4.13\resources\static\build-templates\shares\main.js
+[44m[6916][49m Generating html from C:\ProgramData\cocos\editors\Creator\2.4.13\resources\static\build-templates\web-mobile\template\index.html
+Builder: do custom process [before-change-files]
+鍏抽棴 worker
+Builder: do custom process [build-finished]
+[44m[6916][49m Built to "D:\work\github\Unity_Games\Cocos_Games_201\C_20002_CashArrows\build\web-mobile" successfully
+

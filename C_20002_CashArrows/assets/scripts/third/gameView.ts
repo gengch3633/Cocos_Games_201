@@ -246,7 +246,7 @@ export default class GameView extends cc.Component {
     var a = t.getComponent(cc.Sprite),
     o = n.getComponent(cc.Sprite);
     this.lifeHeartFullFrame = a&& a.spriteFrame|| null;
-    this.lifeHeartEmptyFrame = o&& AudioMgr.spriteFrame|| null;
+    this.lifeHeartEmptyFrame = o&& o.spriteFrame|| null;
     return ! 0;
   }
 ;
@@ -427,7 +427,7 @@ export default class GameView extends cc.Component {
     this.node_rewardNum&& this.node_rewardNum.isValid|| (this.node_rewardNum = cc.find("reward_num", this.node)|| this.findChildNodeByName(this.node, "reward_num"));
     if(! cc.isValid(this.lbl_rewardNumText)&& this.node_rewardNum&& this.node_rewardNum.isValid) {
       var o = cc.find("lbl_text", this.node_rewardNum)|| this.findChildNodeByName(this.node_rewardNum, "lbl_text");
-      this.lbl_rewardNumText = o? AudioMgr.getComponent(cc.Label): null;
+      this.lbl_rewardNumText = o? o.getComponent(cc.Label): null;
     }
     this.node_rewardNumIcon&& this.node_rewardNumIcon.isValid|| ! this.node_rewardNum|| ! this.node_rewardNum.isValid|| (this.node_rewardNumIcon = cc.find("icon", this.node_rewardNum)|| this.findChildNodeByName(this.node_rewardNum, "icon"));
 ! cc.isValid(this.sp_rewardNumIcon)&& this.node_rewardNumIcon&& this.node_rewardNumIcon.isValid&& (this.sp_rewardNumIcon = this.node_rewardNumIcon.getComponent(cc.Sprite));

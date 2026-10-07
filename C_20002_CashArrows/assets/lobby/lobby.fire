@@ -184,8 +184,10 @@
     "root": {
       "__id__": 9
     },
-    "asset": {},
-    "sync": false
+    "asset": {
+      "__uuid__": "f36ebddd-9b28-46f0-85e4-e7609ca8ec2e"
+    },
+    "sync": true
   },
   {
     "__type__": "cc.Canvas",
