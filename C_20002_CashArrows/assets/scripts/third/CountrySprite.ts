@@ -8,32 +8,32 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class CountrySprite extends cc.Component {
     @property({
-        tooltip: " single image name entry, e.g.money_mood_icon "
+        tooltip: "single image name entry, e.g. money_mood_icon"
     })
-    imageName: string = " ";
+    imageName: string = "";
 
     @property({
-        tooltip: " optional global asset rule key in CountryAssetService "
+        tooltip: "optional global asset rule key in CountryAssetService"
     })
-    assetKey: string = " ";
+    assetKey: string = "";
 
     @property({
-        tooltip: 'deprecated: JSON map, e.g. {" ID ":"..."}'
+        tooltip: 'deprecated: JSON map, e.g. {"ID":"..."}'
     })
-    pathMapText: string = " ";
+    pathMapText: string = "";
 
     @property({
-        tooltip: " force country code, empty means current country "
+        tooltip: "force country code, empty means current country"
     })
-    countryCode: string = " ";
+    countryCode: string = "";
 
     @property({
-        tooltip: " fallback sprite path when map has no match "
+        tooltip: "fallback sprite path when map has no match"
     })
-    fallbackPath: string = " ";
+    fallbackPath: string = "";
 
     @property({
-        tooltip: " bundle name for sprite loading "
+        tooltip: "bundle name for sprite loading"
     })
     bundleName: string = "ui";
 
@@ -41,7 +41,7 @@ export default class CountrySprite extends cc.Component {
     refreshOnLoad: boolean = true;
 
     @property({
-        tooltip: " use this event as a general refresh trigger "
+        tooltip: "use this event as a general refresh trigger"
     })
     refreshOnLanguageChanged: boolean = true;
 
@@ -90,13 +90,13 @@ export default class CountrySprite extends cc.Component {
     }
 
     setCountryCode(country: string): void {
-        this.countryCode = String(country || " ").toUpperCase();
+        this.countryCode = String(country || "").toUpperCase();
         this.refreshSprite();
     }
 
     refreshSprite(): void {
         if (this.targetSprite && this.targetSprite.isValid) {
-            if (typeof this._requestVersion !== "number"|| isNaN(this._requestVersion)) { this._requestVersion = 0; } const path = this.getSpritePath(); if (path) { const requestVersion = ++this._requestVersion; const fallbackPath = this.getDefaultSpritePath(); this.loadSpriteWithFallback(path, fallbackPath, requestVersion); } } } getSpritePath(): string { const country = this.getTargetCountry(); const imagePath = this.getImageNamePath(country); if (imagePath) { return imagePath; } const ruleMap = this.getRuleMap(); return CountryAssetService.resolvePath(ruleMap, country, this.fallbackPath) || (this.assetKey ? CountryAssetService.getAssetPath(this.assetKey, country, this.fallbackPath) : String(this.fallbackPath ||" ").trim());
+            if (typeof this._requestVersion !== "number"|| isNaN(this._requestVersion)) { this._requestVersion = 0; } const path = this.getSpritePath(); if (path) { const requestVersion = ++this._requestVersion; const fallbackPath = this.getDefaultSpritePath(); this.loadSpriteWithFallback(path, fallbackPath, requestVersion); } } } getSpritePath(): string { const country = this.getTargetCountry(); const imagePath = this.getImageNamePath(country); if (imagePath) { return imagePath; } const ruleMap = this.getRuleMap(); return CountryAssetService.resolvePath(ruleMap, country, this.fallbackPath) || (this.assetKey ? CountryAssetService.getAssetPath(this.assetKey, country, this.fallbackPath) : String(this.fallbackPath ||"").trim());
     }
 
     getTargetCountry(): string {
@@ -104,7 +104,7 @@ export default class CountrySprite extends cc.Component {
     }
 
     getRuleMap(): { [key: string]: string } {
-        const text = String(this.pathMapText || " ").trim();
+        const text = String(this.pathMapText || "").trim();
         if (!text) {
             return {};
         }
@@ -117,17 +117,17 @@ export default class CountrySprite extends cc.Component {
     }
 
     getImageNamePath(country: string): string {
-        const name = String(this.imageName || " ").trim();
-        return name ? CountryAssetService.getPathByImageName(name, country) : " ";
+        const name = String(this.imageName || "").trim();
+        return name ? CountryAssetService.getPathByImageName(name, country) : "";
     }
 
     getDefaultSpritePath(): string {
-        const name = String(this.imageName || " ").trim();
+        const name = String(this.imageName || "").trim();
         if (name) {
-            return CountryAssetService.getPathByImageName(name, " ID ");
+            return CountryAssetService.getPathByImageName(name, "ID");
         }
-        const fallback = String(this.fallbackPath || " ").trim();
-        return fallback ? CountryAssetService.resolvePath({}, " ID ", fallback) : " ";
+        const fallback = String(this.fallbackPath || "").trim();
+        return fallback ? CountryAssetService.resolvePath({}, "ID", fallback) : "";
     }
 
     loadSpriteWithFallback(path: string, fallbackPath: string, requestVersion: number): void {
@@ -139,7 +139,7 @@ export default class CountrySprite extends cc.Component {
             if (fallbackPath && fallbackPath !== path) {
                 this.loadFallbackSprite(fallbackPath, requestVersion, error);
             } else {
-                cc.warn("[CountrySprite] loadRes failed: ", path, this.bundleName, error);
+                cc.warn("[CountrySprite] loadRes failed:", path, this.bundleName, error);
             }
         });
     }
@@ -150,7 +150,7 @@ export default class CountrySprite extends cc.Component {
                 this.targetSprite.spriteFrame = spriteFrame;
             }
         }).catch((error) => {
-            cc.warn("[CountrySprite] loadRes failed: ", path, this.bundleName, originalError || error);
+            cc.warn("[CountrySprite] loadRes failed:", path, this.bundleName, originalError || error);
         });
     }
 }

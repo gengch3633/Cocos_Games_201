@@ -4,12 +4,12 @@ import ClientDataStore from "./ClientDataStore";
 import EventSystem from "./EventSystem";
 import LoadingHttpService from "./LoadingHttpService";
 
-const LOG_PREFIX = "[NativeSdkBridgeAdapter] ";
+const LOG_PREFIX = "[NativeSdkBridgeAdapter]";
 const DEBUG_LOG_ENABLED = true;
 
 function sanitizeLogValue(value: any): any {
     if (typeof value === "string") {
-        return value.length <= 180 ? value : value.slice(0, 180) + "...(len = " + value.length + ") ";
+        return value.length <= 180 ? value : value.slice(0, 180) + "...(len=" + value.length + ")";
     }
     if (value == null) {
         return value;
@@ -45,7 +45,7 @@ class AndroidNativeSdkBridge {
             try {
                 return btoa(text);
             } catch (innerErr) {
-                debugLog(" encodeBase64Utf8 failed ", sanitizeLogValue(text));
+                debugLog("encodeBase64Utf8 failed", sanitizeLogValue(text));
                 return " ";
             }
         }
@@ -53,25 +53,25 @@ class AndroidNativeSdkBridge {
 
     buildMoveToPayload(methodName: string, args: any[] = []): string {
         const normalizedArgs = (args || []).map((arg) => arg == null ? " " : String(arg));
-        return [methodName].concat(normalizedArgs).join("| ") + "| ";
+        return [methodName].concat(normalizedArgs).join("|") + "|";
     }
 
     invokeMoveTo(methodName: string, args: any[] = []): string {
-        debugLog(" invokeMoveTo params ", {
+        debugLog("invokeMoveTo params", {
             methodName: sanitizeLogValue(methodName),
             args: sanitizeLogArray(args)
         });
         const rawPayload = this.buildMoveToPayload(methodName, args);
         const encodedPayload = this.encodeBase64Utf8(rawPayload);
         debugLog("invokeMoveTo->"+ methodName, { rawPayload: sanitizeLogValue(rawPayload), encodedPayload: sanitizeLogValue(encodedPayload), args: sanitizeLogArray(args) }); try { const reflection = (window as any).jsb && (window as any).jsb.reflection; if (!reflection || typeof reflection.callStaticMethod !=="function") {
-                debugLog(" invokeMoveTo skipped(no jsb.reflection.callStaticMethod) ", {
+                debugLog("invokeMoveTo skipped(no jsb.reflection.callStaticMethod)", {
                     methodName: methodName
                 });
                 return " ";
             }
             const result = reflection.callStaticMethod(
                 "org/cocos2dx/javascript/AppActivity",
-                " moveTo ",
+                "moveTo",
                 "(Ljava/ lang/ String;) Ljava/ lang/ String;",
                 encodedPayload
             );
@@ -79,35 +79,35 @@ class AndroidNativeSdkBridge {
             debugLog("invokeMoveTo <-" + methodName, sanitizeLogValue(text));
             return text;
         } catch (err) {
-            console.error("[NativeSdkBridgeAdapter] invokeMoveTo failed ", methodName, err);
+            console.error("[NativeSdkBridgeAdapter] invokeMoveTo failed", methodName, err);
             return " ";
         }
     }
 
     initSdkAdjust(adjustKey: string, urlStrategy: string, fbAppId: string): void {
-        this.invokeMoveTo(" plantSurveyReactor ", [adjustKey, urlStrategy, fbAppId]);
+        this.invokeMoveTo("plantSurveyReactor", [adjustKey, urlStrategy, fbAppId]);
     }
 
     reportFirebase(value: string): void {
-        this.invokeMoveTo(" reportFirebase ", [value]);
+        this.invokeMoveTo("reportFirebase", [value]);
     }
 
     getClientInfo(): string {
-        const result = this.invokeMoveTo(" harvestProgramLedger ") || " {\n}\n";
+        const result = this.invokeMoveTo("harvestProgramLedger") || "{\n}\n";
         debugLog("getClientInfo <-result", sanitizeLogValue(result));
         return result;
     }
 
     initSdk(maxKey: string, country: string, isUMP: boolean): void {
-        this.invokeMoveTo(" fuelProfitGear ", [maxKey, country, isUMP ? " true " : " false "]);
+        this.invokeMoveTo("fuelProfitGear", [maxKey, country, isUMP ? "true" : "false"]);
     }
 
     initSMSdk(param1: string, param2: string): void {
-        this.invokeMoveTo(" initSMSdk ", [param1, param2]);
+        this.invokeMoveTo("initSMSdk", [param1, param2]);
     }
 
     showRewardVideoAd(adType: string): void {
-        this.invokeMoveTo(" layCouponCanvas ", [adType]);
+        this.invokeMoveTo("layCouponCanvas", [adType]);
     }
 
     onJump(url: string): void {
@@ -116,59 +116,59 @@ class AndroidNativeSdkBridge {
     }
 
     setVibrator(value: string): void {
-        this.invokeMoveTo(" setVibrator ", [value]);
+        this.invokeMoveTo("setVibrator", [value]);
     }
 
     getNotchHeight(): number {
-        const result = this.invokeMoveTo(" getNotchHeight ");
+        const result = this.invokeMoveTo("getNotchHeight");
         const height = Number(result) || 0;
         debugLog("getNotchHeight <-", height);
         return height;
     }
 
     getStatusBarHeight(): number {
-        const result = this.invokeMoveTo(" getStatusBarHeight ");
+        const result = this.invokeMoveTo("getStatusBarHeight");
         const height = Number(result) || 0;
         debugLog("getStatusBarHeight <-", height);
         return height;
     }
 
     playBgMusic(path: string): void {
-        this.invokeMoveTo(" playBgMusic ", [path]);
+        this.invokeMoveTo("playBgMusic", [path]);
     }
 
     showPushMessage(): void {
-        this.invokeMoveTo(" showPushMessage ");
+        this.invokeMoveTo("showPushMessage");
     }
 
     showAppLongTapToast(message: string, type: number = 0): void {
         const toastType = type === 1 ? 1 : 0;
-        this.invokeMoveTo(" dropBriefWave ", [message, toastType]);
+        this.invokeMoveTo("dropBriefWave", [message, toastType]);
     }
 
     showAppReview(): void {
-        this.invokeMoveTo(" sailToAppraisalArena ");
+        this.invokeMoveTo("sailToAppraisalArena");
     }
 
     showAppService(url: string): void {
-        this.invokeMoveTo(" glideToSolaceBooth ", [url]);
+        this.invokeMoveTo("glideToSolaceBooth", [url]);
     }
 
     subscribeTopics(topic: string): void {
-        this.invokeMoveTo(" subscribeTopics ", [topic]);
+        this.invokeMoveTo("subscribeTopics", [topic]);
     }
 
     exitApp(): void {
         try {
             const reflection = (window as any).jsb && (window as any).jsb.reflection;
             if (!reflection || typeof reflection.callStaticMethod !== "function") {
-                debugLog(" exitApp skipped(no jsb.reflection.callStaticMethod) ");
+                debugLog("exitApp skipped(no jsb.reflection.callStaticMethod)");
                 return;
             }
-            reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", " requestAppExit ", "() V ");
-            debugLog(" exitApp invoked ");
+            reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "requestAppExit", "()V");
+            debugLog("exitApp invoked");
         } catch (err) {
-            console.error("[NativeSdkBridgeAdapter] exitApp failed ", err);
+            console.error("[NativeSdkBridgeAdapter] exitApp failed", err);
         }
     }
 
@@ -181,7 +181,7 @@ class NoopNativeSdkBridge {
     reportFirebase(): void { }
     reportEventByAdjust(): void { }
     getClientInfo(): string {
-        return " {\n}\n";
+        return "{\n}\n";
     }
     initSdk(): void { }
     initSMSdk(): void { }
@@ -212,15 +212,15 @@ export default class NativeSdkBridgeAdapter {
     static androidCallbacksBound: boolean = false;
     static branchHandlersBound: boolean = false;
     static ANDROID_CALLBACK_MAP = [
-        { source: " onGaidResult ", target: " moduleSerialNailed " },
-        { source: " onTrack ", target: " relayFragmentaryNote " },
-        { source: " onTrackAll ", target: " unloadHeapedNotes " },
-        { source: " onVideoError ", target: " backedFeatureCrumbled " },
-        { source: " onVideoClose ", target: " backedFeatureWithdrawn " },
-        { source: " onVideoOpensuccess ", target: " backedFeatureRipened " },
-        { source: " appResumed ", target: " cycleAscendedAlert " },
-        { source: " appPaused ", target: " cycleDescendedMute " },
-        { source: " pushTokenInitialized ", target: " pushTokenInitialized " }
+        { source: "onGaidResult", target: "moduleSerialNailed" },
+        { source: "onTrack", target: "relayFragmentaryNote" },
+        { source: "onTrackAll", target: "unloadHeapedNotes" },
+        { source: "onVideoError", target: "backedFeatureCrumbled" },
+        { source: "onVideoClose", target: "backedFeatureWithdrawn" },
+        { source: "onVideoOpensuccess", target: "backedFeatureRipened" },
+        { source: "appResumed", target: "cycleAscendedAlert" },
+        { source: "appPaused", target: "cycleDescendedMute" },
+        { source: "pushTokenInitialized", target: "pushTokenInitialized" }
     ];
 
     static parseEncodedJson(raw: any, allowText: boolean = false): any {
@@ -235,9 +235,9 @@ export default class NativeSdkBridgeAdapter {
         }
         const trimmed = String(raw || " ").trim();
         if (!trimmed) {
-            return allowText ? " ": null; } try { const normalized = trimmed.replace(/-/g,"+ ").replace(/_/g, "/ ");
+            return allowText ? " ": null; } try { const normalized = trimmed.replace(/-/g,"+").replace(/_/g, "/");
             const padding = normalized.length % 4;
-            const base64 = padding ? normalized + " = ".repeat(4 - padding) : normalized;
+            const base64 = padding ? normalized + "=".repeat(4 - padding) : normalized;
             const decoded = atob(base64);
             try {
                 const parsed = JSON.parse(decoded);
@@ -259,7 +259,7 @@ export default class NativeSdkBridgeAdapter {
                 debugLog("parseEncodedJson fallback(raw-text)", sanitizeLogValue(trimmed));
                 return trimmed;
             }
-            debugLog(" parseEncodedJson failed ", sanitizeLogValue(trimmed));
+            debugLog("parseEncodedJson failed", sanitizeLogValue(trimmed));
             return null;
         }
     }
@@ -277,38 +277,38 @@ export default class NativeSdkBridgeAdapter {
 
     static bindBranchHandlers(): void {
         if (this.branchHandlersBound) {
-            debugLog(" bindBranchHandlers skipped(already bound) ");
+            debugLog("bindBranchHandlers skipped(already bound)");
         } else {
             const win = window as any;
             const branch = win.branch = win.branch || {};
-            debugLog(" bindBranchHandlers start ");
+            debugLog("bindBranchHandlers start");
             const bindHandler = (name: string, handler: (...args: any[]) => void) => {
                 const previous = branch[name];
-                debugLog(" bind branch."+ name, { hasPrevious: typeof previous ==="function"
+                debugLog("bind branch."+ name, { hasPrevious: typeof previous ==="function"
                 });
                 branch[name] = (...args: any[]) => {
-                    debugLog(" branch." + name + " invoked ", sanitizeLogArray(args));
+                    debugLog("branch." + name + " invoked", sanitizeLogArray(args));
                     try {
                         handler.apply(void 0, args);
                     } catch (err) {
-                        console.error("[NativeSdkBridgeAdapter] branch." + name + " failed ", err);
+                        console.error("[NativeSdkBridgeAdapter] branch." + name + " failed", err);
                     }
                     if (typeof previous === "function" && previous !== branch[name]) {
                         try {
-                            debugLog(" branch." + name + "- > previous handler ", sanitizeLogArray(args));
+                            debugLog("branch." + name + " -> previous handler", sanitizeLogArray(args));
                             previous.apply(branch, args);
                         } catch (err) {
-                            console.error("[NativeSdkBridgeAdapter] previous branch." + name + " failed ", err);
+                            console.error("[NativeSdkBridgeAdapter] previous branch." + name + " failed", err);
                         }
                     }
                 };
             };
-            bindHandler(" moduleSerialNailed ", (raw: any) => {
+            bindHandler("moduleSerialNailed", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw) || {};
-                const androidId = this.pickValue(parsed, [" machineUniqueSignature ", " gaid ", " googleId "]);
-                const referrerUrl = this.pickValue(parsed, [" originLocationAddress ", " referrer_url "]);
-                const referrerTimestamp = this.pickValue(parsed, [" originRecordedMoment ", " referrer_timestamp_server "]);
-                const installTimestamp = this.pickValue(parsed, [" setupRecordedMoment ", " install_timestamp_server "]);
+                const androidId = this.pickValue(parsed, ["machineUniqueSignature", "gaid", "googleId"]);
+                const referrerUrl = this.pickValue(parsed, ["originLocationAddress", "referrer_url"]);
+                const referrerTimestamp = this.pickValue(parsed, ["originRecordedMoment", "referrer_timestamp_server"]);
+                const installTimestamp = this.pickValue(parsed, ["setupRecordedMoment", "install_timestamp_server"]);
                 if (androidId) {
                     ClientDataStore.oaid = String(androidId);
                 }
@@ -327,36 +327,36 @@ export default class NativeSdkBridgeAdapter {
                 if (typeof ClientDataStore.buildMiddleCommonUrlStr === "function") {
                     ClientDataStore.buildMiddleCommonUrlStr();
                 }
-                debugLog(" branch.moduleSerialNailed applied to ClientDataStore ", {
+                debugLog("branch.moduleSerialNailed applied to ClientDataStore", {
                     androidId: androidId ? String(androidId) : " ",
                     referrerUrl: referrerUrl || " ",
                     refTs: referrerTimestamp || 0,
                     installTs: installTimestamp || 0
                 });
             });
-            bindHandler(" relayFragmentaryNote ", (raw: any) => {
+            bindHandler("relayFragmentaryNote", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw);
-                debugLog(" branch.relayFragmentaryNote parsed ", sanitizeLogValue(parsed));
+                debugLog("branch.relayFragmentaryNote parsed", sanitizeLogValue(parsed));
                 let payload: string;
-                debugLog("branch.relayFragmentaryNote-> BusinessAnalyticsService.onTrack", sanitizeLogValue(payload = parsed && typeof parsed === "object" ? JSON.stringify(parsed) : typeof raw === "string" ? raw : raw != null ? JSON.stringify(raw) : " {\n}\n"));
+                debugLog("branch.relayFragmentaryNote-> BusinessAnalyticsService.onTrack", sanitizeLogValue(payload = parsed && typeof parsed === "object" ? JSON.stringify(parsed) : typeof raw === "string" ? raw : raw != null ? JSON.stringify(raw) : "{\n}\n"));
                 BusinessAnalyticsService.onTrack(payload);
             });
-            bindHandler(" unloadHeapedNotes ", () => {
+            bindHandler("unloadHeapedNotes", () => {
                 debugLog("branch.unloadHeapedNotes-> BusinessAnalyticsService.trackAll");
                 BusinessAnalyticsService.trackAll();
             });
-            bindHandler(" backedFeatureCrumbled ", (raw: any) => {
+            bindHandler("backedFeatureCrumbled", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw);
                 const data = parsed && (parsed.ferryBulkTierAgate || parsed.data || parsed) || {};
                 const payload = {
-                    type: data.type || data.draftLidArticleNettle || data.code || " unknown ",
+                    type: data.type || data.draftLidArticleNettle || data.code || "unknown",
                     message: data.claspOpinionGlanceSpruce || data.message || " ",
                     raw: parsed || raw
                 };
                 debugLog("branch.backedFeatureCrumbled-> EventMgr.trigger(VIDEO_ERROR)", sanitizeLogValue(payload));
                 EventSystem.trigger(AdEventType.VIDEO_ERROR, payload);
             });
-            bindHandler(" backedFeatureWithdrawn ", (raw: any) => {
+            bindHandler("backedFeatureWithdrawn", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw);
                 const data = parsed && (parsed.ferryBulkTierAgate || parsed.data || parsed) || {};
                 const compensationQualifyMark = data.compensationQualifyMark !== undefined ? data.compensationQualifyMark : data.appraiseChaliceRungBorage;
@@ -367,17 +367,17 @@ export default class NativeSdkBridgeAdapter {
                     compensationQualifyMark: !!compensationQualifyMark
                 });
             });
-            bindHandler(" backedFeatureRipened ", (raw: any) => {
+            bindHandler("backedFeatureRipened", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw);
                 const data = parsed && (parsed.ferryBulkTierAgate || parsed.data) || {};
                 const payload = parsed && typeof parsed === "object" ? Object.assign(Object.assign({}, data), parsed) : data && typeof data === "object" ? data : {};
                 debugLog("branch.backedFeatureRipened-> EventMgr.trigger(VIDEO_OPEN_SUCCESS)", sanitizeLogValue(payload));
                 EventSystem.trigger(AdEventType.VIDEO_OPEN_SUCCESS, payload);
             });
-            bindHandler(" pushTokenInitialized ", (raw: any) => {
+            bindHandler("pushTokenInitialized", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw, true);
                 const token = typeof parsed === "string" ? parsed.trim() : typeof raw === "string" ? raw.trim() : " ";
-                debugLog(" branch.pushTokenInitialized parsed ", {
+                debugLog("branch.pushTokenInitialized parsed", {
                     raw: sanitizeLogValue(raw),
                     token: sanitizeLogValue(token)
                 });
@@ -386,67 +386,67 @@ export default class NativeSdkBridgeAdapter {
                     LoadingHttpService.syncFirebaseToken(token);
                 }
             });
-            bindHandler(" cycleAscendedAlert ", () => {
+            bindHandler("cycleAscendedAlert", () => {
                 debugLog("branch.cycleAscendedAlert-> cc.game.EVENT_SHOW");
                 cc.game && cc.game.emit && cc.game.emit(cc.game.EVENT_SHOW);
             });
-            bindHandler(" cycleDescendedMute ", () => {
+            bindHandler("cycleDescendedMute", () => {
                 debugLog("branch.cycleDescendedMute-> cc.game.EVENT_HIDE");
                 cc.game && cc.game.emit && cc.game.emit(cc.game.EVENT_HIDE);
             });
             this.branchHandlersBound = true;
-            debugLog(" bindBranchHandlers done ");
+            debugLog("bindBranchHandlers done");
         }
     }
 
     static bindAndroidCallbacks(): void {
         if (this.androidCallbacksBound) {
-            debugLog(" bindAndroidCallbacks skipped(already bound) ");
+            debugLog("bindAndroidCallbacks skipped(already bound)");
         } else {
             const win = window as any;
             const callAndroid = win.callAndroid = win.callAndroid || {};
-            debugLog(" bindAndroidCallbacks start ");
+            debugLog("bindAndroidCallbacks start");
             this.ANDROID_CALLBACK_MAP.forEach((mapping) => {
                 const source = mapping.source;
                 const target = mapping.target;
                 const previous = callAndroid[source];
-                debugLog(" bind callAndroid." + source + "- > branch."+ target, { hasPrevious: typeof previous ==="function"
+                debugLog("bind callAndroid." + source + "- > branch."+ target, { hasPrevious: typeof previous ==="function"
                 });
                 callAndroid[source] = (...args: any[]) => {
-                    debugLog(" callAndroid." + source + " invoked ", sanitizeLogArray(args));
+                    debugLog("callAndroid." + source + " invoked", sanitizeLogArray(args));
                     try {
                         const branch = win.branch;
                         const handler = branch && branch[target];
                         if (typeof handler === "function") {
-                            debugLog(" forward callAndroid." + source + "- > branch." + target, sanitizeLogArray(args));
+                            debugLog("forward callAndroid." + source + "- > branch." + target, sanitizeLogArray(args));
                             handler.apply(branch, args);
                         } else {
-                            debugLog(" branch." + target + " missing, skip forward ");
+                            debugLog("branch." + target + " missing, skip forward");
                         }
                     } catch (err) {
-                        console.error("[NativeSdkBridgeAdapter] forward " + source + "- > branch." + target + " failed ", err);
+                        console.error("[NativeSdkBridgeAdapter] forward " + source + "- > branch." + target + " failed", err);
                     }
                     if (typeof previous === "function" && previous !== callAndroid[source]) {
                         try {
-                            debugLog(" callAndroid." + source + "- > previous handler ", sanitizeLogArray(args));
+                            debugLog("callAndroid." + source + " -> previous handler", sanitizeLogArray(args));
                             previous.apply(callAndroid, args);
                         } catch (err) {
-                            console.error("[NativeSdkBridgeAdapter] previous " + source + " callback failed ", err);
+                            console.error("[NativeSdkBridgeAdapter] previous " + source + " callback failed", err);
                         }
                     }
                 };
             });
             this.androidCallbacksBound = true;
-            debugLog(" bindAndroidCallbacks done ");
+            debugLog("bindAndroidCallbacks done");
         }
     }
 
     static getBridge(): any {
         if (this.bridge) {
-            debugLog(" getBridge reuse existing bridge ");
+            debugLog("getBridge reuse existing bridge");
             return this.bridge;
         }
-        debugLog(" getBridge create bridge ", {
+        debugLog("getBridge create bridge", {
             os: cc.sys.os,
             isAndroid: cc.sys.os === cc.sys.OS_ANDROID
         });
@@ -455,14 +455,14 @@ export default class NativeSdkBridgeAdapter {
             this.bindBranchHandlers();
             this.bindAndroidCallbacks();
         }
-        debugLog(" getBridge ready ", {
-            bridgeType: cc.sys.os === cc.sys.OS_ANDROID ? " android " : " noop "
+        debugLog("getBridge ready", {
+            bridgeType: cc.sys.os === cc.sys.OS_ANDROID ? "android" : "noop"
         });
         return this.bridge;
     }
 
     static setBridge(bridge: any): void {
-        debugLog(" setBridge override bridge ", {
+        debugLog("setBridge override bridge", {
             hasBridge: !!bridge
         });
         this.bridge = bridge;

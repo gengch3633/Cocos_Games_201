@@ -79,8 +79,8 @@ if (e) {
 this.selectedOpt = e.selectedOpt || null;
 this.channelData = e.channelData || null;
 this.initialBindInfo = e.initialBindInfo || null;
-this.onValidated = " function " == typeof e.onValidated ? e.onValidated : null;
-this.onClose = " function " == typeof e.onClose ? e.onClose : null;
+this.onValidated = "function" == typeof e.onValidated ? e.onValidated : null;
+this.onClose = "function" == typeof e.onClose ? e.onClose : null;
 this.parseChannelData();
 this.seedInitialInputCache();
 this.refreshUI();
@@ -92,7 +92,7 @@ for (var e = this.extractChannelList(this.channelData), t = 0; t < e.length; t++
 var i = this.normalizeChannelItem(e[t]);
 i && this.channelList.push(i);
 }
-this.channelList.length <= 0 && !this.channelData ? this.channelList = this.buildDefaultChannels() : this.channelList.length <= 0 && cc.warn("[cashArrowSetView] channel list is empty from api ");
+this.channelList.length <= 0 && !this.channelData ? this.channelList = this.buildDefaultChannels() : this.channelList.length <= 0 && cc.warn("[cashArrowSetView] channel list is empty from api");
 this.selectedChannelIndex = Math.max(0, Math.min(this.selectedChannelIndex || 0, this.channelList.length - 1));
 },
 extractChannelList: function(e) {
@@ -109,17 +109,17 @@ return [];
 },
 normalizeChannelItem: function(e) {
 if (!e) return null;
-var t = e.channel_pic || e.channel_icon || e.icon || " ";
-Array.isArray(t) && (t = t[0] || " ");
-t = t ? String(t).trim() : " ";
+var t = e.channel_pic || e.channel_icon || e.icon || "";
+Array.isArray(t) && (t = t[0] || "");
+t = t ? String(t).trim() : "";
 var i = this.normalizeNeedFields(e);
 return {
-channel: e.channel || " ",
-sub_channel: e.sub_channel || " ",
-show_channel: e.show_channel || e.name || " ",
+channel: e.channel || "",
+sub_channel: e.sub_channel || "",
+show_channel: e.show_channel || e.name || "",
 channel_pic: t,
-tax_desc: e.tax_desc || " ",
-account_type: e.account_type || " ",
+tax_desc: e.tax_desc || "",
+account_type: e.account_type || "",
 need_field: i,
 raw: e
 };
@@ -128,7 +128,7 @@ normalizeNeedFields: function(e) {
 var t = [], i = e.need_field;
 if (Array.isArray(i) && i.length > 0) {
 for (var n = 0; n < i.length; n++) {
-var a = i[n] || {}, o = a.field_value || a.key || a.name || " ";
+var a = i[n] || {}, o = a.field_value || a.key || a.name || "";
 o && t.push({
 field_value: o,
 field_desc: a.field_desc || a.desc || a.label || o,
@@ -154,105 +154,105 @@ if (t.length > 0) return t;
 return this.getDefaultNeedFields(e);
 },
 getDefaultNeedFields: function(e) {
-var t = e.account_label || this.i18n(" key_cash_set_input_account_placeholder ", null, " Please enter your withdrawal account "), i = e.name_label || this.i18n(" key_cash_set_input_username_placeholder ", null, " Please enter your withdrawal username ");
+var t = e.account_label || this.i18n("key_cash_set_input_account_placeholder", null, "Please enter your withdrawal account"), i = e.name_label || this.i18n("key_cash_set_input_username_placeholder", null, "Please enter your withdrawal username");
 return [ {
-field_value: " account ",
+field_value: "account",
 field_desc: t,
 fail_desc: t,
-field_value_translate: " account "
+field_value_translate: "account"
 }, {
-field_value: " payee_name ",
+field_value: "payee_name",
 field_desc: i,
 fail_desc: i,
-field_value_translate: " name "
+field_value_translate: "name"
 } ];
 },
 buildDefaultChannels: function() {
-var e = this.i18n(" key_cash_set_input_account_placeholder ", null, " Please enter your withdrawal account "), t = this.i18n(" key_cash_set_input_username_placeholder ", null, " Please enter your withdrawal username ");
+var e = this.i18n("key_cash_set_input_account_placeholder", null, "Please enter your withdrawal account"), t = this.i18n("key_cash_set_input_username_placeholder", null, "Please enter your withdrawal username");
 return [ {
-channel: " dana ",
-sub_channel: " dana ",
-show_channel: " DANA ",
-account_type: " phone ",
+channel: "dana",
+sub_channel: "dana",
+show_channel: "DANA",
+account_type: "phone",
 need_field: [ {
-field_value: " account ",
+field_value: "account",
 field_desc: e,
 fail_desc: e,
-field_value_translate: " account "
+field_value_translate: "account"
 }, {
-field_value: " payee_name ",
+field_value: "payee_name",
 field_desc: t,
 fail_desc: t,
-field_value_translate: " name "
+field_value_translate: "name"
 } ]
 }, {
-channel: " ovo ",
-sub_channel: " ovo ",
-show_channel: " OVO ",
-account_type: " phone ",
+channel: "ovo",
+sub_channel: "ovo",
+show_channel: "OVO",
+account_type: "phone",
 need_field: [ {
-field_value: " account ",
+field_value: "account",
 field_desc: e,
 fail_desc: e,
-field_value_translate: " account "
+field_value_translate: "account"
 }, {
-field_value: " payee_name ",
+field_value: "payee_name",
 field_desc: t,
 fail_desc: t,
-field_value_translate: " name "
+field_value_translate: "name"
 } ]
 }, {
-channel: " shopee ",
-sub_channel: " shopee ",
-show_channel: " Shopee ",
-account_type: " phone ",
+channel: "shopee",
+sub_channel: "shopee",
+show_channel: "Shopee",
+account_type: "phone",
 need_field: [ {
-field_value: " account ",
+field_value: "account",
 field_desc: e,
 fail_desc: e,
-field_value_translate: " account "
+field_value_translate: "account"
 }, {
-field_value: " payee_name ",
+field_value: "payee_name",
 field_desc: t,
 fail_desc: t,
-field_value_translate: " name "
+field_value_translate: "name"
 } ]
 }, {
-channel: " gopay ",
-sub_channel: " gopay ",
-show_channel: " gopay ",
-account_type: " phone ",
+channel: "gopay",
+sub_channel: "gopay",
+show_channel: "gopay",
+account_type: "phone",
 need_field: [ {
-field_value: " account ",
+field_value: "account",
 field_desc: e,
 fail_desc: e,
-field_value_translate: " account "
+field_value_translate: "account"
 }, {
-field_value: " payee_name ",
+field_value: "payee_name",
 field_desc: t,
 fail_desc: t,
-field_value_translate: " name "
+field_value_translate: "name"
 } ]
 } ];
 },
 bindNodes: function() {
-this.btnClose = this.findNodeDeep(this.node, " btn_close ");
-this.btnSubmit = this.findNodeDeep(this.node, " btn_submit ");
-this.panelNode = this.findNodeDeep(this.node, " block_panel ") || this.findNodeDeep(this.node, " panel ");
-this.maskNode = this.findNodeDeep(this.node, " mask ");
-this.lblTitle = this.findLabelDeep(this.node, " txt_enter_account_details ");
-this.lblSelectInfo = this.findLabelDeep(this.node, " txt_select_account_info ");
-this.lblInputAccount = this.findLabelDeep(this.node, " txt_input_account ");
-this.inputAccountNode = this.findNodeDeep(this.node, " txt_account_value ");
-this.lblInputUsername = this.findLabelDeep(this.node, " txt_input_username ");
-this.inputUsernameNode = this.findNodeDeep(this.node, " txt_username_value ");
-this.lblSubmitBtn = this.findLabelDeep(this.node, " txt_withdraw_btn ");
-this.bgInputAccountNode = this.findNodeDeep(this.node, " img_input_account_bg ");
-this.bgInputUsernameNode = this.findNodeDeep(this.node, " img_input_username_bg ");
+this.btnClose = this.findNodeDeep(this.node, "btn_close");
+this.btnSubmit = this.findNodeDeep(this.node, "btn_submit");
+this.panelNode = this.findNodeDeep(this.node, "block_panel") || this.findNodeDeep(this.node, "panel");
+this.maskNode = this.findNodeDeep(this.node, "mask");
+this.lblTitle = this.findLabelDeep(this.node, "txt_enter_account_details");
+this.lblSelectInfo = this.findLabelDeep(this.node, "txt_select_account_info");
+this.lblInputAccount = this.findLabelDeep(this.node, "txt_input_account");
+this.inputAccountNode = this.findNodeDeep(this.node, "txt_account_value");
+this.lblInputUsername = this.findLabelDeep(this.node, "txt_input_username");
+this.inputUsernameNode = this.findNodeDeep(this.node, "txt_username_value");
+this.lblSubmitBtn = this.findLabelDeep(this.node, "txt_withdraw_btn");
+this.bgInputAccountNode = this.findNodeDeep(this.node, "img_input_account_bg");
+this.bgInputUsernameNode = this.findNodeDeep(this.node, "img_input_username_bg");
 this.editAccount = this.inputAccountNode ? this.inputAccountNode.getComponent(cc.EditBox) : null;
 this.editUsername = this.inputUsernameNode ? this.inputUsernameNode.getComponent(cc.EditBox) : null;
-this.channelSelectOverlay = this.findNodeDeep(this.node, " img_channel_select_overlay ");
-this.channelSelectedIcon = this.findNodeDeep(this.node, " icon_channel_selected ");
+this.channelSelectOverlay = this.findNodeDeep(this.node, "img_channel_select_overlay");
+this.channelSelectedIcon = this.findNodeDeep(this.node, "icon_channel_selected");
 this.baseChannelCardNodes = this.collectBaseChannelCardNodes();
 this.channelCardNodes = this.baseChannelCardNodes.slice();
 this.channelCardTemplateNode = this.baseChannelCardNodes[0] || null;
@@ -283,7 +283,7 @@ if (t) for (var i = 0; i < t.childrenCount; i++) {
 var n = t.children[i];
 this.getChannelCardOrderIndex(n) >= 0 && e.push(n);
 }
-if (e.length <= 0) for (var a = [ " btn_channel_0 ", " btn_channel_1 ", " btn_channel_2 ", " btn_channel_3 " ], o = 0; o < a.length; o++) {
+if (e.length <= 0) for (var a = [ "btn_channel_0", "btn_channel_1", "btn_channel_2", "btn_channel_3" ], o = 0; o < a.length; o++) {
 var r = this.findNodeDeep(this.node, a[o]);
 r && e.push(r);
 }
@@ -349,7 +349,7 @@ ensureChannelCardNodeCount: function(e) {
 var t = Math.max(0, e || 0);
 if (this.channelCardTemplateNode) for (var i = this.panelNode || this.node; this.channelCardNodes.length < t; ) {
 var n = this.channelCardNodes.length, a = cc.instantiate(this.channelCardTemplateNode);
-a.name = " btn_channel_dynamic_ " + n;
+a.name = "btn_channel_dynamic_" + n;
 i.addChild(a);
 this.cacheChannelCardDefaultSpriteFrame(a);
 this.channelCardNodes.push(a);
@@ -383,7 +383,7 @@ if (e) {
 var n = e.getComponent(cc.Sprite);
 if (n) {
 this.restoreChannelCardDefaultSprite(e);
-var a = t && t.channel_pic ? String(t.channel_pic).trim() : " ";
+var a = t && t.channel_pic ? String(t.channel_pic).trim() : "";
 if (a) if (this.channelCardRemoteFrameCache[a]) n.spriteFrame = this.channelCardRemoteFrameCache[a]; else {
 var o = this;
 this.loadRemoteChannelCardSpriteFrame(a, function(t) {
@@ -408,7 +408,7 @@ i.channelCardRemoteFrameCache[e] = o;
 t && t(o);
 } else t && t(null);
 } else {
-cc.warn("[cashArrowSetView] load channel_pic failed: ", e, n);
+cc.warn("[cashArrowSetView] load channel_pic failed:", e, n);
 t && t(null);
 }
 });
@@ -470,16 +470,16 @@ var t = this.baseFieldRows[this.baseFieldRows.length - 1] || this.baseFieldRows[
 if (!t) return null;
 var i = this.panelNode || this.node, n = t.labelNode ? cc.instantiate(t.labelNode) : null, a = t.inputNode ? cc.instantiate(t.inputNode) : null, o = t.bgNode ? cc.instantiate(t.bgNode) : null;
 if (o) {
-o.name = " img_dynamic_input_bg_ " + e;
+o.name = "img_dynamic_input_bg_" + e;
 i.addChild(o);
 o.setSiblingIndex(0);
 }
 if (n) {
-n.name = " txt_dynamic_input_label_ " + e;
+n.name = "txt_dynamic_input_label_" + e;
 i.addChild(n);
 }
 if (a) {
-a.name = " txt_dynamic_input_value_ " + e;
+a.name = "txt_dynamic_input_value_" + e;
 i.addChild(a);
 }
 return this.setupFieldRowRefs({
@@ -510,11 +510,11 @@ e && e.stopPropagation && e.stopPropagation();
 onClickFieldBackground: function(e) {
 e && e.stopPropagation && e.stopPropagation();
 var t = e && e.currentTarget, i = t && t._cashArrowBoundEditBox;
-i && " function " == typeof i.focus && i.focus();
+i && "function" == typeof i.focus && i.focus();
 },
 onClickChannelCard: function(e) {
 var t = e && e.currentTarget && e.currentTarget._channelCardIndex;
-if (" number " == typeof t && !(t < 0 || t >= this.channelList.length) && t !== this.selectedChannelIndex) {
+if ("number" == typeof t && !(t < 0 || t >= this.channelList.length) && t !== this.selectedChannelIndex) {
 this.saveCurrentInputCache();
 this.selectedChannelIndex = t;
 this.refreshUI();
@@ -574,13 +574,13 @@ this.channelSelectedIcon && this.channelSelectedIcon.active && this.channelSelec
 seedInitialInputCache: function() {
 if (this.initialBindInfo && !(this.channelList.length <= 0)) for (var e = 0; e < this.channelList.length; e++) {
 var t = this.channelList[e];
-if ((t.channel || " ") === (this.initialBindInfo.channel || " ") && (t.sub_channel || " ") === (this.initialBindInfo.sub_channel || " ")) {
+if ((t.channel || "") === (this.initialBindInfo.channel || "") && (t.sub_channel || "") === (this.initialBindInfo.sub_channel || "")) {
 for (var i = {}, n = t.need_field || [], a = 0; a < n.length; a++) {
 var o = n[a];
 if (o && o.field_value) {
 var r = o.field_value, s = this.initialBindInfo[r];
-null == s && (" payee_name " === r || " name " === r ? s = this.initialBindInfo.payee_name || this.initialBindInfo.name || " " : " account " === r && (s = this.initialBindInfo.account || this.initialBindInfo.phone || this.initialBindInfo.email || " "));
-i[r] = null == s ? " ": String(s); } } this.channelInputCache[this.getChannelCacheKey(t)] = i; this.selectedChannelIndex = e; break; } } }, getCurrentChannel: function() { return this.channelList[this.selectedChannelIndex] || null; }, getChannelCacheKey: function(e) { return e ? [ e.channel ||" ", e.sub_channel || " ", e.show_channel || e.name || " " ].join("| ") : " __default__ ";
+null == s && ("payee_name" === r || "name" === r ? s = this.initialBindInfo.payee_name || this.initialBindInfo.name || "" : "account" === r && (s = this.initialBindInfo.account || this.initialBindInfo.phone || this.initialBindInfo.email || ""));
+i[r] = null == s ? "": String(s); } } this.channelInputCache[this.getChannelCacheKey(t)] = i; this.selectedChannelIndex = e; break; } } }, getCurrentChannel: function() { return this.channelList[this.selectedChannelIndex] || null; }, getChannelCacheKey: function(e) { return e ? [ e.channel ||"", e.sub_channel || "", e.show_channel || e.name || "" ].join("|") : "__default__";
 },
 saveCurrentInputCache: function() {
 var e = this.getCurrentChannel();
@@ -597,7 +597,7 @@ for (var t = this.channelInputCache[this.getChannelCacheKey(e)] || {}, i = 0; i 
 var n = this.activeFieldRows[i];
 if (n && n.editBox && n.field) {
 var a = n.field.field_value;
-n.editBox.string = t[a] || " ";
+n.editBox.string = t[a] || "";
 }
 }
 },
@@ -685,14 +685,14 @@ this.applyFieldInputMode(e.editBox, t, i);
 }
 },
 resolveFieldLabel: function(e) {
-return e && (e.field_desc || e.field_value_translate || e.field_value) || " ";
+return e && (e.field_desc || e.field_value_translate || e.field_value) || "";
 },
 applyFieldInputMode: function(e, t, i) {
 if (e) {
-var n = cc.EditBox && cc.EditBox.InputMode ? cc.EditBox.InputMode : null, a = t && t.field_value ? String(t.field_value).toLowerCase() : " ", o = i && i.account_type;
+var n = cc.EditBox && cc.EditBox.InputMode ? cc.EditBox.InputMode : null, a = t && t.field_value ? String(t.field_value).toLowerCase() : "", o = i && i.account_type;
 Array.isArray(o) && (o = o[0]);
-o = (o || " ").toString().toLowerCase();
-var r = -1 !== a.indexOf(" phone ") || " account " === a && " phone " === o, s = -1 !== a.indexOf(" email ") || " account " === a && " email " === o;
+o = (o || "").toString().toLowerCase();
+var r = -1 !== a.indexOf("phone") || "account" === a && "phone" === o, s = -1 !== a.indexOf("email") || "account" === a && "email" === o;
 e.inputMode = r ? n && void 0 !== n.PHONE_NUMBER ? n.PHONE_NUMBER : 3 : s ? n && void 0 !== n.EMAIL_ADDR ? n.EMAIL_ADDR : 1 : n && void 0 !== n.SINGLE_LINE ? n.SINGLE_LINE : 6;
 }
 },
@@ -700,9 +700,9 @@ refreshUI: function() {
 this.refreshChannelCards();
 var e = this.getCurrentChannel();
 if (e) {
-this.lblTitle && (this.lblTitle.string = e.title || this.i18n(" key_cash_set_title ", null, " Enter Account Details "));
-this.lblSelectInfo && (this.lblSelectInfo.string = this.i18n(" key_cash_set_select_account_info ", null, " Select account information "));
-this.lblSubmitBtn && (this.lblSubmitBtn.string = this.i18n(" key_cash_set_submit_btn ", null, " Submit "));
+this.lblTitle && (this.lblTitle.string = e.title || this.i18n("key_cash_set_title", null, "Enter Account Details"));
+this.lblSelectInfo && (this.lblSelectInfo.string = this.i18n("key_cash_set_select_account_info", null, "Select account information"));
+this.lblSubmitBtn && (this.lblSubmitBtn.string = this.i18n("key_cash_set_submit_btn", null, "Submit"));
 this.currentFields = e.need_field && e.need_field.length > 0 ? e.need_field : this.getDefaultNeedFields(e);
 this.updateFieldRows(e);
 this.restoreInputCache(e);
@@ -712,10 +712,10 @@ collectCurrentInputData: function(e) {
 for (var t = {}, i = 0; i < this.activeFieldRows.length; i++) {
 var n = this.activeFieldRows[i];
 if (n && n.field && n.editBox) {
-var a = n.field.field_value, o = n.editBox.string || " ";
+var a = n.field.field_value, o = n.editBox.string || "";
 o = o.trim();
 if (e && !o) {
-this.showToast(this.resolveFieldLabel(n.field) || this.i18n(" key_cash_set_required_fields ", null, " Please complete required fields "));
+this.showToast(this.resolveFieldLabel(n.field) || this.i18n("key_cash_set_required_fields", null, "Please complete required fields"));
 return null;
 }
 t[a] = o;
@@ -727,16 +727,16 @@ parseCheckInfo: function(e) {
 if (!e || !e.data) return {};
 var t = e.data.check_info;
 if (!t) return {};
-if (" string " == typeof t) try {
+if ("string" == typeof t) try {
 return JSON.parse(t);
 } catch (e) {
-cc.warn("[cashArrowSetView] parse check_info failed ", e);
+cc.warn("[cashArrowSetView] parse check_info failed", e);
 return {};
 }
-return " object " == typeof t ? t : {};
+return "object" == typeof t ? t : {};
 },
 isCheckPass: function(e) {
-return !0 === e || 1 === e || " 1 " === e || " true " === e;
+return !0 === e || 1 === e || "1" === e || "true" === e;
 },
 findFirstFailedField: function(e) {
 for (var t = this.currentFields || [], i = 0; i < t.length; i++) {
@@ -753,50 +753,50 @@ var i = this.collectCurrentInputData(!0);
 if (i) {
 this.isSubmitting = !0;
 var s = {
-channel: t.channel || " ",
-sub_channel: t.sub_channel || " ",
+channel: t.channel || "",
+sub_channel: t.sub_channel || "",
 info: i
 }, l = LoadingHttpService.verifyWithdrawBindInfo;
-if (" function " == typeof l) {
+if ("function" == typeof l) {
 var c = NetErrorPopupService || r, u = function() {
 e.isSubmitting = !1;
 e.onClickSubmit();
 };
 l.call(LoadingHttpService, s, Handler.create(e, function(a) {
 if (c && c.shouldPop(a)) {
-cc.warn("[cashArrowSetView] verifyWithdrawBindInfo force- retry code = ", a && a.code);
+cc.warn("[cashArrowSetView] verifyWithdrawBindInfo force-retry code=", a && a.code);
 e.isSubmitting = !1;
 c.showAndRetry(u);
 } else {
 e.isSubmitting = !1;
 if (a && 1 === Number(a.code)) {
 var o = e.parseCheckInfo(a), r = e.findFirstFailedField(o);
-if (r) e.showToast(r.fail_desc || e.resolveFieldLabel(r) || e.i18n(" key_cash_set_validation_failed ", null, " Validation failed ")); else {
+if (r) e.showToast(r.fail_desc || e.resolveFieldLabel(r) || e.i18n("key_cash_set_validation_failed", null, "Validation failed")); else {
 e.saveInputCacheByData(t, i);
 var s = e.buildBindInfo(t, i);
 e.onValidated && e.onValidated(s);
 UIMgr.getInstance().hide(e.node);
 }
 } else {
-cc.warn("[cashArrowSetView] verify failed: ", a && a.message);
-e.showToast(a && a.message || e.i18n(" key_cash_set_validation_failed ", null, " Validation failed "));
+cc.warn("[cashArrowSetView] verify failed:", a && a.message);
+e.showToast(a && a.message || e.i18n("key_cash_set_validation_failed", null, "Validation failed"));
 }
 }
 }), Handler.create(e, function(t) {
 if (c && c.shouldPop(t)) {
-cc.warn("[cashArrowSetView] verifyWithdrawBindInfo 网络异常 ， 弹重试窗 err = ", t && t.message);
+cc.warn("[cashArrowSetView] verifyWithdrawBindInfo 网络异常，弹重试窗 err=", t && t.message);
 e.isSubmitting = !1;
 c.showAndRetry(u);
 } else {
 e.isSubmitting = !1;
-cc.warn("[cashArrowSetView] verify error: ", t && t.message);
-e.showToast(t && t.message || e.i18n(" key_common_network_error ", null, " Network error "));
+cc.warn("[cashArrowSetView] verify error:", t && t.message);
+e.showToast(t && t.message || e.i18n("key_common_network_error", null, "Network error"));
 }
 }));
 } else {
 this.isSubmitting = !1;
-cc.warn("[cashArrowSetView] verifyWithdrawBindInfo is undefined ");
-this.showToast(this.i18n(" key_common_network_unavailable ", null, " Network unavailable "));
+cc.warn("[cashArrowSetView] verifyWithdrawBindInfo is undefined");
+this.showToast(this.i18n("key_common_network_unavailable", null, "Network unavailable"));
 }
 }
 }
@@ -804,17 +804,17 @@ this.showToast(this.i18n(" key_common_network_unavailable ", null, " Network una
 },
 buildBindInfo: function(e, t) {
 var i = {
-channel: e.channel || " ",
-sub_channel: e.sub_channel || " ",
-show_channel: e.show_channel || " ",
+channel: e.channel || "",
+sub_channel: e.sub_channel || "",
+show_channel: e.show_channel || "",
 need_field: e.need_field || [],
-channel_pic: e.channel_pic || " ",
-tax_desc: e.tax_desc || " "
+channel_pic: e.channel_pic || "",
+tax_desc: e.tax_desc || ""
 };
 for (var n in t) Object.prototype.hasOwnProperty.call(t, n) && (i[n] = t[n]);
 !i.payee_name && i.name && (i.payee_name = i.name);
 !i.name && i.payee_name && (i.name = i.payee_name);
-i.account || (i.account = i.phone || i.email || " ");
+i.account || (i.account = i.phone || i.email || "");
 i._input_data = t;
 return i;
 },
@@ -823,10 +823,10 @@ return LanguageService.t(e, t || [], i);
 },
 showToast: function(t) {
 try {
-var i = e(" Tips ");
+var i = e("Tips");
 Tips.show(t);
 } catch (e) {
-cc.log("[cashArrowSetView] toast: ", t);
+cc.log("[cashArrowSetView] toast:", t);
 }
 },
 onClickClose: function() {

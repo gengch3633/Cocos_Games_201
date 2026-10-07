@@ -2,7 +2,7 @@ import RedDotNode from "./RedDotNode";
 import Singleton from "./Singleton";
 
 export default class RedDotMgr extends Singleton {
-    root: RedDotNode = new RedDotNode(" RedDotMgr_Root ");
+    root: RedDotNode = new RedDotNode("RedDotMgr_Root");
 
     addRedDot(node: RedDotNode): void {
         this.root.addChild(node);

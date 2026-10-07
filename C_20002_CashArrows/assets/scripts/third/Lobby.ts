@@ -11,11 +11,11 @@ export default class Lobby extends cc.Component {
 
     onLoad(): void {
         this.audioPlay = this.node.getComponent(AudioPlay);
-        UiPageAnalyticsService.trackEnter(" home_page ");
+        UiPageAnalyticsService.trackEnter("home_page");
     }
 
     onDestroy(): void {
-        UiPageAnalyticsService.trackLeave(" home_page ");
+        UiPageAnalyticsService.trackLeave("home_page");
     }
 
     async example(): Promise<void> {

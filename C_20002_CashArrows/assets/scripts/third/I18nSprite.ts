@@ -8,17 +8,17 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class I18nSprite extends cc.Component {
     @property({
-        tooltip: " i18n key whose value is sprite path "
+        tooltip: "i18n key whose value is sprite path"
     })
-    i18nKey: string = " ";
+    i18nKey: string = "";
 
     @property({
-        tooltip: " fallback sprite path when key missing or empty "
+        tooltip: "fallback sprite path when key missing or empty"
     })
-    fallbackPath: string = " ";
+    fallbackPath: string = "";
 
     @property({
-        tooltip: " bundle name for sprite loading "
+        tooltip: "bundle name for sprite loading"
     })
     bundleName: string = "ui";
 
@@ -55,9 +55,9 @@ export default class I18nSprite extends cc.Component {
     }
 
     setI18nKey(key: string, fallback?: string, bundle?: string): void {
-        this.i18nKey = key || " ";
+        this.i18nKey = key || "";
         if (fallback !== undefined) {
-            this.fallbackPath = fallback || " ";
+            this.fallbackPath = fallback || "";
         }
         if (bundle !== undefined) {
             this.bundleName = bundle || "ui";
@@ -66,12 +66,12 @@ export default class I18nSprite extends cc.Component {
     }
 
     getSpritePath(): string {
-        const key = String(this.i18nKey || " ").trim();
+        const key = String(this.i18nKey || "").trim();
         if (!key) {
-            return String(this.fallbackPath || " ").trim();
+            return String(this.fallbackPath || "").trim();
         }
-        const translated = LanguageService.t(key, [], " ");
-        return String(translated || " ").trim() || String(this.fallbackPath || " ").trim();
+        const translated = LanguageService.t(key, [], "");
+        return String(translated || "").trim() || String(this.fallbackPath || "").trim();
     }
 
     refreshSprite(): void {
@@ -84,7 +84,7 @@ export default class I18nSprite extends cc.Component {
                         this.targetSprite.spriteFrame = spriteFrame;
                     }
                 }).catch((error) => {
-                    cc.warn("[I18nSprite] loadRes failed: ", path, this.bundleName, error);
+                    cc.warn("[I18nSprite] loadRes failed:", path, this.bundleName, error);
                 });
             }
         }

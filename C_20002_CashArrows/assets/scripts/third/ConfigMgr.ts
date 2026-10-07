@@ -18,11 +18,11 @@ interface ConfigTab {
 }
 
 export default class ConfigMgr extends Singleton {
-    game_knzmx: string = " tt_knzmx ";
-    game_hystz: string = " tt_hystz ";
-    game_wnzzl: string = " wx_wnzzl ";
-    game_kyzmw: string = " wx_kyzmw ";
-    gameName: string = " wx_wnzzl ";
+    game_knzmx: string = "tt_knzmx";
+    game_hystz: string = "tt_hystz";
+    game_wnzzl: string = "wx_wnzzl";
+    game_kyzmw: string = "wx_kyzmw";
+    gameName: string = "wx_wnzzl";
     lk_oss: string = "https://lkgame.mrkzx.cn/";
     dataMap: Map<string, any> = new Map();
     levelMap: Map<string, any> = new Map();
@@ -48,7 +48,7 @@ export default class ConfigMgr extends Singleton {
                         for (let retry = 0; retry < 3; retry++) {
                             await new Promise<void>((res, rej) => {
                                 cc.assetManager.loadRemote(
-                                    URL.parse(baseUrl, name + (isEncrypted ? ".txt " : ".json? t = " + Date.now())),
+                                    URL.parse(baseUrl, name + (isEncrypted ? ".txt" : ".json?t=" + Date.now())),
                                     (err, asset: any) => {
                                         if (err) {
                                             rej(err);
@@ -69,7 +69,7 @@ export default class ConfigMgr extends Singleton {
                         }
                         onAllComplete();
                     } catch (err) {
-                        console.error(" load local " + name + " error ", err);
+                        console.error("load local " + name + " error", err);
                         resolve(false);
                     }
                 };
@@ -85,10 +85,10 @@ export default class ConfigMgr extends Singleton {
                             self.dataMap.set(name, (asset as cc.JsonAsset).json);
                         }
                         asset.decRef();
-                        const isI18n = String(name || " ").indexOf(" i18n_ ") === 0;
+                        const isI18n = String(name || "").indexOf("i18n_") === 0;
                         isHttpUrl && !isI18n ? loadRemoteConfig(name, isEncrypted) : onAllComplete();
                     } catch (err) {
-                        console.error(" load local " + name + " error ", err);
+                        console.error("load local " + name + " error", err);
                         resolve(false);
                     }
                 };
@@ -125,9 +125,9 @@ export default class ConfigMgr extends Singleton {
         return this.dataMap.get(tabName);
     }
 
-    getById(config: ConfigTab, id: any, idField: string = " id "): any {
+    getById(config: ConfigTab, id: any, idField: string = "id"): any {
         const result = this.find(config, (row) => row[idField] == id);
-        result || console.error(" 配置表 " + config.TabName + " 中没有找到 " + String(idField) + " = " + id + " 的数据 ");
+        result || console.error("配置表 " + config.TabName + " 中没有找到 " + String(idField) + "=" + id + " 的数据");
         return result;
     }
 
@@ -186,8 +186,8 @@ export default class ConfigMgr extends Singleton {
                 try {
                     for (let retry = 0; retry < 3; retry++) {
                         const url =
-                            URL.parse(baseUrl, gameDir, name + (isEncrypted ? ".txt " : ".json ")) +
-                            "? v = " +
+                            URL.parse(baseUrl, gameDir, name + (isEncrypted ? ".txt" : ".json")) +
+                            "?v=" +
                             Date.now();
                         const data = await loadRemoteAsset(url, isEncrypted);
                         if (data) {
@@ -197,7 +197,7 @@ export default class ConfigMgr extends Singleton {
                     }
                     onAllComplete();
                 } catch (err) {
-                    console.error(" load local " + name + " error ", err);
+                    console.error("load local " + name + " error", err);
                     resolve(false);
                 }
             };
@@ -215,7 +215,7 @@ export default class ConfigMgr extends Singleton {
                     asset.decRef();
                     isHttpUrl ? loadRemoteLevel(name, isEncrypted) : onAllComplete();
                 } catch (err) {
-                    console.error(" load local " + name + " error ", err);
+                    console.error("load local " + name + " error", err);
                     resolve(false);
                 }
             };
@@ -260,25 +260,25 @@ export default class ConfigMgr extends Singleton {
             if (fromRemote) {
                 const url =
                     this.lk_oss +
-                    this.gameName.split(" _ ")[1] +
-                    "/ level/ "+ levelName +".json? t = " +
+                    this.gameName.split("_")[1] +
+                    "/level/"+ levelName +".json?t=" +
                     Date.now();
                 cc.assetManager.loadRemote(url, (err, asset: cc.JsonAsset) => {
                     if (err) {
                         reject(err);
                     } else {
-                        console.log(" json ", asset);
+                        console.log("json", asset);
                         this.levelMap.set(levelName, asset.json);
                         resolve(true);
                     }
                 });
             } else {
-                cc.assetManager.getBundle(InterfaceMgr.bundleName.config).load(" game/ " + levelName, (err, asset: cc.JsonAsset) => {
+                cc.assetManager.getBundle(InterfaceMgr.bundleName.config).load("game/" + levelName, (err, asset: cc.JsonAsset) => {
                     if (err) {
                         reject(err);
                     } else {
                         this.levelMap.set(levelName, asset.json);
-                        console.log(" load " + levelName + " data success ");
+                        console.log("load " + levelName + " data success");
                         resolve(true);
                     }
                 });
@@ -290,14 +290,14 @@ export default class ConfigMgr extends Singleton {
         return new Promise((resolve, reject) => {
             const url =
                 this.lk_oss +
-                this.gameName.split(" _ ")[1] +
-                "/ systemConfig/ maclist.json? t = " +
+                this.gameName.split("_")[1] +
+                "/systemConfig/maclist.json?t=" +
                 Date.now();
             cc.assetManager.loadRemote(url, (err, asset: cc.JsonAsset) => {
                 if (err) {
                     reject(err);
                 } else {
-                    console.log(" macList ", asset.json);
+                    console.log("macList", asset.json);
                     this.mackList = asset.json;
                     resolve(true);
                 }
@@ -322,7 +322,7 @@ export default class ConfigMgr extends Singleton {
     }
 
     getLevelById(id: number): any {
-        return this.levelMap.get(" level_ " + id);
+        return this.levelMap.get("level_" + id);
     }
 
     async checkMac(): Promise<boolean> {

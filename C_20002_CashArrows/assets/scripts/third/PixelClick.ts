@@ -7,7 +7,7 @@ const { ccclass, menu, requireComponent } = cc._decorator;
 @requireComponent(cc.Sprite)
 export default class PixelClick extends cc.Component {
     static EventType = {
-        CLICK: " pixelClick "
+        CLICK: "pixelClick"
     };
 
     _sprite: cc.Sprite = null;
@@ -43,7 +43,7 @@ export default class PixelClick extends cc.Component {
         const rgba = this.pixelsData.slice(offset, offset + 4);
         const color = cc.color(rgba[0], rgba[1], rgba[2], rgba[3]);
         if (color.a > 0) {
-            console.log(" click ");
+            console.log("click");
             this.node.emit(PixelClick.EventType.CLICK, event, color);
         }
     }

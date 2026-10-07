@@ -13,12 +13,12 @@ class UIHelperImpl {
     pagesParent: cc.Node = null;
     toastPrefab: cc.Prefab = null;
     toastShows: number = 0;
-    networkErrorText: string = " Network error, please try again ";
+    networkErrorText: string = "Network error, please try again";
 
     init(): void {
-        const persistNode = new cc.Node(" persist ");
+        const persistNode = new cc.Node("persist");
         this.persist = persistNode;
-        const toastNode = new cc.Node(" toast ");
+        const toastNode = new cc.Node("toast");
         this.toast = toastNode;
         persistNode.addChild(toastNode);
         persistNode.setPosition(cc.v2(cc.winSize.width / 2, cc.winSize.height / 2));
@@ -37,11 +37,11 @@ class UIHelperImpl {
 
     getPagesParent(): cc.Node {
         const root = cc.director.getScene().children[0];
-        let pages = root.getChildByName(" pages ");
+        let pages = root.getChildByName("pages");
         if (pages) {
             return pages;
         }
-        pages = new cc.Node(" pages ");
+        pages = new cc.Node("pages");
         pages.zIndex = 1;
         root.addChild(pages);
         return pages;
@@ -54,8 +54,8 @@ class UIHelperImpl {
         if (cc.isValid(this.toastPrefab)) {
             const toastNode = cc.instantiate(this.toastPrefab);
             this.setToastNode(toastNode);
-            const content = toastNode.getChildByName(" content ");
-            const label = content?.getChildByName(" text ")?.getComponent(cc.Label);
+            const content = toastNode.getChildByName("content");
+            const label = content?.getChildByName("text")?.getComponent(cc.Label);
             if (label) {
                 label.string = message;
             }
@@ -97,7 +97,7 @@ class UIHelperImpl {
             }
             this.addPage(pageName, node, node, prefab, params);
         } else {
-            cc.resources.load("BPR_pages/BPR_"+ pageName, cc.Prefab, (err, prefab) => { if (!err) { this.addPage(pageName, null, cc.instantiate(prefab), prefab, params); } }); } } addPage(pageName: string, existingNode: cc.Node, node: cc.Node, prefab: cc.Prefab, params?: any): void { if (!existingNode || !existingNode.isValid) { existingNode = node; } const parent = this.getPagesParent(); if (!parent.getChildByName(pageName)) { parent.addChild(existingNode); } existingNode.name = pageName; existingNode.zIndex = 99; const ctrl = existingNode.getComponent(pageName +" Ctrl ") || existingNode.getComponent(" BasePageCtrl ");
+            cc.resources.load("BPR_pages/BPR_"+ pageName, cc.Prefab, (err, prefab) => { if (!err) { this.addPage(pageName, null, cc.instantiate(prefab), prefab, params); } }); } } addPage(pageName: string, existingNode: cc.Node, node: cc.Node, prefab: cc.Prefab, params?: any): void { if (!existingNode || !existingNode.isValid) { existingNode = node; } const parent = this.getPagesParent(); if (!parent.getChildByName(pageName)) { parent.addChild(existingNode); } existingNode.name = pageName; existingNode.zIndex = 99; const ctrl = existingNode.getComponent(pageName +"Ctrl") || existingNode.getComponent("BasePageCtrl");
         ctrl?._init?.(params);
         this.pages.set(pageName, { node: existingNode, prefab });
     }
@@ -112,19 +112,19 @@ class UIHelperImpl {
 
     httpErr(_error: any, callback?: () => void): void {
         this.showToast(this.networkErrorText);
-        this.showPage(" ReconnectPage ", {
-            name: " ReconnectPage ",
+        this.showPage("ReconnectPage", {
+            name: "ReconnectPage",
             callback
         });
     }
 
     reconnectSuc(): void {
-        this.hidePage(" LoadingPage ");
+        this.hidePage("LoadingPage");
         EventSystem.trigger(CLOSE_RECONNECT);
     }
 
     reconnectFai(): void {
-        this.hidePage(" LoadingPage ");
+        this.hidePage("LoadingPage");
     }
 }
 

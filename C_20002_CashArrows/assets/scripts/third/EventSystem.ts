@@ -1,6 +1,6 @@
 import Handler from "./Handler";
 
-export const CLOSE_RECONNECT = " CLOSE_RECONNECT ";
+export const CLOSE_RECONNECT = "CLOSE_RECONNECT";
 
 class EventListener extends Handler {
     _dispatcher: EventDispatcher = null;

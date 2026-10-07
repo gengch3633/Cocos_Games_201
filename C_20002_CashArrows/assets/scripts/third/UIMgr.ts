@@ -119,7 +119,7 @@ export class UIConfig {
     }
 
     getId(): string {
-        return (this.bundle ? (this.bundle ?? " ") + " # " : " ") + this.url;
+        return (this.bundle ? (this.bundle ?? "") + "#" : "") + this.url;
     }
 
     clone(target?: UIConfig): UIConfig {
@@ -158,7 +158,7 @@ class LayerMgr {
         this.names = names;
         this.defaultLayer = defaultLayer;
         names.forEach((name) => {
-            const layerNode = this.createNode(" layer_ " + name);
+            const layerNode = this.createNode("layer_" + name);
             this.layerMap.set(name, layerNode);
         });
     }
@@ -203,7 +203,7 @@ class LayerMgr {
 
     getBlockInputNode(): cc.Node {
         if (!this.globalBlockInputNode || !this.globalBlockInputNode.isValid) {
-            const node = this.createNode(" blockInput ", this.getTopLayerNode());
+            const node = this.createNode("blockInput", this.getTopLayerNode());
             node.addComponent(cc.BlockInputEvents);
             this.globalBlockInputNode = node;
         }
@@ -233,13 +233,13 @@ function getWaitingUIComponent(node: cc.Node): WaitingUI {
 
 export default class UIMgr extends Singleton {
     static EventType = {
-        BEFORE_SHOW: " UIMgr_Event_Before_Show ",
-        SHOW: " UIMgr_Event_Show ",
-        ANIMATION_SHOW_COMPLETE: " UIMgr_EVENT_ANIMATION_SHOW_COMPLETE ",
-        BEFORE_HIDE: " UIMgr_Event_BEFORE_HIDE ",
-        ANIMATION_HIDE_COMPLETE: " UIMgr_EVENT_ANIMATION_HIDE_COMPLETE ",
-        HIDE: " UIMgr_Event_Hide ",
-        CHANGE_PARAMS: " UIParams_Event_Params_Change "
+        BEFORE_SHOW: "UIMgr_Event_Before_Show",
+        SHOW: "UIMgr_Event_Show",
+        ANIMATION_SHOW_COMPLETE: "UIMgr_EVENT_ANIMATION_SHOW_COMPLETE",
+        BEFORE_HIDE: "UIMgr_Event_BEFORE_HIDE",
+        ANIMATION_HIDE_COMPLETE: "UIMgr_EVENT_ANIMATION_HIDE_COMPLETE",
+        HIDE: "UIMgr_Event_Hide",
+        CHANGE_PARAMS: "UIParams_Event_Params_Change"
     };
 
     _layerMgr: LayerMgr = null;
@@ -310,7 +310,7 @@ export default class UIMgr extends Singleton {
                 const node = cc.instantiate(prefab);
                 this.waitingUI = getWaitingUIComponent(node);
                 if (!this.waitingUI) {
-                    console.error(" Waiting UI component not found on node ");
+                    console.error("Waiting UI component not found on node");
                 }
             }
         });
@@ -385,11 +385,11 @@ export default class UIMgr extends Singleton {
     }
 
     getExitToastText(): string {
-        let text = " 再按一次退出游戏 ";
+        let text = "再按一次退出游戏";
         try {
-            const language = LanguageService.getCurrentLanguage ? String(LanguageService.getCurrentLanguage()) : " ";
+            const language = LanguageService.getCurrentLanguage ? String(LanguageService.getCurrentLanguage()) : "";
             if (language === "id-ID") {
-                text = " Tekan sekali lagi untuk keluar game ";
+                text = "Tekan sekali lagi untuk keluar game";
             }
         } catch (_error) {}
         return text;
@@ -400,7 +400,7 @@ export default class UIMgr extends Singleton {
             const bridge = NativeSdkBridgeAdapter?.getBridge ? NativeSdkBridgeAdapter.getBridge() : null;
             bridge?.showAppLongTapToast?.(this.getExitToastText(), 0);
         } catch (error) {
-            console.warn("[UIMgr] showNativeBackToast failed ", error);
+            console.warn("[UIMgr] showNativeBackToast failed", error);
         }
     }
 
@@ -409,7 +409,7 @@ export default class UIMgr extends Singleton {
             const bridge = NativeSdkBridgeAdapter?.getBridge ? NativeSdkBridgeAdapter.getBridge() : null;
             bridge?.exitApp?.();
         } catch (error) {
-            console.warn("[UIMgr] requestNativeExitApp failed ", error);
+            console.warn("[UIMgr] requestNativeExitApp failed", error);
         }
     }
 
@@ -465,9 +465,9 @@ export default class UIMgr extends Singleton {
             });
         }
         const uiNode = await loadPromise;
-        console.log(config.getId() + " 打开耗时: " + (Date.now() - startTime) + " ms ");
+        console.log(config.getId() + " 打开耗时: " + (Date.now() - startTime) + "ms");
         if (!uiNode) {
-            console.error(" ui打开错误 ", config.url, config.bundle);
+            console.error("ui打开错误 ", config.url, config.bundle);
             if (config.showWait) {
                 this.hideWatingUI();
             }
@@ -501,7 +501,7 @@ export default class UIMgr extends Singleton {
             this.eventTarget.emit(UIMgr.EventType.SHOW, id, uiNode);
             return uiNode;
         } catch (error) {
-            console.error(" ui打开错误 ", config?.url, config?.bundle, error);
+            console.error("ui打开错误 ", config?.url, config?.bundle, error);
             return null;
         }
     }

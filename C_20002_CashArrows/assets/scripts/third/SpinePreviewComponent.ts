@@ -66,7 +66,7 @@ export class SpinePreviewComponent extends sp.Skeleton {
         const animations = data.animations;
         const events = data.events;
         const skins = data.skins;
-        console.group("spine : 节点" + this.name + " ,动画<" + this._N$skeletonData._name + ">");
+        console.group("spine : 节点" + this.name + " ,动画 <" + this._N$skeletonData._name + ">");
         let animStr = "[";
         for (let i = 0; i < animations.length; i++) {
             if (i !== 0) {

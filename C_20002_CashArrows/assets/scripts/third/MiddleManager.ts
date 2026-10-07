@@ -10,7 +10,7 @@ import { MiddleReqType } from "./MiddleReqType";
 import MiddleUploadScheduler from "./MiddleUploadScheduler";
 
 export default class MiddleManager {
-    static LOG_TAG: string = "[MiddleManager.autoUploadEvent] ";
+    static LOG_TAG: string = "[MiddleManager.autoUploadEvent]";
     static instance: MiddleManager = null;
 
     banRed: boolean = true;
@@ -36,7 +36,7 @@ export default class MiddleManager {
             uploadNow: (source: string) => this.autoUploadEvent(source)
         });
         this.syncRegionalStateFromHelper();
-        this.log(" scheduler created ", {
+        this.log("scheduler created", {
             intervalSeconds: this.intervalSeconds,
             isFinishReginal: this.isFinishReginal
         });
@@ -63,39 +63,39 @@ export default class MiddleManager {
 
     middleTFRegional(): void {
         this.syncRegionalStateFromHelper();
-        BusinessAnalyticsService.reportData(" middleTFRegional ");
+        BusinessAnalyticsService.reportData("middleTFRegional");
         if (this._initMiddleRefer) {
-            BusinessAnalyticsService.reportData(" middleTFRegional_init_finish ");
+            BusinessAnalyticsService.reportData("middleTFRegional_init_finish");
         } else {
             this._initMiddleRefer = true;
-            BusinessAnalyticsService.reportData(" middleTFRegional_middleTF ");
+            BusinessAnalyticsService.reportData("middleTFRegional_middleTF");
             this.middleTF();
         }
     }
 
     middleTF(callback?: () => void): void {
-        BusinessAnalyticsService.reportData(" middle_tf ");
+        BusinessAnalyticsService.reportData("middle_tf");
         const params = MiddleService.paramData(MiddleReqType.Regional);
-        console.log("[MiddleManager.middleTF] request params- > ", JSON.stringify(params));
+        console.log("[MiddleManager.middleTF] request params ->", JSON.stringify(params));
         MiddleNetwork.getMiddleTFRegional(params, MiddleHandler.create(this, (result: any) => {
-            console.log("[MiddleManager.middleTF] success result- > ", JSON.stringify(result));
+            console.log("[MiddleManager.middleTF] success result ->", JSON.stringify(result));
             if (result) {
-                BusinessAnalyticsService.reportData(" middle_tf_result ", {
+                BusinessAnalyticsService.reportData("middle_tf_result", {
                     is_self_match_tf: result.is_self_match_tf
                 });
                 callback && callback();
             }
         }), MiddleHandler.create(this, (err: any) => {
-            console.error("[MiddleManager.middleTF] fail result- > ", JSON.stringify(err));
-            BusinessAnalyticsService.reportData(" middle_tf_result_error ");
+            console.error("[MiddleManager.middleTF] fail result ->", JSON.stringify(err));
+            BusinessAnalyticsService.reportData("middle_tf_result_error");
         }));
     }
 
-    autoUploadEvent(source: string = " unknown "): void {
+    autoUploadEvent(source: string = "unknown"): void {
         const wasReady = this.isFinishReginal;
         this.syncRegionalStateFromHelper();
         if (!wasReady && this.isFinishReginal) {
-            this.log(" ready state changed ", {
+            this.log("ready state changed", {
                 from: wasReady,
                 to: this.isFinishReginal,
                 source: source
@@ -105,7 +105,7 @@ export default class MiddleManager {
         const now = Date.now();
         const elapsedSinceLast = this.lastAutoUploadAt > 0 ? now - this.lastAutoUploadAt : -1;
         this.autoUploadSeq += 1;
-        this.log(" trigger ", {
+        this.log("trigger", {
             seq: this.autoUploadSeq,
             source: source,
             isFinishReginal: this.isFinishReginal,
@@ -117,7 +117,7 @@ export default class MiddleManager {
         this.sdkEventService.uploadOnce((intervalSeconds: number) => {
             const oldInterval = this.intervalSeconds;
             this.intervalSeconds = intervalSeconds;
-            this.log(" interval update ", {
+            this.log("interval update", {
                 seq: this.autoUploadSeq,
                 source: source,
                 oldIntervalSeconds: oldInterval,
@@ -136,12 +136,12 @@ export default class MiddleManager {
     getAdConfig(onSuccess?: (config: any) => void, onFail?: (err: any) => void): void {
         this.syncRegionalStateFromHelper();
         if (this.mfi != 1) {
-            BusinessAnalyticsService.reportData(" wp_mfi_false ");
-            console.log("[MiddleManager] 开始获取广告配置 ");
+            BusinessAnalyticsService.reportData("wp_mfi_false");
+            console.log("[MiddleManager] 开始获取广告配置");
             const params = MiddleService.paramData(MiddleReqType.ADCONFIG);
             MiddleNetwork.getAdConfig(params, MiddleHandler.create(this, (config: any) => {
                 if (config) {
-                    console.log("[MiddleManager] 广告配置获取成功 ");
+                    console.log("[MiddleManager] 广告配置获取成功");
                     if (config.urls && Array.isArray(config.urls) && config.urls.length !== 0) {
                         for (let i = 0; i < config.urls.length; i++) {
                             const item = config.urls[i];
@@ -150,32 +150,32 @@ export default class MiddleManager {
                                     const decrypted = this.decryptAdConfigSst(item.sst);
                                     if (decrypted) {
                                         item.sst = decrypted;
-                                        console.log("[MiddleManager] config.urls[" + i + "].sst 解密成功 ");
+                                        console.log("[MiddleManager] config.urls[" + i + "].sst 解密成功");
                                     }
                                 } catch (err) {
-                                    BusinessAnalyticsService.reportData(" wp_config_error ", {
-                                        error: " sst解密异常 "
+                                    BusinessAnalyticsService.reportData("wp_config_error", {
+                                        error: "sst解密异常"
                                     });
-                                    console.error("[MiddleManager] config.urls[" + i + "].sst 解密异常: ", err);
+                                    console.error("[MiddleManager] config.urls[" + i + "].sst 解密异常:", err);
                                 }
                             }
                         }
                         this._adConfig = config;
                         onSuccess && onSuccess(config);
                     } else {
-                        console.error("[MiddleManager] 广告配置中 urls 不存在或为空数组 ");
-                        onFail && onFail(" 广告配置中 urls 不存在或为空数组 ");
+                        console.error("[MiddleManager] 广告配置中 urls 不存在或为空数组");
+                        onFail && onFail("广告配置中 urls 不存在或为空数组");
                     }
                 } else {
-                    onFail && onFail(" 广告配置返回数据为空 ");
+                    onFail && onFail("广告配置返回数据为空");
                 }
             }), MiddleHandler.create(this, (err: any) => {
-                console.error("[MiddleManager] 广告配置获取失败: ", err);
+                console.error("[MiddleManager] 广告配置获取失败:", err);
                 onFail && onFail(err);
             }));
         } else if (onFail) {
-            onFail(" mfi为true ， 不获取广告配置 ");
-            BusinessAnalyticsService.reportData(" wp_mfi_true ");
+            onFail("mfi为true，不获取广告配置");
+            BusinessAnalyticsService.reportData("wp_mfi_true");
         }
     }
 
@@ -186,7 +186,7 @@ export default class MiddleManager {
     syncRegionalStateFromHelper(): void {
         const state = MiddleHelper.getRegionalState ? MiddleHelper.getRegionalState() : null;
         if (state) {
-            this.log(" syncRegionalStateFromHelper raw ", state);
+            this.log("syncRegionalStateFromHelper raw", state);
             this.isSupportHot = !!state.isSupportHot;
             this.isFinishReginal = !!state.isFinishRegional;
             this.banRed = !!state.banRed;
@@ -196,7 +196,7 @@ export default class MiddleManager {
             if (state.mfi !== undefined && state.mfi !== null) {
                 this.mfi = !!state.mfi;
             }
-            this.log(" syncRegionalStateFromHelper applied ", {
+            this.log("syncRegionalStateFromHelper applied", {
                 isSupportHot: this.isSupportHot,
                 isFinishReginal: this.isFinishReginal,
                 banRed: this.banRed,
@@ -206,7 +206,7 @@ export default class MiddleManager {
                 mfi: this.mfi
             });
         } else {
-            this.log(" syncRegionalStateFromHelper no state ");
+            this.log("syncRegionalStateFromHelper no state");
         }
     }
 

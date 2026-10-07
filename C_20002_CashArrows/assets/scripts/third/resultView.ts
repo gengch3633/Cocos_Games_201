@@ -56,14 +56,14 @@ export default class resultView extends cc.Component {
             adReward: 1000,
             forceWatchAd: false
         });
-        GEMgr.trackEvent(" lvNode ", {
+        GEMgr.trackEvent("lvNode", {
             level: this.winLevel,
             win: 1
         });
         if (!cc.sys.isBrowser) {
-            GEMgr.ge.track(" userAction ", {
-                action: " 游戏胜利 ",
-                module: " 关卡 " + this.winLevel,
+            GEMgr.ge.track("userAction", {
+                action: "游戏胜利",
+                module: "关卡" + this.winLevel,
                 isAD: 0
             }, new Date());
         }
@@ -93,20 +93,20 @@ export default class resultView extends cc.Component {
         this.isClaiming = true;
         this.refreshButtonsState();
         try {
-            const scene = this.passRewardData && this.passRewardData.forceWatchAd ? " pass_force " : " pass_active ";
-            BusinessAnalyticsService.reportData(" ad_show ", {
+            const scene = this.passRewardData && this.passRewardData.forceWatchAd ? "pass_force" : "pass_active";
+            BusinessAnalyticsService.reportData("ad_show", {
                 scene,
                 level: this.winLevel
             });
         } catch (_err) {}
         try {
             if (!(await this.simulateWatchAd())) {
-                Tips.show(this.i18n(" key_result_tip_watch_full "));
+                Tips.show(this.i18n("key_result_tip_watch_full"));
                 return;
             }
             await this.onClaimSuccess();
         } catch (_err) {
-            Tips.show(this.i18n(" key_result_tip_ad_error "));
+            Tips.show(this.i18n("key_result_tip_ad_error"));
         } finally {
             this.isClaiming = false;
             this.refreshButtonsState();
@@ -126,7 +126,7 @@ export default class resultView extends cc.Component {
         try {
             await this.onClaimSuccess();
         } catch (_err) {
-            Tips.show(this.i18n(" key_result_tip_claim_error "));
+            Tips.show(this.i18n("key_result_tip_claim_error"));
         } finally {
             this.isClaiming = false;
             this.refreshButtonsState();
@@ -138,7 +138,7 @@ export default class resultView extends cc.Component {
             UIMgr.getInstance().showWatingUI();
             setTimeout(() => {
                 UIMgr.getInstance().hideWatingUI();
-                Tips.show(this.i18n(" key_result_tip_ad_done "));
+                Tips.show(this.i18n("key_result_tip_ad_done"));
                 resolve(true);
             }, 900);
         });
@@ -157,7 +157,7 @@ export default class resultView extends cc.Component {
         } catch (_err) {
             this.passRewardData = this.normalizePassRewardData(null);
             await this.refreshRewardTexts(this.passRewardData);
-            Tips.show(this.i18n(" key_result_tip_reward_load_fail "));
+            Tips.show(this.i18n("key_result_tip_reward_load_fail"));
         } finally {
             this.isLoadingPass = false;
             this.refreshButtonsState();
@@ -174,7 +174,7 @@ export default class resultView extends cc.Component {
             reward_amount: this.safeNum(entry.mockRewardAmount, 500),
             ad_reward_amount: this.safeNum(entry.mockAdRewardAmount, 1000),
             force_watch_ad: !!entry.mockForceWatchAd,
-            settlement_id: entry.mockSettlementId || " "
+            settlement_id: entry.mockSettlementId || ""
         };
     }
 
@@ -183,7 +183,7 @@ export default class resultView extends cc.Component {
         const reward = this.passRewardData || {};
         const payload = {
             level: this.winLevel,
-            settlement_id: reward.settlementId || " ",
+            settlement_id: reward.settlementId || "",
             reward_amount: reward.adReward || 0
         };
         if (typeof entry.requestWatchAdReward === "function") {
@@ -198,7 +198,7 @@ export default class resultView extends cc.Component {
         const reward = this.passRewardData || {};
         const payload = {
             level: this.winLevel,
-            settlement_id: reward.settlementId || " ",
+            settlement_id: reward.settlementId || "",
             reward_amount: reward.baseReward || 0
         };
         if (typeof entry.requestClaimReward === "function") {
@@ -219,11 +219,11 @@ export default class resultView extends cc.Component {
 
     normalizePassRewardData(data: any): any {
         const raw = this.unwrapData(data);
-        const baseReward = this.safeNum(this.pickField(raw, [" reward_amount ", " reward ", " base_reward ", " amount "]), 500);
-        const adReward = this.safeNum(this.pickField(raw, [" ad_reward_amount ", " ad_reward ", " video_reward ", " double_reward "]), 2 * baseReward);
-        const forceWatchAd = !!this.pickField(raw, [" force_watch_ad ", " force_ad ", " must_watch_ad "]);
+        const baseReward = this.safeNum(this.pickField(raw, ["reward_amount", "reward", "base_reward", "amount"]), 500);
+        const adReward = this.safeNum(this.pickField(raw, ["ad_reward_amount", "ad_reward", "video_reward", "double_reward"]), 2 * baseReward);
+        const forceWatchAd = !!this.pickField(raw, ["force_watch_ad", "force_ad", "must_watch_ad"]);
         return {
-            settlementId: this.pickField(raw, [" settlement_id ", " pass_id ", " reward_id "]) || " ",
+            settlementId: this.pickField(raw, ["settlement_id", "pass_id", "reward_id"]) || "",
             baseReward,
             adReward: Math.max(baseReward, adReward),
             forceWatchAd
@@ -255,37 +255,37 @@ export default class resultView extends cc.Component {
     }
 
     bindDynamicNodes(): void {
-        const bg = this.node.getChildByName(" bg ");
+        const bg = this.node.getChildByName("bg");
         if (!bg) {
             return;
         }
-        this.btnMain = bg.getChildByName(" btn_nextlevel ");
-        this.btnOnly = bg.getChildByName(" btn_share ");
-        this.nodeRewardCard = bg.getChildByName(" reward_card ");
-        const title = bg.getChildByName(" title ");
+        this.btnMain = bg.getChildByName("btn_nextlevel");
+        this.btnOnly = bg.getChildByName("btn_share");
+        this.nodeRewardCard = bg.getChildByName("reward_card");
+        const title = bg.getChildByName("title");
         this.lblTitle = title ? title.getComponent(cc.Label) : null;
         if (this.lblTitle) {
-            this.lblTitle.string = this.i18n(" key_result_title_congrats ");
+            this.lblTitle.string = this.i18n("key_result_title_congrats");
         }
         if (!this.nodeRewardCard) {
-            this.nodeRewardCard = new cc.Node(" reward_card ");
+            this.nodeRewardCard = new cc.Node("reward_card");
             this.nodeRewardCard.parent = bg;
             this.nodeRewardCard.setPosition(0, 45);
             this.nodeRewardCard.setContentSize(260, 290);
             this.nodeRewardCard.addComponent(cc.Sprite);
         }
-        this.nodeMoneyIcon = this.nodeRewardCard.getChildByName(" money_icon ");
+        this.nodeMoneyIcon = this.nodeRewardCard.getChildByName("money_icon");
         if (!this.nodeMoneyIcon) {
-            this.nodeMoneyIcon = new cc.Node(" money_icon ");
+            this.nodeMoneyIcon = new cc.Node("money_icon");
             this.nodeMoneyIcon.parent = this.nodeRewardCard;
             this.nodeMoneyIcon.setPosition(0, 40);
             this.nodeMoneyIcon.addComponent(cc.Sprite);
         }
-        let rewardAmount = this.nodeRewardCard.getChildByName(" reward_amount ");
+        let rewardAmount = this.nodeRewardCard.getChildByName("reward_amount");
         if (rewardAmount) {
             this.lblReward = rewardAmount.getComponent(cc.Label) || rewardAmount.addComponent(cc.Label);
         } else {
-            rewardAmount = new cc.Node(" reward_amount ");
+            rewardAmount = new cc.Node("reward_amount");
             rewardAmount.parent = this.nodeRewardCard;
             rewardAmount.setPosition(0, -78);
             this.lblReward = rewardAmount.addComponent(cc.Label);
@@ -294,21 +294,21 @@ export default class resultView extends cc.Component {
             this.lblReward.enableBold = true;
         }
         if (this.btnMain) {
-            let mainLabel = this.btnMain.getChildByName(" lbl_main ");
+            let mainLabel = this.btnMain.getChildByName("lbl_main");
             if (!mainLabel) {
-                mainLabel = new cc.Node(" lbl_main ");
+                mainLabel = new cc.Node("lbl_main");
                 mainLabel.parent = this.btnMain;
                 mainLabel.setPosition(50, 0);
             }
             this.lblMain = mainLabel.getComponent(cc.Label) || mainLabel.addComponent(cc.Label);
-            this.lblMain.string = this.i18n(" key_result_main_claim ");
+            this.lblMain.string = this.i18n("key_result_main_claim");
             this.lblMain.fontSize = 36;
             this.lblMain.lineHeight = 40;
             this.lblMain.enableBold = true;
             this.lblMain.node.color = new cc.Color(172, 65, 58);
-            this.nodeAdIcon = this.btnMain.getChildByName(" ad_icon ");
+            this.nodeAdIcon = this.btnMain.getChildByName("ad_icon");
             if (!this.nodeAdIcon) {
-                this.nodeAdIcon = new cc.Node(" ad_icon ");
+                this.nodeAdIcon = new cc.Node("ad_icon");
                 this.nodeAdIcon.parent = this.btnMain;
                 this.nodeAdIcon.setPosition(-150, 0);
                 this.nodeAdIcon.addComponent(cc.Sprite);
@@ -319,22 +319,22 @@ export default class resultView extends cc.Component {
             if (sprite) {
                 sprite.enabled = false;
             }
-            let onlyLabel = this.btnOnly.getChildByName(" lbl_only_claim ");
+            let onlyLabel = this.btnOnly.getChildByName("lbl_only_claim");
             if (!onlyLabel) {
-                onlyLabel = new cc.Node(" lbl_only_claim ");
+                onlyLabel = new cc.Node("lbl_only_claim");
                 onlyLabel.parent = this.btnOnly;
             }
             onlyLabel.setPosition(0, 0);
             this.lblOnly = onlyLabel.getComponent(cc.Label) || onlyLabel.addComponent(cc.Label);
             this.lblOnly.fontSize = 28;
             this.lblOnly.lineHeight = 32;
-            this.lblOnly.string = " ";
+            this.lblOnly.string = "";
             this.lblOnly.node.color = new cc.Color(238, 226, 205);
         }
     }
 
     applySuccessStyle(): void {
-        const bg = this.node.getChildByName(" bg ");
+        const bg = this.node.getChildByName("bg");
         if (!bg) {
             return;
         }
@@ -350,7 +350,7 @@ export default class resultView extends cc.Component {
                 }
             });
         }
-        const nextLevel = bg.getChildByName(" nextlevel ");
+        const nextLevel = bg.getChildByName("nextlevel");
         if (nextLevel) {
             nextLevel.active = false;
         }
@@ -397,13 +397,13 @@ export default class resultView extends cc.Component {
 
     async refreshRewardTexts(data: any): Promise<void> {
         if (this.lblReward) {
-            this.lblReward.string = this.i18n(" key_result_reward_prefix ", [this.getCurrencyText(" RP ", data.adReward || 0)]);
+            this.lblReward.string = this.i18n("key_result_reward_prefix", [this.getCurrencyText("RP", data.adReward || 0)]);
             this.lblReward.node.color = new cc.Color(241, 221, 141);
         }
         if (this.lblOnly) {
-            let text = this.i18n(" key_result_only_claim ", [this.getCurrencyText(" RP ", data.baseReward || 0)]);
+            let text = this.i18n("key_result_only_claim", [this.getCurrencyText("RP", data.baseReward || 0)]);
             if (data.forceWatchAd) {
-                text += this.i18n(" key_result_watch_ad_suffix ");
+                text += this.i18n("key_result_watch_ad_suffix");
             }
             this.lblOnly.string = text;
         }
@@ -439,16 +439,16 @@ export default class resultView extends cc.Component {
     }
 
     showAni(): void {
-        const bg = this.node.getChildByName(" bg ");
+        const bg = this.node.getChildByName("bg");
         if (!bg) {
             return;
         }
         bg.y += 2000;
         bg.opacity = 0;
-        cc.tween(bg).by(0.3, { y: -2100 }).by(0.3, { y: 100 }, { easing: " backOut " }).union().delay(0.1).call(() => {
+        cc.tween(bg).by(0.3, { y: -2100 }).by(0.3, { y: 100 }, { easing: "backOut" }).union().delay(0.1).call(() => {
             AudioMgr.getInstance().playEffect("audio/level_complete", bundleName.ui);
-            const lizi = bg.getChildByName(" lizi ");
-            const lizi2 = bg.getChildByName(" lizi2 ");
+            const lizi = bg.getChildByName("lizi");
+            const lizi2 = bg.getChildByName("lizi2");
             if (lizi) {
                 lizi.active = true;
             }
@@ -457,8 +457,8 @@ export default class resultView extends cc.Component {
             }
             if (this.sp_result && this.sp_result.node) {
                 this.sp_result.node.active = true;
-                this.sp_result.setAnimation(0, " win ", false);
-                this.sp_result.addAnimation(0, " winidle ", true);
+                this.sp_result.setAnimation(0, "win", false);
+                this.sp_result.addAnimation(0, "winidle", true);
             }
         }).start();
         cc.tween(bg).delay(0.15).to(0.2, { opacity: 255 }).start();
@@ -467,8 +467,8 @@ export default class resultView extends cc.Component {
     ShowNextAni(): void {
         if (this.node_nextani && this.txt_curlevel && this.txt_nextlevel) {
             this.node_nextani.active = true;
-            this.txt_curlevel.string = this.winLevel + " ";
-            this.txt_nextlevel.string = this.winLevel + 1 + " ";
+            this.txt_curlevel.string = this.winLevel + "";
+            this.txt_nextlevel.string = this.winLevel + 1 + "";
             cc.tween(this.txt_curlevel.node).by(0.5, { opacity: -255, y: -60 }).start();
             cc.tween(this.txt_nextlevel.node).by(0.5, { opacity: 255, y: -60 }).delay(1).call(() => {
                 GlobalEventMgr.getInstance().emit(gameEvent.gameNext);

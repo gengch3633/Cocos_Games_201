@@ -2541,14 +2541,14 @@ this.bool_cantouchAd = !0;
 GameView.prototype.fontAni = function() {};
 GameView.prototype.showGuide = function() {
 var e = this.getNewbieGuideFlow(), t = e && e.isDone && e.isDone(), i = PlayerDataStore.arrow_level && Number(PlayerDataStore.arrow_level.arrow_level_id || 0);
-1 == UserData.getInstance().level && i <= 1 && !t ? this.setGuideNodeActive(" guide_level1 ", !0) : 2 == UserData.getInstance().level && (this._level2ZoomGuideDismissed ? this.setGuideNodeActive(" guide_level2 ", !1) : this.setGuideNodeActive(" guide_level2 ", !0));
+1 == UserData.getInstance().level && i <= 1 && !t ? this.setGuideNodeActive("guide_level1", !0) : 2 == UserData.getInstance().level && (this._level2ZoomGuideDismissed ? this.setGuideNodeActive("guide_level2", !1) : this.setGuideNodeActive("guide_level2", !0));
 };
 GameView.prototype.closeGuide = function() {
-this.setGuideNodeActive(" guide_level2 ", !1);
+this.setGuideNodeActive("guide_level2", !1);
 };
 GameView.prototype.closeGuide2 = function() {
 this._level2ZoomGuideDismissed = !0;
-this.setGuideNodeActive(" guide_level2 ", !1);
+this.setGuideNodeActive("guide_level2", !1);
 };
 GameView.prototype.clsoeSetHandle = function() {
 this.bool_isStop = !1;
@@ -2556,7 +2556,7 @@ this.refreshNewbieGuideState();
 };
 GameView.prototype._cacheSpriteFrames = function() {
 (this.node_tishi || null === this.node_tishi) && this.ensureRuntimeNodeRefs();
-var e = this.node_tishi && this.node_tishi.getChildByName(" vb ");
+var e = this.node_tishi && this.node_tishi.getChildByName("vb");
 if (e) {
 var t = e.getComponent(cc.Sprite);
 t && t.spriteFrame && (this._sfVb = t.spriteFrame);
@@ -2584,9 +2584,9 @@ a && (a.enabled = !e);
 GameView.prototype.initFuzhuBtnstate = function() {
 var e = this;
 if (this.node_fuzhuad) if (this._sfOff) {
-var t = this.node_fuzhuad, i = t.getComponent(cc.Sprite), n = UserData.getInstance().guideline_prop_count || 0, a = t.getChildByName(" txt_fuzhunum ");
+var t = this.node_fuzhuad, i = t.getComponent(cc.Sprite), n = UserData.getInstance().guideline_prop_count || 0, a = t.getChildByName("txt_fuzhunum");
 if (!a) {
-var o = (a = new cc.Node(" txt_fuzhunum ")).addComponent(cc.Label);
+var o = (a = new cc.Node("txt_fuzhunum")).addComponent(cc.Label);
 o.fontSize = 18;
 o.lineHeight = 20;
 a.setPosition(0, 0);
@@ -2601,7 +2601,7 @@ a.active = !0;
 a.color = cc.color(255, 255, 255);
 } else {
 i && this._sfOff && (i.spriteFrame = this._sfOff);
-r && (r.string = " ");
+r && (r.string = "");
 a.active = !1;
 }
 this.node_fuzhustate && (this.node_fuzhustate.active = !1);
@@ -2613,11 +2613,11 @@ e.initFuzhuBtnstate();
 });
 };
 GameView.prototype.initTishiBtnstate = function() {
-this.node_tishi && this.node_tishi.isValid || (this.node_tishi = cc.find("bottom/btn_tip", this.node) || cc.find(" btn_tip ", this.node));
+this.node_tishi && this.node_tishi.isValid || (this.node_tishi = cc.find("bottom/btn_tip", this.node) || cc.find("btn_tip", this.node));
 if (this.node_tishi) {
-var e = this.node_tishi.getChildByName(" tipscardBG "), t = this.node_tishi.getChildByName(" vb ");
+var e = this.node_tishi.getChildByName("tipscardBG"), t = this.node_tishi.getChildByName("vb");
 if (e && t) {
-var i = e.getChildByName(" txt_tipscardnum "), n = i && i.getComponent(cc.Label);
+var i = e.getChildByName("txt_tipscardnum"), n = i && i.getComponent(cc.Label);
 if (n) {
 t.active = !0;
 var a = t.getComponent(cc.Sprite), o = e.getComponent(cc.Sprite);
@@ -2631,9 +2631,9 @@ a && this._sfVb && (a.spriteFrame = this._sfVb);
 e.active = !1;
 a && this._sfOff && (a.spriteFrame = this._sfOff);
 }
-} else console.warn("[tips] txt_tipscardnum label missing ");
-} else console.warn("[tips] tipscardBG or vb missing ");
-} else console.warn("[tips] node_tishi not found ");
+} else console.warn("[tips] txt_tipscardnum label missing");
+} else console.warn("[tips] tipscardBG or vb missing");
+} else console.warn("[tips] node_tishi not found");
 };
 GameView.prototype.update = function(e) {
 if (this.isCountdownEnabled() && !this.bool_isStop && this.bool_countdownStarted) {
@@ -2665,7 +2665,7 @@ this.node.on(cc.Node.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
 };
 GameView.prototype.onMouseWheel = function(e) {
 var t = e.getScrollY();
-console.log(" 滚轮滚动增量: ", t);
+console.log("滚轮滚动增量:", t);
 var i = 1 + (t > 0 ? .1 : -.1), n = this.node_game.scale * i, a = this.node_game.getComponent(Game).num_minScale, o = this.node_game.getComponent(Game).num_minScale + 1, r = Math.min(Math.max(n, a), o), l = r / this.node_game.scale;
 this.node_game.x = this.node_game.x * l;
 this.node_game.y = this.node_game.y * l;
@@ -2684,15 +2684,15 @@ UIMgr.getInstance().showWatingUI();
 this.num_rellyLevel = this.getRellyLevel();
 this._resetLevelBehaviorStats();
 var t = PlayerDataStore.arrow_level;
-console.log("[LevelVerify] jumpLevel: 即将加载 level_ " + this.num_rellyLevel + ".json| 显示第 " + (t && t.arrow_level_id || "? ") + " 关| level_index = " + (t && t.level_index || " 未配置 "));
-ConfigMgr.getInstance().loadLevelData(" level_ " + this.num_rellyLevel, !1).then(function() {
+console.log("[LevelVerify] jumpLevel: 即将加载 level_" + this.num_rellyLevel + ".json | 显示第" + (t && t.arrow_level_id || "?") + "关 | level_index=" + (t && t.level_index || "未配置"));
+ConfigMgr.getInstance().loadLevelData("level_" + this.num_rellyLevel, !1).then(function() {
 if (e.isViewAlive()) {
 e.data_levelinfo = ConfigMgr.getInstance().getLevelById(e.num_rellyLevel);
 e._eliminateCounter = 0;
 e._totalEliminated = 0;
-var t = e.data_levelinfo && e.data_levelinfo.Arrows ? e.data_levelinfo.Arrows.length : " 加载失败 ";
-console.log("[LevelVerify] jumpLevel 加载完成: level_ " + e.num_rellyLevel + ".json| 本地实际箭头数 = " + t + "| 服务器 arrow_count = " + (PlayerDataStore.arrow_level.arrow_count || "? ") + (String(t) !== String(PlayerDataStore.arrow_level.arrow_count) ? " ⚠ ️ 箭头数不匹配 " : " ✅ 匹配 "));
-console.log("[ArrowLevel] jumpLevel: 关卡加载完成 level = " + e.num_rellyLevel + " 计数器重置 big_reward_trigger = " + e._getBigRewardTriggerCount());
+var t = e.data_levelinfo && e.data_levelinfo.Arrows ? e.data_levelinfo.Arrows.length : "加载失败";
+console.log("[LevelVerify] jumpLevel 加载完成: level_" + e.num_rellyLevel + ".json | 本地实际箭头数=" + t + " | 服务器 arrow_count=" + (PlayerDataStore.arrow_level.arrow_count || "?") + (String(t) !== String(PlayerDataStore.arrow_level.arrow_count) ? " ⚠️ 箭头数不匹配" : " ✅ 匹配"));
+console.log("[ArrowLevel] jumpLevel: 关卡加载完成 level=" + e.num_rellyLevel + " 计数器重置 big_reward_trigger=" + e._getBigRewardTriggerCount());
 e.ShowGame();
 }
 });
@@ -2734,7 +2734,7 @@ this._retryCount = 0;
 this._hintUsedCount = 0;
 this._reviveCount = 0;
 this._levelStartTs = Date.now();
-console.log("[ArrowStats] 新关卡 ， 重置行为统计 level = " + this.num_rellyLevel);
+console.log("[ArrowStats] 新关卡，重置行为统计 level=" + this.num_rellyLevel);
 };
 GameView.prototype._resetAttemptBehaviorStats = function() {
 this._retryCount = (this._retryCount || 0) + 1;
@@ -2742,24 +2742,24 @@ this._mistakeCount = 0;
 this._reviveCount = 0;
 this._hintUsedCount = 0;
 this._levelStartTs = Date.now();
-console.log("[ArrowStats] 重开本关 ， retry_count = "+ this._retryCount); }; GameView.prototype._buildBehaviorStatsFields = function() { var e = PlayerDataStore.arrow_level || {}, t = e.arrow_level_id, i = e.level_index || this.num_rellyLevel || 0, n = Number(this._mistakeCount || 0), a = Number(this._reviveCount || 0), o = this._levelStartTs ? Math.max(0, Math.round((Date.now()-this._levelStartTs)/1e3)) : 0; return { arrow_level_id: t || this.num_rellyLevel, level_index: Number(i) || 0, arrow_count: Number(e.arrow_count || 0), mistake_count: n, life_used: n, retry_count: Number(this._retryCount || 0), hint_used: Number(this._hintUsedCount || 0), revive_count: a, duration_sec: o }; }; GameView.prototype._reportLevelFail = function() { var e = this._buildBehaviorStatsFields(); e.level_passed = 0; e.settle_type =" FAIL ";
+console.log("[ArrowStats] 重开本关，retry_count="+ this._retryCount); }; GameView.prototype._buildBehaviorStatsFields = function() { var e = PlayerDataStore.arrow_level || {}, t = e.arrow_level_id, i = e.level_index || this.num_rellyLevel || 0, n = Number(this._mistakeCount || 0), a = Number(this._reviveCount || 0), o = this._levelStartTs ? Math.max(0, Math.round((Date.now()-this._levelStartTs)/1e3)) : 0; return { arrow_level_id: t || this.num_rellyLevel, level_index: Number(i) || 0, arrow_count: Number(e.arrow_count || 0), mistake_count: n, life_used: n, retry_count: Number(this._retryCount || 0), hint_used: Number(this._hintUsedCount || 0), revive_count: a, duration_sec: o }; }; GameView.prototype._reportLevelFail = function() { var e = this._buildBehaviorStatsFields(); e.level_passed = 0; e.settle_type ="FAIL";
 e.level_fail = 1;
 e.clean_win = 0;
 try {
-BusinessAnalyticsService.reportData(" arrow_settle_behavior ", e);
+BusinessAnalyticsService.reportData("arrow_settle_behavior", e);
 } catch (e) {
-console.warn("[ArrowStats][埋点] arrow_settle_behavior(FAIL) 上报失败 ", e);
+console.warn("[ArrowStats] [埋点] arrow_settle_behavior(FAIL) 上报失败", e);
 }
-console.log("[ArrowLevel][失败上报] arrowRewardSettle req = " + JSON.stringify(e));
+console.log("[ArrowLevel] [失败上报] arrowRewardSettle req=" + JSON.stringify(e));
 LoadingHttpService.arrowRewardSettle(e, Handler.create(null, function(e) {
-console.log("[ArrowLevel][失败上报] 返回: " + JSON.stringify(e && e.data || null));
+console.log("[ArrowLevel] [失败上报] 返回: " + JSON.stringify(e && e.data || null));
 }), Handler.create(null, function(e) {
-console.warn("[ArrowLevel][失败上报] 请求失败 ", e);
+console.warn("[ArrowLevel] [失败上报] 请求失败", e);
 }));
 };
 GameView.prototype._settleArrowReward = function(e, t, i) {
 var n = 0, a = i;
-" function " == typeof t ? a = t : n = Number(t || 0);
+"function" == typeof t ? a = t : n = Number(t || 0);
 var o = this, r = PlayerDataStore, s = this._buildBehaviorStatsFields();
 if (e) {
 s.level_passed = 1;
@@ -2771,11 +2771,11 @@ var c = n > 0 ? n : this._getBigRewardTriggerCount();
 c <= 0 && (c = Number(r.arrow_level && r.arrow_level.arrow_count || 0));
 s.eliminate_count = c;
 }
-var u = e ? " PASS " : " ELIMINATE ";
+var u = e ? "PASS" : "ELIMINATE";
 s.settle_type = u;
 s.clean_win = e && 0 === s.life_used && 0 === s.revive_count ? 1 : 0;
 try {
-BusinessAnalyticsService.reportData(" arrow_settle_behavior ", {
+BusinessAnalyticsService.reportData("arrow_settle_behavior", {
 settle_type: s.settle_type,
 arrow_level_id: s.arrow_level_id,
 level_index: s.level_index,
@@ -2790,21 +2790,21 @@ hint_used: s.hint_used,
 revive_count: s.revive_count,
 duration_sec: s.duration_sec
 });
-console.log("[ArrowStats][埋点] arrow_settle_behavior = " + JSON.stringify(s));
+console.log("[ArrowStats] [埋点] arrow_settle_behavior=" + JSON.stringify(s));
 } catch (e) {
-console.warn("[ArrowStats][埋点] arrow_settle_behavior 上报失败 ", e);
+console.warn("[ArrowStats] [埋点] arrow_settle_behavior 上报失败", e);
 }
 var d = NetErrorPopupService, h = function() {
 o._settleArrowReward.call(o, e, t, i);
 };
-console.log("[ArrowLevel] _settleArrowReward: 发起结算 type = " + u + " req = " + JSON.stringify(s));
-console.log("[ArrowLevel][结算接口][请求] arrowRewardSettle type = " + u + " req = " + JSON.stringify(s));
+console.log("[ArrowLevel] _settleArrowReward: 发起结算 type=" + u + " req=" + JSON.stringify(s));
+console.log("[ArrowLevel] [结算接口][请求] arrowRewardSettle type=" + u + " req=" + JSON.stringify(s));
 LoadingHttpService.arrowRewardSettle(s, Handler.create(null, function(t) {
 if (d && d.shouldPop(t)) {
-console.warn("[ArrowLevel] _settleArrowReward force- retry code = " + (t && t.code));
+console.warn("[ArrowLevel] _settleArrowReward force-retry code=" + (t && t.code));
 d.showAndRetry(h);
 } else {
-console.log("[ArrowLevel][结算接口][返回] arrowRewardSettle type = " + u + " req = " + JSON.stringify(s) + " res = " + JSON.stringify(t && t.data || null));
+console.log("[ArrowLevel] [结算接口][返回] arrowRewardSettle type=" + u + " req=" + JSON.stringify(s) + " res=" + JSON.stringify(t && t.data || null));
 if (t && t.data) {
 var i = t.data.arrow_level && Number(t.data.arrow_level.arrow_level_id || 0);
 if (void 0 !== t.data.cash_balance) {
@@ -2815,19 +2815,19 @@ o.refreshTopBalanceUI();
 if (e && t.data.arrow_level && i > 0) {
 r.updateArrowLevel(t.data.arrow_level);
 var n = null != t.data.arrow_level.level_index ? t.data.arrow_level.level_index : t.data.arrow_level.arrow_level_index;
-console.log("[LevelVerify] 结算成功 ， 服务端下发下一关: level_id = " + i + " level_index = " + (n || " 未配置 ") + " arrow_count = " + (t.data.arrow_level.arrow_count || "? ") + (n ? " → 下一关将加载 level_ " + n + ".json " : " ⚠ ️ 无 level_index ， 将用 level_id = " + i + " 作为文件索引 （ 旧兼容 ） "));
+console.log("[LevelVerify] 结算成功，服务端下发下一关: level_id=" + i + " level_index=" + (n || "未配置") + " arrow_count=" + (t.data.arrow_level.arrow_count || "?") + (n ? " → 下一关将加载 level_" + n + ".json" : " ⚠️ 无 level_index，将用 level_id=" + i + " 作为文件索引（旧兼容）"));
 o._refreshArrowLevelLabel();
 } else t.data.arrow_level && i <= 0 && console.warn("[ArrowLevel] _settleArrowReward: 忽略无效 arrow_level 数据 " + JSON.stringify(t.data.arrow_level));
-console.log("[ArrowLevel] _settleArrowReward: 结算成功 switch_reward = " + (t.data.switch_reward || 0) + " cash_balance = " + (t.data.cash_balance || 0) + " show_force_video = " + (t.data.show_force_video || !1) + " next_arrow_level_id = " + (i > 0 ? i : " N/ A "));
+console.log("[ArrowLevel] _settleArrowReward: 结算成功 switch_reward=" + (t.data.switch_reward || 0) + " cash_balance=" + (t.data.cash_balance || 0) + " show_force_video=" + (t.data.show_force_video || !1) + " next_arrow_level_id=" + (i > 0 ? i : "N/A"));
 }
 a && a(t);
 e && o._refreshUserInfoAfterLevelPass();
 }
 }), Handler.create(null, function(t) {
-console.warn("[ArrowLevel][结算接口][返回] arrowRewardSettle type = " + u + " FAIL req = " + JSON.stringify(s) + " err = " + JSON.stringify(t));
-console.warn("[ArrowLevel] _settleArrowReward: 结算请求失败 err = "+ JSON.stringify(t)); var i = t && t.message ? String(t.message) :" ", n = e && (i.indexOf(" 重复通关 ") >= 0 || i.toLowerCase().indexOf(" duplicate ") >= 0);
+console.warn("[ArrowLevel] [结算接口][返回] arrowRewardSettle type=" + u + " FAIL req=" + JSON.stringify(s) + " err=" + JSON.stringify(t));
+console.warn("[ArrowLevel] _settleArrowReward: 结算请求失败 err="+ JSON.stringify(t)); var i = t && t.message ? String(t.message) :"", n = e && (i.indexOf("重复通关") >= 0 || i.toLowerCase().indexOf("duplicate") >= 0);
 if (!n && d && d.shouldPop(t)) {
-console.warn("[ArrowLevel] _settleArrowReward 网络异常 ， 弹重试窗 ");
+console.warn("[ArrowLevel] _settleArrowReward 网络异常，弹重试窗");
 d.showAndRetry(h);
 } else {
 if (n) {
@@ -2838,9 +2838,9 @@ for (var m in f) g[m] = f[m];
 g.arrow_level_id = p;
 g.level_index = p;
 r.updateArrowLevel ? r.updateArrowLevel(g) : r.arrow_level = g;
-console.warn("[ArrowLevel] _settleArrowReward: 命中重复通关兜底 ， 强制推进 arrow_level_id = " + p + " level_index = " + p);
+console.warn("[ArrowLevel] _settleArrowReward: 命中重复通关兜底，强制推进 arrow_level_id=" + p + " level_index=" + p);
 } catch (e) {
-console.warn("[ArrowLevel] _settleArrowReward: 重复通关兜底失败 ", e);
+console.warn("[ArrowLevel] _settleArrowReward: 重复通关兜底失败", e);
 }
 }
 a && a(null);
@@ -2850,11 +2850,11 @@ a && a(null);
 GameView.prototype._refreshUserInfoAfterLevelPass = function() {
 try {
 var e = UserInfoService;
-if (!e || " function " != typeof e.getInstance) return;
+if (!e || "function" != typeof e.getInstance) return;
 var t = e.getInstance();
-t && " function " == typeof t.fetch && t.fetch();
+t && "function" == typeof t.fetch && t.fetch();
 } catch (e) {
-console.warn("[ArrowLevel] _refreshUserInfoAfterLevelPass error ", e);
+console.warn("[ArrowLevel] _refreshUserInfoAfterLevelPass error", e);
 }
 };
 GameView.prototype.getRellyLevel2 = function() {
@@ -2862,19 +2862,19 @@ return UserData.getInstance().level > ConfigMgr.getInstance().getAll(GametimeCon
 };
 GameView.prototype.getRellyLevel = function() {
 var e = PlayerDataStore.arrow_level;
-console.log("[LevelVerify] getRellyLevel 入参 arrow_level = " + JSON.stringify({
+console.log("[LevelVerify] getRellyLevel 入参 arrow_level=" + JSON.stringify({
 arrow_level_id: e && e.arrow_level_id,
 level_index: e && e.level_index,
 arrow_count: e && e.arrow_count
 }));
 var t = e && e.level_index;
 if (t && t > 0) {
-console.log("[LevelVerify] getRellyLevel → 使用 level_index = " + t + "(显示第 " + (e.arrow_level_id || "? ") + " 关 ， 加载 level_ " + t + ".json) ");
+console.log("[LevelVerify] getRellyLevel → 使用 level_index=" + t + " (显示第" + (e.arrow_level_id || "?") + "关，加载 level_" + t + ".json)");
 return t;
 }
 var i = e && e.arrow_level_id;
 if (i && i > 0) {
-console.warn("[LevelVerify] getRellyLevel → level_index 未配置 ， 降级使用 arrow_level_id = " + i + " 加载 level_ " + i + ".json （ 旧兼容模式 ） ");
+console.warn("[LevelVerify] getRellyLevel → level_index 未配置，降级使用 arrow_level_id=" + i + " 加载 level_" + i + ".json（旧兼容模式）");
 return i;
 }
 var n = ConfigMgr.getInstance().getAll(GametimeConfig).length;
@@ -2885,26 +2885,26 @@ a = Random.range(19, n);
 o.unshift(a);
 o.length > 7 && o.pop();
 UserData.getInstance().recentRandomLevels = o;
-console.log("[ArrowLevel] getRellyLevel: 服务端无配置 ， 使用随机关卡 = " + (a || 25));
+console.log("[ArrowLevel] getRellyLevel: 服务端无配置，使用随机关卡=" + (a || 25));
 return a || 25;
 }
-console.log("[ArrowLevel] getRellyLevel: 服务端无配置 ， 使用本地 level = " + UserData.getInstance().level);
+console.log("[ArrowLevel] getRellyLevel: 服务端无配置，使用本地 level=" + UserData.getInstance().level);
 return UserData.getInstance().level;
 };
 GameView.prototype.preload = function() {
 cc.assetManager.loadBundle(bundleName.ui, function(e, t) {
-if (e) console.error(" UI资源包加载失败: ", e); else {
-t.preloadDir(" audio ", function(e, t) {
-e ? console.error(" 音频资源预加载失败: ", e) : console.log(" 成功预加载 " + t.length + " 个音频资源 ");
+if (e) console.error("UI资源包加载失败:", e); else {
+t.preloadDir("audio", function(e, t) {
+e ? console.error("音频资源预加载失败:", e) : console.log("成功预加载 " + t.length + " 个音频资源");
 });
-t.preloadDir(" prefab ", function(e, t) {
-e ? console.error(" 预制体资源预加载失败: ", e) : console.log(" 成功预加载 " + t.length + " 个预制体资源 ");
+t.preloadDir("prefab", function(e, t) {
+e ? console.error("预制体资源预加载失败:", e) : console.log("成功预加载 " + t.length + " 个预制体资源");
 });
-t.preloadDir(" spine ", function(e, t) {
-e ? console.error(" Spine资源预加载失败: ", e) : console.log(" 成功预加载 " + t.length + " 个Spine资源 ");
+t.preloadDir("spine", function(e, t) {
+e ? console.error("Spine资源预加载失败:", e) : console.log("成功预加载 " + t.length + " 个Spine资源");
 });
-t.preloadDir(" texture ", function(e, t) {
-e ? console.error(" 纹理资源预加载失败: ", e) : console.log(" 成功预加载 " + t.length + " 个纹理资源 ");
+t.preloadDir("texture", function(e, t) {
+e ? console.error("纹理资源预加载失败:", e) : console.log("成功预加载 " + t.length + " 个纹理资源");
 });
 }
 });
@@ -2928,36 +2928,36 @@ e.node_hardsp.active = !1;
 };
 GameView.prototype.onGuideClick = function() {
 var e = this.getNewbieGuideFlow();
-e && this.isNewbieGuideStep(e.STEP_TOP_BALANCE) ? this.openWithMoodView() : console.log("[Guide] clicked >>> >>> >>> >>> ");
+e && this.isNewbieGuideStep(e.STEP_TOP_BALANCE) ? this.openWithMoodView() : console.log("[Guide] clicked>>>>>>>>>>>>");
 };
-__decorate([ property ], GameView.prototype, " showTime ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_tishi ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_checksize ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_mask ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " layer_top ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " layer_mid ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " layer_bottom ", void 0);
-__decorate([ property(cc.Sprite) ], GameView.prototype, " img_life ", void 0);
-__decorate([ property(cc.Label) ], GameView.prototype, " txt_levelnum ", void 0);
-__decorate([ property(cc.Label) ], GameView.prototype, " txt_time ", void 0);
-__decorate([ property(cc.Label) ], GameView.prototype, " txt_lastnum ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_blue ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_red ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_yichu ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_diaozhuan ", void 0);
-__decorate([ property(cc.Slider) ], GameView.prototype, " slider ", void 0);
-__decorate([ property(cc.Sprite) ], GameView.prototype, " sp_slderbg ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_fuzhuad ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_fuzhustate ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_hardsp ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_topBalanceNav ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_balanceContainer ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_withdrawBtn ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_bubbleContainer ", void 0);
-__decorate([ property(cc.Label) ], GameView.prototype, " lbl_balanceText ", void 0);
-__decorate([ property(cc.RichText) ], GameView.prototype, " rich_bubbleText ", void 0);
-__decorate([ property(cc.Node) ], GameView.prototype, " node_bigBarragePanel ", void 0);
-__decorate([ property(cc.RichText) ], GameView.prototype, " rich_bigBarrageText ", void 0);
+__decorate([ property ], GameView.prototype, "showTime", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_tishi", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_checksize", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_mask", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "layer_top", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "layer_mid", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "layer_bottom", void 0);
+__decorate([ property(cc.Sprite) ], GameView.prototype, "img_life", void 0);
+__decorate([ property(cc.Label) ], GameView.prototype, "txt_levelnum", void 0);
+__decorate([ property(cc.Label) ], GameView.prototype, "txt_time", void 0);
+__decorate([ property(cc.Label) ], GameView.prototype, "txt_lastnum", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_blue", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_red", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_yichu", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_diaozhuan", void 0);
+__decorate([ property(cc.Slider) ], GameView.prototype, "slider", void 0);
+__decorate([ property(cc.Sprite) ], GameView.prototype, "sp_slderbg", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_fuzhuad", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_fuzhustate", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_hardsp", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_topBalanceNav", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_balanceContainer", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_withdrawBtn", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_bubbleContainer", void 0);
+__decorate([ property(cc.Label) ], GameView.prototype, "lbl_balanceText", void 0);
+__decorate([ property(cc.RichText) ], GameView.prototype, "rich_bubbleText", void 0);
+__decorate([ property(cc.Node) ], GameView.prototype, "node_bigBarragePanel", void 0);
+__decorate([ property(cc.RichText) ], GameView.prototype, "rich_bigBarrageText", void 0);
 return __decorate([ ccclass, menu("业务逻辑/gameView") ], GameView);
 })(cc.Component);
 

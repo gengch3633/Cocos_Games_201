@@ -9,7 +9,7 @@ const { ccclass, property, menu, executionOrder, requireComponent } = cc._decora
 @requireComponent(cc.Button)
 export default class CloseUIBtn extends cc.Component {
     @property({
-        tooltip: " 需要关闭的ui ",
+        tooltip: "需要关闭的ui",
         type: cc.Node
     })
     target: cc.Node = null;

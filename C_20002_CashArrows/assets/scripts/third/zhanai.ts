@@ -25,7 +25,7 @@ export default class zhanai extends cc.Component {
     Init(blocker: { Index: number; LockTime: number }): void {
         const x = blocker.Index % this.gameManager.levelInfo.XSize;
         const y = Math.floor(blocker.Index / this.gameManager.levelInfo.XSize);
-        this.gameManager.num_mapInfo[x][y] = " x ";
+        this.gameManager.num_mapInfo[x][y] = "x";
         this.num_zhanai = blocker.LockTime;
         this.reference();
         this.posInfo = { x, y };
@@ -45,14 +45,14 @@ export default class zhanai extends cc.Component {
         this.num_zhanai--;
         this.reference();
         if (this.num_zhanai <= 0) {
-            const skeleton = this.node.getChildByName(" zhanai ").getComponent(sp.Skeleton);
+            const skeleton = this.node.getChildByName("zhanai").getComponent(sp.Skeleton);
             AudioMgr.getInstance().playEffect("audio/unlock_obstacle", bundleName.game);
             this.gameManager.zhanai.splice(this.gameManager.zhanai.indexOf(this), 1);
-            this.gameManager.num_mapInfo[this.posInfo.x][this.posInfo.y] = " 0 ";
+            this.gameManager.num_mapInfo[this.posInfo.x][this.posInfo.y] = "0";
             this.scheduleOnce(() => {
-                skeleton.node.getChildByName(" txt_num ").active = false;
+                skeleton.node.getChildByName("txt_num").active = false;
             }, 0.2);
-            skeleton.setAnimation(0, " zhangaixiaochu ", false);
+            skeleton.setAnimation(0, "zhangaixiaochu", false);
             skeleton.setCompleteListener(() => {
                 this.node.destroy();
             });

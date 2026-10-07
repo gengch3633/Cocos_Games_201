@@ -323,7 +323,7 @@ export default class List extends cc.Component {
             return;
         }
         if (value == null || value < 0) {
-            cc.error(" numItems set the wrong:: ", value);
+            cc.error("numItems set the wrong::", value);
         } else {
             t._actualNumItems = t._numItems = value;
             t._forceUpdate = true;
@@ -421,7 +421,7 @@ export default class List extends cc.Component {
         e.node.on(cc.Node.EventType.TOUCH_CANCEL, e._onTouchCancelled, e, true);
         e.node.on("scroll-began", e._onScrollBegan, e, true);
         e.node.on("scroll-ended", e._onScrollEnded, e, true);
-        e.node.on(" scrolling ", e._onScrolling, e, true);
+        e.node.on("scrolling", e._onScrolling, e, true);
         e.node.on(cc.Node.EventType.SIZE_CHANGED, e._onSizeChanged, e);
     }
 
@@ -432,7 +432,7 @@ export default class List extends cc.Component {
         e.node.off(cc.Node.EventType.TOUCH_CANCEL, e._onTouchCancelled, e, true);
         e.node.off("scroll-began", e._onScrollBegan, e, true);
         e.node.off("scroll-ended", e._onScrollEnded, e, true);
-        e.node.off(" scrolling ", e._onScrolling, e, true);
+        e.node.off("scrolling", e._onScrolling, e, true);
         e.node.off(cc.Node.EventType.SIZE_CHANGED, e._onSizeChanged, e);
     }
 
@@ -525,7 +525,7 @@ export default class List extends cc.Component {
                 e.content.removeAllChildren();
                 e._inited = true;
             } else {
-                cc.error(e.node.name + " 's cc.ScrollView unset content!");
+                cc.error(e.node.name + "'s cc.ScrollView unset content!");
             }
         }
     }

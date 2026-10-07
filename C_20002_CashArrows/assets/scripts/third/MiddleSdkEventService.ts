@@ -7,28 +7,28 @@ import { MiddleReqType } from "./MiddleReqType";
 import PlatformBridge from "./PlatformBridge";
 
 export default class MiddleSdkEventService {
-    kIsUploadEventFirstCall: string = " com.sdk.kIsUploadEventFirstCall ";
+    kIsUploadEventFirstCall: string = "com.sdk.kIsUploadEventFirstCall";
 
     uploadOnce(onIntervalUpdate?: (seconds: number) => void): void {
         const isFirstRequest = this.getEventRequestIsFirstFlag();
-        this.reportBehaviorConfigEvent(" ", 0, isFirstRequest);
+        this.reportBehaviorConfigEvent("", 0, isFirstRequest);
         const params = MiddleService.paramData(MiddleReqType.SDKEvent);
         MiddleNetwork.getSDKEvent(params, MiddleHandler.create(this, (response: any) => {
             try {
                 try {
-                    console.log("[MiddleSdkEventService.getSDKEvent] res => ", JSON.stringify(response));
+                    console.log("[MiddleSdkEventService.getSDKEvent] res =>", JSON.stringify(response));
                 } catch (err) {
-                    console.log("[MiddleSdkEventService.getSDKEvent] res(raw) => ", response);
+                    console.log("[MiddleSdkEventService.getSDKEvent] res(raw) =>", response);
                 }
                 if (!response) {
                     this.reportBehaviorConfigEvent({
-                        message: " empty_response "
+                        message: "empty_response"
                     }, -1, isFirstRequest);
                     return;
                 }
                 const payload = response && response.data && typeof response.data === "object"? response.data : response; if (!payload || typeof payload !=="object") {
                     this.reportBehaviorConfigEvent({
-                        message: " invalid_response_payload ",
+                        message: "invalid_response_payload",
                         raw: response
                     }, -1, isFirstRequest);
                     return;
@@ -57,14 +57,14 @@ export default class MiddleSdkEventService {
                         fbAppId: fbAppId
                     };
                     try {
-                        console.log("[MiddleSdkEventService.initSdkAdjust] params => ", JSON.stringify(adjustParams));
+                        console.log("[MiddleSdkEventService.initSdkAdjust] params =>", JSON.stringify(adjustParams));
                     } catch (err) {
-                        console.log("[MiddleSdkEventService.initSdkAdjust] params(raw) => ", adjustParams);
+                        console.log("[MiddleSdkEventService.initSdkAdjust] params(raw) =>", adjustParams);
                     }
                     PlatformBridge.getNativeBridge().initSdkAdjust(adjustKey, urlStrategy, fbAppId);
                 }
                 if (isInitFirebase === true) {
-                    PlatformBridge.getNativeBridge().reportFirebase(isInitFirebase + " ");
+                    PlatformBridge.getNativeBridge().reportFirebase(isInitFirebase + "");
                 }
                 if (Array.isArray(callbackEvents) && callbackEvents.length > 0) {
                     callbackEvents.forEach((eventName: string) => {
@@ -90,7 +90,7 @@ export default class MiddleSdkEventService {
         try {
             isFirst = cc.sys.localStorage.getItem(this.kIsUploadEventFirstCall) === null;
             if (isFirst) {
-                cc.sys.localStorage.setItem(this.kIsUploadEventFirstCall, " 1 ");
+                cc.sys.localStorage.setItem(this.kIsUploadEventFirstCall, "1");
             }
         } catch (err) {
             isFirst = true;
@@ -100,7 +100,7 @@ export default class MiddleSdkEventService {
 
     findEventToken(eventName: string, tokens: any[]): string {
         if (!Array.isArray(tokens) || tokens.length <= 0) {
-            return " ";
+            return "";
         }
         for (let i = 0; i < tokens.length; i++) {
             const item = tokens[i];
@@ -111,7 +111,7 @@ export default class MiddleSdkEventService {
                 }
             }
         }
-        return " ";
+        return "";
     }
 
     findEventParams(eventName: string, paramsList: any[]): any {
@@ -131,11 +131,11 @@ export default class MiddleSdkEventService {
     }
 
     reportBehaviorConfigEvent(value: any, status: number, isFirst: boolean = false): void {
-        BusinessAnalyticsService.reportData(" behavior_config ", {
+        BusinessAnalyticsService.reportData("behavior_config", {
             behavior_config_value: value,
             behavior_config_status: status,
             behavior_first_req: isFirst,
-            redirect_type: " 0 "
+            redirect_type: "0"
         });
     }
 }

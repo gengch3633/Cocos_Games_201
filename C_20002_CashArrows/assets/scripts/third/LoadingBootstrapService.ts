@@ -11,7 +11,7 @@ export default class LoadingBootstrapService {
     run(): void {
         const adapter = LoadingBootstrapAdapter.getImplementation();
         adapter.patchInstantiate();
-        BusinessAnalyticsService.reportData(" u_loading_page_show ");
+        BusinessAnalyticsService.reportData("u_loading_page_show");
         adapter.registerGlobalError();
         adapter.initPageManager();
         adapter.disableMultiTouch();
@@ -21,7 +21,7 @@ export default class LoadingBootstrapService {
         adapter.initLanguage();
         adapter.initSystem();
         adapter.bindPilot();
-        BusinessAnalyticsService.reportData(" page_loading_onLoad ");
+        BusinessAnalyticsService.reportData("page_loading_onLoad");
         adapter.startMiddleCountryForWeb();
     }
 }

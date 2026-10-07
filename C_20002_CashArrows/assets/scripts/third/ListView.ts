@@ -190,17 +190,17 @@ export default class ListView extends cc.Component {
     spacing: cc.Vec2 = cc.v2(0, 0);
 
     @property({
-        tooltip: " 四周边距 "
+        tooltip: "四周边距"
     })
     margin: cc.Rect = cc.rect(0, 0, 0, 0);
 
     @property({
-        tooltip: " 比可见元素多缓存2个, 缓存越多, 快速滑动越流畅, 但同时初始化越慢."
+        tooltip: "比可见元素多缓存2个, 缓存越多,快速滑动越流畅,但同时初始化越慢."
     })
     spawnCount: number = 2;
 
     @property({
-        tooltip: " 行列数 ， 横向滚动是行数 ， 竖向滚动是列数."
+        tooltip: "行列数，横向滚动是行数，竖向滚动是列数."
     })
     column: number = 1;
 
@@ -211,7 +211,7 @@ export default class ListView extends cc.Component {
     emptyView: cc.Node = null;
 
     @property({
-        tooltip: " 当可见元素小于最大可见数量时候, 是否居中显示 "
+        tooltip: "当可见元素小于最大可见数量时候,是否居中显示"
     })
     isCenter: boolean = false;
 

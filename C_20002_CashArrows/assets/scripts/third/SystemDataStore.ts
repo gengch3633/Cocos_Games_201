@@ -25,7 +25,7 @@ class SystemDataStoreImpl {
         const newUser = rawNewUser != null ? rawNewUser : config.is_new;
         this.new_user = newUser ? 1 : 0;
         console.log(
-            "[SystemDataStore] init_config: new_user = "+ this.new_user +" raw_new_user = "+ rawNewUser +" raw_is_new = " + config.is_new
+            "[SystemDataStore] init_config: new_user="+ this.new_user +" raw_new_user="+ rawNewUser +" raw_is_new=" + config.is_new
         );
     }
 

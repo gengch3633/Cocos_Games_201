@@ -133,7 +133,7 @@ function patchSpineBlendGuard(): void {
                 return originalSetBlend.call(this, target, blendOp, src, dst, blendOpAlpha, srcAlpha, dstAlpha, mask, autoMerge);
             };
             (cc as any).__spineBlendGuardPatched = true;
-            console.warn("[BlendGuard] Native blend guard enabled ");
+            console.warn("[BlendGuard] Native blend guard enabled");
         }
     }
 }
@@ -174,13 +174,13 @@ export default class Loading extends cc.Component {
 
     onLoad(): void {
         patchSpineBlendGuard();
-        console.log("[Loading][UMP] onLoad hasUmpNode = " + !!this.umpNode + " hasAgreeBtn = " + !!this.umpBtnAgree + " hasCloseBtn = "+ !!this.umpBtnClose); initProjectLoadingAdapters(); LanguageService.init(); this.playLogoSpineOnce(); this.init(); } playLogoSpineOnce(): void { if (this.sp_logo && this.sp_logo.setAnimation) { try { const animationName = this.sp_logo.defaultAnimation ||"animation";
+        console.log("[Loading][UMP] onLoad hasUmpNode=" + !!this.umpNode + " hasAgreeBtn=" + !!this.umpBtnAgree + " hasCloseBtn="+ !!this.umpBtnClose); initProjectLoadingAdapters(); LanguageService.init(); this.playLogoSpineOnce(); this.init(); } playLogoSpineOnce(): void { if (this.sp_logo && this.sp_logo.setAnimation) { try { const animationName = this.sp_logo.defaultAnimation ||"animation";
                 this.sp_logo.loop = false;
                 this.sp_logo.clearTracks && this.sp_logo.clearTracks();
                 this.sp_logo.setAnimation(0, animationName, false);
                 this.sp_logo.setCompleteListener && this.sp_logo.setCompleteListener(function () {});
             } catch (error) {
-                console.warn("[Loading] play logo spine failed: ", error);
+                console.warn("[Loading] play logo spine failed:", error);
             }
         }
     }
@@ -188,7 +188,7 @@ export default class Loading extends cc.Component {
     async ShowNoMac(): Promise<void> {
         let showNoMac = true;
         const macList = await ConfigMgr.getInstance().getMackList();
-        console.log("maclist: ", macList);
+        console.log("maclist:", macList);
         macList.forEach((item: any) => {
             if (item.macId === UserData.getInstance().userID) {
                 showNoMac = false;
@@ -209,11 +209,11 @@ export default class Loading extends cc.Component {
         cc.macro.ENABLE_MULTI_TOUCH = false;
 
         const launchConfig: any = {
-            gameName: " ",
+            gameName: "",
             rewardVideo: [],
-            inters: " ",
-            custom: " ",
-            ossUrl: " ",
+            inters: "",
+            custom: "",
+            ossUrl: "",
             login: false,
             dataSyncToServer: false,
             report: false
@@ -223,7 +223,7 @@ export default class Loading extends cc.Component {
             const urlParams = this.getURLParams();
             if (urlParams) {
                 Object.assign(launchConfig, urlParams);
-                console.log("url params: ", urlParams);
+                console.log("url params:", urlParams);
             }
         }
 
@@ -249,7 +249,7 @@ export default class Loading extends cc.Component {
                             }
                         }
                         const ratio = completedWeight / LOADING_TOTAL_WEIGHT;
-                        console.log("[Loading][Progress] stepDone: " + stepName + "-> " + Math.round(100 * ratio) + "% ");
+                        console.log("[Loading][Progress] stepDone: " + stepName + "->" + Math.round(100 * ratio) + "%");
                         animateProgress && animateProgress(ratio);
                     }
                 },
@@ -264,7 +264,7 @@ export default class Loading extends cc.Component {
                         }
                     }
                     const ratio = completedWeight / LOADING_TOTAL_WEIGHT;
-                    console.log("[Loading][Progress] batchDone:[" + stepNames.join(", ") + "]-> " + Math.round(100 * ratio) + "% ");
+                    console.log("[Loading][Progress] batchDone:[" + stepNames.join(",") + "] -> " + Math.round(100 * ratio) + "%");
                     animateProgress && animateProgress(ratio);
                 }
             };
@@ -272,20 +272,20 @@ export default class Loading extends cc.Component {
 
         try {
             const UmpServiceClass = LoadingUmpDialogService;
-            console.log("[Loading][UMP] service check hasServiceClass = " + !!UmpServiceClass + " hasUmpNode = " + !!this.umpNode + " hasAgreeBtn = " + !!this.umpBtnAgree + " hasCloseBtn = " + !!this.umpBtnClose + " umpNodeName = " + (this.umpNode ? this.umpNode.name : "null") + " umpNodeActive = " + (this.umpNode ? this.umpNode.active : "null") + " umpNodeActiveInHierarchy = " + (this.umpNode ? this.umpNode.activeInHierarchy : "null"));
+            console.log("[Loading][UMP] service check hasServiceClass=" + !!UmpServiceClass + " hasUmpNode=" + !!this.umpNode + " hasAgreeBtn=" + !!this.umpBtnAgree + " hasCloseBtn=" + !!this.umpBtnClose + " umpNodeName=" + (this.umpNode ? this.umpNode.name : "null") + " umpNodeActive=" + (this.umpNode ? this.umpNode.active : "null") + " umpNodeActiveInHierarchy=" + (this.umpNode ? this.umpNode.activeInHierarchy : "null"));
             if (UmpServiceClass && this.umpNode && this.umpBtnAgree && this.umpBtnClose) {
                 this.umpNode.active = false;
-                console.log("[Loading][UMP] service created, set umpNode.active = false ");
+                console.log("[Loading][UMP] service created, set umpNode.active=false");
                 umpService = new UmpServiceClass({
                     umpNode: this.umpNode,
                     umpBtnAgree: this.umpBtnAgree,
                     umpBtnClose: this.umpBtnClose,
                     onPauseLoading: () => {
-                        console.log("[Loading][UMP] onPauseLoading fillRange = " + (self.img_jindu ? self.img_jindu.fillRange : "null") + " umpNodeActive = " + (self.umpNode ? self.umpNode.active : "null"));
+                        console.log("[Loading][UMP] onPauseLoading fillRange=" + (self.img_jindu ? self.img_jindu.fillRange : "null") + " umpNodeActive=" + (self.umpNode ? self.umpNode.active : "null"));
                         self._isProgressPaused = true;
                     },
                     onResumeLoading: () => {
-                        console.log("[Loading][UMP] onResumeLoading hasPendingProgress = " + self._hasPendingProgress + " fillRange = " + (self.img_jindu ? self.img_jindu.fillRange : "null") + " umpNodeActive = " + (self.umpNode ? self.umpNode.active : "null"));
+                        console.log("[Loading][UMP] onResumeLoading hasPendingProgress=" + self._hasPendingProgress + " fillRange=" + (self.img_jindu ? self.img_jindu.fillRange : "null") + " umpNodeActive=" + (self.umpNode ? self.umpNode.active : "null"));
                         self._isProgressPaused = false;
                         if (self._hasPendingProgress) {
                             self._hasPendingProgress = false;
@@ -294,21 +294,21 @@ export default class Loading extends cc.Component {
                     }
                 });
             } else if (UmpServiceClass) {
-                console.warn("[Loading][UMP] 节点未配置 ， 跳过展示 。 hasUmpNode = " + !!this.umpNode + " hasAgreeBtn = " + !!this.umpBtnAgree + " hasCloseBtn = " + !!this.umpBtnClose);
+                console.warn("[Loading][UMP] 节点未配置，跳过展示。 hasUmpNode=" + !!this.umpNode + " hasAgreeBtn=" + !!this.umpBtnAgree + " hasCloseBtn=" + !!this.umpBtnClose);
             }
         } catch (error) {
-            console.error("[Loading][UMP] 初始化弹窗服务失败: ", error);
+            console.error("[Loading][UMP] 初始化弹窗服务失败:", error);
         }
 
         const doLaunch = () => {
-            console.log("doLaunch ", "doLaunch ");
+            console.log("doLaunch", "doLaunch");
             try {
                 const country = CurrencyFormatService.getCurrentCountry();
                 if (country) {
                     LanguageService.setByCountryCode(country);
                 }
             } catch (error) {
-                console.warn("[Loading] sync country-language before launch failed: ", error);
+                console.warn("[Loading] sync country-language before launch failed:", error);
             }
             try {
                 const platformBridge = PlatformBridge && PlatformBridge.default ? PlatformBridge.default : PlatformBridge;
@@ -319,23 +319,23 @@ export default class Loading extends cc.Component {
                     : null;
                 if (nativeBridge && typeof nativeBridge.initSMSdk === "function") {
                     nativeBridge.initSMSdk("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKP9X+CjUjA2ijFyOPVAqmXPOuQl39+2KRHZZMydD/TuOEL/SzZqE9A+BT49r41twoDHp/bNc7OjTYjclIkCDp8CAwEAAQ==", localCountry);
-                    console.log("[Loading] initSMSdk called country = " + localCountry);
+                    console.log("[Loading] initSMSdk called country=" + localCountry);
                 }
             } catch (error) {
-                console.warn("[Loading] initSMSdk failed: ", error);
+                console.warn("[Loading] initSMSdk failed:", error);
             }
             const currentLevelId = Number(PlayerDataStore.current_arrow_level_id || 0);
             const levelRequest = currentLevelId > 0 ? { arrow_level_id: currentLevelId } : { arrow_level_id: 1 };
-            console.log("[ArrowLevel] doLaunch: 请求关卡配置 req = " + JSON.stringify(levelRequest));
+            console.log("[ArrowLevel] doLaunch: 请求关卡配置 req=" + JSON.stringify(levelRequest));
             LoadingHttpService.getArrowLevelConfig(levelRequest, Handler.create(null, (response: any) => {
                 if (response && response.data && response.data.arrow_level) {
                     PlayerDataStore.updateArrowLevel(response.data.arrow_level);
-                    console.log("[ArrowLevel] doLaunch: 关卡配置加载成功 arrow_level = " + JSON.stringify(response.data.arrow_level));
+                    console.log("[ArrowLevel] doLaunch: 关卡配置加载成功 arrow_level=" + JSON.stringify(response.data.arrow_level));
                 } else {
-                    console.warn("[ArrowLevel] doLaunch: 关卡配置返回数据异常 res = " + JSON.stringify(response));
+                    console.warn("[ArrowLevel] doLaunch: 关卡配置返回数据异常 res=" + JSON.stringify(response));
                 }
             }), Handler.create(null, (error: any) => {
-                console.warn("[ArrowLevel] doLaunch: 关卡配置请求失败 ， 使用本地 level 兜底 err = " + JSON.stringify(error));
+                console.warn("[ArrowLevel] doLaunch: 关卡配置请求失败，使用本地 level 兜底 err=" + JSON.stringify(error));
             }));
             let bundleStepIndex = 0;
             const bundleSteps = ["configLoad", "archiveInit", "bundleLoad"];
@@ -363,14 +363,14 @@ export default class Loading extends cc.Component {
                 progressTracker.batchDone(["middleCountry", "systemConfig", "login", "gameConfig", "userInfo"]);
                 doLaunch();
             }, (showUmpCallback: (agreed: boolean) => void) => {
-                console.log("[Loading][UMP] onShowUmp called hasServiceInstance = " + !!umpService + " hasCallBack = " + !!showUmpCallback + " umpNodeActiveBeforeShow = " + (self.umpNode ? self.umpNode.active : "null") + " umpNodeActiveInHierarchyBeforeShow = " + (self.umpNode ? self.umpNode.activeInHierarchy : "null"));
+                console.log("[Loading][UMP] onShowUmp called hasServiceInstance=" + !!umpService + " hasCallBack=" + !!showUmpCallback + " umpNodeActiveBeforeShow=" + (self.umpNode ? self.umpNode.active : "null") + " umpNodeActiveInHierarchyBeforeShow=" + (self.umpNode ? self.umpNode.activeInHierarchy : "null"));
                 if (umpService && showUmpCallback) {
                     umpService.show((agreed: boolean) => {
-                        console.log("[Loading][UMP] onShowUmp callback isAgree = " + agreed + " umpNodeActiveAfterChoice = " + (self.umpNode ? self.umpNode.active : "null") + " umpNodeActiveInHierarchyAfterChoice = " + (self.umpNode ? self.umpNode.activeInHierarchy : "null"));
+                        console.log("[Loading][UMP] onShowUmp callback isAgree=" + agreed + " umpNodeActiveAfterChoice=" + (self.umpNode ? self.umpNode.active : "null") + " umpNodeActiveInHierarchyAfterChoice=" + (self.umpNode ? self.umpNode.activeInHierarchy : "null"));
                         showUmpCallback(agreed);
                     });
                 } else {
-                    console.warn("[Loading][UMP] show fallback: service/callback missing, default reject ");
+                    console.warn("[Loading][UMP] show fallback: service/callback missing, default reject");
                     showUmpCallback && showUmpCallback(false);
                 }
             });
@@ -386,7 +386,7 @@ export default class Loading extends cc.Component {
                         clearTimeout(gaidTimeoutId);
                         gaidTimeoutId = null;
                     }
-                    console.log("[Loading][GAID] resolved reason = " + reason);
+                    console.log("[Loading][GAID] resolved reason=" + reason);
                     progressTracker.stepDone("waitGaid");
                     startBaseFlow();
                 }
@@ -401,12 +401,12 @@ export default class Loading extends cc.Component {
                 resolveGaidWait("callback");
             };
             gaidTimeoutId = setTimeout(() => {
-                console.warn("[Loading][GAID] timeout 20000ms, proceed without GAID ");
+                console.warn("[Loading][GAID] timeout 20000ms, proceed without GAID");
                 resolveGaidWait("timeout");
             }, 20000);
-            console.log("[Loading][GAID] waiting for moduleSerialNailed(timeout = 20000ms) ");
+            console.log("[Loading][GAID] waiting for moduleSerialNailed (timeout=20000ms)");
         } else {
-            console.log("[Loading][GAID] non-Android, skip GAID wait ");
+            console.log("[Loading][GAID] non-Android, skip GAID wait");
             progressTracker.stepDone("waitGaid");
             startBaseFlow();
         }
@@ -462,7 +462,7 @@ export default class Loading extends cc.Component {
                 }
             }
             this.img_jindu.fillRange = fillRange;
-            this.progressBar.getComponentInChildren(cc.Label).string = Math.floor(100 * fillRange) + "% ";
+            this.progressBar.getComponentInChildren(cc.Label).string = Math.floor(100 * fillRange) + "%";
             if (targetProgress >= 1 && fillRange >= 0.999 && !this._sceneEntering) {
                 this._sceneEntering = true;
                 cc.assetManager.loadBundle("game", (error, bundle) => {

@@ -44,7 +44,7 @@ return t;
 }
 __extends(snake, _super);
 snake.prototype._parseHexColor = function(e) {
-if (!e ||" string " != typeof e || e.length < 6) return cc.color(17, 20, 51);
+if (!e ||"string" != typeof e || e.length < 6) return cc.color(17, 20, 51);
 var t = parseInt(e.substring(0, 2), 16), i = parseInt(e.substring(2, 4), 16), n = parseInt(e.substring(4, 6), 16);
 return isNaN(t) || isNaN(i) || isNaN(n) ? cc.color(17, 20, 51) : cc.color(t, i, n);
 };
@@ -55,7 +55,7 @@ this.levelInfo = t;
 this.node_map = n;
 this.parent_snake = i;
 var o = this.levelInfo.Arrows[this.id];
-UserData.getInstance().colorMode && o && " string " == typeof o.Color && (this.snakeColor = this._parseHexColor(o.Color));
+UserData.getInstance().colorMode && o && "string" == typeof o.Color && (this.snakeColor = this._parseHexColor(o.Color));
 ResMgr.getInstance().loadRes("prefab/item", cc.Prefab, null, bundleName.game).then(function(e) {
   if(e) {
     a.prefab_item = e;

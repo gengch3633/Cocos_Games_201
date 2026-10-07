@@ -19,7 +19,7 @@ export default class UserArchive {
     _$serverIndex: number = -1;
     _$watch: any = null;
     _$version: number = 0;
-    _id: string = " ";
+    _id: string = "";
     _$key: string;
 
     static getInstance<T extends typeof UserArchive>(this: T): InstanceType<T> {
@@ -35,7 +35,7 @@ export default class UserArchive {
         this._$key = Common.version + "_" + key;
         if (serverIndex <= 0) {
             let sum = 0;
-            key.split(" ").forEach((part) => {
+            key.split("").forEach((part) => {
                 sum += part.charCodeAt(0);
             });
             serverIndex = 6 + sum % 20;

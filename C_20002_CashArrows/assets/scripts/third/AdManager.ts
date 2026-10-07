@@ -6,15 +6,15 @@ import LanguageService from "./LanguageService";
 import NativeSdkBridgeAdapter from "./NativeSdkBridgeAdapter";
 
 export enum AD_TYPE {
-    RELIVE = " relive ",
-    TURNTABLE = " turntable ",
-    LUCKY = " lucky ",
-    TASK = " task "
+    RELIVE = "relive",
+    TURNTABLE = "turntable",
+    LUCKY = "lucky",
+    TASK = "task"
 }
 
 export default class AdManager {
-    static LONG_TAP_TOAST_I18N_KEY = " key_tip_watch_video_claim_big_reward ";
-    static LONG_TAP_TOAST_FALLBACK = " 观看视频即可领取大额奖励 ";
+    static LONG_TAP_TOAST_I18N_KEY = "key_tip_watch_video_claim_big_reward";
+    static LONG_TAP_TOAST_FALLBACK = "观看视频即可领取大额奖励";
     private static _instance: AdManager = null;
 
     videoSuccessFun: Function = null;
@@ -25,19 +25,19 @@ export default class AdManager {
     pre_video_time: number = 0;
     cpm_data: any = {
         cpm: 0,
-        source: " ",
-        unitId: " ",
-        isApp: " ",
-        isClose: " ",
-        activity_date: " ",
-        activity_num: " "
+        source: "",
+        unitId: "",
+        isApp: "",
+        isClose: "",
+        activity_date: "",
+        activity_num: ""
     };
     adCloseEvent: boolean = false;
     adSwitch: boolean = true;
     lastTouchDate: number = 0;
     interval: number = 1.5;
     insertFailTimer: any = null;
-    failDesc: string = " ";
+    failDesc: string = "";
     start_video_time: number = 0;
     end_video_time: number = 0;
     play_video_time: number = 0;
@@ -72,14 +72,14 @@ export default class AdManager {
         if (raw) {
             payload = JSON.parse(raw);
         }
-        AdAnalyticsService.reportData(" onUploadCpm ");
-        AdAnalyticsService.reportData(" onUploadCpmData ", payload);
+        AdAnalyticsService.reportData("onUploadCpm");
+        AdAnalyticsService.reportData("onUploadCpmData", payload);
         const date = AdToolbox.formatDate(new Date().getTime());
         this.cpm_data.activity_date = date;
         this.cpm_data.cpm = Number(payload?.cpm || 0);
-        this.cpm_data.source = payload?.source || " ";
-        this.cpm_data.unitId = payload?.unit_id || " ";
-        AdAnalyticsService.reportData(" cpm_data ", {
+        this.cpm_data.source = payload?.source || "";
+        this.cpm_data.unitId = payload?.unit_id || "";
+        AdAnalyticsService.reportData("cpm_data", {
             cpm: this.cpm_data
         });
     }
@@ -132,7 +132,7 @@ export default class AdManager {
             clearTimeout(this.video_timer);
         }
         this.video_timer = setTimeout(() => {
-            this.doVideoFail(" 广告超时5s ");
+            this.doVideoFail("广告超时5s");
         }, 5000);
     }
 
@@ -181,9 +181,9 @@ export default class AdManager {
         }
     }
 
-    playNormalVideoAd(videoData: any, onSuccess?: Function, onFail?: Function, failDesc: string = " "): void {
+    playNormalVideoAd(videoData: any, onSuccess?: Function, onFail?: Function, failDesc: string = ""): void {
         this.videoData = videoData;
-        let serialized = " ";
+        let serialized = "";
         try {
             serialized = JSON.stringify(this.videoData || {});
         } catch (e) {
@@ -195,9 +195,9 @@ export default class AdManager {
             this.lastTouchDate = now;
         }
         if (this.lastTouchDate && now - this.lastTouchDate < this.interval) {
-            AdToolbox.log(" 广告点击太频繁 ");
+            AdToolbox.log("广告点击太频繁");
             onFail && onFail({
-                type: " too_frequent "
+                type: "too_frequent"
             });
         } else {
             this.lastTouchDate = now;
@@ -218,7 +218,7 @@ export default class AdManager {
                 console.log("[AdManager] requestRewardVideo normal adData->", request, "force_video=", forceVideo, "slotId=", slotId);
                 AdRequestService.requestRewardVideo(request);
             } else {
-                AdToolbox.localStorageSetItem(" last_vd_time ", String(AdToolbox.nowSeconds()));
+                AdToolbox.localStorageSetItem("last_vd_time", String(AdToolbox.nowSeconds()));
                 onSuccess && onSuccess();
                 AdLegacyBridge.setInsertShowTime();
             }
@@ -239,27 +239,27 @@ export default class AdManager {
         if (!payload || typeof payload !== "object") {
             payload = {};
         }
-        const nested = payload?.ferryBulkTierAgate && typeof payload.ferryBulkTierAgate === "object"? payload.ferryBulkTierAgate : {}; const merged = Object.assign({}, nested, payload); this.cpm_data.activity_date = AdToolbox.formatDate(new Date().getTime()); if (merged.cpm !== undefined) { this.cpm_data.cpm = Number(merged.cpm || 0); } if (merged.source !== undefined || merged.dsp !== undefined) { this.cpm_data.source = merged.source || merged.dsp ||" ";
+        const nested = payload?.ferryBulkTierAgate && typeof payload.ferryBulkTierAgate === "object"? payload.ferryBulkTierAgate : {}; const merged = Object.assign({}, nested, payload); this.cpm_data.activity_date = AdToolbox.formatDate(new Date().getTime()); if (merged.cpm !== undefined) { this.cpm_data.cpm = Number(merged.cpm || 0); } if (merged.source !== undefined || merged.dsp !== undefined) { this.cpm_data.source = merged.source || merged.dsp ||"";
         }
         if (merged.unit_id !== undefined || merged.unitId !== undefined) {
-            this.cpm_data.unitId = merged.unit_id || merged.unitId || " ";
+            this.cpm_data.unitId = merged.unit_id || merged.unitId || "";
         }
         if (merged.slot_id !== undefined || merged.slotId !== undefined) {
             this.cpm_data.slot_id = Number(merged.slot_id || merged.slotId || 0);
         }
         if (merged.placement_id !== undefined || merged.placementId !== undefined) {
-            this.cpm_data.placement_id = merged.placement_id || merged.placementId || " ";
+            this.cpm_data.placement_id = merged.placement_id || merged.placementId || "";
         }
         if (merged.dsp !== undefined) {
-            this.cpm_data.dsp = merged.dsp || " ";
+            this.cpm_data.dsp = merged.dsp || "";
         }
-        AdAnalyticsService.reportData(" cpm_data ", {
+        AdAnalyticsService.reportData("cpm_data", {
             cpm: this.cpm_data
         });
         if (this.videoData) {
             const adType = this.videoData.ad_type;
             const forceVideo = this.videoData.force_video;
-            AdAnalyticsService.reportData(" " + adType, {
+            AdAnalyticsService.reportData("" + adType, {
                 ad_type: adType,
                 force_video: !!forceVideo
             });
@@ -274,7 +274,7 @@ export default class AdManager {
         this.is_finish = false;
         if (rewarded) {
             this.is_finish = true;
-            AdAnalyticsService.reportData(" on_video_finish ", {
+            AdAnalyticsService.reportData("on_video_finish", {
                 ad_type: event,
                 is_reward: rewarded
             });
@@ -282,18 +282,18 @@ export default class AdManager {
         this.stopVideoTimer();
         setTimeout(() => {
             if (this.videoSuccessFun) {
-                console.log(" 有视频观看成功回调 ");
+                console.log("有视频观看成功回调");
                 this.videoSuccessFun(event);
                 this.videoSuccessFun = null;
             }
-            AdToolbox.localStorageSetItem(" last_vd_time ", String(AdToolbox.nowSeconds()));
+            AdToolbox.localStorageSetItem("last_vd_time", String(AdToolbox.nowSeconds()));
         }, 300);
         AdLegacyBridge.setInsertShowTime();
         this.adCloseEvent = true;
     }
 
     onVideoError(error: any): void {
-        AdAnalyticsService.reportData(" on_vide_error ", {
+        AdAnalyticsService.reportData("on_vide_error", {
             type: error.type
         });
         this.doVideoFail(error);
@@ -304,10 +304,10 @@ export default class AdManager {
         if (this.videoFailFun) {
             setTimeout(() => {
                 try {
-                    console.log(" videoFailFun == ", this.videoFailFun, JSON.stringify(this.videoFailFun));
+                    console.log("videoFailFun==", this.videoFailFun, JSON.stringify(this.videoFailFun));
                     this.videoFailFun(error);
                 } catch (e) {
-                    console.log(" videoFailFun == ", e);
+                    console.log("videoFailFun==", e);
                 }
                 this.videoFailFun = null;
             }, 300);
@@ -315,11 +315,11 @@ export default class AdManager {
     }
 
     showInsertAd(onClose?: Function): void {
-        AdToolbox.log(" 播放插屏android ");
+        AdToolbox.log("播放插屏android");
         if (cc.sys.isNative) {
             if (cc.sys.os == cc.sys.OS_ANDROID) {
                 this.insertCloseFun = onClose || null;
-                if (AdLegacyBridge.getInsertScreenFlag() != " s0 ") {
+                if (AdLegacyBridge.getInsertScreenFlag() != "s0") {
                     if (this.insertFailTimer) {
                         clearTimeout(this.insertFailTimer);
                         this.insertFailTimer = null;
@@ -331,8 +331,8 @@ export default class AdManager {
             }
         } else {
             onClose && onClose();
-            console.log(" web 播放插屏 ");
-            if (AdLegacyBridge.getInsertScreenFlag() != " s0 ") {
+            console.log("web 播放插屏");
+            if (AdLegacyBridge.getInsertScreenFlag() != "s0") {
                 if (this.insertFailTimer) {
                     clearTimeout(this.insertFailTimer);
                     this.insertFailTimer = null;
@@ -345,23 +345,23 @@ export default class AdManager {
     }
 
     onInsertAdClick(): void {
-        console.log(" onInsertAdClick ");
+        console.log("onInsertAdClick");
     }
 
     onInsertAdClose(): void {
-        console.log(" onInsertAdClose ");
+        console.log("onInsertAdClose");
         this.insertCloseFun && this.insertCloseFun();
         AdLegacyBridge.resumeInsertTimer();
     }
 
     onInsertAdShow(): void {
-        console.log(" onInsertAdShow ");
+        console.log("onInsertAdShow");
         AdLegacyBridge.pauseInsertTimer();
         if (this.insertFailTimer) {
             clearTimeout(this.insertFailTimer);
             this.insertFailTimer = null;
         }
-        AdAnalyticsService.reportData(" on_insertVideo_show ");
+        AdAnalyticsService.reportData("on_insertVideo_show");
     }
 
     preLoadGraphicAd(): void {
@@ -374,15 +374,15 @@ export default class AdManager {
         if (reset) {
             this.adCloseEvent = false;
         }
-        console.log(" TEST NEW: CLOSE EVENT reset!!! ");
+        console.log("TEST NEW: CLOSE EVENT reset!!!");
         return true;
     }
 
     showGraphicAd(): void {
         const frameSize = cc.view.getFrameSize();
         const winSize = cc.winSize;
-        console.log(" frameSize ", frameSize.width, frameSize.height);
-        console.log(" winSize ", winSize.width, winSize.height);
+        console.log("frameSize", frameSize.width, frameSize.height);
+        console.log("winSize", winSize.width, winSize.height);
         frameSize.height;
         frameSize.width;
         frameSize.width;
@@ -422,10 +422,10 @@ export default class AdManager {
         if (!cc.sys.isNative) {
             return false;
         }
-        const lastTime = Number(AdToolbox.localStorageGetItem(" last_vd_time ", 0));
+        const lastTime = Number(AdToolbox.localStorageGetItem("last_vd_time", 0));
         const elapsed = AdToolbox.nowSeconds() - lastTime;
         if (elapsed < 10) {
-            const message = " 视频准备中 ， " + (10 - elapsed) + " 秒后再试 ";
+            const message = "视频准备中，" + (10 - elapsed) + "秒后再试";
             if (!cc.sys.isNative) {
                 AdToolbox.showManageViewToast(message);
             }
@@ -440,7 +440,7 @@ export default class AdManager {
     }
 
     loadNewSplashAd(retry: number = 1, bottom: number = 0): void {
-        AdToolbox.log(" js loadNewSplashAd: ");
+        AdToolbox.log("js loadNewSplashAd: ");
         if (cc.sys.isNative) {
             if (this.splash_timer) {
                 clearTimeout(this.splash_timer);

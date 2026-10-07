@@ -13,10 +13,10 @@ export default class LoadingSceneProgressService {
     }
 
     async run(): Promise<void> {
-        BusinessAnalyticsService.reportData(" page_loading_progressFinish ");
+        BusinessAnalyticsService.reportData("page_loading_progressFinish");
         let progressEnd = 0.25;
         const adapter = LoadingSceneProgressAdapter.getImplementation();
-        adapter.preloadScene(" BPR_Game_Main ", (current: number, total: number) => {
+        adapter.preloadScene("BPR_Game_Main", (current: number, total: number) => {
             this.deps.setProgress(current / total, false, 0, progressEnd);
         }, async () => {
             try {
@@ -25,12 +25,12 @@ export default class LoadingSceneProgressService {
                     progressEnd = await this.progressWithPrefabLoading(progressEnd, tasks, i);
                 }
             } catch (err) {
-                console.error(" loading progressFinish failed, the error was " + err);
+                console.error("loading progressFinish failed, the error was " + err);
                 if (adapter.isDebug()) {
-                    throw new Error(" loading progressFinish failed, the error was " + err);
+                    throw new Error("loading progressFinish failed, the error was " + err);
                 }
             } finally {
-                BusinessAnalyticsService.reportData(" page_loading_progressFinish_runMainScene ");
+                BusinessAnalyticsService.reportData("page_loading_progressFinish_runMainScene");
                 this.deps.onProgressFinish();
             }
         });

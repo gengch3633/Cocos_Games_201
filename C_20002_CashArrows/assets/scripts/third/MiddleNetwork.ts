@@ -4,9 +4,9 @@ import HotUpdateManager from "./HotUpdateManager";
 import { MIDDLE_PROJECT_ADAPTER_CONFIG } from "./MiddleProjectAdapterConfig";
 import { MIDDLE_REQUEST_DESCRIPTORS } from "./MiddleRequestDescriptors";
 
-const LOG_PREFIX = "[MiddleNetwork] ";
-const COUNTRY_STORAGE_KEY = " com.sdk.country ";
-const REFERRER_FIELDS = [" referrer_url ", " referrer_timestamp_server ", " install_timestamp_server ", " oaid "];
+const LOG_PREFIX = "[MiddleNetwork]";
+const COUNTRY_STORAGE_KEY = "com.sdk.country";
+const REFERRER_FIELDS = ["referrer_url", "referrer_timestamp_server", "install_timestamp_server", "oaid"];
 
 function safeStringify(value: any): string {
     try {
@@ -57,26 +57,26 @@ function buildQueryString(params: any): string {
         const key = keys[i];
         const value = params[key];
         if (value != null) {
-            parts.push(key + " = " + value);
+            parts.push(key + "=" + value);
         }
     }
-    return parts.join("& ");
+    return parts.join("&");
 }
 
 function appendPackageName(_unused: number, url: string): string {
     if (!url) {
-        return " ";
+        return "";
     }
-    const separator = url.indexOf("? ") >= 0 ? "& " : "? ";
-    return url.indexOf(" pkg = ") >= 0 ? url : " " + url + separator + " pkg = " + encodeURIComponent(ClientDataStore.box_pkg_name || " ");
+    const separator = url.indexOf("?") >= 0 ? "&" : "?";
+    return url.indexOf("pkg=") >= 0 ? url : "" + url + separator + "pkg=" + encodeURIComponent(ClientDataStore.box_pkg_name || "");
 }
 
 function extractSignPath(url: string): string {
-    return "/ " + (url || " ").split("? ")[0].split("/ ").slice(3).join("/ ");
+    return "/" + (url || "").split("?")[0].split("/").slice(3).join("/");
 }
 
 function isPayloadRequestType(requestType: string): boolean {
-    return " APPLOG " === requestType || " ADSDK " === requestType || " COREDATA " === requestType;
+    return "APPLOG" === requestType || "ADSDK" === requestType || "COREDATA" === requestType;
 }
 
 function readStoredCountry(): string {
@@ -86,22 +86,22 @@ function readStoredCountry(): string {
             return String(stored).toUpperCase();
         }
     } catch (err) { }
-    return String(ClientDataStore.local_country || " ").toUpperCase() || " IN ";
+    return String(ClientDataStore.local_country || "").toUpperCase() || "IN";
 }
 
 function readGameVersion(): string {
     try {
-        return HotUpdateManager.getInstance().getVersion() || ClientDataStore.version_name || " ";
+        return HotUpdateManager.getInstance().getVersion() || ClientDataStore.version_name || "";
     } catch (err) {
-        return ClientDataStore.version_name || " ";
+        return ClientDataStore.version_name || "";
     }
 }
 
 function readBaseGameVersion(): string {
     try {
-        return HotUpdateManager.getInstance().getBaseVersion() || " ";
+        return HotUpdateManager.getInstance().getBaseVersion() || "";
     } catch (err) {
-        return " ";
+        return "";
     }
 }
 
@@ -117,7 +117,7 @@ function enrichPayloadItem(item: any): void {
     item.game_base_version = readBaseGameVersion();
     item.country = country;
     item.cy = country;
-    item.game_name = MIDDLE_PROJECT_ADAPTER_CONFIG.gameName || " ";
+    item.game_name = MIDDLE_PROJECT_ADAPTER_CONFIG.gameName || "";
 }
 
 function normalizePayloadList(payload: any[]): any[] {
@@ -140,18 +140,18 @@ function buildRequestBody(requestType: string, params: any): string {
     const descriptor = MIDDLE_REQUEST_DESCRIPTORS[requestType];
     const timestamp = Math.floor(Date.now() / 1e3).toString();
     const nonce = ClientDataStore.uuid();
-    const signPath = extractSignPath(descriptor?.url || " ");
+    const signPath = extractSignPath(descriptor?.url || "");
     const ngister = CryptoHelper.ngister(signPath, timestamp, nonce, ClientDataStore.version_name, ClientDataStore.channel_name, ClientDataStore.device_id, ClientDataStore.box_pkg_name);
     const ds = params?.ds || ClientDataStore.ds || {
-        ir: " 0 ",
-        ie: " 0 ",
-        irv: " 0 ",
-        ix: " 0 ",
-        ih: " 0 ",
-        io: " 0 ",
-        iw: " 0 ",
-        id: " 0 ",
-        ids: " 0 "
+        ir: "0",
+        ie: "0",
+        irv: "0",
+        ix: "0",
+        ih: "0",
+        io: "0",
+        iw: "0",
+        id: "0",
+        ids: "0"
     };
     if (typeof params?.query === "string") {
         if (isPayloadRequestType(requestType)) {
@@ -165,33 +165,33 @@ function buildRequestBody(requestType: string, params: any): string {
             query: params.query,
             ds: ds
         };
-        if (" TFRegional " === requestType) {
+        if ("TFRegional" === requestType) {
             mergeReferrerFields(body, params);
         }
         return JSON.stringify(body);
     }
     const queryParams: any = {
-        is_test: " false ",
+        is_test: "false",
         version_name: ClientDataStore.version_name,
-        version_code: " 0 ",
+        version_code: "0",
         channel_name: ClientDataStore.channel_name,
         box_pkg_name: ClientDataStore.box_pkg_name,
         network_type: ClientDataStore.network_type,
         et: timestamp,
         nonce_str: nonce,
         ngister: ngister,
-        sign_type: " 3 ",
+        sign_type: "3",
         platform: ClientDataStore.os_name,
         android_id: ClientDataStore.android_id,
         device_id: ClientDataStore.device_id,
-        country: " ",
+        country: "",
         local_country: ClientDataStore.local_country,
         oaid: ClientDataStore.oaid
     };
     const paramKeys = Object.keys(params || {});
     for (let i = 0; i < paramKeys.length; i++) {
         const key = paramKeys[i];
-        if (" query " !== key && " ds " !== key && queryParams[key] === undefined) {
+        if ("query" !== key && "ds" !== key && queryParams[key] === undefined) {
             const value = params[key];
             if (value != null && typeof value !== "object") {
                 queryParams[key] = String(value);
@@ -218,22 +218,22 @@ export default class MiddleNetwork {
             const encryptedBody = CryptoHelper.encrypt(plainBody, ClientDataStore.box_pkg_name);
             const inputParams = params || {};
             const parsedParams = safeParse(plainBody);
-            console.log(LOG_PREFIX, " REQ ", requestType, "url->", url);
-            console.log(LOG_PREFIX, " REQ ", requestType, "baseUrl->", baseUrl);
-            console.log(LOG_PREFIX, " REQ ", requestType, "input params->", safeStringify(inputParams));
-            console.log(LOG_PREFIX, " REQ ", requestType, "plain params->", safeStringify(parsedParams));
-            console.log(LOG_PREFIX, " REQ ", requestType, "encrypted length->", encryptedBody.length);
+            console.log(LOG_PREFIX, "REQ", requestType, "url->", url);
+            console.log(LOG_PREFIX, "REQ", requestType, "baseUrl->", baseUrl);
+            console.log(LOG_PREFIX, "REQ", requestType, "input params->", safeStringify(inputParams));
+            console.log(LOG_PREFIX, "REQ", requestType, "plain params->", safeStringify(parsedParams));
+            console.log(LOG_PREFIX, "REQ", requestType, "encrypted length->", encryptedBody.length);
             const xhr = new XMLHttpRequest();
             xhr.timeout = 15000;
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     const status = xhr.status;
-                    const responseText = xhr.responseText || " ";
-                    console.log(LOG_PREFIX, " RESP ", requestType, "status->", status, "raw length->", responseText.length);
+                    const responseText = xhr.responseText || "";
+                    console.log(LOG_PREFIX, "RESP", requestType, "status->", status, "raw length->", responseText.length);
                     if (status < 200 || status >= 400 || !responseText) {
                         invokeHandler(onFail, {
                             code: -1,
-                            message: " http status " + status,
+                            message: "http status" + status,
                             http_status: status,
                             raw: responseText
                         });
@@ -245,7 +245,7 @@ export default class MiddleNetwork {
                                 decryptedText = decrypted;
                             }
                         } catch (err) {
-                            console.warn(LOG_PREFIX, " DECRYPT_FAIL ", requestType, err);
+                            console.warn(LOG_PREFIX, "DECRYPT_FAIL", requestType, err);
                         }
                         try {
                             const parsed = JSON.parse(decryptedText);
@@ -255,10 +255,10 @@ export default class MiddleNetwork {
                             }
                             invokeHandler(onSuccess, parsed);
                         } catch (err) {
-                            console.error(LOG_PREFIX, " RESP_PARSE_FAIL ", requestType, err, "raw->", responseText);
+                            console.error(LOG_PREFIX, "RESP_PARSE_FAIL", requestType, err, "raw->", responseText);
                             invokeHandler(onFail, {
                                 code: -1,
-                                message: " response parse fail ",
+                                message: "response parse fail",
                                 raw: responseText
                             });
                         }
@@ -268,61 +268,61 @@ export default class MiddleNetwork {
             xhr.onerror = () => {
                 invokeHandler(onFail, {
                     code: -1,
-                    message: " xhr.error ",
+                    message: "xhr.error",
                     http_status: xhr.status
                 });
             };
             xhr.ontimeout = () => {
                 invokeHandler(onFail, {
                     code: -1,
-                    message: " xhr.timeout ",
+                    message: "xhr.timeout",
                     http_status: xhr.status
                 });
             };
-            xhr.open(" POST ", url, true);
+            xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "text/plain; charset = UTF-8");
             xhr.send(encryptedBody);
         } else {
             invokeHandler(onFail, {
                 code: -1,
-                message: " descriptor url missing: " + requestType
+                message: "descriptor url missing: " + requestType
             });
         }
     }
 
     static getSDKEvent(params: any, onSuccess: any, onFail: any): void {
-        this.request(" event ", params, onSuccess, onFail);
+        this.request("event", params, onSuccess, onFail);
     }
 
     static getMiddleCountry(params: any, onSuccess: any, onFail: any): void {
-        this.request(" Regional ", params, onSuccess, onFail);
+        this.request("Regional", params, onSuccess, onFail);
     }
 
     static trackAdSdk(params: any, onSuccess: any, onFail: any): void {
-        this.request(" ADSDK ", params, onSuccess, onFail);
+        this.request("ADSDK", params, onSuccess, onFail);
     }
 
     static trackCoreData(params: any, onSuccess: any, onFail: any): void {
-        this.request(" COREDATA ", params, onSuccess, onFail);
+        this.request("COREDATA", params, onSuccess, onFail);
     }
 
     static trackAppLog(params: any, onSuccess: any, onFail: any): void {
-        this.request(" APPLOG ", params, onSuccess, onFail);
+        this.request("APPLOG", params, onSuccess, onFail);
     }
 
     static getMiddleTFRegional(params: any, onSuccess: any, onFail: any): void {
-        this.request(" TFRegional ", params, onSuccess, onFail);
+        this.request("TFRegional", params, onSuccess, onFail);
     }
 
     static getPlatform(params: any, onSuccess: any, onFail: any): void {
-        this.request(" Platform ", params, onSuccess, onFail);
+        this.request("Platform", params, onSuccess, onFail);
     }
 
     static submitWithdrawal(params: any, onSuccess: any, onFail: any): void {
-        this.request(" BindWithdrawal ", params, onSuccess, onFail);
+        this.request("BindWithdrawal", params, onSuccess, onFail);
     }
 
     static getAdConfig(params: any, onSuccess: any, onFail: any): void {
-        this.request(" AdConfig ", params, onSuccess, onFail);
+        this.request("AdConfig", params, onSuccess, onFail);
     }
 }

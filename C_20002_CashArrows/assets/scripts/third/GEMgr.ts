@@ -1,8 +1,8 @@
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 
 const geConfig = {
-    accessToken: " p9h18yqUnckfZswrw3sBbjEdDH0MtnXm ",
-    clientId: " your_client_id ",
+    accessToken: "p9h18yqUnckfZswrw3sBbjEdDH0MtnXm",
+    clientId: "your_client_id",
     autoTrack: {
         appLaunch: true,
         appShow: true,
@@ -12,7 +12,7 @@ const geConfig = {
     maxRetries: 3,
     enablePersistence: true,
     asyncPersistence: false,
-    name: " ge "
+    name: "ge"
 };
 
 function reportEvent(event: string, data?: any): void {
@@ -25,10 +25,10 @@ function createGeAdapter() {
             reportEvent(event, data);
         },
         adShowEvent(channel: string, position: string, extra?: any): void {
-            reportEvent(" ad_show_event ", {
+            reportEvent("ad_show_event", {
                 ad_channel: channel,
                 ad_position: position,
-                custom_param: extra && extra.custom_param || " "
+                custom_param: extra && extra.custom_param || ""
             });
         }
     };
@@ -36,20 +36,20 @@ function createGeAdapter() {
 
 export default class GEMgr {
     static ge = createGeAdapter();
-    static nameInit: string = " zyzy ";
+    static nameInit: string = "zyzy";
     static versionInit: number = 1;
     static isInit: boolean = true;
 
     static GESetup(config: any): void {
-        console.log(" ge setup: ", config);
+        console.log("ge setup:", config);
     }
 
     static GEInit(openId: string): Promise<void> {
-        if (openId == null || openId == " ") {
-            console.log(" openidInit openid is null ");
+        if (openId == null || openId == "") {
+            console.log("openidInit openid is null");
             return Promise.resolve();
         }
-        console.log(" ge init: ", openId);
+        console.log("ge init:", openId);
         geConfig.clientId = openId;
         this.ge = createGeAdapter();
         this.isInit = true;
@@ -57,16 +57,16 @@ export default class GEMgr {
     }
 
     static GEShowAD(position: string): Promise<void> {
-        reportEvent(" ad_show_event ", {
-            ad_channel: " reward ",
+        reportEvent("ad_show_event", {
+            ad_channel: "reward",
             ad_position: position,
-            custom_param: " "
+            custom_param: ""
         });
         return Promise.resolve();
     }
 
     static GEShowADEvent(action: string): Promise<void> {
-        reportEvent(" userAction ", {
+        reportEvent("userAction", {
             action: action,
             module: action,
             isAD: 1
@@ -76,13 +76,13 @@ export default class GEMgr {
 
     static GEReportEvent(event: string): Promise<void> {
         let isAd = 0;
-        const module = event.split("- ")[0];
+        const module = event.split("-")[0];
         const action = event.substring(module.length + 1);
-        if (event.indexOf(" AD ") > -1) {
+        if (event.indexOf("AD") > -1) {
             isAd = 1;
         }
-        console.log(" GEReportEvent: ", isAd, module, action);
-        reportEvent(" userAction ", {
+        console.log("GEReportEvent:", isAd, module, action);
+        reportEvent("userAction", {
             action: action,
             module: module,
             isAD: isAd
@@ -91,12 +91,12 @@ export default class GEMgr {
     }
 
     static trackEvent(event: string, data?: any): void {
-        console.log(" 引力打点操作 >>> trackEvent ", event, data);
+        console.log("引力打点操作>>> trackEvent", event, data);
         reportEvent(event, data);
     }
 
     static setToken(token: string): void {
-        console.log(" token: ", token);
+        console.log("token:", token);
         geConfig.accessToken = token;
     }
 }

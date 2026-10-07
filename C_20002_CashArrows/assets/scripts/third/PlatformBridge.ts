@@ -6,26 +6,26 @@ const DEFAULT_LANGUAGE = BUSINESS_COMMON_CONFIG.defaultLanguage;
 
 function normalizeCountry(country: string): string {
     if (!country) {
-        return " ";
+        return "";
     }
     const upper = String(country).toUpperCase();
-    return " GB " === upper ? " UK " : upper;
+    return "GB" === upper ? "UK" : upper;
 }
 
 function getOrCreateWebDeviceId(): string {
     let deviceId: string = null;
     try {
-        deviceId = cc.sys.localStorage.getItem(" web_device_id ");
+        deviceId = cc.sys.localStorage.getItem("web_device_id");
     } catch (err) { }
     if (deviceId) {
         return deviceId;
     }
     const generated = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
         const random = 16 * Math.random() | 0;
-        return (" x " === char ? random : 3 & random | 8).toString(16);
+        return ("x" === char ? random : 3 & random | 8).toString(16);
     });
     try {
-        cc.sys.localStorage.setItem(" web_device_id ", generated);
+        cc.sys.localStorage.setItem("web_device_id", generated);
     } catch (err) { }
     return generated;
 }
@@ -46,9 +46,9 @@ function parseBase64Json(text: string): any {
         return null;
     }
     try {
-        const normalized = text.replace(/-/g, "+ ").replace(/_/g, "/ ");
+        const normalized = text.replace(/-/g, "+").replace(/_/g, "/");
         const padding = normalized.length % 4;
-        const base64 = padding ? normalized + " = ".repeat(4 - padding) : normalized;
+        const base64 = padding ? normalized + "=".repeat(4 - padding) : normalized;
         return parseJson(atob(base64));
     } catch (err) {
         return null;
@@ -79,77 +79,77 @@ function parseClientInfo(raw: string): any {
 }
 
 export default class PlatformBridge {
-    static userId: string = " ";
+    static userId: string = "";
 
     static getClientInfo(): any {
         if (cc.sys.isNative && cc.sys.os === cc.sys.OS_ANDROID) {
             const clientInfo = parseClientInfo(NativeSdkBridgeAdapter.getBridge().getClientInfo());
             clientInfo.box_pkg_name = MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName;
             const countryField = MIDDLE_PROJECT_ADAPTER_CONFIG.fieldMapping.local_country;
-            let country = normalizeCountry(clientInfo?.local_country || (countryField ? clientInfo?.[countryField] : " "));
+            let country = normalizeCountry(clientInfo?.local_country || (countryField ? clientInfo?.[countryField] : ""));
             if (!country) {
                 const languageMap: { [key: string]: string } = {
-                    zh: " CN ",
-                    en: " US ",
-                    id: " ID ",
-                    pt: " BR ",
-                    ru: " RU ",
-                    de: " DE ",
-                    fr: " FR ",
-                    es: " MX ",
-                    hi: " IN ",
-                    th: " TH ",
-                    ja: " JP ",
-                    ko: " KR ",
-                    fil: " PH ",
-                    tl: " PH "
+                    zh: "CN",
+                    en: "US",
+                    id: "ID",
+                    pt: "BR",
+                    ru: "RU",
+                    de: "DE",
+                    fr: "FR",
+                    es: "MX",
+                    hi: "IN",
+                    th: "TH",
+                    ja: "JP",
+                    ko: "KR",
+                    fil: "PH",
+                    tl: "PH"
                 };
-                country = languageMap[String(cc.sys.language || " ").toLowerCase()] || normalizeCountry(DEFAULT_LANGUAGE) || " IN ";
-                console.warn("[PlatformBridge] native local_country 为空 ， 回退 language 映射- > ", country);
+                country = languageMap[String(cc.sys.language || "").toLowerCase()] || normalizeCountry(DEFAULT_LANGUAGE) || "IN";
+                console.warn("[PlatformBridge] native local_country 为空，回退 language 映射 ->", country);
             }
             clientInfo.local_country = country;
             return clientInfo;
         }
         return {
             device_id: getOrCreateWebDeviceId(),
-            version_name: " 1.1.1 ",
-            android_id: " fc3ac8e631ea68c2 ",
-            channel_name: " google ",
+            version_name: "1.1.1",
+            android_id: "fc3ac8e631ea68c2",
+            channel_name: "google",
             package_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName,
             box_pkg_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName,
             oaid: "oaid-test",
-            os_version: " 11 ",
-            phone_model: " 22101317C ",
+            os_version: "11",
+            phone_model: "22101317C",
             phone_brand: "Redmi-test",
-            os_name: " android ",
+            os_name: "android",
             device_type: "Xiaomi-test",
-            device_serial: " unknown ",
-            system_version: " 14 ",
+            device_serial: "unknown",
+            system_version: "14",
             phone_manufacturer: "Xiaomi-test",
             display_hypotenuse: 6.357,
-            display_metrics: " 1080x2262 ",
+            display_metrics: "1080x2262",
             cpu_number: 1,
-            lat: " ",
-            lg: " zh ",
+            lat: "",
+            lg: "zh",
             local_country: DEFAULT_LANGUAGE,
-            network_operator: " ",
-            network_type: " wifi ",
-            sdk_version_name: " 4.0.0 ",
-            adjust_id: " adjust_sdk_not_init ",
-            extra: " 0 ",
-            referrer_url: " ",
+            network_operator: "",
+            network_type: "wifi",
+            sdk_version_name: "4.0.0",
+            adjust_id: "adjust_sdk_not_init",
+            extra: "0",
+            referrer_url: "",
             referrer_timestamp_server: 0,
             install_timestamp_server: 0,
             ds: {
-                ir: " 0 ",
-                ie: " 0 ",
-                irv: " 0 ",
-                ix: " 0 ",
-                ih: " 0 ",
-                io: " 0 ",
-                iw: " 0 ",
-                id: " 0 ",
-                ids: " 0 "
+                ir: "0",
+                ie: "0",
+                irv: "0",
+                ix: "0",
+                ih: "0",
+                io: "0",
+                iw: "0",
+                id: "0",
+                ids: "0"
             }
         };
     }

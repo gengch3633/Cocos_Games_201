@@ -6,7 +6,7 @@ import { MIDDLE_REQUEST_DESCRIPTORS } from "./MiddleRequestDescriptors";
 import PlatformBridge from "./PlatformBridge";
 
 class MiddleHelperImpl {
-    kIsUploadIPFirstCall: string = " com.sdk.kIsUploadIPFirstCall ";
+    kIsUploadIPFirstCall: string = "com.sdk.kIsUploadIPFirstCall";
     isSupportHot: boolean = false;
     isFinishRegional: boolean = false;
     hasServerCountry: boolean = false;
@@ -19,30 +19,30 @@ class MiddleHelperImpl {
 
     normalizeCountry(country: string): string {
         if (!country) {
-            return " ";
+            return "";
         }
         const upper = String(country).toUpperCase();
-        return " GB " === upper ? " UK " : upper;
+        return "GB" === upper ? "UK" : upper;
     }
 
     mapLanguageToCountry(language: string): string {
         const map: { [key: string]: string } = {
-            zh: " CN ",
-            en: " US ",
-            id: " ID ",
-            pt: " BR ",
-            ru: " RU ",
-            de: " DE ",
-            fr: " FR ",
-            es: " MX ",
-            hi: " IN ",
-            th: " TH ",
-            ja: " JP ",
-            ko: " KR ",
-            fil: " PH ",
-            tl: " PH "
+            zh: "CN",
+            en: "US",
+            id: "ID",
+            pt: "BR",
+            ru: "RU",
+            de: "DE",
+            fr: "FR",
+            es: "MX",
+            hi: "IN",
+            th: "TH",
+            ja: "JP",
+            ko: "KR",
+            fil: "PH",
+            tl: "PH"
         };
-        return map[String(language || " ").toLowerCase()] || " IN ";
+        return map[String(language || "").toLowerCase()] || "IN";
     }
 
     resolveDefaultCountry(): string {
@@ -68,7 +68,7 @@ class MiddleHelperImpl {
     localCountry(): string {
         if (!this.country) {
             try {
-                this.country = cc.sys.localStorage.getItem(" com.sdk.country ");
+                this.country = cc.sys.localStorage.getItem("com.sdk.country");
             } catch (err) { }
         }
         return this.country;
@@ -76,7 +76,7 @@ class MiddleHelperImpl {
 
     saveLocalCountry(country: string): void {
         try {
-            cc.sys.localStorage.setItem(" com.sdk.country ", country);
+            cc.sys.localStorage.setItem("com.sdk.country", country);
         } catch (err) { }
         this.country = country;
     }
@@ -97,16 +97,16 @@ class MiddleHelperImpl {
 
     initAdSdkAfterRegional(result: any, ipCountry: string): void {
         try {
-            const country = ipCountry || ClientDataStore.local_country || " IN ";
+            const country = ipCountry || ClientDataStore.local_country || "IN";
             const isUMP = !!(result && (result.is_ump === true || result.is_ump_country === true));
-            const maxKey = MIDDLE_PROJECT_ADAPTER_CONFIG.maxKey || " ";
+            const maxKey = MIDDLE_PROJECT_ADAPTER_CONFIG.maxKey || "";
             PlatformBridge.getNativeBridge().initSdk(maxKey, country, isUMP);
-            console.log("[MiddleHelper.middleCountry] fuelProfitGear called ", {
+            console.log("[MiddleHelper.middleCountry] fuelProfitGear called", {
                 ipCountry: country,
                 isUMP: isUMP
             });
         } catch (err) {
-            console.warn("[MiddleHelper.middleCountry] fuelProfitGear call failed ", err);
+            console.warn("[MiddleHelper.middleCountry] fuelProfitGear call failed", err);
         }
     }
 
@@ -115,7 +115,7 @@ class MiddleHelperImpl {
         try {
             isFirst = cc.sys.localStorage.getItem(this.kIsUploadIPFirstCall) === null;
             if (isFirst) {
-                cc.sys.localStorage.setItem(this.kIsUploadIPFirstCall, " 1 ");
+                cc.sys.localStorage.setItem(this.kIsUploadIPFirstCall, "1");
             }
         } catch (err) {
             isFirst = true;
@@ -124,18 +124,18 @@ class MiddleHelperImpl {
     }
 
     reportIPInfo(value: any, status: number, isFirst: boolean = false): void {
-        BusinessAnalyticsService.reportData(" ip_config ", {
+        BusinessAnalyticsService.reportData("ip_config", {
             ip_config_value: value,
             ip_config_status: status,
             ip_first_req: isFirst,
-            redirect_type: " 0 "
+            redirect_type: "0"
         });
     }
 
     middleCountry(onEnter: (result: any) => void, onBan: (result: any) => void, onBackstop: (err?: any) => void): void {
-        const logPrefix = "[MiddleHelper.middleCountry] ";
+        const logPrefix = "[MiddleHelper.middleCountry]";
         const isFirstRequest = this.getIpRequestIsFirstFlag();
-        this.reportIPInfo(" ", 0, isFirstRequest);
+        this.reportIPInfo("", 0, isFirstRequest);
 
         const handleBackstop = (err: any, reason: string) => {
             const cached = this.normalizeCountry(this.localCountry());
@@ -144,7 +144,7 @@ class MiddleHelperImpl {
             this.hasServerCountry = false;
             this.initAdSdkAfterRegional(null, country);
             this.reportIPInfo(err || reason, -1, isFirstRequest);
-            console.warn(logPrefix, " 归因失败 ， 使用国家: ", country, " source: ", cached ? " cache " : " default ", " reason: ", reason);
+            console.warn(logPrefix, "归因失败，使用国家:", country, "source:", cached ? "cache" : "default", "reason:", reason);
             onBackstop == null || onBackstop(err);
         };
 
@@ -152,7 +152,7 @@ class MiddleHelperImpl {
             MiddleNetwork.getMiddleCountry(null, (response: any) => {
                 try {
                     const data = response?.data || response || {};
-                    console.log(logPrefix, " 解析结果 → ", JSON.stringify(data));
+                    console.log(logPrefix, "解析结果 →", JSON.stringify(data));
                     const region = this.normalizeCountry(data && data.region);
                     const country = this.applyCountry(region || this.localCountry() || this.resolveDefaultCountry());
                     this.isFinishRegional = true;
@@ -168,25 +168,25 @@ class MiddleHelperImpl {
                     this.initAdSdkAfterRegional(data, country);
                     this.reportIPInfo(data, 1, isFirstRequest);
                     const isBanned = data.forbid_used || data.forbid_red_envelope || false;
-                    console.log(logPrefix, " country → ", country, " isSupportHot → ", this.isSupportHot, " forbid_used → ", isBanned);
+                    console.log(logPrefix, "country →", country, "  isSupportHot →", this.isSupportHot, "  forbid_used →", isBanned);
                     if (isBanned) {
-                        console.warn(logPrefix, " 账号封禁 ， 触发 onBan ");
+                        console.warn(logPrefix, "账号封禁，触发 onBan");
                         onBan == null || onBan(data);
                         return;
                     }
-                    console.log(logPrefix, " 正常进入游戏 ， 触发 onEnterGame ， onEnterGame 类型 → ", typeof onEnter);
+                    console.log(logPrefix, "正常进入游戏，触发 onEnterGame，onEnterGame 类型 →", typeof onEnter);
                     onEnter == null || onEnter(data);
                 } catch (err) {
-                    console.error(logPrefix, " 解析响应异常 → ", err);
-                    handleBackstop(err, " parse_error ");
+                    console.error(logPrefix, "解析响应异常 →", err);
+                    handleBackstop(err, "parse_error");
                 }
             }, (err: any) => {
-                console.warn(logPrefix, " 请求失败或无响应 ， 触发 onBackstop err → ", JSON.stringify(err));
-                handleBackstop(err, " request_fail ");
+                console.warn(logPrefix, "请求失败或无响应，触发 onBackstop  err →", JSON.stringify(err));
+                handleBackstop(err, "request_fail");
             });
         } else {
-            console.warn(logPrefix, " regionalUrl 为空 ， 直接 onBackstop ");
-            handleBackstop(undefined, " missing_url ");
+            console.warn(logPrefix, "regionalUrl 为空，直接 onBackstop");
+            handleBackstop(undefined, "missing_url");
         }
     }
 

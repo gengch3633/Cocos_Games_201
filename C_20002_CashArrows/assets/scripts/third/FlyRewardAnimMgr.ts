@@ -9,7 +9,7 @@ const FlyRewardAnimMgr = {
         if (this._iconPool.length > 0) {
             return this._iconPool.pop();
         }
-        const node = new cc.Node(" flyIcon ");
+        const node = new cc.Node("flyIcon");
         node.addComponent(cc.Sprite);
         node.setContentSize(40, 40);
         return node;
@@ -28,7 +28,7 @@ const FlyRewardAnimMgr = {
         if (this._labelPool.length > 0) {
             return this._labelPool.pop();
         }
-        const node = new cc.Node(" flyLabel ");
+        const node = new cc.Node("flyLabel");
         const label = node.addComponent(cc.Label);
         label.fontSize = 22;
         label.lineHeight = 26;
@@ -56,9 +56,9 @@ const FlyRewardAnimMgr = {
         const endScale = options.endScale !== undefined ? options.endScale : 0.5;
         const launchInterval = options.launchInterval !== undefined ? Math.max(0, options.launchInterval) : 0.06;
         const targetIconNode = options.targetIconNode || null;
-        const rewardText = options.rewardText || " ";
+        const rewardText = options.rewardText || "";
         const onAllArrived = options.onAllArrived;
-        const sfx = options.sfx || " ";
+        const sfx = options.sfx || "";
         const sfxBundle = options.sfxBundle || "game";
         if (parentNode && parentNode.isValid && iconFrame && endPos) {
             if (sfx) {
@@ -87,7 +87,7 @@ const FlyRewardAnimMgr = {
                 cc.tween(iconNode).to(0.15, {
                     scale: midScale
                 }, {
-                    easing: " backOut "
+                    easing: "backOut"
                 }).delay(index * launchInterval).parallel(
                     cc.tween().bezierTo(0.45, controlPoint, controlPoint, endPos),
                     cc.tween().to(0.45, { scale: endScale })
@@ -116,11 +116,11 @@ const FlyRewardAnimMgr = {
             cc.tween(node).to(0.1, {
                 scale: 1.3
             }, {
-                easing: " sineOut "
+                easing: "sineOut"
             }).to(0.15, {
                 scale: 1
             }, {
-                easing: " bounceOut "
+                easing: "bounceOut"
             }).start();
         }
     },
@@ -140,7 +140,7 @@ const FlyRewardAnimMgr = {
                 cc.tween().to(0.8, {
                     y: labelNode.y + 60
                 }, {
-                    easing: " sineOut "
+                    easing: "sineOut"
                 }),
                 cc.tween().delay(0.3).to(0.5, {
                     opacity: 0
@@ -156,7 +156,7 @@ const FlyRewardAnimMgr = {
     },
 
     formatRewardText(amount: number): string {
-        return "+ " + LanguageService.formatCurrency(amount);
+        return "+" + LanguageService.formatCurrency(amount);
     }
 };
 

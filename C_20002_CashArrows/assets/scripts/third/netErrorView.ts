@@ -6,7 +6,7 @@ import NetErrorPopupService from "./NetErrorPopupService";
 import UIMgr from "./UIMgr";
 
 const { ccclass } = cc._decorator;
-const LOG_PREFIX = "[netErrorView] ";
+const LOG_PREFIX = "[netErrorView]";
 
 @ccclass
 export default class netErrorView extends cc.Component {
@@ -39,18 +39,18 @@ export default class netErrorView extends cc.Component {
     }
 
     _cacheNodes(): void {
-        const bg = this.node.getChildByName(" bg ");
+        const bg = this.node.getChildByName("bg");
         if (bg) {
-            this._btnClose = bg.getChildByName(" close_btn ") || null;
-            this._btnRetry = bg.getChildByName(" btn_retry ") || null;
-            this._lblTitle = bg.getChildByName(" txt_timesup ") || null;
-            this._lblDesc = bg.getChildByName(" txt_desc ") || null;
-            this._lblContinue = bg.getChildByName(" txt_continue ") || null;
+            this._btnClose = bg.getChildByName("close_btn") || null;
+            this._btnRetry = bg.getChildByName("btn_retry") || null;
+            this._lblTitle = bg.getChildByName("txt_timesup") || null;
+            this._lblDesc = bg.getChildByName("txt_desc") || null;
+            this._lblContinue = bg.getChildByName("txt_continue") || null;
             if (this._btnRetry) {
-                this._lblRetryText = this._btnRetry.getChildByName(" txt_free_revive ") || null;
+                this._lblRetryText = this._btnRetry.getChildByName("txt_free_revive") || null;
             }
         } else {
-            cc.warn(LOG_PREFIX, " bg 节点缺失 ");
+            cc.warn(LOG_PREFIX, "bg 节点缺失");
         }
     }
 
@@ -61,7 +61,7 @@ export default class netErrorView extends cc.Component {
             };
             this._btnClose.on(cc.Node.EventType.TOUCH_END, this._onCloseBound, this);
         } else {
-            cc.warn(LOG_PREFIX, " close_btn 节点缺失 ");
+            cc.warn(LOG_PREFIX, "close_btn 节点缺失");
         }
         if (this._btnRetry) {
             this._onRetryBound = () => {
@@ -69,7 +69,7 @@ export default class netErrorView extends cc.Component {
             };
             this._btnRetry.on(cc.Node.EventType.TOUCH_END, this._onRetryBound, this);
         } else {
-            cc.warn(LOG_PREFIX, " btn_retry 节点缺失 ");
+            cc.warn(LOG_PREFIX, "btn_retry 节点缺失");
         }
     }
 
@@ -102,7 +102,7 @@ export default class netErrorView extends cc.Component {
             const state = MiddleHelper.getRegionalState();
             return !!(state && state.hasServerCountry);
         } catch (err) {
-            cc.warn(LOG_PREFIX, " _hasServerAttribution error ", err);
+            cc.warn(LOG_PREFIX, "_hasServerAttribution error", err);
             return false;
         }
     }
@@ -119,7 +119,7 @@ export default class netErrorView extends cc.Component {
                 return text || fallback || key;
             }
         } catch (err) {
-            cc.warn(LOG_PREFIX, " _t error key = " + key, err);
+            cc.warn(LOG_PREFIX, "_t error key=" + key, err);
         }
         return fallback || key;
     }
@@ -134,10 +134,10 @@ export default class netErrorView extends cc.Component {
     }
 
     _refreshTexts(): void {
-        this._setLabelText(this._lblContinue, this._t(" key_net_error_continue ", " Continue? "));
-        this._setLabelText(this._lblTitle, this._t(" key_net_error_title ", " Network connection failed ! "));
-        this._setLabelText(this._lblDesc, this._t(" key_net_error_message ", "Please check your cellular or Wi-Fi connection and retry"));
-        this._setLabelText(this._lblRetryText, this._t(" key_net_error_retry ", " Try Again "));
+        this._setLabelText(this._lblContinue, this._t("key_net_error_continue", "Continue?"));
+        this._setLabelText(this._lblTitle, this._t("key_net_error_title", "Network connection failed!"));
+        this._setLabelText(this._lblDesc, this._t("key_net_error_message", "Please check your cellular or Wi-Fi connection and retry"));
+        this._setLabelText(this._lblRetryText, this._t("key_net_error_retry", "Try Again"));
     }
 
     OnClickClose(): void {
@@ -145,7 +145,7 @@ export default class netErrorView extends cc.Component {
         try {
             UIMgr.getInstance().hide(this.node);
         } catch (err) {
-            cc.warn(LOG_PREFIX, " OnClickClose hide 失败 ", err);
+            cc.warn(LOG_PREFIX, "OnClickClose hide 失败", err);
         }
     }
 
@@ -155,13 +155,13 @@ export default class netErrorView extends cc.Component {
         try {
             UIMgr.getInstance().hide(this.node);
         } catch (err) {
-            cc.warn(LOG_PREFIX, " OnClickFuhuo hide 失败 ", err);
+            cc.warn(LOG_PREFIX, "OnClickFuhuo hide 失败", err);
         }
         if (typeof retryFn === "function") {
             try {
                 retryFn();
             } catch (err) {
-                cc.warn(LOG_PREFIX, " retryFn 执行异常 ", err);
+                cc.warn(LOG_PREFIX, "retryFn 执行异常", err);
             }
         } else {
             cc.warn(LOG_PREFIX, "点击重试但无 retryFn 绑定 ， no-op");

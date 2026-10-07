@@ -23,7 +23,7 @@ export default class Machine extends cc.Component {
             cc.tween(this.window).to(duration, {
                 y: -offsetY
             }, {
-                easing: " sineInOut "
+                easing: "sineInOut"
             }).call(() => {
                 this.isRolling = false;
             }).start();
@@ -38,7 +38,7 @@ export default class Machine extends cc.Component {
             cc.tween(this.window).to(duration, {
                 y: -offsetY
             }, {
-                easing: " sineInOut "
+                easing: "sineInOut"
             }).call(() => {
                 this.isRolling = false;
             }).start();
@@ -80,8 +80,8 @@ export default class Machine extends cc.Component {
     }
 
     renderText(text: any): string {
-        const value = text += " ";
-        const parts = value == null ? void 0 : value.split("/ n ");
-        return parts.length > 1 ? parts[0] + " \ n " + parts[1] : value;
+        const value = text += "";
+        const parts = value == null ? void 0 : value.split("/n");
+        return parts.length > 1 ? parts[0] + "\n" + parts[1] : value;
     }
 }

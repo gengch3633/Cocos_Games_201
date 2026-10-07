@@ -873,7 +873,7 @@ for (var i = 0; i < e.length; i++) {
 var n = e[i];
 if (n) for (var a = 0; a < t.length; a++) {
 var o = t[a];
-if (o && (n.channel || " ") === (o.channel || " ") && (n.sub_channel || " ") === (o.sub_channel || " ")) return n;
+if (o && (n.channel || "") === (o.channel || "") && (n.sub_channel || "") === (o.sub_channel || "")) return n;
 }
 }
 return null;
@@ -885,14 +885,14 @@ a && a();
 return !1;
 }
 if (!t) {
-cc.warn("[withMoodView] submitWithdrawFlow no selectedOpt ");
-this.showToast(this.i18n(" key_cash_check_withdraw_failed ", null, " Withdrawal failed "));
+cc.warn("[withMoodView] submitWithdrawFlow no selectedOpt");
+this.showToast(this.i18n("key_cash_check_withdraw_failed", null, "Withdrawal failed"));
 a && a();
 return !1;
 }
 if (!i) {
-cc.warn("[withMoodView] submitWithdrawFlow no bindInfo ");
-this.showToast(this.i18n(" key_cash_check_bind_failed ", null, " Binding failed "));
+cc.warn("[withMoodView] submitWithdrawFlow no bindInfo");
+this.showToast(this.i18n("key_cash_check_bind_failed", null, "Binding failed"));
 a && a();
 return !1;
 }
@@ -906,7 +906,7 @@ o.submitWithdrawFlow(e);
 };
 LoadingHttpService.bindTxAccount(s, Handler.create(o, function(e) {
 if (l && l.shouldPop(e)) {
-cc.warn("[withMoodView] bindTxAccount force- retry code = ", e && e.code);
+cc.warn("[withMoodView] bindTxAccount force-retry code=", e && e.code);
 o.isWithdrawSubmitting = !1;
 l.showAndRetry(c);
 } else if (e && 1 === Number(e.code)) {
@@ -914,22 +914,22 @@ o.syncBindInfoToStore(e, i);
 o.refreshUserInfoAfterBind();
 var a = o.checkWithdrawCondition(t);
 if (a.pass) o.executeWithdrawRequest(t, i, n, r); else {
-o.showToast(a.message || o.i18n(" key_withdraw_cond_not_met ", null, " Withdrawal conditions not met "));
+o.showToast(a.message || o.i18n("key_withdraw_cond_not_met", null, "Withdrawal conditions not met"));
 r();
 }
 } else {
-cc.warn("[withMoodView] bind failed: ", e && e.message);
-o.showToast(e && e.message || o.i18n(" key_cash_check_bind_failed ", null, " Binding failed "));
+cc.warn("[withMoodView] bind failed:", e && e.message);
+o.showToast(e && e.message || o.i18n("key_cash_check_bind_failed", null, "Binding failed"));
 r();
 }
 }), Handler.create(o, function(e) {
 if (l && l.shouldPop(e)) {
-cc.warn("[withMoodView] bindTxAccount 网络异常 ， 弹重试窗 err = ", e && e.message);
+cc.warn("[withMoodView] bindTxAccount 网络异常，弹重试窗 err=", e && e.message);
 o.isWithdrawSubmitting = !1;
 l.showAndRetry(c);
 } else {
-cc.warn("[withMoodView] bind error: ", e && e.message);
-o.showToast(e && e.message || o.i18n(" key_common_network_error ", null, " Network error "));
+cc.warn("[withMoodView] bind error:", e && e.message);
+o.showToast(e && e.message || o.i18n("key_common_network_error", null, "Network error"));
 r();
 }
 }));
@@ -941,82 +941,82 @@ isNaN(i) && (i = 0);
 var n = Number(t.money || 0);
 if (4 === i) return {
 pass: !0,
-message: " "
+message: ""
 };
 if (0 === i) {
 var a = Math.max(0, n - Number(this.userBalance || 0));
 return a <= 0 ? {
 pass: !0,
-message: " "
+message: ""
 } : {
 pass: !1,
-message: this.i18n(" key_withdraw_toast_need_gap ", [ this.getCurrencyText(a) ], " Insufficient balance ")
+message: this.i18n("key_withdraw_toast_need_gap", [ this.getCurrencyText(a) ], "Insufficient balance")
 };
 }
 if (1 === i) {
 var o = Math.max(0, Number(t.levels_passed_limit || 0) - Number(t.current_extract_levels_passed_count || 0));
 return o <= 0 ? {
 pass: !0,
-message: " "
+message: ""
 } : {
 pass: !1,
-message: this.i18n(" key_withdraw_toast_need_episode ", [ o ], " Not enough cleared levels ")
+message: this.i18n("key_withdraw_toast_need_episode", [ o ], "Not enough cleared levels")
 };
 }
 if (2 === i) {
 var r = Math.max(0, Number(t.sign_in_limit || 0) - Number(t.sign_in || 0));
 return r <= 0 ? {
 pass: !0,
-message: " "
+message: ""
 } : {
 pass: !1,
-message: this.i18n(" key_withdraw_toast_need_days ", [ r ], "Not enough check-in days")
+message: this.i18n("key_withdraw_toast_need_days", [ r ], "Not enough check-in days")
 };
 }
 if (3 === i) {
 var s = Number(t.level || this.userLevel || 0);
 return Math.max(0, Number(t.level_limit || 0) - s) <= 0 ? {
 pass: !0,
-message: " "
+message: ""
 } : {
 pass: !1,
-message: this.i18n(" key_withdraw_toast_need_level ", [ t.level_limit || 0 ], " Level too low ")
+message: this.i18n("key_withdraw_toast_need_level", [ t.level_limit || 0 ], "Level too low")
 };
 }
 return {
 pass: !0,
-message: " "
+message: ""
 };
 },
 buildBindRequestData: function(e) {
 var t = {
-channel: e.channel || " ",
-sub_channel: e.sub_channel || " "
+channel: e.channel || "",
+sub_channel: e.sub_channel || ""
 };
 if (e._input_data) for (var i in e._input_data) Object.prototype.hasOwnProperty.call(e._input_data, i) && (t[i] = e._input_data[i]); else for (var n = Array.isArray(e.need_field) && e.need_field.length > 0 ? e.need_field : [ {
-field_value: " account "
+field_value: "account"
 }, {
-field_value: " payee_name "
+field_value: "payee_name"
 } ], a = 0; a < n.length; a++) {
 var o = n[a];
 o && o.field_value && (t[o.field_value] = this.resolveRawBindFieldValue(e, o.field_value));
 }
-t.account || (t.account = e.account || e.phone || e.email || " ");
-t.payee_name || (t.payee_name = e.payee_name || e.name || " ");
+t.account || (t.account = e.account || e.phone || e.email || "");
+t.payee_name || (t.payee_name = e.payee_name || e.name || "");
 !t.name && t.payee_name && (t.name = t.payee_name);
 return t;
 },
 resolveRawBindFieldValue: function(e, t) {
-if (!e || !t) return " ";
+if (!e || !t) return "";
 var i = e[t];
-return null != i && " " !== i ? String(i) : " name " === t || " payee_name " === t ? e.payee_name || e.name || " " : " account " === t && (e.account || e.phone || e.email) || " ";
+return null != i && "" !== i ? String(i) : "name" === t || "payee_name" === t ? e.payee_name || e.name || "" : "account" === t && (e.account || e.phone || e.email) || "";
 },
 syncBindInfoToStore: function(e, t) {
 var i = PlayerDataStore || p;
 if (e && e.data && Array.isArray(e.data.tx_bind_info)) i.tx_bind_info = e.data.tx_bind_info; else {
 for (var n = Array.isArray(i.tx_bind_info) ? i.tx_bind_info.slice() : [], a = !1, o = 0; o < n.length; o++) {
 var r = n[o];
-if (r && (r.channel || " ") === (t.channel || " ") && (r.sub_channel || " ") === (t.sub_channel || " ")) {
+if (r && (r.channel || "") === (t.channel || "") && (r.sub_channel || "") === (t.sub_channel || "")) {
 n[o] = t;
 a = !0;
 break;
@@ -1033,51 +1033,51 @@ this.fetchUserInfoByService();
 fetchUserInfoByService: function() {
 try {
 var e = UserInfoService || _;
-if (!e || " function " != typeof e.getInstance) return;
+if (!e || "function" != typeof e.getInstance) return;
 var t = e.getInstance();
-t && " function " == typeof t.fetch && t.fetch();
+t && "function" == typeof t.fetch && t.fetch();
 } catch (e) {
-cc.warn("[withMoodView] fetch user info error: ", e && e.message);
+cc.warn("[withMoodView] fetch user info error:", e && e.message);
 }
 },
 executeWithdrawRequest: function(e, t, i, r) {
-var s = this, l = e && e.id || " ";
+var s = this, l = e && e.id || "";
 if (l) {
 var c = {
 tx_id: l,
-channel: t.channel || " ",
-sub_channel: t.sub_channel || " "
+channel: t.channel || "",
+sub_channel: t.sub_channel || ""
 }, h = NetErrorPopupService || m, p = function() {
 s.executeWithdrawRequest(e, t, i, r);
 };
 LoadingHttpService.withdrawCash(c, Handler.create(s, function(e) {
 if (h && h.shouldPop(e)) {
-cc.warn("[withMoodView] withdrawCash force- retry code = ", e && e.code);
+cc.warn("[withMoodView] withdrawCash force-retry code=", e && e.code);
 h.showAndRetry(p);
 } else if (e && 1 === Number(e.code)) {
 GlobalEventMgr.getInstance().emit(gameEvent.refreshUserInfo);
 s.fetchUserInfoByService();
-s.showToast(s.i18n(" key_cash_check_withdraw_success ", null, " Withdrawal successful "));
+s.showToast(s.i18n("key_cash_check_withdraw_success", null, "Withdrawal successful"));
 i && i.isValid && UIMgr.getInstance().hide(i);
 s.loadWithdrawInfo();
 r && r();
 } else {
-cc.warn("[withMoodView] withdraw failed: ", e && e.message);
-s.showToast(e && e.message || s.i18n(" key_cash_check_withdraw_failed ", null, " Withdrawal failed "));
+cc.warn("[withMoodView] withdraw failed:", e && e.message);
+s.showToast(e && e.message || s.i18n("key_cash_check_withdraw_failed", null, "Withdrawal failed"));
 r && r();
 }
 }), Handler.create(s, function(e) {
 if (h && h.shouldPop(e)) {
-cc.warn("[withMoodView] withdrawCash 网络异常 ， 弹重试窗 err = ", e && e.message);
+cc.warn("[withMoodView] withdrawCash 网络异常，弹重试窗 err=", e && e.message);
 h.showAndRetry(p);
 } else {
-cc.warn("[withMoodView] withdraw error: ", e && e.message);
-s.showToast(e && e.message || s.i18n(" key_common_network_error ", null, " Network error "));
+cc.warn("[withMoodView] withdraw error:", e && e.message);
+s.showToast(e && e.message || s.i18n("key_common_network_error", null, "Network error"));
 r && r();
 }
 }));
 } else {
-this.showToast(this.i18n(" key_cash_check_withdraw_failed ", null, " Withdrawal failed "));
+this.showToast(this.i18n("key_cash_check_withdraw_failed", null, "Withdrawal failed"));
 r && r();
 }
 },
@@ -1094,7 +1094,7 @@ return;
 }
 Tips.show(i);
 } catch (e) {
-cc.log("[withMoodView] toast: ", i);
+cc.log("[withMoodView] toast:", i);
 }
 }
 },
@@ -1118,11 +1118,11 @@ i18n: function(e, t, i) {
 return LanguageService.t(e, t, i);
 },
 setLabelText: function(e, t) {
-e && (e.string = t || " ");
+e && (e.string = t || "");
 },
 setLabelI18n: function(e, t, i, n) {
 if (e && t) {
-var a = e.node.getComponent(" I18nLabel ");
+var a = e.node.getComponent("I18nLabel");
 a && a.setI18nKey ? a.setI18nKey(t, i || [], n) : e.string = this.i18n(t, i || [], n);
 }
 },

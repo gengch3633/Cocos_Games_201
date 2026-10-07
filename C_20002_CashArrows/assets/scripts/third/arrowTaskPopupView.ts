@@ -594,8 +594,8 @@ const ArrowTaskPopupView = cc.Class({
 },
 submitTaskClaim: function(e, t, i) {
 var n = this;
-i = " function " == typeof i ? i : function() {};
-var a = t || {}, o = String(a.taskId || e && e.id || " "), r = String(a.taskType || e && e.claimTaskType || " ");
+i = "function" == typeof i ? i : function() {};
+var a = t || {}, o = String(a.taskId || e && e.id || ""), r = String(a.taskType || e && e.claimTaskType || "");
 if (o) if (this.isTaskClaiming) i(!1); else {
 this.isTaskClaiming = !0;
 this.requestTaskReward(o, r, !!a.isDouble, function(t) {
@@ -614,67 +614,67 @@ n.requestTaskInfo();
 n.syncTaskRedDotToGameView();
 try {
 var a = f && UserInfoService ? UserInfoService : f;
-if (a && " function " == typeof a.getInstance) {
+if (a && "function" == typeof a.getInstance) {
 var o = a.getInstance();
-o && " function " == typeof o.fetch && o.fetch();
+o && "function" == typeof o.fetch && o.fetch();
 }
 } catch (e) {
-cc.warn("[arrowTaskPopupView] UserInfoService.fetch after claim failed: ", e);
+cc.warn("[arrowTaskPopupView] UserInfoService.fetch after claim failed:", e);
 }
 }
 i(!0);
 } else i(!1);
 });
 } else {
-this.showToast(this.i18n(" key_result_tip_claim_error ", null, " Claim failed.Please try again later "));
+this.showToast(this.i18n("key_result_tip_claim_error", null, "Claim failed. Please try again later"));
 i(!1);
 }
 },
 playTaskRewardVideo: function(e, t) {
 var i = u && AdManager && AdManager.getInstance ? AdManager.getInstance() : null;
-i && " function " == typeof i.playNormalVideoAd ? i.playNormalVideoAd({
-ad_type: " reward_video ",
+i && "function" == typeof i.playNormalVideoAd ? i.playNormalVideoAd({
+ad_type: "reward_video",
 force_video: !1
 }, function(n) {
 if (!n || void 0 === n.compensationQualifyMark || n.compensationQualifyMark) {
 var a = i.cpm_data || {};
 e && e({
-video_type: " reward_video ",
-task_id: " ",
-force_type: " false ",
-source: a.source || " ",
-unitId: a.unitId || " ",
+video_type: "reward_video",
+task_id: "",
+force_type: "false",
+source: a.source || "",
+unitId: a.unitId || "",
 cpm: a.cpm || 0
 });
 } else t && t(n);
 }, function(e) {
-cc.warn("[arrowTaskPopupView] task reward video failed: ", e && e.message || e);
+cc.warn("[arrowTaskPopupView] task reward video failed:", e && e.message || e);
 t && t(e);
-}, this.i18n(" key_tip_reward_video_play_fail ", null, " Rewarded video failed to play, please try again ")) : e && e({
-video_type: " reward_video ",
-task_id: " ",
-force_type: " false "
+}, this.i18n("key_tip_reward_video_play_fail", null, "Rewarded video failed to play, please try again")) : e && e({
+video_type: "reward_video",
+task_id: "",
+force_type: "false"
 });
 },
 requestTaskReward: function(e, t, i, n) {
 var a = this, o = {
-businessType: " task ",
-taskType: t || " ",
-taskId: e || " "
+businessType: "task",
+taskType: t || "",
+taskId: e || ""
 }, r = function(e, t) {
 if (e) {
 try {
-BusinessAnalyticsService.reportData(" task_claim ", {
-task_id: o.taskId || " ",
-task_type: o.taskType || " ",
+BusinessAnalyticsService.reportData("task_claim", {
+task_id: o.taskId || "",
+task_type: o.taskType || "",
 is_double: i ? 1 : 0
 });
 } catch (e) {}
 a.applyTaskRewardResult(t || {});
 n && n(!0);
 } else {
-cc.warn("[arrowTaskPopupView] claim task reward failed: ", " taskId = ", o.taskId, " taskType = ", o.taskType, " isDouble = ", !!i);
-a.showToast(a.i18n(" key_result_tip_claim_error ", null, " Claim failed.Please try again later "));
+cc.warn("[arrowTaskPopupView] claim task reward failed:", "taskId=", o.taskId, "taskType=", o.taskType, "isDouble=", !!i);
+a.showToast(a.i18n("key_result_tip_claim_error", null, "Claim failed. Please try again later"));
 n && n(!1);
 }
 };
@@ -698,7 +698,7 @@ void 0 !== e.sign_in && (t.sign_in = e.sign_in);
 try {
 GlobalEventMgr.getInstance().emit(gameEvent.userInfoUpdated, t);
 } catch (e) {
-cc.warn("[arrowTaskPopupView] emit userInfoUpdated failed: ", e);
+cc.warn("[arrowTaskPopupView] emit userInfoUpdated failed:", e);
 }
 }
 },
@@ -721,13 +721,13 @@ i18n: function(e, t, i) {
 return LanguageService.t(e, t || [], i);
 },
 setLabelText: function(e, t) {
-e && (e.string = t || " ");
+e && (e.string = t || "");
 },
 showToast: function(t) {
 try {
 Tips.show(t);
 } catch (e) {
-cc.log("[arrowTaskPopupView] toast: ", t);
+cc.log("[arrowTaskPopupView] toast:", t);
 }
 },
 findNodeDeep: function(e, t) {

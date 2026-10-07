@@ -12,7 +12,7 @@ class LocalDataUtilImpl {
     }
 
     getStorageKey(key: string): string {
-        return (MIDDLE_PROJECT_ADAPTER_CONFIG.gameName || " default ").replace(/\s+/g, " _ ") + " _ " + key;
+        return (MIDDLE_PROJECT_ADAPTER_CONFIG.gameName || "default").replace(/\s+/g, "_") + "_" + key;
     }
 
     saveLocalStorage(key: string, value: any): void {
@@ -21,7 +21,7 @@ class LocalDataUtilImpl {
 
     getLocalStorage(key: string): any {
         const stored = cc.sys.localStorage.getItem(CryptoHelper.base64Encode(this.getStorageKey(key)));
-        return stored && " " != stored && stored != null && " nan " != stored ? JSON.parse(CryptoHelper.base64Decode(stored)) : null;
+        return stored && "" != stored && stored != null && "nan" != stored ? JSON.parse(CryptoHelper.base64Decode(stored)) : null;
     }
 
     removeLocalStorage(key: string): void {

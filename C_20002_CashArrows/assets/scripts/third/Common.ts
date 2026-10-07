@@ -3,7 +3,7 @@ import ConfigMgr from "./ConfigMgr";
 import MultiPlatform from "./MultiPlatform";
 
 export default class Common {
-    static version: string = " 1.0.0 ";
+    static version: string = "1.0.0";
     static GameModel: number = 0;
 
     static get isGM(): boolean {

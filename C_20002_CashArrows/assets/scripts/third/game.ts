@@ -63,7 +63,7 @@ export default class game extends cc.Component {
     }
 
     onLoad(): void {
-        console.log(" size ", NodePoolMgr.getInstance().pool_map.size);
+        console.log("size", NodePoolMgr.getInstance().pool_map.size);
         this.EventAdd();
     }
 
@@ -97,12 +97,12 @@ export default class game extends cc.Component {
     }
 
     onNotifyGameNoMove(): void {
-        console.log(" no move ");
+        console.log("no move");
         this.bool_canmove = false;
     }
 
     onNotifyGameCanMove(): void {
-        console.log(" canmove ");
+        console.log("canmove");
         this.bool_canmove = true;
     }
 
@@ -111,8 +111,8 @@ export default class game extends cc.Component {
         this.CreateSnake();
         this.createObstacles();
         this.createHeidong();
-        this.node.getChildByName(" ScrollView ").width = 0;
-        this.node.getChildByName(" ScrollView ").height = 0;
+        this.node.getChildByName("ScrollView").width = 0;
+        this.node.getChildByName("ScrollView").height = 0;
         this.obj_size = {
             width: this.node.width,
             height: this.node.height
@@ -124,7 +124,7 @@ export default class game extends cc.Component {
     }
 
     tc_start(e: cc.Event.EventTouch): void {
-        console.log(" start111111111111111111 ");
+        console.log("start111111111111111111");
         this.pointsDis = 0;
         const touches = e.getTouches();
         if (touches.length >= 2) {
@@ -236,12 +236,12 @@ export default class game extends cc.Component {
                 cell.parent = this.Layout_map.node;
                 cell.active = true;
                 if (colorMode) {
-                    const dot = cell.getChildByName(" dian ");
+                    const dot = cell.getChildByName("dian");
                     if (dot) {
                         dot.color = cc.color(50, 52, 80);
                     }
                 }
-                row.push(" 0 ");
+                row.push("0");
             }
             this.num_mapInfo.push(row);
         }
@@ -317,7 +317,7 @@ export default class game extends cc.Component {
         const index = this.snakes.indexOf(snakeComp);
         const bodyInfo = this.snakes[index].snakeInfo2;
         for (let i = 0; i < bodyInfo.length; i++) {
-            this.num_mapInfo[bodyInfo[i].x][bodyInfo[i].y] = " 0 ";
+            this.num_mapInfo[bodyInfo[i].x][bodyInfo[i].y] = "0";
         }
         this.num_audioID++;
         if (this.num_audioID > 7) {
@@ -375,8 +375,8 @@ export default class game extends cc.Component {
 
     showPenzhuang(...args: { x: number; y: number }[]): void {
         const cellValue = this.num_mapInfo[args[0].x][args[0].y];
-        if (" x " != cellValue) {
-            const parts = cellValue.split(" _ ");
+        if ("x" != cellValue) {
+            const parts = cellValue.split("_");
             const snakeComp = this.snakes[Number(parts[0])];
             snakeComp.showPengzhuan();
         }
@@ -402,7 +402,7 @@ export default class game extends cc.Component {
                         const childIndex = y * this.levelInfo.XSize + x;
                         const cell = this.Layout_map.node.children[childIndex];
                         if (cell) {
-                            const dot = cell.getChildByName(" dian ");
+                            const dot = cell.getChildByName("dian");
                             if (dot) {
                                 total++;
                                 cc.tween(dot).delay(delay).to(0.1, {
@@ -428,7 +428,7 @@ export default class game extends cc.Component {
         }
         this.scheduleOnce(() => {
             if (completed < total) {
-                console.warn(" 动画未完全完成 ， 强制执行回收 ");
+                console.warn("动画未完全完成，强制执行回收");
                 this.recycleNode();
             }
         }, timeout + 1);

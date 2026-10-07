@@ -45,7 +45,7 @@ export default class MiddleTrackManager {
     reportData(eventName: string, payload: any, forceCoreData: boolean = false): void {
         const data = Object.assign({}, payload || {});
         let redirectType = data.redirect_type;
-        if (redirectType != null && " " !== redirectType) {
+        if (redirectType != null && "" !== redirectType) {
             redirectType = Number(redirectType);
         }
         if (forceCoreData) {
@@ -66,14 +66,14 @@ export default class MiddleTrackManager {
         data.report_id = this.uuid();
         if (redirectType !== 0 && redirectType !== 2) {
             if (redirectType !== 1) {
-                this.enqueue(" applog ", data);
+                this.enqueue("applog", data);
                 this.flushApplog();
             } else {
-                this.enqueue(" coredata ", data);
+                this.enqueue("coredata", data);
                 this.flushCoredata();
             }
         } else {
-            this.enqueue(" adsdk ", data);
+            this.enqueue("adsdk", data);
             this.flushAdsdk();
         }
     }
@@ -87,7 +87,7 @@ export default class MiddleTrackManager {
     }
 
     eventNamePreview(events: any[]): string[] {
-        return Array.isArray(events) ? events.slice(0, 5).map((item) => String(item?.event_name || " unknown ")) : [];
+        return Array.isArray(events) ? events.slice(0, 5).map((item) => String(item?.event_name || "unknown")) : [];
     }
 
     logTrackRequest(type: string, stage: string, payload: any[], extra?: any): void {
@@ -95,19 +95,19 @@ export default class MiddleTrackManager {
             type: type,
             stage: stage,
             size: Array.isArray(payload) ? payload.length : 0,
-            queueSize: " applog " === type ? this.applogQueue.length : " adsdk " === type ? this.adsdkQueue.length : this.coreDataQueue.length,
+            queueSize: "applog" === type ? this.applogQueue.length : "adsdk" === type ? this.adsdkQueue.length : this.coreDataQueue.length,
             eventPreview: this.eventNamePreview(payload),
-            extra: extra === undefined ? " ": this.stringifySafe(extra) }; const payloadText =" REQ " === stage ? this.stringifySafe(payload) : " ";
-        const message = "[MiddleTrackManager] track request type = " + type + " stage = " + stage + " size = " + detail.size + " queueSize = " + detail.queueSize + " detail = " + this.stringifySafe(detail) + (payloadText ? " payload = " + payloadText : " ");
-        " FAIL " !== stage ? console.log(message) : console.warn(message);
+            extra: extra === undefined ? "": this.stringifySafe(extra) }; const payloadText ="REQ" === stage ? this.stringifySafe(payload) : "";
+        const message = "[MiddleTrackManager] track request type=" + type + " stage=" + stage + " size=" + detail.size + " queueSize=" + detail.queueSize + " detail=" + this.stringifySafe(detail) + (payloadText ? " payload=" + payloadText : "");
+        "FAIL" !== stage ? console.log(message) : console.warn(message);
     }
 
     enqueue(type: string, payload: any): void {
         payload.target_p = type;
-        if (" applog " === type) {
+        if ("applog" === type) {
             this.applogQueue.push(payload);
             this.writeArray(STORAGE_KEYS.applogPayload, this.applogQueue);
-        } else if (" adsdk " === type) {
+        } else if ("adsdk" === type) {
             this.adsdkQueue.push(payload);
             this.writeArray(STORAGE_KEYS.adsdkPayload, this.adsdkQueue);
         } else {
@@ -130,15 +130,15 @@ export default class MiddleTrackManager {
             const requestBody = {
                 payload: this.applogUploading
             };
-            this.logTrackRequest(" applog ", " REQ ", this.applogUploading);
+            this.logTrackRequest("applog", "REQ", this.applogUploading);
             MiddleNetwork.trackAppLog(requestBody, (response: any) => {
-                this.logTrackRequest(" applog ", " SUCCESS ", this.applogUploading, response);
+                this.logTrackRequest("applog", "SUCCESS", this.applogUploading, response);
                 this.applogUploading = [];
                 this.writeArray(STORAGE_KEYS.applogLoading, this.applogUploading);
                 this.isUploadingApplog = false;
                 this.flushApplog(batchSize);
             }, (err: any) => {
-                this.logTrackRequest(" applog ", " FAIL ", this.applogUploading, err);
+                this.logTrackRequest("applog", "FAIL", this.applogUploading, err);
                 this.applogQueue.push.apply(this.applogQueue, this.applogUploading);
                 this.applogUploading = [];
                 this.writeArray(STORAGE_KEYS.applogPayload, this.applogQueue);
@@ -162,15 +162,15 @@ export default class MiddleTrackManager {
             const requestBody = {
                 payload: this.adsdkUploading
             };
-            this.logTrackRequest(" adsdk ", " REQ ", this.adsdkUploading);
+            this.logTrackRequest("adsdk", "REQ", this.adsdkUploading);
             MiddleNetwork.trackAdSdk(requestBody, (response: any) => {
-                this.logTrackRequest(" adsdk ", " SUCCESS ", this.adsdkUploading, response);
+                this.logTrackRequest("adsdk", "SUCCESS", this.adsdkUploading, response);
                 this.adsdkUploading = [];
                 this.writeArray(STORAGE_KEYS.adsdkLoading, this.adsdkUploading);
                 this.isUploadingAdSdk = false;
                 this.flushAdsdk(batchSize);
             }, (err: any) => {
-                this.logTrackRequest(" adsdk ", " FAIL ", this.adsdkUploading, err);
+                this.logTrackRequest("adsdk", "FAIL", this.adsdkUploading, err);
                 this.adsdkQueue.push.apply(this.adsdkQueue, this.adsdkUploading);
                 this.adsdkUploading = [];
                 this.writeArray(STORAGE_KEYS.adsdkPayload, this.adsdkQueue);
@@ -194,15 +194,15 @@ export default class MiddleTrackManager {
             const requestBody = {
                 payload: this.coreDataUploading
             };
-            this.logTrackRequest(" coredata ", " REQ ", this.coreDataUploading);
+            this.logTrackRequest("coredata", "REQ", this.coreDataUploading);
             MiddleNetwork.trackCoreData(requestBody, (response: any) => {
-                this.logTrackRequest(" coredata ", " SUCCESS ", this.coreDataUploading, response);
+                this.logTrackRequest("coredata", "SUCCESS", this.coreDataUploading, response);
                 this.coreDataUploading = [];
                 this.writeArray(STORAGE_KEYS.coredataLoading, this.coreDataUploading);
                 this.isUploadingCoreData = false;
                 this.flushCoredata(batchSize);
             }, (err: any) => {
-                this.logTrackRequest(" coredata ", " FAIL ", this.coreDataUploading, err);
+                this.logTrackRequest("coredata", "FAIL", this.coreDataUploading, err);
                 this.coreDataQueue.push.apply(this.coreDataQueue, this.coreDataUploading);
                 this.coreDataUploading = [];
                 this.writeArray(STORAGE_KEYS.coredataPayload, this.coreDataQueue);
@@ -238,7 +238,7 @@ export default class MiddleTrackManager {
     uuid(): string {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
             const random = 16 * Math.random() | 0;
-            return (" x " == char ? random : 3 & random | 8).toString(16);
+            return ("x" == char ? random : 3 & random | 8).toString(16);
         });
     }
 }

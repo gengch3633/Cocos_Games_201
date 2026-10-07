@@ -1,19 +1,19 @@
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import UIMgr from "./UIMgr";
 
-const LOG_PREFIX = "[UiPageAnalyticsService] ";
+const LOG_PREFIX = "[UiPageAnalyticsService]";
 
 const PAGE_MAP: Record<string, string> = {
-    "prefab/ui/homeUI": " home_page ",
-    "prefab/gameView": " game_page ",
-    "prefab/cashArrowReviveView": " revive_page ",
-    "prefab/withMoodView_v2": " withdraw_page ",
-    "prefab/arrowTaskPopup": " task_page ",
-    "prefab/cashArrowSetView": " withdraw_set_page ",
-    "prefab/cashArrowSettingView": " withdraw_setting_page ",
-    "prefab/cashArrowCheckView": " withdraw_check_page ",
-    "prefab/arrowSettleRewardView": " settle_reward_page ",
-    "prefab/cashArrowFailView": " fail_page "
+    "prefab/ui/homeUI": "home_page",
+    "prefab/gameView": "game_page",
+    "prefab/cashArrowReviveView": "revive_page",
+    "prefab/withMoodView_v2": "withdraw_page",
+    "prefab/arrowTaskPopup": "task_page",
+    "prefab/cashArrowSetView": "withdraw_set_page",
+    "prefab/cashArrowSettingView": "withdraw_setting_page",
+    "prefab/cashArrowCheckView": "withdraw_check_page",
+    "prefab/arrowSettleRewardView": "settle_reward_page",
+    "prefab/cashArrowFailView": "fail_page"
 };
 
 interface PageSession {
@@ -40,7 +40,7 @@ function resolveActPage(key: string, node?: cc.Node): string {
             }
         }
     }
-    return node && node.isValid && node.name ? node.name : key || " unknown ";
+    return node && node.isValid && node.name ? node.name : key || "unknown";
 }
 
 function report(event: string, data: any): void {
@@ -49,7 +49,7 @@ function report(event: string, data: any): void {
             BusinessAnalyticsService.reportData(event, data);
         }
     } catch (error) {
-        console.warn(LOG_PREFIX + " report error ", event, error);
+        console.warn(LOG_PREFIX + " report error", event, error);
     }
 }
 
@@ -89,15 +89,15 @@ function trackEnterInternal(key: string, actPage: string): void {
         lastResumeTs: timestamp,
         accumulatedMs: 0
     });
-    report(" b_entry_game_page ", { act_page: actPage });
+    report("b_entry_game_page", { act_page: actPage });
 }
 
 function trackLeaveInternal(key: string, actPage?: string): void {
     const timestamp = now();
     const index = findSessionIndex(key);
     if (index < 0) {
-        report(" b_leave_game_page ", {
-            act_page: actPage || key || " unknown ",
+        report("b_leave_game_page", {
+            act_page: actPage || key || "unknown",
             duration: 0
         });
         return;
@@ -108,7 +108,7 @@ function trackLeaveInternal(key: string, actPage?: string): void {
         pauseSession(session, timestamp);
     }
     stack.splice(index, 1);
-    report(" b_leave_game_page ", {
+    report("b_leave_game_page", {
         act_page: session.actPage,
         duration: session.accumulatedMs
     });
@@ -142,19 +142,19 @@ const UiPageAnalyticsService = {
                 try {
                     onUiShow(key, node);
                 } catch (error) {
-                    console.warn(LOG_PREFIX + " onUiShow error ", key, error);
+                    console.warn(LOG_PREFIX + " onUiShow error", key, error);
                 }
             });
             uiMgr.on(eventType.HIDE, (key: string, node: cc.Node) => {
                 try {
                     onUiHide(key, node);
                 } catch (error) {
-                    console.warn(LOG_PREFIX + " onUiHide error ", key, error);
+                    console.warn(LOG_PREFIX + " onUiHide error", key, error);
                 }
             });
-            console.log(LOG_PREFIX + " inited ");
+            console.log(LOG_PREFIX + " inited");
         } else {
-            console.warn(LOG_PREFIX + " init skipped: UIMgr instance or EventType missing ");
+            console.warn(LOG_PREFIX + " init skipped: UIMgr instance or EventType missing");
         }
     },
 

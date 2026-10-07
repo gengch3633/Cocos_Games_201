@@ -2,8 +2,8 @@ import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import SystemDataStore from "./SystemDataStore";
 import UserData from "./UserData";
 
-const STORAGE_KEY = " arrow_newbie_guide_step_v1 ";
-const REPORTED_KEY = " arrow_newbie_guide_step_reported_v1 ";
+const STORAGE_KEY = "arrow_newbie_guide_step_v1";
+const REPORTED_KEY = "arrow_newbie_guide_step_reported_v1";
 const REPORT_STEPS: { [key: number]: boolean } = {
     3: true,
     4: true,
@@ -46,12 +46,12 @@ function shouldEnableGuide(): boolean {
 } function readReportedSteps(): any { try { const stored = cc?.sys?.localStorage?.getItem(REPORTED_KEY); if (!stored) { return {}; } const parsed = JSON.parse(stored); return parsed && typeof parsed ==="object"? parsed : {}; } catch (err) { return {}; }
 } function writeReportedSteps(reported: any): void { try { cc?.sys?.localStorage?.setItem(REPORTED_KEY, JSON.stringify(reported || {})); } catch (err) { }
 } function reportStepOnce(step: number): void { if (REPORT_STEPS[step]) { const reported = readReportedSteps(); if (!reported[step]) { reported[step] = 1; writeReportedSteps(reported); try { if (BusinessAnalyticsService && typeof BusinessAnalyticsService.reportData ==="function") {
-                    BusinessAnalyticsService.reportData(" newbie_guide_step_show ", {
+                    BusinessAnalyticsService.reportData("newbie_guide_step_show", {
                         step: step
                     });
                 }
             } catch (err) {
-                console.warn("[NewbieGuideFlow] reportStepOnce error step = " + step, err);
+                console.warn("[NewbieGuideFlow] reportStepOnce error step=" + step, err);
             }
         }
     }
@@ -75,18 +75,18 @@ const NewbieGuideFlow = {
         const stored = readStoredStep();
         if (stored > 0 && stored < STEP_HOME_BANNER) {
             currentStep = clampStep(stored);
-            console.log("[NewbieGuide] bootstrap: 恢复进行中步骤 step = " + currentStep);
+            console.log("[NewbieGuide] bootstrap: 恢复进行中步骤 step=" + currentStep);
             return currentStep;
         }
         if (stored >= STEP_HOME_BANNER) {
             const enabled = shouldEnableGuide();
             currentStep = enabled ? STEP_HOME_BANNER : STEP_DONE;
-            console.log("[NewbieGuide] bootstrap: stored >= 7 shouldEnable = " + enabled + " step = " + currentStep + " storedWas = " + stored);
+            console.log("[NewbieGuide] bootstrap: stored>=7 shouldEnable=" + enabled + " step=" + currentStep + " storedWas=" + stored);
             return currentStep;
         }
         const enabled = shouldEnableGuide();
         writeStoredStep(currentStep = enabled ? STEP_ENTRY_LEVEL1 : STEP_DONE);
-        console.log("[NewbieGuide] bootstrap: 初始化 shouldEnable = " + enabled + " step = " + currentStep + " storedWas = " + stored);
+        console.log("[NewbieGuide] bootstrap: 初始化 shouldEnable=" + enabled + " step=" + currentStep + " storedWas=" + stored);
         return currentStep;
     },
 

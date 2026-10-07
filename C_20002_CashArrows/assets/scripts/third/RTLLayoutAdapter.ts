@@ -28,7 +28,7 @@ export default class RTLLayoutAdapter extends cc.Component {
     affectSelf: boolean = true;
 
     @property({
-        tooltip: " 子节点 x 坐标按父中心镜像 ； 项目里很多节点用绝对坐标定位时必须开 "
+        tooltip: "子节点 x 坐标按父中心镜像；项目里很多节点用绝对坐标定位时必须开"
     })
     affectPosition: boolean = true;
 
@@ -62,8 +62,8 @@ export default class RTLLayoutAdapter extends cc.Component {
             this.collectNodes();
             this.applyLayout();
             try {
-                const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; if (isRTL) { const nodeName = this.node && this.node.name ? this.node.name :"? ";
-                    cc.log("[RTLLayoutAdapter] init on '" + nodeName + "' cached = " + this._cache.length + " rtl = true ");
+                const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; if (isRTL) { const nodeName = this.node && this.node.name ? this.node.name :"?";
+                    cc.log("[RTLLayoutAdapter] init on '" + nodeName + "' cached=" + this._cache.length + " rtl=true");
                 }
             } catch (err) { }
         }
@@ -101,7 +101,7 @@ export default class RTLLayoutAdapter extends cc.Component {
                 widget = node.getComponent(cc.Widget);
                 if (widget) {
                     this._cache.push({
-                        kind: " widget ",
+                        kind: "widget",
                         comp: widget,
                         orig: this.snapshotWidget(widget)
                     });
@@ -111,7 +111,7 @@ export default class RTLLayoutAdapter extends cc.Component {
                 const layout = node.getComponent(cc.Layout);
                 if (layout) {
                     this._cache.push({
-                        kind: " layout ",
+                        kind: "layout",
                         comp: layout,
                         orig: this.snapshotLayout(layout)
                     });
@@ -123,7 +123,7 @@ export default class RTLLayoutAdapter extends cc.Component {
             const nodeWidget = widget || (this.affectWidget ? null : node.getComponent(cc.Widget));
             if (!nodeWidget && !parentLayout) {
                 this._cache.push({
-                    kind: " position ",
+                    kind: "position",
                     node: node,
                     orig: {
                         x: node.x
@@ -162,11 +162,11 @@ export default class RTLLayoutAdapter extends cc.Component {
 
     applyLayout(): void {
         if (!this._isDestroyed) {
-            const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; for (let i = 0; i < this._cache.length; i++) { const item = this._cache[i]; const valid = item.kind ===" position "? item.node && item.node.isValid : item.comp && item.comp.isValid; if (valid) { if (item.kind ===" widget ") {
+            const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; for (let i = 0; i < this._cache.length; i++) { const item = this._cache[i]; const valid = item.kind ==="position"? item.node && item.node.isValid : item.comp && item.comp.isValid; if (valid) { if (item.kind ==="widget") {
                         isRTL ? this.mirrorWidget(item.comp, item.orig) : this.restoreWidget(item.comp, item.orig);
-                    } else if (item.kind === " layout ") {
+                    } else if (item.kind === "layout") {
                         isRTL ? this.mirrorLayout(item.comp, item.orig) : this.restoreLayout(item.comp, item.orig);
-                    } else if (item.kind === " position ") {
+                    } else if (item.kind === "position") {
                         isRTL ? this.mirrorPosition(item) : this.restorePosition(item);
                     }
                 }
@@ -237,9 +237,9 @@ export default class RTLLayoutAdapter extends cc.Component {
             for (let i = 0; i < this._cache.length; i++) {
                 const item = this._cache[i];
                 if (item.comp && item.comp.isValid) {
-                    if (item.kind === " widget ") {
+                    if (item.kind === "widget") {
                         this.restoreWidget(item.comp, item.orig);
-                    } else if (item.kind === " layout ") {
+                    } else if (item.kind === "layout") {
                         this.restoreLayout(item.comp, item.orig);
                     }
                 }

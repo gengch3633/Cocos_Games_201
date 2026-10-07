@@ -8,10 +8,10 @@ export default class ylEvent {
 
     static loading(): void {
         GEMgr.userSetOnce({
-            firstVersion: " v1.0.0 "
+            firstVersion: "v1.0.0"
         });
         GEMgr.userSet({
-            curVersion: " v1.0.0 "
+            curVersion: "v1.0.0"
         });
         GEMgr.userAdd({
             activeNum: 1

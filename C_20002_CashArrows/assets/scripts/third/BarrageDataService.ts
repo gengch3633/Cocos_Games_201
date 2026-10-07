@@ -47,13 +47,13 @@ const BarrageDataService = {
     },
 
     _convertItem(item: any): any {
-        const name = item.name || " ";
+        const name = item.name || "";
         const amount = item.money || 0;
         return {
             name: name,
             amount: amount,
-            type: item.type || " cash ",
-            text: LanguageService.t(" key_barrage_success_plain ", [name, LanguageService.formatCurrencyBarrage(amount)])
+            type: item.type || "cash",
+            text: LanguageService.t("key_barrage_success_plain", [name, LanguageService.formatCurrencyBarrage(amount)])
         };
     },
 

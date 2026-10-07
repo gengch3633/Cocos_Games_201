@@ -79,7 +79,7 @@ export default class AudioPlay extends cc.Component {
 
     async loadClip(name: string, bundle: string = null): Promise<cc.AudioClip> {
         if (!name.includes("/")) {
-            name = " audio/ " + name;
+            name = "audio/" + name;
         }
         if (!bundle) {
             bundle = this.bundle;

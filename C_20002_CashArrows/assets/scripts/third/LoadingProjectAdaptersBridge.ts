@@ -388,210 +388,210 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     try {
                         UserInfoService.getInstance()._applyToUserData(response.data);
                     } catch (err) {
-                        console.warn(logPrefix, " UserData 同步失败 ", err);
+                        console.warn(logPrefix, "UserData 同步失败", err);
                     }
-                    reportStep(" userInfo ");
-                    console.log(logPrefix, " 登录流程完成 ， 进入游戏 ");
+                    reportStep("userInfo");
+                    console.log(logPrefix, "登录流程完成，进入游戏");
                     onComplete && onComplete();
                 }
             }), handler.create(null, (err: any) => {
-                console.error(logPrefix, " getUserInfo fail ", err);
+                console.error(logPrefix, "getUserInfo fail", err);
                 const cached = getCache(CACHE_KEYS.USER_INFO);
                 if (cached) {
-                    console.warn(logPrefix, " getUserInfo 使用缓存 ");
+                    console.warn(logPrefix, "getUserInfo 使用缓存");
                     PlayerDataStore.init(cached);
-                    reportStep(" userInfo ");
+                    reportStep("userInfo");
                     onComplete && onComplete();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, " getUserInfo 无缓存+ 网络异常 ， 弹重试窗 ");
+                    console.warn(logPrefix, "getUserInfo 无缓存 + 网络异常，弹重试窗");
                     netErrorPopup.showAndRetry(getUserInfo);
                 } else {
-                    reportStep(" userInfo ");
-                    warnAndComplete(" getUserInfo 无缓存 ， 兜底进入游戏 ", err);
+                    reportStep("userInfo");
+                    warnAndComplete("getUserInfo 无缓存，兜底进入游戏", err);
                 }
             }));
         };
 
         const getGameConfig = (): void => {
-            console.log(logPrefix, " getGameConfig ");
-            report(" page_loading_getGameConfig ");
+            console.log(logPrefix, "getGameConfig");
+            report("page_loading_getGameConfig");
             httpService.getGameConfig(handler.create(null, (response: any) => {
-                report(" page_loading_getGameConfig_res ", {
+                report("page_loading_getGameConfig_res", {
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
                     console.warn(logPrefix, "getGameConfig force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(getGameConfig);
                 } else {
-                    console.log(logPrefix, " getGameConfig success ", JSON.stringify(response));
+                    console.log(logPrefix, "getGameConfig success", JSON.stringify(response));
                     GameConfigStore.init(response.data);
                     setCache(CACHE_KEYS.GAME_CONFIG, response.data);
-                    reportStep(" gameConfig ");
+                    reportStep("gameConfig");
                     getUserInfo();
                 }
             }), handler.create(null, (err: any) => {
-                console.error(logPrefix, " getGameConfig fail ", err);
+                console.error(logPrefix, "getGameConfig fail", err);
                 const cached = getCache(CACHE_KEYS.GAME_CONFIG);
                 if (cached) {
-                    console.warn(logPrefix, " getGameConfig 使用缓存 ");
+                    console.warn(logPrefix, "getGameConfig 使用缓存");
                     GameConfigStore.init(cached);
-                    reportStep(" gameConfig ");
+                    reportStep("gameConfig");
                     getUserInfo();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, " getGameConfig 无缓存+ 网络异常 ， 弹重试窗 ");
+                    console.warn(logPrefix, "getGameConfig 无缓存 + 网络异常，弹重试窗");
                     netErrorPopup.showAndRetry(getGameConfig);
                 } else {
-                    console.warn(logPrefix, " getGameConfig 无缓存 ， 继续 getUserInfo ");
-                    reportStep(" gameConfig ");
+                    console.warn(logPrefix, "getGameConfig 无缓存，继续 getUserInfo");
+                    reportStep("gameConfig");
                     getUserInfo();
                 }
             }));
         };
 
         const touristsLogin = (): void => {
-            console.log(logPrefix, " touristsLogin ");
-            report(" page_loading_touristsLogin ");
+            console.log(logPrefix, "touristsLogin");
+            report("page_loading_touristsLogin");
             httpService.touristsLogin(null, handler.create(null, (response: any) => {
-                report(" page_loading_touristsLogin_res ", response);
+                report("page_loading_touristsLogin_res", response);
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
                     console.warn(logPrefix, "touristsLogin force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(touristsLogin);
                 } else {
-                    console.log(logPrefix, " touristsLogin success ", JSON.stringify(response));
-                    report(" register_success ", {
-                        login_type: " tourists "
+                    console.log(logPrefix, "touristsLogin success", JSON.stringify(response));
+                    report("register_success", {
+                        login_type: "tourists"
                     });
                     PlayerDataStore.initUserId(response.data);
                     setCache(CACHE_KEYS.LOGIN_USER_ID, response.data);
-                    reportStep(" login ");
+                    reportStep("login");
                     getSystemConfig();
                 }
             }), handler.create(null, (err: any) => {
-                let errJson = " ";
+                let errJson = "";
                 try {
                     errJson = JSON.stringify(err);
                 } catch (stringifyErr) {
                     errJson = String(err);
                 }
-                console.error(logPrefix, " touristsLogin fail json = ", errJson);
+                console.error(logPrefix, "touristsLogin fail json=", errJson);
                 const cached = getCache(CACHE_KEYS.LOGIN_USER_ID);
                 if (cached && cached.yid) {
-                    console.warn(logPrefix, " touristsLogin 使用缓存登录态 ");
+                    console.warn(logPrefix, "touristsLogin 使用缓存登录态");
                     PlayerDataStore.initUserId(cached);
-                    reportStep(" login ");
+                    reportStep("login");
                     getSystemConfig();
                 } else if (netErrorPopup && netErrorPopup.shouldPop(err)) {
-                    console.warn(logPrefix, " touristsLogin 无缓存+ 网络异常 ， 弹重试窗 ");
+                    console.warn(logPrefix, "touristsLogin 无缓存 + 网络异常，弹重试窗");
                     netErrorPopup.showAndRetry(touristsLogin);
                 } else {
-                    report(" register_fail ", {
-                        login_type: " tourists ",
-                        err_code: err && err.code !== undefined ? err.code : " ",
-                        err_msg: err && err.message ? err.message : " "
+                    report("register_fail", {
+                        login_type: "tourists",
+                        err_code: err && err.code !== undefined ? err.code : "",
+                        err_msg: err && err.message ? err.message : ""
                     });
-                    console.warn(logPrefix, " touristsLogin 无缓存登录态 ， 继续拉配置 ");
-                    reportStep(" login ");
+                    console.warn(logPrefix, "touristsLogin 无缓存登录态，继续拉配置");
+                    reportStep("login");
                     getSystemConfig();
                 }
             }));
         };
 
         const getSystemConfig = (): void => {
-            console.log(logPrefix, " getSystemConfig ");
-            report(" page_loading_getSystemConfig ");
+            console.log(logPrefix, "getSystemConfig");
+            report("page_loading_getSystemConfig");
             httpService.getSystemConfig(handler.create(null, (response: any) => {
-                report(" page_loading_getSystemConfig_res ", {
+                report("page_loading_getSystemConfig_res", {
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
                     console.warn(logPrefix, "getSystemConfig force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(getSystemConfig);
                 } else {
-                    console.log(logPrefix, " getSystemConfig success ", JSON.stringify(response));
+                    console.log(logPrefix, "getSystemConfig success", JSON.stringify(response));
                     SystemDataStore.init_config(response.data);
                     setCache(CACHE_KEYS.SYSTEM_CONFIG, response.data);
                     try {
                         LanguageHelper.setType(ClientDataStore.local_country);
                         LanguageService.setByCountryCode(ClientDataStore.local_country);
                     } catch (err) {
-                        console.error(logPrefix, " LanguageHelper.setType fail(continue) ", err);
+                        console.error(logPrefix, "LanguageHelper.setType fail(continue)", err);
                     }
-                    reportStep(" systemConfig ");
+                    reportStep("systemConfig");
                     getGameConfig();
                 }
             }), handler.create(null, (err: any) => {
-                console.error(logPrefix, " getSystemConfig fail ", err);
+                console.error(logPrefix, "getSystemConfig fail", err);
                 const cached = getCache(CACHE_KEYS.SYSTEM_CONFIG);
                 if (cached) {
-                    console.warn(logPrefix, " getSystemConfig 使用缓存 ");
+                    console.warn(logPrefix, "getSystemConfig 使用缓存");
                     SystemDataStore.init_config(cached);
                     try {
                         LanguageHelper.setType(ClientDataStore.local_country);
                         LanguageService.setByCountryCode(ClientDataStore.local_country);
                     } catch (innerErr) {
-                        console.error(logPrefix, " LanguageHelper.setType fail(continue) ", innerErr);
+                        console.error(logPrefix, "LanguageHelper.setType fail(continue)", innerErr);
                     }
-                    reportStep(" systemConfig ");
+                    reportStep("systemConfig");
                     getGameConfig();
                 } else {
-                    console.warn(logPrefix, " getSystemConfig 无缓存 ， 继续 autoLogin ");
+                    console.warn(logPrefix, "getSystemConfig 无缓存，继续 autoLogin");
                     try {
                         LanguageHelper.setType(ClientDataStore.local_country);
                         LanguageService.setByCountryCode(ClientDataStore.local_country);
                     } catch (innerErr) {
-                        console.error(logPrefix, " LanguageHelper.setType fail(continue) ", innerErr);
+                        console.error(logPrefix, "LanguageHelper.setType fail(continue)", innerErr);
                     }
-                    reportStep(" systemConfig ");
+                    reportStep("systemConfig");
                     getGameConfig();
                 }
             }));
         };
 
         (function autoLoginFlow() {
-            console.log(logPrefix, " autoLogin ");
-            report(" page_loading_autoLogin_start ");
-            report(" autoLogin_start ", {
+            console.log(logPrefix, "autoLogin");
+            report("page_loading_autoLogin_start");
+            report("autoLogin_start", {
                 timeStemp: Date.now()
             });
             httpService.autoLogin(null, handler.create(null, (response: any) => {
-                report(" autoLogin_end ", {
+                report("autoLogin_end", {
                     timeStemp: Date.now()
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
                     console.warn(logPrefix, "autoLogin force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(autoLoginFlow);
                 } else {
-                    let responseJson = " ";
+                    let responseJson = "";
                     try {
                         responseJson = JSON.stringify(response);
                     } catch (err) {
-                        responseJson = "[json stringify failed] ";
+                        responseJson = "[json stringify failed]";
                     }
-                    console.log(logPrefix, " autoLogin success yid = ", response && response.data && response.data.yid, " res_json = ", responseJson);
+                    console.log(logPrefix, "autoLogin success yid=", response && response.data && response.data.yid, "res_json=", responseJson);
                     if (response && response.data && response.data.yid) {
-                        report(" page_loading_autoLogin_success ");
-                        report(" register_success ", {
-                            login_type: " auto "
+                        report("page_loading_autoLogin_success");
+                        report("register_success", {
+                            login_type: "auto"
                         });
                         PlayerDataStore.initUserId(response.data);
                         setCache(CACHE_KEYS.LOGIN_USER_ID, response.data);
-                        reportStep(" login ");
+                        reportStep("login");
                         getSystemConfig();
                     } else {
-                        report(" u_login_page_show ");
+                        report("u_login_page_show");
                         touristsLogin();
                     }
                 }
             }), handler.create(null, (err: any) => {
-                report(" autoLogin_end ", {
+                report("autoLogin_end", {
                     timeStemp: Date.now()
                 });
-                console.error(logPrefix, " autoLogin fail ", err);
+                console.error(logPrefix, "autoLogin fail", err);
                 touristsLogin();
             }));
         })();
     } catch (err) {
-        logBridgeError(logPrefix + " runBaseFlow 初始化失败 ", err);
+        logBridgeError(logPrefix + " runBaseFlow 初始化失败", err);
         onError ? onError(err) : onComplete && onComplete();
     }
 }

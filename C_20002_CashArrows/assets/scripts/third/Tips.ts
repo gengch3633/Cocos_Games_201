@@ -73,14 +73,14 @@ export default class Tips {
     }
 
     static createTipNode(): cc.Node {
-        const sprite = new cc.Node(" tip ").addComponent(cc.Sprite);
+        const sprite = new cc.Node("tip").addComponent(cc.Sprite);
         sprite.node.active = false;
         sprite.sizeMode = cc.Sprite.SizeMode.RAW;
         sprite.type = cc.Sprite.Type.SLICED;
         ResMgr.getInstance().setSpriteFrame(sprite, Tips.option.url, Tips.option.bundleName).then(() => {
-            sprite?.node?.emit(" load_complete ");
+            sprite?.node?.emit("load_complete");
         });
-        const label = new cc.Node(" lab ").addComponent(cc.Label);
+        const label = new cc.Node("lab").addComponent(cc.Label);
         label.horizontalAlign = cc.Label.HorizontalAlign.CENTER;
         label.verticalAlign = cc.Label.VerticalAlign.CENTER;
         label.fontSize = Tips.option.fontSize;
@@ -117,10 +117,10 @@ export default class Tips {
             if (sprite.spriteFrame) {
                 resize();
             } else {
-                sprite.node?.once(" load_complete ", resize, this);
+                sprite.node?.once("load_complete", resize, this);
             }
         } else {
-            console.error(" 未找到Sprite组件 ");
+            console.error("未找到Sprite组件");
         }
     }
 

@@ -7,7 +7,7 @@ const { ccclass, property, menu } = cc._decorator;
 @menu("RedDot/RedDotCompoent")
 export default class RedDotCompoent extends cc.Component {
     @property
-    id: string = " ";
+    id: string = "";
 
     @property(cc.Node)
     target: cc.Node = null;
@@ -36,7 +36,7 @@ export default class RedDotCompoent extends cc.Component {
     updateUI(): void {
         (this.target ?? this.node).active = this.redDot.getCount() > 0;
         if (this.countLab) {
-            this.countLab.string = " " + this.redDot.getCount();
+            this.countLab.string = "" + this.redDot.getCount();
         }
     }
 }

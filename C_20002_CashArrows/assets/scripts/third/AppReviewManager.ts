@@ -103,7 +103,7 @@ export default class AppReviewManager {
                 console.log(LOG_TAG + " EVENT_HIDE flush playSeconds="+ Math.floor(this._currentPlaySeconds())); }); cc.game.on(cc.game.EVENT_SHOW, () => { this._resumeTs = Date.now(); console.log(LOG_TAG +" EVENT_SHOW resume timing");
             });
             GlobalEventMgr.getInstance().on(InterfaceMgr.gameEvent.gameNext, this.onLevelPassed, this);
-            console.log(LOG_TAG + " inited thresholds{MIN_PASS=5, MIN_SECONDS=120, MAX_SHOW=1, COOLDOWN_DAYS=3} state="+ JSON.stringify(this._state)); } } onLevelPassed(): void { if (this._state) { this._state.passCount += 1; this._flushPlayTime(); console.log(LOG_TAG +" onLevelPassed passCount=" + this._state.passCount + " playSeconds=" + Math.floor(this._currentPlaySeconds()));
+            console.log(LOG_TAG + " inited thresholds{ MIN_PASS=5, MIN_SECONDS=120, MAX_SHOW=1, COOLDOWN_DAYS=3 } state="+ JSON.stringify(this._state)); } } onLevelPassed(): void { if (this._state) { this._state.passCount += 1; this._flushPlayTime(); console.log(LOG_TAG +" onLevelPassed passCount=" + this._state.passCount + " playSeconds=" + Math.floor(this._currentPlaySeconds()));
             this._tryTrigger();
         }
     }

@@ -44,8 +44,8 @@ this.onCloseCb = null;
 this.onTaskClaimCb = null;
 this.showForceVideo = !1;
 this.isNewReward = !1;
-this.taskType = " ";
-this.taskId = " ";
+this.taskType = "";
+this.taskId = "";
 this.doubleRewardAmount = 0;
 this.levelSwitchRewardAmount = 0;
 this.taskShowAmount = 0;
@@ -81,72 +81,72 @@ this.entryData = e || {};
 this.isReady && this.applyEntryData();
 },
 bindNodes: function() {
-this.nodeContent = this.findChildByNameDeep(this.node, " content ");
-var e = this.findChildByNameDeep(this.node, " animation ");
+this.nodeContent = this.findChildByNameDeep(this.node, "content");
+var e = this.findChildByNameDeep(this.node, "animation");
 this.skeletonComp = e ? e.getComponent(sp.Skeleton) : null;
-this.lblAmount = this.findLabelByName(" txt_amount ");
-this.lblClaim = this.findLabelByName(" lbl_claim ");
-this.lblClaimX2 = this.findLabelByName(" lbl_claimx2 ");
-this.lblNextLevel = this.findLabelByName(" lbl_next_level ");
-this.lblTitle = this.findLabelByName(" title ");
-this.titleSpriteNode = this.findChildByNameDeep(this.node, " title_successful ");
-this.btnClaimNode = this.findChildByNameDeep(this.node, " btn_claim ");
+this.lblAmount = this.findLabelByName("txt_amount");
+this.lblClaim = this.findLabelByName("lbl_claim");
+this.lblClaimX2 = this.findLabelByName("lbl_claimx2");
+this.lblNextLevel = this.findLabelByName("lbl_next_level");
+this.lblTitle = this.findLabelByName("title");
+this.titleSpriteNode = this.findChildByNameDeep(this.node, "title_successful");
+this.btnClaimNode = this.findChildByNameDeep(this.node, "btn_claim");
 this.btnClaim = this.btnClaimNode && this.btnClaimNode.getComponent(cc.Button);
-this.btnClaimX2Node = this.findChildByNameDeep(this.node, " btn_claimx2 ");
+this.btnClaimX2Node = this.findChildByNameDeep(this.node, "btn_claimx2");
 this.btnClaimX2 = this.btnClaimX2Node && this.btnClaimX2Node.getComponent(cc.Button);
-this.btnNextNode = this.findChildByNameDeep(this.node, " btn_next_level ");
+this.btnNextNode = this.findChildByNameDeep(this.node, "btn_next_level");
 this.btnNext = this.btnNextNode && this.btnNextNode.getComponent(cc.Button);
-this.defaultClaimText = this.lblClaim ? this.lblClaim.string : " 领取奖励 ";
-this.defaultClaimX2Text = this.lblClaimX2 ? this.lblClaimX2.string : " CLAIMx2 ";
-this.defaultNextLevelText = this.lblNextLevel ? this.lblNextLevel.string : " Next Level ";
+this.defaultClaimText = this.lblClaim ? this.lblClaim.string : "领取奖励";
+this.defaultClaimX2Text = this.lblClaimX2 ? this.lblClaimX2.string : "CLAIMx2";
+this.defaultNextLevelText = this.lblNextLevel ? this.lblNextLevel.string : "Next Level";
 this.defaultTitleSpriteVisible = !this.titleSpriteNode || this.titleSpriteNode.active;
 },
 bindEvents: function() {
 if (this.btnClaimNode) {
 this.btnClaimNode.on(cc.Node.EventType.TOUCH_END, this.onClickClaim, this);
-this.btnClaimNode.on(" click ", this.onClickClaim, this);
+this.btnClaimNode.on("click", this.onClickClaim, this);
 }
 if (this.btnClaimX2Node) {
 this.btnClaimX2Node.on(cc.Node.EventType.TOUCH_END, this.onClickClaimX2, this);
-this.btnClaimX2Node.on(" click ", this.onClickClaimX2, this);
+this.btnClaimX2Node.on("click", this.onClickClaimX2, this);
 }
 if (this.btnNextNode) {
 this.btnNextNode.on(cc.Node.EventType.TOUCH_END, this.onClickNextLevel, this);
-this.btnNextNode.on(" click ", this.onClickNextLevel, this);
+this.btnNextNode.on("click", this.onClickNextLevel, this);
 }
-console.log(_ + " bindEvents done claimBtn = " + !!this.btnClaimX2Node + " nextBtn = " + !!this.btnNextNode);
+console.log(_ + " bindEvents done claimBtn=" + !!this.btnClaimX2Node + " nextBtn=" + !!this.btnNextNode);
 },
 unbindEvents: function() {
 if (this.btnClaimNode) {
 this.btnClaimNode.off(cc.Node.EventType.TOUCH_END, this.onClickClaim, this);
-this.btnClaimNode.off(" click ", this.onClickClaim, this);
+this.btnClaimNode.off("click", this.onClickClaim, this);
 }
 if (this.btnClaimX2Node) {
 this.btnClaimX2Node.off(cc.Node.EventType.TOUCH_END, this.onClickClaimX2, this);
-this.btnClaimX2Node.off(" click ", this.onClickClaimX2, this);
+this.btnClaimX2Node.off("click", this.onClickClaimX2, this);
 }
 if (this.btnNextNode) {
 this.btnNextNode.off(cc.Node.EventType.TOUCH_END, this.onClickNextLevel, this);
-this.btnNextNode.off(" click ", this.onClickNextLevel, this);
+this.btnNextNode.off("click", this.onClickNextLevel, this);
 }
 },
 applyEntryData: function() {
 var e = this.entryData || {};
 this.settleData = e.settleData || {};
-this.popupMode = " task " === e.popupMode ? " task " : f;
-this.isLevelPassed = " task " !== this.popupMode && !1 !== e.isLevelPassed;
+this.popupMode = "task" === e.popupMode ? "task" : f;
+this.isLevelPassed = "task" !== this.popupMode && !1 !== e.isLevelPassed;
 this.winLevel = e.winLevel > 0 ? e.winLevel : UserData.getInstance().level;
-this.onCloseCb = " function " == typeof e.onClose ? e.onClose : null;
-this.onTaskClaimCb = " function " == typeof e.onTaskClaim ? e.onTaskClaim : null;
+this.onCloseCb = "function" == typeof e.onClose ? e.onClose : null;
+this.onTaskClaimCb = "function" == typeof e.onTaskClaim ? e.onTaskClaim : null;
 this.showForceVideo = void 0 !== e.showForceVideo ? !!e.showForceVideo : !(!this.settleData || !this.settleData.show_force_video);
 var t = e.isNew;
 void 0 === t && (t = e.is_new);
 void 0 === t && this.settleData && (t = this.settleData.is_new);
-var i, n = " string " == typeof t ? t.trim().toLowerCase() : t;
-this.isNewReward = this.popupMode === f && (!0 === t || " true " === n || " 1 " === n || 1 === Number(t || 0));
+var i, n = "string" == typeof t ? t.trim().toLowerCase() : t;
+this.isNewReward = this.popupMode === f && (!0 === t || "true" === n || "1" === n || 1 === Number(t || 0));
 this.taskType = (i = e.taskType || e.task_type || this.settleData && this.settleData.task_type,
-" ltv " === String(i || " ").toLowerCase() ? " ltv " : " ");
-this.taskId = String(e.taskId || e.task_id || this.settleData && this.settleData.task_id || " ");
+"ltv" === String(i || "").toLowerCase() ? "ltv" : "");
+this.taskId = String(e.taskId || e.task_id || this.settleData && this.settleData.task_id || "");
 this.levelSwitchRewardAmount = this.safeNum(e.switchReward, this.safeNum(e.switch_reward, this.safeNum(this.settleData && this.settleData.switch_reward, 0)));
 this.doubleRewardAmount = this.safeNum(e.doubleReward, this.safeNum(e.double_reward, this.safeNum(this.settleData && this.settleData.double_reward, this.levelSwitchRewardAmount)));
 this.popupMode === f && this.doubleRewardAmount <= 0 && this.levelSwitchRewardAmount > 0 && (this.doubleRewardAmount = this.levelSwitchRewardAmount);
@@ -159,38 +159,38 @@ this.refreshButtonsEnabled();
 if (!this._levelPassReported && this.popupMode === f && this.isLevelPassed) {
 this._levelPassReported = !0;
 try {
-BusinessAnalyticsService.reportData(" lvNode ", {
+BusinessAnalyticsService.reportData("lvNode", {
 level: this.winLevel,
 win: 1
 });
 } catch (e) {}
 }
-console.log(_ + " applyEntryData mode = " + this.popupMode + " isLevelPassed = " + this.isLevelPassed + " isNewReward = " + this.isNewReward + " showForceVideo = " + this.showForceVideo + " taskType = " + this.taskType + " taskId = " + this.taskId);
+console.log(_ + " applyEntryData mode=" + this.popupMode + " isLevelPassed=" + this.isLevelPassed + " isNewReward=" + this.isNewReward + " showForceVideo=" + this.showForceVideo + " taskType=" + this.taskType + " taskId=" + this.taskId);
 },
 updateAmountLabel: function() {
 if (this.lblAmount) {
-var e = " task " === this.popupMode ? this.taskShowAmount : this.doubleRewardAmount;
-this.lblAmount.string = "+ "+ this.formatMoney(e); } }, refreshStaticTexts: function() { var e =" task " === this.popupMode;
+var e = "task" === this.popupMode ? this.taskShowAmount : this.doubleRewardAmount;
+this.lblAmount.string = "+"+ this.formatMoney(e); } }, refreshStaticTexts: function() { var e ="task" === this.popupMode;
 this.titleSpriteNode && (this.titleSpriteNode.active = !1);
 if (this.lblTitle) {
 var t = this.getTitleI18nConfig();
 this.lblTitle.node.active = !0;
 this.lblTitle.string = this.i18n(t.key, [], t.fallback);
 }
-this.lblClaim && (this.lblClaim.string = this.i18n(" key_arrow_reward_claim ", [], this.defaultClaimText || " Claim reward "));
-this.lblClaimX2 && (this.lblClaimX2.string = this.i18n(" key_task_reward_claim_x2 ", [], this.defaultClaimX2Text || " Watch Ad to Claim "));
-this.lblNextLevel && (this.lblNextLevel.string = e ? this.i18n(" key_task_reward_only_claim ", [ this.formatMoney(this.taskRewardAmount) ], " Claim only " + this.formatMoney(this.taskRewardAmount)) : this.i18n(" key_result_only_claim ", [ this.formatMoney(this.levelSwitchRewardAmount) ], " Claim only " + this.formatMoney(this.levelSwitchRewardAmount)));
+this.lblClaim && (this.lblClaim.string = this.i18n("key_arrow_reward_claim", [], this.defaultClaimText || "Claim reward"));
+this.lblClaimX2 && (this.lblClaimX2.string = this.i18n("key_task_reward_claim_x2", [], this.defaultClaimX2Text || "Watch Ad to Claim"));
+this.lblNextLevel && (this.lblNextLevel.string = e ? this.i18n("key_task_reward_only_claim", [ this.formatMoney(this.taskRewardAmount) ], "Claim only " + this.formatMoney(this.taskRewardAmount)) : this.i18n("key_result_only_claim", [ this.formatMoney(this.levelSwitchRewardAmount) ], "Claim only " + this.formatMoney(this.levelSwitchRewardAmount)));
 },
 getTitleI18nConfig: function() {
-return " task " === this.popupMode ? {
-key: " key_task_reward_popup_title ",
-fallback: " Task Reward "
+return "task" === this.popupMode ? {
+key: "key_task_reward_popup_title",
+fallback: "Task Reward"
 } : this.isLevelPassed ? {
-key: " key_arrow_settle_title_success ",
-fallback: " Success "
+key: "key_arrow_settle_title_success",
+fallback: "Success"
 } : {
-key: " key_arrow_settle_title_congrats ",
-fallback: " Congratulations "
+key: "key_arrow_settle_title_congrats",
+fallback: "Congratulations"
 };
 },
 isClickThrottled: function() {
@@ -221,13 +221,13 @@ onClickClaim: function() {
 if (!this.isButtonLocked() && !this.isClickThrottled()) {
 this.lockButtonsFor(500);
 var e = !!this.showForceVideo;
-if (this.beginClaim(" claim ", !e)) {
+if (this.beginClaim("claim", !e)) {
 var t = this, i = {
 showForceVideo: this.showForceVideo,
-businessType: " arrow "
+businessType: "arrow"
 };
-console.log(_ + " 点击 Claim mode = " + this.popupMode + " isNewReward = " + this.isNewReward + " showForceVideo = " + this.showForceVideo);
-console.log(_ + "[过关接口][请求] claimNormal(Claim) ctx = "+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +"[过关接口][返回] claimNormal(Claim) success = " + !!e + " req = " + JSON.stringify(i) + " res = "+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Claim 失败 ， 跳过奖励继续流程并关闭弹窗 ");
+console.log(_ + " 点击 Claim mode=" + this.popupMode + " isNewReward=" + this.isNewReward + " showForceVideo=" + this.showForceVideo);
+console.log(_ + " [过关接口][请求] claimNormal(Claim) ctx="+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +" [过关接口][返回] claimNormal(Claim) success=" + !!e + " req=" + JSON.stringify(i) + " res="+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Claim 失败，跳过奖励继续流程并关闭弹窗");
 t.finishAndClose();
 }
 });
@@ -237,12 +237,12 @@ t.finishAndClose();
 onClickClaimX2: function() {
 if (!this.isButtonLocked() && !this.isClickThrottled()) {
 this.lockButtonsFor(500);
-if (this.beginClaim(" claim_x2 ", !1)) {
+if (this.beginClaim("claim_x2", !1)) {
 var e = this;
-if (" task " === this.popupMode) {
+if ("task" === this.popupMode) {
 try {
-BusinessAnalyticsService.reportData(" ad_show ", {
-scene: " task ",
+BusinessAnalyticsService.reportData("ad_show", {
+scene: "task",
 level: UserData.getInstance().level
 });
 } catch (e) {}
@@ -251,16 +251,16 @@ this.handleTaskClaim(!0);
 return;
 }
 }
-var t = " task " === this.popupMode ? {
-businessType: " task ",
+var t = "task" === this.popupMode ? {
+businessType: "task",
 taskType: this.taskType,
 taskId: this.taskId
 } : {
-businessType: " arrow "
+businessType: "arrow"
 };
 this.popupMode === f && (t.fallbackOnAdFail = !1);
-console.log(_ + " 点击 CLAIMx2 mode = " + this.popupMode);
-console.log(_ + "[过关接口][请求] claimDouble(CLAIMx2) ctx = "+ JSON.stringify(t)); p(this.popupMode, this.isLevelPassed, !1); ArrowRewardService.claimDouble(t, function(i, n) { e.endClaim(); console.log(_ +"[过关接口][返回] claimDouble(CLAIMx2) success = " + !!i + " req = " + JSON.stringify(t) + " res = "+ JSON.stringify(n || {})); if (i) { e.emitRewardClaimed(n, e.doubleRewardAmount); e.finishAndClose(); } else console.warn(_ +" CLAIMx2 失败 ， 不关闭弹窗 ");
+console.log(_ + " 点击 CLAIMx2 mode=" + this.popupMode);
+console.log(_ + " [过关接口][请求] claimDouble(CLAIMx2) ctx="+ JSON.stringify(t)); p(this.popupMode, this.isLevelPassed, !1); ArrowRewardService.claimDouble(t, function(i, n) { e.endClaim(); console.log(_ +" [过关接口][返回] claimDouble(CLAIMx2) success=" + !!i + " req=" + JSON.stringify(t) + " res="+ JSON.stringify(n || {})); if (i) { e.emitRewardClaimed(n, e.doubleRewardAmount); e.finishAndClose(); } else console.warn(_ +" CLAIMx2 失败，不关闭弹窗");
 });
 }
 }
@@ -268,21 +268,21 @@ console.log(_ + "[过关接口][请求] claimDouble(CLAIMx2) ctx = "+ JSON.strin
 onClickNextLevel: function() {
 if (!this.isButtonLocked() && !this.isClickThrottled()) {
 this.lockButtonsFor(500);
-var e = !(" task " === this.popupMode && this.onTaskClaimCb || !this.showForceVideo);
-if (this.beginClaim(" next_level ", !e)) {
+var e = !("task" === this.popupMode && this.onTaskClaimCb || !this.showForceVideo);
+if (this.beginClaim("next_level", !e)) {
 var t = this;
-if (" task " === this.popupMode && this.onTaskClaimCb) this.handleTaskClaim(!1); else {
-var i = " task " === this.popupMode ? {
+if ("task" === this.popupMode && this.onTaskClaimCb) this.handleTaskClaim(!1); else {
+var i = "task" === this.popupMode ? {
 showForceVideo: this.showForceVideo,
-businessType: " task ",
+businessType: "task",
 taskType: this.taskType,
 taskId: this.taskId
 } : {
 showForceVideo: this.showForceVideo,
-businessType: " arrow "
+businessType: "arrow"
 };
-console.log(_ + " 点击 Next Level mode = " + this.popupMode + " showForceVideo = " + this.showForceVideo);
-console.log(_ + "[过关接口][请求] claimNormal(NextLevel) ctx = "+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +"[过关接口][返回] claimNormal(NextLevel) success = " + !!e + " req = " + JSON.stringify(i) + " res = "+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Next Level 失败 ， 跳过奖励继续流程并关闭弹窗 ");
+console.log(_ + " 点击 Next Level mode=" + this.popupMode + " showForceVideo=" + this.showForceVideo);
+console.log(_ + " [过关接口][请求] claimNormal(NextLevel) ctx="+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +" [过关接口][返回] claimNormal(NextLevel) success=" + !!e + " req=" + JSON.stringify(i) + " res="+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Next Level 失败，跳过奖励继续流程并关闭弹窗");
 t.finishAndClose();
 }
 });
@@ -293,7 +293,7 @@ t.finishAndClose();
 handleTaskClaim: function(e) {
 var t = this, i = {
 isDouble: !!e,
-businessType: " task ",
+businessType: "task",
 taskType: this.taskType,
 taskId: this.taskId,
 claimAmount: e ? this.taskShowAmount : this.taskRewardAmount
@@ -301,7 +301,7 @@ claimAmount: e ? this.taskShowAmount : this.taskRewardAmount
 if (!n) {
 n = !0;
 t.endClaim();
-!1 !== e ? t.finishAndClose() : console.warn(_ + " handleTaskClaim 失败 ， 不关闭弹窗 ");
+!1 !== e ? t.finishAndClose() : console.warn(_ + " handleTaskClaim 失败，不关闭弹窗");
 }
 };
 try {
@@ -310,7 +310,7 @@ this.onTaskClaimCb(i, a);
 return;
 }
 var o = this.onTaskClaimCb(i);
-if (o && " function " == typeof o.then) {
+if (o && "function" == typeof o.then) {
 o.then(function(e) {
 a(!1 !== e);
 }).catch(function() {
@@ -320,7 +320,7 @@ return;
 }
 a(!1 !== o);
 } catch (e) {
-console.warn(_ + " handleTaskClaim 异常 ", e);
+console.warn(_ + " handleTaskClaim 异常", e);
 a(!1);
 }
 },
@@ -342,7 +342,7 @@ this.clearClaimGuardTimer();
 this.claimGuardTimer = setTimeout(function() {
 t.claimGuardTimer = null;
 if (t.isValid && t.isClaiming) {
-console.warn(_ + " 领取超时自动解锁 from = " + e);
+console.warn(_ + " 领取超时自动解锁 from=" + e);
 t.endClaim();
 }
 }, 15e3);
@@ -372,12 +372,12 @@ if (null === i || i <= 0) {
 var n = this.safeNum(this.settleData && this.settleData.switch_reward, 0);
 n <= 0 && (n = this.safeNum(this.settleData && this.settleData.double_reward, 0));
 if (n > 0) {
-console.log(_ + " emitRewardClaimed: 使用 settleData 兜底 switch_reward = " + n);
+console.log(_ + " emitRewardClaimed: 使用 settleData 兜底 switch_reward=" + n);
 i = n;
 }
 }
-if (null === i || i <= 0) console.warn(_ + " emitRewardClaimed: rewardAmount 无效 resData = " + JSON.stringify(e || {}) + " fallbackAmount = " + t); else {
-console.log(_ + " emitRewardClaimed: reward_amount = " + i + " fallback = " + t);
+if (null === i || i <= 0) console.warn(_ + " emitRewardClaimed: rewardAmount 无效 resData=" + JSON.stringify(e || {}) + " fallbackAmount=" + t); else {
+console.log(_ + " emitRewardClaimed: reward_amount=" + i + " fallback=" + t);
 GlobalEventMgr.getInstance().emit(gameEvent.arrowRewardClaimed, {
 reward_amount: i
 });
@@ -385,7 +385,7 @@ reward_amount: i
 }
 },
 resolveClaimRewardAmount: function(e, t) {
-for (var i = e || {}, n = [ " cash_reward ", " reward_amount ", " ad_reward_amount ", " reward ", " claim_reward ", " task_reward ", " switch_reward ", " double_reward " ], a = 0; a < n.length; a++) {
+for (var i = e || {}, n = [ "cash_reward", "reward_amount", "ad_reward_amount", "reward", "claim_reward", "task_reward", "switch_reward", "double_reward" ], a = 0; a < n.length; a++) {
 var o = this.parseRewardValue(i[n[a]]);
 if (null !== o && o > 0) return o;
 }
@@ -395,13 +395,13 @@ return null !== r && r > 0 ? r : null;
 parseRewardValue: function(e) {
 if (null == e) return null;
 var t = e;
-if (" string " == typeof t && !(t = t.replace(/,/g, " ").trim()).length) return null;
+if ("string" == typeof t && !(t = t.replace(/,/g, "").trim()).length) return null;
 var i = Number(t);
 return isFinite(i) ? Math.max(0, Math.floor(i)) : null;
 },
 applySkeletonByCountry: function() {
 if (this.skeletonComp && this.skeletonComp.isValid) {
-var e = CountryAssetService.getCurrentCountry ? CountryAssetService.getCurrentCountry() : " ", t = g[e] || " red ", i = {
+var e = CountryAssetService.getCurrentCountry ? CountryAssetService.getCurrentCountry() : "", t = g[e] || "red", i = {
 red: this.skeletonDataRed,
 green: this.skeletonDataGreen,
 yellow: this.skeletonDataYellow,
@@ -409,9 +409,9 @@ blue: this.skeletonDataBlue
 }[t] || this.skeletonDataRed;
 if (i) {
 this.skeletonComp.skeletonData = i;
-this.skeletonComp.setAnimation(0, " 1 ", !0);
-console.log(_ + " applySkeletonByCountry country = " + e + " skeleton = " + t);
-} else console.warn(_ + " applySkeletonByCountry: skeletonData[" + t + "] 未赋值 ， 请在预制体编辑器中绑定 ");
+this.skeletonComp.setAnimation(0, "1", !0);
+console.log(_ + " applySkeletonByCountry country=" + e + " skeleton=" + t);
+} else console.warn(_ + " applySkeletonByCountry: skeletonData[" + t + "] 未赋值，请在预制体编辑器中绑定");
 }
 },
 playEnterAnim: function() {
@@ -424,20 +424,20 @@ cc.tween(this.nodeContent).to(.3, {
 y: 0,
 opacity: 255
 }, {
-easing: " backOut "
+easing: "backOut"
 }).start();
 }
 },
 finishAndClose: function() {
 var e = this, t = this.winLevel + 1;
-console.log(_ + " finishAndClose mode = " + this.popupMode + " isLevelPassed = " + this.isLevelPassed);
+console.log(_ + " finishAndClose mode=" + this.popupMode + " isLevelPassed=" + this.isLevelPassed);
 cc.tween(this.node).to(.2, {
 opacity: 0
 }).call(function() {
 if (e.popupMode === f && e.isLevelPassed) {
 UserData.getInstance().level = t;
 GlobalEventMgr.getInstance().emit(gameEvent.gameNext);
-} else if (" function " == typeof e.onCloseCb) try {
+} else if ("function" == typeof e.onCloseCb) try {
 e.onCloseCb();
 } catch (e) {}
 e.emitSettleRewardCloseOnce();
@@ -465,7 +465,7 @@ return null;
 },
 safeNum: function(e, t) {
 var i = e;
-" string " == typeof i && (i = i.replace(/,/g, " ").trim());
+"string" == typeof i && (i = i.replace(/,/g, "").trim());
 var n = Number(i);
 return isNaN(n) ? t : Math.max(0, Math.floor(n));
 },

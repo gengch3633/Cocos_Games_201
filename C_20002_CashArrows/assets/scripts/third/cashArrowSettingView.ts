@@ -32,24 +32,24 @@ if (a) return a;
 return null;
 },
 _cacheNodes: function() {
-var e = cc.find(" block_panel ", this.node);
+var e = cc.find("block_panel", this.node);
 this._panel = e;
-this._soundBg = this._findDeep(e, " btn_channel_0 ");
-this._soundKnob = this._findDeep(e, " sound_toggle_knob ");
-this._soundMark = this._findDeep(e, " sound_toggle_mark ");
-this._vibrateBg = this._findDeep(e, " img_channel_select_overlay ");
-this._vibrateKnob = this._findDeep(e, " vibrate_toggle_knob ");
-this._vibrateMark = this._findDeep(e, " vibrate_toggle_mark ");
-this._btnRestart = this._findDeep(e, " btn_submit ");
-this._contactArea = this._findDeep(e, " img_input_account_bg ");
-this._lblPrivacy = this._findDeep(e, " lbl_privacy_new ");
-this._lblUid = this._findDeep(e, " txt_select_account_info ");
-this._lblVersion = this._findDeep(e, " lbl_version_new ");
-this._lblTitle = this._findDeep(e, " txt_enter_account_details ");
-this._lblContactUs = this._findDeep(e, " lbl_contact_us_new ");
-this._lblSound = this._findDeep(e, " lbl_sound_new ");
-this._lblVibrate = this._findDeep(e, " lbl_vibrate_new ");
-this._lblRestart = this._findDeep(e, " txt_withdraw_btn ");
+this._soundBg = this._findDeep(e, "btn_channel_0");
+this._soundKnob = this._findDeep(e, "sound_toggle_knob");
+this._soundMark = this._findDeep(e, "sound_toggle_mark");
+this._vibrateBg = this._findDeep(e, "img_channel_select_overlay");
+this._vibrateKnob = this._findDeep(e, "vibrate_toggle_knob");
+this._vibrateMark = this._findDeep(e, "vibrate_toggle_mark");
+this._btnRestart = this._findDeep(e, "btn_submit");
+this._contactArea = this._findDeep(e, "img_input_account_bg");
+this._lblPrivacy = this._findDeep(e, "lbl_privacy_new");
+this._lblUid = this._findDeep(e, "txt_select_account_info");
+this._lblVersion = this._findDeep(e, "lbl_version_new");
+this._lblTitle = this._findDeep(e, "txt_enter_account_details");
+this._lblContactUs = this._findDeep(e, "lbl_contact_us_new");
+this._lblSound = this._findDeep(e, "lbl_sound_new");
+this._lblVibrate = this._findDeep(e, "lbl_vibrate_new");
+this._lblRestart = this._findDeep(e, "txt_withdraw_btn");
 },
 _bindLanguageEvent: function() {
 GlobalEventMgr.getInstance().on(gameEvent.languageChanged, this._onLanguageChanged, this);
@@ -67,12 +67,12 @@ i && (i.string = t);
 }
 },
 _refreshTexts: function() {
-this._setLabelString(this._lblTitle, LanguageService.t(" key_setting_title "));
-this._setLabelString(this._lblContactUs, LanguageService.t(" key_setting_contact_us "));
-this._setLabelString(this._lblSound, LanguageService.t(" key_setting_sound "));
-this._setLabelString(this._lblVibrate, LanguageService.t(" key_setting_vibrate "));
-this._setLabelString(this._lblRestart, LanguageService.t(" key_setting_restart "));
-this._setLabelString(this._lblPrivacy, LanguageService.t(" key_setting_privacy "));
+this._setLabelString(this._lblTitle, LanguageService.t("key_setting_title"));
+this._setLabelString(this._lblContactUs, LanguageService.t("key_setting_contact_us"));
+this._setLabelString(this._lblSound, LanguageService.t("key_setting_sound"));
+this._setLabelString(this._lblVibrate, LanguageService.t("key_setting_vibrate"));
+this._setLabelString(this._lblRestart, LanguageService.t("key_setting_restart"));
+this._setLabelString(this._lblPrivacy, LanguageService.t("key_setting_privacy"));
 this._initUID();
 this._initVersion();
 },
@@ -93,19 +93,19 @@ this._applyVibrateState(e);
 },
 _initUID: function() {
 if (this._lblUid) {
-var e = r && ClientDataStore ? ClientDataStore : null, t = e && e.user_id ? String(e.user_id) : " ";
+var e = r && ClientDataStore ? ClientDataStore : null, t = e && e.user_id ? String(e.user_id) : "";
 if (!t) {
 var i = PlayerDataStore || o, n = UserData.getInstance();
-i && i.user_id ? t = String(i.user_id) : i && i.yid && " yid_read_failed " !== i.yid && " yid_read_fail " !== i.yid ? t = String(i.yid) : n.userID ? t = String(n.userID) : n.openId && (t = String(n.openId));
+i && i.user_id ? t = String(i.user_id) : i && i.yid && "yid_read_failed" !== i.yid && "yid_read_fail" !== i.yid ? t = String(i.yid) : n.userID ? t = String(n.userID) : n.openId && (t = String(n.openId));
 }
 var s = this._lblUid.getComponent(cc.Label);
-s && (s.string = LanguageService.t(" key_setting_user_id ", [ t ]));
+s && (s.string = LanguageService.t("key_setting_user_id", [ t ]));
 }
 },
 _initVersion: function() {
 if (this._lblVersion) {
-var e = r && ClientDataStore ? ClientDataStore : r, t = e && e.version_name ? e.version_name : " 1.0.0 ", i = this._lblVersion.getComponent(cc.Label);
-i && (i.string = LanguageService.t(" key_setting_version ", [ t ]));
+var e = r && ClientDataStore ? ClientDataStore : r, t = e && e.version_name ? e.version_name : "1.0.0", i = this._lblVersion.getComponent(cc.Label);
+i && (i.string = LanguageService.t("key_setting_version", [ t ]));
 }
 },
 _applySoundState: function(e) {
@@ -146,7 +146,7 @@ y: -2100
 }).by(.3, {
 y: 100
 }, {
-easing: " backOut "
+easing: "backOut"
 }).union().start();
 cc.tween(e).delay(.15).to(.2, {
 opacity: 255

@@ -9,19 +9,19 @@ export default class NumberRoll extends cc.Component {
     _lab: cc.Label = null;
 
     @property({
-        tooltip: " 动画时长 "
+        tooltip: "动画时长"
     })
     duration: number = 0.2;
 
     @property({
-        tooltip: " 是否为整型 "
+        tooltip: "是否为整型"
     })
     isInteger: boolean = true;
 
     @property({
-        tooltip: " 单位 "
+        tooltip: "单位"
     })
-    unit: string = " ";
+    unit: string = "";
 
     _value: number = null;
     _curValue: number = 0;

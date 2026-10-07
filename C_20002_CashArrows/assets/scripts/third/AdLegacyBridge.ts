@@ -13,7 +13,7 @@ export default class AdLegacyBridge {
     static events = AdEventType;
     static runtime: AdRuntime = {
         getInsertScreenFlag(): string {
-            return " s0 ";
+            return "s0";
         },
         setInsertShowTime(): void {
         },

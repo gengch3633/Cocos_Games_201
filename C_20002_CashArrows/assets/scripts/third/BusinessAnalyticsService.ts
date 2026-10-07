@@ -5,7 +5,7 @@ export default class BusinessAnalyticsService {
         console.log("BusinessAnalyticsService.reportData", event, data, redirect);
         const payload = data || {};
         let redirectType = payload.redirect_type;
-        if (redirectType != null && redirectType !== " ") {
+        if (redirectType != null && redirectType !== "") {
             redirectType = Number(redirectType);
         }
         if (redirect) {

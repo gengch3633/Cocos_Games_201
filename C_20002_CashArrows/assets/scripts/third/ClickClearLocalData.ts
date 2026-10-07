@@ -19,7 +19,7 @@ export default class ClickClearLocalData extends cc.Component {
                     if (cc.sys.isBrowser) {
                         location.reload();
                     }
-                    Tips.show(LanguageService.t(" key_tip_local_archive_cleared "));
+                    Tips.show(LanguageService.t("key_tip_local_archive_cleared"));
                 }
             } else {
                 count = 0;

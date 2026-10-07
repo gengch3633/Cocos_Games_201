@@ -12,7 +12,7 @@ export default class UserInfoService extends Singleton {
     fetch(): void {
         const now = Date.now ? Date.now() : new Date().getTime();
         if (this._lastFetchTs && now - this._lastFetchTs < 500) {
-            console.log("[UserInfoService] fetch throttled, elapsed = "+ (now-this._lastFetchTs) +" ms ");
+            console.log("[UserInfoService] fetch throttled, elapsed="+ (now-this._lastFetchTs) +"ms");
             return;
         }
         this._lastFetchTs = now;
@@ -22,15 +22,15 @@ export default class UserInfoService extends Singleton {
                     if (response && response.data) {
                         this._applyToUserData(response.data);
                     } else {
-                        console.error("[UserInfoService] fetch failed ", response);
+                        console.error("[UserInfoService] fetch failed", response);
                     }
                 }),
                 Handler.create(null, (error: any) => {
-                    console.error("[UserInfoService] fetch error ", error);
+                    console.error("[UserInfoService] fetch error", error);
                 })
             );
         } catch (error) {
-            console.error("[UserInfoService] fetch exception ", error);
+            console.error("[UserInfoService] fetch exception", error);
         }
     }
 

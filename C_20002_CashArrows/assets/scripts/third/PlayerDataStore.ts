@@ -1,9 +1,9 @@
 import ClientDataStore from "./ClientDataStore";
 
 class PlayerDataStoreImpl {
-    user_id: string = " ";
-    user_name: string = " ";
-    yid: string = " yid_read_failed ";
+    user_id: string = "";
+    user_name: string = "";
+    yid: string = "yid_read_failed";
     fund_balance: number = 0;
     cash_balance: number = 0;
     bubble_balance: number = 0;
@@ -16,7 +16,7 @@ class PlayerDataStoreImpl {
     guideline_prop_count: number = 0;
     levels_passed_count: number = 0;
     guideline_eliminate_num: number = 0;
-    current_arrow_level_id: string = " 0 ";
+    current_arrow_level_id: string = "0";
     arrow_level: any = {
         arrow_level_id: 0,
         level_index: 0,
@@ -29,7 +29,7 @@ class PlayerDataStoreImpl {
         life_count: 3
     };
     is_tourists: boolean = false;
-    create_time: string = " ";
+    create_time: string = "";
     ab_info: any = {};
     tx_bind_info: any[] = [];
     conf: any = {
@@ -42,21 +42,21 @@ class PlayerDataStoreImpl {
         const userId = data.user_id;
         const userName = data.user_name;
         const yid = data.yid;
-        this.user_id = userId || " ";
-        this.user_name = userName || " ";
-        this.yid = yid || " yid_read_failed ";
+        this.user_id = userId || "";
+        this.user_name = userName || "";
+        this.yid = yid || "yid_read_failed";
         ClientDataStore.yid = yid;
-        ClientDataStore.user_id = userId || " ";
+        ClientDataStore.user_id = userId || "";
         try {
-            cc.sys.localStorage.setItem(" yid ", yid);
+            cc.sys.localStorage.setItem("yid", yid);
         } catch (err) { }
     }
 
     init(data: any): void {
         if (data) {
-            const payload = data.user_info && typeof data.user_info === "object"? Object.assign({}, data, data.user_info) : data; this._rawData = payload || {}; this.cash_balance = Number(payload.cash_balance || 0); this.fund_balance = Number(payload.fund_balance || 0); this.bubble_balance = Number(payload.bubble_balance || 0); this.user_level = Number(payload.user_level || 0); this.task_point_num = Number(payload.task_point_num || 0); this.ltv_task_point_num = Number(payload.ltv_task_point_num || 0); this.circle_count = Number(payload.circle_count || 0); this.sign_in = Number(payload.sign_in || 0); this.hint_prop_count = Number(payload.hint_prop_count || 0); this.guideline_prop_count = Number(payload.guideline_prop_count || 0); this.levels_passed_count = Number(payload.levels_passed_count || 0); this.guideline_eliminate_num = Number(payload.guideline_eliminate_num || 0); this.current_arrow_level_id = String(payload.current_arrow_level_id ||" 0 ");
+            const payload = data.user_info && typeof data.user_info === "object"? Object.assign({}, data, data.user_info) : data; this._rawData = payload || {}; this.cash_balance = Number(payload.cash_balance || 0); this.fund_balance = Number(payload.fund_balance || 0); this.bubble_balance = Number(payload.bubble_balance || 0); this.user_level = Number(payload.user_level || 0); this.task_point_num = Number(payload.task_point_num || 0); this.ltv_task_point_num = Number(payload.ltv_task_point_num || 0); this.circle_count = Number(payload.circle_count || 0); this.sign_in = Number(payload.sign_in || 0); this.hint_prop_count = Number(payload.hint_prop_count || 0); this.guideline_prop_count = Number(payload.guideline_prop_count || 0); this.levels_passed_count = Number(payload.levels_passed_count || 0); this.guideline_eliminate_num = Number(payload.guideline_eliminate_num || 0); this.current_arrow_level_id = String(payload.current_arrow_level_id ||"0");
             this.is_tourists = !!payload.is_tourists;
-            this.create_time = String(payload.create_time || " ");
+            this.create_time = String(payload.create_time || "");
             this.ab_info = payload.ab_info || {};
             this.tx_bind_info = Array.isArray(payload.tx_bind_info) ? payload.tx_bind_info : [];
             this.conf = payload.conf || {
@@ -80,7 +80,7 @@ class PlayerDataStoreImpl {
                 eliminate_reward: Number(data.eliminate_reward || 0),
                 life_count: Number(data.life_count || 3)
             };
-            this.current_arrow_level_id = String(this.arrow_level.arrow_level_id || " 0 ");
+            this.current_arrow_level_id = String(this.arrow_level.arrow_level_id || "0");
             try {
                 console.log("[ArrowLevel] PlayerDataStore.updateArrowLevel: " + JSON.stringify(this.arrow_level));
             } catch (err) { }
@@ -130,11 +130,11 @@ class PlayerDataStoreImpl {
     }
 
     getCashExtractConf(): any {
-        return this.get(" conf.cash_extract_conf ", {});
+        return this.get("conf.cash_extract_conf", {});
     }
 
     getParameterConf(): any {
-        return this.get(" conf.parameter_conf ", {});
+        return this.get("conf.parameter_conf", {});
     }
 }
 

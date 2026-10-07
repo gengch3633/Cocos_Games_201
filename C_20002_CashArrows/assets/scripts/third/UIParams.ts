@@ -7,8 +7,8 @@ const { ccclass, menu } = cc._decorator;
 @menu("UI/Cocos/UIParams")
 export class UIParams extends cc.Component {
     static EventType = {
-        CHANGE: " UIParams_Event_Change ",
-        CLICK_MASK: " UIParams_Event_Click_Mask "
+        CHANGE: "UIParams_Event_Change",
+        CLICK_MASK: "UIParams_Event_Click_Mask"
     };
 
     isInit: boolean = false;
@@ -82,7 +82,7 @@ export class UIParams extends cc.Component {
     }
 
     createMaskNode(): cc.Node {
-        const maskNode = new cc.Node(this.node.name + " _mask ");
+        const maskNode = new cc.Node(this.node.name + "_mask");
         maskNode.group = this.node.group;
         maskNode.width = cc.winSize.width;
         maskNode.height = cc.winSize.height;

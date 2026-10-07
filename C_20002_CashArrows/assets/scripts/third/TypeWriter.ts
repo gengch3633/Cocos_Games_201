@@ -13,12 +13,12 @@ enum VoiceType {
 @menu("UI/Cocos/TypeWriter")
 export default class TypeWriter extends cc.Component {
     static EventType = {
-        Complete: " TypeWriter_Complete "
+        Complete: "TypeWriter_Complete"
     };
 
     _label: cc.Label = null;
 
-    @property({ tooltip: " 每个字出现的间隔 " })
+    @property({ tooltip: "每个字出现的间隔" })
     interval: number = 0.25;
 
     @property({ type: cc.Enum(VoiceType) })
@@ -26,7 +26,7 @@ export default class TypeWriter extends cc.Component {
 
     @property({
         type: cc.AudioClip,
-        tooltip: " 绑定的语音 ",
+        tooltip: "绑定的语音",
         visible(this: TypeWriter): boolean {
             return this.voiceType !== VoiceType.None;
         }
@@ -34,20 +34,20 @@ export default class TypeWriter extends cc.Component {
     voiceClip: cc.AudioClip = null;
 
     @property({
-        tooltip: " 绑定的语音资源包名 ",
+        tooltip: "绑定的语音资源包名",
         visible(this: TypeWriter): boolean {
             return this.voiceType === VoiceType.Url;
         }
     })
-    voiceBundleName: string = " ";
+    voiceBundleName: string = "";
 
     @property({
-        tooltip: " 绑定的语音资源路径 ",
+        tooltip: "绑定的语音资源路径",
         visible(this: TypeWriter): boolean {
             return this.voiceType === VoiceType.Url;
         }
     })
-    voiceUrl: string = " ";
+    voiceUrl: string = "";
 
     strArr: string[] = [];
     _audioId: number = 0;
@@ -70,12 +70,12 @@ export default class TypeWriter extends cc.Component {
     show(text?: string, voice?: string | cc.AudioClip, bundleName?: string): void {
         text = text || this.label.string;
         if (!text) {
-            console.warn(" TypeWriter: str is empty ");
+            console.warn("TypeWriter: str is empty");
             return;
         }
-        this.strArr = text?.split(" ") ?? [];
+        this.strArr = text?.split("") ?? [];
         this.unscheduleAllCallbacks();
-        this.label.string = " ";
+        this.label.string = "";
         if (voice) {
             if (typeof voice === "string") {
                 this.voiceType = VoiceType.Url;
@@ -109,7 +109,7 @@ export default class TypeWriter extends cc.Component {
     showAll(): void {
         if (!this.isCompleted) {
             this.unscheduleAllCallbacks();
-            this.label.string += this.strArr.join(" ");
+            this.label.string += this.strArr.join("");
             this.strArr.length = 0;
             AudioMgr.getInstance().stopEffect(this._audioId);
             this.node.emit(TypeWriter.EventType.Complete);

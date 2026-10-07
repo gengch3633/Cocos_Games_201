@@ -52,13 +52,13 @@ class MultiPlatformInterface {
 
 export default class MultiPlatform extends Singleton {
     static EventType = {
-        REWARED_VIDEO_SHOW: " MultiPlatform_Event_Before_Show ",
-        REWARED_VIDEO_HIDE: " MultiPlatform_Event_Hide ",
-        BEFORE_LOGIN: " MultiPlatform_Event_BEFORE_LOGIN ",
-        LOGIN: " MultiPlatform_Event_LOGIN ",
-        INIT_COMPLETE: " MultiPlatform_Event_INIT_COMPLETE ",
-        OnShow: " MultiPlatform_Event_OnShow ",
-        OnHide: " MultiPlatform_Event_OnHide "
+        REWARED_VIDEO_SHOW: "MultiPlatform_Event_Before_Show",
+        REWARED_VIDEO_HIDE: "MultiPlatform_Event_Hide",
+        BEFORE_LOGIN: "MultiPlatform_Event_BEFORE_LOGIN",
+        LOGIN: "MultiPlatform_Event_LOGIN",
+        INIT_COMPLETE: "MultiPlatform_Event_INIT_COMPLETE",
+        OnShow: "MultiPlatform_Event_OnShow",
+        OnHide: "MultiPlatform_Event_OnHide"
     };
 
     adConfig: any = null;
@@ -77,7 +77,7 @@ export default class MultiPlatform extends Singleton {
     }
 
     get appId(): string {
-        return this._multiPlatformInterface?.interface?.appId ?? " ";
+        return this._multiPlatformInterface?.interface?.appId ?? "";
     }
 
     get userData(): any {
@@ -134,20 +134,20 @@ export default class MultiPlatform extends Singleton {
                             (window as any).ZYSDK.ZYSDK.reportVideo(state == RewardVideoState.CloseReward);
                         }
                         resolve(state == RewardVideoState.CloseReward);
-                        GEMgr.trackEvent(" adNode ", {
+                        GEMgr.trackEvent("adNode", {
                             adtype: adType,
                             adlevel: getUserData().getInstance().level
                         });
                         if (!cc.sys.isBrowser) {
-                            GEMgr.ge.track(" userAction ", {
-                                action: " AD_ " + adType,
-                                module: " 关卡 " + getUserData().getInstance().level,
+                            GEMgr.ge.track("userAction", {
+                                action: "AD_" + adType,
+                                module: "关卡" + getUserData().getInstance().level,
                                 isAD: 1
                             }, new Date());
                         }
-                        this.zyReportUserAction(" 关卡 " + getUserData().getInstance().level, adType, true);
+                        this.zyReportUserAction("关卡" + getUserData().getInstance().level, adType, true);
                         if (state == RewardVideoState.PlayErr) {
-                            Tips.show(LanguageService.t(" key_tip_reward_video_play_fail "));
+                            Tips.show(LanguageService.t("key_tip_reward_video_play_fail"));
                         }
                     } else if (state == RewardVideoState.PlaySuccess) {
                         cc.audioEngine.pauseMusic();
@@ -168,7 +168,7 @@ export default class MultiPlatform extends Singleton {
                 const now = new Date().getTime() / 1000;
                 const interval = Number(adManager.interval || 1.5);
                 if (adManager.lastTouchDate && now - adManager.lastTouchDate < interval) {
-                    Tips.show(" 广告点击太频繁 ");
+                    Tips.show("广告点击太频繁");
                     resolve(false);
                 } else {
                     let handled = false;
@@ -201,19 +201,19 @@ export default class MultiPlatform extends Singleton {
                                 cc.audioEngine.resumeAllEffects();
                                 cc.game.resume();
                                 resolve(!!rewarded);
-                                GEMgr.trackEvent(" adNode ", {
+                                GEMgr.trackEvent("adNode", {
                                     adtype: adType,
                                     adlevel: getUserData().getInstance().level
                                 });
                                 if (!cc.sys.isBrowser) {
-                                    GEMgr.ge.track(" userAction ", {
-                                        action: " AD_ " + adType,
-                                        module: " 关卡 " + getUserData().getInstance().level,
+                                    GEMgr.ge.track("userAction", {
+                                        action: "AD_" + adType,
+                                        module: "关卡" + getUserData().getInstance().level,
                                         isAD: 1
                                     }, new Date());
                                 }
                                 if (state == RewardVideoState.PlayErr) {
-                                    Tips.show(" 激励视频播放失败, 请重试 ");
+                                    Tips.show("激励视频播放失败,请重试");
                                 }
                             }
                         }
@@ -230,21 +230,21 @@ export default class MultiPlatform extends Singleton {
                     }
                     try {
                         adManager.playNormalVideoAd({
-                            ad_type: adType || " reward_video ",
+                            ad_type: adType || "reward_video",
                             force_video: false
                         }, (result: any) => {
                             const rewarded = !!(result && result.compensationQualifyMark);
                             handleState(rewarded ? RewardVideoState.CloseReward : RewardVideoState.Close, rewarded, result);
                         }, (err: any) => {
                             handleState(RewardVideoState.PlayErr, false, err);
-                        }, " 激励视频播放失败, 请重试 ");
+                        }, "激励视频播放失败,请重试");
                     } catch (err) {
-                        console.error("[MultiPlatform] playNormalVideoAd failed ", err);
+                        console.error("[MultiPlatform] playNormalVideoAd failed", err);
                         handleState(RewardVideoState.PlayErr, false, err);
                     }
                 }
             } else {
-                console.warn("[MultiPlatform] AdManager unavailable, fallback reward success ");
+                console.warn("[MultiPlatform] AdManager unavailable, fallback reward success");
                 resolve(true);
             }
         });
@@ -255,19 +255,19 @@ export default class MultiPlatform extends Singleton {
             scene: scene,
             state: state
         };
-        console.log(" video ", payload);
-        UMengManger.getInstance().trackEvent(" video ", payload);
+        console.log("video", payload);
+        UMengManger.getInstance().trackEvent("video", payload);
         if (this.platformType == PlatformType.ByteDance) {
-            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics(" video ", payload);
+            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics("video", payload);
         }
     }
 
     reportFightStart(level: number): void {
         const payload = { level: level };
-        console.log(" fightStart ", payload);
-        UMengManger.getInstance().trackEvent(" fightStart ", payload);
+        console.log("fightStart", payload);
+        UMengManger.getInstance().trackEvent("fightStart", payload);
         if (this.platformType == PlatformType.ByteDance) {
-            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics(" fightStart ", payload);
+            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics("fightStart", payload);
         }
     }
 
@@ -276,19 +276,19 @@ export default class MultiPlatform extends Singleton {
             level: level,
             iswin: isWin
         };
-        console.log(" fightEnd ", payload);
-        UMengManger.getInstance().trackEvent(" fightEnd ", payload);
+        console.log("fightEnd", payload);
+        UMengManger.getInstance().trackEvent("fightEnd", payload);
         if (this.platformType == PlatformType.ByteDance) {
-            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics(" fightEnd ", payload);
+            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics("fightEnd", payload);
         }
     }
 
     reportTask(taskId: any): void {
         const payload = { taskID: taskId };
-        console.log(" task ", payload);
-        UMengManger.getInstance().trackEvent(" task ", payload);
+        console.log("task", payload);
+        UMengManger.getInstance().trackEvent("task", payload);
         if (this.platformType == PlatformType.ByteDance) {
-            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics(" task ", payload);
+            this.multiPlatformInterface?.byteDancePlatform?.reportAnalytics("task", payload);
         }
     }
 
@@ -302,7 +302,7 @@ export default class MultiPlatform extends Singleton {
         options = options || {};
         if (this.platformType == PlatformType.ByteDance) {
             if (!this.adConfig.templateId) {
-                console.error(" 未配置抖音平台分享模板 ");
+                console.error("未配置抖音平台分享模板");
             }
             options.templateId = this.adConfig.templateId;
         }
@@ -369,7 +369,7 @@ export default class MultiPlatform extends Singleton {
         const top = (visibleHeight - worldPos.y) * scaleY / pixelRatio - node.height;
         const width = node.width;
         const height = node.height;
-        console.log(" style ", left, top, width, height);
+        console.log("style", left, top, width, height);
         return {
             left: left,
             top: top,
@@ -379,21 +379,21 @@ export default class MultiPlatform extends Singleton {
     }
 
     async showInterstitialAd(): Promise<boolean> {
-        console.log(" showInterstitialAd ");
+        console.log("showInterstitialAd");
         console.log(this.adConfig.inters);
         if (!this._multiPlatformInterface?.interface) {
             return false;
         }
         const shown = await this._multiPlatformInterface.interface.showInterstitialAd(this.adConfig.inters);
         if (shown) {
-            GEMgr.trackEvent(" adNode ", {
-                adtype: " 插屏广告 ",
+            GEMgr.trackEvent("adNode", {
+                adtype: "插屏广告",
                 adlevel: getUserData().getInstance().level
             });
             if (!cc.sys.isBrowser) {
-                GEMgr.ge.track(" userAction ", {
-                    action: " AD_插屏广告 ",
-                    module: " 关卡 " + getUserData().getInstance().level,
+                GEMgr.ge.track("userAction", {
+                    action: "AD_插屏广告",
+                    module: "关卡" + getUserData().getInstance().level,
                     isAD: 1
                 }, new Date());
             }

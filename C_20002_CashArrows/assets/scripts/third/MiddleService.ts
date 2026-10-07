@@ -9,7 +9,7 @@ export default class MiddleService {
         switch (type) {
             case MiddleReqType.SDKEvent:
                 return {
-                    refer: ClientDataStore.referrer_url || " ",
+                    refer: ClientDataStore.referrer_url || "",
                     referrer_timestamp_server: ClientDataStore.referrer_timestamp_server || 0,
                     install_timestamp_server: ClientDataStore.install_timestamp_server || 0,
                     query: query,
@@ -17,8 +17,8 @@ export default class MiddleService {
                 };
             case MiddleReqType.Regional:
                 return {
-                    oaid: ClientDataStore.oaid || " ",
-                    referrer_url: ClientDataStore.referrer_url || " ",
+                    oaid: ClientDataStore.oaid || "",
+                    referrer_url: ClientDataStore.referrer_url || "",
                     referrer_timestamp_server: ClientDataStore.referrer_timestamp_server || 0,
                     install_timestamp_server: ClientDataStore.install_timestamp_server || 0,
                     query: query,
@@ -34,9 +34,9 @@ export default class MiddleService {
     }
 
     static commonUrl(country: string): string {
-        let url = " user_id = " + (ClientDataStore.user_id || " ");
-        url += "& yid = " + (ClientDataStore.yid || " ");
+        let url = "user_id=" + (ClientDataStore.user_id || "");
+        url += "&yid=" + (ClientDataStore.yid || "");
         if (ClientDataStore.commonUrlStr) {
-            url += "& "+ ClientDataStore.commonUrlStr; } return (url +="& country = " + country) + "& cy = "+ country; } static resolveCountry(): string { return MiddleHelper.localCountry && MiddleHelper.localCountry() || ClientDataStore.local_country ||" IN ";
+            url += "&"+ ClientDataStore.commonUrlStr; } return (url +="&country=" + country) + "&cy="+ country; } static resolveCountry(): string { return MiddleHelper.localCountry && MiddleHelper.localCountry() || ClientDataStore.local_country ||"IN";
     }
 }

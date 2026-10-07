@@ -3,8 +3,8 @@ import ResMgr from "./ResMgr";
 
 export default class NodePool extends Pool<cc.Node> {
     static EventType = {
-        UNUSE: " NodePool_Event_UNUSE ",
-        USED: " NodePool_Event_USED "
+        UNUSE: "NodePool_Event_UNUSE",
+        USED: "NodePool_Event_USED"
     };
 
     eventTarget: cc.EventTarget = new cc.EventTarget();
@@ -15,7 +15,7 @@ export default class NodePool extends Pool<cc.Node> {
         this.setValidAction(this.isValid);
     }
 
-    async setCreateActionByAssetUrl(url: string, bundleName: string = " ", parent: cc.Node = null): Promise<boolean> {
+    async setCreateActionByAssetUrl(url: string, bundleName: string = "", parent: cc.Node = null): Promise<boolean> {
         const prefab = await ResMgr.getInstance().loadRes(url, cc.Prefab, null, bundleName);
         if (prefab) {
             this.setCreateAction(() => ResMgr.getInstance().instantiate(prefab, parent));
