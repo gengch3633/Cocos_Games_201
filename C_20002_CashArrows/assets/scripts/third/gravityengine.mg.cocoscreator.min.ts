@@ -800,7 +800,7 @@ f.url = function() {
     l++) if("" !== (o = (o = a[l].match(/(.*?)=(.*)/))|| [a[l], a[l], ""])[1].replace(/\s/g, "")) {
       o[2] = (i = o[2]|| "", f.decodeURIComponent(i.replace(/\+/g, " ")));
       if(s === o[1]) return o[2];
-      if(i = o[1].match(/(.*) \[([0- 9]+) \]/)) {
+      if(i = o[1].match(/(.*)\[([0-9]+)\]/)) {
         r[i[1]] = r[i[1]]|| [];
         r[i[1]][i[2]] = o[2];
       } else r[o[1]] = o[2];
@@ -816,8 +816,8 @@ f.url = function() {
     a = a|| window.location.toString();
     if(! n) return a;
     n = n.toString();
-    if(a.match(/ ^ mailto:([^/].+)/)) {
-      o = a.match(/ ^ mailto:([^/].+)/);
+    if(a.match(/^mailto:([^/].+)/)) {
+      o = a.match(/^mailto:([^/].+)/);
       r.protocol = "mailto";
       r.email = o[1];
     } else {
@@ -826,15 +826,15 @@ f.url = function() {
         r.hash = o[2];
         a = o[1];
       }
-      if(r.hash&& n.match(/ ^ #/)) return i(n, r.hash);
+      if(r.hash&& n.match(/^#/)) return i(n, r.hash);
       if(a.match(/(.*?)\?(.*)/)) {
         o = a.match(/(.*?)\?(.*)/);
         r.query = o[2];
         a = o[1];
       }
-      if(r.query&& n.match(/ ^ \?/)) return i(n, r.query);
-      if(a.match(/(.*?):? \/ \/(.*)/)) {
-        o = a.match(/(.*?):? \/ \/(.*)/);
+      if(r.query&& n.match(/^\?/)) return i(n, r.query);
+      if(a.match(/(.*?):?\/\/(.*)/)) {
+        o = a.match(/(.*?):?\/\/(.*)/);
         r.protocol = o[1].toLowerCase();
         a = o[2];
       }
@@ -843,15 +843,15 @@ f.url = function() {
         r.path = o[2];
         a = o[1];
       }
-      r.path = (r.path|| "").replace(/ ^([^/])/, "/$1").replace(/ \/ $/, "");
-      if((n = n.match(/ ^[- 0- 9]+ $/)? n.replace(/ ^([^/])/, "/$1"): n).match(/ ^ \//)) return t(n, r.path.substring(1));
+      r.path = (r.path|| "").replace(/^([^/])/, "/$1").replace(/\/$/, "");
+      if((n = n.match(/^[-0-9]+$/)? n.replace(/^([^/])/, "/$1"): n).match(/^\//)) return t(n, r.path.substring(1));
       if(o = (o = t("/-1", r.path.substring(1)))&& o.match(/(.*?)\.(.*)/)) {
         r.file = o[0];
         r.filename = o[1];
         r.fileext = o[2];
       }
-      if(a.match(/(.*):([0- 9]+) $/)) {
-        o = a.match(/(.*):([0- 9]+) $/);
+      if(a.match(/(.*):([0-9]+)$/)) {
+        o = a.match(/(.*):([0-9]+)$/);
         r.port = o[2];
         a = o[1];
       }
@@ -1243,7 +1243,7 @@ N = function() {
   }
 , {
     key: "_getPath", value: function(e) {
-      return "string" == typeof e? e.replace(/ ^ \//, ""): "Abnormal values";
+      return "string" == typeof e? e.replace(/^\//, ""): "Abnormal values";
     }
   }
 , {
