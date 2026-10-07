@@ -12,7 +12,7 @@
   "height": 512,
   "platformSettings": {},
   "subMetas": {
-    "green.png": {
+    "green": {
       "ver": "1.0.6",
       "uuid": "e80efc52-deca-4919-b2ac-1af88805e91e",
       "importer": "sprite-frame",
@@ -20,12 +20,12 @@
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
-      "offsetX": 0,
+      "offsetX": -89,
       "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 2048,
-      "height": 512,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 1866,
+      "height": 508,
       "rawWidth": 2048,
       "rawHeight": 512,
       "borderTop": 0,

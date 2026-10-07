@@ -33,28 +33,6 @@
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
-    },
-    "big_pop_bg_3e0c5ccf-320c-46d1-a912-7082a4b1661a": {
-      "ver": "1.0.6",
-      "uuid": "3e0c5ccf-320c-46d1-a912-7082a4b1661a",
-      "importer": "sprite-frame",
-      "rawTextureUuid": "0a4d5727-7f10-46f9-b003-482a17b95628",
-      "trimType": "auto",
-      "trimThreshold": 1,
-      "rotated": false,
-      "offsetX": 0,
-      "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 682,
-      "height": 92,
-      "rawWidth": 682,
-      "rawHeight": 92,
-      "borderTop": 0,
-      "borderBottom": 0,
-      "borderLeft": 0,
-      "borderRight": 0,
-      "subMetas": {}
     }
   }
 }

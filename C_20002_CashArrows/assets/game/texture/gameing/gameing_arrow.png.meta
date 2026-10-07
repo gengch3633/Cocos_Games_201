@@ -33,28 +33,6 @@
       "borderLeft": 32,
       "borderRight": 32,
       "subMetas": {}
-    },
-    "gameing_arrow_8ab32a3d-79ba-408c-b583-5de4f077aac1": {
-      "ver": "1.0.6",
-      "uuid": "8ab32a3d-79ba-408c-b583-5de4f077aac1",
-      "importer": "sprite-frame",
-      "rawTextureUuid": "1dd404ae-1f9c-4756-8c3d-d6560e1bafd4",
-      "trimType": "auto",
-      "trimThreshold": 1,
-      "rotated": false,
-      "offsetX": 0,
-      "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 147,
-      "height": 74,
-      "rawWidth": 147,
-      "rawHeight": 74,
-      "borderTop": 0,
-      "borderBottom": 0,
-      "borderLeft": 32,
-      "borderRight": 32,
-      "subMetas": {}
     }
   }
 }
