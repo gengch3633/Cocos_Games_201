@@ -1,5 +1,6 @@
 import ClientDataStore from "./ClientDataStore";
 import CryptoHelper from "./CryptoHelper";
+import { getMiddleMockResponse, isDevApiMockEnabled, runDevApiMockAsync } from "./DevApiMock";
 import HotUpdateManager from "./HotUpdateManager";
 import { MIDDLE_PROJECT_ADAPTER_CONFIG } from "./MiddleProjectAdapterConfig";
 import { MIDDLE_REQUEST_DESCRIPTORS } from "./MiddleRequestDescriptors";
@@ -210,6 +211,12 @@ function buildRequestBody(requestType: string, params: any): string {
 
 export default class MiddleNetwork {
     static request(requestType: string, params: any, onSuccess: any, onFail: any): void {
+        if (isDevApiMockEnabled()) {
+            runDevApiMockAsync(() => {
+                invokeHandler(onSuccess, getMiddleMockResponse(requestType, params));
+            });
+            return;
+        }
         const descriptor = MIDDLE_REQUEST_DESCRIPTORS[requestType];
         const baseUrl = descriptor?.url;
         if (baseUrl) {

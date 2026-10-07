@@ -1,3 +1,5 @@
+import { getBusinessMockResponse, isDevApiMockEnabled, resolveBusinessRequestKey, runDevApiMockAsync } from "./DevApiMock";
+
 interface QueueItem {
     url: string;
     reqData: any;
@@ -78,6 +80,21 @@ export default class RequestQueueEngine {
     }
 
     post(url: string, reqData: any, handler: any): void {
+        if (isDevApiMockEnabled()) {
+            const requestTime = Date.now();
+            const trace = reqData && typeof reqData.trace === "function" ? reqData.trace() : null;
+            const requestKey = trace?.requestKey || resolveBusinessRequestKey(url);
+            const businessData = trace?.businessPlainData;
+            runDevApiMockAsync(() => {
+                const mockResponse = getBusinessMockResponse(requestKey, businessData, url);
+                if (handler && this.hooks.shouldEnqueue(handler)) {
+                    this.queuePostCallback(requestTime, 200, true, mockResponse);
+                } else {
+                    this.hooks.dispatchResult(handler, true, mockResponse);
+                }
+            });
+            return;
+        }
         let statusCode = 9999;
         const requestTime = Date.now();
         const xhr = new XMLHttpRequest();

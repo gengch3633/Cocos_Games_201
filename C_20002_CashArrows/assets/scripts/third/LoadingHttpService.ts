@@ -2,6 +2,7 @@ import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import { BUSINESS_REQUEST_DESCRIPTORS } from "./BusinessRequestDescriptors";
 import ClientDataStore from "./ClientDataStore";
 import CryptoHelper from "./CryptoHelper";
+import { getSdkMockResponse, isDevApiMockEnabled, runDevApiMockAsync } from "./DevApiMock";
 import RequestDescriptor from "./RequestDescriptor";
 import RequestQueueEngine from "./RequestQueueEngine";
 import SystemDataStore from "./SystemDataStore";
@@ -446,6 +447,12 @@ function buildRequestUrl(requestKey: string): string {
     }
 
     static sdkRequest(requestKey: string, businessData: any, successHandle: any, failHandle: any, mergeBody: boolean = false, stringifyQueryParams: boolean = true): void {
+        if (isDevApiMockEnabled()) {
+            runDevApiMockAsync(() => {
+                successHandle?.runWith(getSdkMockResponse(requestKey, businessData));
+            });
+            return;
+        }
         const uri = requestDescriptor.getUri(requestKey);
         const country = ClientDataStore.local_country || " ";
         const url = this.SDK_WD_BASE + uri + "?package_name=" + ClientDataStore.package_name + "&cy="+ country; const userId = ClientDataStore.user_id ||" ";
