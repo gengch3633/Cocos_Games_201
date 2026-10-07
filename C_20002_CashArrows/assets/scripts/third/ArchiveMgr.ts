@@ -1,4 +1,3 @@
-import MultiPlatform from "./MultiPlatform";
 import Singleton from "./Singleton";
 
 export default class ArchiveMgr extends Singleton {
@@ -37,6 +36,7 @@ export default class ArchiveMgr extends Singleton {
                 }
             }
         }
+        const MultiPlatform = require("./MultiPlatform").default;
         MultiPlatform.getInstance().on(MultiPlatform.EventType.OnHide, this.saveToServerAll, this);
         return true;
     }
