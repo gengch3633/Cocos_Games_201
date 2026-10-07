@@ -1685,24 +1685,7 @@ const GameView = (function (_super) {
 ;
   GameView.prototype.getNewbieGuideStep = function() {
     var e = this.getNewbieGuideFlow();
-    return e&& "function" == typeof e.getStep? Number(e.getStep()|| 0): 0;
-  }
-;
-  GameView.prototype.isNewbieGuideStep = function(e) {
-    return this.getNewbieGuideStep() === Number(e|| 0);
-  }
-;
-  GameView.prototype.advanceNewbieGuideStep = function(e) {
-    var t = this.getNewbieGuideFlow();
-    return !(! t|| "function" != typeof t.advanceIfCurrent|| ! t.advanceIfCurrent(e));
-  }
-;
-  GameView.prototype.isNewbieSettleReward = function(e) {
-    if(! e) return ! 1;
-    var t = e.is_new;
-    void 0 === t&& (t = e.isNew);
-    var i = "string" == typeof t? t.trim().toLowerCase(): t;
-    return ! 0 === t|| "true" === i|| "1" === i|| 1 === Number(t|| 0);
+    return e&& "function"== typeof e.getStep? Number(e.getStep()|| 0): 0; } ; GameView.prototype.isNewbieGuideStep = function(e) { return this.getNewbieGuideStep() === Number(e|| 0); } ; GameView.prototype.advanceNewbieGuideStep = function(e) { var t = this.getNewbieGuideFlow(); return !(! t||"function"!= typeof t.advanceIfCurrent|| ! t.advanceIfCurrent(e)); } ; GameView.prototype.isNewbieSettleReward = function(e) { if(! e) return ! 1; var t = e.is_new; void 0 === t&& (t = e.isNew); var i ="string"== typeof t? t.trim().toLowerCase(): t; return ! 0 === t||"true" === i|| "1" === i|| 1 === Number(t|| 0);
   }
 ;
   GameView.prototype.refreshStep3GuideTipText = function() {
@@ -2383,10 +2366,7 @@ const GameView = (function (_super) {
   }
 ;
   GameView.prototype._shouldSkipRewardVideoForDebug = function(e) {
-    if("提示" !== e&& "辅助线" !== e) return ! 1;
-    if(cc&& cc.sys&& cc.sys.isNative&& cc.sys.os !== cc.sys.OS_ANDROID&& cc.sys.os !== cc.sys.OS_IOS) return ! 0;
-    try {
-      return "1" === (cc&& cc.sys&& cc.sys.localStorage? cc.sys.localStorage.getItem("arrow_debug_skip_reward_video"): "");
+    if("提示" !== e&& "辅助线"!== e) return ! 1; if(cc&& cc.sys&& cc.sys.isNative&& cc.sys.os !== cc.sys.OS_ANDROID&& cc.sys.os !== cc.sys.OS_IOS) return ! 0; try { return"1" === (cc&& cc.sys&& cc.sys.localStorage? cc.sys.localStorage.getItem("arrow_debug_skip_reward_video"): "");
     } catch(e) {
       return ! 1;
     }
@@ -2399,18 +2379,7 @@ const GameView = (function (_super) {
       t&& t();
     } else {
       var o = g&& AdManager&& AdManager.getInstance? AdManager.getInstance(): null;
-      if(o&& "function" == typeof o.playNormalVideoAd) {
-        n&& (this.bool_cantouchAd = ! 1);
-        this.bool_isStop = ! 0;
-        var r = function(e) {
-          a.bool_isStop = ! 1;
-          n&& (a.bool_cantouchAd = ! 0);
-          e? t&& t(): i&& i();
-        }
-;
-        try {
-          o.playNormalVideoAd({
-            ad_type: e|| "reward_video", force_video: ! 1
+      if(o&& "function"== typeof o.playNormalVideoAd) { n&& (this.bool_cantouchAd = ! 1); this.bool_isStop = ! 0; var r = function(e) { a.bool_isStop = ! 1; n&& (a.bool_cantouchAd = ! 0); e? t&& t(): i&& i(); } ; try { o.playNormalVideoAd({ ad_type: e||"reward_video", force_video: ! 1
           }
 , function(e) {
             var t = ! e|| void 0 === e.compensationQualifyMark|| ! ! e.compensationQualifyMark;
@@ -2593,7 +2562,7 @@ var t = e.getComponent(cc.Sprite);
 t && t.spriteFrame && (this._sfVb = t.spriteFrame);
 }
 var i = this;
-ResMgr.getInstance().loadRes(" texture/ gameing/ off ", cc.SpriteFrame, this, " game ").then(function(e) {
+ResMgr.getInstance().loadRes("texture/gameing/off", cc.SpriteFrame, this, "game").then(function(e) {
 e && (i._sfOff = e);
 });
 };
@@ -2636,7 +2605,7 @@ r && (r.string = " ");
 a.active = !1;
 }
 this.node_fuzhustate && (this.node_fuzhustate.active = !1);
-} else ResMgr.getInstance().loadRes(" texture/ gameing/ off ", cc.SpriteFrame, this, " game ").then(function(t) {
+} else ResMgr.getInstance().loadRes("texture/gameing/off", cc.SpriteFrame, this, "game").then(function(t) {
 if (t) {
 e._sfOff = t;
 e.initFuzhuBtnstate();
@@ -2644,7 +2613,7 @@ e.initFuzhuBtnstate();
 });
 };
 GameView.prototype.initTishiBtnstate = function() {
-this.node_tishi && this.node_tishi.isValid || (this.node_tishi = cc.find(" bottom/ btn_tip ", this.node) || cc.find(" btn_tip ", this.node));
+this.node_tishi && this.node_tishi.isValid || (this.node_tishi = cc.find("bottom/btn_tip", this.node) || cc.find(" btn_tip ", this.node));
 if (this.node_tishi) {
 var e = this.node_tishi.getChildByName(" tipscardBG "), t = this.node_tishi.getChildByName(" vb ");
 if (e && t) {
@@ -2773,26 +2742,7 @@ this._mistakeCount = 0;
 this._reviveCount = 0;
 this._hintUsedCount = 0;
 this._levelStartTs = Date.now();
-console.log("[ArrowStats] 重开本关 ， retry_count = " + this._retryCount);
-};
-GameView.prototype._buildBehaviorStatsFields = function() {
-var e = PlayerDataStore.arrow_level || {}, t = e.arrow_level_id, i = e.level_index || this.num_rellyLevel || 0, n = Number(this._mistakeCount || 0), a = Number(this._reviveCount || 0), o = this._levelStartTs ? Math.max(0, Math.round((Date.now() - this._levelStartTs) / 1e3)) : 0;
-return {
-arrow_level_id: t || this.num_rellyLevel,
-level_index: Number(i) || 0,
-arrow_count: Number(e.arrow_count || 0),
-mistake_count: n,
-life_used: n,
-retry_count: Number(this._retryCount || 0),
-hint_used: Number(this._hintUsedCount || 0),
-revive_count: a,
-duration_sec: o
-};
-};
-GameView.prototype._reportLevelFail = function() {
-var e = this._buildBehaviorStatsFields();
-e.level_passed = 0;
-e.settle_type = " FAIL ";
+console.log("[ArrowStats] 重开本关 ， retry_count = "+ this._retryCount); }; GameView.prototype._buildBehaviorStatsFields = function() { var e = PlayerDataStore.arrow_level || {}, t = e.arrow_level_id, i = e.level_index || this.num_rellyLevel || 0, n = Number(this._mistakeCount || 0), a = Number(this._reviveCount || 0), o = this._levelStartTs ? Math.max(0, Math.round((Date.now()-this._levelStartTs)/1e3)) : 0; return { arrow_level_id: t || this.num_rellyLevel, level_index: Number(i) || 0, arrow_count: Number(e.arrow_count || 0), mistake_count: n, life_used: n, retry_count: Number(this._retryCount || 0), hint_used: Number(this._hintUsedCount || 0), revive_count: a, duration_sec: o }; }; GameView.prototype._reportLevelFail = function() { var e = this._buildBehaviorStatsFields(); e.level_passed = 0; e.settle_type =" FAIL ";
 e.level_fail = 1;
 e.clean_win = 0;
 try {
@@ -2875,8 +2825,7 @@ e && o._refreshUserInfoAfterLevelPass();
 }
 }), Handler.create(null, function(t) {
 console.warn("[ArrowLevel][结算接口][返回] arrowRewardSettle type = " + u + " FAIL req = " + JSON.stringify(s) + " err = " + JSON.stringify(t));
-console.warn("[ArrowLevel] _settleArrowReward: 结算请求失败 err = " + JSON.stringify(t));
-var i = t && t.message ? String(t.message) : " ", n = e && (i.indexOf(" 重复通关 ") >= 0 || i.toLowerCase().indexOf(" duplicate ") >= 0);
+console.warn("[ArrowLevel] _settleArrowReward: 结算请求失败 err = "+ JSON.stringify(t)); var i = t && t.message ? String(t.message) :" ", n = e && (i.indexOf(" 重复通关 ") >= 0 || i.toLowerCase().indexOf(" duplicate ") >= 0);
 if (!n && d && d.shouldPop(t)) {
 console.warn("[ArrowLevel] _settleArrowReward 网络异常 ， 弹重试窗 ");
 d.showAndRetry(h);
@@ -2962,7 +2911,7 @@ e ? console.error(" 纹理资源预加载失败: ", e) : console.log(" 成功预
 };
 GameView.prototype.showHard = function() {
 var e = this;
-AudioMgr.getInstance().playEffect(" audio/ difficulty_warning ", bundleName.game);
+AudioMgr.getInstance().playEffect("audio/difficulty_warning", bundleName.game);
 this.node_hardsp.active = !0;
 this.node_red.active = !0;
 this.node_red.opacity = 0;

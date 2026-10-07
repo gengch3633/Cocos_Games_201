@@ -41,55 +41,11 @@ function writeStoredStep(step: number): void {
 
 function shouldEnableGuide(): boolean {
     try {
-        if (SystemDataStore && typeof SystemDataStore.is_new_user === "function" && SystemDataStore.is_new_user()) {
-            return true;
-        }
-    } catch (err) { }
-    try {
-        return Number(UserData.getInstance().level || 1) <= 2;
-    } catch (err) {
-        return true;
-    }
-}
-
-function clampStep(step: number): number {
-    let value = parseStep(step, STEP_ENTRY_LEVEL1);
-    if (value < STEP_ENTRY_LEVEL1) {
-        value = STEP_ENTRY_LEVEL1;
-    }
-    if (value > STEP_DONE) {
-        value = STEP_DONE;
-    }
-    return value;
-}
-
-function readReportedSteps(): any {
-    try {
-        const stored = cc?.sys?.localStorage?.getItem(REPORTED_KEY);
-        if (!stored) {
-            return {};
-        }
-        const parsed = JSON.parse(stored);
-        return parsed && typeof parsed === "object" ? parsed : {};
-    } catch (err) {
-        return {};
-    }
-}
-
-function writeReportedSteps(reported: any): void {
-    try {
-        cc?.sys?.localStorage?.setItem(REPORTED_KEY, JSON.stringify(reported || {}));
-    } catch (err) { }
-}
-
-function reportStepOnce(step: number): void {
-    if (REPORT_STEPS[step]) {
-        const reported = readReportedSteps();
-        if (!reported[step]) {
-            reported[step] = 1;
-            writeReportedSteps(reported);
-            try {
-                if (BusinessAnalyticsService && typeof BusinessAnalyticsService.reportData === "function") {
+        if (SystemDataStore && typeof SystemDataStore.is_new_user === "function"&& SystemDataStore.is_new_user()) { return true; } } catch (err) { } try { return Number(UserData.getInstance().level || 1) <= 2; } catch (err) { return true; }
+} function clampStep(step: number): number { let value = parseStep(step, STEP_ENTRY_LEVEL1); if (value < STEP_ENTRY_LEVEL1) { value = STEP_ENTRY_LEVEL1; } if (value > STEP_DONE) { value = STEP_DONE; } return value;
+} function readReportedSteps(): any { try { const stored = cc?.sys?.localStorage?.getItem(REPORTED_KEY); if (!stored) { return {}; } const parsed = JSON.parse(stored); return parsed && typeof parsed ==="object"? parsed : {}; } catch (err) { return {}; }
+} function writeReportedSteps(reported: any): void { try { cc?.sys?.localStorage?.setItem(REPORTED_KEY, JSON.stringify(reported || {})); } catch (err) { }
+} function reportStepOnce(step: number): void { if (REPORT_STEPS[step]) { const reported = readReportedSteps(); if (!reported[step]) { reported[step] = 1; writeReportedSteps(reported); try { if (BusinessAnalyticsService && typeof BusinessAnalyticsService.reportData ==="function") {
                     BusinessAnalyticsService.reportData(" newbie_guide_step_show ", {
                         step: step
                     });

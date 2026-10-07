@@ -25,13 +25,7 @@ import "./GEMgr";
 
 function isArrowLogEnabled(): boolean {
     try {
-        if (typeof window !== "undefined" && window.__ARROW_ENABLE_LOG__ === true) {
-            return true;
-        }
-    } catch (e) {
-    }
-    try {
-        if (typeof cc !== "undefined" && cc.sys && cc.sys.localStorage) {
+        if (typeof window !== "undefined"&& window.__ARROW_ENABLE_LOG__ === true) { return true; } } catch (e) { } try { if (typeof cc !=="undefined" && cc.sys && cc.sys.localStorage) {
             const value = cc.sys.localStorage.getItem("arrow_enable_log");
             return value === "1" || value === "true";
         }
@@ -180,17 +174,7 @@ export default class Loading extends cc.Component {
 
     onLoad(): void {
         patchSpineBlendGuard();
-        console.log("[Loading][UMP] onLoad hasUmpNode = " + !!this.umpNode + " hasAgreeBtn = " + !!this.umpBtnAgree + " hasCloseBtn = " + !!this.umpBtnClose);
-        initProjectLoadingAdapters();
-        LanguageService.init();
-        this.playLogoSpineOnce();
-        this.init();
-    }
-
-    playLogoSpineOnce(): void {
-        if (this.sp_logo && this.sp_logo.setAnimation) {
-            try {
-                const animationName = this.sp_logo.defaultAnimation || "animation";
+        console.log("[Loading][UMP] onLoad hasUmpNode = " + !!this.umpNode + " hasAgreeBtn = " + !!this.umpBtnAgree + " hasCloseBtn = "+ !!this.umpBtnClose); initProjectLoadingAdapters(); LanguageService.init(); this.playLogoSpineOnce(); this.init(); } playLogoSpineOnce(): void { if (this.sp_logo && this.sp_logo.setAnimation) { try { const animationName = this.sp_logo.defaultAnimation ||"animation";
                 this.sp_logo.loop = false;
                 this.sp_logo.clearTracks && this.sp_logo.clearTracks();
                 this.sp_logo.setAnimation(0, animationName, false);

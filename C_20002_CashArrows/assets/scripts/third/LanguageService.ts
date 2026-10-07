@@ -88,10 +88,7 @@ const LanguageService = {
     },
 
     hasLanguage(locale: string): boolean {
-        return locale === "en-US" || locale === "zh-CN" || locale === "id-ID" ||
-            locale === "pt-BR" || locale === "pt-PT" || locale === "es-ES" ||
-            locale === "de-DE" || locale === "it-IT" || locale === "ru-RU" ||
-            locale === "ja-JP" || locale === "bn-BD";
+        return locale === "en-US" || locale === "zh-CN" || locale === "id-ID"|| locale ==="pt-BR" || locale === "pt-PT" || locale === "es-ES"|| locale ==="de-DE" || locale === "it-IT" || locale === "ru-RU"|| locale ==="ja-JP" || locale === "bn-BD";
     },
 
     getCurrentLanguage(): string {

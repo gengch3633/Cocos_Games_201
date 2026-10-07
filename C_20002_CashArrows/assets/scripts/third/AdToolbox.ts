@@ -9,20 +9,7 @@ export default class AdToolbox {
 
     static formatDate(timestamp: number, separator: string = "-"): string {
         const date = new Date(timestamp);
-        return "" + date.getFullYear() + separator + (date.getMonth() + 1) + separator + date.getDate();
-    }
-
-    static localStorageSetItem(key: string, value: string): void {
-        try {
-            cc.sys.localStorage.setItem(key, value);
-        } catch (e) {
-        }
-    }
-
-    static localStorageGetItem(key: string, defaultValue: any): any {
-        try {
-            const value = cc.sys.localStorage.getItem(key);
-            return value == null || value === "" || value === "nan" ? defaultValue : value;
+        return ""+ date.getFullYear() + separator + (date.getMonth() + 1) + separator + date.getDate(); } static localStorageSetItem(key: string, value: string): void { try { cc.sys.localStorage.setItem(key, value); } catch (e) { } } static localStorageGetItem(key: string, defaultValue: any): any { try { const value = cc.sys.localStorage.getItem(key); return value == null || value ==="" || value === "nan" ? defaultValue : value;
         } catch (e) {
             return defaultValue;
         }

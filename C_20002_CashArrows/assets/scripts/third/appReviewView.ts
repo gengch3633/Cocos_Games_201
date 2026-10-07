@@ -29,34 +29,7 @@ const AppReviewView = cc.Class({
             this._stateRating.active = true;
         }
         this._refreshStars();
-        console.log(LOG_PREFIX + " onLoad bind -> stars=" + this._stars.length +
-            " panel=" + !!this._panel +
-            " stateRating=" + !!this._stateRating +
-            " stateThanks=" + !!this._stateThanks +
-            " btnClose=" + !!this._btnClose +
-            " btnOk=" + !!this._btnOk);
-    },
-    start() {
-        this._playEnterAnim();
-    },
-    _findDeep(node: cc.Node, name: string): cc.Node {
-        if (!node?.isValid) {
-            return null;
-        }
-        if (node.name === name) {
-            return node;
-        }
-        const children = node.children || [];
-        for (let i = 0; i < children.length; i++) {
-            const found = this._findDeep(children[i], name);
-            if (found) {
-                return found;
-            }
-        }
-        return null;
-    },
-    _bindNodes() {
-        this._panel = this._findDeep(this.node, "block_panel");
+        console.log(LOG_PREFIX + " onLoad bind -> stars="+ this._stars.length +" panel="+ !!this._panel +" stateRating="+ !!this._stateRating +" stateThanks="+ !!this._stateThanks +" btnClose="+ !!this._btnClose +" btnOk="+ !!this._btnOk); }, start() { this._playEnterAnim(); }, _findDeep(node: cc.Node, name: string): cc.Node { if (!node?.isValid) { return null; } if (node.name === name) { return node; } const children = node.children || []; for (let i = 0; i < children.length; i++) { const found = this._findDeep(children[i], name); if (found) { return found; } } return null; }, _bindNodes() { this._panel = this._findDeep(this.node,"block_panel");
         this._stateRating = this._findDeep(this.node, "state_rating");
         this._stateThanks = this._findDeep(this.node, "state_thanks");
         this._btnClose = this._findDeep(this.node, "btn_close");
@@ -84,10 +57,7 @@ const AppReviewView = cc.Class({
     },
     _onClickStar(rating: number) {
         if (this._acting) {
-            console.log(LOG_PREFIX + " _onClickStar ignored(acting) rating=" + rating);
-            return;
-        }
-        console.log(LOG_PREFIX + " _onClickStar rating=" + rating);
+            console.log(LOG_PREFIX + " _onClickStar ignored(acting) rating="+ rating); return; } console.log(LOG_PREFIX +" _onClickStar rating=" + rating);
         this._rating = rating;
         this._refreshStars();
         reportReviewEvent("app_review_star_click", { rating });
@@ -140,13 +110,7 @@ const AppReviewView = cc.Class({
         if (heart) {
             heart.stopAllActions();
             heart.scale = 0.6;
-            cc.tween(heart).to(0.3, { scale: 1 }, { easing: "backOut" }).start();
-        }
-    },
-    _close() {
-        if (!this._closed) {
-            this._closed = true;
-            console.log(LOG_PREFIX + " _close rating=" + (this._rating || 0) + " rated=" + (this._rating > 0 ? 1 : 0));
+            cc.tween(heart).to(0.3, { scale: 1 }, { easing: "backOut"}).start(); } }, _close() { if (!this._closed) { this._closed = true; console.log(LOG_PREFIX +" _close rating=" + (this._rating || 0) + " rated=" + (this._rating > 0 ? 1 : 0));
             reportReviewEvent("app_review_close", {
                 rating: this._rating || 0,
                 rated: this._rating > 0 ? 1 : 0

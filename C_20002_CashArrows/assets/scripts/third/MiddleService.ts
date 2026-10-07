@@ -37,12 +37,6 @@ export default class MiddleService {
         let url = " user_id = " + (ClientDataStore.user_id || " ");
         url += "& yid = " + (ClientDataStore.yid || " ");
         if (ClientDataStore.commonUrlStr) {
-            url += "& " + ClientDataStore.commonUrlStr;
-        }
-        return (url += "& country = " + country) + "& cy = " + country;
-    }
-
-    static resolveCountry(): string {
-        return MiddleHelper.localCountry && MiddleHelper.localCountry() || ClientDataStore.local_country || " IN ";
+            url += "& "+ ClientDataStore.commonUrlStr; } return (url +="& country = " + country) + "& cy = "+ country; } static resolveCountry(): string { return MiddleHelper.localCountry && MiddleHelper.localCountry() || ClientDataStore.local_country ||" IN ";
     }
 }

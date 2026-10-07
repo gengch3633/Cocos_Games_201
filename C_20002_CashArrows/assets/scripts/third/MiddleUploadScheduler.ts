@@ -21,9 +21,7 @@ export default class MiddleUploadScheduler {
             } catch (err) {
                 serialized = String(detail);
             }
-            console.log(MiddleUploadScheduler.LOG_TAG + " " + message + " " + serialized);
-        } else {
-            console.log(MiddleUploadScheduler.LOG_TAG + " " + message);
+            console.log(MiddleUploadScheduler.LOG_TAG + " " + message + " "+ serialized); } else { console.log(MiddleUploadScheduler.LOG_TAG +" " + message);
         }
     }
 

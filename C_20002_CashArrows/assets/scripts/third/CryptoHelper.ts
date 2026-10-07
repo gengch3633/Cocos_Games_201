@@ -7,13 +7,8 @@ const LOG_TAG = "[CryptoHelper]";
 let warnedMissingCrypto = false;
 
 function getGlobalScope(): any {
-    return typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : {};
-}
-
-function getCryptoJS(): any {
-    const scope = getGlobalScope();
-    try {
-        if (typeof CryptoJS !== "undefined" && CryptoJS) {
+    return typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined"? window : {};
+} function getCryptoJS(): any { const scope = getGlobalScope(); try { if (typeof CryptoJS !=="undefined" && CryptoJS) {
             return CryptoJS;
         }
     } catch (e) {
@@ -118,23 +113,8 @@ function deriveKey(path: string): string {
     if (!crypto) {
         return LEGACY_FIXED_KEY;
     }
-    const encrypted = aesEncrypt(path + "_" + LEGACY_FIXED_KEY + "_" + LEGACY_DATE_STRING, LEGACY_FIXED_KEY, IV);
-    return crypto.MD5(buildDynamicKey(encrypted) + encrypted.substring(0, 16)).toString();
-}
-
-export default class CryptoHelper {
-    static encrypt(text: string, path: string): string {
-        return aesEncrypt(text, deriveKey(path), IV);
-    }
-
-    static decrypt(text: string, path: string): string {
-        return aesDecrypt(text, deriveKey(path), IV);
-    }
-
-    static ngister(path: string, timestamp: string, nonce: string, versionName: string, channelName: string, deviceId: string, boxPkgName: string): string {
-        const source = path + " " + versionName + " " + channelName + " " + deviceId + " " + timestamp + " " + nonce + " " + deriveKey(boxPkgName);
-        const crypto = getCryptoJS();
-        return (crypto ? crypto.MD5(crypto.enc.Utf8.parse(source)).toString(crypto.enc.Base64) : base64Encode(source)).replace(/ \+/g, "-").replace(/ \//g, "_").replace(/= +$/, "");
+    const encrypted = aesEncrypt(path + "_" + LEGACY_FIXED_KEY + "_"+ LEGACY_DATE_STRING, LEGACY_FIXED_KEY, IV); return crypto.MD5(buildDynamicKey(encrypted) + encrypted.substring(0, 16)).toString();
+} export default class CryptoHelper { static encrypt(text: string, path: string): string { return aesEncrypt(text, deriveKey(path), IV); } static decrypt(text: string, path: string): string { return aesDecrypt(text, deriveKey(path), IV); } static ngister(path: string, timestamp: string, nonce: string, versionName: string, channelName: string, deviceId: string, boxPkgName: string): string { const source = path +" " + versionName + " " + channelName + " " + deviceId + " " + timestamp + " " + nonce + " "+ deriveKey(boxPkgName); const crypto = getCryptoJS(); return (crypto ? crypto.MD5(crypto.enc.Utf8.parse(source)).toString(crypto.enc.Base64) : base64Encode(source)).replace(/\+/g,"-").replace(/ \//g, "_").replace(/= +$/, "");
     }
 
     static base64Decode(text: string): string {

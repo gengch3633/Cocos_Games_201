@@ -24,20 +24,7 @@ export default class WaitingUI extends cc.Component {
                 if (skeleton?.isValid) {
                     for (let j = 0; j < boneNames.length; j++) {
                         const boneName = boneNames[j];
-                        const bone = typeof skeleton.findBone === "function" ? skeleton.findBone(boneName) : null;
-                        if (bone) {
-                            bone.scaleX = 0;
-                            bone.scaleY = 0;
-                        }
-                    }
-                    for (let j = 0; j < slotNames.length; j++) {
-                        const slotName = slotNames[j];
-                        const slot = typeof skeleton.findSlot === "function" ? skeleton.findSlot(slotName) : null;
-                        if (slot?.color) {
-                            slot.color.a = 0;
-                        }
-                    }
-                    if (typeof skeleton.invalidAnimationCache === "function") {
+                        const bone = typeof skeleton.findBone === "function"? skeleton.findBone(boneName) : null; if (bone) { bone.scaleX = 0; bone.scaleY = 0; } } for (let j = 0; j < slotNames.length; j++) { const slotName = slotNames[j]; const slot = typeof skeleton.findSlot ==="function"? skeleton.findSlot(slotName) : null; if (slot?.color) { slot.color.a = 0; } } if (typeof skeleton.invalidAnimationCache ==="function") {
                         skeleton.invalidAnimationCache();
                     }
                 }

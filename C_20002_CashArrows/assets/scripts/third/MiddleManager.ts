@@ -50,9 +50,7 @@ export default class MiddleManager {
             } catch (err) {
                 serialized = String(detail);
             }
-            console.log(MiddleManager.LOG_TAG + " " + message + " " + serialized);
-        } else {
-            console.log(MiddleManager.LOG_TAG + " " + message);
+            console.log(MiddleManager.LOG_TAG + " " + message + " "+ serialized); } else { console.log(MiddleManager.LOG_TAG +" " + message);
         }
     }
 

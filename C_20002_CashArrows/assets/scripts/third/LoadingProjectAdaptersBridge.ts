@@ -81,8 +81,7 @@ export function initSystem(): void {
             try {
                 yid = cc.sys.localStorage.getItem("yid") || "";
             } catch (err) { }
-            if ("yid_read_fail" === yid || "yid_read_failed" === yid) {
-                yid = "";
+            if ("yid_read_fail" === yid || "yid_read_failed"=== yid) { yid ="";
             }
             PlayerDataStore.initUserId({
                 yid: yid
@@ -104,13 +103,7 @@ export function runMiddleCountry(onEnter: () => void, onBan: () => void, onBacks
             return "";
         }
         const upper = String(country).toUpperCase();
-        return "GB" === upper ? "UK" : upper;
-    }
-
-    function persistCountry(country: string): string {
-        const normalized = normalizeCountry(country);
-        if (!normalized) {
-            return "";
+        return "GB" === upper ? "UK": upper; } function persistCountry(country: string): string { const normalized = normalizeCountry(country); if (!normalized) { return"";
         }
         try {
             cc.sys.localStorage.setItem(cacheKeyCountry, normalized);
@@ -161,9 +154,7 @@ export function runMiddleCountry(onEnter: () => void, onBan: () => void, onBacks
 
     function hasHandledUmp(clientData: any): boolean {
         try {
-            return "1" === cc.sys.localStorage.getItem(getUmpHandledKey(clientData));
-        } catch (err) {
-            console.warn(logPrefix, "hasHandledUmp read fail", err);
+            return "1"=== cc.sys.localStorage.getItem(getUmpHandledKey(clientData)); } catch (err) { console.warn(logPrefix,"hasHandledUmp read fail", err);
             return false;
         }
     }
@@ -191,23 +182,12 @@ export function runMiddleCountry(onEnter: () => void, onBan: () => void, onBacks
             if (clientDataStore && country) {
                 applyCountryToClient(clientDataStore, country);
             }
-            if (middleHelper && typeof middleHelper.saveLocalCountry === "function" && country) {
-                middleHelper.saveLocalCountry(country);
-            }
-            return country;
-        };
-
-        const dispatchCallback = (eventName: string, payload?: any) => {
-            if (callbackLocked) {
-                console.warn(logPrefix, "重复 " + eventName + " 回调，忽略。");
+            if (middleHelper && typeof middleHelper.saveLocalCountry === "function"&& country) { middleHelper.saveLocalCountry(country); } return country; }; const dispatchCallback = (eventName: string, payload?: any) => { if (callbackLocked) { console.warn(logPrefix,"重复 " + eventName + " 回调，忽略。");
             } else if (umpShowing) {
                 console.warn(logPrefix, "UMP 仍在展示，忽略 " + eventName + " 回调。");
             } else {
                 callbackLocked = true;
-                if ("enter" === eventName) {
-                    try {
-                        const middleManager = MiddleManager && typeof MiddleManager.getInstance === "function" ? MiddleManager.getInstance() : null;
-                        if (middleManager && typeof middleManager.middleTFRegional === "function") {
+                if ("enter"=== eventName) { try { const middleManager = MiddleManager && typeof MiddleManager.getInstance ==="function"? MiddleManager.getInstance() : null; if (middleManager && typeof middleManager.middleTFRegional ==="function") {
                             console.log(logPrefix, "middleTFRegional start");
                             middleManager.middleTFRegional();
                         }
@@ -344,15 +324,7 @@ export function runMiddleCountry(onEnter: () => void, onBan: () => void, onBacks
 
 export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void, onStep?: (step: string) => void): void {
     const logPrefix = "[LoadingProjectAdaptersBridge.runBaseFlow]";
-    const reportStep = typeof onStep === "function" ? onStep : () => { };
-
-    try {
-        const setCache = (key: string, value: any): void => {
-            if (value != null) {
-                try {
-                    cc.sys.localStorage.setItem(key, JSON.stringify(value));
-                } catch (err) {
-                    console.warn(logPrefix, "setCache fail", key, err);
+    const reportStep = typeof onStep === "function"? onStep : () => { }; try { const setCache = (key: string, value: any): void => { if (value != null) { try { cc.sys.localStorage.setItem(key, JSON.stringify(value)); } catch (err) { console.warn(logPrefix,"setCache fail", key, err);
                 }
             }
         };
@@ -448,7 +420,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, " getGameConfig force- retry code = ", response && response.code);
+                    console.warn(logPrefix, "getGameConfig force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(getGameConfig);
                 } else {
                     console.log(logPrefix, " getGameConfig success ", JSON.stringify(response));
@@ -482,7 +454,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
             httpService.touristsLogin(null, handler.create(null, (response: any) => {
                 report(" page_loading_touristsLogin_res ", response);
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, " touristsLogin force- retry code = ", response && response.code);
+                    console.warn(logPrefix, "touristsLogin force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(touristsLogin);
                 } else {
                     console.log(logPrefix, " touristsLogin success ", JSON.stringify(response));
@@ -532,7 +504,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     code: response && response.code
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, " getSystemConfig force- retry code = ", response && response.code);
+                    console.warn(logPrefix, "getSystemConfig force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(getSystemConfig);
                 } else {
                     console.log(logPrefix, " getSystemConfig success ", JSON.stringify(response));
@@ -586,7 +558,7 @@ export function runBaseFlow(onComplete: () => void, onError?: (err: any) => void
                     timeStemp: Date.now()
                 });
                 if (netErrorPopup && netErrorPopup.shouldPop(response)) {
-                    console.warn(logPrefix, " autoLogin force- retry code = ", response && response.code);
+                    console.warn(logPrefix, "autoLogin force-retry code =", response && response.code);
                     netErrorPopup.showAndRetry(autoLoginFlow);
                 } else {
                     let responseJson = " ";

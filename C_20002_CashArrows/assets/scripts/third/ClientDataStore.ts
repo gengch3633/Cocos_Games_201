@@ -92,27 +92,7 @@ class ClientDataStoreImpl {
 
     parseDsData(): void {
         if (this.device_status) {
-            this.ds = typeof this.device_status === "string" ? JSON.parse(this.device_status) : this.device_status;
-        }
-    }
-
-    buildCommonUrlStr(): void {
-        let query = " box_pkg_name = " + this.box_pkg_name;
-        query += "& device_id = " + this.device_id;
-        query += "& platform = " + this.os_name;
-        query += "& ad_version_name = " + this.sdk_version_name;
-        query += "& version_name = " + this.version_name;
-        query += "& os_version = " + this.system_version;
-        query += "& system_version = " + this.system_version;
-        query += "& device_model = " + this.phone_model;
-        query += "& phone_model = " + this.phone_model;
-        query += "& device_brand = " + this.phone_brand;
-        query += "& phone_brand = " + this.phone_brand;
-        query += "& oaid = " + this.oaid;
-        query += "& region = " + this.local_country;
-        query += "& channel_name = " + this.channel_name;
-        query += "& cpu_number = " + this.cpu_number;
-        query += "& is_vpn = " + (this.ds ? this.ds.id : " 0 ");
+            this.ds = typeof this.device_status === "string"? JSON.parse(this.device_status) : this.device_status; } } buildCommonUrlStr(): void { let query =" box_pkg_name = "+ this.box_pkg_name; query +="& device_id = "+ this.device_id; query +="& platform = "+ this.os_name; query +="& ad_version_name = "+ this.sdk_version_name; query +="& version_name = "+ this.version_name; query +="& os_version = "+ this.system_version; query +="& system_version = "+ this.system_version; query +="& device_model = "+ this.phone_model; query +="& phone_model = "+ this.phone_model; query +="& device_brand = "+ this.phone_brand; query +="& phone_brand = "+ this.phone_brand; query +="& oaid = "+ this.oaid; query +="& region = "+ this.local_country; query +="& channel_name = "+ this.channel_name; query +="& cpu_number = "+ this.cpu_number; query +="& is_vpn = " + (this.ds ? this.ds.id : " 0 ");
         this.commonUrlStr = query;
     }
 
@@ -121,31 +101,7 @@ class ClientDataStoreImpl {
     }
 
     appendGameVersion(version: string): void {
-        this.commonUrlStr += "& game_version = " + version;
-        this.middleCommonUrlStr += "& game_version = " + version;
-    }
-
-    updateUserInfo(userId: string, yid: string): void {
-        this.user_id = userId;
-        this.yid = yid;
-    }
-
-    uuid(): string {
-        return generateUuid();
-    }
-
-    getVersionData(): any {
-        return {
-            box_pkg_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName,
-            channel_name: this.channel_name,
-            device_id: this.device_id
-        };
-    }
-
-    publicYWUrlParser(path: string): string {
-        const timestamp = Math.floor(Date.now() / 1000).toString();
-        const nonce = generateUuid();
-        return " nonce_str = " + nonce + "& et = " + timestamp + "& ngister = " + CryptoHelper.ngister(path, timestamp, nonce, this.version_name, this.channel_name, this.device_id, this.box_pkg_name);
+        this.commonUrlStr += "& game_version = "+ version; this.middleCommonUrlStr +="& game_version = "+ version; } updateUserInfo(userId: string, yid: string): void { this.user_id = userId; this.yid = yid; } uuid(): string { return generateUuid(); } getVersionData(): any { return { box_pkg_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName, channel_name: this.channel_name, device_id: this.device_id }; } publicYWUrlParser(path: string): string { const timestamp = Math.floor(Date.now()/1000).toString(); const nonce = generateUuid(); return" nonce_str = " + nonce + "& et = " + timestamp + "& ngister = " + CryptoHelper.ngister(path, timestamp, nonce, this.version_name, this.channel_name, this.device_id, this.box_pkg_name);
     }
 }
 

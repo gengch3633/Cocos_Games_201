@@ -3,7 +3,7 @@ import RenderUtils from "./RenderUtils";
 const { ccclass, menu, requireComponent } = cc._decorator;
 
 @ccclass
-@menu(" UI/ Cocos/ PixelClick ")
+@menu("UI/Cocos/PixelClick")
 @requireComponent(cc.Sprite)
 export default class PixelClick extends cc.Component {
     static EventType = {

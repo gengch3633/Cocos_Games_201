@@ -417,10 +417,10 @@ export default class List extends cc.Component {
     _registerEvent(): void {
         const e = this;
         e.node.on(cc.Node.EventType.TOUCH_START, e._onTouchStart, e, true);
-        e.node.on(" touch- up ", e._onTouchUp, e);
+        e.node.on("touch-up", e._onTouchUp, e);
         e.node.on(cc.Node.EventType.TOUCH_CANCEL, e._onTouchCancelled, e, true);
-        e.node.on(" scroll- began ", e._onScrollBegan, e, true);
-        e.node.on(" scroll- ended ", e._onScrollEnded, e, true);
+        e.node.on("scroll-began", e._onScrollBegan, e, true);
+        e.node.on("scroll-ended", e._onScrollEnded, e, true);
         e.node.on(" scrolling ", e._onScrolling, e, true);
         e.node.on(cc.Node.EventType.SIZE_CHANGED, e._onSizeChanged, e);
     }
@@ -428,10 +428,10 @@ export default class List extends cc.Component {
     _unregisterEvent(): void {
         const e = this;
         e.node.off(cc.Node.EventType.TOUCH_START, e._onTouchStart, e, true);
-        e.node.off(" touch- up ", e._onTouchUp, e);
+        e.node.off("touch-up", e._onTouchUp, e);
         e.node.off(cc.Node.EventType.TOUCH_CANCEL, e._onTouchCancelled, e, true);
-        e.node.off(" scroll- began ", e._onScrollBegan, e, true);
-        e.node.off(" scroll- ended ", e._onScrollEnded, e, true);
+        e.node.off("scroll-began", e._onScrollBegan, e, true);
+        e.node.off("scroll-ended", e._onScrollEnded, e, true);
         e.node.off(" scrolling ", e._onScrolling, e, true);
         e.node.off(cc.Node.EventType.SIZE_CHANGED, e._onSizeChanged, e);
     }

@@ -4,11 +4,11 @@ import UserAudioData from "./UserAudioData";
 
 const defaultOption = {
     click: {
-        success: " audio/ click_common ",
-        fail: " audio/ click_error ",
-        bundleName: " cocos- module- common "
+        success: "audio/click_common",
+        fail: "audio/click_error",
+        bundleName: "cocos-module-common"
     },
-    bundleName: " common ",
+    bundleName: "common",
     effMaxRepeat: 10
 };
 
@@ -48,62 +48,7 @@ export default class AudioMgr extends Singleton {
                     isLoop = repeatOrLoop;
                 }
             } else {
-                const bundleName = typeof bundleOrRepeat === "string" ? bundleOrRepeat : this.option.bundleName;
-                maxRepeat = typeof repeatOrLoop === "number" ? repeatOrLoop : maxRepeat;
-                isLoop = typeof loop === "boolean" ? loop : isLoop;
-                clip = await ResMgr.getInstance().loadRes(clipOrPath, cc.AudioClip, null, bundleName);
-            }
-            return clip ? this.handlePlayEffect(clip, maxRepeat, isLoop) : -1;
-        } catch (err) {
-            console.error(err, clipOrPath, bundleOrRepeat, repeatOrLoop, loop);
-            return -1;
-        }
-    }
-
-    handlePlayEffect(clip: cc.AudioClip, maxRepeat: number, loop: boolean): number {
-        const ids = this.idMap.get(clip) || [];
-        if (ids.length >= maxRepeat) {
-            return ids[0];
-        }
-        const audioId = cc.audioEngine.playEffect(clip, loop);
-        ids.push(audioId);
-        this.idMap.set(clip, ids);
-        cc.audioEngine.setFinishCallback(audioId, () => {
-            const currentIds = this.idMap.get(clip);
-            if (currentIds && currentIds.length > 0) {
-                const index = currentIds.indexOf(audioId);
-                if (index > -1) {
-                    currentIds.splice(index, 1);
-                }
-                if (currentIds.length === 0) {
-                    this.idMap.delete(clip);
-                }
-            }
-        });
-        return audioId;
-    }
-
-    async playClickEff(success: boolean = true): Promise<number> {
-        const path = success ? this.option.click.success : this.option.click.fail;
-        return path ? this.playEffect(path, this.option.click.bundleName) : -1;
-    }
-
-    async playMusic(
-        clipOrPath: string | cc.AudioClip,
-        loopOrBundle?: boolean | string,
-        loop?: boolean
-    ): Promise<number> {
-        if (!clipOrPath) {
-            return -1;
-        }
-        let shouldLoop = typeof loopOrBundle !== "boolean" || loopOrBundle;
-        let clip: cc.AudioClip = null;
-        try {
-            if (clipOrPath instanceof cc.AudioClip) {
-                clip = clipOrPath;
-                shouldLoop = typeof loopOrBundle === "boolean" ? loopOrBundle : shouldLoop;
-            } else {
-                const bundleName = typeof loopOrBundle === "string" ? loopOrBundle : this.option.bundleName;
+                const bundleName = typeof bundleOrRepeat === "string"? bundleOrRepeat : this.option.bundleName; maxRepeat = typeof repeatOrLoop ==="number"? repeatOrLoop : maxRepeat; isLoop = typeof loop ==="boolean"? loop : isLoop; clip = await ResMgr.getInstance().loadRes(clipOrPath, cc.AudioClip, null, bundleName); } return clip ? this.handlePlayEffect(clip, maxRepeat, isLoop) :-1; } catch (err) { console.error(err, clipOrPath, bundleOrRepeat, repeatOrLoop, loop); return-1; } } handlePlayEffect(clip: cc.AudioClip, maxRepeat: number, loop: boolean): number { const ids = this.idMap.get(clip) || []; if (ids.length >= maxRepeat) { return ids[0]; } const audioId = cc.audioEngine.playEffect(clip, loop); ids.push(audioId); this.idMap.set(clip, ids); cc.audioEngine.setFinishCallback(audioId, () => { const currentIds = this.idMap.get(clip); if (currentIds && currentIds.length > 0) { const index = currentIds.indexOf(audioId); if (index >-1) { currentIds.splice(index, 1); } if (currentIds.length === 0) { this.idMap.delete(clip); } } }); return audioId; } async playClickEff(success: boolean = true): Promise<number> { const path = success ? this.option.click.success : this.option.click.fail; return path ? this.playEffect(path, this.option.click.bundleName) :-1; } async playMusic( clipOrPath: string | cc.AudioClip, loopOrBundle?: boolean | string, loop?: boolean ): Promise<number> { if (!clipOrPath) { return-1; } let shouldLoop = typeof loopOrBundle !=="boolean"|| loopOrBundle; let clip: cc.AudioClip = null; try { if (clipOrPath instanceof cc.AudioClip) { clip = clipOrPath; shouldLoop = typeof loopOrBundle ==="boolean"? loopOrBundle : shouldLoop; } else { const bundleName = typeof loopOrBundle ==="string" ? loopOrBundle : this.option.bundleName;
                 clip = await ResMgr.getInstance().loadRes(clipOrPath, cc.AudioClip, null, bundleName);
             }
             return clip ? cc.audioEngine.playMusic(clip, shouldLoop) : (console.error("AudioMgr.playMusic: clip is null", clipOrPath, loopOrBundle, loop), -1);

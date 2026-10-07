@@ -42,7 +42,7 @@ const COUNTRY_REGION_MAP: { [key: string]: string } = {
     NG: " MEA "
 };
 
-const BASE_TEXTURE_PATH = " texture/ gameing/ country ";
+const BASE_TEXTURE_PATH = "texture/gameing/country";
 const DEFAULT_COUNTRY_FOLDER = " in ";
 
 function getRegionalCountry(): string {
@@ -72,18 +72,8 @@ function buildImagePath(country: string, imageName: string): string {
     const normalizedCountry = String(country || " ").trim().toUpperCase();
     if (normalizedCountry && normalizedCountry !== " DEFAULT " && normalizedCountry !== " FALLBACK ") {
         if (normalizedCountry.indexOf(" REGION_ ") === 0) {
-            return BASE_TEXTURE_PATH + "/ region_ " + normalizeFolderName(normalizedCountry.replace(" REGION_ ", " ")) + "/ " + imageName;
-        }
-        return BASE_TEXTURE_PATH + "/ " + normalizeFolderName(normalizedCountry) + "/ " + imageName;
-    }
-    return BASE_TEXTURE_PATH + "/ " + DEFAULT_COUNTRY_FOLDER + "/ " + imageName;
-}
-
-const CountryAssetService = {
-    _assetRules: {} as { [key: string]: { [key: string]: string } },
-
-    normalizeCountry(country: string): string {
-        return String(country || " ").trim().toUpperCase();
+            return BASE_TEXTURE_PATH + "/ region_ " + normalizeFolderName(normalizedCountry.replace(" REGION_ ", " ")) + "/ "+ imageName; } return BASE_TEXTURE_PATH +"/ " + normalizeFolderName(normalizedCountry) + "/ "+ imageName; } return BASE_TEXTURE_PATH +"/ " + DEFAULT_COUNTRY_FOLDER + "/ "+ imageName;
+} const CountryAssetService = { _assetRules: {} as { [key: string]: { [key: string]: string } }, normalizeCountry(country: string): string { return String(country ||" ").trim().toUpperCase();
     },
 
     normalizeRuleMap(ruleMap: any): { [key: string]: string } {
@@ -161,19 +151,7 @@ const CountryAssetService = {
         return isRelativeAssetPath(path)
             ? matchedKey !== " DEFAULT " && matchedKey !== " FALLBACK " && matchedKey
                 ? matchedKey.indexOf(" REGION_ ") === 0
-                    ? BASE_TEXTURE_PATH + "/ region_ " + normalizeFolderName(matchedKey.replace(" REGION_ ", " ")) + "/ " + path
-                    : BASE_TEXTURE_PATH + "/ " + normalizeFolderName(matchedKey) + "/ " + path
-                : BASE_TEXTURE_PATH + "/ " + DEFAULT_COUNTRY_FOLDER + "/ " + path
-            : path;
-    },
-
-    getAssetPath(assetKey: string, country?: string, fallbackPath?: string): string {
-        const rules = this.getAssetRules(assetKey);
-        return this.resolvePath(rules || {}, country, fallbackPath);
-    },
-
-    getPathByImageName(imageName: string, country?: string): string {
-        const name = String(imageName || " ").trim();
+                    ? BASE_TEXTURE_PATH + "/ region_ " + normalizeFolderName(matchedKey.replace(" REGION_ ", " ")) + "/ "+ path : BASE_TEXTURE_PATH +"/ " + normalizeFolderName(matchedKey) + "/ "+ path : BASE_TEXTURE_PATH +"/ " + DEFAULT_COUNTRY_FOLDER + "/ "+ path : path; }, getAssetPath(assetKey: string, country?: string, fallbackPath?: string): string { const rules = this.getAssetRules(assetKey); return this.resolvePath(rules || {}, country, fallbackPath); }, getPathByImageName(imageName: string, country?: string): string { const name = String(imageName ||" ").trim();
         if (!name) {
             return " ";
         }

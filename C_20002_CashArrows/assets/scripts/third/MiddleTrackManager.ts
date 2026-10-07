@@ -97,9 +97,7 @@ export default class MiddleTrackManager {
             size: Array.isArray(payload) ? payload.length : 0,
             queueSize: " applog " === type ? this.applogQueue.length : " adsdk " === type ? this.adsdkQueue.length : this.coreDataQueue.length,
             eventPreview: this.eventNamePreview(payload),
-            extra: extra === undefined ? " " : this.stringifySafe(extra)
-        };
-        const payloadText = " REQ " === stage ? this.stringifySafe(payload) : " ";
+            extra: extra === undefined ? " ": this.stringifySafe(extra) }; const payloadText =" REQ " === stage ? this.stringifySafe(payload) : " ";
         const message = "[MiddleTrackManager] track request type = " + type + " stage = " + stage + " size = " + detail.size + " queueSize = " + detail.queueSize + " detail = " + this.stringifySafe(detail) + (payloadText ? " payload = " + payloadText : " ");
         " FAIL " !== stage ? console.log(message) : console.warn(message);
     }
@@ -238,7 +236,7 @@ export default class MiddleTrackManager {
     }
 
     uuid(): string {
-        return " xxxxxxxx- xxxx- 4xxx- yxxx- xxxxxxxxxxxx ".replace(/[xy]/g, (char) => {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
             const random = 16 * Math.random() | 0;
             return (" x " == char ? random : 3 & random | 8).toString(16);
         });

@@ -12,7 +12,7 @@ import { UIParams } from "./UIParams";
 const { ccclass, property, menu } = cc._decorator;
 
 @ccclass
-@menu(" 业务逻辑/ resultView ")
+@menu("业务逻辑/resultView")
 export default class resultView extends cc.Component {
     @property(sp.Skeleton)
     sp_result: sp.Skeleton = null;
@@ -342,7 +342,7 @@ export default class resultView extends cc.Component {
         if (bgSprite) {
             cc.assetManager.getBundle(bundleName.ui, (_err, bundle) => {
                 if (bundle) {
-                    bundle.load(" texture/ success/ success_bg ", cc.SpriteFrame, (err, frame) => {
+                    bundle.load("texture/success/success_bg", cc.SpriteFrame, (err, frame) => {
                         if (!err && frame && bgSprite && bgSprite.isValid) {
                             bgSprite.spriteFrame = frame;
                         }
@@ -359,7 +359,7 @@ export default class resultView extends cc.Component {
             if (btnSprite) {
                 cc.assetManager.getBundle(bundleName.ui, (_err, bundle) => {
                     if (bundle) {
-                        bundle.load(" texture/ success/ dialog_get_btn ", cc.SpriteFrame, (err, frame) => {
+                        bundle.load("texture/success/dialog_get_btn", cc.SpriteFrame, (err, frame) => {
                             if (!err && frame && btnSprite && btnSprite.isValid) {
                                 btnSprite.spriteFrame = frame;
                             }
@@ -370,7 +370,7 @@ export default class resultView extends cc.Component {
             if (this.nodeAdIcon) {
                 cc.assetManager.getBundle(bundleName.ui, (_err, bundle) => {
                     if (bundle) {
-                        bundle.load(" texture/ success/ dialog_ad_icon ", cc.SpriteFrame, (err, frame) => {
+                        bundle.load("texture/success/dialog_ad_icon", cc.SpriteFrame, (err, frame) => {
                             if (!err && frame && this.nodeAdIcon && this.nodeAdIcon.isValid) {
                                 this.nodeAdIcon.getComponent(cc.Sprite).spriteFrame = frame;
                             }
@@ -384,7 +384,7 @@ export default class resultView extends cc.Component {
             if (cardSprite) {
                 cc.assetManager.getBundle(bundleName.ui, (_err, bundle) => {
                     if (bundle) {
-                        bundle.load(" texture/ success/ dialog_money_bg ", cc.SpriteFrame, (err, frame) => {
+                        bundle.load("texture/success/dialog_money_bg", cc.SpriteFrame, (err, frame) => {
                             if (!err && frame && cardSprite && cardSprite.isValid) {
                                 cardSprite.spriteFrame = frame;
                             }
@@ -446,7 +446,7 @@ export default class resultView extends cc.Component {
         bg.y += 2000;
         bg.opacity = 0;
         cc.tween(bg).by(0.3, { y: -2100 }).by(0.3, { y: 100 }, { easing: " backOut " }).union().delay(0.1).call(() => {
-            AudioMgr.getInstance().playEffect(" audio/ level_complete ", bundleName.ui);
+            AudioMgr.getInstance().playEffect("audio/level_complete", bundleName.ui);
             const lizi = bg.getChildByName(" lizi ");
             const lizi2 = bg.getChildByName(" lizi2 ");
             if (lizi) {

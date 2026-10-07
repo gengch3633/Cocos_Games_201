@@ -17,8 +17,8 @@ export enum DestroyStrategy {
 
 const defaultGlobalOption = {
     waitOption: {
-        url: " prefab/ waitingUI ",
-        bundleName: " cocos- module- common "
+        url: "prefab/waitingUI",
+        bundleName: "cocos-module-common"
     },
     showWait: true,
     blockInputEvents: true,
@@ -388,7 +388,7 @@ export default class UIMgr extends Singleton {
         let text = " 再按一次退出游戏 ";
         try {
             const language = LanguageService.getCurrentLanguage ? String(LanguageService.getCurrentLanguage()) : " ";
-            if (language === " id- ID ") {
+            if (language === "id-ID") {
                 text = " Tekan sekali lagi untuk keluar game ";
             }
         } catch (_error) {}

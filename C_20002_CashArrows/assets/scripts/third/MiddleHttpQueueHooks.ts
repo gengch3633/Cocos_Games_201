@@ -72,12 +72,7 @@ export function createMiddleHttpQueueHooks(
             logFn("【CC Network Err】url0:", url);
             logFn("【CC Network Err】body:", reqData.toMiddleJSON());
             logFn("【CC Network Err】decode body:", options.decrypt ? options.decrypt(reqData.toMiddleJSON()) : reqData.toMiddleJSON());
-            logFn("【CC Network Err】err:", "data 为空 - message:" + parsed.message);
-            return {
-                success: false,
-                data: {
-                    code: -1,
-                    message: "Data不存在",
+            logFn("【CC Network Err】err:", "data 为空 - message:"+ parsed.message); return { success: false, data: { code:-1, message:"Data不存在",
                     http_status: status
                 }
             };
@@ -97,20 +92,7 @@ export function createMiddleHttpQueueHooks(
             logFn("【CC Network Err】url2:", url);
             logFn("【CC Network Err】body:", reqData.toMiddleJSON());
             logFn("【CC Network Err】decode body:", options.decrypt ? options.decrypt(reqData.toMiddleJSON()) : reqData.toMiddleJSON());
-            logFn("【CC Network Err】err:", "xhr.status = " + status);
-            return {
-                code: -1,
-                message: "xhr.status" + status,
-                http_status: status
-            };
-        },
-        createRuntimeError: (request: any) => {
-            const url = request.url;
-            const status = request.status;
-            const statusText = request.statusText;
-            return {
-                code: -1,
-                message: "onXhr." + request.reason,
+            logFn("【CC Network Err】err:", "xhr.status = "+ status); return { code:-1, message:"xhr.status"+ status, http_status: status }; }, createRuntimeError: (request: any) => { const url = request.url; const status = request.status; const statusText = request.statusText; return { code:-1, message:"onXhr." + request.reason,
                 http_status: status,
                 statuText: statusText,
                 url: url

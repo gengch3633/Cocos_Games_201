@@ -239,14 +239,7 @@ export default class AdManager {
         if (!payload || typeof payload !== "object") {
             payload = {};
         }
-        const nested = payload?.ferryBulkTierAgate && typeof payload.ferryBulkTierAgate === "object" ? payload.ferryBulkTierAgate : {};
-        const merged = Object.assign({}, nested, payload);
-        this.cpm_data.activity_date = AdToolbox.formatDate(new Date().getTime());
-        if (merged.cpm !== undefined) {
-            this.cpm_data.cpm = Number(merged.cpm || 0);
-        }
-        if (merged.source !== undefined || merged.dsp !== undefined) {
-            this.cpm_data.source = merged.source || merged.dsp || " ";
+        const nested = payload?.ferryBulkTierAgate && typeof payload.ferryBulkTierAgate === "object"? payload.ferryBulkTierAgate : {}; const merged = Object.assign({}, nested, payload); this.cpm_data.activity_date = AdToolbox.formatDate(new Date().getTime()); if (merged.cpm !== undefined) { this.cpm_data.cpm = Number(merged.cpm || 0); } if (merged.source !== undefined || merged.dsp !== undefined) { this.cpm_data.source = merged.source || merged.dsp ||" ";
         }
         if (merged.unit_id !== undefined || merged.unitId !== undefined) {
             this.cpm_data.unitId = merged.unit_id || merged.unitId || " ";

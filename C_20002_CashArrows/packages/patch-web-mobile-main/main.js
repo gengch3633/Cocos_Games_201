@@ -31,10 +31,20 @@ module.exports = {
     unload: function () {},
     messages: {
         'build-finished': function (options, callback) {
-            if (options.platform === 'web-mobile' && options.dest) {
-                patchMainJs(options.dest);
+            try {
+                const dest = options && (options.dest || options.buildPath);
+                if (dest) {
+                    const webMobile = /web-mobile[\\/]?$/i.test(dest)
+                        ? dest
+                        : Path.join(dest, 'web-mobile');
+                    if (Fs.existsSync(webMobile)) {
+                        patchMainJs(webMobile);
+                    }
+                }
+            } catch (e) {
+                Editor.error('[patch-web-mobile-main]', e);
             }
-            callback();
+            callback && callback();
         }
     }
 };

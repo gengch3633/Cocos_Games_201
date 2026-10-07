@@ -409,7 +409,7 @@ export default class NumberUtils {
             const count = matched.count;
             const unit = matched.unit;
             const converted = absValue % count === 0 ? (absValue / count).toString() : (absValue / count).toFixed(2);
-            return roundOnly ? " " + Math.round(absValue / count) + unit : (value > 0 ? " " : "- ") + converted + unit;
+            return roundOnly ? " "+ Math.round(absValue/count) + unit : (value > 0 ?" " : "- ") + converted + unit;
         }
         return this.decimalPlaces(value) > 2 ? value.toFixed(2) : value.toString();
     }

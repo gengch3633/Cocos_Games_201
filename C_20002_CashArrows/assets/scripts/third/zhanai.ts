@@ -46,7 +46,7 @@ export default class zhanai extends cc.Component {
         this.reference();
         if (this.num_zhanai <= 0) {
             const skeleton = this.node.getChildByName(" zhanai ").getComponent(sp.Skeleton);
-            AudioMgr.getInstance().playEffect(" audio/ unlock_obstacle ", bundleName.game);
+            AudioMgr.getInstance().playEffect("audio/unlock_obstacle", bundleName.game);
             this.gameManager.zhanai.splice(this.gameManager.zhanai.indexOf(this), 1);
             this.gameManager.num_mapInfo[this.posInfo.x][this.posInfo.y] = " 0 ";
             this.scheduleOnce(() => {

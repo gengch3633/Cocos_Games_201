@@ -270,7 +270,7 @@ export default class game extends cc.Component {
             return;
         }
         const self = this;
-        ResMgr.getInstance().loadRes(" prefab/ item_zhanai ", cc.Prefab, null, " game ").then((prefab) => {
+        ResMgr.getInstance().loadRes("prefab/item_zhanai", cc.Prefab, null, "game").then((prefab) => {
             if (prefab) {
                 self.prefab_zhanai = prefab;
                 for (const blocker of self.levelInfo.WayBlockers) {
@@ -290,7 +290,7 @@ export default class game extends cc.Component {
             return;
         }
         const self = this;
-        ResMgr.getInstance().loadRes(" prefab/ item_heidong ", cc.Prefab, null, " game ").then((prefab) => {
+        ResMgr.getInstance().loadRes("prefab/item_heidong", cc.Prefab, null, "game").then((prefab) => {
             if (prefab) {
                 self.prefab_zhanai = prefab;
                 for (let i = 0; i < self.levelInfo.BlackHoles.length; i++) {
@@ -323,7 +323,7 @@ export default class game extends cc.Component {
         if (this.num_audioID > 7) {
             this.num_audioID = 1;
         }
-        AudioMgr.getInstance().playEffect(" audio/ snakeMove/ " + this.num_audioID, bundleName.game);
+        AudioMgr.getInstance().playEffect("audio/snakeMove/" + this.num_audioID, bundleName.game);
     }
 
     showTips(): void {

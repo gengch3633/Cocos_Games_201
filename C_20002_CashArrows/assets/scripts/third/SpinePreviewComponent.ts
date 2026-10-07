@@ -37,9 +37,7 @@ export class SpinePreviewComponent extends sp.Skeleton {
                 if (i !== 0) {
                     msg += ",";
                 }
-                msg += name + ":" + stringValue;
-            }
-            msg += "]";
+                msg += name + ":"+ stringValue; } msg +="]";
             Editor.info(msg);
         }
     }
@@ -87,9 +85,7 @@ export class SpinePreviewComponent extends sp.Skeleton {
             if (i !== 0) {
                 eventStr += ",";
             }
-            eventStr += name + ":" + stringValue;
-        }
-        eventStr += "]";
+            eventStr += name + ":"+ stringValue; } eventStr +="]";
         let skinStr = "[";
         for (let i = 0; i < skins.length; i++) {
             if (i !== 0) {

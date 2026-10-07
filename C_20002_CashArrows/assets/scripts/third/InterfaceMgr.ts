@@ -2,7 +2,8 @@ export const bundleName = {
     game: "game",
     config: "config",
     lobby: "lobby",
-    ui: "ui"
+    ui: "ui",
+    cocosModuleCommon: "cocos-module-common"
 };
 
 export const gameEvent = {

@@ -7,7 +7,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class RTLMirror extends cc.Component {
     @property({
-        tooltip: " RTL 时 scaleX 取该值的相对乘积 ； 通常- 1 即可 （ 水平镜像 ） "
+        tooltip: "RTL 时 scaleX 取该值的相对乘积 ； 通常-1 即可 （ 水平镜像 ）"
     })
     flipScaleX: number = -1;
 

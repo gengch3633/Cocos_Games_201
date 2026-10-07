@@ -7,8 +7,7 @@ const CONTACT_EMAIL = "ashiqeuddin2022@gmail.com";
 const CONTACT_SUBJECT = "Question from Cash Arrows";
 
 function openByShowAppService(url: string): void {
-    const bridge = typeof PlatformBridge.getNativeBridge === "function" ? PlatformBridge.getNativeBridge() : null;
-    if (bridge && typeof bridge.showAppService === "function") {
+    const bridge = typeof PlatformBridge.getNativeBridge === "function"? PlatformBridge.getNativeBridge() : null; if (bridge && typeof bridge.showAppService ==="function") {
         bridge.showAppService(url);
     } else {
         cc.sys.openURL(url);

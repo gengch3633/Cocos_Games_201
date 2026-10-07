@@ -20,7 +20,7 @@ function getOrCreateWebDeviceId(): string {
     if (deviceId) {
         return deviceId;
     }
-    const generated = " xxxxxxxx- xxxx- 4xxx- yxxx- xxxxxxxxxxxx ".replace(/[xy]/g, (char) => {
+    const generated = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
         const random = 16 * Math.random() | 0;
         return (" x " === char ? random : 3 & random | 8).toString(16);
     });
@@ -117,15 +117,15 @@ export default class PlatformBridge {
             channel_name: " google ",
             package_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName,
             box_pkg_name: MIDDLE_PROJECT_ADAPTER_CONFIG.releasePkgName,
-            oaid: " oaid- test ",
+            oaid: "oaid-test",
             os_version: " 11 ",
             phone_model: " 22101317C ",
-            phone_brand: " Redmi- test ",
+            phone_brand: "Redmi-test",
             os_name: " android ",
-            device_type: " Xiaomi- test ",
+            device_type: "Xiaomi-test",
             device_serial: " unknown ",
             system_version: " 14 ",
-            phone_manufacturer: " Xiaomi- test ",
+            phone_manufacturer: "Xiaomi-test",
             display_hypotenuse: 6.357,
             display_metrics: " 1080x2262 ",
             cpu_number: 1,

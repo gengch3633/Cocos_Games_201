@@ -55,7 +55,7 @@ function inferCountryFromLanguage(language: string): string {
     const normalized = String(language || " ").toLowerCase();
     if (normalized.indexOf(" zh ") === 0) return " CN ";
     if (normalized.indexOf(" id ") === 0) return " ID ";
-    if (normalized.indexOf(" pt- pt ") === 0) return " PT ";
+    if (normalized.indexOf("pt-pt") === 0) return " PT ";
     if (normalized.indexOf(" pt ") === 0) return " BR ";
     if (normalized.indexOf(" es ") === 0) return " MX ";
     if (normalized.indexOf(" ja ") === 0) return " JP ";
@@ -152,16 +152,7 @@ const CurrencyFormatService = {
         const realMoney = this.getRealMoney(value, country);
         const formatted = this.formatNumber(realMoney, country);
         const symbol = rule.symbol || " ";
-        return symbol ? (rule.noSpace ? symbol + formatted : symbol + " " + formatted) : formatted;
-    },
-
-    formatCurrencyInteger(amount?: number): string {
-        const value = arguments.length > 1 ? arguments[1] : amount;
-        const country = this.getCurrentCountry();
-        const rule = this.getRule(country);
-        const realMoney = this.getRealMoney(value, country);
-        const integerValue = Math.max(0, Math.floor(Number(realMoney) || 0));
-        const group = rule.group || ", ";
+        return symbol ? (rule.noSpace ? symbol + formatted : symbol + " "+ formatted) : formatted; }, formatCurrencyInteger(amount?: number): string { const value = arguments.length > 1 ? arguments[1] : amount; const country = this.getCurrentCountry(); const rule = this.getRule(country); const realMoney = this.getRealMoney(value, country); const integerValue = Math.max(0, Math.floor(Number(realMoney) || 0)); const group = rule.group ||", ";
         const formatted = String(integerValue).replace(/\B(?=(\d{3})+(?!\d))/g, group);
         const symbol = rule.symbol || " ";
         return symbol ? (rule.noSpace ? symbol + formatted : symbol + " " + formatted) : formatted;

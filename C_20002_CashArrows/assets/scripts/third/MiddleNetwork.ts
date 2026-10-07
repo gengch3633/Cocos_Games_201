@@ -218,18 +218,18 @@ export default class MiddleNetwork {
             const encryptedBody = CryptoHelper.encrypt(plainBody, ClientDataStore.box_pkg_name);
             const inputParams = params || {};
             const parsedParams = safeParse(plainBody);
-            console.log(LOG_PREFIX, " REQ ", requestType, " url- > ", url);
-            console.log(LOG_PREFIX, " REQ ", requestType, " baseUrl- > ", baseUrl);
-            console.log(LOG_PREFIX, " REQ ", requestType, " input params- > ", safeStringify(inputParams));
-            console.log(LOG_PREFIX, " REQ ", requestType, " plain params- > ", safeStringify(parsedParams));
-            console.log(LOG_PREFIX, " REQ ", requestType, " encrypted length- > ", encryptedBody.length);
+            console.log(LOG_PREFIX, " REQ ", requestType, "url->", url);
+            console.log(LOG_PREFIX, " REQ ", requestType, "baseUrl->", baseUrl);
+            console.log(LOG_PREFIX, " REQ ", requestType, "input params->", safeStringify(inputParams));
+            console.log(LOG_PREFIX, " REQ ", requestType, "plain params->", safeStringify(parsedParams));
+            console.log(LOG_PREFIX, " REQ ", requestType, "encrypted length->", encryptedBody.length);
             const xhr = new XMLHttpRequest();
             xhr.timeout = 15000;
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     const status = xhr.status;
                     const responseText = xhr.responseText || " ";
-                    console.log(LOG_PREFIX, " RESP ", requestType, " status- > ", status, " raw length- > ", responseText.length);
+                    console.log(LOG_PREFIX, " RESP ", requestType, "status->", status, "raw length->", responseText.length);
                     if (status < 200 || status >= 400 || !responseText) {
                         invokeHandler(onFail, {
                             code: -1,
@@ -255,7 +255,7 @@ export default class MiddleNetwork {
                             }
                             invokeHandler(onSuccess, parsed);
                         } catch (err) {
-                            console.error(LOG_PREFIX, " RESP_PARSE_FAIL ", requestType, err, " raw- > ", responseText);
+                            console.error(LOG_PREFIX, " RESP_PARSE_FAIL ", requestType, err, "raw->", responseText);
                             invokeHandler(onFail, {
                                 code: -1,
                                 message: " response parse fail ",
@@ -280,7 +280,7 @@ export default class MiddleNetwork {
                 });
             };
             xhr.open(" POST ", url, true);
-            xhr.setRequestHeader(" Content- Type ", " text/ plain; charset = UTF- 8 ");
+            xhr.setRequestHeader("Content-Type", "text/plain; charset = UTF-8");
             xhr.send(encryptedBody);
         } else {
             invokeHandler(onFail, {

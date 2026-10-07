@@ -65,15 +65,7 @@ export default class AppReviewManager {
             console.warn(LOG_TAG + " load failed", e);
         }
         this._state = state;
-        console.log(LOG_TAG + " _load state=" + JSON.stringify(state) + " key=" + this._storageKey());
-    }
-
-    private _save(): void {
-        if (this._state) {
-            try {
-                cc.sys.localStorage.setItem(this._storageKey(), JSON.stringify(this._state));
-            } catch (e) {
-                console.warn(LOG_TAG + " save failed", e);
+        console.log(LOG_TAG + " _load state=" + JSON.stringify(state) + " key="+ this._storageKey()); } private _save(): void { if (this._state) { try { cc.sys.localStorage.setItem(this._storageKey(), JSON.stringify(this._state)); } catch (e) { console.warn(LOG_TAG +" save failed", e);
             }
         }
     }
@@ -108,22 +100,10 @@ export default class AppReviewManager {
             this._resumeTs = Date.now();
             cc.game.on(cc.game.EVENT_HIDE, () => {
                 this._flushPlayTime();
-                console.log(LOG_TAG + " EVENT_HIDE flush playSeconds=" + Math.floor(this._currentPlaySeconds()));
-            });
-            cc.game.on(cc.game.EVENT_SHOW, () => {
-                this._resumeTs = Date.now();
-                console.log(LOG_TAG + " EVENT_SHOW resume timing");
+                console.log(LOG_TAG + " EVENT_HIDE flush playSeconds="+ Math.floor(this._currentPlaySeconds())); }); cc.game.on(cc.game.EVENT_SHOW, () => { this._resumeTs = Date.now(); console.log(LOG_TAG +" EVENT_SHOW resume timing");
             });
             GlobalEventMgr.getInstance().on(InterfaceMgr.gameEvent.gameNext, this.onLevelPassed, this);
-            console.log(LOG_TAG + " inited thresholds{MIN_PASS=5, MIN_SECONDS=120, MAX_SHOW=1, COOLDOWN_DAYS=3} state=" + JSON.stringify(this._state));
-        }
-    }
-
-    onLevelPassed(): void {
-        if (this._state) {
-            this._state.passCount += 1;
-            this._flushPlayTime();
-            console.log(LOG_TAG + " onLevelPassed passCount=" + this._state.passCount + " playSeconds=" + Math.floor(this._currentPlaySeconds()));
+            console.log(LOG_TAG + " inited thresholds{MIN_PASS=5, MIN_SECONDS=120, MAX_SHOW=1, COOLDOWN_DAYS=3} state="+ JSON.stringify(this._state)); } } onLevelPassed(): void { if (this._state) { this._state.passCount += 1; this._flushPlayTime(); console.log(LOG_TAG +" onLevelPassed passCount=" + this._state.passCount + " playSeconds=" + Math.floor(this._currentPlaySeconds()));
             this._tryTrigger();
         }
     }
@@ -154,9 +134,7 @@ export default class AppReviewManager {
         }
         const playSeconds = Math.floor(this._currentPlaySeconds());
         const cooldownLeft = state.lastShownTs > 0 ? 2592e5 - (Date.now() - state.lastShownTs) : 0;
-        console.log(LOG_TAG + " _canShow check -> enabled=" + this._isFeatureEnabled() + " jumped=" + state.jumped + " shownCount=" + state.shownCount + "/1 passCount=" + state.passCount + "/5 playSeconds=" + playSeconds + "/120 cooldownLeftMs=" + (cooldownLeft > 0 ? cooldownLeft : 0));
-        if (!this._isFeatureEnabled()) {
-            console.log(LOG_TAG + " _canShow=false reason=feature_disabled(config app_review_enabled=0)");
+        console.log(LOG_TAG + " _canShow check -> enabled=" + this._isFeatureEnabled() + " jumped=" + state.jumped + " shownCount=" + state.shownCount + "/1 passCount=" + state.passCount + "/5 playSeconds=" + playSeconds + "/120 cooldownLeftMs="+ (cooldownLeft > 0 ? cooldownLeft : 0)); if (!this._isFeatureEnabled()) { console.log(LOG_TAG +" _canShow=false reason=feature_disabled(config app_review_enabled=0)");
             return false;
         }
         if (state.jumped) {
@@ -176,10 +154,7 @@ export default class AppReviewManager {
             return false;
         }
         if (state.lastShownTs > 0 && Date.now() - state.lastShownTs < 2592e5) {
-            console.log(LOG_TAG + " _canShow=false reason=in_cooldown leftMs=" + cooldownLeft);
-            return false;
-        }
-        console.log(LOG_TAG + " _canShow=true -> will show review dialog");
+            console.log(LOG_TAG + " _canShow=false reason=in_cooldown leftMs="+ cooldownLeft); return false; } console.log(LOG_TAG +" _canShow=true -> will show review dialog");
         return true;
     }
 
@@ -220,8 +195,7 @@ export default class AppReviewManager {
 
     private _callNativeReview(): void {
         try {
-            const bridge = typeof NativeSdkBridgeAdapter.getBridge === "function" ? NativeSdkBridgeAdapter.getBridge() : null;
-            if (bridge && typeof bridge.showAppReview === "function") {
+            const bridge = typeof NativeSdkBridgeAdapter.getBridge === "function"? NativeSdkBridgeAdapter.getBridge() : null; if (bridge && typeof bridge.showAppReview ==="function") {
                 bridge.showAppReview();
                 console.log(LOG_TAG + " showAppReview invoked");
                 return;

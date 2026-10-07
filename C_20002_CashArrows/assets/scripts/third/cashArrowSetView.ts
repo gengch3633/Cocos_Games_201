@@ -580,20 +580,7 @@ var o = n[a];
 if (o && o.field_value) {
 var r = o.field_value, s = this.initialBindInfo[r];
 null == s && (" payee_name " === r || " name " === r ? s = this.initialBindInfo.payee_name || this.initialBindInfo.name || " " : " account " === r && (s = this.initialBindInfo.account || this.initialBindInfo.phone || this.initialBindInfo.email || " "));
-i[r] = null == s ? " " : String(s);
-}
-}
-this.channelInputCache[this.getChannelCacheKey(t)] = i;
-this.selectedChannelIndex = e;
-break;
-}
-}
-},
-getCurrentChannel: function() {
-return this.channelList[this.selectedChannelIndex] || null;
-},
-getChannelCacheKey: function(e) {
-return e ? [ e.channel || " ", e.sub_channel || " ", e.show_channel || e.name || " " ].join("| ") : " __default__ ";
+i[r] = null == s ? " ": String(s); } } this.channelInputCache[this.getChannelCacheKey(t)] = i; this.selectedChannelIndex = e; break; } } }, getCurrentChannel: function() { return this.channelList[this.selectedChannelIndex] || null; }, getChannelCacheKey: function(e) { return e ? [ e.channel ||" ", e.sub_channel || " ", e.show_channel || e.name || " " ].join("| ") : " __default__ ";
 },
 saveCurrentInputCache: function() {
 var e = this.getCurrentChannel();

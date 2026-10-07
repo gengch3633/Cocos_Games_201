@@ -54,21 +54,7 @@ class PlayerDataStoreImpl {
 
     init(data: any): void {
         if (data) {
-            const payload = data.user_info && typeof data.user_info === "object" ? Object.assign({}, data, data.user_info) : data;
-            this._rawData = payload || {};
-            this.cash_balance = Number(payload.cash_balance || 0);
-            this.fund_balance = Number(payload.fund_balance || 0);
-            this.bubble_balance = Number(payload.bubble_balance || 0);
-            this.user_level = Number(payload.user_level || 0);
-            this.task_point_num = Number(payload.task_point_num || 0);
-            this.ltv_task_point_num = Number(payload.ltv_task_point_num || 0);
-            this.circle_count = Number(payload.circle_count || 0);
-            this.sign_in = Number(payload.sign_in || 0);
-            this.hint_prop_count = Number(payload.hint_prop_count || 0);
-            this.guideline_prop_count = Number(payload.guideline_prop_count || 0);
-            this.levels_passed_count = Number(payload.levels_passed_count || 0);
-            this.guideline_eliminate_num = Number(payload.guideline_eliminate_num || 0);
-            this.current_arrow_level_id = String(payload.current_arrow_level_id || " 0 ");
+            const payload = data.user_info && typeof data.user_info === "object"? Object.assign({}, data, data.user_info) : data; this._rawData = payload || {}; this.cash_balance = Number(payload.cash_balance || 0); this.fund_balance = Number(payload.fund_balance || 0); this.bubble_balance = Number(payload.bubble_balance || 0); this.user_level = Number(payload.user_level || 0); this.task_point_num = Number(payload.task_point_num || 0); this.ltv_task_point_num = Number(payload.ltv_task_point_num || 0); this.circle_count = Number(payload.circle_count || 0); this.sign_in = Number(payload.sign_in || 0); this.hint_prop_count = Number(payload.hint_prop_count || 0); this.guideline_prop_count = Number(payload.guideline_prop_count || 0); this.levels_passed_count = Number(payload.levels_passed_count || 0); this.guideline_eliminate_num = Number(payload.guideline_eliminate_num || 0); this.current_arrow_level_id = String(payload.current_arrow_level_id ||" 0 ");
             this.is_tourists = !!payload.is_tourists;
             this.create_time = String(payload.create_time || " ");
             this.ab_info = payload.ab_info || {};

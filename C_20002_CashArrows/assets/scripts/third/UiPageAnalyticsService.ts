@@ -4,16 +4,16 @@ import UIMgr from "./UIMgr";
 const LOG_PREFIX = "[UiPageAnalyticsService] ";
 
 const PAGE_MAP: Record<string, string> = {
-    " prefab/ ui/ homeUI ": " home_page ",
-    " prefab/ gameView ": " game_page ",
-    " prefab/ cashArrowReviveView ": " revive_page ",
-    " prefab/ withMoodView_v2 ": " withdraw_page ",
-    " prefab/ arrowTaskPopup ": " task_page ",
-    " prefab/ cashArrowSetView ": " withdraw_set_page ",
-    " prefab/ cashArrowSettingView ": " withdraw_setting_page ",
-    " prefab/ cashArrowCheckView ": " withdraw_check_page ",
-    " prefab/ arrowSettleRewardView ": " settle_reward_page ",
-    " prefab/ cashArrowFailView ": " fail_page "
+    "prefab/ui/homeUI": " home_page ",
+    "prefab/gameView": " game_page ",
+    "prefab/cashArrowReviveView": " revive_page ",
+    "prefab/withMoodView_v2": " withdraw_page ",
+    "prefab/arrowTaskPopup": " task_page ",
+    "prefab/cashArrowSetView": " withdraw_set_page ",
+    "prefab/cashArrowSettingView": " withdraw_setting_page ",
+    "prefab/cashArrowCheckView": " withdraw_check_page ",
+    "prefab/arrowSettleRewardView": " settle_reward_page ",
+    "prefab/cashArrowFailView": " fail_page "
 };
 
 interface PageSession {

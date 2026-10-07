@@ -12,7 +12,7 @@ export default class UserInfoService extends Singleton {
     fetch(): void {
         const now = Date.now ? Date.now() : new Date().getTime();
         if (this._lastFetchTs && now - this._lastFetchTs < 500) {
-            console.log("[UserInfoService] fetch throttled, elapsed = " + (now - this._lastFetchTs) + " ms ");
+            console.log("[UserInfoService] fetch throttled, elapsed = "+ (now-this._lastFetchTs) +" ms ");
             return;
         }
         this._lastFetchTs = now;

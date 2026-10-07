@@ -97,25 +97,7 @@ class UIHelperImpl {
             }
             this.addPage(pageName, node, node, prefab, params);
         } else {
-            cc.resources.load(" BPR_pages/ BPR_ " + pageName, cc.Prefab, (err, prefab) => {
-                if (!err) {
-                    this.addPage(pageName, null, cc.instantiate(prefab), prefab, params);
-                }
-            });
-        }
-    }
-
-    addPage(pageName: string, existingNode: cc.Node, node: cc.Node, prefab: cc.Prefab, params?: any): void {
-        if (!existingNode || !existingNode.isValid) {
-            existingNode = node;
-        }
-        const parent = this.getPagesParent();
-        if (!parent.getChildByName(pageName)) {
-            parent.addChild(existingNode);
-        }
-        existingNode.name = pageName;
-        existingNode.zIndex = 99;
-        const ctrl = existingNode.getComponent(pageName + " Ctrl ") || existingNode.getComponent(" BasePageCtrl ");
+            cc.resources.load("BPR_pages/BPR_"+ pageName, cc.Prefab, (err, prefab) => { if (!err) { this.addPage(pageName, null, cc.instantiate(prefab), prefab, params); } }); } } addPage(pageName: string, existingNode: cc.Node, node: cc.Node, prefab: cc.Prefab, params?: any): void { if (!existingNode || !existingNode.isValid) { existingNode = node; } const parent = this.getPagesParent(); if (!parent.getChildByName(pageName)) { parent.addChild(existingNode); } existingNode.name = pageName; existingNode.zIndex = 99; const ctrl = existingNode.getComponent(pageName +" Ctrl ") || existingNode.getComponent(" BasePageCtrl ");
         ctrl?._init?.(params);
         this.pages.set(pageName, { node: existingNode, prefab });
     }

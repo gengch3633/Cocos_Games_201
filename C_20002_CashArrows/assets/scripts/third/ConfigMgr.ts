@@ -23,13 +23,13 @@ export default class ConfigMgr extends Singleton {
     game_wnzzl: string = " wx_wnzzl ";
     game_kyzmw: string = " wx_kyzmw ";
     gameName: string = " wx_wnzzl ";
-    lk_oss: string = " https:// lkgame.mrkzx.cn/ ";
+    lk_oss: string = "https://lkgame.mrkzx.cn/";
     dataMap: Map<string, any> = new Map();
     levelMap: Map<string, any> = new Map();
     mackList: any = null;
     loadState: LoadState = LoadState.None;
 
-    loadAll(baseUrl: string, bundleName: string = " config ", jsonDir: string = "/ json "): Promise<boolean> {
+    loadAll(baseUrl: string, bundleName: string = "config", jsonDir: string = "/json"): Promise<boolean> {
         const self = this;
         return new Promise((resolve) => {
             if (self.loadState != LoadState.Done) {
@@ -151,7 +151,7 @@ export default class ConfigMgr extends Singleton {
         rows?.forEach(callback);
     }
 
-    loadLevel(baseUrl: string, bundleName: string = " config ", gameDir: string = "/ game "): Promise<boolean> {
+    loadLevel(baseUrl: string, bundleName: string = "config", gameDir: string = "/game"): Promise<boolean> {
         const self = this;
         return new Promise((resolve) => {
             let pendingCount = 0;
@@ -261,9 +261,7 @@ export default class ConfigMgr extends Singleton {
                 const url =
                     this.lk_oss +
                     this.gameName.split(" _ ")[1] +
-                    "/ level/ " +
-                    levelName +
-                    ".json? t = " +
+                    "/ level/ "+ levelName +".json? t = " +
                     Date.now();
                 cc.assetManager.loadRemote(url, (err, asset: cc.JsonAsset) => {
                     if (err) {

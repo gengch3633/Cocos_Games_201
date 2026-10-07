@@ -8,22 +8,22 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class RTLLayoutAdapter extends cc.Component {
     @property({
-        tooltip: " 处理子树里的 cc.Widget ： isAlignLeft < - > isAlignRight ， left < - > right "
+        tooltip: "处理子树里的 cc.Widget ： isAlignLeft <-> isAlignRight ， left <-> right"
     })
     affectWidget: boolean = true;
 
     @property({
-        tooltip: " 处理子树里的 cc.Layout ： HORIZONTAL/ GRID 时翻转 horizontalDirection "
+        tooltip: "处理子树里的 cc.Layout ： HORIZONTAL/GRID 时翻转 horizontalDirection"
     })
     affectLayout: boolean = true;
 
     @property({
-        tooltip: " CENTER_H 锚点的水平偏移在 RTL 下取反 （ 偏右- > 偏左 ） "
+        tooltip: "CENTER_H 锚点的水平偏移在 RTL 下取反 （ 偏右-> 偏左 ）"
     })
     flipCenterHOffset: boolean = true;
 
     @property({
-        tooltip: " 根节点自身的 Widget/ Layout 是否也参与镜像 ； Canvas 撑满 Widget 翻无差 ， prefab 根节点开启更符合预期 "
+        tooltip: "根节点自身的 Widget/Layout 是否也参与镜像 ； Canvas 撑满 Widget 翻无差 ， prefab 根节点开启更符合预期"
     })
     affectSelf: boolean = true;
 
@@ -62,9 +62,7 @@ export default class RTLLayoutAdapter extends cc.Component {
             this.collectNodes();
             this.applyLayout();
             try {
-                const isRTL = typeof (LanguageService as any).isRTL === "function" ? (LanguageService as any).isRTL() : false;
-                if (isRTL) {
-                    const nodeName = this.node && this.node.name ? this.node.name : "? ";
+                const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; if (isRTL) { const nodeName = this.node && this.node.name ? this.node.name :"? ";
                     cc.log("[RTLLayoutAdapter] init on '" + nodeName + "' cached = " + this._cache.length + " rtl = true ");
                 }
             } catch (err) { }
@@ -164,12 +162,7 @@ export default class RTLLayoutAdapter extends cc.Component {
 
     applyLayout(): void {
         if (!this._isDestroyed) {
-            const isRTL = typeof (LanguageService as any).isRTL === "function" ? (LanguageService as any).isRTL() : false;
-            for (let i = 0; i < this._cache.length; i++) {
-                const item = this._cache[i];
-                const valid = item.kind === " position " ? item.node && item.node.isValid : item.comp && item.comp.isValid;
-                if (valid) {
-                    if (item.kind === " widget ") {
+            const isRTL = typeof (LanguageService as any).isRTL === "function"? (LanguageService as any).isRTL() : false; for (let i = 0; i < this._cache.length; i++) { const item = this._cache[i]; const valid = item.kind ===" position "? item.node && item.node.isValid : item.comp && item.comp.isValid; if (valid) { if (item.kind ===" widget ") {
                         isRTL ? this.mirrorWidget(item.comp, item.orig) : this.restoreWidget(item.comp, item.orig);
                     } else if (item.kind === " layout ") {
                         isRTL ? this.mirrorLayout(item.comp, item.orig) : this.restoreLayout(item.comp, item.orig);

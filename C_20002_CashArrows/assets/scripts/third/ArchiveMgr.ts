@@ -14,25 +14,7 @@ export default class ArchiveMgr extends Singleton {
     localDataMap: { [key: string]: ArchiveData } = null;
     serverDatas: any[] = [];
     prefix: string = "";
-    private _id: string = "ArchiveMgr_" + Date.now();
-    sync: boolean = false;
-    syncVersionCount: number = 0;
-
-    async init(enableSync: boolean): Promise<boolean> {
-        this.sync = enableSync;
-        if (!enableSync) {
-            return true;
-        }
-        const response = {
-            success: true,
-            data: {}
-        };
-        if (!response.success) {
-            return false;
-        }
-        const data = response.data;
-        for (const key in data) {
-            if (typeof key === "string" && key.startsWith("saveGameModule")) {
+    private _id: string = "ArchiveMgr_"+ Date.now(); sync: boolean = false; syncVersionCount: number = 0; async init(enableSync: boolean): Promise<boolean> { this.sync = enableSync; if (!enableSync) { return true; } const response = { success: true, data: {} }; if (!response.success) { return false; } const data = response.data; for (const key in data) { if (typeof key ==="string" && key.startsWith("saveGameModule")) {
                 const rawValue = data[key];
                 const parts = key.split("saveGameModule");
                 const index = parseInt(parts.pop());

@@ -112,7 +112,7 @@ export default class netErrorView extends cc.Component {
             if (LanguageService) {
                 let text: string;
                 if (!this._hasServerAttribution() && typeof LanguageService.tWithLanguage === "function") {
-                    text = LanguageService.tWithLanguage(" en- US ", key, [], fallback);
+                    text = LanguageService.tWithLanguage("en-US", key, [], fallback);
                 } else if (typeof LanguageService.t === "function") {
                     text = LanguageService.t(key, [], fallback);
                 }
@@ -136,7 +136,7 @@ export default class netErrorView extends cc.Component {
     _refreshTexts(): void {
         this._setLabelText(this._lblContinue, this._t(" key_net_error_continue ", " Continue? "));
         this._setLabelText(this._lblTitle, this._t(" key_net_error_title ", " Network connection failed ! "));
-        this._setLabelText(this._lblDesc, this._t(" key_net_error_message ", " Please check your cellular or Wi- Fi connection and retry "));
+        this._setLabelText(this._lblDesc, this._t(" key_net_error_message ", "Please check your cellular or Wi-Fi connection and retry"));
         this._setLabelText(this._lblRetryText, this._t(" key_net_error_retry ", " Try Again "));
     }
 
@@ -164,7 +164,7 @@ export default class netErrorView extends cc.Component {
                 cc.warn(LOG_PREFIX, " retryFn 执行异常 ", err);
             }
         } else {
-            cc.warn(LOG_PREFIX, " 点击重试但无 retryFn 绑定 ， no- op ");
+            cc.warn(LOG_PREFIX, "点击重试但无 retryFn 绑定 ， no-op");
         }
     }
 }

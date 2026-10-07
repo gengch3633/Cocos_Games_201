@@ -63,27 +63,20 @@ class AndroidNativeSdkBridge {
         });
         const rawPayload = this.buildMoveToPayload(methodName, args);
         const encodedPayload = this.encodeBase64Utf8(rawPayload);
-        debugLog(" invokeMoveTo- > " + methodName, {
-            rawPayload: sanitizeLogValue(rawPayload),
-            encodedPayload: sanitizeLogValue(encodedPayload),
-            args: sanitizeLogArray(args)
-        });
-        try {
-            const reflection = (window as any).jsb && (window as any).jsb.reflection;
-            if (!reflection || typeof reflection.callStaticMethod !== "function") {
+        debugLog("invokeMoveTo->"+ methodName, { rawPayload: sanitizeLogValue(rawPayload), encodedPayload: sanitizeLogValue(encodedPayload), args: sanitizeLogArray(args) }); try { const reflection = (window as any).jsb && (window as any).jsb.reflection; if (!reflection || typeof reflection.callStaticMethod !=="function") {
                 debugLog(" invokeMoveTo skipped(no jsb.reflection.callStaticMethod) ", {
                     methodName: methodName
                 });
                 return " ";
             }
             const result = reflection.callStaticMethod(
-                " org/ cocos2dx/ javascript/ AppActivity ",
+                "org/cocos2dx/javascript/AppActivity",
                 " moveTo ",
                 "(Ljava/ lang/ String;) Ljava/ lang/ String;",
                 encodedPayload
             );
             const text = result == null ? " " : String(result);
-            debugLog(" invokeMoveTo < - " + methodName, sanitizeLogValue(text));
+            debugLog("invokeMoveTo <-" + methodName, sanitizeLogValue(text));
             return text;
         } catch (err) {
             console.error("[NativeSdkBridgeAdapter] invokeMoveTo failed ", methodName, err);
@@ -101,7 +94,7 @@ class AndroidNativeSdkBridge {
 
     getClientInfo(): string {
         const result = this.invokeMoveTo(" harvestProgramLedger ") || " {\n}\n";
-        debugLog(" getClientInfo < - result ", sanitizeLogValue(result));
+        debugLog("getClientInfo <-result", sanitizeLogValue(result));
         return result;
     }
 
@@ -118,7 +111,7 @@ class AndroidNativeSdkBridge {
     }
 
     onJump(url: string): void {
-        debugLog(" onJump- > cc.sys.openURL ", url);
+        debugLog("onJump-> cc.sys.openURL", url);
         cc.sys.openURL(url);
     }
 
@@ -129,14 +122,14 @@ class AndroidNativeSdkBridge {
     getNotchHeight(): number {
         const result = this.invokeMoveTo(" getNotchHeight ");
         const height = Number(result) || 0;
-        debugLog(" getNotchHeight < - ", height);
+        debugLog("getNotchHeight <-", height);
         return height;
     }
 
     getStatusBarHeight(): number {
         const result = this.invokeMoveTo(" getStatusBarHeight ");
         const height = Number(result) || 0;
-        debugLog(" getStatusBarHeight < - ", height);
+        debugLog("getStatusBarHeight <-", height);
         return height;
     }
 
@@ -172,7 +165,7 @@ class AndroidNativeSdkBridge {
                 debugLog(" exitApp skipped(no jsb.reflection.callStaticMethod) ");
                 return;
             }
-            reflection.callStaticMethod(" org/ cocos2dx/ javascript/ AppActivity ", " requestAppExit ", "() V ");
+            reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", " requestAppExit ", "() V ");
             debugLog(" exitApp invoked ");
         } catch (err) {
             console.error("[NativeSdkBridgeAdapter] exitApp failed ", err);
@@ -242,31 +235,28 @@ export default class NativeSdkBridgeAdapter {
         }
         const trimmed = String(raw || " ").trim();
         if (!trimmed) {
-            return allowText ? " " : null;
-        }
-        try {
-            const normalized = trimmed.replace(/-/g, "+ ").replace(/_/g, "/ ");
+            return allowText ? " ": null; } try { const normalized = trimmed.replace(/-/g,"+ ").replace(/_/g, "/ ");
             const padding = normalized.length % 4;
             const base64 = padding ? normalized + " = ".repeat(4 - padding) : normalized;
             const decoded = atob(base64);
             try {
                 const parsed = JSON.parse(decoded);
-                debugLog(" parseEncodedJson success(base64- json) ", sanitizeLogValue(parsed));
+                debugLog("parseEncodedJson success(base64-json)", sanitizeLogValue(parsed));
                 return parsed;
             } catch (err) {
                 if (allowText) {
-                    debugLog(" parseEncodedJson success(base64- text) ", sanitizeLogValue(decoded));
+                    debugLog("parseEncodedJson success(base64-text)", sanitizeLogValue(decoded));
                     return decoded;
                 }
             }
         } catch (err) { }
         try {
             const parsed = JSON.parse(trimmed);
-            debugLog(" parseEncodedJson success(raw- json) ", sanitizeLogValue(parsed));
+            debugLog("parseEncodedJson success(raw-json)", sanitizeLogValue(parsed));
             return parsed;
         } catch (err) {
             if (allowText) {
-                debugLog(" parseEncodedJson fallback(raw- text) ", sanitizeLogValue(trimmed));
+                debugLog("parseEncodedJson fallback(raw-text)", sanitizeLogValue(trimmed));
                 return trimmed;
             }
             debugLog(" parseEncodedJson failed ", sanitizeLogValue(trimmed));
@@ -294,8 +284,7 @@ export default class NativeSdkBridgeAdapter {
             debugLog(" bindBranchHandlers start ");
             const bindHandler = (name: string, handler: (...args: any[]) => void) => {
                 const previous = branch[name];
-                debugLog(" bind branch." + name, {
-                    hasPrevious: typeof previous === "function"
+                debugLog(" bind branch."+ name, { hasPrevious: typeof previous ==="function"
                 });
                 branch[name] = (...args: any[]) => {
                     debugLog(" branch." + name + " invoked ", sanitizeLogArray(args));
@@ -349,11 +338,11 @@ export default class NativeSdkBridgeAdapter {
                 const parsed = this.parseEncodedJson(raw);
                 debugLog(" branch.relayFragmentaryNote parsed ", sanitizeLogValue(parsed));
                 let payload: string;
-                debugLog(" branch.relayFragmentaryNote- > BusinessAnalyticsService.onTrack ", sanitizeLogValue(payload = parsed && typeof parsed === "object" ? JSON.stringify(parsed) : typeof raw === "string" ? raw : raw != null ? JSON.stringify(raw) : " {\n}\n"));
+                debugLog("branch.relayFragmentaryNote-> BusinessAnalyticsService.onTrack", sanitizeLogValue(payload = parsed && typeof parsed === "object" ? JSON.stringify(parsed) : typeof raw === "string" ? raw : raw != null ? JSON.stringify(raw) : " {\n}\n"));
                 BusinessAnalyticsService.onTrack(payload);
             });
             bindHandler(" unloadHeapedNotes ", () => {
-                debugLog(" branch.unloadHeapedNotes- > BusinessAnalyticsService.trackAll ");
+                debugLog("branch.unloadHeapedNotes-> BusinessAnalyticsService.trackAll");
                 BusinessAnalyticsService.trackAll();
             });
             bindHandler(" backedFeatureCrumbled ", (raw: any) => {
@@ -364,14 +353,14 @@ export default class NativeSdkBridgeAdapter {
                     message: data.claspOpinionGlanceSpruce || data.message || " ",
                     raw: parsed || raw
                 };
-                debugLog(" branch.backedFeatureCrumbled- > EventMgr.trigger(VIDEO_ERROR) ", sanitizeLogValue(payload));
+                debugLog("branch.backedFeatureCrumbled-> EventMgr.trigger(VIDEO_ERROR)", sanitizeLogValue(payload));
                 EventSystem.trigger(AdEventType.VIDEO_ERROR, payload);
             });
             bindHandler(" backedFeatureWithdrawn ", (raw: any) => {
                 const parsed = this.parseEncodedJson(raw);
                 const data = parsed && (parsed.ferryBulkTierAgate || parsed.data || parsed) || {};
                 const compensationQualifyMark = data.compensationQualifyMark !== undefined ? data.compensationQualifyMark : data.appraiseChaliceRungBorage;
-                debugLog(" branch.backedFeatureWithdrawn- > EventMgr.trigger(VIDEO_CLOSE) ", {
+                debugLog("branch.backedFeatureWithdrawn-> EventMgr.trigger(VIDEO_CLOSE)", {
                     compensationQualifyMark: !!compensationQualifyMark
                 });
                 EventSystem.trigger(AdEventType.VIDEO_CLOSE, {
@@ -382,7 +371,7 @@ export default class NativeSdkBridgeAdapter {
                 const parsed = this.parseEncodedJson(raw);
                 const data = parsed && (parsed.ferryBulkTierAgate || parsed.data) || {};
                 const payload = parsed && typeof parsed === "object" ? Object.assign(Object.assign({}, data), parsed) : data && typeof data === "object" ? data : {};
-                debugLog(" branch.backedFeatureRipened- > EventMgr.trigger(VIDEO_OPEN_SUCCESS) ", sanitizeLogValue(payload));
+                debugLog("branch.backedFeatureRipened-> EventMgr.trigger(VIDEO_OPEN_SUCCESS)", sanitizeLogValue(payload));
                 EventSystem.trigger(AdEventType.VIDEO_OPEN_SUCCESS, payload);
             });
             bindHandler(" pushTokenInitialized ", (raw: any) => {
@@ -398,11 +387,11 @@ export default class NativeSdkBridgeAdapter {
                 }
             });
             bindHandler(" cycleAscendedAlert ", () => {
-                debugLog(" branch.cycleAscendedAlert- > cc.game.EVENT_SHOW ");
+                debugLog("branch.cycleAscendedAlert-> cc.game.EVENT_SHOW");
                 cc.game && cc.game.emit && cc.game.emit(cc.game.EVENT_SHOW);
             });
             bindHandler(" cycleDescendedMute ", () => {
-                debugLog(" branch.cycleDescendedMute- > cc.game.EVENT_HIDE ");
+                debugLog("branch.cycleDescendedMute-> cc.game.EVENT_HIDE");
                 cc.game && cc.game.emit && cc.game.emit(cc.game.EVENT_HIDE);
             });
             this.branchHandlersBound = true;
@@ -421,8 +410,7 @@ export default class NativeSdkBridgeAdapter {
                 const source = mapping.source;
                 const target = mapping.target;
                 const previous = callAndroid[source];
-                debugLog(" bind callAndroid." + source + "- > branch." + target, {
-                    hasPrevious: typeof previous === "function"
+                debugLog(" bind callAndroid." + source + "- > branch."+ target, { hasPrevious: typeof previous ==="function"
                 });
                 callAndroid[source] = (...args: any[]) => {
                     debugLog(" callAndroid." + source + " invoked ", sanitizeLogArray(args));

@@ -4,7 +4,7 @@ const { ccclass, property, requireComponent, menu } = cc._decorator;
 
 @ccclass
 @requireComponent(cc.Label)
-@menu(" UI/ Cocos/ NumberRoll ")
+@menu("UI/Cocos/NumberRoll")
 export default class NumberRoll extends cc.Component {
     _lab: cc.Label = null;
 

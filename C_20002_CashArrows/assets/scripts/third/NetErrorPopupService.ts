@@ -89,11 +89,7 @@ const NetErrorPopupService = {
             console.log(LOG_PREFIX, " popup already showing, merge retryFn into queue ");
             const pending = this._pendingRetry;
             if (typeof retryFn === "function") {
-                this._pendingRetry = typeof pending === "function" ? () => {
-                    try {
-                        pending();
-                    } catch (err) {
-                        console.warn(LOG_PREFIX, " merged retry 1 failed ", err);
+                this._pendingRetry = typeof pending === "function"? () => { try { pending(); } catch (err) { console.warn(LOG_PREFIX," merged retry 1 failed ", err);
                     }
                     try {
                         retryFn();
@@ -103,12 +99,7 @@ const NetErrorPopupService = {
                 } : retryFn;
             }
         } else {
-            this._pendingRetry = typeof retryFn === "function" ? retryFn : null;
-            this._isShowing = true;
-            const uiMgr = UIMgr.getInstance();
-            const viewName = UIDefine.netErrorView;
-            if (viewName) {
-                console.log(LOG_PREFIX, " showing popup with retryFn: ", !!retryFn);
+            this._pendingRetry = typeof retryFn === "function"? retryFn : null; this._isShowing = true; const uiMgr = UIMgr.getInstance(); const viewName = UIDefine.netErrorView; if (viewName) { console.log(LOG_PREFIX," showing popup with retryFn: ", !!retryFn);
                 uiMgr.show(viewName).then((view: any) => {
                     if (view) {
                         console.log(LOG_PREFIX, " popup shown successfully ");
@@ -146,25 +137,11 @@ const NetErrorPopupService = {
         return {
             success(data: any) {
                 if (skipForceRetryCode || !isForceRetryCode(getErrorCode(data))) {
-                    typeof onSuccess === "function" && onSuccess(data);
-                } else {
-                    console.warn(LOG_PREFIX, " success branch hit force- retry code, route to retry popup, code = " + getErrorCode(data));
-                    typeof retry === "function" ? service._showPopup(retry) : typeof onFail === "function" && onFail(data);
-                }
-            },
-            fail(err: any) {
-                if (service.shouldPop(err) && typeof retry === "function") {
+                    typeof onSuccess === "function"&& onSuccess(data); } else { console.warn(LOG_PREFIX,"success branch hit force-retry code, route to retry popup, code ="+ getErrorCode(data)); typeof retry ==="function" ? service._showPopup(retry) : typeof onFail === "function"&& onFail(data); } }, fail(err: any) { if (service.shouldPop(err) && typeof retry ==="function") {
                     console.warn(LOG_PREFIX, " fail branch triggers retry popup, err = " + JSON.stringify(err));
                     service._showPopup(retry);
                 } else {
-                    typeof onFail === "function" && onFail(err);
-                }
-            }
-        };
-    },
-
-    handle(err: any, retryFn: () => void, fallback?: (err: any) => void): boolean {
-        if (this.shouldPop(err) && typeof retryFn === "function") {
+                    typeof onFail === "function"&& onFail(err); } } }; }, handle(err: any, retryFn: () => void, fallback?: (err: any) => void): boolean { if (this.shouldPop(err) && typeof retryFn ==="function") {
             this._showPopup(retryFn);
             return true;
         }

@@ -59,7 +59,7 @@ const FlyRewardAnimMgr = {
         const rewardText = options.rewardText || " ";
         const onAllArrived = options.onAllArrived;
         const sfx = options.sfx || " ";
-        const sfxBundle = options.sfxBundle || " game ";
+        const sfxBundle = options.sfxBundle || "game";
         if (parentNode && parentNode.isValid && iconFrame && endPos) {
             if (sfx) {
                 AudioMgr.getInstance().playEffect(sfx, sfxBundle);

@@ -122,12 +122,7 @@ function playAd(forceVideo: boolean, onSuccess?: Function, onFail?: Function): v
             ad_type: " reward_video ",
             force_video: !!forceVideo
         }, () => {
-            console.log(LOG_TAG + "_playAd: 广告播放完成 force_video=" + !!forceVideo);
-            onSuccess && onSuccess();
-        }, (error: any) => {
-            console.warn(LOG_TAG + "_playAd: 广告失败 err=" + JSON.stringify(error));
-            onFail && onFail(error);
-        }, " 激励视频播放失败 ， 请重试 ");
+            console.log(LOG_TAG + "_playAd: 广告播放完成 force_video="+ !!forceVideo); onSuccess && onSuccess(); }, (error: any) => { console.warn(LOG_TAG +"_playAd: 广告失败 err="+ JSON.stringify(error)); onFail && onFail(error); }," 激励视频播放失败 ， 请重试 ");
     } else {
         console.warn(LOG_TAG + "_playAd: 无广告SDK ， 视为广告失败 ");
         onFail && onFail({
@@ -182,56 +177,8 @@ function applyRewardResult(data: any): void {
                 reward_amount: rewardAmount
             });
         }
-        console.log(LOG_TAG + "_applyRewardResult: reward_source=" + reward.source + " reward_amount=" + rewardAmount + " cash_balance=" + data.cash_balance + " bubble_balance=" + data.bubble_balance + " raw=" + JSON.stringify({
-            cash_reward: data.cash_reward,
-            reward_amount: data.reward_amount,
-            ad_reward_amount: data.ad_reward_amount,
-            switch_reward: data.switch_reward,
-            double_reward: data.double_reward
-        }));
-    } catch (e) {
-        console.warn(LOG_TAG + "_applyRewardResult: emit失败 " + e);
-    }
-}
-
-const ArrowRewardService = {
-    claimNormal(options: any, callback?: Function): void {
-        const normalized = normalizeClaimNormalOptions(options, callback);
-        const onComplete = typeof normalized.callback === "function" ? normalized.callback : null;
-        const payload = buildPayload(normalized);
-
-        function claimNormalRequest(): void {
-            console.log(LOG_TAG + "claimNormal: 调用领取接口 ehwqDl/CCDFGN payload=" + JSON.stringify(payload));
-            LoadingHttpService.claimArrowReward(payload, Handler.create(null, (response: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(response)) {
-                    console.warn(LOG_TAG + "claimNormal force-retry code=" + (response && response.code));
-                    popup.showAndRetry(claimNormalRequest);
-                } else if (response && response.data) {
-                    console.log(LOG_TAG + "claimNormal 成功 data=" + JSON.stringify(response.data));
-                    applyRewardResult(response.data);
-                    onComplete && onComplete(true, response.data);
-                } else {
-                    console.warn(LOG_TAG + "claimNormal 返回数据异常 res=" + JSON.stringify(response));
-                    onComplete && onComplete(false, null);
-                }
-            }), Handler.create(null, (error: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(error)) {
-                    console.warn(LOG_TAG + "claimNormal 网络异常 ， 弹重试窗 err=" + JSON.stringify(error));
-                    popup.showAndRetry(claimNormalRequest);
-                } else {
-                    console.warn(LOG_TAG + "claimNormal 请求失败 err=" + JSON.stringify(error));
-                    onComplete && onComplete(false, null);
-                }
-            }));
-        }
-
-        function claimAdReward(forceType: boolean): void {
-            const adManager = AdManager.getInstance();
-            const cpmData = adManager && adManager.cpm_data || {};
-            const params: any = {
-                video_type: payload.business_type === " arrow " ? " big_red " : " task ",
+        console.log(LOG_TAG + "_applyRewardResult: reward_source=" + reward.source + " reward_amount=" + rewardAmount + " cash_balance=" + data.cash_balance + " bubble_balance=" + data.bubble_balance + " raw="+ JSON.stringify({ cash_reward: data.cash_reward, reward_amount: data.reward_amount, ad_reward_amount: data.ad_reward_amount, switch_reward: data.switch_reward, double_reward: data.double_reward })); } catch (e) { console.warn(LOG_TAG +"_applyRewardResult: emit失败 "+ e); }
+} const ArrowRewardService = { claimNormal(options: any, callback?: Function): void { const normalized = normalizeClaimNormalOptions(options, callback); const onComplete = typeof normalized.callback ==="function"? normalized.callback : null; const payload = buildPayload(normalized); function claimNormalRequest(): void { console.log(LOG_TAG +"claimNormal: 调用领取接口 ehwqDl/CCDFGN payload="+ JSON.stringify(payload)); LoadingHttpService.claimArrowReward(payload, Handler.create(null, (response: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(response)) { console.warn(LOG_TAG +"claimNormal force-retry code="+ (response && response.code)); popup.showAndRetry(claimNormalRequest); } else if (response && response.data) { console.log(LOG_TAG +"claimNormal 成功 data="+ JSON.stringify(response.data)); applyRewardResult(response.data); onComplete && onComplete(true, response.data); } else { console.warn(LOG_TAG +"claimNormal 返回数据异常 res="+ JSON.stringify(response)); onComplete && onComplete(false, null); } }), Handler.create(null, (error: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(error)) { console.warn(LOG_TAG +"claimNormal 网络异常 ， 弹重试窗 err="+ JSON.stringify(error)); popup.showAndRetry(claimNormalRequest); } else { console.warn(LOG_TAG +"claimNormal 请求失败 err="+ JSON.stringify(error)); onComplete && onComplete(false, null); } })); } function claimAdReward(forceType: boolean): void { const adManager = AdManager.getInstance(); const cpmData = adManager && adManager.cpm_data || {}; const params: any = { video_type: payload.business_type ===" arrow " ? " big_red " : " task ",
                 task_id: cpmData.task_id || payload.task_id || " ",
                 force_type: forceType ? " true " : " false ",
                 source: cpmData.source || " ",
@@ -243,35 +190,7 @@ const ArrowRewardService = {
             if (payload.task_type) {
                 params.task_type = payload.task_type;
             }
-            console.log(LOG_TAG + "claimNormal: 广告完成 ， 调用广告奖励接口/ vNZlOY/ KWcPza params=" + JSON.stringify(params));
-            const retry = () => claimAdReward(forceType);
-            LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(response)) {
-                    console.warn(LOG_TAG + "claimNormal(AdReward) force-retry code=" + (response && response.code));
-                    popup.showAndRetry(retry);
-                } else if (response && response.data) {
-                    console.log(LOG_TAG + "claimNormal(AdReward) 成功 data=" + JSON.stringify(response.data));
-                    applyRewardResult(response.data);
-                    onComplete && onComplete(true, response.data);
-                } else {
-                    console.warn(LOG_TAG + "claimNormal(AdReward) 返回数据异常 res=" + JSON.stringify(response));
-                    onComplete && onComplete(false, null);
-                }
-            }), Handler.create(null, (error: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(error)) {
-                    console.warn(LOG_TAG + "claimNormal(AdReward) 网络异常 ， 弹重试窗 err=" + JSON.stringify(error));
-                    popup.showAndRetry(retry);
-                } else {
-                    console.warn(LOG_TAG + "claimNormal(AdReward) 请求失败 err=" + JSON.stringify(error));
-                    onComplete && onComplete(false, null);
-                }
-            }));
-        }
-
-        if (normalized.showForceVideo) {
-            console.log(LOG_TAG + "claimNormal: showForceVideo=true ， 先播广告 ");
+            console.log(LOG_TAG + "claimNormal: 广告完成 ， 调用广告奖励接口/ vNZlOY/ KWcPza params="+ JSON.stringify(params)); const retry = () => claimAdReward(forceType); LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(response)) { console.warn(LOG_TAG +"claimNormal(AdReward) force-retry code="+ (response && response.code)); popup.showAndRetry(retry); } else if (response && response.data) { console.log(LOG_TAG +"claimNormal(AdReward) 成功 data="+ JSON.stringify(response.data)); applyRewardResult(response.data); onComplete && onComplete(true, response.data); } else { console.warn(LOG_TAG +"claimNormal(AdReward) 返回数据异常 res="+ JSON.stringify(response)); onComplete && onComplete(false, null); } }), Handler.create(null, (error: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(error)) { console.warn(LOG_TAG +"claimNormal(AdReward) 网络异常 ， 弹重试窗 err="+ JSON.stringify(error)); popup.showAndRetry(retry); } else { console.warn(LOG_TAG +"claimNormal(AdReward) 请求失败 err="+ JSON.stringify(error)); onComplete && onComplete(false, null); } })); } if (normalized.showForceVideo) { console.log(LOG_TAG +"claimNormal: showForceVideo=true ， 先播广告 ");
             playAd(true, () => claimAdReward(true), () => {
                 console.warn(LOG_TAG + "claimNormal: 广告失败 ， 降级普通领取接口 ");
                 claimNormalRequest();
@@ -283,9 +202,7 @@ const ArrowRewardService = {
 
     claimDouble(options: any, callback?: Function): void {
         const normalized = normalizeClaimDoubleOptions(options, callback);
-        const onComplete = typeof normalized.callback === "function" ? normalized.callback : null;
-        const payload = buildPayload(normalized);
-        console.log(LOG_TAG + "claimDouble: 开始播放广告 ");
+        const onComplete = typeof normalized.callback === "function"? normalized.callback : null; const payload = buildPayload(normalized); console.log(LOG_TAG +"claimDouble: 开始播放广告 ");
         playAd(false, () => {
             const adManager = AdManager.getInstance();
             const cpmData = adManager && adManager.cpm_data || {};
@@ -302,49 +219,7 @@ const ArrowRewardService = {
             if (payload.task_type) {
                 params.task_type = payload.task_type;
             }
-            console.log(LOG_TAG + "claimDouble: 广告完成 ， 调用翻倍接口/ vNZlOY/ KWcPza params=" + JSON.stringify(params));
-            const retryClaim = () => {
-                LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => {
-                    const popup = getNetErrorPopupService();
-                    if (popup && popup.shouldPop(response)) {
-                        popup.showAndRetry(retryClaim);
-                    } else if (response && response.data) {
-                        applyRewardResult(response.data);
-                        onComplete && onComplete(true, response.data);
-                    } else {
-                        onComplete && onComplete(false, null);
-                    }
-                }), Handler.create(null, (error: any) => {
-                    const popup = getNetErrorPopupService();
-                    popup && popup.shouldPop(error) ? popup.showAndRetry(retryClaim) : onComplete && onComplete(false, null);
-                }));
-            };
-            LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(response)) {
-                    console.warn(LOG_TAG + "claimDouble force-retry code=" + (response && response.code));
-                    popup.showAndRetry(retryClaim);
-                } else if (response && response.data) {
-                    console.log(LOG_TAG + "claimDouble 成功 data=" + JSON.stringify(response.data));
-                    applyRewardResult(response.data);
-                    onComplete && onComplete(true, response.data);
-                } else {
-                    console.warn(LOG_TAG + "claimDouble 返回数据异常 res=" + JSON.stringify(response));
-                    onComplete && onComplete(false, null);
-                }
-            }), Handler.create(null, (error: any) => {
-                const popup = getNetErrorPopupService();
-                if (popup && popup.shouldPop(error)) {
-                    console.warn(LOG_TAG + "claimDouble 网络异常 ， 弹重试窗 err=" + JSON.stringify(error));
-                    popup.showAndRetry(retryClaim);
-                } else {
-                    console.warn(LOG_TAG + "claimDouble 请求失败 err=" + JSON.stringify(error));
-                    onComplete && onComplete(false, null);
-                }
-            }));
-        }, () => {
-            if (normalized.fallbackOnAdFail !== false) {
-                console.warn(LOG_TAG + "claimDouble: 广告失败 ， 降级为普通领取 ");
+            console.log(LOG_TAG + "claimDouble: 广告完成 ， 调用翻倍接口/ vNZlOY/ KWcPza params="+ JSON.stringify(params)); const retryClaim = () => { LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(response)) { popup.showAndRetry(retryClaim); } else if (response && response.data) { applyRewardResult(response.data); onComplete && onComplete(true, response.data); } else { onComplete && onComplete(false, null); } }), Handler.create(null, (error: any) => { const popup = getNetErrorPopupService(); popup && popup.shouldPop(error) ? popup.showAndRetry(retryClaim) : onComplete && onComplete(false, null); })); }; LoadingHttpService.claimArrowAdReward(params, Handler.create(null, (response: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(response)) { console.warn(LOG_TAG +"claimDouble force-retry code="+ (response && response.code)); popup.showAndRetry(retryClaim); } else if (response && response.data) { console.log(LOG_TAG +"claimDouble 成功 data="+ JSON.stringify(response.data)); applyRewardResult(response.data); onComplete && onComplete(true, response.data); } else { console.warn(LOG_TAG +"claimDouble 返回数据异常 res="+ JSON.stringify(response)); onComplete && onComplete(false, null); } }), Handler.create(null, (error: any) => { const popup = getNetErrorPopupService(); if (popup && popup.shouldPop(error)) { console.warn(LOG_TAG +"claimDouble 网络异常 ， 弹重试窗 err="+ JSON.stringify(error)); popup.showAndRetry(retryClaim); } else { console.warn(LOG_TAG +"claimDouble 请求失败 err="+ JSON.stringify(error)); onComplete && onComplete(false, null); } })); }, () => { if (normalized.fallbackOnAdFail !== false) { console.warn(LOG_TAG +"claimDouble: 广告失败 ， 降级为普通领取 ");
                 ArrowRewardService.claimNormal({
                     showForceVideo: false,
                     businessType: normalized.businessType,

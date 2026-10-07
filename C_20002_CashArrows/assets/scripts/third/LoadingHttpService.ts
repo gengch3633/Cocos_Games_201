@@ -70,8 +70,7 @@ class HttpRequestPayload {
     constructor(trace: any) {
         this._trace = trace;
         const yid = ClientDataStore.yid || " ";
-        this._data.yid = " yid_read_fail " === yid || " yid_read_failed " === yid ? " " : yid;
-        this._data.device_id = ClientDataStore.device_id || " ";
+        this._data.yid = " yid_read_fail " === yid || " yid_read_failed " === yid ? " ": yid; this._data.device_id = ClientDataStore.device_id ||" ";
     }
 
     append(key: string, value: any): void {
@@ -107,26 +106,9 @@ function buildLParams(uri: string, gameVersion: string): any {
     const nonce = ClientDataStore.uuid();
     params.nonce_str = nonce;
     params.et = timestamp;
-    params.ngister = CryptoHelper.ngister("/ " + uri, timestamp.toString(), nonce, ClientDataStore.version_name, ClientDataStore.channel_name, ClientDataStore.device_id, ClientDataStore.box_pkg_name);
-    params.game_version = gameVersion;
-    return params;
-}
-
-function createRequestData(businessData: any, requestKey: string, gameVersion: string): HttpRequestPayload {
-    const uri = requestDescriptor.getUri(requestKey);
-    const payload = new HttpRequestPayload({
-        requestKey: requestKey,
-        uri: uri,
-        startedAt: nowMs()
-    });
-    businessData = Object.assign({}, businessData);
-    businessData.l_params = buildLParams(uri, gameVersion);
-    payload.trace().businessPlainData = businessData;
-    let bodyText: string;
-    const url = buildRequestUrl(requestKey);
-    logParts(LOG_PREFIX + " REQ_PARAMS| key = " + requestKey, [
-        " method: POST ",
-        " contentType: text/ plain ",
+    params.ngister = CryptoHelper.ngister("/ "+ uri, timestamp.toString(), nonce, ClientDataStore.version_name, ClientDataStore.channel_name, ClientDataStore.device_id, ClientDataStore.box_pkg_name); params.game_version = gameVersion; return params;
+} function createRequestData(businessData: any, requestKey: string, gameVersion: string): HttpRequestPayload { const uri = requestDescriptor.getUri(requestKey); const payload = new HttpRequestPayload({ requestKey: requestKey, uri: uri, startedAt: nowMs() }); businessData = Object.assign({}, businessData); businessData.l_params = buildLParams(uri, gameVersion); payload.trace().businessPlainData = businessData; let bodyText: string; const url = buildRequestUrl(requestKey); logParts(LOG_PREFIX +" REQ_PARAMS| key = "+ requestKey, [" method: POST ",
+        "contentType: text/plain",
         " url: " + url,
         " yid: " + ClientDataStore.yid,
         " device_id: " + ClientDataStore.device_id,
@@ -140,45 +122,9 @@ function createRequestData(businessData: any, requestKey: string, gameVersion: s
 
 function buildRequestUrl(requestKey: string): string {
     const country = ClientDataStore.local_country || " ";
-    return SystemDataStore.get_request_url() + requestDescriptor.getUri(requestKey) + "? pkg = " + ClientDataStore.package_name + "& cy = " + country;
-}
-
-class RequestCallback {
-    _successHandle: any;
-    _failHandle: any;
-    _enqueue: boolean;
-    _retry: boolean;
-
-    constructor(requestKey: string, successHandle: any, failHandle: any) {
-        this._successHandle = successHandle;
-        this._failHandle = failHandle;
-        this._enqueue = requestDescriptor.needEnqueue(requestKey);
-        this._retry = this._enqueue;
-    }
-
-    success(data: any): void {
-        this._successHandle?.runWith(data);
-    }
-
-    fail(data: any): boolean {
-        this._failHandle?.runWith(data);
-        return this._retry;
-    }
-
-    enterQueue(): boolean {
-        return this._enqueue;
-    }
-
-    needRetry(): boolean {
-        return this._retry;
-    }
-}
-
-function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => void): any {
-    return {
-        shouldEnqueue: (handler: RequestCallback) => handler.enterQueue(),
-        shouldRetry: (handler: RequestCallback) => handler.needRetry(),
-        refreshUrlOnRetry: () => " ",
+    return SystemDataStore.get_request_url() + requestDescriptor.getUri(requestKey) + "? pkg = " + ClientDataStore.package_name + "& cy = "+ country;
+} class RequestCallback { _successHandle: any; _failHandle: any; _enqueue: boolean; _retry: boolean; constructor(requestKey: string, successHandle: any, failHandle: any) { this._successHandle = successHandle; this._failHandle = failHandle; this._enqueue = requestDescriptor.needEnqueue(requestKey); this._retry = this._enqueue; } success(data: any): void { this._successHandle?.runWith(data); } fail(data: any): boolean { this._failHandle?.runWith(data); return this._retry; } enterQueue(): boolean { return this._enqueue; } needRetry(): boolean { return this._retry; }
+} function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => void): any { return { shouldEnqueue: (handler: RequestCallback) => handler.enterQueue(), shouldRetry: (handler: RequestCallback) => handler.needRetry(), refreshUrlOnRetry: () =>" ",
         onRetry: (message: any, retry: () => void) => {
             logHttp(" RETRY ", {
                 message: safeStringify(message)
@@ -234,12 +180,7 @@ function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => vo
                     elapsedMs: elapsedMs,
                     message: " response parse fail "
                 });
-                console.error(LOG_PREFIX + " RESP_PARSE_FAIL| key = " + trace.requestKey + "| raw = " + responseText);
-                return {
-                    success: false,
-                    data: {
-                        code: -1,
-                        message: " 响应解析失败 ",
+                console.error(LOG_PREFIX + " RESP_PARSE_FAIL| key = " + trace.requestKey + "| raw = "+ responseText); return { success: false, data: { code:-1, message:" 响应解析失败 ",
                         raw: responseText
                     }
                 };
@@ -282,10 +223,7 @@ function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => vo
             const trace = reqData.trace();
             const rawBody = reqData.toJSON();
             const encryptedBody = reqData.toText();
-            logParts(LOG_PREFIX + " REQ_BODY| key = " + trace.requestKey + "| uri = " + trace.uri, [
-                " business_plain: " + safeStringify(trace.businessPlainData || {}),
-                " raw_body: " + rawBody,
-                " encrypted_body: " + encryptedBody
+            logParts(LOG_PREFIX + " REQ_BODY| key = " + trace.requestKey + "| uri = "+ trace.uri, [" business_plain: "+ safeStringify(trace.businessPlainData || {})," raw_body: "+ rawBody," encrypted_body: " + encryptedBody
             ]);
             return encryptedBody;
         },
@@ -301,9 +239,8 @@ function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => vo
                 url: url,
                 method: " POST "
             });
-            logParts(LOG_PREFIX + " START_DETAIL| key = " + trace.requestKey + "| uri = " + trace.uri, [
-                " method: POST ",
-                " contentType: text/ plain ",
+            logParts(LOG_PREFIX + " START_DETAIL| key = " + trace.requestKey + "| uri = "+ trace.uri, [" method: POST ",
+                "contentType: text/plain",
                 " url: " + url,
                 " body_size: " + String(requestBody || " ").length,
                 " body: " + String(requestBody || " ")
@@ -346,26 +283,9 @@ function createHttpHooks(onRetryRequest: (message: any, retry: () => void) => vo
                 url: url,
                 status: status,
                 elapsedMs: elapsedMs,
-                message: " onXhr." + reason
-            });
-            return {
-                code: -1,
-                message: " onXhr." + reason,
-                http_status: status
-            };
-        },
-        dispatchResult: (handler: RequestCallback, success: boolean, data: any) => {
-            if (handler) {
-                success ? handler.success(data) : handler.fail(data);
-            }
-        }
-    };
-}
-
-export default class LoadingHttpService {
-    static engine: any = null;
-    static gameVersion: string = " 1.0.0.0 ";
-    static SDK_WD_BASE: string = " https:// hxjxd.casharrows.com/ vunuar/ ";
+                message: " onXhr."+ reason }); return { code:-1, message:" onXhr."+ reason, http_status: status }; }, dispatchResult: (handler: RequestCallback, success: boolean, data: any) => { if (handler) { success ? handler.success(data) : handler.fail(data); } } };
+} export default class LoadingHttpService { static engine: any = null; static gameVersion: string =" 1.0.0.0 ";
+    static SDK_WD_BASE: string = "https://hxjxd.casharrows.com/vunuar/";
     static SDK_WD_URI: string = " c_l ";
     static SDK_WD_VERIFY_URI: string = " ck_i ";
 
@@ -411,7 +331,7 @@ export default class LoadingHttpService {
     }
 
     static getSystemConfig(successHandle: any, failHandle: any): void {
-        this.request(" config ", null, successHandle, failHandle);
+        this.request("config", null, successHandle, failHandle);
     }
 
     static autoLogin(businessData: any, successHandle: any, failHandle: any): void {
@@ -528,8 +448,7 @@ export default class LoadingHttpService {
     static sdkRequest(requestKey: string, businessData: any, successHandle: any, failHandle: any, mergeBody: boolean = false, stringifyQueryParams: boolean = true): void {
         const uri = requestDescriptor.getUri(requestKey);
         const country = ClientDataStore.local_country || " ";
-        const url = this.SDK_WD_BASE + uri + "? package_name = " + ClientDataStore.package_name + "& cy = " + country;
-        const userId = ClientDataStore.user_id || " ";
+        const url = this.SDK_WD_BASE + uri + "? package_name = " + ClientDataStore.package_name + "& cy = "+ country; const userId = ClientDataStore.user_id ||" ";
         const queryParams: any = {};
         if (stringifyQueryParams && businessData && typeof businessData === "object") {
             const keys = Object.keys(businessData);
@@ -554,7 +473,7 @@ export default class LoadingHttpService {
         const encryptedBody = CryptoHelper.encrypt(rawBody, ClientDataStore.box_pkg_name);
         logParts(LOG_PREFIX + " SDK_REQ| key = " + requestKey, [
             " method: POST ",
-            " contentType: text/ plain ",
+            "contentType: text/plain",
             " url: " + url,
             " raw_body: " + rawBody,
             " encrypted: " + (encryptedBody || " ").substring(0, 120) + "..."
@@ -639,7 +558,7 @@ export default class LoadingHttpService {
             method: " POST "
         });
         xhr.open(" POST ", url, true);
-        xhr.setRequestHeader(" Content- Type ", " text/ plain ");
+        xhr.setRequestHeader("Content-Type", "text/plain");
         xhr.send(encryptedBody);
     }
 

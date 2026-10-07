@@ -20,7 +20,7 @@ export default class I18nSprite extends cc.Component {
     @property({
         tooltip: " bundle name for sprite loading "
     })
-    bundleName: string = " ui ";
+    bundleName: string = "ui";
 
     @property({
         type: cc.Sprite
@@ -60,7 +60,7 @@ export default class I18nSprite extends cc.Component {
             this.fallbackPath = fallback || " ";
         }
         if (bundle !== undefined) {
-            this.bundleName = bundle || " ui ";
+            this.bundleName = bundle || "ui";
         }
         this.refreshSprite();
     }

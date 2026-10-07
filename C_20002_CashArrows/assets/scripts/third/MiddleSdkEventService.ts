@@ -26,8 +26,7 @@ export default class MiddleSdkEventService {
                     }, -1, isFirstRequest);
                     return;
                 }
-                const payload = response && response.data && typeof response.data === "object" ? response.data : response;
-                if (!payload || typeof payload !== "object") {
+                const payload = response && response.data && typeof response.data === "object"? response.data : response; if (!payload || typeof payload !=="object") {
                     this.reportBehaviorConfigEvent({
                         message: " invalid_response_payload ",
                         raw: response

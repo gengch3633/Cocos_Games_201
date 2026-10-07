@@ -121,14 +121,7 @@ var l = this.resolveFieldDisplayTitle(r), c = this.resolveFieldValue(e, r.field_
 if (u) {
 s.string = l;
 u.string = c;
-} else s.string = l + ": " + c;
-}
-}
-}
-}
-},
-resolveFieldDisplayTitle: function(e) {
-var t = e && (e.field_value_translate || e.field_desc || e.field_value) || " ", i = String(t || " ").toLowerCase();
+} else s.string = l + ": "+ c; } } } } }, resolveFieldDisplayTitle: function(e) { var t = e && (e.field_value_translate || e.field_desc || e.field_value) ||" ", i = String(t || " ").toLowerCase();
 return " account " === i ? this.i18n(" key_cash_field_account ", null, " Account ") : " name " === i || " payee_name " === i ? this.i18n(" key_cash_field_name ", null, " Name ") : t;
 },
 resolveDisplayFields: function(e) {

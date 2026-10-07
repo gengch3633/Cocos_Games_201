@@ -30,26 +30,11 @@ export default class UIAnimation extends cc.Component {
     @property({ tooltip: "出场类型", type: cc.Enum(AnimationAppearanceType) })
     appearanceType: AnimationAppearanceType = AnimationAppearanceType.Both;
 
-    @property({ tooltip: "动画时间" })
-    duration: number = 0.25;
+    @property({ tooltip: "动画时间"}) duration: number = 0.25; @property({ tooltip:"延迟时间"}) delay: number = 0; @property({ tooltip:"进入缓动曲线"}) inEasing: string ="backOut";
 
-    @property({ tooltip: "延迟时间" })
-    delay: number = 0;
+    @property({ tooltip: "出去缓动曲线"}) outEasing: string ="backIn";
 
-    @property({ tooltip: "进入缓动曲线" })
-    inEasing: string = "backOut";
-
-    @property({ tooltip: "出去缓动曲线" })
-    outEasing: string = "backIn";
-
-    @property({ type: cc.Node, tooltip: "目标" })
-    target: cc.Node = null;
-
-    @property({ type: cc.Enum(AnimationType), tooltip: "动画类型" })
-    type: AnimationType = AnimationType.Scale;
-
-    @property({
-        tooltip: "移动方向",
+    @property({ type: cc.Node, tooltip: "目标"}) target: cc.Node = null; @property({ type: cc.Enum(AnimationType), tooltip:"动画类型"}) type: AnimationType = AnimationType.Scale; @property({ tooltip:"移动方向",
         type: cc.Enum(Direction),
         visible(this: UIAnimation): boolean {
             return this.type === AnimationType.Move;

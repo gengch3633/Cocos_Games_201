@@ -35,7 +35,7 @@ export default class CountrySprite extends cc.Component {
     @property({
         tooltip: " bundle name for sprite loading "
     })
-    bundleName: string = " ui ";
+    bundleName: string = "ui";
 
     @property
     refreshOnLoad: boolean = true;
@@ -96,27 +96,7 @@ export default class CountrySprite extends cc.Component {
 
     refreshSprite(): void {
         if (this.targetSprite && this.targetSprite.isValid) {
-            if (typeof this._requestVersion !== "number" || isNaN(this._requestVersion)) {
-                this._requestVersion = 0;
-            }
-            const path = this.getSpritePath();
-            if (path) {
-                const requestVersion = ++this._requestVersion;
-                const fallbackPath = this.getDefaultSpritePath();
-                this.loadSpriteWithFallback(path, fallbackPath, requestVersion);
-            }
-        }
-    }
-
-    getSpritePath(): string {
-        const country = this.getTargetCountry();
-        const imagePath = this.getImageNamePath(country);
-        if (imagePath) {
-            return imagePath;
-        }
-        const ruleMap = this.getRuleMap();
-        return CountryAssetService.resolvePath(ruleMap, country, this.fallbackPath)
-            || (this.assetKey ? CountryAssetService.getAssetPath(this.assetKey, country, this.fallbackPath) : String(this.fallbackPath || " ").trim());
+            if (typeof this._requestVersion !== "number"|| isNaN(this._requestVersion)) { this._requestVersion = 0; } const path = this.getSpritePath(); if (path) { const requestVersion = ++this._requestVersion; const fallbackPath = this.getDefaultSpritePath(); this.loadSpriteWithFallback(path, fallbackPath, requestVersion); } } } getSpritePath(): string { const country = this.getTargetCountry(); const imagePath = this.getImageNamePath(country); if (imagePath) { return imagePath; } const ruleMap = this.getRuleMap(); return CountryAssetService.resolvePath(ruleMap, country, this.fallbackPath) || (this.assetKey ? CountryAssetService.getAssetPath(this.assetKey, country, this.fallbackPath) : String(this.fallbackPath ||" ").trim());
     }
 
     getTargetCountry(): string {

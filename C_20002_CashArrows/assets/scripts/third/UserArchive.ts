@@ -44,57 +44,8 @@ export default class UserArchive {
     }
 
     create(): void {
-        this._id = "UserArchive_" + this._$key + "_" + Date.now();
-        let isNew = true;
-        const saved = ArchiveMgr.getInstance().get(this._$key, this._$serverIndex);
-        if (saved && saved._$version) {
-            Object.assign(this, saved);
-            isNew = false;
-        }
-        this.init(isNew);
-        this._$watch = Watch.create(this);
-        ArchiveMgr.getInstance().register(this);
-    }
-
-    init(_isNew: boolean): void {}
-
-    on(event: string, callback: (...args: any[]) => void, ...args: any[]): void {
-        this._$watch.on(event, callback, ...args);
-    }
-
-    once(event: string, callback: (...args: any[]) => void, ...args: any[]): void {
-        this._$watch.once(event, callback, ...args);
-    }
-
-    off(event: string, callback: (...args: any[]) => void, ...args: any[]): void {
-        this._$watch.off(event, callback, ...args);
-    }
-
-    targetOff(target: any): void {
-        this._$watch.targetOff(target);
-    }
-
-    clearAllEvent(): void {
-        this._$watch.clearAllEvent();
-    }
-
-    toJSON(): Record<string, any> {
-        const result: Record<string, any> = {};
-        const skipKeys = (Object.getPrototypeOf(this) as any)[NON_SERIALIZED_KEYS] || [];
-        for (const key in this) {
-            if (!Object.prototype.hasOwnProperty.call(this, key)) {
-                continue;
-            }
-            if (skipKeys.indexOf(key) !== -1) {
-                continue;
-            }
-            result[key] = (this as any)[key];
-        }
-        return result;
-    }
-}
-
-nonSerialized(UserArchive.prototype, "_$key");
+        this._id = "UserArchive_" + this._$key + "_"+ Date.now(); let isNew = true; const saved = ArchiveMgr.getInstance().get(this._$key, this._$serverIndex); if (saved && saved._$version) { Object.assign(this, saved); isNew = false; } this.init(isNew); this._$watch = Watch.create(this); ArchiveMgr.getInstance().register(this); } init(_isNew: boolean): void {} on(event: string, callback: (...args: any[]) => void, ...args: any[]): void { this._$watch.on(event, callback, ...args); } once(event: string, callback: (...args: any[]) => void, ...args: any[]): void { this._$watch.once(event, callback, ...args); } off(event: string, callback: (...args: any[]) => void, ...args: any[]): void { this._$watch.off(event, callback, ...args); } targetOff(target: any): void { this._$watch.targetOff(target); } clearAllEvent(): void { this._$watch.clearAllEvent(); } toJSON(): Record<string, any> { const result: Record<string, any> = {}; const skipKeys = (Object.getPrototypeOf(this) as any)[NON_SERIALIZED_KEYS] || []; for (const key in this) { if (!Object.prototype.hasOwnProperty.call(this, key)) { continue; } if (skipKeys.indexOf(key) !==-1) { continue; } result[key] = (this as any)[key]; } return result; }
+} nonSerialized(UserArchive.prototype,"_$key");
 nonSerialized(UserArchive.prototype, "_$serverIndex");
 nonSerialized(UserArchive.prototype, "_$watch");
 ignoreWatch()(UserArchive.prototype, "_$version");

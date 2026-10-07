@@ -16,22 +16,22 @@ properties: {
 skeletonDataRed: {
 default: null,
 type: sp.SkeletonData,
-tooltip: " 印尼(ID) 及兜底使用的 Skeleton ： _res/ main/ Skeleton/ red/ red.json "
+tooltip: "印尼(ID) 及兜底使用的 Skeleton ： _res/main/Skeleton/red/red.json"
 },
 skeletonDataGreen: {
 default: null,
 type: sp.SkeletonData,
-tooltip: " 美国(US) 使用的 Skeleton ： _res/ main/ Skeleton/ green/ green.json "
+tooltip: "美国(US) 使用的 Skeleton ： _res/main/Skeleton/green/green.json"
 },
 skeletonDataYellow: {
 default: null,
 type: sp.SkeletonData,
-tooltip: " JP/ AR/ PE/ CO 使用的 Skeleton ： _res/ main/ Skeleton/ yellow/ yellow.json "
+tooltip: "JP/AR/PE/CO 使用的 Skeleton ： _res/main/Skeleton/yellow/yellow.json"
 },
 skeletonDataBlue: {
 default: null,
 type: sp.SkeletonData,
-tooltip: " BR/ PH/ MX/ VN/ MY 使用的 Skeleton ： _res/ main/ Skeleton/ blue/ blue.json "
+tooltip: "BR/PH/MX/VN/MY 使用的 Skeleton ： _res/main/Skeleton/blue/blue.json"
 }
 },
 onLoad: function() {
@@ -170,11 +170,7 @@ console.log(_ + " applyEntryData mode = " + this.popupMode + " isLevelPassed = "
 updateAmountLabel: function() {
 if (this.lblAmount) {
 var e = " task " === this.popupMode ? this.taskShowAmount : this.doubleRewardAmount;
-this.lblAmount.string = "+ " + this.formatMoney(e);
-}
-},
-refreshStaticTexts: function() {
-var e = " task " === this.popupMode;
+this.lblAmount.string = "+ "+ this.formatMoney(e); } }, refreshStaticTexts: function() { var e =" task " === this.popupMode;
 this.titleSpriteNode && (this.titleSpriteNode.active = !1);
 if (this.lblTitle) {
 var t = this.getTitleI18nConfig();
@@ -231,16 +227,7 @@ showForceVideo: this.showForceVideo,
 businessType: " arrow "
 };
 console.log(_ + " 点击 Claim mode = " + this.popupMode + " isNewReward = " + this.isNewReward + " showForceVideo = " + this.showForceVideo);
-console.log(_ + "[过关接口][请求] claimNormal(Claim) ctx = " + JSON.stringify(i));
-e && p(this.popupMode, this.isLevelPassed, !0);
-ArrowRewardService.claimNormal(i, function(e, n) {
-t.endClaim();
-console.log(_ + "[过关接口][返回] claimNormal(Claim) success = " + !!e + " req = " + JSON.stringify(i) + " res = " + JSON.stringify(n || {}));
-if (e) {
-t.emitRewardClaimed(n, t.levelSwitchRewardAmount);
-t.finishAndClose();
-} else {
-console.warn(_ + " Claim 失败 ， 跳过奖励继续流程并关闭弹窗 ");
+console.log(_ + "[过关接口][请求] claimNormal(Claim) ctx = "+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +"[过关接口][返回] claimNormal(Claim) success = " + !!e + " req = " + JSON.stringify(i) + " res = "+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Claim 失败 ， 跳过奖励继续流程并关闭弹窗 ");
 t.finishAndClose();
 }
 });
@@ -273,15 +260,7 @@ businessType: " arrow "
 };
 this.popupMode === f && (t.fallbackOnAdFail = !1);
 console.log(_ + " 点击 CLAIMx2 mode = " + this.popupMode);
-console.log(_ + "[过关接口][请求] claimDouble(CLAIMx2) ctx = " + JSON.stringify(t));
-p(this.popupMode, this.isLevelPassed, !1);
-ArrowRewardService.claimDouble(t, function(i, n) {
-e.endClaim();
-console.log(_ + "[过关接口][返回] claimDouble(CLAIMx2) success = " + !!i + " req = " + JSON.stringify(t) + " res = " + JSON.stringify(n || {}));
-if (i) {
-e.emitRewardClaimed(n, e.doubleRewardAmount);
-e.finishAndClose();
-} else console.warn(_ + " CLAIMx2 失败 ， 不关闭弹窗 ");
+console.log(_ + "[过关接口][请求] claimDouble(CLAIMx2) ctx = "+ JSON.stringify(t)); p(this.popupMode, this.isLevelPassed, !1); ArrowRewardService.claimDouble(t, function(i, n) { e.endClaim(); console.log(_ +"[过关接口][返回] claimDouble(CLAIMx2) success = " + !!i + " req = " + JSON.stringify(t) + " res = "+ JSON.stringify(n || {})); if (i) { e.emitRewardClaimed(n, e.doubleRewardAmount); e.finishAndClose(); } else console.warn(_ +" CLAIMx2 失败 ， 不关闭弹窗 ");
 });
 }
 }
@@ -303,16 +282,7 @@ showForceVideo: this.showForceVideo,
 businessType: " arrow "
 };
 console.log(_ + " 点击 Next Level mode = " + this.popupMode + " showForceVideo = " + this.showForceVideo);
-console.log(_ + "[过关接口][请求] claimNormal(NextLevel) ctx = " + JSON.stringify(i));
-e && p(this.popupMode, this.isLevelPassed, !0);
-ArrowRewardService.claimNormal(i, function(e, n) {
-t.endClaim();
-console.log(_ + "[过关接口][返回] claimNormal(NextLevel) success = " + !!e + " req = " + JSON.stringify(i) + " res = " + JSON.stringify(n || {}));
-if (e) {
-t.emitRewardClaimed(n, t.levelSwitchRewardAmount);
-t.finishAndClose();
-} else {
-console.warn(_ + " Next Level 失败 ， 跳过奖励继续流程并关闭弹窗 ");
+console.log(_ + "[过关接口][请求] claimNormal(NextLevel) ctx = "+ JSON.stringify(i)); e && p(this.popupMode, this.isLevelPassed, !0); ArrowRewardService.claimNormal(i, function(e, n) { t.endClaim(); console.log(_ +"[过关接口][返回] claimNormal(NextLevel) success = " + !!e + " req = " + JSON.stringify(i) + " res = "+ JSON.stringify(n || {})); if (e) { t.emitRewardClaimed(n, t.levelSwitchRewardAmount); t.finishAndClose(); } else { console.warn(_ +" Next Level 失败 ， 跳过奖励继续流程并关闭弹窗 ");
 t.finishAndClose();
 }
 });
@@ -449,7 +419,7 @@ if (this.nodeContent) {
 this.nodeContent.stopAllActions();
 this.nodeContent.opacity = 0;
 this.nodeContent.y = 90;
-this.isLevelPassed ? AudioMgr.getInstance().playEffect(" audio/ level_complete ", bundleName.ui) : AudioMgr.getInstance().playEffect(" audio/ coin_collect ", bundleName.game);
+this.isLevelPassed ? AudioMgr.getInstance().playEffect("audio/level_complete", bundleName.ui) : AudioMgr.getInstance().playEffect("audio/coin_collect", bundleName.game);
 cc.tween(this.nodeContent).to(.3, {
 y: 0,
 opacity: 255

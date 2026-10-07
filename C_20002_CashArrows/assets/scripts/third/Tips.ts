@@ -26,8 +26,8 @@ interface TipsShowOption {
 }
 
 const defaultOption: TipsOption = {
-    url: " texture/ tip ",
-    bundleName: " cocos- module- common ",
+    url: "texture/tip",
+    bundleName: "cocos-module-common",
     fontSize: 30,
     lineHeight: 35,
     pos: Position.Center,

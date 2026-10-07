@@ -10,23 +10,10 @@ import UserData from "./UserData";
 const { ccclass } = cc._decorator;
 
 export enum Bodyparts {
-    "头_上" = 0, "头_下" = 1, "头_左" = 2, "头_右" = 3,
-    "身体_右右" = 4, "身体_下右" = 5, "身体_上右" = 6, "身体_左左" = 7,
-    "身体_下左" = 8, "身体_上左" = 9, "身体_上上" = 10, "身体_右上" = 11,
-    "身体_左上" = 12, "身体_下下" = 13, "身体_右下" = 14, "身体_左下" = 15,
-    "尾_上" = 16, "尾_下" = 17, "尾_左" = 18, "尾_右" = 19,
-    "西北" = 20, "东北" = 21, "西南" = 22, "东南" = 23
-}
-
-export enum Direction {
-    Up = 0, Down = 1, Left = 2, Right = 3
-}
-
-export enum snakeState {
-    norlmal = 0, dead = 1
-}
-
-const snake = (function (_super) {
+    "头_上" = 0, "头_下" = 1, "头_左" = 2, "头_右"= 3,"身体_右右" = 4, "身体_下右" = 5, "身体_上右" = 6, "身体_左左"= 7,"身体_下左" = 8, "身体_上左" = 9, "身体_上上" = 10, "身体_右上"= 11,"身体_左上" = 12, "身体_下下" = 13, "身体_右下" = 14, "身体_左下"= 15,"尾_上" = 16, "尾_下" = 17, "尾_左" = 18, "尾_右"= 19,"西北" = 20, "东北" = 21, "西南" = 22, "东南"= 23
+} export enum Direction { Up = 0, Down = 1, Left = 2, Right = 3
+} export enum snakeState { norlmal = 0, dead = 1
+} const snake = (function (_super) {
 function snake() {
 var t = null !== _super && _super.apply(this, arguments) || this;
 t.id = 0;
@@ -47,7 +34,7 @@ t.color_red = cc.color(255, 75, 93);
 t.color_black = cc.color(17, 20, 51);
 t.color_blue = cc.color(61, 83, 183);
 t.snakeColor = cc.color(17, 20, 51);
-t.num_clicktime = -1;
+t.num_clicktime =-1;
 t.tipsTween = [];
 t.bool_iserrored = !1;
 t.bool_longtouchShowFuzhulline = !1;
@@ -57,7 +44,7 @@ return t;
 }
 __extends(snake, _super);
 snake.prototype._parseHexColor = function(e) {
-if (!e || " string " != typeof e || e.length < 6) return cc.color(17, 20, 51);
+if (!e ||" string " != typeof e || e.length < 6) return cc.color(17, 20, 51);
 var t = parseInt(e.substring(0, 2), 16), i = parseInt(e.substring(2, 4), 16), n = parseInt(e.substring(4, 6), 16);
 return isNaN(t) || isNaN(i) || isNaN(n) ? cc.color(17, 20, 51) : cc.color(t, i, n);
 };
@@ -69,7 +56,7 @@ this.node_map = n;
 this.parent_snake = i;
 var o = this.levelInfo.Arrows[this.id];
 UserData.getInstance().colorMode && o && " string " == typeof o.Color && (this.snakeColor = this._parseHexColor(o.Color));
-ResMgr.getInstance().loadRes(" prefab/ item ", cc.Prefab, null, bundleName.game).then(function(e) {
+ResMgr.getInstance().loadRes("prefab/item", cc.Prefab, null, bundleName.game).then(function(e) {
   if(e) {
     a.prefab_item = e;
     a.ShowSnake();
@@ -406,114 +393,40 @@ snake.prototype.move = function() {
             }
             this.snakeInfo2.forEach(function(e, t) {
               var i = p.node_allbody[t], n = p.getNodePos(e);
-              if(p.gameManager.num_mapInfo&& p.gameManager.num_mapInfo[e.x]&& "o" === p.gameManager.num_mapInfo[e.x][e.y]) {
-                cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() {
-                  i.active = ! 1;
-                }
-);
-                t == p.node_allbody.length- 1&& (p.bool_needShowTuowei = ! 1);
-                var a = p.gameManager.heidong.filter(function(t) {
-                  return t.posInfo.x === e.x&& t.posInfo.y === e.y;
-                }
-);
-                0 === t? a[0].showStartAni(): t === p.node_allbody.length- 1&& a[0].showEndAni();
-              }
-              s.push(p.moveBody(i, n));
-            }
-);
-            Promise.all(s).then(function() {
-              p.action.push(e);
-              t();
-            }
-);
-            return[2];
-          }
-);
-        }
-);
-      }
-)];
-    }
-);
-  }
+              if(p.gameManager.num_mapInfo&& p.gameManager.num_mapInfo[e.x]&& "o"=== p.gameManager.num_mapInfo[e.x][e.y]) { cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() { i.active = ! 1; }
+); t == p.node_allbody.length-1&& (p.bool_needShowTuowei = ! 1); var a = p.gameManager.heidong.filter(function(t) { return t.posInfo.x === e.x&& t.posInfo.y === e.y; }
+); 0 === t? a[0].showStartAni(): t === p.node_allbody.length-1&& a[0].showEndAni(); } s.push(p.moveBody(i, n)); }
+); Promise.all(s).then(function() { p.action.push(e); t(); }
+); return[2]; }
+); }
+); }
+)]; }
+); }
 );
 }
 ;
-snake.prototype.getNodePos = function(e) {
-  var t = this.node_map.children[0].position;
-  return cc.v3(e.x* this.num_movedistance, e.y* this.num_movedistance, 0).addSelf(t);
+snake.prototype.getNodePos = function(e) { var t = this.node_map.children[0].position; return cc.v3(e.x* this.num_movedistance, e.y* this.num_movedistance, 0).addSelf(t);
 }
 ;
-snake.prototype.moveBody = function(e, t) {
-  return __awaiter(this, void 0, void 0, function() {
-    var i = this;
-    return __generator(this, function() {
-      return[2, new Promise(function(n) {
-        e.setPosition(t);
-        i.updateSnakeBody(e);
-        cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() {
-          n();
-        }
-);
-      }
-)];
-    }
-);
-  }
+snake.prototype.moveBody = function(e, t) { return __awaiter(this, void 0, void 0, function() { var i = this; return __generator(this, function() { return[2, new Promise(function(n) { e.setPosition(t); i.updateSnakeBody(e); cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() { n(); }
+); }
+)]; }
+); }
 );
 }
 ;
-snake.prototype.huitui = function() {
-  return __awaiter(this, void 0, void 0, function() {
-    var e, t, i, n = this;
-    return __generator(this, function(a) {
-      switch(a.label) {
-        case 0: e = function(e) {
-          var i, a;
-          return __generator(this, function(o) {
-            switch(o.label) {
-              case 0: i = [];
-              a = t.action[e];
-              t.snakeInfo2 = a;
-              a.forEach(function(e, t) {
-                var a = n.node_allbody[t], o = n.getNodePos(e);
-                i.push(n.moveBody(a, o));
-              }
-);
-              return[4, Promise.all(i)];
-              case 1: o.sent();
-              return[2];
-            }
-          }
-);
-        }
-;
-        t = this;
-        i = this.action.length- 1;
-        a.label = 1;
-        case 1: return i >= 0?[5, e(i)]:[3, 4];
-        case 2: a.sent();
-        a.label = 3;
-        case 3: i--;
-        return[3, 1];
-        case 4: this.action = [];
-        return[2];
-      }
-    }
-);
-  }
+snake.prototype.huitui = function() { return __awaiter(this, void 0, void 0, function() { var e, t, i, n = this; return __generator(this, function(a) { switch(a.label) { case 0: e = function(e) { var i, a; return __generator(this, function(o) { switch(o.label) { case 0: i = []; a = t.action[e]; t.snakeInfo2 = a; a.forEach(function(e, t) { var a = n.node_allbody[t], o = n.getNodePos(e); i.push(n.moveBody(a, o)); }
+); return[4, Promise.all(i)]; case 1: o.sent(); return[2]; } }
+); }
+; t = this; i = this.action.length-1; a.label = 1; case 1: return i >= 0?[5, e(i)]:[3, 4]; case 2: a.sent(); a.label = 3; case 3: i--; return[3, 1]; case 4: this.action = []; return[2]; } }
+); }
 );
 }
 ;
-snake.prototype.updateSnakeBody = function(e) {
-  var t,
-  i = this.node_allbody.indexOf(e);
-  t = this.getBodyType(this.snakeInfo2[i- 1], this.snakeInfo2[i], this.snakeInfo2[i+ 1]);
-  this.changeSpr(t, e);
+snake.prototype.updateSnakeBody = function(e) { var t, i = this.node_allbody.indexOf(e); t = this.getBodyType(this.snakeInfo2[i-1], this.snakeInfo2[i], this.snakeInfo2[i+ 1]); this.changeSpr(t, e);
 }
 ;
-snake.prototype._isOwnBody = function(e) {
-  return "string" == typeof e&& e.startsWith(this.id+ "_");
+snake.prototype._isOwnBody = function(e) { return"string" == typeof e&& e.startsWith(this.id+ "_");
 }
 ;
 snake.prototype._vibrateOnCollision = function() {

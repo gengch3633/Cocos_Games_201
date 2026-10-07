@@ -1,7 +1,6 @@
 import "./index";
 
-if (!("sortingPriority" in cc.Node.prototype)) {
-    Object.defineProperty(cc.Node.prototype, "sortingPriority", {
+if (!("sortingPriority"in cc.Node.prototype)) { Object.defineProperty(cc.Node.prototype,"sortingPriority", {
         get: function (this: cc.Node & { _sortingPriority?: number }) {
             return this._sortingPriority;
         },

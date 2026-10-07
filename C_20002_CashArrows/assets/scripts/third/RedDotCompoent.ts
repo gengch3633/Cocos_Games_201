@@ -4,7 +4,7 @@ import RedDotNode from "./RedDotNode";
 const { ccclass, property, menu } = cc._decorator;
 
 @ccclass
-@menu(" RedDot/ RedDotCompoent ")
+@menu("RedDot/RedDotCompoent")
 export default class RedDotCompoent extends cc.Component {
     @property
     id: string = " ";

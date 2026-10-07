@@ -90,15 +90,7 @@ export function createBusinessHttpQueueHooks(logger: (...args: any[]) => void, o
             const status = payload.status;
             return {
                 code: -1,
-                message: "xhr.status" + status,
-                http_status: status
-            };
-        },
-        createRuntimeError(payload: any): any {
-            const status = payload.status;
-            return {
-                code: -1,
-                message: "onXhr." + payload.reason,
+                message: "xhr.status"+ status, http_status: status }; }, createRuntimeError(payload: any): any { const status = payload.status; return { code:-1, message:"onXhr." + payload.reason,
                 http_status: status
             };
         },

@@ -483,13 +483,7 @@ const withMoodView = cc.Class({
     }
   }
 , loadLocalizedSpriteFrame: function(e, t, i) {
-    if(e&& "function" == typeof i) {
-      this.localizedImageReqVersionMap|| (this.localizedImageReqVersionMap = {
-      }
-);
-      var n = t|| e, a = (this.localizedImageReqVersionMap[n]|| 0)+ 1;
-      this.localizedImageReqVersionMap[n] = a;
-      var o = this, s = CountryAssetService.getPathByImageName(e), l = CountryAssetService.getPathByImageName(e, "ID"), u = function(e) {
+    if(e&& "function"== typeof i) { this.localizedImageReqVersionMap|| (this.localizedImageReqVersionMap = { } ); var n = t|| e, a = (this.localizedImageReqVersionMap[n]|| 0)+ 1; this.localizedImageReqVersionMap[n] = a; var o = this, s = CountryAssetService.getPathByImageName(e), l = CountryAssetService.getPathByImageName(e,"ID"), u = function(e) {
         a === o.localizedImageReqVersionMap[n]&& i(e|| null);
       }
 ;
@@ -662,140 +656,7 @@ const withMoodView = cc.Class({
   }
 , getNewbieGuideStep: function() {
     var e = this.getNewbieGuideFlow();
-    return e&& "function" == typeof e.getStep? Number(e.getStep()|| 0): 0;
-  }
-, isNewbieGuideStep: function(e) {
-    return this.getNewbieGuideStep() === Number(e|| 0);
-  }
-, advanceNewbieGuideStep: function(e) {
-    var t = this.getNewbieGuideFlow();
-    return !(! t|| "function" != typeof t.advanceIfCurrent|| ! t.advanceIfCurrent(e));
-  }
-, stopNewbieGuidePulse: function() {
-    if(this.newbieGuidePulseNode&& this.newbieGuidePulseNode.isValid) {
-      cc.Tween.stopAllByTarget(this.newbieGuidePulseNode);
-      this.newbieGuidePulseNode.scale = this.newbieGuidePulseScale|| 1;
-      this.newbieGuidePulseNode = null;
-      this.newbieGuidePulseScale = 1;
-    } else this.newbieGuidePulseNode = null;
-  }
-, startNewbieGuidePulse: function(e) {
-    if(e&& e.isValid) {
-      if(this.newbieGuidePulseNode !== e) {
-        this.stopNewbieGuidePulse();
-        this.newbieGuidePulseNode = e;
-        this.newbieGuidePulseScale = Number(e.scale|| 1);
-        var t = 1.08* this.newbieGuidePulseScale;
-        cc.tween(e).to(.3, {
-          scale: t
-        }
-).to(.3, {
-          scale: this.newbieGuidePulseScale
-        }
-).union().repeatForever().start();
-      }
-    } else this.stopNewbieGuidePulse();
-  }
-, hideAllNewbieGuideTipNodes: function() {
-    this.guideStep4TipNode&& (this.guideStep4TipNode.active = ! 1);
-    this.guideStep5TipNode&& (this.guideStep5TipNode.active = ! 1);
-    this.guideStep6TipNode&& (this.guideStep6TipNode.active = ! 1);
-  }
-, resolveStep4GuideTargetNode: function() {
-    var e = this.optionButtons&& this.optionButtons[0]&& this.optionButtons[0].node;
-    if(e&& e.isValid&& e.activeInHierarchy) return e;
-    for(var t = 0;
-    t < this.optionButtons.length;
-    t++) {
-      var i = this.optionButtons[t]&& this.optionButtons[t].node;
-      if(i&& i.isValid&& i.activeInHierarchy) return i;
-    }
-    return null;
-  }
-, updateStep4GuideMask: function() {
-    if(this.guideStep4Overlay&& this.guideStep4Overlay.isValid&& this.guideStep4Mask&& this.guideStep4Mask.isValid) {
-      var e = this.resolveStep4GuideTargetNode();
-      if(e&& e.isValid&& e.parent&& e.parent.isValid) {
-        var t = e.parent.convertToWorldSpaceAR(cc.v2(e.x, e.y)), i = this.guideStep4Overlay.convertToNodeSpaceAR(t);
-        this.guideStep4Mask.x = i.x;
-        this.guideStep4Mask.y = i.y;
-        this.guideStep4Mask.width = Math.max(180, Number(e.width|| 0)+ 28);
-        this.guideStep4Mask.height = Math.max(90, Number(e.height|| 0)+ 24);
-      }
-    }
-  }
-, setStep4GuideOverlayActive: function(e) {
-    if(this.guideStep4Overlay&& this.guideStep4Overlay.isValid) {
-      e&& this.updateStep4GuideMask();
-      this.guideStep4Overlay.active = ! ! e;
-      this.bindGuideOverlayClick(this.guideStep4Overlay, ! ! e, this.onGuideStep4OverlayClick);
-    }
-  }
-, setStep5GuideOverlayActive: function(e) {
-    if(this.guideStep5Overlay&& this.guideStep5Overlay.isValid) {
-      this.guideStep5Overlay.active = ! ! e;
-      this.bindGuideOverlayClick(this.guideStep5Overlay, ! ! e, this.onGuideStep5OverlayClick);
-    }
-  }
-, setStep6GuideOverlayActive: function(e) {
-    if(this.guideStep6Overlay&& this.guideStep6Overlay.isValid) {
-      this.guideStep6Overlay.active = ! ! e;
-      this.bindGuideOverlayClick(this.guideStep6Overlay, ! ! e, this.onGuideStep6OverlayClick);
-    }
-  }
-, bindGuideOverlayClick: function(e, t, i) {
-    if(e&& e.isValid&& "function" == typeof i) {
-      e.off(cc.Node.EventType.TOUCH_END, i, this);
-      t&& e.on(cc.Node.EventType.TOUCH_END, i, this);
-    }
-  }
-, onGuideStep4OverlayClick: function() {
-    var e = this.getNewbieGuideFlow();
-    if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_OPTION)) {
-      this.setStep4GuideOverlayActive(! 1);
-      this.guideStep4TipNode&& (this.guideStep4TipNode.active = ! 1);
-      this.selectedIndex = 0;
-      this.advanceNewbieGuideStep(e.STEP_WITHDRAW_OPTION);
-      this.refreshAll();
-    }
-  }
-, onGuideStep5OverlayClick: function() {
-    var e = this.getNewbieGuideFlow();
-    if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_BUTTON)) {
-      this._guideStep5Pending = ! 0;
-      this.setStep5GuideOverlayActive(! 1);
-      this.guideStep5TipNode&& (this.guideStep5TipNode.active = ! 1);
-      this.stopNewbieGuidePulse();
-      this._bypassClickThrottle = ! 0;
-      this.onClickWithdraw();
-    }
-  }
-, onGuideStep6OverlayClick: function() {
-    var e = this.getNewbieGuideFlow();
-    if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_BACK)) {
-      this._bypassClickThrottle = ! 0;
-      this.onClickClose();
-    }
-  }
-, updateGuideMaskOverTarget: function(e, t, i, n, a) {
-    if(e&& e.isValid&& t&& t.isValid&& i&& i.isValid&& i.parent&& i.parent.isValid) {
-      var o = t.getComponent(cc.Widget);
-      o&& (o.enabled = ! 1);
-      var r = i.parent.convertToWorldSpaceAR(cc.v2(i.x, i.y)), s = e.convertToNodeSpaceAR(r);
-      t.x = s.x;
-      t.y = s.y;
-      var l = Number(n|| 0), c = Number(a|| 0);
-      t.width = Math.max(60, Number(i.width|| 0)+ l);
-      t.height = Math.max(60, Number(i.height|| 0)+ c);
-    }
-  }
-, hideAllNewbieGuideOverlays: function() {
-    this.setStep4GuideOverlayActive(! 1);
-    this.setStep5GuideOverlayActive(! 1);
-    this.setStep6GuideOverlayActive(! 1);
-  }
-, showNewbieGuideTip: function(e, t, i) {
-    var n = this.i18n(t, [], i|| "");
+    return e&& "function"== typeof e.getStep? Number(e.getStep()|| 0): 0; } , isNewbieGuideStep: function(e) { return this.getNewbieGuideStep() === Number(e|| 0); } , advanceNewbieGuideStep: function(e) { var t = this.getNewbieGuideFlow(); return !(! t||"function"!= typeof t.advanceIfCurrent|| ! t.advanceIfCurrent(e)); } , stopNewbieGuidePulse: function() { if(this.newbieGuidePulseNode&& this.newbieGuidePulseNode.isValid) { cc.Tween.stopAllByTarget(this.newbieGuidePulseNode); this.newbieGuidePulseNode.scale = this.newbieGuidePulseScale|| 1; this.newbieGuidePulseNode = null; this.newbieGuidePulseScale = 1; } else this.newbieGuidePulseNode = null; } , startNewbieGuidePulse: function(e) { if(e&& e.isValid) { if(this.newbieGuidePulseNode !== e) { this.stopNewbieGuidePulse(); this.newbieGuidePulseNode = e; this.newbieGuidePulseScale = Number(e.scale|| 1); var t = 1.08* this.newbieGuidePulseScale; cc.tween(e).to(.3, { scale: t } ).to(.3, { scale: this.newbieGuidePulseScale } ).union().repeatForever().start(); } } else this.stopNewbieGuidePulse(); } , hideAllNewbieGuideTipNodes: function() { this.guideStep4TipNode&& (this.guideStep4TipNode.active = ! 1); this.guideStep5TipNode&& (this.guideStep5TipNode.active = ! 1); this.guideStep6TipNode&& (this.guideStep6TipNode.active = ! 1); } , resolveStep4GuideTargetNode: function() { var e = this.optionButtons&& this.optionButtons[0]&& this.optionButtons[0].node; if(e&& e.isValid&& e.activeInHierarchy) return e; for(var t = 0; t < this.optionButtons.length; t++) { var i = this.optionButtons[t]&& this.optionButtons[t].node; if(i&& i.isValid&& i.activeInHierarchy) return i; } return null; } , updateStep4GuideMask: function() { if(this.guideStep4Overlay&& this.guideStep4Overlay.isValid&& this.guideStep4Mask&& this.guideStep4Mask.isValid) { var e = this.resolveStep4GuideTargetNode(); if(e&& e.isValid&& e.parent&& e.parent.isValid) { var t = e.parent.convertToWorldSpaceAR(cc.v2(e.x, e.y)), i = this.guideStep4Overlay.convertToNodeSpaceAR(t); this.guideStep4Mask.x = i.x; this.guideStep4Mask.y = i.y; this.guideStep4Mask.width = Math.max(180, Number(e.width|| 0)+ 28); this.guideStep4Mask.height = Math.max(90, Number(e.height|| 0)+ 24); } } } , setStep4GuideOverlayActive: function(e) { if(this.guideStep4Overlay&& this.guideStep4Overlay.isValid) { e&& this.updateStep4GuideMask(); this.guideStep4Overlay.active = ! ! e; this.bindGuideOverlayClick(this.guideStep4Overlay, ! ! e, this.onGuideStep4OverlayClick); } } , setStep5GuideOverlayActive: function(e) { if(this.guideStep5Overlay&& this.guideStep5Overlay.isValid) { this.guideStep5Overlay.active = ! ! e; this.bindGuideOverlayClick(this.guideStep5Overlay, ! ! e, this.onGuideStep5OverlayClick); } } , setStep6GuideOverlayActive: function(e) { if(this.guideStep6Overlay&& this.guideStep6Overlay.isValid) { this.guideStep6Overlay.active = ! ! e; this.bindGuideOverlayClick(this.guideStep6Overlay, ! ! e, this.onGuideStep6OverlayClick); } } , bindGuideOverlayClick: function(e, t, i) { if(e&& e.isValid&&"function"== typeof i) { e.off(cc.Node.EventType.TOUCH_END, i, this); t&& e.on(cc.Node.EventType.TOUCH_END, i, this); } } , onGuideStep4OverlayClick: function() { var e = this.getNewbieGuideFlow(); if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_OPTION)) { this.setStep4GuideOverlayActive(! 1); this.guideStep4TipNode&& (this.guideStep4TipNode.active = ! 1); this.selectedIndex = 0; this.advanceNewbieGuideStep(e.STEP_WITHDRAW_OPTION); this.refreshAll(); } } , onGuideStep5OverlayClick: function() { var e = this.getNewbieGuideFlow(); if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_BUTTON)) { this._guideStep5Pending = ! 0; this.setStep5GuideOverlayActive(! 1); this.guideStep5TipNode&& (this.guideStep5TipNode.active = ! 1); this.stopNewbieGuidePulse(); this._bypassClickThrottle = ! 0; this.onClickWithdraw(); } } , onGuideStep6OverlayClick: function() { var e = this.getNewbieGuideFlow(); if(e&& this.isNewbieGuideStep(e.STEP_WITHDRAW_BACK)) { this._bypassClickThrottle = ! 0; this.onClickClose(); } } , updateGuideMaskOverTarget: function(e, t, i, n, a) { if(e&& e.isValid&& t&& t.isValid&& i&& i.isValid&& i.parent&& i.parent.isValid) { var o = t.getComponent(cc.Widget); o&& (o.enabled = ! 1); var r = i.parent.convertToWorldSpaceAR(cc.v2(i.x, i.y)), s = e.convertToNodeSpaceAR(r); t.x = s.x; t.y = s.y; var l = Number(n|| 0), c = Number(a|| 0); t.width = Math.max(60, Number(i.width|| 0)+ l); t.height = Math.max(60, Number(i.height|| 0)+ c); } } , hideAllNewbieGuideOverlays: function() { this.setStep4GuideOverlayActive(! 1); this.setStep5GuideOverlayActive(! 1); this.setStep6GuideOverlayActive(! 1); } , showNewbieGuideTip: function(e, t, i) { var n = this.i18n(t, [], i||"");
     this.hideAllNewbieGuideTipNodes();
     if(n) {
       this.newbieGuideToastStep = e;
@@ -1109,7 +970,7 @@ pass: !0,
 message: " "
 } : {
 pass: !1,
-message: this.i18n(" key_withdraw_toast_need_days ", [ r ], " Not enough check- in days ")
+message: this.i18n(" key_withdraw_toast_need_days ", [ r ], "Not enough check-in days")
 };
 }
 if (3 === i) {
@@ -1226,8 +1087,7 @@ var i = String(t);
 try {
 if (cc.sys.isNative && cc.sys.os === cc.sys.OS_ANDROID) {
 var adapter = NativeSdkBridgeAdapter;
-var bridge = adapter && typeof adapter.getBridge === "function" ? adapter.getBridge() : null;
-if (bridge && typeof bridge.showAppLongTapToast === "function") {
+var bridge = adapter && typeof adapter.getBridge === "function"? adapter.getBridge() : null; if (bridge && typeof bridge.showAppLongTapToast ==="function") {
 bridge.showAppLongTapToast(i, 0);
 return;
 }

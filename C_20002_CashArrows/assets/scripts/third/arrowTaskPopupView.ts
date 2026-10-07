@@ -210,51 +210,7 @@ const ArrowTaskPopupView = cc.Class({
     return "career" === this.normalizeTabName(e)? "ltv": "";
   }
 , isTabRequested: function(e) {
-    return "career" === this.normalizeTabName(e)? ! ! this.hasRequestedCareerTask: ! ! this.hasRequestedDailyTask;
-  }
-, setTabRequested: function(e, t) {
-    "career" !== this.normalizeTabName(e)? this.hasRequestedDailyTask = ! ! t: this.hasRequestedCareerTask = ! ! t;
-  }
-, isTabLoading: function(e) {
-    return "career" === this.normalizeTabName(e)? ! ! this.isCareerLoading: ! ! this.isDailyLoading;
-  }
-, setTabLoading: function(e, t) {
-    "career" !== this.normalizeTabName(e)? this.isDailyLoading = ! ! t: this.isCareerLoading = ! ! t;
-  }
-, parseClaimableCount: function(e) {
-    var t = Number(e);
-    return ! isFinite(t)|| t < 0? 0: Math.floor(t);
-  }
-, initClaimableCountsFromInfo: function() {
-    this.dailyInfoClaimableCount = this.parseClaimableCount(PlayerDataStore.task_point_num);
-    this.careerInfoClaimableCount = this.parseClaimableCount(PlayerDataStore.ltv_task_point_num);
-  }
-, updateClaimableCountsFromInfoData: function(e) {
-    if(e) {
-      if(void 0 !== e.task_point_num) {
-        this.dailyInfoClaimableCount = this.parseClaimableCount(e.task_point_num);
-        PlayerDataStore.task_point_num = this.dailyInfoClaimableCount;
-      }
-      if(void 0 !== e.ltv_task_point_num) {
-        this.careerInfoClaimableCount = this.parseClaimableCount(e.ltv_task_point_num);
-        PlayerDataStore.ltv_task_point_num = this.careerInfoClaimableCount;
-      }
-    }
-  }
-, countClaimableTaskNum: function(e) {
-    if(! Array.isArray(e)) return 0;
-    for(var t = 0, i = 0;
-    i < e.length;
-    i++) {
-      var n = e[i]|| {
-      }
-;
-      1 === this.parseTaskStatus(n.status)&& (t+= 1);
-    }
-    return t;
-  }
-, resolveCurrentClaimableCount: function(e) {
-    return "career" === this.normalizeTabName(e)? this.hasRequestedCareerTask? this.countClaimableTaskNum(this.careerTaskList): this.parseClaimableCount(this.careerInfoClaimableCount): this.hasRequestedDailyTask? this.countClaimableTaskNum(this.dailyTaskList): this.parseClaimableCount(this.dailyInfoClaimableCount);
+    return "career"=== this.normalizeTabName(e)? ! ! this.hasRequestedCareerTask: ! ! this.hasRequestedDailyTask; } , setTabRequested: function(e, t) {"career"!== this.normalizeTabName(e)? this.hasRequestedDailyTask = ! ! t: this.hasRequestedCareerTask = ! ! t; } , isTabLoading: function(e) { return"career"=== this.normalizeTabName(e)? ! ! this.isCareerLoading: ! ! this.isDailyLoading; } , setTabLoading: function(e, t) {"career"!== this.normalizeTabName(e)? this.isDailyLoading = ! ! t: this.isCareerLoading = ! ! t; } , parseClaimableCount: function(e) { var t = Number(e); return ! isFinite(t)|| t < 0? 0: Math.floor(t); } , initClaimableCountsFromInfo: function() { this.dailyInfoClaimableCount = this.parseClaimableCount(PlayerDataStore.task_point_num); this.careerInfoClaimableCount = this.parseClaimableCount(PlayerDataStore.ltv_task_point_num); } , updateClaimableCountsFromInfoData: function(e) { if(e) { if(void 0 !== e.task_point_num) { this.dailyInfoClaimableCount = this.parseClaimableCount(e.task_point_num); PlayerDataStore.task_point_num = this.dailyInfoClaimableCount; } if(void 0 !== e.ltv_task_point_num) { this.careerInfoClaimableCount = this.parseClaimableCount(e.ltv_task_point_num); PlayerDataStore.ltv_task_point_num = this.careerInfoClaimableCount; } } } , countClaimableTaskNum: function(e) { if(! Array.isArray(e)) return 0; for(var t = 0, i = 0; i < e.length; i++) { var n = e[i]|| { } ; 1 === this.parseTaskStatus(n.status)&& (t+= 1); } return t; } , resolveCurrentClaimableCount: function(e) { return"career" === this.normalizeTabName(e)? this.hasRequestedCareerTask? this.countClaimableTaskNum(this.careerTaskList): this.parseClaimableCount(this.careerInfoClaimableCount): this.hasRequestedDailyTask? this.countClaimableTaskNum(this.dailyTaskList): this.parseClaimableCount(this.dailyInfoClaimableCount);
   }
 , syncTaskRedDotToGameView: function() {
     var e = this.resolveCurrentClaimableCount("daily"), t = this.resolveCurrentClaimableCount("career");
@@ -365,49 +321,7 @@ const ArrowTaskPopupView = cc.Class({
   }
 , assignRawTaskListByType: function(e, t) {
     t = Array.isArray(t)? t:[];
-    if("ltv" !== e) {
-      this.rawDailyTaskList = t;
-      this.rawTaskList = t;
-    } else this.rawCareerTaskList = t;
-  }
-, extractTaskList: function(e) {
-    if(! e) return[];
-    var t = e.data|| {
-    }
-, i = t.task_list|| [];
-! Array.isArray(i)&& t.data&& (i = t.data.task_list|| []);
-    return Array.isArray(i)? i:[];
-  }
-, regroupTaskList: function() {
-    var e = [], t = [], i = 0;
-    if(this.hasRequestedDailyTask|| this.hasRequestedCareerTask) {
-      i = this.appendNormalizedTaskList(e, t, this.rawDailyTaskList, ! 0, i);
-      this.appendNormalizedTaskList(e, t, this.rawCareerTaskList, ! 1, i);
-    } else this.appendNormalizedTaskList(e, t, this.rawTaskList, void 0, i);
-    this.dailyTaskList = this.sortClaimedToTail(this.dedupeTaskListById(e));
-    this.careerTaskList = this.sortClaimedToTail(this.dedupeTaskListById(t));
-  }
-, appendNormalizedTaskList: function(e, t, i, n, a) {
-    i = Array.isArray(i)? i:[];
-    for(var o = Number(a|| 0), r = 0;
-    r < i.length;
-    r++) {
-      var s = this.normalizeTask(i[r], o, n);
-      o+= 1;
-      s.ifDaily? e.push(s): t.push(s);
-    }
-    return o;
-  }
-, dedupeTaskListById: function(e) {
-    e = Array.isArray(e)? e:[];
-    for(var t = {
-    }
-, i = [], n = 0;
-    n < e.length;
-    n++) {
-      var a = e[n]|| {
-      }
-, o = String(a.id|| "");
+    if("ltv"!== e) { this.rawDailyTaskList = t; this.rawTaskList = t; } else this.rawCareerTaskList = t; } , extractTaskList: function(e) { if(! e) return[]; var t = e.data|| { } , i = t.task_list|| []; ! Array.isArray(i)&& t.data&& (i = t.data.task_list|| []); return Array.isArray(i)? i:[]; } , regroupTaskList: function() { var e = [], t = [], i = 0; if(this.hasRequestedDailyTask|| this.hasRequestedCareerTask) { i = this.appendNormalizedTaskList(e, t, this.rawDailyTaskList, ! 0, i); this.appendNormalizedTaskList(e, t, this.rawCareerTaskList, ! 1, i); } else this.appendNormalizedTaskList(e, t, this.rawTaskList, void 0, i); this.dailyTaskList = this.sortClaimedToTail(this.dedupeTaskListById(e)); this.careerTaskList = this.sortClaimedToTail(this.dedupeTaskListById(t)); } , appendNormalizedTaskList: function(e, t, i, n, a) { i = Array.isArray(i)? i:[]; for(var o = Number(a|| 0), r = 0; r < i.length; r++) { var s = this.normalizeTask(i[r], o, n); o+= 1; s.ifDaily? e.push(s): t.push(s); } return o; } , dedupeTaskListById: function(e) { e = Array.isArray(e)? e:[]; for(var t = { } , i = [], n = 0; n < e.length; n++) { var a = e[n]|| { } , o = String(a.id||"");
       if(! o|| ! t[o]) {
         o&& (t[o] = ! 0);
         i.push(a);
@@ -441,10 +355,7 @@ const ArrowTaskPopupView = cc.Class({
 ;
   }
 , parseDailyFlag: function(e, t) {
-    return null == e|| "" === e? void 0 !== t&& ! ! t: ! 0 === e|| 1 === e|| "1" === e|| "true" === e;
-  }
-, resolveClaimTaskType: function(e) {
-    return e? "": "ltv";
+    return null == e|| "" === e? void 0 !== t&& ! ! t: ! 0 === e|| 1 === e|| "1" === e|| "true"=== e; } , resolveClaimTaskType: function(e) { return e?"": "ltv";
   }
 , parseTaskStatus: function(e) {
     var t = Number(e);
@@ -478,14 +389,7 @@ const ArrowTaskPopupView = cc.Class({
     } else this.ensureTabTaskRequested(e);
   }
 , getActiveTaskList: function() {
-    return "daily" === this.currentTab? this.dailyTaskList: this.careerTaskList;
-  }
-, renderActiveTab: function() {
-    this.refreshTabVisual();
-    this.renderTaskList(this.getActiveTaskList());
-  }
-, refreshTabVisual: function() {
-    var e = "daily" === this.currentTab;
+    return "daily"=== this.currentTab? this.dailyTaskList: this.careerTaskList; } , renderActiveTab: function() { this.refreshTabVisual(); this.renderTaskList(this.getActiveTaskList()); } , refreshTabVisual: function() { var e ="daily" === this.currentTab;
     this.setTabState(this.btnTabDaily, this.lblTabDaily, this.tabDailyActiveBg, this.tabDailyInactiveBg, e);
     this.setTabState(this.btnTabCareer, this.lblTabCareer, this.tabCareerActiveBg, this.tabCareerInactiveBg, ! e);
     this.refreshTabRedPoints();
@@ -580,11 +484,7 @@ const ArrowTaskPopupView = cc.Class({
     }
 ;
     var t = this.parseTaskType(e.taskType|| ""), i = e.taskTargetNum;
-    null != i&& "" !== i|| (i = Number(e.taskNum|| 1));
-    i = Number(i);
-    isFinite(i)|| (i = Number(e.taskNum|| 1));
-    i < 0&& (i = 0);
-    return "login" === t? this.i18n("key_task_desc_login", null, "Daily login"): "level" === t? this.i18n("key_task_desc_level", [i], "Clear %{0} levels"): "ad" === t? this.i18n("key_task_desc_ad", [i], "Watch %{0} ads"): e.desc|| this.i18n("key_task_desc_fallback", [e.taskType|| "-", e.finishedNum, e.taskNum], "Task %{0}: %{1}/%{2}");
+    null != i&& ""!== i|| (i = Number(e.taskNum|| 1)); i = Number(i); isFinite(i)|| (i = Number(e.taskNum|| 1)); i < 0&& (i = 0); return"login" === t? this.i18n("key_task_desc_login", null, "Daily login"): "level" === t? this.i18n("key_task_desc_level", [i], "Clear %{0} levels"): "ad" === t? this.i18n("key_task_desc_ad", [i], "Watch %{0} ads"): e.desc|| this.i18n("key_task_desc_fallback", [e.taskType|| "-", e.finishedNum, e.taskNum], "Task %{0}: %{1}/%{2}");
   }
 , getTaskItemRefs: function(e) {
     if(! e) return null;
