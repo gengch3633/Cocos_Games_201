@@ -1,6 +1,0 @@
-{
-  "name": "patch-web-mobile-main",
-  "version": "1.0.0",
-  "description": "Load all asset bundles before launch scene (web-mobile H5 fix)",
-  "main": "main.js"
-}
