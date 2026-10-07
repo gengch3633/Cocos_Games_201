@@ -1,7 +1,7 @@
 import { ClickState } from "./game";
 import AudioMgr from "./AudioMgr";
 import GlobalEventMgr from "./GlobalEventMgr";
-import { gameEvent } from "./InterfaceMgr";
+import { bundleName, gameEvent } from "./InterfaceMgr";
 import MultiPlatform from "./MultiPlatform";
 import ResMgr from "./ResMgr";
 import SpriteFrames from "./SpriteFrames";
@@ -267,218 +267,163 @@ export default class Snake extends cc.Component {
         
     }
 
-    errorAni() {
-        return l(this, void 0, void 0, function() {
-              var e = this;
-              return c(this, function() {
-                MultiPlatform.getInstance().vibrateEnabled&& UserData.getInstance().shake&& MultiPlatform.getInstance().vibrateLong();
-                AudioMgr.getInstance().playEffect("audio/click_wrong_arrow", g.bundleName.game);
-                return[2, new Promise(function(t) {
-                  var i = 0, n = 0;
-                  switch(e.direction) {
-                    case Direction.Left: i = - e.num_movedistance/ 2;
+    errorAni(): Promise<void> {
+        MultiPlatform.getInstance().vibrateEnabled &&
+            UserData.getInstance().shake &&
+            MultiPlatform.getInstance().vibrateLong();
+        AudioMgr.getInstance().playEffect("audio/click_wrong_arrow", bundleName.game);
+        return new Promise((resolve) => {
+            let offsetX = 0;
+            let offsetY = 0;
+            switch (this.direction) {
+                case Direction.Left:
+                    offsetX = -this.num_movedistance / 2;
                     break;
-                    case Direction.Right: i = e.num_movedistance/ 2;
+                case Direction.Right:
+                    offsetX = this.num_movedistance / 2;
                     break;
-                    case Direction.Up: n = e.num_movedistance/ 2;
+                case Direction.Up:
+                    offsetY = this.num_movedistance / 2;
                     break;
-                    case Direction.Down: n = - e.num_movedistance/ 2;
-                  }
-                  var o = 0, r = e.node_allbody.length;
-                  e.bool_iserrored = ! 0;
-                  for(var s = 0;
-                  s < e.node_allbody.length;
-                  s++) {
-                    var l = e.node_allbody[s];
-                    l.getChildByName("show").color = e.color_red;
-                    cc.tween(l).delay(.1).by(.1, {
-                      x: i, y: n
-                    }
-        ).by(.1, {
-                      x:- i, y:- n
-                    }
-        ).call(function() {
-        ++ o === r&& t();
-                    }
-        ).start();
-                  }
-                  0 === r&& t();
-                }
-        )];
-              }
-        );
+                case Direction.Down:
+                    offsetY = -this.num_movedistance / 2;
+                    break;
             }
-        );
+            let finished = 0;
+            const total = this.node_allbody.length;
+            this.bool_iserrored = true;
+            for (let i = 0; i < this.node_allbody.length; i++) {
+                const bodyNode = this.node_allbody[i];
+                bodyNode.getChildByName("show").color = this.color_red;
+                cc.tween(bodyNode)
+                    .delay(0.1)
+                    .by(0.1, { x: offsetX, y: offsetY })
+                    .by(0.1, { x: -offsetX, y: -offsetY })
+                    .call(() => {
+                        if (++finished === total) {
+                            resolve();
+                        }
+                    })
+                    .start();
+            }
+            if (total === 0) {
+                resolve();
+            }
+        });
     }
 
-    snakeMove() {
-        return l(this, void 0, void 0, function() {
-              var e, t, i, n;
-              return c(this, function(a) {
-                switch(a.label) {
-                  case 0: MultiPlatform.getInstance().vibrateEnabled&& UserData.getInstance().shake&& MultiPlatform.getInstance().vibrateShort();
-                  this.bool_moveflag = ! 0;
-                  if(!(e = this.checkZhanai()).hasCollision) return[3, 10];
-                  if(!(e.distance > 0)) return[3, 7];
-                  t = e.distance;
-                  n = 0;
-                  a.label = 1;
-                  case 1: return n < e.distance?[4, this.move()]:[3, 6];
-                  case 2: a.sent();
-                  if(-- t <= 0) {
-                    this._vibrateOnCollision();
-                    return GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, e.collisionPos), [4, this.errorAni()];
-                  }
-                  return[3, 5];
-                  case 3: a.sent();
-                  GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
-                  return[4, this.huitui()];
-                  case 4: a.sent();
-                  a.label = 5;
-                  case 5: n++;
-                  return[3, 1];
-                  case 6: return[3, 9];
-                  case 7: this._vibrateOnCollision();
-                  GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, e.collisionPos);
-                  return[4, this.errorAni()];
-                  case 8: a.sent();
-                  GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
-                  a.label = 9;
-                  case 9: this.bool_moveflag = ! 1;
-                  return[3, 19];
-                  case 10: this.snakeState = snakeState.dead;
-                  this.gameManager.onSnakeDestroyed(this);
-                  this.node_fuzhuline.opacity = 0;
-                  if(! 0 !== e.isHeidong) return[3, 15];
-                  for(n = 0;
-                  n < this.node_allbody.length;
-                  n++) {
-                    i = this.node_allbody[n].getChildByName("show");
-                    cc.tween(i).to(.2, {
-                      color: cc.color(61, 83, 183)
+    async snakeMove(): Promise<void> {
+        MultiPlatform.getInstance().vibrateEnabled &&
+            UserData.getInstance().shake &&
+            MultiPlatform.getInstance().vibrateShort();
+        this.bool_moveflag = true;
+        const result = this.checkZhanai();
+
+        if (result.hasCollision) {
+            if (result.distance > 0) {
+                let remaining = result.distance;
+                for (let step = 0; step < result.distance; step++) {
+                    await this.move();
+                    if (--remaining <= 0) {
+                        this._vibrateOnCollision();
+                        GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, result.collisionPos);
+                        await this.errorAni();
+                        GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
+                        await this.huitui();
+                        break;
                     }
-        ).to(.2, {
-                      color: this.snakeColor
-                    }
-        ).start();
-                  }
-                  n = 0;
-                  a.label = 11;
-                  case 11: return n < 200?[4, this.move()]:[3, 14];
-                  case 12: a.sent();
-                  a.label = 13;
-                  case 13: n++;
-                  return[3, 11];
-                  case 14: return[3, 19];
-                  case 15: for(n = 0;
-                  n < this.node_allbody.length;
-                  n++) {
-                    i = this.node_allbody[n].getChildByName("show");
-                    cc.tween(i).to(.2, {
-                      color: cc.color(61, 83, 183)
-                    }
-        ).to(.2, {
-                      color: this.snakeColor
-                    }
-        ).start();
-                  }
-                  n = 0;
-                  a.label = 16;
-                  case 16: return n < 200?[4, this.move()]:[3, 19];
-                  case 17: a.sent();
-                  a.label = 18;
-                  case 18: n++;
-                  return[3, 16];
-                  case 19: return[2];
                 }
-              }
-        );
+            } else {
+                this._vibrateOnCollision();
+                GlobalEventMgr.getInstance().emit(gameEvent.snakeTouchSnake, result.collisionPos);
+                await this.errorAni();
+                GlobalEventMgr.getInstance().emit(gameEvent.gameFail, this.id);
             }
-        );
+            this.bool_moveflag = false;
+            return;
+        }
+
+        this.snakeState = snakeState.dead;
+        this.gameManager.onSnakeDestroyed(this);
+        this.node_fuzhuline.opacity = 0;
+        for (let n = 0; n < this.node_allbody.length; n++) {
+            const showNode = this.node_allbody[n].getChildByName("show");
+            cc.tween(showNode)
+                .to(0.2, { color: cc.color(61, 83, 183) })
+                .to(0.2, { color: this.snakeColor })
+                .start();
+        }
+        for (let n = 0; n < 200; n++) {
+            await this.move();
+        }
     }
 
-    move() {
-        return l(this, void 0, void 0, function() {
-              var e = this;
-              return c(this, function() {
-                return[2, new Promise(function(t) {
-                  return l(e, void 0, void 0, function() {
-                    var e, i, n, o, r, s, l, u, d, h, p = this;
-                    return c(this, function() {
-                      e = this.snakeInfo2.slice();
-                      i = this.snakeInfo2[0];
-                      n = i.x;
-                      o = i.y;
-                      r = null;
-                      switch(this.direction) {
-                        case Direction.Left: r = {
-                          x: n- 1, y: o
-                        }
-        ;
-                        break;
-                        case Direction.Right: r = {
-                          x: n+ 1, y: o
-                        }
-        ;
-                        break;
-                        case Direction.Up: r = {
-                          x: n, y: o+ 1
-                        }
-        ;
-                        break;
-                        case Direction.Down: r = {
-                          x: n, y: o- 1
-                        }
-        ;
-                      }
-                      s = [];
-                      l = [r].concat(e.slice(0, e.length- 1));
-                      this.snakeInfo2 = l;
-                      if((u = this.snakeInfo2[this.snakeInfo2.length- 1])&& this.gameManager.num_mapInfo&& this.gameManager.num_mapInfo[u.x]&& void 0 !== this.gameManager.num_mapInfo[u.x][u.y]) {
-                        this.gameManager.num_mapInfo[u.x][u.y];
-                        d = u.y* this.levelInfo.XSize+ u.x;
-                        h = this.gameManager.Layout_map.node.children[d];
-                        this.bool_needShowTuowei&& cc.tween(h).to(.2, {
-                          scale: 3
-                        }
-        ).to(.2, {
-                          scale: 1
-                        }
-        ).start();
-                      }
-                      this.snakeInfo2.forEach(function(e, t) {
-                        var i = p.node_allbody[t], n = p.getNodePos(e);
-                        if(p.gameManager.num_mapInfo&& p.gameManager.num_mapInfo[e.x]&& "o" === p.gameManager.num_mapInfo[e.x][e.y]) {
-                          cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() {
-                            i.active = ! 1;
-                          }
-        );
-                          t == p.node_allbody.length- 1&& (p.bool_needShowTuowei = ! 1);
-                          var a = p.gameManager.heidong.filter(function(t) {
-                            return t.posInfo.x === e.x&& t.posInfo.y === e.y;
-                          }
-        );
-                          0 === t? a[0].showStartAni(): t === p.node_allbody.length- 1&& a[0].showEndAni();
-                        }
-                        s.push(p.moveBody(i, n));
-                      }
-        );
-                      Promise.all(s).then(function() {
-                        p.action.push(e);
-                        t();
-                      }
-        );
-                      return[2];
-                    }
-        );
-                  }
-        );
-                }
-        )];
-              }
-        );
+    move(): Promise<void> {
+        return new Promise((resolve) => {
+            const snapshot = this.snakeInfo2.slice();
+            const head = this.snakeInfo2[0];
+            const headX = head.x;
+            const headY = head.y;
+            let nextHead: { x: number; y: number } | null = null;
+            switch (this.direction) {
+                case Direction.Left:
+                    nextHead = { x: headX - 1, y: headY };
+                    break;
+                case Direction.Right:
+                    nextHead = { x: headX + 1, y: headY };
+                    break;
+                case Direction.Up:
+                    nextHead = { x: headX, y: headY + 1 };
+                    break;
+                case Direction.Down:
+                    nextHead = { x: headX, y: headY - 1 };
+                    break;
             }
-        );
+            const movePromises: Promise<void>[] = [];
+            this.snakeInfo2 = [nextHead!].concat(snapshot.slice(0, snapshot.length - 1));
+            const tail = this.snakeInfo2[this.snakeInfo2.length - 1];
+            if (
+                tail &&
+                this.gameManager.num_mapInfo &&
+                this.gameManager.num_mapInfo[tail.x] &&
+                this.gameManager.num_mapInfo[tail.x][tail.y] !== undefined
+            ) {
+                const tailIndex = tail.y * this.levelInfo.XSize + tail.x;
+                const tailCell = this.gameManager.Layout_map.node.children[tailIndex];
+                if (this.bool_needShowTuowei) {
+                    cc.tween(tailCell).to(0.2, { scale: 3 }).to(0.2, { scale: 1 }).start();
+                }
+            }
+            this.snakeInfo2.forEach((pos, index) => {
+                const bodyNode = this.node_allbody[index];
+                const targetPos = this.getNodePos(pos);
+                if (
+                    this.gameManager.num_mapInfo &&
+                    this.gameManager.num_mapInfo[pos.x] &&
+                    this.gameManager.num_mapInfo[pos.x][pos.y] === "o"
+                ) {
+                    cc.director.once(cc.Director.EVENT_AFTER_UPDATE, () => {
+                        bodyNode.active = false;
+                    });
+                    if (index === this.node_allbody.length - 1) {
+                        this.bool_needShowTuowei = false;
+                    }
+                    const wormholes = this.gameManager.heidong.filter(
+                        (hole) => hole.posInfo.x === pos.x && hole.posInfo.y === pos.y
+                    );
+                    if (index === 0) {
+                        wormholes[0].showStartAni();
+                    } else if (index === this.node_allbody.length - 1) {
+                        wormholes[0].showEndAni();
+                    }
+                }
+                movePromises.push(this.moveBody(bodyNode, targetPos));
+            });
+            Promise.all(movePromises).then(() => {
+                this.action.push(snapshot);
+                resolve();
+            });
+        });
     }
 
     getNodePos(e) {
@@ -486,65 +431,29 @@ export default class Snake extends cc.Component {
             return cc.v3(e.x* this.num_movedistance, e.y* this.num_movedistance, 0).addSelf(t);
     }
 
-    moveBody(e, t) {
-        return l(this, void 0, void 0, function() {
-              var i = this;
-              return c(this, function() {
-                return[2, new Promise(function(n) {
-                  e.setPosition(t);
-                  i.updateSnakeBody(e);
-                  cc.director.once(cc.Director.EVENT_AFTER_UPDATE, function() {
-                    n();
-                  }
-        );
-                }
-        )];
-              }
-        );
-            }
-        );
+    moveBody(bodyNode: cc.Node, targetPos: cc.Vec3): Promise<void> {
+        return new Promise((resolve) => {
+            bodyNode.setPosition(targetPos);
+            this.updateSnakeBody(bodyNode);
+            cc.director.once(cc.Director.EVENT_AFTER_UPDATE, () => {
+                resolve();
+            });
+        });
     }
 
-    huitui() {
-        return l(this, void 0, void 0, function() {
-              var e, t, i, n = this;
-              return c(this, function(a) {
-                switch(a.label) {
-                  case 0: e = function(e) {
-                    var i, a;
-                    return c(this, function(o) {
-                      switch(o.label) {
-                        case 0: i = [];
-                        a = t.action[e];
-                        t.snakeInfo2 = a;
-                        a.forEach(function(e, t) {
-                          var a = n.node_allbody[t], o = n.getNodePos(e);
-                          i.push(n.moveBody(a, o));
-                        }
-        );
-                        return[4, Promise.all(i)];
-                        case 1: o.sent();
-                        return[2];
-                      }
-                    }
-        );
-                  }
-        ;
-                  t = this;
-                  i = this.action.length- 1;
-                  a.label = 1;
-                  case 1: return i >= 0?[5, e(i)]:[3, 4];
-                  case 2: a.sent();
-                  a.label = 3;
-                  case 3: i--;
-                  return[3, 1];
-                  case 4: this.action = [];
-                  return[2];
-                }
-              }
-        );
-            }
-        );
+    async huitui(): Promise<void> {
+        for (let i = this.action.length - 1; i >= 0; i--) {
+            const snapshot = this.action[i];
+            this.snakeInfo2 = snapshot;
+            const movePromises: Promise<void>[] = [];
+            snapshot.forEach((pos, index) => {
+                const bodyNode = this.node_allbody[index];
+                const targetPos = this.getNodePos(pos);
+                movePromises.push(this.moveBody(bodyNode, targetPos));
+            });
+            await Promise.all(movePromises);
+        }
+        this.action = [];
     }
 
     updateSnakeBody(e) {
