@@ -12,7 +12,7 @@
   "height": 321,
   "platformSettings": {},
   "subMetas": {
-    "p6_zhib.png": {
+    "p6_zhib": {
       "ver": "1.0.6",
       "uuid": "d2fd4b13-b695-4ed2-bcda-71674f3d6f52",
       "importer": "sprite-frame",
@@ -22,10 +22,10 @@
       "rotated": false,
       "offsetX": 0,
       "offsetY": 0,
-      "trimX": 0,
-      "trimY": 0,
-      "width": 729,
-      "height": 321,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 725,
+      "height": 317,
       "rawWidth": 729,
       "rawHeight": 321,
       "borderTop": 0,
