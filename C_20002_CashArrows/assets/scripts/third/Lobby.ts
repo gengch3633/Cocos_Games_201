@@ -12,6 +12,18 @@ export default class Lobby extends cc.Component {
     onLoad(): void {
         this.audioPlay = this.node.getComponent(AudioPlay);
         UiPageAnalyticsService.trackEnter("home_page");
+        this.scheduleOnce(() => {
+            this.enterGameView();
+        }, 0);
+    }
+
+    enterGameView(): void {
+        const uiMgr = UIMgr.getInstance();
+        if (uiMgr.isShow(UIDefine.gameView)) {
+            return;
+        }
+        console.log("[Lobby] auto open gameView");
+        uiMgr.show(UIDefine.gameView);
     }
 
     onDestroy(): void {

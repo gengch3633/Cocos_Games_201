@@ -29,17 +29,21 @@ export default class ConfigMgr extends Singleton {
     mackList: any = null;
     loadState: LoadState = LoadState.None;
 
-    loadAll(baseUrl: string, bundleName: string = "config", jsonDir: string = "/json"): Promise<boolean> {
+    loadAll(baseUrl: string, bundleName: string = "config", jsonDir: string = "json"): Promise<boolean> {
         const self = this;
         return new Promise((resolve) => {
             if (self.loadState != LoadState.Done) {
                 let pendingCount = 0;
                 const isHttpUrl = URL.isHttpUrl(baseUrl);
 
+                const finishLoadAll = (ok: boolean = true) => {
+                    self.loadState = LoadState.Done;
+                    resolve(ok);
+                };
+
                 const onAllComplete = () => {
                     if (--pendingCount <= 0) {
-                        self.loadState = LoadState.Done;
-                        resolve(true);
+                        finishLoadAll(true);
                     }
                 };
 
@@ -94,25 +98,26 @@ export default class ConfigMgr extends Singleton {
                 };
 
                 ResMgr.getInstance().getBundle(bundleName).then((bundle) => {
+                    if (!bundle) {
+                        console.warn("[ConfigMgr] loadAll: bundle not found ->", bundleName);
+                        finishLoadAll(true);
+                        return;
+                    }
                     pendingCount += 2;
-                    bundle.loadDir(jsonDir, cc.TextAsset, (err, assets: cc.TextAsset[]) => {
+                    const onLoadDirDone = (err: Error, assets: cc.TextAsset[] | cc.JsonAsset[]) => {
                         pendingCount--;
                         if (err) {
-                            console.error(err);
-                        } else {
+                            console.error("[ConfigMgr] loadDir error", err);
+                        } else if (assets && assets.length > 0) {
                             pendingCount += assets.length;
                             assets.forEach((item) => processAsset(item.name, item));
                         }
-                    });
-                    bundle.loadDir(jsonDir, cc.JsonAsset, (err, assets: cc.JsonAsset[]) => {
-                        pendingCount--;
-                        if (err) {
-                            console.error(err);
-                        } else {
-                            pendingCount += assets.length;
-                            assets.forEach((item) => processAsset(item.name, item));
+                        if (pendingCount <= 0) {
+                            finishLoadAll(true);
                         }
-                    });
+                    };
+                    bundle.loadDir(jsonDir, cc.TextAsset, (err, assets) => onLoadDirDone(err, assets));
+                    bundle.loadDir(jsonDir, cc.JsonAsset, (err, assets) => onLoadDirDone(err, assets));
                 });
             } else {
                 resolve(true);
@@ -151,7 +156,7 @@ export default class ConfigMgr extends Singleton {
         rows?.forEach(callback);
     }
 
-    loadLevel(baseUrl: string, bundleName: string = "config", gameDir: string = "/game"): Promise<boolean> {
+    loadLevel(baseUrl: string, bundleName: string = "config", gameDir: string = "game"): Promise<boolean> {
         const self = this;
         return new Promise((resolve) => {
             let pendingCount = 0;

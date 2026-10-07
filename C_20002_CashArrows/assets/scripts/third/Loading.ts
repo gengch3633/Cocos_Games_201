@@ -6,6 +6,7 @@ import Handler from "./Handler";
 import LanguageService from "./LanguageService";
 import Launch from "./Launch";
 import LoadingHttpService from "./LoadingHttpService";
+import UIDefine from "./UIDefine";
 import {
     initProjectLoadingAdapters,
     initSystem,
@@ -465,13 +466,28 @@ export default class Loading extends cc.Component {
             this.progressBar.getComponentInChildren(cc.Label).string = Math.floor(100 * fillRange) + "%";
             if (targetProgress >= 1 && fillRange >= 0.999 && !this._sceneEntering) {
                 this._sceneEntering = true;
+                const enterLobbyAndGame = () => {
+                    UiPageAnalyticsService.trackLeave("launch_page");
+                    SceneMgr.getInstance().loadScene("lobby", "lobby", () => {
+                        console.log("[Loading] lobby scene loaded, open gameView");
+                        UIMgr.getInstance().initLayer(Object.keys(UILayer), UILayer.Bottom);
+                        if (!UIMgr.getInstance().isShow(UIDefine.gameView)) {
+                            UIMgr.getInstance().show(UIDefine.gameView);
+                        }
+                    });
+                };
                 cc.assetManager.loadBundle("game", (error, bundle) => {
-                    if (!error) {
-                        bundle.loadDir("prefab", () => {
-                            UiPageAnalyticsService.trackLeave("launch_page");
-                            SceneMgr.getInstance().loadScene("lobby", "lobby");
-                        });
+                    if (error || !bundle) {
+                        console.warn("[Loading] game bundle load failed, still enter lobby", error);
+                        enterLobbyAndGame();
+                        return;
                     }
+                    bundle.loadDir("prefab", (prefabErr) => {
+                        if (prefabErr) {
+                            console.warn("[Loading] game prefab preload failed, still enter lobby", prefabErr);
+                        }
+                        enterLobbyAndGame();
+                    });
                 });
             }
         }
