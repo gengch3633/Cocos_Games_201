@@ -204,7 +204,7 @@ snake.prototype.updatePartialSnakeSkin = function() {
       var d = c? r: null,
       h = u? l: null;
       a = this.getBodyType(d, s, h);
-    } else a = n.尾_右;
+    } else a = Bodyparts.尾_右;
     this.changeSpr(a, i);
   }
 }
@@ -605,45 +605,45 @@ snake.prototype.determineDirection = function() {
 snake.prototype.changeSpr_liti = function(e, t) {
   var i = t.getChildByName("show").getComponent(SpriteFrames);
   switch(e) {
-    case n.头_上: i.setFrameByIndex(9);
+    case Bodyparts.头_上: i.setFrameByIndex(9);
     break;
-    case n.头_下: i.setFrameByIndex(6);
+    case Bodyparts.头_下: i.setFrameByIndex(6);
     break;
-    case n.头_左: i.setFrameByIndex(7);
+    case Bodyparts.头_左: i.setFrameByIndex(7);
     break;
-    case n.头_右: i.setFrameByIndex(8);
+    case Bodyparts.头_右: i.setFrameByIndex(8);
     break;
-    case n.身体_右右: i.setFrameByIndex(2);
+    case Bodyparts.身体_右右: i.setFrameByIndex(2);
     break;
-    case n.身体_下右: i.setFrameByIndex(1);
+    case Bodyparts.身体_下右: i.setFrameByIndex(1);
     break;
-    case n.身体_上右: i.setFrameByIndex(3);
+    case Bodyparts.身体_上右: i.setFrameByIndex(3);
     break;
-    case n.身体_左左: i.setFrameByIndex(2);
+    case Bodyparts.身体_左左: i.setFrameByIndex(2);
     break;
-    case n.身体_下左: i.setFrameByIndex(0);
+    case Bodyparts.身体_下左: i.setFrameByIndex(0);
     break;
-    case n.身体_上左: i.setFrameByIndex(4);
+    case Bodyparts.身体_上左: i.setFrameByIndex(4);
     break;
-    case n.身体_上上: i.setFrameByIndex(5);
+    case Bodyparts.身体_上上: i.setFrameByIndex(5);
     break;
-    case n.身体_右上: i.setFrameByIndex(0);
+    case Bodyparts.身体_右上: i.setFrameByIndex(0);
     break;
-    case n.身体_左上: i.setFrameByIndex(1);
+    case Bodyparts.身体_左上: i.setFrameByIndex(1);
     break;
-    case n.身体_下下: i.setFrameByIndex(5);
+    case Bodyparts.身体_下下: i.setFrameByIndex(5);
     break;
-    case n.身体_右下: i.setFrameByIndex(4);
+    case Bodyparts.身体_右下: i.setFrameByIndex(4);
     break;
-    case n.身体_左下: i.setFrameByIndex(3);
+    case Bodyparts.身体_左下: i.setFrameByIndex(3);
     break;
-    case n.尾_上: i.setFrameByIndex(13);
+    case Bodyparts.尾_上: i.setFrameByIndex(13);
     break;
-    case n.尾_下: i.setFrameByIndex(10);
+    case Bodyparts.尾_下: i.setFrameByIndex(10);
     break;
-    case n.尾_左: i.setFrameByIndex(11);
+    case Bodyparts.尾_左: i.setFrameByIndex(11);
     break;
-    case n.尾_右: i.setFrameByIndex(12);
+    case Bodyparts.尾_右: i.setFrameByIndex(12);
     break;
     default: console.error("出错了,请检查");
     i.setFrameByIndex(3);
@@ -653,64 +653,64 @@ snake.prototype.changeSpr_liti = function(e, t) {
 snake.prototype.changeSpr = function(e, t) {
   var i = t.getChildByName("show").getComponent(SpriteFrames);
   switch(e) {
-    case n.头_上: i.setFrameByIndex(0);
+    case Bodyparts.头_上: i.setFrameByIndex(0);
     i.node.angle = 0;
     break;
-    case n.头_下: i.setFrameByIndex(0);
+    case Bodyparts.头_下: i.setFrameByIndex(0);
     i.node.angle = 180;
     break;
-    case n.头_左: i.setFrameByIndex(0);
+    case Bodyparts.头_左: i.setFrameByIndex(0);
     i.node.angle = 90;
     break;
-    case n.头_右: i.setFrameByIndex(0);
+    case Bodyparts.头_右: i.setFrameByIndex(0);
     i.node.angle = - 90;
     break;
-    case n.身体_右右: i.setFrameByIndex(2);
+    case Bodyparts.身体_右右: i.setFrameByIndex(2);
     i.node.angle = 90;
     break;
-    case n.身体_下右: i.setFrameByIndex(3);
+    case Bodyparts.身体_下右: i.setFrameByIndex(3);
     i.node.angle = 0;
     break;
-    case n.身体_上右: i.setFrameByIndex(3);
+    case Bodyparts.身体_上右: i.setFrameByIndex(3);
     i.node.angle = - 90;
     break;
-    case n.身体_左左: i.setFrameByIndex(2);
+    case Bodyparts.身体_左左: i.setFrameByIndex(2);
     i.node.angle = 90;
     break;
-    case n.身体_下左: i.setFrameByIndex(3);
+    case Bodyparts.身体_下左: i.setFrameByIndex(3);
     i.node.angle = 90;
     break;
-    case n.身体_上左: i.setFrameByIndex(3);
+    case Bodyparts.身体_上左: i.setFrameByIndex(3);
     i.node.angle = 180;
     break;
-    case n.身体_上上: i.setFrameByIndex(2);
+    case Bodyparts.身体_上上: i.setFrameByIndex(2);
     i.node.angle = 0;
     break;
-    case n.身体_右上: i.setFrameByIndex(3);
+    case Bodyparts.身体_右上: i.setFrameByIndex(3);
     i.node.angle = 90;
     break;
-    case n.身体_左上: i.setFrameByIndex(3);
+    case Bodyparts.身体_左上: i.setFrameByIndex(3);
     i.node.angle = 0;
     break;
-    case n.身体_下下: i.setFrameByIndex(2);
+    case Bodyparts.身体_下下: i.setFrameByIndex(2);
     i.node.angle = 0;
     break;
-    case n.身体_右下: i.setFrameByIndex(3);
+    case Bodyparts.身体_右下: i.setFrameByIndex(3);
     i.node.angle = 180;
     break;
-    case n.身体_左下: i.setFrameByIndex(3);
+    case Bodyparts.身体_左下: i.setFrameByIndex(3);
     i.node.angle = - 90;
     break;
-    case n.尾_上: i.setFrameByIndex(1);
+    case Bodyparts.尾_上: i.setFrameByIndex(1);
     i.node.angle = 0;
     break;
-    case n.尾_下: i.setFrameByIndex(1);
+    case Bodyparts.尾_下: i.setFrameByIndex(1);
     i.node.angle = 180;
     break;
-    case n.尾_左: i.setFrameByIndex(1);
+    case Bodyparts.尾_左: i.setFrameByIndex(1);
     i.node.angle = 90;
     break;
-    case n.尾_右: i.setFrameByIndex(1);
+    case Bodyparts.尾_右: i.setFrameByIndex(1);
     i.node.angle = - 90;
     break;
     default: console.error("出错了,请检查");
@@ -720,33 +720,33 @@ snake.prototype.changeSpr = function(e, t) {
 ;
 snake.prototype.getBodyType = function(e, t, i) {
   if(null === e|| null == e) {
-    if(i.x == t.x+ 1) return n.头_左;
-    if(i.x == t.x- 1) return n.头_右;
-    if(i.y == t.y+ 1) return n.头_下;
-    if(i.y == t.y- 1) return n.头_上;
+    if(i.x == t.x+ 1) return Bodyparts.头_左;
+    if(i.x == t.x- 1) return Bodyparts.头_右;
+    if(i.y == t.y+ 1) return Bodyparts.头_下;
+    if(i.y == t.y- 1) return Bodyparts.头_上;
   }
   if(void 0 === i|| null == i) {
-    if(e.x == t.x+ 1) return n.尾_右;
-    if(e.x == t.x- 1) return n.尾_左;
-    if(e.y == t.y+ 1) return n.尾_上;
-    if(e.y == t.y- 1) return n.尾_下;
+    if(e.x == t.x+ 1) return Bodyparts.尾_右;
+    if(e.x == t.x- 1) return Bodyparts.尾_左;
+    if(e.y == t.y+ 1) return Bodyparts.尾_上;
+    if(e.y == t.y- 1) return Bodyparts.尾_下;
   }
   if(e.x == t.x+ 1) {
-    if(i.x == t.x- 1) return n.身体_右右;
-    if(i.y == t.y+ 1) return n.身体_下右;
-    if(i.y == t.y- 1) return n.身体_上右;
+    if(i.x == t.x- 1) return Bodyparts.身体_右右;
+    if(i.y == t.y+ 1) return Bodyparts.身体_下右;
+    if(i.y == t.y- 1) return Bodyparts.身体_上右;
   } else if(e.x == t.x- 1) {
-    if(i.x == t.x+ 1) return n.身体_左左;
-    if(i.y == t.y+ 1) return n.身体_下左;
-    if(i.y == t.y- 1) return n.身体_上左;
+    if(i.x == t.x+ 1) return Bodyparts.身体_左左;
+    if(i.y == t.y+ 1) return Bodyparts.身体_下左;
+    if(i.y == t.y- 1) return Bodyparts.身体_上左;
   } else if(e.y == t.y+ 1) {
-    if(i.y == t.y- 1) return n.身体_上上;
-    if(i.x == t.x+ 1) return n.身体_左上;
-    if(i.x == t.x- 1) return n.身体_右上;
+    if(i.y == t.y- 1) return Bodyparts.身体_上上;
+    if(i.x == t.x+ 1) return Bodyparts.身体_左上;
+    if(i.x == t.x- 1) return Bodyparts.身体_右上;
   } else if(e.y == t.y- 1) {
-    if(i.y == t.y+ 1) return n.身体_下下;
-    if(i.x == t.x+ 1) return n.身体_左下;
-    if(i.x == t.x- 1) return n.身体_右下;
+    if(i.y == t.y+ 1) return Bodyparts.身体_下下;
+    if(i.x == t.x+ 1) return Bodyparts.身体_左下;
+    if(i.x == t.x- 1) return Bodyparts.身体_右下;
   }
   console.error("出错了,请检查", new Error().stack);
   return null;
