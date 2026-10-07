@@ -1157,7 +1157,7 @@ export default class GameView extends cc.Component {
     parseRewardNumValue(e): any {
     if(null == e) return null;
     var t = e;
-    if("string" == typeof t&& !(t = t.replace(/, / g, "").trim()).length) return null;
+    if("string" == typeof t&& !(t = t.replace(/,/g, "").trim()).length) return null;
     var i = Number(t);
     return isFinite(i)? Math.max(0, Math.floor(i)): null;
   }
@@ -1738,10 +1738,7 @@ export default class GameView extends cc.Component {
 ;
 
     formatTopBalance(e): any {
-    return Math.max(0, Math.floor(e)).toString().replace(/ \ B(? = (\ d {
-      3
-    }
-)+(? ! \ d))/ g, ",");
+    return Math.max(0, Math.floor(e)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 ;
 
@@ -1835,7 +1832,7 @@ export default class GameView extends cc.Component {
     this.ensureRuntimeNodeRefs();
     var t = e;
     "string" != typeof t&& (t = this.i18n("key_newbie_guide_step7_banner", [], "过关即可获得现金奖励，过关越多奖励越多"));
-    if(t = String(t|| "").replace(/ \ r \ n/ g, "\n").replace(/ \ r/ g, "\n")) {
+    if(t = String(t|| "").replace(/\r\n/g, "\n").replace(/\r/g, "\n")) {
       this.lbl_step7GuideTextBack&& (this.lbl_step7GuideTextBack.string = t);
       this.lbl_step7GuideTextFront&& (this.lbl_step7GuideTextFront.string = t);
     }

@@ -58,7 +58,7 @@ i = i|| function(e) {
       this.clamp();
       if(n% 4) for(var a = 0;
       a < e;
-      a++) t[n+ a >>> 2]| = (i[a >>> 2] >>> 24- a% 4* 8& 255) << 24-(n+ a)% 4* 8;
+      a++) t[n+ a >>> 2]|= (i[a >>> 2] >>> 24- a% 4* 8& 255) << 24-(n+ a)% 4* 8;
       else if(65535 < i.length) for(a = 0;
       a < e;
       a+= 4) t[n+ a >>> 2] = i[a >>> 2];
@@ -68,7 +68,7 @@ i = i|| function(e) {
     }
 , clamp: function() {
       var t = this.words, i = this.sigBytes;
-      t[i >>> 2]& = 4294967295 << 32- i% 4* 8;
+      t[i >>> 2]&= 4294967295 << 32- i% 4* 8;
       t.length = e.ceil(i/ 4);
     }
 , clone: function() {
@@ -104,7 +104,7 @@ i = i|| function(e) {
     parse: function(e) {
       for(var t = e.length, i = [], n = 0;
       n < t;
-      n+= 2) i[n >>> 3]| = parseInt(e.substr(n, 2), 16) << 24- n% 8* 4;
+      n+= 2) i[n >>> 3]|= parseInt(e.substr(n, 2), 16) << 24- n% 8* 4;
       return new o.init(i, t/ 2);
     }
   }
@@ -122,7 +122,7 @@ i = i|| function(e) {
     parse: function(e) {
       for(var t = e.length, i = [], n = 0;
       n < t;
-      n++) i[n >>> 2]| = (255& e.charCodeAt(n)) << 24- n% 4* 8;
+      n++) i[n >>> 2]|= (255& e.charCodeAt(n)) << 24- n% 4* 8;
       return new o.init(i, t);
     }
   }
@@ -238,7 +238,7 @@ e.enc.Base64 = {
     r++) if(r% 4) {
       var s = n.indexOf(e.charAt(r- 1)) << r% 4* 2,
       l = n.indexOf(e.charAt(r)) >>> 6- r% 4* 2;
-      a[o >>> 2]| = (s| l) << 24- o% 4* 8;
+      a[o >>> 2]|= (s| l) << 24- o% 4* 8;
       o++;
     }
     return t.create(a, o);
@@ -284,7 +284,7 @@ e.enc.Base64 = {
     }
 , _doFinalize: function() {
       var t = this._data, i = t.words, n = 8* this._nDataBytes, a = 8* t.sigBytes;
-      i[a >>> 5]| = 128 << 24- a% 32;
+      i[a >>> 5]|= 128 << 24- a% 32;
       var o = e.floor(n/ 4294967296);
       i[15+(a+ 64 >>> 9 << 4)] = 16711935& (o << 8| o >>> 24)| 4278255360& (o << 24| o >>> 8);
       i[14+(a+ 64 >>> 9 << 4)] = 16711935& (n << 8| n >>> 24)| 4278255360& (n << 24| n >>> 8);
@@ -398,7 +398,7 @@ i.lib.Cipher|| function() {
     n? this._iv = void 0: n = this._prevBlock;
     for(var a = 0;
     a < i;
-    a++) e[t+ a] ^ = n[a];
+    a++) e[t+ a] ^= n[a];
   }
 ,
   u = (e.BlockCipherMode = t.extend({
@@ -587,7 +587,7 @@ i.lib.Cipher|| function() {
     d[y] = k << 16| k >>> 16;
     h[y] = k << 8| k >>> 24;
     p[y] = k;
-    g?(g = v ^ _[_[_[w ^ v]]], m ^ = _[_[m]]): g = m = 1;
+    g?(g = v ^ _[_[_[w ^ v]]], m ^= _[_[m]]): g = m = 1;
   }
   var S = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54];
   n = n.AES = t.extend({
@@ -597,7 +597,7 @@ i.lib.Cipher|| function() {
       o++) if(o < t) n[o] = e[o];
       else {
         var r = n[o- 1];
-        o% t? 6 < t&& 4 == o% t&& (r = a[r >>> 24] << 24| a[r >>> 16& 255] << 16| a[r >>> 8& 255] << 8| a[255& r]):(r = a[(r = r << 8| r >>> 24) >>> 24] << 24| a[r >>> 16& 255] << 16| a[r >>> 8& 255] << 8| a[255& r], r ^ = S[o/ t| 0] << 24);
+        o% t? 6 < t&& 4 == o% t&& (r = a[r >>> 24] << 24| a[r >>> 16& 255] << 16| a[r >>> 8& 255] << 8| a[255& r]):(r = a[(r = r << 8| r >>> 24) >>> 24] << 24| a[r >>> 16& 255] << 16| a[r >>> 8& 255] << 8| a[255& r], r ^= S[o/ t| 0] << 24);
         n[o] = n[o- t] ^ r;
       }
       e = this._invKeySchedule = [];
@@ -714,7 +714,7 @@ export default i;
     }
 , _doFinalize: function() {
       var t = this._data, i = t.words, n = 8* this._nDataBytes, a = 8* t.sigBytes;
-      i[a >>> 5]| = 128 << 24- a% 32;
+      i[a >>> 5]|= 128 << 24- a% 32;
       i[14+(a+ 64 >>> 9 << 4)] = e.floor(n/ 4294967296);
       i[15+(a+ 64 >>> 9 << 4)] = n;
       t.sigBytes = 4* i.length;

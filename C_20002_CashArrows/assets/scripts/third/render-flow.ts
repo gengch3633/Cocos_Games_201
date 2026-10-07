@@ -34,7 +34,7 @@ cc.RenderFlow.visitRootNode = function(e) {
   if(e._renderFlag& cc.RenderFlow.FLAG_WORLD_TRANSFORM) {
     i.worldMatDirty++;
     e._calculWorldMatrix();
-    e._renderFlag& = ~ cc.RenderFlow.FLAG_WORLD_TRANSFORM;
+    e._renderFlag&= ~ cc.RenderFlow.FLAG_WORLD_TRANSFORM;
     cc.RenderFlow.flows[e._renderFlag]._func(e);
     l();
     i.worldMatDirty--;
@@ -87,7 +87,7 @@ cc.RenderFlow.prototype._children = function(e) {
   d < h;
   d++) {
     var p = u[d];
-    p._renderFlag| = c;
+    p._renderFlag|= c;
     if(p._activeInHierarchy&& 0 !== p._opacity) {
       n = p._cullingMask = 0 === p.groupIndex? t: 1 << p.groupIndex;
       var _ = p._color._val;
