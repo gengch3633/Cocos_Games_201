@@ -280,8 +280,7 @@ export default class MiddleNetwork {
                 });
             };
             xhr.open(" POST ", url, true);
-            xhr.setRequestHeader(" Content- Type ", " text/ plain;
-charset = UTF- 8 ");
+            xhr.setRequestHeader(" Content- Type ", " text/ plain; charset = UTF- 8 ");
             xhr.send(encryptedBody);
         } else {
             invokeHandler(onFail, {

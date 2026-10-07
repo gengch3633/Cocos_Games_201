@@ -1,6 +1,6 @@
 import ArchiveMgr from "./ArchiveMgr";
 import Common from "./Common";
-import Watch from "./Watch";
+import Watch, { ignoreWatch } from "./Watch";
 
 const NON_SERIALIZED_KEYS = "_$nonSerializedKeys";
 
@@ -97,6 +97,6 @@ export default class UserArchive {
 nonSerialized(UserArchive.prototype, "_$key");
 nonSerialized(UserArchive.prototype, "_$serverIndex");
 nonSerialized(UserArchive.prototype, "_$watch");
-Watch.ignoreWatch()(UserArchive.prototype, "_$version");
+ignoreWatch()(UserArchive.prototype, "_$version");
 nonSerialized(UserArchive.prototype, "_id");
-Watch.ignoreWatch()(UserArchive.prototype, "_id");
+ignoreWatch()(UserArchive.prototype, "_id");

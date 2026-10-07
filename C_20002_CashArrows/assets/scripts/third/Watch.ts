@@ -26,6 +26,8 @@ const arrayProtoPatch: Record<string, Function> = {};
 });
 
 export default class Watch {
+    static ignoreWatch: () => (target: any, propertyKey: string) => void;
+
     static EventType = {
         CHANGE: "Watch_Event_Change"
     };
@@ -197,3 +199,5 @@ export function ignoreWatch() {
         keys.push(propertyKey);
     };
 }
+
+Watch.ignoreWatch = ignoreWatch;

@@ -796,10 +796,10 @@ f.url = function() {
     }
 , s = e.substring(1), l = 0, c = a.length;
     l < c;
-    l++) if("" !== (o = (o = a[l].match(/(.*?) = (.*)/))|| [a[l], a[l], ""])[1].replace(/ \ s/ g, "")) {
-      o[2] = (i = o[2]|| "", f.decodeURIComponent(i.replace(/ \+/ g, " ")));
+    l++) if("" !== (o = (o = a[l].match(/(.*?) = (.*)/))|| [a[l], a[l], ""])[1].replace(/\s/g, "")) {
+      o[2] = (i = o[2]|| "", f.decodeURIComponent(i.replace(/\+/g, " ")));
       if(s === o[1]) return o[2];
-      if(i = o[1].match(/(.*) \[([0- 9]+) \]/)) {
+      if(i = o[1].match(/(.*) \[([0-9]+) \]/)) {
         r[i[1]] = r[i[1]]|| [];
         r[i[1]][i[2]] = o[2];
       } else r[o[1]] = o[2];
@@ -843,14 +843,14 @@ f.url = function() {
         a = o[1];
       }
       r.path = (r.path|| "").replace(/ ^([^/])/, "/$1").replace(/ \/ $/, "");
-      if((n = n.match(/ ^[- 0- 9]+ $/)? n.replace(/ ^([^/])/, "/$1"): n).match(/ ^ \//)) return t(n, r.path.substring(1));
+      if((n = n.match(/ ^[-0-9]+ $/)? n.replace(/ ^([^/])/, "/$1"): n).match(/ ^ \//)) return t(n, r.path.substring(1));
       if(o = (o = t("/-1", r.path.substring(1)))&& o.match(/(.*?) \.(.*)/)) {
         r.file = o[0];
         r.filename = o[1];
         r.fileext = o[2];
       }
-      if(a.match(/(.*):([0- 9]+) $/)) {
-        o = a.match(/(.*):([0- 9]+) $/);
+      if(a.match(/(.*):([0-9]+) $/)) {
+        o = a.match(/(.*):([0-9]+) $/);
         r.port = o[2];
         a = o[1];
       }
