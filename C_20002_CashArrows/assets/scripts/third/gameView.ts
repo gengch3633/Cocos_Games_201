@@ -555,11 +555,11 @@ export default class GameView extends cc.Component {
       t.push("node_bubbleContainer<=nav_right_bg");
     } else i.push("node_bubbleContainer<=nav_right_bg");
     if(! this.lbl_balanceText&& l) if(n) {
-      this.lbl_balanceText = ResMgr.getComponent(cc.Label);
+      this.lbl_balanceText = l.getComponent(cc.Label);
       this.lbl_balanceText&& t.push("lbl_balanceText<=money_text");
     } else i.push("lbl_balanceText<=money_text");
     if(! this.rich_bubbleText&& c) if(n) {
-      this.rich_bubbleText = UIMgr.getComponent(cc.RichText);
+      this.rich_bubbleText = c.getComponent(cc.RichText);
       this.rich_bubbleText&& t.push("rich_bubbleText<=pop_text");
     } else i.push("rich_bubbleText<=pop_text");
     if(! this.node_bigBarragePanel&& u) if(n) {
@@ -567,7 +567,7 @@ export default class GameView extends cc.Component {
       t.push("node_bigBarragePanel<=big_barrage_panel");
     } else i.push("node_bigBarragePanel<=big_barrage_panel");
     if(! this.rich_bigBarrageText&& d) if(n) {
-      this.rich_bigBarrageText = Random.getComponent(cc.RichText);
+      this.rich_bigBarrageText = d.getComponent(cc.RichText);
       this.rich_bigBarrageText&& t.push("rich_bigBarrageText<=big_barrage_label");
     } else i.push("rich_bigBarrageText<=big_barrage_label");
     var p = a? a.children.map(function(e) {
@@ -708,16 +708,16 @@ export default class GameView extends cc.Component {
       o = this.findChildByNameDeep(this.node, "lbl_barrage_"+ t),
       r = i? this.findChildByNameDeep(i, "barrage_item_next"): null,
       s = r? this.findChildByNameDeep(r, "icon_barrage_next"): null;
-      s|| (s = r&& ConfigMgr.children[0]|| null);
+      s|| (s = r&& r.children[0]|| null);
       var l = r? this.findChildByNameDeep(r, "lbl_barrage_next"): null;
-      l|| (l = r&& ConfigMgr.children[1]|| null);
+      l|| (l = r&& r.children[1]|| null);
       if(i&& ! n&& (a|| o)) {
         console.warn("[top_barrage] prefab missing barrage_item_"+ t+ ", fallback create runtime node");
 (n = new cc.Node("barrage_item_"+ t)).parent = i;
         n.setContentSize(i.getContentSize());
         n.setPosition(0, 0);
         a&& (a.parent = n);
-        o&& (AudioMgr.parent = n);
+        o&& (o.parent = n);
       }
       var c = this.ensureTopBarrageRichText(o),
       u = this.ensureTopBarrageRichText(l);
@@ -763,9 +763,9 @@ export default class GameView extends cc.Component {
         a < t.length;
         a++) {
           var o = t[a];
-          if(o&& AudioMgr.isValid) {
-            var r = AudioMgr.getComponent(cc.Sprite);
-            r&& (ConfigMgr.spriteFrame = i);
+          if(o&& o.isValid) {
+            var r = o.getComponent(cc.Sprite);
+            r&& (r.spriteFrame = i);
           }
         }
       }
@@ -901,7 +901,7 @@ export default class GameView extends cc.Component {
           var r = BarrageDataService.takeOne(),
           s = this.i18n("key_common_barrage_empty"),
           l = r? this.getTopBarragePlainText(r): s;
-          AudioMgr.string = r? this.getTopBarrageRichText(r): "<color="+ this.topBarrageNormalColor+ ">"+ s+ "</color>";
+          o.string = r? this.getTopBarrageRichText(r): "<color="+ this.topBarrageNormalColor+ ">"+ s+ "</color>";
           this.applyRandomArrowIcon(this._topBarrageNextIcon);
           this.enableTopBarrageDynamicLayout&& this.refreshTopBarrageLabelLayout(o);
           this._alignBarrageIconToLabel(this._topBarrageNextIcon, o, l);
@@ -988,7 +988,7 @@ export default class GameView extends cc.Component {
     a = void 0 !== e.amount? this.getBarrageCurrencyText("RP", e.amount): "";
     if(! a&& e.text) return "<color="+ t+ ">"+ e.text+ "</color>";
     var o = this.i18n("key_game_top_barrage_plain", ["", ""]).split("");
-    if(AudioMgr.length < 2) return "<color="+ t+ ">"+ this.i18n("key_game_top_barrage_plain", [n, a])+ "</color>";
+    if(o.length < 2) return "<color="+ t+ ">"+ this.i18n("key_game_top_barrage_plain", [n, a])+ "</color>";
     var r = o[1].split(""),
     s = "<color="+ t+ ">"+ o[0]+ n+ r[0]+ "</color><color="+ i+ ">"+ a+ "</color>";
     r[1]&& (s+= "<color="+ t+ ">"+ r[1]+ "</color>");
@@ -1543,11 +1543,11 @@ export default class GameView extends cc.Component {
       o++) {
         var r = e[o];
         if(r) {
-          var s = ConfigMgr.getBoundingBox();
-          t = Math.min(t, GlobalEventMgr.x);
-          i = Math.min(i, GlobalEventMgr.y);
-          n = Math.max(n, GlobalEventMgr.x+ GlobalEventMgr.width);
-          a = Math.max(a, GlobalEventMgr.y+ GlobalEventMgr.height);
+          var s = r.getBoundingBox();
+          t = Math.min(t, s.x);
+          i = Math.min(i, s.y);
+          n = Math.max(n, s.x+ s.width);
+          a = Math.max(a, s.y+ s.height);
         }
       }
       if(isFinite(t)&& isFinite(i)&& isFinite(n)&& isFinite(a)) return cc.size(Math.max(0, n- t), Math.max(0, a- i));
@@ -1968,12 +1968,10 @@ export default class GameView extends cc.Component {
     a = UserData.getInstance();
     console.log("[prop] _consumeProp: prop_type="+ t+ " hint="+ a.hint_prop_count+ " guideline="+ a.guideline_prop_count);
     try {
-      s = AudioMgr,
-      l = ConfigMgr;
-      GlobalEventMgr.consumeArrowProp({
+      LoadingHttpService.consumeArrowProp({
         prop_type: t
       }
-, ResMgr.create(null, function(e) {
+, Handler.create(null, function(e) {
         if(e&& e.data) {
           var a = UserData.getInstance();
           if(void 0 !== e.data.hint_prop_count) {
@@ -1986,7 +1984,7 @@ export default class GameView extends cc.Component {
           i&& i();
         } else console.error("[consumeProp] failed", e);
       }
-), ResMgr.create(null, function(e) {
+), Handler.create(null, function(e) {
         console.error("[consumeProp] error", e);
       }
 ));
@@ -2003,12 +2001,10 @@ export default class GameView extends cc.Component {
     2 === t|| "2" === t? a = "hint_prop": 3 !== t&& "3" !== t|| (a = "guideline_prop");
     console.log("[prop] _claimPropVideoReward: video_type="+ t+ " request_video_type="+ a);
     try {
-      s = AudioMgr,
-      l = ConfigMgr;
-      GlobalEventMgr.claimArrowAdReward({
+      LoadingHttpService.claimArrowAdReward({
         video_type: a
       }
-, ResMgr.create(null, function(e) {
+, Handler.create(null, function(e) {
         if(e&& e.data) {
           var t = UserData.getInstance();
           if(void 0 !== e.data.hint_prop_count) {
@@ -2022,7 +2018,7 @@ export default class GameView extends cc.Component {
         }
         i&& i();
       }
-), ResMgr.create(null, function(e) {
+), Handler.create(null, function(e) {
         console.error("[claimPropVideoReward] error", e);
         i&& i();
       }
@@ -2332,10 +2328,10 @@ export default class GameView extends cc.Component {
     if(a > 0&& this.data_topBalanceMock) {
       var o = this;
       this.playFlyMoneyAnim(5, a, function() {
-        var e = (AudioMgr.data_topBalanceMock.cash_balance|| 0)+ a;
-        AudioMgr.updateTopBalance(e);
+        var e = (o.data_topBalanceMock.cash_balance|| 0)+ a;
+        o.updateTopBalance(e);
         PlayerDataStore.cash_balance = e;
-        AudioMgr.refreshTopBalanceUI();
+        o.refreshTopBalanceUI();
       }
 );
     }
@@ -2350,8 +2346,8 @@ export default class GameView extends cc.Component {
       else if(l <= s) console.log("[ArrowLevel] 剩余箭头("+ l+ ")<=tail_clearance("+ s+ ")，跳过中途结算，等待过关弹窗");
       else {
         var d = this;
-        Random.bool_isStop = ! 0;
-        Random.pauseBarrage();
+        d.bool_isStop = ! 0;
+        d.pauseBarrage();
         console.log("[ArrowLevel] 触发消除结算 eliminate_count="+ u);
         this._settleArrowReward(! 1, u, function(e) {
           console.log("[ArrowLevel] 中途结算返回: "+ JSON.stringify(e&& e.data|| null));
@@ -2369,7 +2365,7 @@ export default class GameView extends cc.Component {
             }
 , isLevelPassed: ! 1, onClose: function() {
               console.log("[ArrowLevel] 消除结算弹窗关闭，恢复游戏");
-              Random.bool_isStop = ! 1;
+              d.bool_isStop = ! 1;
             }
           }
 );
@@ -2459,12 +2455,12 @@ export default class GameView extends cc.Component {
       }
 ,
       p = function() {
-        if(l&& o&& u&& NumberUtils.isValid) try {
-          i = ArrowSettleRewardView,
-          n = NumberUtils.getComponent(i);
-          n&& n.setEntryData&& n.setEntryData(d());
+        if(l&& o&& u&& u.isValid) try {
+          var c = ArrowSettleRewardView,
+          h = u.getComponent(c);
+          h&& h.setEntryData&& h.setEntryData(d());
           var r = a.getNewbieGuideFlow();
-          r&& a.isNewbieGuideStep(ConfigMgr.STEP_SETTLE_LEVEL1)&& a.isNewbieSettleReward(a._pendingSettleData)&& (a.newbieGuidePendingLevelPassSettleClose = ! 0);
+          r&& a.isNewbieGuideStep(r.STEP_SETTLE_LEVEL1)&& a.isNewbieSettleReward(a._pendingSettleData)&& (a.newbieGuidePendingLevelPassSettleClose = ! 0);
           console.log("[ArrowLevel] checkWin: 回填结算弹窗 switch_reward="+(a._pendingSettleData&& a._pendingSettleData.switch_reward|| 0));
         } catch(e) {
           console.warn("[ArrowLevel] checkWin: 回填结算弹窗失败", e);
@@ -2541,8 +2537,8 @@ export default class GameView extends cc.Component {
       console.log("[gameView] playRewardVideoByAdManager: debug skip ad_type="+ e);
       t&& t();
     } else {
-      var o = g&& AdManager&& AdManager.getInstance? AdManager.getInstance(): null;
-      if(o&& "function" == typeof AudioMgr.playNormalVideoAd) {
+      var o = AdManager&& AdManager.getInstance? AdManager.getInstance(): null;
+      if(o&& "function" == typeof o.playNormalVideoAd) {
         n&& (this.bool_cantouchAd = ! 1);
         this.bool_isStop = ! 0;
         var r = function(e) {
@@ -2552,7 +2548,7 @@ export default class GameView extends cc.Component {
         }
 ;
         try {
-          AudioMgr.playNormalVideoAd({
+          o.playNormalVideoAd({
             ad_type: e|| "reward_video", force_video: ! 1
           }
 , function(e) {
@@ -2796,8 +2792,8 @@ export default class GameView extends cc.Component {
       a = t.getChildByName("txt_fuzhunum");
       if(! a) {
         var o = (a = new cc.Node("txt_fuzhunum")).addComponent(cc.Label);
-        AudioMgr.fontSize = 18;
-        AudioMgr.lineHeight = 20;
+        o.fontSize = 18;
+        o.lineHeight = 20;
         a.setPosition(0, 0);
         t.addChild(a);
       }
@@ -2805,12 +2801,12 @@ export default class GameView extends cc.Component {
       t.active = ! 0;
       if(n > 0) {
         i&& this._sfVb&& (i.spriteFrame = this._sfVb);
-        r&& (ConfigMgr.string = n.toString());
+        r&& (r.string = n.toString());
         a.active = ! 0;
         a.color = cc.color(255, 255, 255);
       } else {
         i&& this._sfOff&& (i.spriteFrame = this._sfOff);
-        r&& (ConfigMgr.string = "");
+        r&& (r.string = "");
         a.active = ! 1;
       }
       this.node_fuzhustate&& (this.node_fuzhustate.active = ! 1);
@@ -2838,7 +2834,7 @@ export default class GameView extends cc.Component {
           o = e.getComponent(cc.Sprite);
           if(UserData.getInstance().num_tipscards > 0) {
             e.active = ! 0;
-            o&& (AudioMgr.enabled = ! 1);
+            o&& (o.enabled = ! 1);
             n.string = UserData.getInstance().num_tipscards.toString();
             i.color = cc.color(255, 255, 255);
             a&& this._sfVb&& (a.spriteFrame = this._sfVb);
@@ -3050,79 +3046,79 @@ export default class GameView extends cc.Component {
     r = PlayerDataStore,
     s = this._buildBehaviorStatsFields();
     if(e) {
-      GlobalEventMgr.level_passed = 1;
+      s.level_passed = 1;
       var l = n > 0? n: Number(this._eliminateCounter|| 0);
-      l > 0&& (GlobalEventMgr.eliminate_count = l);
+      l > 0&& (s.eliminate_count = l);
     } else {
-      GlobalEventMgr.level_passed = 0;
+      s.level_passed = 0;
       var c = n > 0? n: this._getBigRewardTriggerCount();
-      c <= 0&& (c = Number(ConfigMgr.arrow_level&& ConfigMgr.arrow_level.arrow_count|| 0));
-      GlobalEventMgr.eliminate_count = c;
+      c <= 0&& (c = Number(r.arrow_level&& r.arrow_level.arrow_count|| 0));
+      s.eliminate_count = c;
     }
     var u = e? "PASS": "ELIMINATE";
-    GlobalEventMgr.settle_type = u;
-    GlobalEventMgr.clean_win = e&& 0 === GlobalEventMgr.life_used&& 0 === GlobalEventMgr.revive_count? 1: 0;
+    s.settle_type = u;
+    s.clean_win = e&& 0 === s.life_used&& 0 === s.revive_count? 1: 0;
     try {
       BusinessAnalyticsService.reportData("arrow_settle_behavior", {
-        settle_type: GlobalEventMgr.settle_type, arrow_level_id: GlobalEventMgr.arrow_level_id, level_index: GlobalEventMgr.level_index, arrow_count: GlobalEventMgr.arrow_count, level_passed: GlobalEventMgr.level_passed, eliminate_count: GlobalEventMgr.eliminate_count|| 0, clean_win: GlobalEventMgr.clean_win, mistake_count: GlobalEventMgr.mistake_count, life_used: GlobalEventMgr.life_used, retry_count: GlobalEventMgr.retry_count, hint_used: GlobalEventMgr.hint_used, revive_count: GlobalEventMgr.revive_count, duration_sec: GlobalEventMgr.duration_sec
+        settle_type: s.settle_type, arrow_level_id: s.arrow_level_id, level_index: s.level_index, arrow_count: s.arrow_count, level_passed: s.level_passed, eliminate_count: s.eliminate_count|| 0, clean_win: s.clean_win, mistake_count: s.mistake_count, life_used: s.life_used, retry_count: s.retry_count, hint_used: s.hint_used, revive_count: s.revive_count, duration_sec: s.duration_sec
       }
 );
       console.log("[ArrowStats] [埋点] arrow_settle_behavior="+ JSON.stringify(s));
     } catch(e) {
       console.warn("[ArrowStats] [埋点] arrow_settle_behavior 上报失败", e);
     }
-    var d = NetErrorPopupService|| P,
+    var d = NetErrorPopupService,
     h = function() {
-      AudioMgr._settleArrowReward.call(o, e, t, i);
+      o._settleArrowReward.call(o, e, t, i);
     }
 ;
     console.log("[ArrowLevel] _settleArrowReward: 发起结算 type="+ u+ " req="+ JSON.stringify(s));
     console.log("[ArrowLevel] [结算接口][请求] arrowRewardSettle type="+ u+ " req="+ JSON.stringify(s));
     LoadingHttpService.arrowRewardSettle(s, Handler.create(null, function(t) {
-      if(d&& Random.shouldPop(t)) {
+      if(d&& d.shouldPop(t)) {
         console.warn("[ArrowLevel] _settleArrowReward force-retry code="+(t&& t.code));
-        Random.showAndRetry(h);
+        d.showAndRetry(h);
       } else {
         console.log("[ArrowLevel] [结算接口][返回] arrowRewardSettle type="+ u+ " req="+ JSON.stringify(s)+ " res="+ JSON.stringify(t&& t.data|| null));
         if(t&& t.data) {
           var i = t.data.arrow_level&& Number(t.data.arrow_level.arrow_level_id|| 0);
           if(void 0 !== t.data.cash_balance) {
-            ConfigMgr.cash_balance = Number(t.data.cash_balance);
-            AudioMgr.updateTopBalance(Number(t.data.cash_balance));
-            AudioMgr.refreshTopBalanceUI();
+            r.cash_balance = Number(t.data.cash_balance);
+            o.updateTopBalance(Number(t.data.cash_balance));
+            o.refreshTopBalanceUI();
           }
           if(e&& t.data.arrow_level&& i > 0) {
-            ConfigMgr.updateArrowLevel(t.data.arrow_level);
+            r.updateArrowLevel(t.data.arrow_level);
             var n = null != t.data.arrow_level.level_index? t.data.arrow_level.level_index: t.data.arrow_level.arrow_level_index;
             console.log("[LevelVerify] 结算成功，服务端下发下一关: level_id="+ i+ " level_index="+(n|| "未配置")+ " arrow_count="+(t.data.arrow_level.arrow_count|| "?")+(n? " → 下一关将加载 level_"+ n+ ".json": " ⚠️ 无 level_index，将用 level_id="+ i+ " 作为文件索引（旧兼容）"));
-            AudioMgr._refreshArrowLevelLabel();
+            o._refreshArrowLevelLabel();
           } else t.data.arrow_level&& i <= 0&& console.warn("[ArrowLevel] _settleArrowReward: 忽略无效 arrow_level 数据 "+ JSON.stringify(t.data.arrow_level));
           console.log("[ArrowLevel] _settleArrowReward: 结算成功 switch_reward="+(t.data.switch_reward|| 0)+ " cash_balance="+(t.data.cash_balance|| 0)+ " show_force_video="+(t.data.show_force_video|| ! 1)+ " next_arrow_level_id="+(i > 0? i: "N/A"));
         }
         a&& a(t);
-        e&& AudioMgr._refreshUserInfoAfterLevelPass();
+        e&& o._refreshUserInfoAfterLevelPass();
       }
     }
 ), Handler.create(null, function(t) {
       console.warn("[ArrowLevel] [结算接口][返回] arrowRewardSettle type="+ u+ " FAIL req="+ JSON.stringify(s)+ " err="+ JSON.stringify(t));
       console.warn("[ArrowLevel] _settleArrowReward: 结算请求失败 err="+ JSON.stringify(t));
       var i = t&& t.message? String(t.message): "", n = e&& (i.indexOf("重复通关") >= 0|| i.toLowerCase().indexOf("duplicate") >= 0);
-      if(! n&& d&& Random.shouldPop(t)) {
+      if(! n&& d&& d.shouldPop(t)) {
         console.warn("[ArrowLevel] _settleArrowReward 网络异常，弹重试窗");
-        Random.showAndRetry(h);
+        d.showAndRetry(h);
       } else {
         if(n) {
-          var l = Number(UserData.getInstance().level|| 1), c = PlayerDataStore.arrow_level&& Number(PlayerDataStore.arrow_level.arrow_level_id|| 0), p = Math.max(l, (c|| AudioMgr.num_rellyLevel|| 0)+ 1);
+          var l = Number(UserData.getInstance().level|| 1), c = PlayerDataStore.arrow_level&& Number(PlayerDataStore.arrow_level.arrow_level_id|| 0), p = Math.max(l, (c|| o.num_rellyLevel|| 0)+ 1);
           try {
-            var f = ConfigMgr.arrow_level|| {
+            var f = r.arrow_level|| {
             }
 , g = {
             }
 ;
             for(var m in f) g[m] = f[m];
-            AdManager.arrow_level_id = p;
-            AdManager.level_index = p;
-            ConfigMgr.updateArrowLevel? ConfigMgr.updateArrowLevel(g): ConfigMgr.arrow_level = g;
+            g.arrow_level_id = p;
+            g.level_index = p;
+            r.updateArrowLevel? r.updateArrowLevel(g): r.arrow_level = g;
             console.warn("[ArrowLevel] _settleArrowReward: 命中重复通关兜底，强制推进 arrow_level_id="+ p+ " level_index="+ p);
           } catch(e) {
             console.warn("[ArrowLevel] _settleArrowReward: 重复通关兜底失败", e);
@@ -3173,10 +3169,10 @@ export default class GameView extends cc.Component {
     if(UserData.getInstance().level > n) {
       for(var a, o = UserData.getInstance().recentRandomLevels|| [], s = [], l = 19;
       l <= n;
-      l++) AudioMgr.includes(l)|| GlobalEventMgr.push(l);
+      l++) o.includes(l)|| s.push(l);
       a = Random.range(19, n);
-      AudioMgr.unshift(a);
-      AudioMgr.length > 7&& AudioMgr.pop();
+      o.unshift(a);
+      o.length > 7&& o.pop();
       UserData.getInstance().recentRandomLevels = o;
       console.log("[ArrowLevel] getRellyLevel: 服务端无配置，使用随机关卡="+(a|| 25));
       return a|| 25;
