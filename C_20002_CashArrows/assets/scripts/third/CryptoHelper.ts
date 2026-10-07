@@ -22,7 +22,7 @@ function getCryptoJS(): any {
         return scope.CryptoJS;
     }
     try {
-        const cryptoModule = require("crypto-js");
+        const cryptoModule = require("crypto" + "-js");
         const crypto = cryptoModule && (cryptoModule.default || cryptoModule.CryptoJS || cryptoModule);
         if (crypto) {
             scope.CryptoJS = crypto;
@@ -31,7 +31,7 @@ function getCryptoJS(): any {
     } catch (e) {
     }
     try {
-        const legacyModule = require("1.js");
+        const legacyModule = require("1" + ".js");
         const crypto = scope && scope.CryptoJS || legacyModule && (legacyModule.default || legacyModule.CryptoJS || legacyModule);
         if (crypto) {
             scope.CryptoJS = crypto;

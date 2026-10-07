@@ -8,7 +8,6 @@ import InterfaceMgr, { gameEvent } from "./InterfaceMgr";
 import LanguageService from "./LanguageService";
 import LoadingHttpService from "./LoadingHttpService";
 import NativeSdkBridgeAdapter from "./NativeSdkBridgeAdapter";
-import Tips from "./Tips";
 import NetErrorPopupService from "./NetErrorPopupService";
 import NewbieGuideFlow from "./NewbieGuideFlow";
 import PlayerDataStore from "./PlayerDataStore";
@@ -1283,6 +1282,6 @@ if (n) return n;
 }
 return null;
 }
-});t.exports = y;cc._RF.pop();
+});
 
 export default withMoodView;

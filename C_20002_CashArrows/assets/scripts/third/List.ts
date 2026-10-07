@@ -6,26 +6,18 @@ enum TemplateType {
     NODE = 1,
     PREFAB = 2,
 }
-(TemplateType as any)[TemplateType.NODE] = " NODE ";
-(TemplateType as any)[TemplateType.PREFAB] = " PREFAB ";
 
 enum SlideMode {
     NORMAL = 1,
     ADHERING = 2,
     PAGE = 3,
 }
-(SlideMode as any)[SlideMode.NORMAL] = " NORMAL ";
-(SlideMode as any)[SlideMode.ADHERING] = " ADHERING ";
-(SlideMode as any)[SlideMode.PAGE] = " PAGE ";
 
 enum SelectedMode {
     NONE = 0,
     SINGLE = 1,
     MULT = 2,
 }
-(SelectedMode as any)[SelectedMode.NONE] = " NONE ";
-(SelectedMode as any)[SelectedMode.SINGLE] = " SINGLE ";
-(SelectedMode as any)[SelectedMode.MULT] = " MULT ";
 
 @ccclass
 @disallowMultiple()
