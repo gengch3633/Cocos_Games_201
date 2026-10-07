@@ -1,33 +1,763 @@
 CCEffect %{
   techniques:
   - passes:
-    - name: phong
-      vert: phong-vs
+    - vert: phong-vs
       frag: phong-fs
+      name: phong
       rasterizerState:
-        cullMode: back
+        cullMode: 1029
       depthStencilState:
         depthTest: true
         depthWrite: true
       properties:
         alphaThreshold: { value: 0.5 }
-        mainTiling: { value: [1, 1] }
-        mainOffset: { value: [0, 0] }
-        diffuseColor: { value: [1, 1, 1, 1], editor: { type: color } }
+        diffuseColor: { value: [1,1,1,1], editor: {type: color}}
         diffuseTexture: { value: white }
-        specularColor: { value: [1, 1, 1, 1], editor: { type: color } }
+        specularColor: { value: [1,1,1,1], editor: {type: color}}
         specularTexture: { value: white }
-        emissiveColor: { value: [0, 0, 0, 1], editor: { type: color } }
+        emissiveColor: { value: [0,0,0,1], editor: {type: color}}
         emissiveTexture: { value: white }
         glossiness: { value: 10 }
         normalTexture: { value: white }
-    - name: shadowcast
-      stage: shadowcast
       vert: shadow-map-vs
       frag: shadow-map-fs
+      name: shadowcast
+      stage: shadowcast
       rasterizerState:
-        cullMode: back
+        cullMode: 1029
       depthStencilState:
         depthTest: true
         depthWrite: true
 }%
+
+
+CCProgram phong-vs %{
+precision highp float;
+#include <cc-local>
+#include <cc-global>
+#if CC_USE_SKINNING
+  in vec4 a_weights;
+  in vec4 a_joints;
+  #if CC_USE_JOINTS_TEXTRUE
+    uniform SKINNING {
+      vec2 jointsTextureSize;
+    };
+    uniform sampler2D jointsTexture;
+    #if CC_JOINTS_TEXTURE_FLOAT32
+      mat4 getBoneMatrix(const in float i) {
+        float width = jointsTextureSize.x;
+        float height = jointsTextureSize.y;
+        float j = i * 4.0;
+        float x = mod(j, width);
+        float y = floor(j / width);
+        float dx = 1.0 / width;
+        float dy = 1.0 / height;
+        y = dy * (y + 0.5);
+        vec4 v1 = texture(jointsTexture, vec2(dx * (x + 0.5), y));
+        vec4 v2 = texture(jointsTexture, vec2(dx * (x + 1.5), y));
+        vec4 v3 = texture(jointsTexture, vec2(dx * (x + 2.5), y));
+        vec4 v4 = texture(jointsTexture, vec2(dx * (x + 3.5), y));
+        return mat4(v1, v2, v3, v4);
+      }
+    #else
+      float decode32(vec4 rgba) {
+        float Sign = 1.0 - step(128.0, rgba[0]) * 2.0;
+        float Exponent = 2.0 * mod(rgba[0], 128.0) + step(128.0, rgba[1]) - 127.0;
+        float Mantissa = mod(rgba[1], 128.0) * 65536.0 + rgba[2] * 256.0 + rgba[3] + 8388608.0;
+        return Sign * exp2(Exponent - 23.0) * Mantissa;
+      }
+      vec4 decodevec4 (vec4 x, vec4 y, vec4 z, vec4 w) {
+        return vec4(
+          decode32(x.wzyx * 255.0),
+          decode32(y.wzyx * 255.0),
+          decode32(z.wzyx * 255.0),
+          decode32(w.wzyx * 255.0)
+        );
+      }
+      vec4 decodevec4 (float dx, float x, float y) {
+        return decodevec4(
+          texture(jointsTexture, vec2(dx * (x + 0.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 1.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 2.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 3.5), y))
+        );
+      }
+      mat4 getBoneMatrix(const in float i) {
+        float width = jointsTextureSize.x;
+        float height = jointsTextureSize.y;
+        float j = i * 16.0;
+        float x = mod(j, width);
+        float y = floor(j / width);
+        float dx = 1.0 / width;
+        float dy = 1.0 / height;
+        y = dy * (y + 0.5);
+        vec4 v1 = decodevec4(dx, x,       y);
+        vec4 v2 = decodevec4(dx, x+4.0,   y);
+        vec4 v3 = decodevec4(dx, x+8.0,   y);
+        vec4 v4 = decodevec4(dx, x+12.0,  y);
+        return mat4(v1, v2, v3, v4);
+      }
+    #endif
+  #else
+    uniform JOINT_MATRIX {
+      mat4 jointMatrices[50];
+    };
+    mat4 getBoneMatrix(const in float i) {
+      return jointMatrices[int(i)];
+    }
+  #endif
+    mat4 skinMatrix() {
+      return
+        getBoneMatrix(a_joints.x) * a_weights.x +
+        getBoneMatrix(a_joints.y) * a_weights.y +
+        getBoneMatrix(a_joints.z) * a_weights.z +
+        getBoneMatrix(a_joints.w) * a_weights.w
+        ;
+    }
+#endif
+struct StandardVertInput {
+  vec2 uv;
+  vec4 position;
+  vec3 normal;
+  vec4 tangent;
+  vec4 color;
+};
+in vec3 a_position;
+#if CC_USE_ATTRIBUTE_UV0
+in vec2 a_uv0;
+#endif
+#if CC_USE_ATTRIBUTE_COLOR
+in vec4 a_color;
+#endif
+#if CC_USE_ATTRIBUTE_NORMAL
+in vec3 a_normal;
+#endif
+#if CC_USE_ATTRIBUTE_TANGENT
+in vec4 a_tangent;
+#endif
+void CCAttribute (out StandardVertInput In) {
+  In.position = vec4(a_position, 1.0);
+  #if CC_USE_ATTRIBUTE_UV0
+    In.uv = a_uv0;
+  #else
+    In.uv = vec2(0.0);
+  #endif
+  #if CC_USE_ATTRIBUTE_COLOR
+    In.color = a_color;
+  #else
+    In.color = vec4(1.0);
+  #endif
+  #if CC_USE_ATTRIBUTE_NORMAL
+    In.normal = a_normal;
+  #else
+    In.normal = vec3(0.0, 1.0, 0.0);
+  #endif
+  #if CC_USE_ATTRIBUTE_TANGENT
+    In.tangent = a_tangent;
+  #else
+    In.tangent = vec4(1.0, 0.0, 0.0, 0.0);
+  #endif
+}
+void CCVertInput(out StandardVertInput In) {
+  CCAttribute(In);
+  #if CC_USE_SKINNING
+    mat4 m = skinMatrix();
+    In.position = m * In.position;
+    #if CC_USE_ATTRIBUTE_NORMAL
+      In.normal = (m * vec4(In.normal, 0)).xyz;
+    #endif
+    #if CC_USE_ATTRIBUTE_TANGENT
+      In.tangent = m * In.tangent;
+    #endif
+  #endif
+}
+#if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 0
+  uniform CC_SHADOW {
+    mat4 cc_shadow_lightViewProjMatrix[2];
+    vec4 cc_shadow_info[2];
+  };
+  #if CC_NUM_SHADOW_LIGHTS > 0
+    uniform sampler2D cc_shadow_map_0;
+  #endif
+  #if CC_NUM_SHADOW_LIGHTS > 1
+    uniform sampler2D cc_shadow_map_1;
+  #endif
+  varying vec4 v_posLightSpace[2];
+  varying float v_depth[2];
+#endif
+void CCShadowInput (vec3 worldPos) {
+  #if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 0
+  for (int i = 0; i < CC_NUM_SHADOW_LIGHTS; i++) {
+    v_posLightSpace[i] = cc_shadow_lightViewProjMatrix[i] * vec4(worldPos, 1.0);
+    v_depth[i] = (v_posLightSpace[i].z + cc_shadow_info[i].x) / (cc_shadow_info[i].x + cc_shadow_info[i].y);
+  }
+  #endif
+}
+uniform MAIN_TILING {
+  vec2 mainTiling;
+  vec2 mainOffset;
+};
+#if CC_USE_ATTRIBUTE_UV0 && (USE_DIFFUSE_TEXTURE || USE_EMISSIVE_TEXTURE || USE_SPECULAR_TEXTURE || USE_NORMAL_TEXTURE)
+  out mediump vec2 v_uv0;
+#endif
+#if CC_USE_ATTRIBUTE_COLOR
+  out lowp vec4 v_color;
+#endif
+#if USE_NORMAL_TEXTURE
+  out vec3 v_tangent;
+  out vec3 v_bitangent;
+#endif
+out vec3 v_worldNormal;
+out vec3 v_worldPos;
+out vec3 v_viewDirection;
+void main () {
+  StandardVertInput In;
+  CCVertInput(In);
+  vec4 position = In.position;
+  v_worldNormal = normalize((cc_matWorldIT * vec4(In.normal, 0)).xyz);
+  v_worldPos = (cc_matWorld * position).xyz;
+  v_viewDirection = normalize(cc_cameraPos.xyz - v_worldPos);
+  #if CC_USE_ATTRIBUTE_UV0 && (USE_DIFFUSE_TEXTURE || USE_EMISSIVE_TEXTURE || USE_SPECULAR_TEXTURE || USE_NORMAL_TEXTURE)
+    v_uv0 = In.uv * mainTiling + mainOffset;
+  #endif
+  #if CC_USE_ATTRIBUTE_COLOR
+    v_color = In.color;
+  #endif
+  #if USE_NORMAL_TEXTURE
+    v_tangent = normalize((cc_matWorld * vec4(In.tangent.xyz, 0.0)).xyz);
+    v_bitangent = cross(v_worldNormal, v_tangent) * In.tangent.w;
+  #endif
+  CCShadowInput(v_worldPos);
+  gl_Position = cc_matViewProj * cc_matWorld * position;
+}
+}% 
+
+
+CCProgram phong-fs %{
+precision highp float;
+#include <cc-global>
+vec4 CCFragOutput (vec4 color) {
+  #if OUTPUT_TO_GAMMA
+    color.rgb = sqrt(color.rgb);
+  #endif
+	return color;
+}
+#include <alpha-test>
+uniform PhongFrag {
+  lowp vec4 diffuseColor;
+  lowp vec4 specularColor;
+  lowp vec4 emissiveColor;
+  float glossiness;
+};
+#if USE_DIFFUSE_TEXTURE
+  uniform sampler2D diffuseTexture;
+#endif
+#if USE_SPECULAR && USE_SPECULAR_TEXTURE
+  uniform sampler2D specularTexture;
+#endif
+#if USE_EMISSIVE && USE_EMISSIVE_TEXTURE
+  uniform sampler2D emissiveTexture;
+#endif
+#if USE_NORMAL_TEXTURE
+  in vec3 v_tangent;
+  in vec3 v_bitangent;
+  uniform sampler2D normalTexture;
+#endif
+in vec3 v_worldNormal;
+in vec3 v_worldPos;
+in vec3 v_viewDirection;
+#if CC_USE_ATTRIBUTE_UV0 && (USE_DIFFUSE_TEXTURE || (USE_EMISSIVE && USE_EMISSIVE_TEXTURE) || (USE_SPECULAR && USE_SPECULAR_TEXTURE) || USE_NORMAL_TEXTURE)
+  in mediump vec2 v_uv0;
+#endif
+#if CC_USE_ATTRIBUTE_COLOR
+  in lowp vec4 v_color;
+#endif
+#if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 0
+  uniform CC_SHADOW {
+    mat4 cc_shadow_lightViewProjMatrix[2];
+    vec4 cc_shadow_info[2];
+  };
+  #if CC_NUM_SHADOW_LIGHTS > 0
+    uniform sampler2D cc_shadow_map_0;
+  #endif
+  #if CC_NUM_SHADOW_LIGHTS > 1
+    uniform sampler2D cc_shadow_map_1;
+  #endif
+  varying vec4 v_posLightSpace[2];
+  varying float v_depth[2];
+#endif
+float unpackRGBAToDepth(vec4 color) {
+  return dot(color, vec4(1.0, 1.0 / 255.0, 1.0 / 65025.0, 1.0 / 160581375.0));
+}
+float getDepth(sampler2D shadowMap, vec2 shadowUV) {
+    return unpackRGBAToDepth(texture(shadowMap, shadowUV));
+}
+float computeFallOff(float shadow, vec2 coords, float frustumEdgeFalloff) {
+  return shadow;
+}
+float shadowSimple(sampler2D shadowMap, vec2 shadowUV, float currentDepth, float darkness) {
+  float closestDepth = getDepth(shadowMap, shadowUV);
+  return currentDepth > closestDepth  ? 1.0 - darkness : 1.0;
+}
+float shadowPCF3X3(sampler2D shadowMap, vec2 shadowUV, float currentDepth, float darkness, float shadowSize) {
+  float shadow = 0.0;
+  for (int x = -1; x <= 1; ++x) {
+    for (int y = -1; y <= 1; ++y) {
+      float closestDepth = getDepth(shadowMap, shadowUV + vec2(x, y) * 1.0/shadowSize);
+      shadow += currentDepth > closestDepth  ? 1.0 - darkness : 1.0;
+    }
+  }
+  shadow /= 9.0;
+  return shadow;
+}
+float shadowPCF5X5(sampler2D shadowMap, vec2 shadowUV, float currentDepth, float darkness, float shadowSize) {
+  float shadow = 0.0;
+  for (int x = -2; x <= 2; ++x) {
+    for (int y = -2; y <= 2; ++y) {
+      float closestDepth = getDepth(shadowMap, shadowUV + vec2(x, y) * 1.0/shadowSize);
+      shadow += currentDepth > closestDepth  ? 1.0 - darkness : 1.0;
+    }
+  }
+  shadow /= 25.0;
+  return shadow;
+}
+#if CC_NUM_LIGHTS > 0
+uniform CCLIGHTS {
+  vec4 cc_lightPositionAndRange[4];
+  vec4 cc_lightDirection[4];
+  vec4 cc_lightColor[4];
+};
+#endif
+struct LightInfo {
+  vec3 lightDir;
+  vec3 radiance;
+  vec4 lightColor;
+};
+LightInfo computeDirectionalLighting(
+  vec4 lightDirection,
+  vec4 lightColor
+) {
+  LightInfo ret;
+  ret.lightDir = -normalize(lightDirection.xyz);
+  ret.radiance = lightColor.rgb;
+  ret.lightColor = lightColor;
+  return ret;
+}
+LightInfo computePointLighting(
+  vec3 worldPosition,
+  vec4 lightPositionAndRange,
+  vec4 lightColor
+) {
+  LightInfo ret;
+  vec3 lightDir = lightPositionAndRange.xyz - worldPosition;
+  float attenuation = max(0., 1.0 - length(lightDir) / lightPositionAndRange.w);
+  ret.lightDir = normalize(lightDir);
+  ret.radiance = lightColor.rgb * attenuation;
+  ret.lightColor = lightColor;
+  return ret;
+}
+LightInfo computeSpotLighting(
+  vec3 worldPosition,
+  vec4 lightPositionAndRange,
+  vec4 lightDirection,
+  vec4 lightColor
+) {
+  LightInfo ret;
+  vec3 lightDir = lightPositionAndRange.xyz - worldPosition;
+  float attenuation = max(0., 1.0 - length(lightDir) / lightPositionAndRange.w);
+  lightDir = normalize(lightDir);
+  float cosConeAngle = max(0., dot(lightDirection.xyz, -lightDir));
+  cosConeAngle = cosConeAngle < lightDirection.w ? 0. : cosConeAngle;
+  cosConeAngle = pow(cosConeAngle, lightColor.w);
+  ret.lightDir = lightDir;
+  ret.radiance = lightColor.rgb * attenuation * cosConeAngle;
+  ret.lightColor = lightColor;
+  return ret;
+}
+struct Lighting {
+  vec3 diffuse;
+  vec3 specular;
+};
+struct PhongSurface {
+  vec3 diffuse;
+  vec3 emissive;
+  vec3 specular;
+  float opacity;
+  float glossiness;
+  vec3 position;
+  vec3 normal;
+  vec3 viewDirection;
+};
+Lighting brdf (PhongSurface s, LightInfo info) {
+  Lighting result;
+  float ndh = 0.0;
+  vec3 halfDir = normalize(s.viewDirection + info.lightDir);
+  float NdotH = max(0.0, dot(s.normal, halfDir));
+  NdotH = pow(NdotH, max(1.0, s.glossiness * 128.0));
+  result.diffuse = info.radiance * max(0.0, dot(s.normal, info.lightDir));
+  result.specular = info.radiance * NdotH;
+  return result;
+}
+vec4 composePhongShading (Lighting lighting, PhongSurface s) {
+  vec4 o = vec4(0.0, 0.0, 0.0, 1.0);
+  o.rgb = lighting.diffuse * s.diffuse;
+  #if USE_EMISSIVE
+    o.rgb += s.emissive;
+  #endif
+  #if USE_SPECULAR
+    o.rgb += lighting.specular * s.specular;
+  #endif
+  o.a = s.opacity;
+  return o;
+}
+vec3 ambient(PhongSurface s, vec4 ambientColor) {
+  return s.diffuse * ambientColor.rgb;
+}
+vec4 CCPhongShading (in PhongSurface s) {
+  Lighting result;
+  result.diffuse = vec3(0, 0, 0);
+  result.specular = vec3(0, 0, 0);
+  #if CC_NUM_LIGHTS > 0
+    #if CC_LIGHT_0_TYPE == 3
+      result.diffuse += ambient(s, cc_lightColor[0]);
+    #else
+      LightInfo info0;
+      #if CC_LIGHT_0_TYPE == 0
+        info0 = computeDirectionalLighting(cc_lightDirection[0], cc_lightColor[0]);
+      #elif CC_LIGHT_0_TYPE == 1
+        info0 = computePointLighting(s.position, cc_lightPositionAndRange[0], cc_lightColor[0]);
+      #elif CC_LIGHT_0_TYPE == 2
+        info0 = computeSpotLighting(s.position, cc_lightPositionAndRange[0], cc_lightDirection[0], cc_lightColor[0]);
+      #endif
+      Lighting result0 = brdf(s, info0);
+  #if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 0
+    float shadow_0 = 1.0;
+    vec2 projCoords0 = v_posLightSpace[0].xy / v_posLightSpace[0].w;
+    vec2 shadowUV0 = projCoords0 * 0.5 + vec2(0.5);
+    if (shadowUV0.x >= 0.0 && shadowUV0.x <= 1.0 && shadowUV0.y >= 0.0 && shadowUV0.y <= 1.0) {
+      float currentDepth0 = clamp(v_depth[0], 0.0, 1.0);
+      #if CC_SHADOW_0_TYPE == 3
+        shadow_0 = shadowPCF3X3(cc_shadow_map_0, shadowUV0, currentDepth0, cc_shadow_info[0].w, cc_shadow_info[0].z);
+      #elif CC_SHADOW_0_TYPE == 4
+        shadow_0 = shadowPCF5X5(cc_shadow_map_0, shadowUV0, currentDepth0, cc_shadow_info[0].w, cc_shadow_info[0].z);
+      #else
+        shadow_0 = shadowSimple(cc_shadow_map_0, shadowUV0, currentDepth0, cc_shadow_info[0].w);
+      #endif
+      shadow_0 = computeFallOff(shadow_0, projCoords0, 0.0);
+    }
+    result0.diffuse *= shadow_0;
+    result0.specular *= shadow_0;
+  #endif
+      result.diffuse += result0.diffuse;
+      result.specular += result0.specular;
+    #endif
+  #endif
+  #if CC_NUM_LIGHTS > 1
+    #if CC_LIGHT_1_TYPE == 3
+      result.diffuse += ambient(s, cc_lightColor[1]);
+    #else
+      LightInfo info1;
+      #if CC_LIGHT_1_TYPE == 0
+        info1 = computeDirectionalLighting(cc_lightDirection[1], cc_lightColor[1]);
+      #elif CC_LIGHT_1_TYPE == 1
+        info1 = computePointLighting(s.position, cc_lightPositionAndRange[1], cc_lightColor[1]);
+      #elif CC_LIGHT_1_TYPE == 2
+        info1 = computeSpotLighting(s.position, cc_lightPositionAndRange[1], cc_lightDirection[1], cc_lightColor[1]);
+      #endif
+      Lighting result1 = brdf(s, info1);
+  #if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 1
+    float shadow_1 = 1.0;
+    vec2 projCoords1 = v_posLightSpace[1].xy / v_posLightSpace[1].w;
+    vec2 shadowUV1 = projCoords1 * 0.5 + vec2(0.5);
+    if (shadowUV1.x >= 0.0 && shadowUV1.x <= 1.0 && shadowUV1.y >= 0.0 && shadowUV1.y <= 1.0) {
+      float currentDepth1 = clamp(v_depth[1], 0.0, 1.0);
+      #if CC_SHADOW_1_TYPE == 3
+        shadow_1 = shadowPCF3X3(cc_shadow_map_1, shadowUV1, currentDepth1, cc_shadow_info[1].w, cc_shadow_info[1].z);
+      #elif CC_SHADOW_1_TYPE == 4
+        shadow_1 = shadowPCF5X5(cc_shadow_map_1, shadowUV1, currentDepth1, cc_shadow_info[1].w, cc_shadow_info[1].z);
+      #else
+        shadow_1 = shadowSimple(cc_shadow_map_1, shadowUV1, currentDepth1, cc_shadow_info[1].w);
+      #endif
+      shadow_1 = computeFallOff(shadow_1, projCoords1, 0.0);
+    }
+    result1.diffuse *= shadow_1;
+    result1.specular *= shadow_1;
+  #endif
+      result.diffuse += result1.diffuse;
+      result.specular += result1.specular;
+    #endif
+  #endif
+  #if CC_NUM_LIGHTS > 2
+    #if CC_LIGHT_2_TYPE == 3
+      result.diffuse += ambient(s, cc_lightColor[2]);
+    #else
+      LightInfo info2;
+      #if CC_LIGHT_2_TYPE == 0
+        info2 = computeDirectionalLighting(cc_lightDirection[2], cc_lightColor[2]);
+      #elif CC_LIGHT_2_TYPE == 1
+        info2 = computePointLighting(s.position, cc_lightPositionAndRange[2], cc_lightColor[2]);
+      #elif CC_LIGHT_2_TYPE == 2
+        info2 = computeSpotLighting(s.position, cc_lightPositionAndRange[2], cc_lightDirection[2], cc_lightColor[2]);
+      #endif
+      Lighting result2 = brdf(s, info2);
+  #if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 2
+    float shadow_2 = 1.0;
+    vec2 projCoords2 = v_posLightSpace[2].xy / v_posLightSpace[2].w;
+    vec2 shadowUV2 = projCoords2 * 0.5 + vec2(0.5);
+    if (shadowUV2.x >= 0.0 && shadowUV2.x <= 1.0 && shadowUV2.y >= 0.0 && shadowUV2.y <= 1.0) {
+      float currentDepth2 = clamp(v_depth[2], 0.0, 1.0);
+      #if CC_SHADOW_2_TYPE == 3
+        shadow_2 = shadowPCF3X3(cc_shadow_map_2, shadowUV2, currentDepth2, cc_shadow_info[2].w, cc_shadow_info[2].z);
+      #elif CC_SHADOW_2_TYPE == 4
+        shadow_2 = shadowPCF5X5(cc_shadow_map_2, shadowUV2, currentDepth2, cc_shadow_info[2].w, cc_shadow_info[2].z);
+      #else
+        shadow_2 = shadowSimple(cc_shadow_map_2, shadowUV2, currentDepth2, cc_shadow_info[2].w);
+      #endif
+      shadow_2 = computeFallOff(shadow_2, projCoords2, 0.0);
+    }
+    result2.diffuse *= shadow_2;
+    result2.specular *= shadow_2;
+  #endif
+      result.diffuse += result2.diffuse;
+      result.specular += result2.specular;
+    #endif
+  #endif
+  #if CC_NUM_LIGHTS > 3
+    #if CC_LIGHT_3_TYPE == 3
+      result.diffuse += ambient(s, cc_lightColor[3]);
+    #else
+      LightInfo info3;
+      #if CC_LIGHT_3_TYPE == 0
+        info3 = computeDirectionalLighting(cc_lightDirection[3], cc_lightColor[3]);
+      #elif CC_LIGHT_3_TYPE == 1
+        info3 = computePointLighting(s.position, cc_lightPositionAndRange[3], cc_lightColor[3]);
+      #elif CC_LIGHT_3_TYPE == 2
+        info3 = computeSpotLighting(s.position, cc_lightPositionAndRange[3], cc_lightDirection[3], cc_lightColor[3]);
+      #endif
+      Lighting result3 = brdf(s, info3);
+  #if CC_USE_SHADOW_MAP && CC_NUM_SHADOW_LIGHTS > 3
+    float shadow_3 = 1.0;
+    vec2 projCoords3 = v_posLightSpace[3].xy / v_posLightSpace[3].w;
+    vec2 shadowUV3 = projCoords3 * 0.5 + vec2(0.5);
+    if (shadowUV3.x >= 0.0 && shadowUV3.x <= 1.0 && shadowUV3.y >= 0.0 && shadowUV3.y <= 1.0) {
+      float currentDepth3 = clamp(v_depth[3], 0.0, 1.0);
+      #if CC_SHADOW_3_TYPE == 3
+        shadow_3 = shadowPCF3X3(cc_shadow_map_3, shadowUV3, currentDepth3, cc_shadow_info[3].w, cc_shadow_info[3].z);
+      #elif CC_SHADOW_3_TYPE == 4
+        shadow_3 = shadowPCF5X5(cc_shadow_map_3, shadowUV3, currentDepth3, cc_shadow_info[3].w, cc_shadow_info[3].z);
+      #else
+        shadow_3 = shadowSimple(cc_shadow_map_3, shadowUV3, currentDepth3, cc_shadow_info[3].w);
+      #endif
+      shadow_3 = computeFallOff(shadow_3, projCoords3, 0.0);
+    }
+    result3.diffuse *= shadow_3;
+    result3.specular *= shadow_3;
+  #endif
+      result.diffuse += result3.diffuse;
+      result.specular += result3.specular;
+    #endif
+  #endif
+  return composePhongShading(result, s);
+}
+void surf (out PhongSurface s) {
+  vec4 diffuse = vec4(1, 1, 1, 1);
+  #if CC_USE_ATTRIBUTE_COLOR
+    diffuse *= v_color;
+  #endif
+  diffuse *= diffuseColor;
+  #if USE_DIFFUSE_TEXTURE
+  vec4 diffuseTexture_tmp = texture(diffuseTexture, v_uv0);
+  #if CC_USE_ALPHA_ATLAS_diffuseTexture
+      diffuseTexture_tmp.a *= texture(diffuseTexture, v_uv0 + vec2(0, 0.5)).r;
+  #endif
+  #if INPUT_IS_GAMMA
+    diffuse.rgb *= (diffuseTexture_tmp.rgb * diffuseTexture_tmp.rgb);
+    diffuse.a *= diffuseTexture_tmp.a;
+  #else
+    diffuse *= diffuseTexture_tmp;
+  #endif
+  #endif
+  ALPHA_TEST(diffuse);
+  s.diffuse = diffuse.rgb;
+  s.opacity = diffuse.a;
+  #if USE_EMISSIVE
+    s.emissive = emissiveColor.rgb;
+    #if USE_EMISSIVE_TEXTURE
+  vec4 emissiveTexture_tmp = texture(emissiveTexture, v_uv0);
+  #if CC_USE_ALPHA_ATLAS_emissiveTexture
+      emissiveTexture_tmp.a *= texture(emissiveTexture, v_uv0 + vec2(0, 0.5)).r;
+  #endif
+  #if INPUT_IS_GAMMA
+    s.emissive.rgb *= (emissiveTexture_tmp.rgb * emissiveTexture_tmp.rgb);
+  #else
+    s.emissive.rgb *= emissiveTexture_tmp.rgb;
+  #endif
+    #endif
+  #endif
+  #if USE_SPECULAR
+    s.specular = specularColor.rgb;
+    #if USE_SPECULAR_TEXTURE
+  vec4 specularTexture_tmp = texture(specularTexture, v_uv0);
+  #if CC_USE_ALPHA_ATLAS_specularTexture
+      specularTexture_tmp.a *= texture(specularTexture, v_uv0 + vec2(0, 0.5)).r;
+  #endif
+  #if INPUT_IS_GAMMA
+    s.specular.rgb *= (specularTexture_tmp.rgb * specularTexture_tmp.rgb);
+  #else
+    s.specular.rgb *= specularTexture_tmp.rgb;
+  #endif
+    #endif
+  #endif
+  s.normal = v_worldNormal;
+  #if USE_NORMAL_TEXTURE
+    vec3 nmmp = texture(normalTexture, v_uv0).xyz - vec3(0.5);
+    s.normal =
+      nmmp.x * normalize(v_tangent) +
+      nmmp.y * normalize(v_bitangent) +
+      nmmp.z * normalize(s.normal);
+    s.normal = normalize(s.normal);
+  #endif
+  s.position = v_worldPos;
+  s.viewDirection = v_viewDirection;
+  s.glossiness = glossiness;
+}
+void main () {
+  PhongSurface s;
+  surf(s);
+  vec4 color = CCPhongShading(s);
+  gl_FragColor = CCFragOutput(color);
+}
+}% 
+CCProgram shadow-map-vs %{
+precision highp float;
+in vec3 a_position;
+#include <cc-local>
+uniform CC_SHADOW_MAP {
+  mat4  cc_shadow_map_lightViewProjMatrix;
+  vec4  cc_shadow_map_info;
+  float cc_shadow_map_bias;
+};
+out float v_depth;
+#if CC_USE_SKINNING
+  in vec4 a_weights;
+  in vec4 a_joints;
+  #if CC_USE_JOINTS_TEXTRUE
+    uniform SKINNING {
+      vec2 jointsTextureSize;
+    };
+    uniform sampler2D jointsTexture;
+    #if CC_JOINTS_TEXTURE_FLOAT32
+      mat4 getBoneMatrix(const in float i) {
+        float width = jointsTextureSize.x;
+        float height = jointsTextureSize.y;
+        float j = i * 4.0;
+        float x = mod(j, width);
+        float y = floor(j / width);
+        float dx = 1.0 / width;
+        float dy = 1.0 / height;
+        y = dy * (y + 0.5);
+        vec4 v1 = texture(jointsTexture, vec2(dx * (x + 0.5), y));
+        vec4 v2 = texture(jointsTexture, vec2(dx * (x + 1.5), y));
+        vec4 v3 = texture(jointsTexture, vec2(dx * (x + 2.5), y));
+        vec4 v4 = texture(jointsTexture, vec2(dx * (x + 3.5), y));
+        return mat4(v1, v2, v3, v4);
+      }
+    #else
+      float decode32(vec4 rgba) {
+        float Sign = 1.0 - step(128.0, rgba[0]) * 2.0;
+        float Exponent = 2.0 * mod(rgba[0], 128.0) + step(128.0, rgba[1]) - 127.0;
+        float Mantissa = mod(rgba[1], 128.0) * 65536.0 + rgba[2] * 256.0 + rgba[3] + 8388608.0;
+        return Sign * exp2(Exponent - 23.0) * Mantissa;
+      }
+      vec4 decodevec4 (vec4 x, vec4 y, vec4 z, vec4 w) {
+        return vec4(
+          decode32(x.wzyx * 255.0),
+          decode32(y.wzyx * 255.0),
+          decode32(z.wzyx * 255.0),
+          decode32(w.wzyx * 255.0)
+        );
+      }
+      vec4 decodevec4 (float dx, float x, float y) {
+        return decodevec4(
+          texture(jointsTexture, vec2(dx * (x + 0.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 1.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 2.5), y)),
+          texture(jointsTexture, vec2(dx * (x + 3.5), y))
+        );
+      }
+      mat4 getBoneMatrix(const in float i) {
+        float width = jointsTextureSize.x;
+        float height = jointsTextureSize.y;
+        float j = i * 16.0;
+        float x = mod(j, width);
+        float y = floor(j / width);
+        float dx = 1.0 / width;
+        float dy = 1.0 / height;
+        y = dy * (y + 0.5);
+        vec4 v1 = decodevec4(dx, x,       y);
+        vec4 v2 = decodevec4(dx, x+4.0,   y);
+        vec4 v3 = decodevec4(dx, x+8.0,   y);
+        vec4 v4 = decodevec4(dx, x+12.0,  y);
+        return mat4(v1, v2, v3, v4);
+      }
+    #endif
+  #else
+    uniform JOINT_MATRIX {
+      mat4 jointMatrices[50];
+    };
+    mat4 getBoneMatrix(const in float i) {
+      return jointMatrices[int(i)];
+    }
+  #endif
+    mat4 skinMatrix() {
+      return
+        getBoneMatrix(a_joints.x) * a_weights.x +
+        getBoneMatrix(a_joints.y) * a_weights.y +
+        getBoneMatrix(a_joints.z) * a_weights.z +
+        getBoneMatrix(a_joints.w) * a_weights.w
+        ;
+    }
+#endif
+void SKIN_VERTEX(inout vec4 a1) {
+  #if CC_USE_SKINNING
+    mat4 m = skinMatrix();
+    a1 = m * a1;
+  #endif
+}
+void SKIN_VERTEX(inout vec4 a1, inout vec4 a2) {
+  #if CC_USE_SKINNING
+    mat4 m = skinMatrix();
+    a1 = m * a1;
+    a2 = m * a2;
+  #endif
+}
+void SKIN_VERTEX(inout vec4 a1, inout vec4 a2, inout vec4 a3) {
+  #if CC_USE_SKINNING
+    mat4 m = skinMatrix();
+    a1 = m * a1;
+    a2 = m * a2;
+    a3 = m * a3;
+  #endif
+}
+void main () {
+  vec4 position = vec4(a_position, 1);
+  SKIN_VERTEX(position);
+  gl_Position = cc_shadow_map_lightViewProjMatrix * cc_matWorld * position;
+  v_depth = ((gl_Position.z + cc_shadow_map_info.x) / (cc_shadow_map_info.x + cc_shadow_map_info.y)) + cc_shadow_map_bias;
+}
+}% 
+
+
+CCProgram shadow-map-fs %{
+precision highp float;
+in float v_depth;
+vec4 packDepthToRGBA(float depth) {
+  vec4 ret = vec4(1.0, 255.0, 65025.0, 160581375.0) * depth;
+  ret = fract(ret);
+  ret -= ret.yzww * vec4(1.0 / 255.0, 1.0 / 255.0, 1.0 / 255.0, 0.0);
+  return ret;
+}
+void main () {
+    gl_FragColor = packDepthToRGBA(v_depth);
+}
+}% 

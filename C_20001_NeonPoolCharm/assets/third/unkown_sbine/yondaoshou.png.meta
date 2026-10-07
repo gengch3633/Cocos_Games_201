@@ -12,7 +12,7 @@
   "height": 434,
   "platformSettings": {},
   "subMetas": {
-    "yondaoshou": {
+    "yondaoshou.png": {
       "ver": "1.0.6",
       "uuid": "ccc1ebd8-22fe-4c28-a7db-9fe0c5dedc18",
       "importer": "sprite-frame",
@@ -20,12 +20,12 @@
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
-      "offsetX": 4.5,
-      "offsetY": -19,
-      "trimX": 11,
-      "trimY": 40,
-      "width": 1025,
-      "height": 392,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1038,
+      "height": 434,
       "rawWidth": 1038,
       "rawHeight": 434,
       "borderTop": 0,

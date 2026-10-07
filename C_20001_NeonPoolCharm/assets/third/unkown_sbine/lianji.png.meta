@@ -12,7 +12,7 @@
   "height": 1190,
   "platformSettings": {},
   "subMetas": {
-    "lianji": {
+    "lianji.png": {
       "ver": "1.0.6",
       "uuid": "f6d382a4-982d-4c55-b4db-71403250a97f",
       "importer": "sprite-frame",
@@ -21,11 +21,11 @@
       "trimThreshold": 1,
       "rotated": false,
       "offsetX": 0,
-      "offsetY": -12,
-      "trimX": 2,
-      "trimY": 26,
-      "width": 429,
-      "height": 1162,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 433,
+      "height": 1190,
       "rawWidth": 433,
       "rawHeight": 1190,
       "borderTop": 0,
