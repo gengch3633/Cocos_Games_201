@@ -1,0 +1,1177 @@
+import GlobalConfig from "./GlobalConfig";
+import i18n from "./i18n";
+
+export class GameConfigurations {
+    static updateNewBallConfig(e: any): void {
+        let t: any;
+        this._newBallData = e;
+        const o = e == null ? void 0 : e.basicConfig;
+        if (o && typeof o === "object") {
+            const a = o.GAME_CONF;
+            if (typeof a === "object") {
+                this._originalGameConfig = a.origin;
+                const r = a.custom;
+                if (typeof r === "object") {
+                    this.mergeConfig(this.customConfig, r);
+                    if (r.gan_move_rad_multy_aim != null) {
+                        (GlobalConfig as any).gan_move_rad_multy_aim = r.gan_move_rad_multy_aim;
+                    }
+                    if (r.gan_move_rad_multy_normal != null) {
+                        GlobalConfig.gan_move_rad_multy_normal = r.gan_move_rad_multy_normal;
+                    }
+                }
+            }
+            this._debugCode = ((t = o.DEBUG_CODE) != null ? t : "").toString();
+            const l = o.EXTRA_LANGUAGES;
+            if (typeof l === "object" && Array.isArray(l)) {
+                i18n.addi18nArray(l);
+            }
+        }
+    }
+
+    static get debugCode(): string {
+        return this._debugCode;
+    }
+
+    static get newBallData(): any {
+        return this._newBallData;
+    }
+
+    static get remoteOriginalConfig(): any {
+        return this._originalGameConfig;
+    }
+
+    static get customConfig(): any {
+        return this._customConfig;
+    }
+
+    static updateWebConfig(e: any): void {
+        if (e && typeof e === "object") {
+            const o = e.WEB;
+            if (o && Array.isArray(o)) {
+                this.moreGameURLsArray.length = 0;
+                this.moreGameURLsArray.push(...o);
+            }
+        }
+    }
+
+    static mergeConfig(e: any, t: any): any {
+        let o: any, n: any;
+        for (const i in t) {
+            o = e[i];
+            n = t[i];
+            if (typeof o !== "object" || Array.isArray(o)) {
+                e[i] = n;
+            } else if (typeof n === "object") {
+                this.mergeConfig(o, n);
+            }
+        }
+        return e;
+    }
+
+    static moreGameURLsArray: any[] = [];
+    static PRIVACY_POLICY = "https://worst41fj.com/privacy.html";
+    private static _debugCode = "";
+    private static _newBallData: any = void 0;
+    private static _originalGameConfig: any = void 0;
+    private static _customConfig = {
+    startLevelForClearAward: 3,
+    maxLevelForFreeAimProp: 3,
+    initialPlacePropNum: 3,
+    minBallNumberForPropHint: 11,
+    bonusPerBall:[2, 3],
+    bonusForBuyingPlaceProp: 500,
+    bonusForBuyingAimProp: 500,
+    bonusForReviving: 500,
+    newLevelConfigs:[{
+      level_id: 101, level_type: 1, level_a: 1, level_b: 1, ball_lv: 2
+    }
+, {
+      level_id: 102, level_type: 1, level_a: 2, level_b: 1, ball_lv: 3
+    }
+, {
+      level_id: 103, level_type: 1, level_a: 3, level_b: 1, ball_lv: 3
+    }
+, {
+      level_id: 104, level_type: 1, level_a: 4, level_b: 1, ball_lv: 4
+    }
+, {
+      level_id: 105, level_type: 1, level_a: 5, level_b: 1, ball_lv: 4
+    }
+, {
+      level_id: 106, level_type: 1, level_a: 6, level_b: 1, ball_lv: 4
+    }
+, {
+      level_id: 107, level_type: 1, level_a: 7, level_b: 1, ball_lv: 5
+    }
+, {
+      level_id: 108, level_type: 1, level_a: 8, level_b: 1, ball_lv: 5
+    }
+, {
+      level_id: 109, level_type: 1, level_a: 9, level_b: 1, ball_lv: 5
+    }
+, {
+      level_id: 110, level_type: 1, level_a: 10, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 111, level_type: 1, level_a: 11, level_b: 1, ball_lv: 5
+    }
+, {
+      level_id: 112, level_type: 1, level_a: 11, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 113, level_type: 1, level_a: 12, level_b: 1, ball_lv: 5
+    }
+, {
+      level_id: 114, level_type: 1, level_a: 12, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 115, level_type: 1, level_a: 13, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 116, level_type: 1, level_a: 13, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 117, level_type: 1, level_a: 13, level_b: 3, ball_lv: 7
+    }
+, {
+      level_id: 118, level_type: 1, level_a: 14, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 119, level_type: 1, level_a: 14, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 120, level_type: 1, level_a: 14, level_b: 3, ball_lv: 7
+    }
+, {
+      level_id: 121, level_type: 1, level_a: 15, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 122, level_type: 1, level_a: 15, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 123, level_type: 1, level_a: 15, level_b: 3, ball_lv: 7
+    }
+, {
+      level_id: 124, level_type: 1, level_a: 16, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 125, level_type: 1, level_a: 16, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 126, level_type: 1, level_a: 16, level_b: 3, ball_lv: 7
+    }
+, {
+      level_id: 127, level_type: 1, level_a: 16, level_b: 4, ball_lv: 7
+    }
+, {
+      level_id: 128, level_type: 1, level_a: 16, level_b: 5, ball_lv: 8
+    }
+, {
+      level_id: 129, level_type: 1, level_a: 17, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 130, level_type: 1, level_a: 17, level_b: 2, ball_lv: 7
+    }
+, {
+      level_id: 131, level_type: 1, level_a: 17, level_b: 3, ball_lv: 8
+    }
+, {
+      level_id: 132, level_type: 1, level_a: 17, level_b: 4, ball_lv: 7
+    }
+, {
+      level_id: 133, level_type: 1, level_a: 17, level_b: 5, ball_lv: 8
+    }
+, {
+      level_id: 134, level_type: 1, level_a: 18, level_b: 1, ball_lv: 9
+    }
+, {
+      level_id: 135, level_type: 1, level_a: 18, level_b: 2, ball_lv: 9
+    }
+, {
+      level_id: 136, level_type: 1, level_a: 18, level_b: 3, ball_lv: 9
+    }
+, {
+      level_id: 137, level_type: 1, level_a: 18, level_b: 4, ball_lv: 9
+    }
+, {
+      level_id: 138, level_type: 1, level_a: 18, level_b: 5, ball_lv: 9
+    }
+, {
+      level_id: 139, level_type: 1, level_a: 19, level_b: 1, ball_lv: 10
+    }
+, {
+      level_id: 140, level_type: 1, level_a: 19, level_b: 2, ball_lv: 10
+    }
+, {
+      level_id: 141, level_type: 1, level_a: 19, level_b: 3, ball_lv: 10
+    }
+, {
+      level_id: 142, level_type: 1, level_a: 19, level_b: 4, ball_lv: 10
+    }
+, {
+      level_id: 143, level_type: 1, level_a: 19, level_b: 5, ball_lv: 10
+    }
+, {
+      level_id: 144, level_type: 1, level_a: 19, level_b: 6, ball_lv: 11
+    }
+, {
+      level_id: 145, level_type: 1, level_a: 19, level_b: 7, ball_lv: 11
+    }
+, {
+      level_id: 146, level_type: 1, level_a: 19, level_b: 8, ball_lv: 11
+    }
+, {
+      level_id: 147, level_type: 1, level_a: 19, level_b: 9, ball_lv: 11
+    }
+, {
+      level_id: 148, level_type: 1, level_a: 19, level_b: 10, ball_lv: 11
+    }
+, {
+      level_id: 149, level_type: 1, level_a: 20, level_b: 1, ball_lv: 10
+    }
+, {
+      level_id: 150, level_type: 1, level_a: 20, level_b: 2, ball_lv: 11
+    }
+, {
+      level_id: 151, level_type: 1, level_a: 20, level_b: 3, ball_lv: 12
+    }
+, {
+      level_id: 152, level_type: 1, level_a: 20, level_b: 4, ball_lv: 12
+    }
+, {
+      level_id: 153, level_type: 1, level_a: 20, level_b: 5, ball_lv: 12
+    }
+, {
+      level_id: 154, level_type: 1, level_a: 20, level_b: 6, ball_lv: 13
+    }
+, {
+      level_id: 155, level_type: 1, level_a: 20, level_b: 7, ball_lv: 13
+    }
+, {
+      level_id: 156, level_type: 1, level_a: 20, level_b: 8, ball_lv: 13
+    }
+, {
+      level_id: 157, level_type: 1, level_a: 20, level_b: 9, ball_lv: 14
+    }
+, {
+      level_id: 158, level_type: 1, level_a: 20, level_b: 10, ball_lv: 14
+    }
+, {
+      level_id: 159, level_type: 1, level_a: 20, level_b: 11, ball_lv: 14
+    }
+, {
+      level_id: 160, level_type: 1, level_a: 20, level_b: 12, ball_lv: 15
+    }
+, {
+      level_id: 161, level_type: 1, level_a: 20, level_b: 13, ball_lv: 15
+    }
+, {
+      level_id: 162, level_type: 1, level_a: 20, level_b: 14, ball_lv: 15
+    }
+, {
+      level_id: 163, level_type: 1, level_a: 20, level_b: 15, ball_lv: 16
+    }
+, {
+      level_id: 164, level_type: 1, level_a: 20, level_b: 16, ball_lv: 16
+    }
+, {
+      level_id: 165, level_type: 1, level_a: 20, level_b: 17, ball_lv: 16
+    }
+, {
+      level_id: 166, level_type: 1, level_a: 20, level_b: 18, ball_lv: 17
+    }
+, {
+      level_id: 167, level_type: 1, level_a: 20, level_b: 19, ball_lv: 17
+    }
+, {
+      level_id: 168, level_type: 1, level_a: 20, level_b: 20, ball_lv: 18
+    }
+, {
+      level_id: 1001, level_type: 2, level_a: 1, level_b: 1, ball_lv: 6
+    }
+, {
+      level_id: 1002, level_type: 2, level_a: 1, level_b: 2, ball_lv: 6
+    }
+, {
+      level_id: 1003, level_type: 2, level_a: 2, level_b: 1, ball_lv: 7
+    }
+, {
+      level_id: 1004, level_type: 2, level_a: 2, level_b: 2, ball_lv: 7
+    }
+, {
+      level_id: 1005, level_type: 2, level_a: 3, level_b: 1, ball_lv: 8
+    }
+, {
+      level_id: 1006, level_type: 2, level_a: 3, level_b: 2, ball_lv: 8
+    }
+, {
+      level_id: 1007, level_type: 2, level_a: 3, level_b: 3, ball_lv: 8
+    }
+, {
+      level_id: 1008, level_type: 2, level_a: 4, level_b: 1, ball_lv: 9
+    }
+, {
+      level_id: 1009, level_type: 2, level_a: 4, level_b: 2, ball_lv: 9
+    }
+, {
+      level_id: 1010, level_type: 2, level_a: 4, level_b: 3, ball_lv: 9
+    }
+, {
+      level_id: 1011, level_type: 2, level_a: 5, level_b: 1, ball_lv: 10
+    }
+, {
+      level_id: 1012, level_type: 2, level_a: 5, level_b: 2, ball_lv: 10
+    }
+, {
+      level_id: 1013, level_type: 2, level_a: 5, level_b: 3, ball_lv: 10
+    }
+, {
+      level_id: 1014, level_type: 2, level_a: 6, level_b: 1, ball_lv: 10
+    }
+, {
+      level_id: 1015, level_type: 2, level_a: 6, level_b: 2, ball_lv: 10
+    }
+, {
+      level_id: 1016, level_type: 2, level_a: 6, level_b: 3, ball_lv: 10
+    }
+, {
+      level_id: 1017, level_type: 2, level_a: 6, level_b: 4, ball_lv: 10
+    }
+, {
+      level_id: 1018, level_type: 2, level_a: 6, level_b: 5, ball_lv: 10
+    }
+, {
+      level_id: 1019, level_type: 2, level_a: 7, level_b: 1, ball_lv: 11
+    }
+, {
+      level_id: 1020, level_type: 2, level_a: 7, level_b: 2, ball_lv: 11
+    }
+, {
+      level_id: 1021, level_type: 2, level_a: 7, level_b: 3, ball_lv: 11
+    }
+, {
+      level_id: 1022, level_type: 2, level_a: 7, level_b: 4, ball_lv: 11
+    }
+, {
+      level_id: 1023, level_type: 2, level_a: 7, level_b: 5, ball_lv: 11
+    }
+, {
+      level_id: 1024, level_type: 2, level_a: 8, level_b: 1, ball_lv: 12
+    }
+, {
+      level_id: 1025, level_type: 2, level_a: 8, level_b: 2, ball_lv: 12
+    }
+, {
+      level_id: 1026, level_type: 2, level_a: 8, level_b: 3, ball_lv: 12
+    }
+, {
+      level_id: 1027, level_type: 2, level_a: 8, level_b: 4, ball_lv: 12
+    }
+, {
+      level_id: 1028, level_type: 2, level_a: 8, level_b: 5, ball_lv: 12
+    }
+, {
+      level_id: 1029, level_type: 2, level_a: 9, level_b: 1, ball_lv: 13
+    }
+, {
+      level_id: 1030, level_type: 2, level_a: 9, level_b: 2, ball_lv: 13
+    }
+, {
+      level_id: 1031, level_type: 2, level_a: 9, level_b: 3, ball_lv: 13
+    }
+, {
+      level_id: 1032, level_type: 2, level_a: 9, level_b: 4, ball_lv: 13
+    }
+, {
+      level_id: 1033, level_type: 2, level_a: 9, level_b: 5, ball_lv: 13
+    }
+, {
+      level_id: 1034, level_type: 2, level_a: 9, level_b: 6, ball_lv: 13
+    }
+, {
+      level_id: 1035, level_type: 2, level_a: 9, level_b: 7, ball_lv: 13
+    }
+, {
+      level_id: 1036, level_type: 2, level_a: 9, level_b: 8, ball_lv: 13
+    }
+, {
+      level_id: 1037, level_type: 2, level_a: 9, level_b: 9, ball_lv: 13
+    }
+, {
+      level_id: 1038, level_type: 2, level_a: 9, level_b: 10, ball_lv: 13
+    }
+, {
+      level_id: 1039, level_type: 2, level_a: 10, level_b: 1, ball_lv: 12
+    }
+, {
+      level_id: 1040, level_type: 2, level_a: 10, level_b: 2, ball_lv: 12
+    }
+, {
+      level_id: 1041, level_type: 2, level_a: 10, level_b: 3, ball_lv: 13
+    }
+, {
+      level_id: 1042, level_type: 2, level_a: 10, level_b: 4, ball_lv: 13
+    }
+, {
+      level_id: 1043, level_type: 2, level_a: 10, level_b: 5, ball_lv: 14
+    }
+, {
+      level_id: 1044, level_type: 2, level_a: 10, level_b: 6, ball_lv: 14
+    }
+, {
+      level_id: 1045, level_type: 2, level_a: 10, level_b: 7, ball_lv: 15
+    }
+, {
+      level_id: 1046, level_type: 2, level_a: 10, level_b: 8, ball_lv: 15
+    }
+, {
+      level_id: 1047, level_type: 2, level_a: 10, level_b: 9, ball_lv: 16
+    }
+, {
+      level_id: 1048, level_type: 2, level_a: 10, level_b: 10, ball_lv: 16
+    }
+, {
+      level_id: 1049, level_type: 2, level_a: 10, level_b: 11, ball_lv: 16
+    }
+, {
+      level_id: 1050, level_type: 2, level_a: 10, level_b: 12, ball_lv: 16
+    }
+, {
+      level_id: 1051, level_type: 2, level_a: 10, level_b: 13, ball_lv: 16
+    }
+, {
+      level_id: 1052, level_type: 2, level_a: 10, level_b: 14, ball_lv: 17
+    }
+, {
+      level_id: 1053, level_type: 2, level_a: 10, level_b: 15, ball_lv: 18
+    }
+],
+    levelConfigs:[{
+      level_id: 101, level_type: 1, level_a: 1, level_b: 1, level_c: 1, ball_lv: 2
+    }
+, {
+      level_id: 102, level_type: 1, level_a: 2, level_b: 1, level_c: 1, ball_lv: 3
+    }
+, {
+      level_id: 103, level_type: 1, level_a: 3, level_b: 1, level_c: 1, ball_lv: 4
+    }
+, {
+      level_id: 104, level_type: 1, level_a: 4, level_b: 1, level_c: 1, ball_lv: 5
+    }
+, {
+      level_id: 105, level_type: 1, level_a: 5, level_b: 1, level_c: 1, ball_lv: 6
+    }
+, {
+      level_id: 106, level_type: 1, level_a: 6, level_b: 1, level_c: 1, ball_lv: 7
+    }
+, {
+      level_id: 107, level_type: 1, level_a: 7, level_b: 1, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 108, level_type: 1, level_a: 8, level_b: 1, level_c: 1, ball_lv: 6
+    }
+, {
+      level_id: 109, level_type: 1, level_a: 9, level_b: 1, level_c: 1, ball_lv: 7
+    }
+, {
+      level_id: 110, level_type: 1, level_a: 10, level_b: 1, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 111, level_type: 1, level_a: 11, level_b: 1, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 112, level_type: 1, level_a: 12, level_b: 1, level_c: 1, ball_lv: 7
+    }
+, {
+      level_id: 113, level_type: 1, level_a: 12, level_b: 2, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 114, level_type: 1, level_a: 13, level_b: 1, level_c: 1, ball_lv: 7
+    }
+, {
+      level_id: 115, level_type: 1, level_a: 13, level_b: 2, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 116, level_type: 1, level_a: 13, level_b: 3, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 117, level_type: 1, level_a: 14, level_b: 1, level_c: 1, ball_lv: 7
+    }
+, {
+      level_id: 118, level_type: 1, level_a: 14, level_b: 2, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 119, level_type: 1, level_a: 14, level_b: 3, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 120, level_type: 1, level_a: 14, level_b: 4, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 121, level_type: 1, level_a: 14, level_b: 5, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 122, level_type: 1, level_a: 15, level_b: 1, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 123, level_type: 1, level_a: 15, level_b: 2, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 124, level_type: 1, level_a: 15, level_b: 3, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 125, level_type: 1, level_a: 15, level_b: 4, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 126, level_type: 1, level_a: 15, level_b: 5, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 127, level_type: 1, level_a: 15, level_b: 5, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 128, level_type: 1, level_a: 15, level_b: 5, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 129, level_type: 1, level_a: 16, level_b: 1, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 130, level_type: 1, level_a: 16, level_b: 2, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 131, level_type: 1, level_a: 16, level_b: 3, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 132, level_type: 1, level_a: 16, level_b: 4, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 133, level_type: 1, level_a: 16, level_b: 4, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 134, level_type: 1, level_a: 16, level_b: 4, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 135, level_type: 1, level_a: 16, level_b: 5, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 136, level_type: 1, level_a: 16, level_b: 5, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 137, level_type: 1, level_a: 16, level_b: 5, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 138, level_type: 1, level_a: 17, level_b: 1, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 139, level_type: 1, level_a: 17, level_b: 2, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 140, level_type: 1, level_a: 17, level_b: 3, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 141, level_type: 1, level_a: 17, level_b: 3, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 142, level_type: 1, level_a: 17, level_b: 3, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 143, level_type: 1, level_a: 17, level_b: 4, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 144, level_type: 1, level_a: 17, level_b: 4, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 145, level_type: 1, level_a: 17, level_b: 4, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 146, level_type: 1, level_a: 17, level_b: 5, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 147, level_type: 1, level_a: 17, level_b: 5, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 148, level_type: 1, level_a: 17, level_b: 5, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 149, level_type: 1, level_a: 18, level_b: 1, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 150, level_type: 1, level_a: 18, level_b: 2, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 151, level_type: 1, level_a: 18, level_b: 2, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 152, level_type: 1, level_a: 18, level_b: 2, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 153, level_type: 1, level_a: 18, level_b: 3, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 154, level_type: 1, level_a: 18, level_b: 3, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 155, level_type: 1, level_a: 18, level_b: 3, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 156, level_type: 1, level_a: 18, level_b: 4, level_c: 1, ball_lv: 11
+    }
+, {
+      level_id: 157, level_type: 1, level_a: 18, level_b: 4, level_c: 2, ball_lv: 12
+    }
+, {
+      level_id: 158, level_type: 1, level_a: 18, level_b: 4, level_c: 3, ball_lv: 13
+    }
+, {
+      level_id: 159, level_type: 1, level_a: 18, level_b: 5, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 160, level_type: 1, level_a: 18, level_b: 5, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 161, level_type: 1, level_a: 18, level_b: 5, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 162, level_type: 1, level_a: 19, level_b: 1, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 163, level_type: 1, level_a: 19, level_b: 1, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 164, level_type: 1, level_a: 19, level_b: 1, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 165, level_type: 1, level_a: 19, level_b: 2, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 166, level_type: 1, level_a: 19, level_b: 2, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 167, level_type: 1, level_a: 19, level_b: 2, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 168, level_type: 1, level_a: 19, level_b: 3, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 169, level_type: 1, level_a: 19, level_b: 3, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 170, level_type: 1, level_a: 19, level_b: 3, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 171, level_type: 1, level_a: 19, level_b: 4, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 172, level_type: 1, level_a: 19, level_b: 4, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 173, level_type: 1, level_a: 19, level_b: 4, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 174, level_type: 1, level_a: 19, level_b: 5, level_c: 1, ball_lv: 14
+    }
+, {
+      level_id: 175, level_type: 1, level_a: 19, level_b: 5, level_c: 2, ball_lv: 15
+    }
+, {
+      level_id: 176, level_type: 1, level_a: 19, level_b: 5, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 177, level_type: 1, level_a: 19, level_b: 5, level_c: 4, ball_lv: 15
+    }
+, {
+      level_id: 178, level_type: 1, level_a: 19, level_b: 5, level_c: 5, ball_lv: 16
+    }
+, {
+      level_id: 179, level_type: 1, level_a: 20, level_b: 1, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 180, level_type: 1, level_a: 20, level_b: 1, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 181, level_type: 1, level_a: 20, level_b: 1, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 182, level_type: 1, level_a: 20, level_b: 2, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 183, level_type: 1, level_a: 20, level_b: 2, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 184, level_type: 1, level_a: 20, level_b: 2, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 185, level_type: 1, level_a: 20, level_b: 3, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 186, level_type: 1, level_a: 20, level_b: 3, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 187, level_type: 1, level_a: 20, level_b: 3, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 188, level_type: 1, level_a: 20, level_b: 4, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 189, level_type: 1, level_a: 20, level_b: 4, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 190, level_type: 1, level_a: 20, level_b: 4, level_c: 3, ball_lv: 16
+    }
+, {
+      level_id: 191, level_type: 1, level_a: 20, level_b: 5, level_c: 1, ball_lv: 14
+    }
+, {
+      level_id: 192, level_type: 1, level_a: 20, level_b: 5, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 193, level_type: 1, level_a: 20, level_b: 5, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 194, level_type: 1, level_a: 20, level_b: 5, level_c: 4, ball_lv: 16
+    }
+, {
+      level_id: 195, level_type: 1, level_a: 20, level_b: 5, level_c: 5, ball_lv: 14
+    }
+, {
+      level_id: 196, level_type: 1, level_a: 20, level_b: 5, level_c: 6, ball_lv: 15
+    }
+, {
+      level_id: 197, level_type: 1, level_a: 20, level_b: 5, level_c: 7, ball_lv: 16
+    }
+, {
+      level_id: 198, level_type: 1, level_a: 20, level_b: 5, level_c: 8, ball_lv: 17
+    }
+, {
+      level_id: 199, level_type: 1, level_a: 20, level_b: 5, level_c: 9, ball_lv: 17
+    }
+, {
+      level_id: 200, level_type: 1, level_a: 20, level_b: 5, level_c: 10, ball_lv: 18
+    }
+, {
+      level_id: 1008, level_type: 2, level_a: 1, level_b: 1, level_c: 1, ball_lv: 8
+    }
+, {
+      level_id: 1009, level_type: 2, level_a: 1, level_b: 2, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1010, level_type: 2, level_a: 1, level_b: 3, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1011, level_type: 2, level_a: 1, level_b: 4, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1012, level_type: 2, level_a: 1, level_b: 4, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 1013, level_type: 2, level_a: 1, level_b: 4, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 1014, level_type: 2, level_a: 1, level_b: 5, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1015, level_type: 2, level_a: 1, level_b: 5, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 1016, level_type: 2, level_a: 1, level_b: 5, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 1017, level_type: 2, level_a: 2, level_b: 1, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1018, level_type: 2, level_a: 2, level_b: 2, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1019, level_type: 2, level_a: 2, level_b: 3, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1020, level_type: 2, level_a: 2, level_b: 3, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 1021, level_type: 2, level_a: 2, level_b: 3, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 1022, level_type: 2, level_a: 2, level_b: 4, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1023, level_type: 2, level_a: 2, level_b: 4, level_c: 2, ball_lv: 10
+    }
+, {
+      level_id: 1024, level_type: 2, level_a: 2, level_b: 4, level_c: 3, ball_lv: 11
+    }
+, {
+      level_id: 1025, level_type: 2, level_a: 2, level_b: 5, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1026, level_type: 2, level_a: 2, level_b: 5, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 1027, level_type: 2, level_a: 2, level_b: 5, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 1028, level_type: 2, level_a: 3, level_b: 1, level_c: 1, ball_lv: 9
+    }
+, {
+      level_id: 1029, level_type: 2, level_a: 3, level_b: 2, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1030, level_type: 2, level_a: 3, level_b: 2, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 1031, level_type: 2, level_a: 3, level_b: 2, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 1032, level_type: 2, level_a: 3, level_b: 3, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1033, level_type: 2, level_a: 3, level_b: 3, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 1034, level_type: 2, level_a: 3, level_b: 3, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 1035, level_type: 2, level_a: 3, level_b: 4, level_c: 1, ball_lv: 11
+    }
+, {
+      level_id: 1036, level_type: 2, level_a: 3, level_b: 4, level_c: 2, ball_lv: 12
+    }
+, {
+      level_id: 1037, level_type: 2, level_a: 3, level_b: 4, level_c: 3, ball_lv: 13
+    }
+, {
+      level_id: 1038, level_type: 2, level_a: 3, level_b: 5, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 1039, level_type: 2, level_a: 3, level_b: 5, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 1040, level_type: 2, level_a: 3, level_b: 5, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 1041, level_type: 2, level_a: 4, level_b: 1, level_c: 1, ball_lv: 10
+    }
+, {
+      level_id: 1042, level_type: 2, level_a: 4, level_b: 1, level_c: 2, ball_lv: 11
+    }
+, {
+      level_id: 1043, level_type: 2, level_a: 4, level_b: 1, level_c: 3, ball_lv: 12
+    }
+, {
+      level_id: 1044, level_type: 2, level_a: 4, level_b: 2, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 1045, level_type: 2, level_a: 4, level_b: 2, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 1046, level_type: 2, level_a: 4, level_b: 2, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 1047, level_type: 2, level_a: 4, level_b: 3, level_c: 1, ball_lv: 12
+    }
+, {
+      level_id: 1048, level_type: 2, level_a: 4, level_b: 3, level_c: 2, ball_lv: 13
+    }
+, {
+      level_id: 1049, level_type: 2, level_a: 4, level_b: 3, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 1050, level_type: 2, level_a: 4, level_b: 4, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 1051, level_type: 2, level_a: 4, level_b: 4, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1052, level_type: 2, level_a: 4, level_b: 4, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 1053, level_type: 2, level_a: 4, level_b: 5, level_c: 1, ball_lv: 14
+    }
+, {
+      level_id: 1054, level_type: 2, level_a: 4, level_b: 5, level_c: 2, ball_lv: 15
+    }
+, {
+      level_id: 1055, level_type: 2, level_a: 4, level_b: 5, level_c: 3, ball_lv: 14
+    }
+, {
+      level_id: 1056, level_type: 2, level_a: 4, level_b: 5, level_c: 4, ball_lv: 15
+    }
+, {
+      level_id: 1057, level_type: 2, level_a: 4, level_b: 5, level_c: 5, ball_lv: 16
+    }
+, {
+      level_id: 1058, level_type: 2, level_a: 5, level_b: 1, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 1059, level_type: 2, level_a: 5, level_b: 1, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1060, level_type: 2, level_a: 5, level_b: 1, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 1061, level_type: 2, level_a: 5, level_b: 2, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 1062, level_type: 2, level_a: 5, level_b: 2, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1063, level_type: 2, level_a: 5, level_b: 2, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 1064, level_type: 2, level_a: 5, level_b: 3, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 1065, level_type: 2, level_a: 5, level_b: 3, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1066, level_type: 2, level_a: 5, level_b: 3, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 1067, level_type: 2, level_a: 5, level_b: 4, level_c: 1, ball_lv: 13
+    }
+, {
+      level_id: 1068, level_type: 2, level_a: 5, level_b: 4, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1069, level_type: 2, level_a: 5, level_b: 4, level_c: 3, ball_lv: 16
+    }
+, {
+      level_id: 1070, level_type: 2, level_a: 5, level_b: 5, level_c: 1, ball_lv: 14
+    }
+, {
+      level_id: 1071, level_type: 2, level_a: 5, level_b: 5, level_c: 2, ball_lv: 14
+    }
+, {
+      level_id: 1072, level_type: 2, level_a: 5, level_b: 5, level_c: 3, ball_lv: 15
+    }
+, {
+      level_id: 1073, level_type: 2, level_a: 5, level_b: 5, level_c: 4, ball_lv: 16
+    }
+, {
+      level_id: 1074, level_type: 2, level_a: 5, level_b: 5, level_c: 5, ball_lv: 14
+    }
+, {
+      level_id: 1075, level_type: 2, level_a: 5, level_b: 5, level_c: 6, ball_lv: 15
+    }
+, {
+      level_id: 1076, level_type: 2, level_a: 5, level_b: 5, level_c: 7, ball_lv: 16
+    }
+, {
+      level_id: 1077, level_type: 2, level_a: 5, level_b: 5, level_c: 8, ball_lv: 17
+    }
+, {
+      level_id: 1078, level_type: 2, level_a: 5, level_b: 5, level_c: 9, ball_lv: 17
+    }
+, {
+      level_id: 1079, level_type: 2, level_a: 5, level_b: 5, level_c: 10, ball_lv: 18
+    }
+],
+    levelDifficultyConfigs:[{
+      ball_lv: 2, tables:["l_1"]
+    }
+, {
+      ball_lv: 3, tables:["a_3", "l_2"]
+    }
+, {
+      ball_lv: 4, tables:["a_4", "a_6", "l_7"]
+    }
+, {
+      ball_lv: 5, tables:["a_36", "a_5", "l_11", "l_14", "l_25", "l_8"]
+    }
+, {
+      ball_lv: 6, tables:["a_12", "a_15", "a_23", "a_24", "a_28", "a_29", "a_34", "a_9", "l_10", "l_13", "l_16", "l_17", "l_18", "l_19", "l_22", "l_226", "l_227", "l_26", "l_27", "l_30", "l_31", "l_32", "l_33", "l_41", "l_43", "l_45", "l_51", "l_52"]
+    }
+, {
+      ball_lv: 7, tables:["a_35", "a_40", "a_49", "l_20", "l_21", "l_37", "l_38", "l_39", "l_42", "l_44", "l_46", "l_47", "l_53", "l_62", "l_63", "l_64"]
+    }
+, {
+      ball_lv: 8, tables:["l_106", "l_107", "l_108", "l_126", "l_228", "l_229", "l_230", "l_48", "l_50", "l_54", "l_56", "l_57", "l_58", "l_59", "l_60", "l_61", "l_65", "l_71", "l_72", "l_74", "l_76", "l_78", "l_79", "l_81", "l_82", "l_85", "l_86", "l_91"]
+    }
+, {
+      ball_lv: 9, tables:["a_55", "a_68", "l_101", "l_102", "l_103", "l_104", "l_105", "l_109", "l_113", "l_114", "l_115", "l_123", "l_128", "l_130", "l_136", "l_159", "l_249", "l_250", "l_69", "l_73", "l_75", "l_77", "l_80", "l_83", "l_87", "l_88", "l_95", "l_96"]
+    }
+, {
+      ball_lv: 10, tables:["a_84", "l_100", "l_110", "l_111", "l_112", "l_121", "l_122", "l_124", "l_125", "l_127", "l_129", "l_131", "l_133", "l_134", "l_139", "l_140", "l_141", "l_142", "l_143", "l_145", "l_151", "l_152", "l_153", "l_154", "l_155", "l_156", "l_157", "l_158", "l_246", "l_247", "l_248", "l_297", "l_306", "l_307", "l_309", "l_310", "l_401", "l_66", "l_67", "l_70", "l_89", "l_90", "l_92", "l_93", "l_94", "l_97", "l_98", "l_99"]
+    }
+, {
+      ball_lv: 11, tables:["l_138", "l_144", "l_160", "l_219", "l_256", "l_308", "l_326", "l_327", "l_330", "l_392", "l_394", "l_398", "l_404", "l_405", "l_411", "l_421"]
+    }
+, {
+      ball_lv: 12, tables:["l_132", "l_135", "l_137", "l_161", "l_166", "l_167", "l_168", "l_169", "l_170", "l_176", "l_177", "l_178", "l_179", "l_180", "l_181", "l_182", "l_183", "l_184", "l_185", "l_186", "l_187", "l_188", "l_189", "l_190", "l_191", "l_192", "l_193", "l_194", "l_195", "l_196", "l_197", "l_199", "l_200", "l_206", "l_207", "l_208", "l_209", "l_210", "l_216", "l_217", "l_218", "l_220", "l_257", "l_258", "l_259", "l_260", "l_266", "l_276", "l_277", "l_280", "l_286", "l_287", "l_288", "l_296", "l_298", "l_316", "l_318", "l_328", "l_329", "l_350", "l_367", "l_376", "l_379", "l_380", "l_387", "l_389", "l_395", "l_396", "l_397", "l_402", "l_406", "l_407", "l_412", "l_414", "l_416", "l_417", "l_419", "l_420", "l_422", "l_424", "l_425", "l_426", "l_427", "l_431", "l_432", "l_434", "l_435", "l_439", "l_450"]
+    }
+, {
+      ball_lv: 13, tables:["l_162", "l_163", "l_164", "l_165", "l_171", "l_172", "l_173", "l_174", "l_175", "l_198", "l_201", "l_202", "l_203", "l_204", "l_205", "l_211", "l_212", "l_213", "l_214", "l_215", "l_221", "l_222", "l_223", "l_224", "l_225", "l_231", "l_232", "l_233", "l_234", "l_235", "l_241", "l_242", "l_243", "l_244", "l_245", "l_251", "l_252", "l_253", "l_254", "l_255", "l_261", "l_262", "l_263", "l_264", "l_267", "l_268", "l_269", "l_270", "l_289", "l_319", "l_320", "l_348", "l_349", "l_378", "l_388", "l_393", "l_399", "l_400", "l_410", "l_418", "l_423", "l_436", "l_437", "l_440", "l_442", "l_443", "l_444", "l_447", "l_448", "l_449", "l_452"]
+    }
+, {
+      ball_lv: 14, tables:["l_265", "l_271", "l_272", "l_273", "l_274", "l_275", "l_278", "l_279", "l_281", "l_282", "l_283", "l_284", "l_285", "l_290", "l_291", "l_292", "l_293", "l_294", "l_295", "l_299", "l_301", "l_302", "l_303", "l_304", "l_305", "l_313", "l_317", "l_323", "l_346", "l_347", "l_353", "l_366", "l_368", "l_369", "l_377", "l_386", "l_390", "l_403", "l_408", "l_409", "l_415", "l_428", "l_429", "l_430", "l_433", "l_438", "l_441", "l_445", "l_446", "l_451", "l_453", "l_454", "l_455"]
+    }
+, {
+      ball_lv: 15, tables:["l_300", "l_312", "l_314", "l_321", "l_322", "l_324", "l_325", "l_331", "l_332", "l_333", "l_335", "l_341", "l_342", "l_343", "l_344", "l_345", "l_351", "l_352", "l_354", "l_355", "l_370", "l_413"]
+    }
+, {
+      ball_lv: 16, tables:["l_311", "l_315", "l_334", "l_361", "l_362", "l_363", "l_364", "l_365", "l_372", "l_373", "l_374", "l_375", "l_382", "l_384", "l_385", "l_391"]
+    }
+, {
+      ball_lv: 17, tables:["l_371", "l_381"]
+    }
+, {
+      ball_lv: 18, tables:["l_383"]
+    }
+],
+    tableThumbnailRecord: {
+      "0_1": {
+        image: "board_18",
+        angle: 0,
+        holeImage: "Image305",
+        holeAngle: 90,
+        holeOffsetX: 1
+      }
+,
+      "0_2": {
+        image: "board_1",
+        angle: 90,
+        holeImage: "Image381",
+        holeAngle: 90
+      }
+,
+      "0_3": {
+        image: "board_6",
+        angle: 90,
+        holeImage: "Image181",
+        holeAngle: 90
+      }
+,
+      "0_4": {
+        image: "board_8",
+        angle: 90,
+        holeImage: "Image386",
+        holeAngle: 90
+      }
+,
+      "0_5": {
+        image: "board_3",
+        angle: 90,
+        holeImage: "Image230",
+        holeAngle: 90,
+        holeOffsetX: 2,
+        holeOffsetY:- 4
+      }
+,
+      1: {
+        image: "board_18",
+        angle: 0,
+        holeImage: "Image305",
+        holeAngle: 90
+      }
+,
+      "1_3": {
+        image: "board_14",
+        angle: 90,
+        holeImage: "Image105",
+        holeAngle: 90
+      }
+,
+      "2_1": {
+        image: "board",
+        angle: 90,
+        holeImage: "Image140",
+        holeAngle: 90
+      }
+,
+      "3_2": {
+        image: "board_13",
+        angle: 90,
+        holeImage: "Image196",
+        holeAngle: 90
+      }
+,
+      "4_1": {
+        image: "board_11",
+        angle:- 90,
+        holeImage: "Image241",
+        holeAngle:- 90,
+        holeOffsetX:- 7
+      }
+,
+      "5_1": {
+        image: "board_12",
+        angle: 90,
+        holeImage: "Image230",
+        holeAngle: 90,
+        holeOffsetX: 2,
+        holeOffsetY: 1,
+        holeScale: 1.05
+      }
+,
+      "6_3": {
+        image: "board_9",
+        angle:- 90,
+        holeImage: "Image290",
+        holeAngle:- 90,
+        holeOffsetY:- 4
+      }
+,
+      "7_5": {
+        image: "board_7",
+        angle: 90,
+        holeImage: "Image306",
+        holeAngle: 90,
+        holeOffsetX: 3
+      }
+,
+      "8_4": {
+        image: "board_17",
+        angle:- 90,
+        holeImage: "Image312",
+        holeAngle:- 90,
+        holeOffsetX: 8,
+        holeOffsetY: 2
+      }
+,
+      "9_4": {
+        image: "board_10",
+        angle: 90,
+        holeImage: "Image117",
+        holeAngle: 90
+      }
+,
+      "10_5": {
+        image: "board_16",
+        angle: 90,
+        holeImage: "Image150",
+        holeAngle: 90,
+        holeOffsetX: 1
+      }
+,
+      "11_2": {
+        image: "board_4",
+        angle: 90,
+        holeImage: "Image144",
+        holeAngle: 90,
+        holeOffsetX: 1
+      }
+,
+      "13_5": {
+        image: "board_15",
+        angle: 90,
+        holeImage: "Image200",
+        holeAngle: 90,
+        holeOffsetX: 2
+      }
+,
+      "15_4": {
+        image: "board_5",
+        angle: 90,
+        holeImage: "Image352",
+        holeAngle: 90
+      }
+,
+      "16_5": {
+        image: "board_2",
+        angle: 90,
+        holeImage: "Image333",
+        holeAngle: 90,
+        holeOffsetX: 1,
+        holeOffsetY:- 4
+      }
+    }
+  };
+}
