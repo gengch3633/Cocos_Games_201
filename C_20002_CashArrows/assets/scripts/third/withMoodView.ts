@@ -1298,6 +1298,6 @@ const WithMoodView = cc.Class({
     }
     return null;
   }
-}
+});
 
 export default WithMoodView;
