@@ -4,8 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var metaParser = require('./metaParser');
 var libraryFallback = require('./libraryFallback');
-
-var REPLACE_FILE_EXTS = ['.meta'];
+var categoryUtils = require('./categoryUtils');
 
 function readMetaFile(metaPath) {
     try {
@@ -50,15 +49,22 @@ function walkMetaFiles(rootDir, onMeta) {
     walk(rootDir);
 }
 
-function scanMetaDirectory(rootDir) {
+function scanMetaDirectory(rootDir, options) {
+    options = options || {};
     var entries = [];
+    var baseDir = options.baseDir || rootDir;
+
     walkMetaFiles(rootDir, function (metaPath) {
         var metaJson = readMetaFile(metaPath);
         if (!metaJson) {
             return;
         }
-        metaParser.collectMetaEntries(metaJson, metaPath, entries);
+        var relativePath = path.relative(baseDir, metaPath).replace(/\\/g, '/');
+        metaParser.collectMetaEntries(metaJson, metaPath, entries, {
+            category: categoryUtils.getCategoryFromPath(relativePath),
+        });
     });
+
     return {
         rootDir: rootDir,
         entries: entries,
@@ -86,7 +92,7 @@ function scanEditorInternalFromDisk(editorAppPath) {
         if (usedDir || !fs.existsSync(dir)) {
             return;
         }
-        var result = scanMetaDirectory(dir);
+        var result = scanMetaDirectory(dir, { baseDir: dir });
         if (result.entries.length > 0) {
             usedDir = dir;
             entries = result.entries;
@@ -99,58 +105,6 @@ function scanEditorInternalFromDisk(editorAppPath) {
         entries: entries,
         byName: metaParser.indexEntries(entries),
     };
-}
-
-function queryAssetdbInternal(callback) {
-    if (typeof Editor === 'undefined' || !Editor.assetdb || !Editor.assetdb.queryMetas) {
-        callback(null, null);
-        return;
-    }
-
-    var patterns = [
-        'db://internal/**',
-        'db://internal/resources/**',
-        'db://internal/image/**',
-    ];
-    var patternIndex = 0;
-    var collected = [];
-
-    function tryNextPattern() {
-        if (patternIndex >= patterns.length) {
-            if (collected.length === 0) {
-                callback(null, null);
-                return;
-            }
-            callback(null, {
-                source: 'assetdb',
-                rootDir: 'db://internal',
-                entries: collected,
-                byName: metaParser.indexEntries(collected),
-            });
-            return;
-        }
-
-        var pattern = patterns[patternIndex++];
-        Editor.assetdb.queryMetas(pattern, '*', function (err, metas) {
-            if (!err && metas && metas.length > 0) {
-                metas.forEach(function (meta) {
-                    var url = meta.__url__ || meta.url;
-                    if (!url) {
-                        return;
-                    }
-                    Editor.assetdb.loadMeta(url, function (loadErr, metaJson) {
-                        if (loadErr || !metaJson) {
-                            return;
-                        }
-                        metaParser.collectMetaEntries(metaJson, url, collected);
-                    });
-                });
-            }
-            tryNextPattern();
-        });
-    }
-
-    tryNextPattern();
 }
 
 function scanInternalResources(options) {
@@ -191,7 +145,7 @@ function scanInternalResources(options) {
 
 function scanProjectAssets(projectPath) {
     var assetsDir = path.join(projectPath, 'assets');
-    return scanMetaDirectory(assetsDir);
+    return scanMetaDirectory(assetsDir, { baseDir: assetsDir });
 }
 
 function isProjectInternalCandidate(sourcePath) {
@@ -217,10 +171,7 @@ function pickInternalItem(name, projectItem, internalItems) {
     var sameKind = internalItems.filter(function (item) {
         return item.kind === projectItem.kind;
     });
-    if (sameKind.length === 1) {
-        return sameKind[0];
-    }
-    if (sameKind.length > 1) {
+    if (sameKind.length >= 1) {
         return sameKind[0];
     }
 
@@ -229,6 +180,10 @@ function pickInternalItem(name, projectItem, internalItems) {
     }
 
     return null;
+}
+
+function makePairId(category, name, kind, fromUuid) {
+    return category + '::' + name + '::' + kind + '::' + fromUuid;
 }
 
 function buildReplacementMap(internalScan, projectScan) {
@@ -252,31 +207,61 @@ function buildReplacementMap(internalScan, projectScan) {
                 return;
             }
 
-            map[projectItem.uuid] = internalItem.uuid;
-            pairs.push({
+            var category = internalItem.category || categoryUtils.getCategoryFromPath(internalItem.sourcePath);
+            var pair = {
+                id: makePairId(category, name, projectItem.kind, projectItem.uuid),
                 name: name,
+                kind: projectItem.kind,
+                kindLabel: categoryUtils.getKindLabel(projectItem.kind),
+                category: category,
+                categoryLabel: categoryUtils.getCategoryLabel(category),
                 fromUuid: projectItem.uuid,
                 toUuid: internalItem.uuid,
                 projectPath: projectItem.sourcePath,
                 internalPath: internalItem.sourcePath,
-            });
+            };
+
+            map[projectItem.uuid] = internalItem.uuid;
+            pairs.push(pair);
         });
     });
 
     return {
         map: map,
         pairs: pairs,
+        categories: categoryUtils.groupPairsByCategory(pairs),
     };
 }
 
+function buildMapFromPairs(pairs) {
+    var map = {};
+    pairs.forEach(function (pair) {
+        map[pair.fromUuid] = pair.toUuid;
+    });
+    return map;
+}
+
+function filterPairsByIds(allPairs, selectedIds) {
+    if (!selectedIds || selectedIds.length === 0) {
+        return [];
+    }
+    var idSet = {};
+    selectedIds.forEach(function (id) {
+        idSet[id] = true;
+    });
+    return allPairs.filter(function (pair) {
+        return idSet[pair.id];
+    });
+}
+
 module.exports = {
-    REPLACE_FILE_EXTS: REPLACE_FILE_EXTS,
     scanInternalResources: scanInternalResources,
     scanProjectAssets: scanProjectAssets,
     buildReplacementMap: buildReplacementMap,
+    buildMapFromPairs: buildMapFromPairs,
+    filterPairsByIds: filterPairsByIds,
     isProjectInternalCandidate: isProjectInternalCandidate,
     scanMetaDirectory: scanMetaDirectory,
     scanEditorInternalFromDisk: scanEditorInternalFromDisk,
-    queryAssetdbInternal: queryAssetdbInternal,
     getEditorInternalDirs: getEditorInternalDirs,
 };

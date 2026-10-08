@@ -55,6 +55,19 @@ function validateMainJs() {
     if (content.indexOf("Editor.Panel.open('replace-with-internal')") < 0) {
         errors.push("main.js 未调用 Editor.Panel.open('replace-with-internal')");
     }
+    if (content.indexOf('replaceReferencesInDirectory') < 0) {
+        errors.push('main.js 应使用 replaceReferencesInDirectory（仅替换引用）');
+    }
+}
+
+function validateUuidReplacer() {
+    var replacer = require('../lib/uuidReplacer');
+    if (replacer.REFERENCE_FILE_SUFFIXES.indexOf('.meta') >= 0) {
+        errors.push('uuidReplacer 不应修改 .meta 文件');
+    }
+    if (replacer.REFERENCE_FILE_SUFFIXES.indexOf('.prefab') < 0) {
+        errors.push('uuidReplacer 应支持 .prefab 文件');
+    }
 }
 
 function validateScanLogic() {
@@ -74,10 +87,19 @@ function validateScanLogic() {
     console.log('[scan] internal 来源: ' + result.source);
     console.log('[scan] internal 资源数: ' + result.entries.length);
     console.log('[scan] 项目 meta 资源数: ' + projectScan.entries.length);
-    console.log('[scan] 可替换 UUID 组数: ' + replacement.pairs.length);
+    console.log('[scan] 可替换引用组数: ' + replacement.pairs.length);
+    console.log('[scan] 分类数: ' + replacement.categories.length);
 
-    replacement.pairs.slice(0, 10).forEach(function (pair) {
-        console.log('  ' + pair.name + ': ' + pair.fromUuid + ' -> ' + pair.toUuid);
+    replacement.categories.forEach(function (cat) {
+        console.log('  [' + cat.name + '] ' + cat.pairs.length + ' 项');
+    });
+
+    replacement.pairs.slice(0, 5).forEach(function (pair) {
+        console.log(
+            '  ' + pair.category + '/' + pair.name +
+            ' [' + pair.kindLabel + ']: ' +
+            pair.fromUuid + ' -> ' + pair.toUuid
+        );
     });
 
     if (replacement.pairs.length === 0) {
@@ -94,10 +116,12 @@ function main() {
         'lib/internalScanner.js',
         'lib/uuidReplacer.js',
         'lib/libraryFallback.js',
+        'lib/categoryUtils.js',
     ].forEach(assertFile);
 
     validatePackageJson();
     validateMainJs();
+    validateUuidReplacer();
     validateScanLogic();
 
     if (warnings.length > 0) {
@@ -119,7 +143,6 @@ function main() {
     console.log('可在 Cocos Creator 中通过以下方式打开面板:');
     console.log('  菜单: 扩展 -> Replace With Internal');
     console.log('  消息: replace-with-internal:open-panel');
-    console.log('  面板: Editor.Panel.open("replace-with-internal")');
 }
 
 main();

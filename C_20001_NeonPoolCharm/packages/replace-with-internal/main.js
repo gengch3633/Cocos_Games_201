@@ -32,27 +32,44 @@ function scanResources() {
     return cachedScanResult;
 }
 
-function runReplace() {
+function runReplace(selectedIds) {
     if (!cachedScanResult) {
         scanResources();
     }
 
-    var projectPath = cachedScanResult.projectPath;
-    var uuidMap = cachedScanResult.replacement.map;
-    var assetsDir = path.join(projectPath, 'assets');
-    var changedFiles = uuidReplacer.replaceInDirectory(assetsDir, uuidMap);
+    var selectedPairs = internalScanner.filterPairsByIds(
+        cachedScanResult.replacement.pairs,
+        selectedIds
+    );
+
+    if (selectedPairs.length === 0) {
+        return {
+            pairCount: 0,
+            changedFileCount: 0,
+            changedFiles: [],
+            pairs: [],
+            message: '未选择任何替换项',
+        };
+    }
+
+    var uuidMap = internalScanner.buildMapFromPairs(selectedPairs);
+    var assetsDir = path.join(cachedScanResult.projectPath, 'assets');
+    var changedFiles = uuidReplacer.replaceReferencesInDirectory(assetsDir, uuidMap);
 
     if (typeof Editor !== 'undefined' && Editor.assetdb && Editor.assetdb.refresh) {
         Editor.assetdb.refresh('db://assets', function () {
-            Editor.log('[replace-with-internal] 资源刷新完成，修改文件数: ' + changedFiles.length);
+            Editor.log(
+                '[replace-with-internal] 引用替换完成，修改预制体/场景文件数: ' +
+                changedFiles.length
+            );
         });
     }
 
     return {
-        pairCount: cachedScanResult.replacement.pairs.length,
+        pairCount: selectedPairs.length,
         changedFileCount: changedFiles.length,
         changedFiles: changedFiles,
-        pairs: cachedScanResult.replacement.pairs,
+        pairs: selectedPairs,
     };
 }
 
@@ -80,6 +97,7 @@ module.exports = {
                         pairCount: result.replacement.pairs.length,
                         internalRoot: result.internalScan.rootDir,
                         internalSource: result.internalScan.source,
+                        categories: result.replacement.categories,
                         pairs: result.replacement.pairs,
                     });
                 }
@@ -91,9 +109,9 @@ module.exports = {
             }
         },
 
-        'replace': function (event) {
+        'replace': function (event, selectedIds) {
             try {
-                var result = runReplace();
+                var result = runReplace(selectedIds);
                 if (event.reply) {
                     event.reply(null, result);
                 }

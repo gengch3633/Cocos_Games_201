@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var metaParser = require('./metaParser');
+var categoryUtils = require('./categoryUtils');
 
 var INTERNAL_ROOTS = [
     'effects',
@@ -73,12 +74,15 @@ function scanFromLibrary(projectPath) {
             uuid.slice(0, 2),
             uuid + '.json'
         );
+        var category = categoryUtils.getCategoryFromPath(info.relativePath);
+
         if (!fs.existsSync(importPath)) {
             entries.push({
                 name: path.basename(info.relativePath, path.extname(info.relativePath)),
                 uuid: uuid,
                 sourcePath: info.relativePath,
-                kind: 'asset',
+                kind: 'texture',
+                category: category,
             });
             return;
         }
@@ -92,6 +96,7 @@ function scanFromLibrary(projectPath) {
                     uuid: uuid,
                     sourcePath: info.relativePath,
                     kind: entryKind,
+                    category: category,
                 });
             } else {
                 entries.push({
@@ -99,6 +104,7 @@ function scanFromLibrary(projectPath) {
                     uuid: uuid,
                     sourcePath: info.relativePath,
                     kind: entryKind,
+                    category: category,
                 });
             }
         } catch (error) {
@@ -107,6 +113,7 @@ function scanFromLibrary(projectPath) {
                 uuid: uuid,
                 sourcePath: info.relativePath,
                 kind: 'texture',
+                category: category,
             });
         }
     });
@@ -172,11 +179,15 @@ function appendSpriteFramesFromImports(projectPath, entries, projectUuids) {
                     if (!internalTextureUuids[textureUuid]) {
                         return;
                     }
+                    var textureEntry = entries.filter(function (e) {
+                        return e.uuid === textureUuid;
+                    })[0];
                     entries.push({
                         name: importJson.content.name || internalTextureUuids[textureUuid],
                         uuid: uuid,
-                        sourcePath: 'library/imports/' + uuid,
+                        sourcePath: textureEntry ? textureEntry.sourcePath : ('library/imports/' + uuid),
                         kind: 'sprite-frame',
+                        category: textureEntry ? textureEntry.category : 'image',
                     });
                     existing[uuid] = true;
                 } catch (error) {

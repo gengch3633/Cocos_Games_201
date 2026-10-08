@@ -4,19 +4,15 @@ var fs = require('fs');
 var path = require('path');
 var uuidUtils = require('./uuidUtils');
 
-var REPLACE_FILE_SUFFIXES = [
+var REFERENCE_FILE_SUFFIXES = [
     '.prefab',
     '.fire',
     '.anim',
-    '.meta',
-    '.mtl',
-    '.effect',
-    '.json',
 ];
 
-function shouldReplaceFile(filePath) {
-    for (var i = 0; i < REPLACE_FILE_SUFFIXES.length; i++) {
-        var suffix = REPLACE_FILE_SUFFIXES[i];
+function isReferenceFile(filePath) {
+    for (var i = 0; i < REFERENCE_FILE_SUFFIXES.length; i++) {
+        var suffix = REFERENCE_FILE_SUFFIXES[i];
         if (filePath.length >= suffix.length &&
             filePath.slice(filePath.length - suffix.length) === suffix) {
             return true;
@@ -59,32 +55,20 @@ function replaceUuidValue(value, lookup) {
     return value;
 }
 
-function replaceInJsonNode(node, lookup) {
+function replaceReferencesInJsonNode(node, lookup) {
     if (!node || typeof node !== 'object') {
         return;
     }
 
     if (Array.isArray(node)) {
         for (var i = 0; i < node.length; i++) {
-            replaceInJsonNode(node[i], lookup);
+            replaceReferencesInJsonNode(node[i], lookup);
         }
         return;
     }
 
-    if (uuidUtils.isUuid(node.uuid)) {
-        node.uuid = replaceUuidValue(node.uuid, lookup);
-    }
-    if (uuidUtils.isUuid(node.rawTextureUuid)) {
-        node.rawTextureUuid = replaceUuidValue(node.rawTextureUuid, lookup);
-    }
-    if (uuidUtils.isUuid(node.textureUuid)) {
-        node.textureUuid = replaceUuidValue(node.textureUuid, lookup);
-    }
     if (uuidUtils.isUuid(node.__uuid__)) {
         node.__uuid__ = replaceUuidValue(node.__uuid__, lookup);
-    }
-    if (uuidUtils.isUuid(node.__type__)) {
-        node.__type__ = replaceUuidValue(node.__type__, lookup);
     }
 
     for (var key in node) {
@@ -93,37 +77,23 @@ function replaceInJsonNode(node, lookup) {
         }
         var child = node[key];
         if (child && typeof child === 'object') {
-            replaceInJsonNode(child, lookup);
+            replaceReferencesInJsonNode(child, lookup);
         }
     }
 }
 
-function replaceInFile(filePath, lookup) {
+function replaceReferencesInFile(filePath, lookup) {
     var content = fs.readFileSync(filePath, 'utf-8');
     var parsed;
 
     try {
         parsed = JSON.parse(content);
     } catch (error) {
-        var replaced = content;
-        Object.keys(lookup).forEach(function (fromKey) {
-            if (fromKey.length < 22) {
-                return;
-            }
-            var toUuid = lookup[fromKey];
-            if (fromKey.indexOf('-') >= 0) {
-                replaced = splitJoinReplace(replaced, fromKey, toUuid);
-            }
-        });
-        if (replaced !== content) {
-            fs.writeFileSync(filePath, replaced, 'utf-8');
-            return true;
-        }
         return false;
     }
 
     var before = JSON.stringify(parsed);
-    replaceInJsonNode(parsed, lookup);
+    replaceReferencesInJsonNode(parsed, lookup);
     var after = JSON.stringify(parsed);
 
     if (before !== after) {
@@ -133,11 +103,7 @@ function replaceInFile(filePath, lookup) {
     return false;
 }
 
-function splitJoinReplace(content, fromValue, toValue) {
-    return content.split(fromValue).join(toValue);
-}
-
-function replaceInDirectory(rootDir, uuidMap) {
+function replaceReferencesInDirectory(rootDir, uuidMap) {
     var lookup = buildReplacementLookup(uuidMap);
     var changedFiles = [];
 
@@ -162,8 +128,8 @@ function replaceInDirectory(rootDir, uuidMap) {
             }
             if (stat.isDirectory()) {
                 walk(fullPath);
-            } else if (stat.isFile() && shouldReplaceFile(fullPath)) {
-                if (replaceInFile(fullPath, lookup)) {
+            } else if (stat.isFile() && isReferenceFile(fullPath)) {
+                if (replaceReferencesInFile(fullPath, lookup)) {
                     changedFiles.push(fullPath);
                 }
             }
@@ -175,9 +141,10 @@ function replaceInDirectory(rootDir, uuidMap) {
 }
 
 module.exports = {
-    REPLACE_FILE_SUFFIXES: REPLACE_FILE_SUFFIXES,
+    REFERENCE_FILE_SUFFIXES: REFERENCE_FILE_SUFFIXES,
     buildReplacementLookup: buildReplacementLookup,
-    replaceInDirectory: replaceInDirectory,
-    replaceInFile: replaceInFile,
-    replaceInJsonNode: replaceInJsonNode,
+    replaceReferencesInDirectory: replaceReferencesInDirectory,
+    replaceReferencesInFile: replaceReferencesInFile,
+    replaceReferencesInJsonNode: replaceReferencesInJsonNode,
+    isReferenceFile: isReferenceFile,
 };

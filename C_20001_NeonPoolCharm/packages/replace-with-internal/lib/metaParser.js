@@ -2,6 +2,7 @@
 
 var path = require('path');
 var uuidUtils = require('./uuidUtils');
+var categoryUtils = require('./categoryUtils');
 
 function basenameWithoutExt(filePath) {
     return path.basename(filePath, path.extname(filePath));
@@ -20,10 +21,25 @@ function normalizeKind(kind, metaJson) {
     if (kind === 'rawTexture') {
         return 'texture';
     }
+    if (metaJson && metaJson.importer === 'material') {
+        return 'cc.Material';
+    }
+    if (metaJson && metaJson.importer === 'effect') {
+        return 'cc.EffectAsset';
+    }
+    if (metaJson && metaJson.importer === 'prefab') {
+        return 'cc.Prefab';
+    }
+    if (metaJson && metaJson.importer === 'animation-clip') {
+        return 'cc.AnimationClip';
+    }
     return kind || 'unknown';
 }
 
-function collectMetaEntries(metaJson, sourcePath, entries) {
+function collectMetaEntries(metaJson, sourcePath, entries, options) {
+    options = options || {};
+    var category = options.category || categoryUtils.getCategoryFromPath(sourcePath);
+
     if (!metaJson || typeof metaJson !== 'object') {
         return;
     }
@@ -38,6 +54,7 @@ function collectMetaEntries(metaJson, sourcePath, entries) {
             uuid: uuidUtils.normalizeUuid(metaJson.uuid),
             sourcePath: sourcePath,
             kind: normalizeKind('texture', metaJson),
+            category: category,
         });
     }
 
@@ -55,6 +72,7 @@ function collectMetaEntries(metaJson, sourcePath, entries) {
                 uuid: uuidUtils.normalizeUuid(sub.uuid),
                 sourcePath: sourcePath + '#' + key,
                 kind: normalizeKind('sprite-frame', sub),
+                category: category,
             });
             if (uuidUtils.isUuid(sub.rawTextureUuid)) {
                 entries.push({
@@ -62,6 +80,7 @@ function collectMetaEntries(metaJson, sourcePath, entries) {
                     uuid: uuidUtils.normalizeUuid(sub.rawTextureUuid),
                     sourcePath: sourcePath + '#' + key + '@texture',
                     kind: normalizeKind('texture', sub),
+                    category: category,
                 });
             }
         }
