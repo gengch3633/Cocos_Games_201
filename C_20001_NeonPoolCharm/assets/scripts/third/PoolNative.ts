@@ -4,13 +4,13 @@ export class PoolNative {
     static _fetchGAIDCallback: (() => void) | null = null;
 
     static setAppLifecycleChangeCallback(e: string): void {
-        cc.sys.os === cc.sys.OS_ANDROID &&
-            jsb.reflection.callStaticMethod(
-                "org/cocos2dx/javascript/AppLifecycleObserver",
-                "setAppLifecycleChangeJSCallback",
-                "(Ljava/lang/String;)V",
-                e
-            );
+        // cc.sys.os === cc.sys.OS_ANDROID &&
+        //     jsb.reflection.callStaticMethod(
+        //         "org/cocos2dx/javascript/AppLifecycleObserver",
+        //         "setAppLifecycleChangeJSCallback",
+        //         "(Ljava/lang/String;)V",
+        //         e
+        //     );
     }
 
     static openURL(e: string): void {
@@ -20,25 +20,27 @@ export class PoolNative {
     }
 
     static getPackageName(): string {
-        let e = "";
-        cc.sys.os === cc.sys.OS_ANDROID &&
-            (e = jsb.reflection.callStaticMethod(
-                "org/cocos2dx/javascript/AppActivity",
-                "getAPPPackageName",
-                "()Ljava/lang/String;"
-            ));
-        e || (e = "com.replace.industries.article");
-        return e;
+        return "com.replace.industries.article";
+        // let e = "";
+        // cc.sys.os === cc.sys.OS_ANDROID &&
+        //     (e = jsb.reflection.callStaticMethod(
+        //         "org/cocos2dx/javascript/AppActivity",
+        //         "getAPPPackageName",
+        //         "()Ljava/lang/String;"
+        //     ));
+        // e || (e = "com.replace.industries.article");
+        // return e;
     }
 
     static getVersion(): string {
-        return cc.sys.os === cc.sys.OS_ANDROID
-            ? jsb.reflection.callStaticMethod(
-                  "org/cocos2dx/javascript/AppActivity",
-                  "getAPPVersion",
-                  "()Ljava/lang/String;"
-              )
-            : (cc.sys.os, cc.sys.OS_IOS, "1.0.0");
+        return "1.0.0";
+        // return cc.sys.os === cc.sys.OS_ANDROID
+        //     ? jsb.reflection.callStaticMethod(
+        //           "org/cocos2dx/javascript/AppActivity",
+        //           "getAPPVersion",
+        //           "()Ljava/lang/String;"
+        //       )
+        //     : (cc.sys.os, cc.sys.OS_IOS, "1.0.0");
     }
 
     static setSecureFlag(e: boolean): void {
@@ -53,21 +55,23 @@ export class PoolNative {
     }
 
     static get isProxyEnabled(): boolean {
-        return (
-            cc.sys.os === cc.sys.OS_ANDROID &&
-            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "isProxyEnabled", "()Z")
-        );
+        return false;
+        // return (
+        //     cc.sys.os === cc.sys.OS_ANDROID &&
+        //     jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "isProxyEnabled", "()Z")
+        // );
     }
 
     static get isVPNEnabled(): boolean {
-        return (
-            cc.sys.os === cc.sys.OS_ANDROID &&
-            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "isVPNEnabled", "()Z")
-        );
+        return false;
+        // return (
+        //     cc.sys.os === cc.sys.OS_ANDROID &&
+        //     jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "isVPNEnabled", "()Z")
+        // );
     }
 
     static vibrate(e: number): void {
-        cc.sys.os === cc.sys.OS_IOS || jsb.device.vibrate(0.001 * e);
+        // cc.sys.os === cc.sys.OS_IOS || jsb.device.vibrate(0.001 * e);
     }
 
     static _onGAIDGet(e: string, t: boolean): void {
