@@ -374,7 +374,8 @@ BallLogicMgr.gotoEditor = (config: any) => {
 BallLogicMgr.freemode_loadjs = (idx: number) => {
     const moduleName = "FModeConfig" + Math.min(2, Math.floor(idx / 10) + 1);
     const mod = require("./" + moduleName);
-    return mod ? mod.json : null;
+    const configModule = mod?.default ?? mod;
+    return configModule?.json ?? null;
 };
 
 BallLogicMgr.freeMode_jsonCfg_idx = 0;
