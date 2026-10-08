@@ -1,6 +1,25 @@
-import CryptoJS from "./crypto-js";
+import CryptoJSImport from "./crypto-js";
 import { PoolNative } from "./PoolNative";
 import { PoolWrapper } from "./PoolWrapper";
+
+function resolveCryptoJS(): typeof CryptoJSImport {
+    const mod = CryptoJSImport as any;
+    if (mod?.enc) {
+        return mod;
+    }
+    if (mod?.default?.enc) {
+        return mod.default;
+    }
+    const globalCrypto =
+        (typeof globalThis !== "undefined" ? (globalThis as any).CryptoJS : null) ??
+        (typeof window !== "undefined" ? (window as any).CryptoJS : null);
+    if (globalCrypto?.enc) {
+        return globalCrypto;
+    }
+    throw new Error("CryptoJS is not available");
+}
+
+const CryptoJS = resolveCryptoJS();
 
 export class CoinfinityRideress {
     leucocratic = "https://game.poolquestfun.online";
