@@ -1,0 +1,19 @@
+{
+  "name": "replace-with-internal",
+  "version": "1.0.0",
+  "description": "将项目中与 Cocos Creator 内置 internal 同名的资源 UUID 替换为官方 internal UUID",
+  "author": "Cocos Creator",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.package.title/Replace With Internal": {
+      "message": "replace-with-internal:open-panel"
+    }
+  },
+  "panel": {
+    "main": "panel/index.js",
+    "type": "dockable",
+    "title": "Replace With Internal",
+    "width": 640,
+    "height": 520
+  }
+}
