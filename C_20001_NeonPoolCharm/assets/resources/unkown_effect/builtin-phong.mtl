@@ -1,6 +1,6 @@
 {
   "__type__": "cc.Material",
-  "_name": "table_material_front_8_4",
+  "_name": "builtin-phong",
   "_objFlags": 0,
   "_native": "",
   "_effectAsset": {
@@ -8,13 +8,8 @@
   },
   "_techniqueData": {
     "0": {
-      "defines": {
-        "USE_DIFFUSE_TEXTURE": true,
-        "USE_ALPHA_TEST": true,
-        "INPUT_IS_GAMMA": false
-      },
+      "defines": {},
       "props": {
-        "alphaThreshold": 0.7,
         "diffuseColor": {
           "__type__": "cc.Color",
           "r": 255,
