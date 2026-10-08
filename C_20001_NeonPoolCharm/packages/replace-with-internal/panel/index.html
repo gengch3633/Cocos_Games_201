@@ -1,0 +1,35 @@
+<div class="root">
+    <h2>Replace With Internal</h2>
+    <p class="desc">
+        Scan Cocos built-in <code>internal</code> assets, find same-name project assets, and replace UUID references in project files.
+    </p>
+
+    <div class="row">
+        <label>Match mode</label>
+        <select id="matchMode">
+            <option value="name">Asset name (default)</option>
+            <option value="relativePath">Relative path (e.g. effects/builtin-2d-sprite)</option>
+        </select>
+    </div>
+
+    <div class="actions">
+        <button id="btnScan">Scan</button>
+        <button id="btnApply" disabled>Apply UUID Replace</button>
+    </div>
+
+    <div class="summary" id="summary">Ready.</div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Project UUID</th>
+                    <th>Internal UUID</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody"></tbody>
+        </table>
+    </div>
+</div>
