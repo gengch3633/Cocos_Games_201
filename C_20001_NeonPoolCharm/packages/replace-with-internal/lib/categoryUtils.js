@@ -33,6 +33,7 @@ var KIND_LABELS = {
     'cc.Prefab': 'Prefab',
     'cc.AnimationClip': 'AnimationClip',
     'cc.Mesh': 'Mesh',
+    'cc.ParticleAsset': 'Particle',
     'unknown': 'Asset',
 };
 

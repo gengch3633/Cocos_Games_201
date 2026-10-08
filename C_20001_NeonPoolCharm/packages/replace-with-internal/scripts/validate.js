@@ -102,6 +102,15 @@ function validateScanLogic() {
         );
     });
 
+    var phongPairs = replacement.pairs.filter(function (p) {
+        return p.name === 'builtin-phong';
+    });
+    if (phongPairs.length === 0) {
+        warnings.push('builtin-phong 未被扫描到');
+    } else {
+        console.log('[scan] builtin-phong 已匹配: ' + phongPairs[0].fromUuid + ' -> ' + phongPairs[0].toUuid);
+    }
+
     if (replacement.pairs.length === 0) {
         warnings.push('未发现可替换的同名 internal 资源');
     }

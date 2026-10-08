@@ -156,8 +156,18 @@ function isProjectInternalCandidate(sourcePath) {
     if (normalized.indexOf('/unkown/default_') >= 0) {
         return true;
     }
-    var baseName = path.basename(normalized);
+    if (normalized.indexOf('/unkown_effect/') >= 0) {
+        return true;
+    }
+    if (normalized.indexOf('/unkown_material/') >= 0) {
+        return true;
+    }
+    var assetPath = normalized.replace(/\.meta$/i, '');
+    var baseName = path.basename(assetPath, path.extname(assetPath));
     if (baseName.indexOf('default_') === 0) {
+        return true;
+    }
+    if (baseName.indexOf('builtin-') === 0) {
         return true;
     }
     return false;
