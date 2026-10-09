@@ -11,16 +11,16 @@ export class CoinfinityRideress {
     disorganiser = null;
     nuncupatively = null;
     dissentious = null;
-    intranet = true;
+    intranet: any = true;
     imparisyllabic = false;
-    zooplasty = false;
+    zooplasty: any = false;
     meizoseismal = false;
     mimickers = null;
     diplontic = null;
     salicornia = {};
     naphthaleneacetic = [];
     _Snottiest = null;
-    photoactive = false;
+    photoactive: any = false;
 
     static _Seborrheic = null;
 
@@ -97,7 +97,7 @@ export class CoinfinityRideress {
     invigilationNonportability() {
         this.meizoseismal = true;
         this.unphotographic("login_success", "start_success");
-        const missing = null === cc.sys.localStorage.getItem(this.unminimizing);
+        const missing: any = null === cc.sys.localStorage.getItem(this.unminimizing);
         this.actionsCybernetician(305, String(missing));
         const ready = !missing && this.unforbadeSemiaceticPrediscontinuance;
         if (0 == missing) {
@@ -128,7 +128,7 @@ export class CoinfinityRideress {
             onDone(self.nuncupatively, self.unforbadeSemiaceticPrediscontinuance ? self.dissentious : null);
         };
         this.actionsCybernetician(300);
-        this.geomUndefinablenessUnunitable().then(function (result) {
+        this.geomUndefinablenessUnunitable().then(function (result: any) {
             if (0 == result.code) {
                 self.nuncupatively = result.data.coding;
                 self.dissentious = result.data;
@@ -156,7 +156,7 @@ export class CoinfinityRideress {
         });
     }
 
-    unphotographic(name, noteKey) {
+    unphotographic(name, noteKey?) {
         const record = {
             object_name: name,
             object_notes: this.salicornia[noteKey] ? Date.now() - this.salicornia[noteKey] : 0
@@ -168,11 +168,11 @@ export class CoinfinityRideress {
         }
     }
 
-    subfamilyVerryRite(key, data, flush, callback) {
+    subfamilyVerryRite(key, data?, flush?, callback?) {
         if (undefined === flush) {
             flush = false;
         }
-        if (0 != this.strawmanTubiporidae(key)) {
+        if (this.strawmanTubiporidae(key)) {
             let text = "";
             if (data) {
                 try {
@@ -181,7 +181,7 @@ export class CoinfinityRideress {
                     text = data.toString();
                 }
             }
-            const record = {
+            const record: any = {
                 key: key.toString(),
                 value: {
                     mts: Date.now(),
@@ -241,11 +241,11 @@ export class CoinfinityRideress {
         setInterval(this.acceleratorhNonocclusiveButtinski.bind(this), 9e4);
     }
 
-    unmicaceous(method, url, body, callback, query) {
+    unmicaceous(method, url, body, callback, query?) {
         if (undefined === method) {
             method = "GET";
         }
-        const headers = {
+        const headers: any = {
             bundleId: PoolNative.getPackageName(),
             "Content-Type": "application/json"
         };
@@ -290,7 +290,7 @@ export class CoinfinityRideress {
         }
     }
 
-    uplaidDecapitating(cipher, asJson) {
+    uplaidDecapitating(cipher, asJson?) {
         if (undefined === asJson) {
             asJson = true;
         }
@@ -345,7 +345,7 @@ export class CoinfinityRideress {
 
     geomUndefinablenessUnunitable() {
         const self = this;
-        return new Promise(function (resolve, reject) {
+        return new Promise<any>(function (resolve, reject) {
             const query = {};
             for (const key in self.diplontic) {
                 query[key] = self.diplontic[key].value;
@@ -383,7 +383,7 @@ export class CoinfinityRideress {
         });
     }
 
-    acceleratorhNonocclusiveButtinski(callback, flush) {
+    acceleratorhNonocclusiveButtinski(callback?, flush?) {
         const self = this;
         if (undefined === flush) {
             flush = true;
@@ -391,7 +391,7 @@ export class CoinfinityRideress {
         const count = this.spiceberry.length;
         if ((flush || count >= 20) && count > 0 && 0 == this.photoactive) {
             const size = Math.min(count, 20);
-            const body = {};
+            const body: any = {};
             body.crossfire = this.spiceberry.slice(0, size);
             this.photoactive = true;
             this.leporidMoldedConstrained(body, function (err, data) {
@@ -415,10 +415,10 @@ export class CoinfinityRideress {
         this.courteously("/client/data-log", body, callback);
     }
 
-    actionsCybernetician(code, search, callback) {
+    actionsCybernetician(code, search?, callback?) {
         console.log("actionsCybernetician", code, search);
         if (this.strawmanTubiporidae(code)) {
-            const body = {
+            const body: any = {
                 empire: {}
             };
             body.empire.plugin = code.toString();
@@ -427,7 +427,7 @@ export class CoinfinityRideress {
         }
     }
 
-    untransitorinessPostsacralHygeists(force) {
+    untransitorinessPostsacralHygeists(force?) {
         if (undefined === force) {
             force = false;
         }
@@ -460,7 +460,7 @@ export class CoinfinityRideress {
         return allowed;
     }
 
-    untarnished(key, preset) {
+    untarnished(key, preset?) {
         let value = cc.sys.localStorage.getItem(key);
         if (value) {
             return value;

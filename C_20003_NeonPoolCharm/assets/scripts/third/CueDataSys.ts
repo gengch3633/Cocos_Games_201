@@ -71,7 +71,7 @@ class CueDataSys extends CueDataMgr {
         return cue ? cue.spin : 30;
     }
 
-    setCueIcon(sprite, cueId, callback) {
+    setCueIcon(sprite, cueId, callback?) {
         UiManager.loadSpriteFrame(sprite, "cue_icon", this.getCueSourceName(cueId), callback);
     }
 

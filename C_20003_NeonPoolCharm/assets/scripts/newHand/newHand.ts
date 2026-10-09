@@ -77,7 +77,7 @@ export default class newHand extends cc.Component {
     logLifeEvent: any = null;
     _state = 0;
 
-    randomFloat(min, max) {
+    randomFloat(min, max?) {
         if (Array.isArray(min)) {
             max = min[1];
             min = min[0];
@@ -135,7 +135,7 @@ export default class newHand extends cc.Component {
         }
     }
 
-    randomInt(min, max) {
+    randomInt(min, max?) {
         if (Array.isArray(min)) {
             max = min[1];
             min = min[0];

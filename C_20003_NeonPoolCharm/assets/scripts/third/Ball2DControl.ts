@@ -1,10 +1,10 @@
-import * as BallLogicMgr from "./BallLogicMgr";
+import BallLogicMgr from "./BallLogicMgr";
 import { ETaiQiuPropType } from "./ConfigDataMgr";
 import EventMgr from "./EventMgr";
 import GameEventType from "./GameEventType";
-import { ID_WHITEBALL } from "./GlobalConfig";
+import GlobalConfig from "./GlobalConfig";
 import SdkHelper from "./SdkHelper";
-import { BallMove } from "./WSCMD";
+import WSCMD from "./WSCMD";
 
 const { ccclass, property } = cc._decorator;
 
@@ -73,7 +73,7 @@ export default class Ball2DControl extends cc.Component {
 
     sendOnePack(cmd, stopped) {
         stopped = stopped || 0;
-        cmd = cmd || BallMove;
+        cmd = cmd || WSCMD.BallMove;
         const body = this.node.getComponent(cc.RigidBody);
         if (0 != stopped) {
             return {
@@ -139,7 +139,7 @@ export default class Ball2DControl extends cc.Component {
     }
 
     getVelMag(velocity) {
-        return cc.Vec2.mag(velocity);
+        return (cc.Vec2 as any).mag(velocity);
     }
 
     isAcceleDirValid() {
@@ -165,7 +165,7 @@ export default class Ball2DControl extends cc.Component {
 
     onPreSolve(contact, selfCollider, otherCollider) {
         const other = otherCollider.node.getComponent("Ball2DControl") as any;
-        if (this.ballID != ID_WHITEBALL && other) {
+        if (this.ballID != GlobalConfig.ID_WHITEBALL && other) {
             if (contact.disabled) {
                 selfCollider.body.linearVelocity = cc.Vec2.ZERO;
                 contact.disabled = false;
@@ -351,7 +351,7 @@ export default class Ball2DControl extends cc.Component {
     }
 
     onEndContact(contact, selfCollider, otherCollider) {
-        if (this.ballID == ID_WHITEBALL) {
+        if (this.ballID == GlobalConfig.ID_WHITEBALL) {
             (selfCollider.node.getComponent("Ball2DControl") as any).aimZheXian = null;
         }
         otherCollider.body.node;
@@ -383,10 +383,10 @@ export default class Ball2DControl extends cc.Component {
 
     onPostSolve(contact, selfCollider, otherCollider) {
         const other = otherCollider.node.getComponent("Ball2DControl") as any;
-        if (this.ballID == ID_WHITEBALL) {
+        if (this.ballID == GlobalConfig.ID_WHITEBALL) {
             this.colliderCount++;
         }
-        if (this.ballID != ID_WHITEBALL) {
+        if (this.ballID != GlobalConfig.ID_WHITEBALL) {
             if (other) {
                 if (contact.disabled) {
                     selfCollider.body.linearVelocity = cc.Vec2.ZERO;
@@ -411,7 +411,7 @@ export default class Ball2DControl extends cc.Component {
 
     onBeginContact(contact, selfCollider, otherCollider) {
         const other = otherCollider.node.getComponent("Ball2DControl") as any;
-        if (this.ballID != ID_WHITEBALL && other && other.ballID == ID_WHITEBALL) {
+        if (this.ballID != GlobalConfig.ID_WHITEBALL && other && other.ballID == GlobalConfig.ID_WHITEBALL) {
             if (other.aimTargetUUID && other.aimTargetUUID != this.node.uuid) {
                 contact.disabled = true;
             } else {
@@ -423,13 +423,13 @@ export default class Ball2DControl extends cc.Component {
             this._onBeginContactLinearVelocityOther = cc.v2(otherCollider.body.linearVelocity);
             console.log("jkd2972 onBeginContact", selfVelocity, this._onBeginContactLinearVelocityOther);
         }
-        if (this.ballID == ID_WHITEBALL && this.aimTargetUUID && !other) {
+        if (this.ballID == GlobalConfig.ID_WHITEBALL && this.aimTargetUUID && !other) {
             this.aimTargetUUID = null;
         }
         const node = otherCollider.body.node;
         if (node.getComponent("Ball2DControl")) {
             BallLogicMgr.playBallCollideSound();
-            if (this.ballID == ID_WHITEBALL && BallLogicMgr.curPowerPercentFlag >= 1) {
+            if (this.ballID == GlobalConfig.ID_WHITEBALL && BallLogicMgr.curPowerPercentFlag >= 1) {
                 SdkHelper.setVibrator();
                 BallLogicMgr.curPowerPercentFlag = 0;
             }

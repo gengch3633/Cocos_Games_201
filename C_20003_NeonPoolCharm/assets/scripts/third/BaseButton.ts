@@ -60,7 +60,7 @@ export default class BaseButton extends cc.Component {
     @property({
         type: [MixButtonType]
     })
-    _mixButtonTypeList = [];
+    _mixButtonTypeList: any[] = [];
 
     @property({
         type: [cc.Component.EventHandler],
@@ -69,7 +69,7 @@ export default class BaseButton extends cc.Component {
         },
         tooltip: "回调函数组"
     })
-    noMixEvents = [];
+    noMixEvents: any[] = [];
 
     @property({
         type: [cc.Component.EventHandler],
@@ -78,7 +78,7 @@ export default class BaseButton extends cc.Component {
         },
         tooltip: "单击回调函数组"
     })
-    shortEvents = [];
+    shortEvents: any[] = [];
 
     @property({
         type: [cc.Component.EventHandler],
@@ -87,7 +87,7 @@ export default class BaseButton extends cc.Component {
         },
         tooltip: "双击回调函数组"
     })
-    doubleEvents = [];
+    doubleEvents: any[] = [];
 
     @property({
         type: [cc.Component.EventHandler],
@@ -96,7 +96,7 @@ export default class BaseButton extends cc.Component {
         },
         tooltip: "长按回调函数组"
     })
-    longEvents = [];
+    longEvents: any[] = [];
 
     holdTimeCount = 0;
     isClicked = false;

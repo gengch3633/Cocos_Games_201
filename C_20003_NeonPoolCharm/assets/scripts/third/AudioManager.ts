@@ -87,7 +87,7 @@ export default class AudioManager extends cc.Component {
         }
     }
 
-    playMusic(name, loop = false, isMusic = false, callback?, volume?) {
+    playMusic(name, loop: any = false, isMusic: any = false, callback?, volume?) {
         isMusic = 0 != isMusic;
         if ((0 != this.effectOpen || isMusic) && (0 != this.bgOpen || !isMusic)) {
             loop = 0 != loop;

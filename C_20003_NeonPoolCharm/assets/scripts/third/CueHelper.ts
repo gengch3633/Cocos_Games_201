@@ -72,7 +72,7 @@ export default class CueHelper {
         CueHelper.cueRes.y = 310 * power + 25;
     }
 
-    static applyByRad(rad, len) {
+    static applyByRad(rad, len?) {
         const container = CueHelper.node_cue_container;
         len = len || 20;
         let x = Math.cos(rad) * len;

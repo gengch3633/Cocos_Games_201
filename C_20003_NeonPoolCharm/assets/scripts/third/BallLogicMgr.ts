@@ -645,7 +645,9 @@ const BallLogicMgr: any = {
         e = e || DB.userInfo.openid;
         BallLogicMgr.allTables.get(e);
         const n = [];
-        for (const a of BallLogicMgr.tableInfos.values()) {
+        const i = BallLogicMgr.tableInfos.values();
+        for (let t = i.next(); !t.done; t = i.next()) {
+            const a = t.value;
             n.push(a);
         }
         return n;

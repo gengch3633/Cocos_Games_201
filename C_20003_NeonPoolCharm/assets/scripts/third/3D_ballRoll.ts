@@ -1,4 +1,4 @@
-import { ball_radius } from "./GlobalConfig";
+import GlobalConfig from "./GlobalConfig";
 
 const { ccclass, property } = cc._decorator;
 
@@ -48,7 +48,7 @@ export default class _3D_ballRoll extends cc.Component {
             const delta = cc.v2(x - this.lastx, y - this.lasty);
             const rotated = cc.v2(0, 0);
             delta.rotate(90 * degToRad, rotated);
-            let angle = distance / (2 * ball_radius);
+            let angle = distance / (2 * GlobalConfig.ball_radius);
             angle %= Math.PI;
             let axis = cc.v3(rotated.x, rotated.y, 0);
             axis = axis.normalizeSelf();

@@ -11,6 +11,7 @@ class ConfigDataSys extends ConfigDataMgr {
     diamond_ListConfig = null;
     layerDDConfig = null;
     goodsDDConfig = null;
+    add_slot_price;
 
     static _instance = null;
 
@@ -31,7 +32,7 @@ class ConfigDataSys extends ConfigDataMgr {
             const list = [];
             Object.keys(data).forEach(function (key) {
                 const source = data[key];
-                const item = {};
+                const item: any = {};
                 const id = source.ID;
                 item.id = id;
                 item.item_id = id;
@@ -110,7 +111,7 @@ class ConfigDataSys extends ConfigDataMgr {
         return this.level_configMap.get(PlayerDataSys.validConfigLevelID).cash_reward;
     }
 
-    initConfig(data, map, idKey, asNumber) {
+    initConfig(data, map, idKey?, asNumber?) {
         if (undefined === asNumber) {
             asNumber = false;
         }
@@ -118,7 +119,7 @@ class ConfigDataSys extends ConfigDataMgr {
             map.clear();
             Object.keys(data).forEach(function (key) {
                 const source = data[key];
-                const item = {};
+                const item: any = {};
                 let id = idKey ? source[idKey] : Number(key);
                 if (asNumber) {
                     id = Number(id);
@@ -167,7 +168,7 @@ class ConfigDataSys extends ConfigDataMgr {
         if (data) {
             Object.keys(data).forEach(function (key) {
                 const source = data[key];
-                const item = {};
+                const item: any = {};
                 const id = source.ID;
                 item.id = id;
                 Object.keys(source).forEach(function (field) {

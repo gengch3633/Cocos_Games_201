@@ -210,7 +210,7 @@ export default class CocosHelper {
         });
     }
 
-    public static loadResSync(url, type, onProgress) {
+    public static loadResSync(url, type, onProgress?) {
         const self = this;
         return new Promise(function (resolve) {
             if (!onProgress) {

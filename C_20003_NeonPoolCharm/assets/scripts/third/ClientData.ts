@@ -133,12 +133,13 @@ export default class ClientData {
         ClientData.setCommonData();
     }
 
-    static genFormData(yid) {
+    static genFormData(yid?) {
         ClientData.yid = null == yid ? ClientData.yid : yid;
         const currentYid = ClientData.yid;
         const form = new FormData();
         form.append("yid", null != currentYid ? currentYid : "yid_read_fail");
-        const deviceId = ClientData[attrMap.device_id ? attrMap.device_id : "device_id"];
+        const deviceKey = (attrMap as any).device_id ? (attrMap as any).device_id : "device_id";
+        const deviceId = ClientData[deviceKey];
         if ("" != deviceId && null != deviceId) {
             form.append("device_id", deviceId);
         }

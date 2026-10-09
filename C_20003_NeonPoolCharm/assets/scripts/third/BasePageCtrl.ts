@@ -117,7 +117,7 @@ export default class BasePageCtrl extends cc.Component {
     })
     _hasBlackTouch = true;
 
-    _set_oldContent = new Set();
+    _set_oldContent: Set<any> = new Set();
     _peneLock = null;
     _black = null;
     _touchLock = null;
@@ -315,7 +315,7 @@ export default class BasePageCtrl extends cc.Component {
         this.node.active && this._reportExit();
     }
 
-    _init(...e) {
+    _init(...e: any[]) {
     }
 
     onEnable() {
