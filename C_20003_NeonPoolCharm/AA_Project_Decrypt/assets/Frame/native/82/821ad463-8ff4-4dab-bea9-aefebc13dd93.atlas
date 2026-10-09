@@ -1,0 +1,41 @@
+
+largecash.png
+size: 834,173
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bi
+  rotate: false
+  xy: 2, 2
+  size: 323, 169
+  orig: 327, 171
+  offset: 3, 1
+  index: -1
+fuhao
+  rotate: true
+  xy: 746, 2
+  size: 53, 85
+  orig: 55, 88
+  offset: 1, 2
+  index: -1
+quan1
+  rotate: false
+  xy: 327, 4
+  size: 235, 167
+  orig: 238, 169
+  offset: 1, 1
+  index: -1
+quan2
+  rotate: false
+  xy: 564, 48
+  size: 180, 123
+  orig: 182, 125
+  offset: 1, 1
+  index: -1
+shan
+  rotate: false
+  xy: 746, 57
+  size: 86, 114
+  orig: 112, 124
+  offset: 15, 9
+  index: -1

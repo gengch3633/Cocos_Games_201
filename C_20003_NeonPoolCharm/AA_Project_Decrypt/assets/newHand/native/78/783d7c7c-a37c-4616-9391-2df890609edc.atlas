@@ -1,0 +1,118 @@
+
+yindao1.png
+size: 2011,1258
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bi
+  rotate: false
+  xy: 564, 142
+  size: 640, 188
+  orig: 640, 188
+  offset: 0, 0
+  index: -1
+biyan
+  rotate: false
+  xy: 564, 394
+  size: 62, 31
+  orig: 64, 33
+  offset: 1, 1
+  index: -1
+biyan2
+  rotate: false
+  xy: 1069, 111
+  size: 58, 29
+  orig: 58, 29
+  offset: 0, 0
+  index: -1
+erhuan
+  rotate: true
+  xy: 2, 10
+  size: 15, 28
+  orig: 17, 31
+  offset: 1, 1
+  index: -1
+guang
+  rotate: true
+  xy: 1348, 347
+  size: 343, 394
+  orig: 389, 396
+  offset: 22, 1
+  index: -1
+hengfu1
+  rotate: true
+  xy: 1829, 535
+  size: 721, 180
+  orig: 725, 183
+  offset: 2, 2
+  index: -1
+hengfu2
+  rotate: false
+  xy: 1744, 398
+  size: 151, 135
+  orig: 154, 137
+  offset: 2, 1
+  index: -1
+hengfu3
+  rotate: true
+  xy: 1867, 245
+  size: 151, 135
+  orig: 154, 137
+  offset: 1, 1
+  index: -1
+kuang1
+  rotate: false
+  xy: 674, 450
+  size: 650, 806
+  orig: 652, 808
+  offset: 1, 1
+  index: -1
+kuang2
+  rotate: false
+  xy: 2, 427
+  size: 670, 829
+  orig: 672, 831
+  offset: 1, 1
+  index: -1
+ren
+  rotate: false
+  xy: 1326, 692
+  size: 501, 564
+  orig: 501, 564
+  offset: 0, 0
+  index: -1
+ren2
+  rotate: true
+  xy: 2, 27
+  size: 398, 560
+  orig: 398, 560
+  offset: 0, 0
+  index: -1
+word1
+  rotate: false
+  xy: 564, 2
+  size: 503, 138
+  orig: 503, 138
+  offset: 0, 0
+  index: -1
+word2
+  rotate: false
+  xy: 1348, 193
+  size: 517, 152
+  orig: 519, 154
+  offset: 1, 1
+  index: -1
+word3
+  rotate: false
+  xy: 674, 332
+  size: 672, 116
+  orig: 672, 116
+  offset: 0, 0
+  index: -1
+word4
+  rotate: false
+  xy: 1206, 59
+  size: 688, 132
+  orig: 688, 132
+  offset: 0, 0
+  index: -1

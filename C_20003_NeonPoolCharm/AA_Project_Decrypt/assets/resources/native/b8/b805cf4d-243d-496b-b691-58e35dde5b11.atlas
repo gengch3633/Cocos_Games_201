@@ -1,0 +1,20 @@
+
+cue23.png
+size: 483,67
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+brazil
+  rotate: true
+  xy: 2, 39
+  size: 26, 414
+  orig: 28, 416
+  offset: 1, 1
+  index: -1
+brazil04
+  rotate: false
+  xy: 418, 2
+  size: 63, 63
+  orig: 78, 82
+  offset: 7, 9
+  index: -1

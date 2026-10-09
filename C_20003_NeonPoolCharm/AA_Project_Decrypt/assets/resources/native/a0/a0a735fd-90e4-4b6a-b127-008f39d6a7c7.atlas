@@ -1,0 +1,90 @@
+
+cuer03.png
+size: 583,40
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+key4_4
+  rotate: true
+  xy: 41, 9
+  size: 29, 420
+  orig: 33, 423
+  offset: 2, 1
+  index: -1
+tqguan
+  rotate: false
+  xy: 2, 2
+  size: 37, 36
+  orig: 40, 40
+  offset: 2, 2
+  index: -1
+tqhuoyan_00000
+  rotate: false
+  xy: 463, 23
+  size: 16, 15
+  orig: 20, 20
+  offset: 2, 2
+  index: -1
+tqhuoyan_00001
+  rotate: false
+  xy: 499, 8
+  size: 15, 14
+  orig: 20, 20
+  offset: 2, 3
+  index: -1
+tqhuoyan_00002
+  rotate: false
+  xy: 550, 8
+  size: 14, 14
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00003
+  rotate: false
+  xy: 566, 6
+  size: 14, 14
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00004
+  rotate: true
+  xy: 516, 8
+  size: 14, 15
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00005
+  rotate: true
+  xy: 533, 8
+  size: 14, 15
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00006
+  rotate: false
+  xy: 567, 22
+  size: 14, 16
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00007
+  rotate: true
+  xy: 481, 8
+  size: 14, 16
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqhuoyan_00008
+  rotate: false
+  xy: 463, 5
+  size: 14, 16
+  orig: 20, 20
+  offset: 3, 3
+  index: -1
+tqkulou2
+  rotate: true
+  xy: 481, 24
+  size: 14, 84
+  orig: 14, 84
+  offset: 0, 0
+  index: -1

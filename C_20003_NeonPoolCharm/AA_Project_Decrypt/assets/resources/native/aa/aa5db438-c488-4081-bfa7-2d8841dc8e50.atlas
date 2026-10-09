@@ -1,0 +1,160 @@
+
+cue07.png
+size: 427,78
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+switz002
+  rotate: true
+  xy: 2, 26
+  size: 20, 93
+  orig: 22, 96
+  offset: 1, 1
+  index: -1
+switzerland
+  rotate: true
+  xy: 2, 48
+  size: 28, 414
+  orig: 30, 416
+  offset: 1, 1
+  index: -1
+switzesg_01
+  rotate: false
+  xy: 316, 26
+  size: 8, 4
+  orig: 39, 64
+  offset: 16, 34
+  index: -1
+switzesg_02
+  rotate: true
+  xy: 383, 9
+  size: 16, 20
+  orig: 39, 64
+  offset: 9, 20
+  index: -1
+switzesg_03
+  rotate: false
+  xy: 326, 5
+  size: 18, 25
+  orig: 39, 64
+  offset: 8, 17
+  index: -1
+switzesg_04
+  rotate: true
+  xy: 393, 27
+  size: 19, 30
+  orig: 39, 64
+  offset: 7, 15
+  index: -1
+switzesg_05
+  rotate: true
+  xy: 356, 27
+  size: 19, 35
+  orig: 39, 64
+  offset: 7, 12
+  index: -1
+switzesg_06
+  rotate: true
+  xy: 287, 2
+  size: 20, 37
+  orig: 39, 64
+  offset: 7, 11
+  index: -1
+switzesg_07
+  rotate: true
+  xy: 244, 2
+  size: 20, 41
+  orig: 39, 64
+  offset: 8, 10
+  index: -1
+switzesg_08
+  rotate: true
+  xy: 198, 2
+  size: 20, 44
+  orig: 39, 64
+  offset: 9, 9
+  index: -1
+switzesg_09
+  rotate: true
+  xy: 150, 2
+  size: 21, 46
+  orig: 39, 64
+  offset: 10, 9
+  index: -1
+switzesg_10
+  rotate: true
+  xy: 161, 25
+  size: 21, 47
+  orig: 39, 64
+  offset: 12, 9
+  index: -1
+switzesg_11
+  rotate: true
+  xy: 2, 2
+  size: 22, 48
+  orig: 39, 64
+  offset: 12, 8
+  index: -1
+switzesg_12
+  rotate: true
+  xy: 52, 2
+  size: 22, 47
+  orig: 39, 64
+  offset: 12, 9
+  index: -1
+switzesg_13
+  rotate: true
+  xy: 101, 4
+  size: 23, 47
+  orig: 39, 64
+  offset: 12, 9
+  index: -1
+switzesg_14
+  rotate: true
+  xy: 210, 24
+  size: 22, 46
+  orig: 39, 64
+  offset: 12, 10
+  index: -1
+switzesg_15
+  rotate: true
+  xy: 258, 24
+  size: 22, 44
+  orig: 39, 64
+  offset: 12, 12
+  index: -1
+switzesg_16
+  rotate: true
+  xy: 346, 6
+  size: 19, 35
+  orig: 39, 64
+  offset: 13, 21
+  index: -1
+switzesg_17
+  rotate: true
+  xy: 418, 64
+  size: 12, 7
+  orig: 39, 64
+  offset: 14, 48
+  index: -1
+switzesg_18
+  rotate: false
+  xy: 304, 26
+  size: 10, 4
+  orig: 39, 64
+  offset: 15, 50
+  index: -1
+switzsd_00
+  rotate: true
+  xy: 97, 29
+  size: 17, 62
+  orig: 22, 73
+  offset: 3, 6
+  index: -1
+switzsd_001
+  rotate: true
+  xy: 304, 32
+  size: 14, 50
+  orig: 18, 58
+  offset: 2, 4
+  index: -1
