@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.Material",
+  "_name": "table_hole_4_1",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "2dba13f3-cfb4-42fa-8196-c3a434f8aff7"
+  },
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_DIFFUSE_TEXTURE": true,
+        "USE_ALPHA_TEST": false,
+        "INPUT_IS_GAMMA": false
+      },
+      "props": {
+        "alphaThreshold": 0,
+        "diffuseColor": {
+          "__type__": "cc.Color",
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 255
+        }
+      }
+    }
+  }
+}

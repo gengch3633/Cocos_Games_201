@@ -1,0 +1,41 @@
+
+yondaoshou.png
+size: 1038,434
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+15-choice - 副本
+  rotate: false
+  xy: 918, 314
+  size: 118, 118
+  orig: 121, 122
+  offset: 1, 2
+  index: -1
+20240422-172037
+  rotate: true
+  xy: 460, 2
+  size: 430, 456
+  orig: 586, 565
+  offset: 78, 12
+  index: -1
+20240422-172037 - 副本
+  rotate: true
+  xy: 2, 2
+  size: 430, 456
+  orig: 586, 565
+  offset: 78, 12
+  index: -1
+sp_yindao
+  rotate: false
+  xy: 938, 251
+  size: 82, 61
+  orig: 82, 61
+  offset: 0, 0
+  index: -1
+xian
+  rotate: true
+  xy: 918, 134
+  size: 178, 18
+  orig: 182, 18
+  offset: 4, 0
+  index: -1

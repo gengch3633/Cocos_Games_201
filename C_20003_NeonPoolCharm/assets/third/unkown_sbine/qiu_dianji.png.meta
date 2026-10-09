@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b46381bc-d452-4c2b-b092-cc3e7883e7ed",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 209,
+  "height": 113,
+  "platformSettings": {},
+  "subMetas": {
+    "qiu_dianji.png": {
+      "ver": "1.0.6",
+      "uuid": "74d97adc-f4d1-41a4-a97a-88c313a5d26e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b46381bc-d452-4c2b-b092-cc3e7883e7ed",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 209,
+      "height": 113,
+      "rawWidth": 209,
+      "rawHeight": 113,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

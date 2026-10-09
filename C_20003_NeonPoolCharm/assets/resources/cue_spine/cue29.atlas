@@ -1,0 +1,20 @@
+
+cue29.png
+size: 488,35
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+russia
+  rotate: true
+  xy: 2, 14
+  size: 19, 413
+  orig: 21, 416
+  offset: 1, 2
+  index: -1
+russia01
+  rotate: true
+  xy: 417, 2
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1

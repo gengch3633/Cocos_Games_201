@@ -1,0 +1,125 @@
+
+cueb_keniya.png
+size: 883,29
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bswe_00
+  rotate: true
+  xy: 524, 11
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_01
+  rotate: true
+  xy: 524, 2
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_02
+  rotate: true
+  xy: 594, 11
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_03
+  rotate: true
+  xy: 595, 20
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_04
+  rotate: true
+  xy: 524, 20
+  size: 7, 69
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_05
+  rotate: true
+  xy: 594, 2
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_06
+  rotate: true
+  xy: 734, 11
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_07
+  rotate: true
+  xy: 735, 20
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_08
+  rotate: true
+  xy: 734, 2
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_09
+  rotate: true
+  xy: 803, 11
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_10
+  rotate: true
+  xy: 804, 20
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_11
+  rotate: true
+  xy: 803, 2
+  size: 7, 67
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_12
+  rotate: true
+  xy: 664, 11
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_13
+  rotate: true
+  xy: 665, 20
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+bswe_14
+  rotate: true
+  xy: 664, 2
+  size: 7, 68
+  orig: 16, 73
+  offset: 5, 4
+  index: -1
+cueb_keniya
+  rotate: true
+  xy: 2, 3
+  size: 24, 520
+  orig: 28, 524
+  offset: 2, 2
+  index: -1
+sabic11_00
+  rotate: false
+  xy: 872, 8
+  size: 9, 10
+  orig: 21, 73
+  offset: 6, 33
+  index: -1

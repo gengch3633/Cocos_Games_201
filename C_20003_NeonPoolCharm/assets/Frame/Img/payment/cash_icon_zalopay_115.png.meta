@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "fbe23aaa-6803-4b73-aef3-35e7b88b49ba",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 188,
+  "height": 88,
+  "platformSettings": {},
+  "subMetas": {
+    "cash_icon_zalopay_115": {
+      "ver": "1.0.6",
+      "uuid": "19f25fec-e593-43d8-b283-b5f0c9d759b7",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "fbe23aaa-6803-4b73-aef3-35e7b88b49ba",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 188,
+      "height": 88,
+      "rawWidth": 188,
+      "rawHeight": 88,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.Material",
+  "_name": "table_material_front_6_3",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "b9fe9cc5-a6ed-4e2b-a45f-a046b5aef03f"
+  },
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_DIFFUSE_TEXTURE": true,
+        "USE_ALPHA_TEST": true,
+        "INPUT_IS_GAMMA": false
+      },
+      "props": {
+        "alphaThreshold": 0.7,
+        "diffuseColor": {
+          "__type__": "cc.Color",
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 255
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+
+taiq_zhuye.png
+size: 472,504
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+3ap_taiq
+  rotate: true
+  xy: 2, 223
+  size: 279, 426
+  orig: 279, 426
+  offset: 0, 0
+  index: -1
+3ap_taiqerh
+  rotate: true
+  xy: 430, 465
+  size: 14, 40
+  orig: 16, 43
+  offset: 1, 1
+  index: -1
+3ap_taiqeye1
+  rotate: false
+  xy: 430, 481
+  size: 33, 21
+  orig: 33, 22
+  offset: 0, 1
+  index: -1
+3ap_taiqeye2
+  rotate: false
+  xy: 430, 442
+  size: 25, 21
+  orig: 27, 21
+  offset: 1, 0
+  index: -1
+3ap_taiqhair
+  rotate: true
+  xy: 2, 9
+  size: 212, 286
+  orig: 212, 286
+  offset: 0, 0
+  index: -1
+3ap_taiqqianf
+  rotate: true
+  xy: 290, 110
+  size: 111, 172
+  orig: 111, 172
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: false
+  xy: 290, 2
+  size: 170, 106
+  orig: 194, 147
+  offset: 12, 20
+  index: -1

@@ -1,0 +1,111 @@
+
+taiq_zhib2.png
+size: 919,1027
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1shuzi_taiq
+  rotate: true
+  xy: 2, 71
+  size: 954, 197
+  orig: 1014, 197
+  offset: 29, 0
+  index: -1
+3ap_taiq
+  rotate: true
+  xy: 201, 139
+  size: 279, 426
+  orig: 279, 426
+  offset: 0, 0
+  index: -1
+3ap_taiqerh
+  rotate: true
+  xy: 64, 55
+  size: 14, 40
+  orig: 16, 43
+  offset: 1, 1
+  index: -1
+3ap_taiqeye1
+  rotate: false
+  xy: 2, 48
+  size: 33, 21
+  orig: 33, 22
+  offset: 0, 1
+  index: -1
+3ap_taiqeye2
+  rotate: false
+  xy: 37, 48
+  size: 25, 21
+  orig: 27, 21
+  offset: 1, 0
+  index: -1
+3ap_taiqhair
+  rotate: false
+  xy: 629, 132
+  size: 212, 286
+  orig: 212, 286
+  offset: 0, 0
+  index: -1
+3ap_taiqqianf
+  rotate: false
+  xy: 806, 853
+  size: 111, 172
+  orig: 111, 172
+  offset: 0, 0
+  index: -1
+3zhi2_taiq
+  rotate: false
+  xy: 564, 12
+  size: 161, 118
+  orig: 165, 121
+  offset: 2, 2
+  index: -1
+3zhi3_taiq
+  rotate: false
+  xy: 727, 12
+  size: 161, 118
+  orig: 165, 121
+  offset: 2, 2
+  index: -1
+3zhi4_taiq
+  rotate: false
+  xy: 201, 2
+  size: 209, 135
+  orig: 211, 137
+  offset: 1, 1
+  index: -1
+3zhi5_taiq
+  rotate: false
+  xy: 201, 2
+  size: 209, 135
+  orig: 211, 137
+  offset: 1, 1
+  index: -1
+3zhi6_taiq
+  rotate: true
+  xy: 806, 548
+  size: 131, 104
+  orig: 136, 108
+  offset: 2, 3
+  index: -1
+3zhi_taiq
+  rotate: true
+  xy: 412, 5
+  size: 132, 150
+  orig: 136, 153
+  offset: 2, 2
+  index: -1
+star_taiq
+  rotate: true
+  xy: 806, 681
+  size: 170, 106
+  orig: 194, 147
+  offset: 12, 20
+  index: -1
+zhuanguang_event_taiq
+  rotate: false
+  xy: 201, 420
+  size: 603, 605
+  orig: 605, 607
+  offset: 1, 1
+  index: -1

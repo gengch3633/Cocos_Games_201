@@ -1,0 +1,5430 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -24.46,
+    "y": -516.01,
+    "width": 55,
+    "height": 520
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "bone33",
+      "parent": "root",
+      "x": -0.62,
+      "y": -474.97,
+      "scaleX": 0.5,
+      "scaleY": 0.5
+    },
+    {
+      "name": "bone",
+      "parent": "bone33",
+      "x": 2.92,
+      "y": 224.82,
+      "scaleX": 0.747,
+      "scaleY": 0.835,
+      "color": "0060ffff"
+    },
+    {
+      "name": "bone32",
+      "parent": "bone33",
+      "x": 0.24,
+      "y": 27.56,
+      "color": "ffed00ff"
+    },
+    {
+      "name": "bone2",
+      "parent": "bone32",
+      "x": 3.37,
+      "y": 111.91,
+      "scaleX": 0.876,
+      "scaleY": 0.808,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone3",
+      "parent": "bone32",
+      "x": 3.37,
+      "y": 136.4,
+      "scaleX": 0.876,
+      "scaleY": 0.517,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone4",
+      "parent": "bone32",
+      "x": 3.16,
+      "y": 160.4,
+      "scaleX": 0.789,
+      "scaleY": 0.651,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone5",
+      "parent": "bone32",
+      "x": 3.16,
+      "y": 181.56,
+      "scaleX": 0.789,
+      "scaleY": 0.541,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone6",
+      "parent": "bone32",
+      "x": 2.8,
+      "y": 317.16,
+      "scaleX": 0.537,
+      "scaleY": 0.682,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone7",
+      "parent": "bone32",
+      "x": 2.8,
+      "y": 339.23,
+      "scaleX": 0.537,
+      "scaleY": 0.592,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone8",
+      "parent": "bone32",
+      "x": 2.87,
+      "y": 359.96,
+      "scaleX": 0.477,
+      "scaleY": 0.564,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone9",
+      "parent": "bone32",
+      "x": 2.87,
+      "y": 379.2,
+      "scaleX": 0.477,
+      "scaleY": 0.537,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone10",
+      "parent": "bone32",
+      "x": 3.13,
+      "y": 398.77,
+      "scaleX": 0.459,
+      "scaleY": 0.554,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone11",
+      "parent": "bone32",
+      "x": 3,
+      "y": 417.94,
+      "scaleX": 0.432,
+      "scaleY": 0.512,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone12",
+      "parent": "bone32",
+      "x": 3,
+      "y": 436.08,
+      "scaleX": 0.392,
+      "scaleY": 0.536,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone13",
+      "parent": "bone32",
+      "x": 3,
+      "y": 452.68,
+      "scaleX": 0.367,
+      "scaleY": 0.499,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone14",
+      "parent": "bone32",
+      "x": 3,
+      "y": 479.59,
+      "scaleX": 0.281,
+      "scaleY": 0.382,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone15",
+      "parent": "bone32",
+      "x": 2.55,
+      "y": 465.62,
+      "scaleX": 0.463,
+      "scaleY": 0.657,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone16",
+      "parent": "bone32",
+      "x": 2.77,
+      "y": 467.86,
+      "scaleX": 0.202,
+      "scaleY": 0.657,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone17",
+      "parent": "bone32",
+      "x": 2.77,
+      "y": 472.36,
+      "scaleX": 0.202,
+      "scaleY": 0.657,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone18",
+      "parent": "bone32",
+      "x": 2.88,
+      "y": 297.32,
+      "scaleX": 0.896,
+      "scaleY": 0.681,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone19",
+      "parent": "bone32",
+      "x": 2.3,
+      "y": 54.22,
+      "scaleX": 1.421,
+      "scaleY": 1.945,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone20",
+      "parent": "bone32",
+      "x": 2.88,
+      "y": 82.02,
+      "scaleX": 1.355,
+      "scaleY": 2.4,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone21",
+      "parent": "bone32",
+      "x": 2.3,
+      "y": 27.57,
+      "scaleX": 1.689,
+      "scaleY": 1.945,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone22",
+      "parent": "bone32",
+      "x": 2.3,
+      "y": 31.06,
+      "scaleX": 1.308,
+      "scaleY": 1.945,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone23",
+      "parent": "bone32",
+      "x": 3.37,
+      "y": 87.31,
+      "scaleX": 0.876,
+      "scaleY": 0.606,
+      "color": "fff200ff"
+    },
+    {
+      "name": "bone24",
+      "parent": "bone33",
+      "x": 2.99,
+      "y": 263.38,
+      "scaleX": 0.579,
+      "scaleY": 0.559,
+      "color": "0060ffff"
+    },
+    {
+      "name": "bone25",
+      "parent": "bone33",
+      "x": 2.99,
+      "y": 296.89,
+      "scaleX": 0.489,
+      "scaleY": 0.586,
+      "color": "0060ffff"
+    },
+    {
+      "name": "bone26",
+      "parent": "bone33",
+      "x": 2.92,
+      "y": 68.48,
+      "scaleX": 0.747,
+      "scaleY": 0.738,
+      "color": "2dff00ff"
+    },
+    {
+      "name": "bone27",
+      "parent": "bone32",
+      "x": 2.51,
+      "y": 209.46,
+      "scaleX": 0.952,
+      "scaleY": 1.43,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone28",
+      "parent": "bone32",
+      "x": 2.51,
+      "y": 227.56,
+      "scaleX": 0.952,
+      "scaleY": 0.885,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone29",
+      "parent": "bone32",
+      "x": 2.51,
+      "y": 244.02,
+      "scaleX": 0.89,
+      "scaleY": 0.719,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone30",
+      "parent": "bone32",
+      "x": 2.51,
+      "y": 260.57,
+      "scaleX": 0.797,
+      "scaleY": 0.719,
+      "color": "ff8f00ff"
+    },
+    {
+      "name": "bone31",
+      "parent": "bone32",
+      "x": 2.84,
+      "y": 278.75,
+      "scaleX": 0.708,
+      "scaleY": 0.591,
+      "color": "ff8f00ff"
+    }
+  ],
+  "slots": [
+    {
+      "name": "egypt",
+      "bone": "bone33",
+      "dark": "000000",
+      "attachment": "egypt"
+    },
+    {
+      "name": "egyu_00",
+      "bone": "bone",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egyu_2",
+      "bone": "bone26",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egyu_0",
+      "bone": "bone24",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egyu_1",
+      "bone": "bone25",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_00",
+      "bone": "bone2",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_12",
+      "bone": "bone23",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_0",
+      "bone": "bone3",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_1",
+      "bone": "bone4",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_2",
+      "bone": "bone5",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_3",
+      "bone": "bone6",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_4",
+      "bone": "bone7",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_5",
+      "bone": "bone8",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_6",
+      "bone": "bone9",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_7",
+      "bone": "bone10",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_8",
+      "bone": "bone11",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_9",
+      "bone": "bone12",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_10",
+      "bone": "bone13",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "egy_11",
+      "bone": "bone14",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_00",
+      "bone": "bone15",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_2",
+      "bone": "bone18",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_3",
+      "bone": "bone19",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_5",
+      "bone": "bone21",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_6",
+      "bone": "bone22",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_7",
+      "bone": "bone27",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_8",
+      "bone": "bone28",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_9",
+      "bone": "bone29",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_10",
+      "bone": "bone30",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_11",
+      "bone": "bone31",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_4",
+      "bone": "bone20",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_0",
+      "bone": "bone16",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "eghh_1",
+      "bone": "bone17",
+      "dark": "000000",
+      "blend": "additive"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "eghh_0": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_00": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_1": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_2": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_3": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_4": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_5": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_6": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_7": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_8": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_9": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_10": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "eghh_11": {
+          "eghh_00": {
+            "x": -0.11,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 21
+          }
+        },
+        "egy_0": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_00": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_1": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_2": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_3": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_4": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_5": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_6": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_7": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_8": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_9": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_10": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_11": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egy_12": {
+          "egy_00": {
+            "x": -0.14,
+            "y": -0.86,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 32,
+            "height": 35
+          }
+        },
+        "egypt": {
+          "egypt": {
+            "x": 7.33,
+            "y": 437.92,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 55,
+            "height": 520
+          }
+        },
+        "egyu_0": {
+          "egyu_00": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_01": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_02": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_03": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_04": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_05": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_06": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_07": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_08": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_09": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_10": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_11": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_12": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_13": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_14": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_15": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_16": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_17": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          }
+        },
+        "egyu_00": {
+          "egyu_00": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_01": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_02": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_03": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_04": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_05": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_06": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_07": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_08": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_09": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_10": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_11": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_12": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_13": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_14": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_15": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_16": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_17": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          }
+        },
+        "egyu_1": {
+          "egyu_00": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_01": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_02": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_03": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_04": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_05": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_06": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_07": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_08": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_09": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_10": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_11": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_12": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_13": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_14": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_15": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_16": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_17": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          }
+        },
+        "egyu_2": {
+          "egyu_00": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_01": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_02": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_03": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_04": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_05": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_06": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_07": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_08": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_09": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_10": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_11": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_12": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_13": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_14": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_15": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_16": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          },
+          "egyu_17": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 50,
+            "height": 60
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "eghh_0": {
+          "twoColor": [
+            {
+              "time": 1.5667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.9,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.2333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.5667,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_00": {
+          "twoColor": [
+            {
+              "time": 1.5,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.8333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.1667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.5,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_1": {
+          "twoColor": [
+            {
+              "time": 1.6,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.9333,
+              "light": "ffffffc8",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.2667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.6,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_2": {
+          "twoColor": [
+            {
+              "time": 0.9,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.2333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.5667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.9,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_3": {
+          "twoColor": [
+            {
+              "time": 0.1333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.4667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.8,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.1333,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_4": {
+          "twoColor": [
+            {
+              "time": 0.2,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.5333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.8667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.2,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_5": {
+          "twoColor": [
+            {
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.3333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.6667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_6": {
+          "twoColor": [
+            {
+              "time": 0.0667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.4,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.7333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.0667,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_7": {
+          "twoColor": [
+            {
+              "time": 0.6,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.9333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.2667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.6,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_8": {
+          "twoColor": [
+            {
+              "time": 0.6667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.3333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.6667,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_9": {
+          "twoColor": [
+            {
+              "time": 0.7333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.0667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.4,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.7333,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_10": {
+          "twoColor": [
+            {
+              "time": 0.8,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.1333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.4667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.8,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "eghh_11": {
+          "twoColor": [
+            {
+              "time": 0.8667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.2,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.5333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.8667,
+              "name": "eghh_00"
+            }
+          ]
+        },
+        "egy_0": {
+          "twoColor": [
+            {
+              "time": 0.4,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.7333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.0667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.4,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_00": {
+          "twoColor": [
+            {
+              "time": 0.3333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.6667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.3333,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_1": {
+          "twoColor": [
+            {
+              "time": 0.4667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.8,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.1333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.4667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_2": {
+          "twoColor": [
+            {
+              "time": 0.5333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.8667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.2,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.5333,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_3": {
+          "twoColor": [
+            {
+              "time": 0.9667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.3,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.6333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.9667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_4": {
+          "twoColor": [
+            {
+              "time": 1.0333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.3667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.7,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.0333,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_5": {
+          "twoColor": [
+            {
+              "time": 1.1,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.4333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.7667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.1,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_6": {
+          "twoColor": [
+            {
+              "time": 1.1667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.5,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.8333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.1667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_7": {
+          "twoColor": [
+            {
+              "time": 1.2333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.5667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.9,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.2333,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_8": {
+          "twoColor": [
+            {
+              "time": 1.3,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.6333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.9667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.3,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_9": {
+          "twoColor": [
+            {
+              "time": 1.3667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.7,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.0333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.3667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_10": {
+          "twoColor": [
+            {
+              "time": 1.4333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.7667,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.1,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.4333,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_11": {
+          "twoColor": [
+            {
+              "time": 1.6667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2,
+              "light": "ffffffab",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 2.3333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 1.6667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egy_12": {
+          "twoColor": [
+            {
+              "time": 0.2667,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.6,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.9333,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.2667,
+              "name": "egy_00"
+            }
+          ]
+        },
+        "egyu_0": {
+          "attachment": [
+            {
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 0.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 0.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 0.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 0.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 0.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 0.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 0.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 1.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 1.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 1.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 1.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 1.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 1.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 2.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 2.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 2.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 2.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 2.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 2.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 3.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 3.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 3.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 3.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 3.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 3.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 4.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 4.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 4.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 4.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 4.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 4.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 5.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 5.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 5.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 5.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 5.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 5.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 6.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 6.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 6.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 6.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 6.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 6.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 6.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 6.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 6.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 6.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 6.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 6.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 6.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 6.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 6.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 6.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 6.5667,
+              "name": "egyu_17"
+            }
+          ]
+        },
+        "egyu_00": {
+          "attachment": [
+            {
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 0.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 0.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 0.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 0.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 0.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 0.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 0.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 1.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 1.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 1.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 1.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 1.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 1.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 2.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 2.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 2.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 2.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 2.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 2.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 3.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 3.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 3.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 3.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 3.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 3.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 4.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 4.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 4.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 4.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 4.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 4.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 5.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 5.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 5.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 5.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 5.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 5.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 6.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 6.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 6.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 6.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 6.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 6.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 6.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 6.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 6.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 6.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 6.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 6.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 6.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 6.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 6.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 6.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 6.5667,
+              "name": "egyu_17"
+            }
+          ]
+        },
+        "egyu_1": {
+          "attachment": [
+            {
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 0.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 0.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 0.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 0.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 0.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 0.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 0.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 1.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 1.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 1.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 1.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 1.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 1.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 2.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 2.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 2.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 2.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 2.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 2.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 3.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 3.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 3.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 3.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 3.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 3.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 4.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 4.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 4.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 4.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 4.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 4.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 5.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 5.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 5.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 5.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 5.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 5.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 6.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 6.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 6.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 6.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 6.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 6.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 6.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 6.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 6.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 6.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 6.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 6.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 6.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 6.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 6.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 6.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 6.5667,
+              "name": "egyu_17"
+            }
+          ]
+        },
+        "egyu_2": {
+          "attachment": [
+            {
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 0.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 0.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 0.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 0.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 0.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 0.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 0.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 0.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 0.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 0.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 0.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 0.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 0.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 0.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 0.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 0.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 0.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 0.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 1.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 1.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 1.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 1.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 1.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 1.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 1.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 1.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 1.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 1.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 1.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 1.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 1.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 1.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 1.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 1.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 1.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 1.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 2.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 2.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 2.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 2.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 2.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 2.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 2.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 2.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 2.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 2.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 2.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 2.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 2.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 2.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 2.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 2.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 2.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 2.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 3.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 3.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 3.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 3.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 3.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 3.5667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 3.6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 3.6333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 3.6667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 3.7,
+              "name": "egyu_03"
+            },
+            {
+              "time": 3.7333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 3.7667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 3.8,
+              "name": "egyu_06"
+            },
+            {
+              "time": 3.8333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 3.8667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 3.9,
+              "name": "egyu_09"
+            },
+            {
+              "time": 3.9333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 3.9667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.0333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.0667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.1,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.1333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.1667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.2,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.2333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.2667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.3,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.3333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.3667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 4.4,
+              "name": "egyu_06"
+            },
+            {
+              "time": 4.4333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 4.4667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 4.5,
+              "name": "egyu_09"
+            },
+            {
+              "time": 4.5333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 4.5667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 4.6,
+              "name": "egyu_12"
+            },
+            {
+              "time": 4.6333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 4.6667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 4.7,
+              "name": "egyu_15"
+            },
+            {
+              "time": 4.7333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 4.7667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 4.8,
+              "name": "egyu_00"
+            },
+            {
+              "time": 4.8333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 4.8667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 4.9,
+              "name": "egyu_03"
+            },
+            {
+              "time": 4.9333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 4.9667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.0333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.0667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.1,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.1333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.1667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.2,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.2333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.2667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.3,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.3333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.3667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 5.4,
+              "name": "egyu_00"
+            },
+            {
+              "time": 5.4333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 5.4667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 5.5,
+              "name": "egyu_03"
+            },
+            {
+              "time": 5.5333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 5.5667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 5.6,
+              "name": "egyu_06"
+            },
+            {
+              "time": 5.6333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 5.6667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 5.7,
+              "name": "egyu_09"
+            },
+            {
+              "time": 5.7333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 5.7667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 5.8,
+              "name": "egyu_12"
+            },
+            {
+              "time": 5.8333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 5.8667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 5.9,
+              "name": "egyu_15"
+            },
+            {
+              "time": 5.9333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 5.9667,
+              "name": "egyu_17"
+            },
+            {
+              "time": 6,
+              "name": "egyu_00"
+            },
+            {
+              "time": 6.0333,
+              "name": "egyu_01"
+            },
+            {
+              "time": 6.0667,
+              "name": "egyu_02"
+            },
+            {
+              "time": 6.1,
+              "name": "egyu_03"
+            },
+            {
+              "time": 6.1333,
+              "name": "egyu_04"
+            },
+            {
+              "time": 6.1667,
+              "name": "egyu_05"
+            },
+            {
+              "time": 6.2,
+              "name": "egyu_06"
+            },
+            {
+              "time": 6.2333,
+              "name": "egyu_07"
+            },
+            {
+              "time": 6.2667,
+              "name": "egyu_08"
+            },
+            {
+              "time": 6.3,
+              "name": "egyu_09"
+            },
+            {
+              "time": 6.3333,
+              "name": "egyu_10"
+            },
+            {
+              "time": 6.3667,
+              "name": "egyu_11"
+            },
+            {
+              "time": 6.4,
+              "name": "egyu_12"
+            },
+            {
+              "time": 6.4333,
+              "name": "egyu_13"
+            },
+            {
+              "time": 6.4667,
+              "name": "egyu_14"
+            },
+            {
+              "time": 6.5,
+              "name": "egyu_15"
+            },
+            {
+              "time": 6.5333,
+              "name": "egyu_16"
+            },
+            {
+              "time": 6.5667,
+              "name": "egyu_17"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "bone18": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.08,
+              "y": 253.79
+            }
+          ]
+        },
+        "bone19": {
+          "translate": [
+            {
+              "x": 1.14,
+              "y": 20.95
+            }
+          ]
+        },
+        "bone20": {
+          "translate": [
+            {
+              "x": 1.14,
+              "y": 22.62
+            }
+          ]
+        },
+        "bone21": {
+          "translate": [
+            {
+              "x": 2.44,
+              "y": -14.91
+            }
+          ]
+        },
+        "bone22": {
+          "translate": [
+            {
+              "x": 0.62,
+              "y": 32.42
+            }
+          ]
+        },
+        "bone27": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.9,
+              "y": 162.21
+            }
+          ]
+        },
+        "bone28": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.49,
+              "y": 181.03
+            }
+          ]
+        },
+        "bone29": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.08,
+              "y": 197.38
+            }
+          ]
+        },
+        "bone30": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.08,
+              "y": 215.84
+            }
+          ]
+        },
+        "bone31": {
+          "translate": [
+            {
+              "time": 0.5,
+              "x": 0.08,
+              "y": 232.31
+            }
+          ]
+        },
+        "bone2": {
+          "translate": [
+            {
+              "x": -0.17,
+              "y": 66.55
+            }
+          ]
+        },
+        "bone3": {
+          "translate": [
+            {
+              "x": -0.66,
+              "y": 90.75
+            }
+          ]
+        },
+        "bone4": {
+          "translate": [
+            {
+              "x": 0.86,
+              "y": 115.82
+            }
+          ]
+        },
+        "bone5": {
+          "translate": [
+            {
+              "x": -1.13,
+              "y": 138.61
+            }
+          ]
+        },
+        "bone6": {
+          "translate": [
+            {
+              "x": -0.82
+            }
+          ]
+        },
+        "bone7": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 249.59
+            }
+          ]
+        },
+        "bone8": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 274.29
+            }
+          ]
+        },
+        "bone9": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 294.97
+            }
+          ]
+        },
+        "bone10": {
+          "translate": [
+            {
+              "x": -1.65,
+              "y": 314.93
+            }
+          ]
+        },
+        "bone11": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 334.89
+            }
+          ]
+        },
+        "bone12": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 355.64
+            }
+          ]
+        },
+        "bone13": {
+          "translate": [
+            {
+              "x": -1.97,
+              "y": 373.69
+            }
+          ]
+        },
+        "bone14": {
+          "translate": [
+            {
+              "x": -1.32,
+              "y": 380.09
+            }
+          ]
+        },
+        "bone23": {
+          "translate": [
+            {
+              "x": 1.55,
+              "y": 41.69
+            }
+          ]
+        },
+        "bone": {
+          "translate": [
+            {
+              "x": 1.41,
+              "y": 152.77
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.85
+            }
+          ]
+        },
+        "bone24": {
+          "translate": [
+            {
+              "x": 2.23,
+              "y": 192.19
+            }
+          ],
+          "scale": [
+            {
+              "x": -1.002
+            }
+          ]
+        },
+        "bone25": {
+          "translate": [
+            {
+              "x": 0.8,
+              "y": 226.69
+            }
+          ]
+        },
+        "bone26": {
+          "translate": [
+            {
+              "x": 1.3,
+              "y": 0.19
+            }
+          ],
+          "scale": [
+            {
+              "x": -1.004,
+              "y": 1.024
+            }
+          ]
+        }
+      }
+    }
+  }
+}

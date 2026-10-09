@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_objFlags": 0,
+  "_native": "",
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            137.159,
+            -55.333,
+            0
+          ]
+        },
+        {
+          "frame": 0.5,
+          "value": [
+            187.159,
+            -105.333,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": [],
+  "_name": "hand",
+  "_duration": 0.5,
+  "wrapMode": 22
+}

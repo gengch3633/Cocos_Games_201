@@ -1,0 +1,69 @@
+
+victory.png
+size: 1124,896
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2
+  rotate: false
+  xy: 979, 82
+  size: 123, 123
+  orig: 125, 125
+  offset: 1, 1
+  index: -1
+3
+  rotate: false
+  xy: 979, 207
+  size: 132, 134
+  orig: 134, 136
+  offset: 1, 1
+  index: -1
+gan1
+  rotate: false
+  xy: 2, 73
+  size: 518, 55
+  orig: 521, 57
+  offset: 2, 1
+  index: -1
+gan2
+  rotate: false
+  xy: 2, 16
+  size: 518, 55
+  orig: 521, 57
+  offset: 1, 1
+  index: -1
+hengfu
+  rotate: true
+  xy: 762, 187
+  size: 707, 215
+  orig: 710, 218
+  offset: 1, 2
+  index: -1
+huangguan
+  rotate: false
+  xy: 762, 2
+  size: 203, 183
+  orig: 205, 185
+  offset: 1, 1
+  index: -1
+light
+  rotate: false
+  xy: 2, 130
+  size: 758, 764
+  orig: 760, 766
+  offset: 1, 1
+  index: -1
+shan
+  rotate: true
+  xy: 522, 5
+  size: 123, 196
+  orig: 174, 222
+  offset: 25, 13
+  index: -1
+zi
+  rotate: true
+  xy: 979, 343
+  size: 551, 143
+  orig: 556, 146
+  offset: 2, 2
+  index: -1

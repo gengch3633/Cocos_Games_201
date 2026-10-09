@@ -1,0 +1,20 @@
+
+cueb_katae.png
+size: 481,35
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+04
+  rotate: false
+  xy: 2, 23
+  size: 406, 10
+  orig: 406, 10
+  offset: 0, 0
+  index: -1
+holland03
+  rotate: true
+  xy: 410, 2
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1

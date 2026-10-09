@@ -1,0 +1,151 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "data": {
+      "__id__": 1
+    },
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "PaymentItem",
+    "_parent": null,
+    "_children": [],
+    "_components": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 188,
+      "height": 88
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -300,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "__type__": "cc.Sprite",
+    "node": {
+      "__id__": 1
+    },
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ]
+  },
+  {
+    "__type__": "586b7yO5RlCA6JNRlmrycFp",
+    "node": {
+      "__id__": 1
+    },
+    "sprite": {
+      "__id__": 2
+    },
+    "spriteFrames": [
+      {
+        "__uuid__": "d5d3e839-74ef-49e1-8a58-690eb8e70d78"
+      },
+      {
+        "__uuid__": "35009192-0179-48ee-9c45-0e8b556e05c0"
+      },
+      {
+        "__uuid__": "0bbbe4a4-822c-4f1c-a49f-b436a5b8e254"
+      },
+      {
+        "__uuid__": "528d7a1e-acd8-4a4a-8f97-d0799d04b03a"
+      },
+      {
+        "__uuid__": "42e90ad9-163f-40ec-954b-ae0ae7514078"
+      },
+      {
+        "__uuid__": "3b08db8e-9ca5-4888-a07e-6616515872bb"
+      },
+      {
+        "__uuid__": "4f242d10-9c0a-4870-bbe7-ec4d9d893c4b"
+      },
+      {
+        "__uuid__": "5a9ae3ae-fb5b-4a32-ad07-b9e7cb71c3c3"
+      },
+      {
+        "__uuid__": "38724800-4725-4f4a-97cf-f7c3f0c3bee9"
+      },
+      {
+        "__uuid__": "132f565d-4526-4855-b18e-ed1c75cb6e97"
+      },
+      {
+        "__uuid__": "90e29278-346f-4abe-8e74-fc9d7e15d2c9"
+      },
+      {
+        "__uuid__": "19f25fec-e593-43d8-b283-b5f0c9d759b7"
+      },
+      {
+        "__uuid__": "9879deba-05ec-438d-924d-e0fd43324182"
+      },
+      {
+        "__uuid__": "83311503-d194-437e-aa51-e71fe22c3073"
+      },
+      {
+        "__uuid__": "53a0babf-4f98-4c3e-8b6d-ddcd97d6bffd"
+      },
+      {
+        "__uuid__": "0af0d0f2-edd6-4ca3-88af-55676b8482cf"
+      },
+      {
+        "__uuid__": "64a44e4f-e058-437f-8e16-b0568a5555d3"
+      },
+      {
+        "__uuid__": "88ff44d6-a21f-4b24-9f5f-6dbeae83af26"
+      },
+      {
+        "__uuid__": "9e91a5ef-ccce-4bf4-ac37-29108650d391"
+      },
+      {
+        "__uuid__": "82ac545e-9655-4bfc-abef-b168e309cc2e"
+      },
+      {
+        "__uuid__": "8695aafb-7738-4afc-8e3b-d27b9d6462ac"
+      },
+      {
+        "__uuid__": "48d09b85-d971-4052-87ed-e4cd58424c39"
+      },
+      {
+        "__uuid__": "9aa87d0d-4f41-416e-892e-18a1d70b74c7"
+      },
+      {
+        "__uuid__": "d7360541-e49b-4d3b-a591-c0f0e4347e67"
+      }
+    ]
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "168b1b48-0885-4e39-9a50-592ccc35f07e"
+    }
+  }
+]

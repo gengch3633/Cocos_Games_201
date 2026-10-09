@@ -1,0 +1,48 @@
+
+p6_zhib.png
+size: 729,321
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+6p_taiqbody
+  rotate: true
+  xy: 2, 2
+  size: 317, 462
+  orig: 317, 462
+  offset: 0, 0
+  index: -1
+6p_taiqel
+  rotate: false
+  xy: 702, 77
+  size: 24, 14
+  orig: 24, 14
+  offset: 0, 0
+  index: -1
+6p_taiqer
+  rotate: true
+  xy: 715, 57
+  size: 18, 12
+  orig: 18, 12
+  offset: 0, 0
+  index: -1
+6p_taiqerh
+  rotate: false
+  xy: 702, 49
+  size: 11, 26
+  orig: 11, 26
+  offset: 0, 0
+  index: -1
+6p_taiqhair
+  rotate: true
+  xy: 466, 93
+  size: 226, 258
+  orig: 226, 258
+  offset: 0, 0
+  index: -1
+6p_taiqhq
+  rotate: true
+  xy: 466, 11
+  size: 80, 234
+  orig: 80, 234
+  offset: 0, 0
+  index: -1

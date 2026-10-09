@@ -1,0 +1,76 @@
+
+jiesuo_changjing.png
+size: 2673,1034
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+内圈
+  rotate: true
+  xy: 2007, 30
+  size: 710, 148
+  orig: 710, 148
+  offset: 0, 0
+  index: -1
+前_发亮
+  rotate: false
+  xy: 1097, 250
+  size: 908, 490
+  orig: 910, 497
+  offset: 1, 6
+  index: -1
+外圈
+  rotate: false
+  xy: 1097, 742
+  size: 1231, 290
+  orig: 1237, 293
+  offset: 3, 3
+  index: -1
+扩散
+  rotate: true
+  xy: 2330, 593
+  size: 439, 341
+  orig: 441, 341
+  offset: 1, 0
+  index: -1
+扫光
+  rotate: false
+  xy: 2157, 51
+  size: 476, 540
+  orig: 476, 540
+  offset: 0, 0
+  index: -1
+星星
+  rotate: false
+  xy: 2157, 597
+  size: 146, 143
+  orig: 162, 159
+  offset: 16, 16
+  index: -1
+点点
+  rotate: false
+  xy: 2157, 24
+  size: 26, 25
+  orig: 28, 27
+  offset: 1, 1
+  index: -1
+箭头
+  rotate: true
+  xy: 1097, 2
+  size: 246, 339
+  orig: 262, 349
+  offset: 9, 5
+  index: -1
+线
+  rotate: false
+  xy: 2305, 602
+  size: 9, 138
+  orig: 37, 153
+  offset: 13, 3
+  index: -1
+背景
+  rotate: false
+  xy: 2, 24
+  size: 1093, 1008
+  orig: 1185, 1069
+  offset: 35, 31
+  index: -1
