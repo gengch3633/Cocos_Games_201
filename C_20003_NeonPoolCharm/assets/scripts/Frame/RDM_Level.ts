@@ -31,6 +31,8 @@ export default class RDM_Level extends cc.Component {
 
     coin: string = "0";
     guideInedx: number = 0;
+    _newbieWithdrawGuide = false;
+    _newbieGuideFinished = false;
 
     openGuide() {
         this.guide.active = true;
@@ -85,8 +87,16 @@ export default class RDM_Level extends cc.Component {
                 object_name: "new_8"
             }, true);
             this.node.destroy();
-            cc.director.emit("NEW_HAND_FINISH");
+            this._finishNewbieGuide();
         }
+    }
+
+    _finishNewbieGuide() {
+        if (!this._newbieWithdrawGuide || this._newbieGuideFinished) {
+            return;
+        }
+        this._newbieGuideFinished = true;
+        cc.director.emit("NEW_HAND_FINISH");
     }
 
     onLoad() {
@@ -96,6 +106,7 @@ export default class RDM_Level extends cc.Component {
         this.updateUI();
         this.guide.active = false;
         if (FrameData.saveData.guideInedx <= 1) {
+            this._newbieWithdrawGuide = true;
             FrameData.saveData.guideInedx = 2;
             this.scheduleOnce(function () {
                 e.openGuide();
@@ -145,6 +156,9 @@ export default class RDM_Level extends cc.Component {
 
     onBtnEvent(e, t) {
         if ("0" == t) {
+            if (this._newbieWithdrawGuide && this.guideInedx >= 2) {
+                this._finishNewbieGuide();
+            }
             this.node.destroy();
         } else if ("3" == t) {
             this.guideInedx++;
