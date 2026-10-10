@@ -179,7 +179,10 @@ export default class SpriteRayComp extends cc.Component {
         this.node.height = t;
         this.normal_node.active = !n;
         this.supper_node.active = n;
-        const r = i.getComponent("Ball2DControl").ballID;
+        if (!this.lineColor) return;
+        const ball = i && i.getComponent("Ball2DControl");
+        if (!ball || !this.normal_xuli_line) return;
+        const r = ball.ballID;
         let l = this.lineColor.get(r);
         l || (l = this.lineColor.get(201));
         this.normal_xuli_line.color = l.normal_xuli;

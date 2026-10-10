@@ -213,7 +213,7 @@ export default class game_table_editor extends cc.Component {
 
     getMatNum() {
         const t = [];
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const i = entry[1];
             if (t.indexOf(i.ballMatIdx) < 0) {
                 t.push(i.ballMatIdx);
@@ -229,7 +229,7 @@ export default class game_table_editor extends cc.Component {
     checkBallClicked(e) {
         let o = 30;
         let n = null;
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const r = entry[0];
             const l = cc.v2(r.x, r.y);
             const s = cc.Vec2.distance(e, l);
@@ -253,7 +253,7 @@ export default class game_table_editor extends cc.Component {
         e = e || 0;
         const o = [];
         let n = 100 * BallLogicMgr.BallIDType_Normal;
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const l = entry[0];
             const s = entry[1];
             const c = BallLogicMgr.pack_BallInfo(n, s.ballType, Math.floor(l.x), Math.floor(l.y), s.ballMatIdx);
@@ -272,7 +272,7 @@ export default class game_table_editor extends cc.Component {
     }
 
     clear() {
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const n = entry[0];
             n.parent = null;
             n.destroy();
@@ -293,7 +293,7 @@ export default class game_table_editor extends cc.Component {
 
     checkNewPosAvailable(e, t) {
         const n = cc.find("node_table", this.node).getChildByName("node_ball_model_white");
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const r = entry[0];
             if (r != e) {
                 const l = cc.Vec2.distance(cc.v2(r.x, r.y), cc.v2(t.x, t.y));
@@ -401,7 +401,7 @@ export default class game_table_editor extends cc.Component {
 
     checkBallsCollide() {
         const t = [cc.find("node_table", this.node).getChildByName("node_ball_model_white")];
-        for (const entry of this.ballMap.entries()) {
+        for (const entry of Array.from(this.ballMap.entries())) {
             const i = entry[0];
             t.push(i);
         }

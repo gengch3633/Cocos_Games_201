@@ -600,7 +600,7 @@ export default class game_table extends cc.Component {
 
     getWhiteBallFuHuoP(e) {
         const o = 2 * (GlobalConfig.ball_radius + 3);
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const a = entry[0];
             const r = entry[1];
             if (a != W) {
@@ -632,7 +632,7 @@ export default class game_table extends cc.Component {
         const t = this.ball_white_pos_node.position;
         let o = 0;
         let n = null;
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const r = entry[1];
             const l = r.getComponent("Ball2DControl");
             if (W == l.ballID) {
@@ -673,7 +673,7 @@ export default class game_table extends cc.Component {
     }
 
     destroyAllBall() {
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const n = entry[0];
             const i = entry[1];
             if (W == i.getComponent("Ball2DControl").ballID) i.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, 0); else {
@@ -755,7 +755,7 @@ export default class game_table extends cc.Component {
 
     recv_ballDestroy(e) {
         const o = e.ballID;
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const a = entry[0];
             const r = entry[1];
             if (r.getComponent("Ball2DControl").ballID == o) {
@@ -781,7 +781,7 @@ export default class game_table extends cc.Component {
         }
         let i = o;
         let a = null;
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const s = entry[0];
             const c = entry[1];
             if (t) {
@@ -870,7 +870,7 @@ export default class game_table extends cc.Component {
     getXiaoQiuHoldeIndex() {
         let t = null;
         let o = null;
-        for (const entry of CueHelper.ballMgr.entries()) {
+        for (const entry of Array.from(CueHelper.ballMgr.entries())) {
             const a = entry[1].getComponent("Ball2DControl");
             if (W == a.ballID) {
             } else if (!a.isOnDestroy()) {
@@ -1189,7 +1189,7 @@ export default class game_table extends cc.Component {
         const o = this;
         console.log("oneBallIsStop", e, t);
         let i = false;
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const r = entry[1];
             if (r.getComponent("Ball2DControl").isOnDeapMoving()) {
                 i = true;
@@ -1232,7 +1232,7 @@ export default class game_table extends cc.Component {
                 return n.oneBallIsStop(i, o);
             }, 1300) : n.oneBallIsStop(i, o);
         };
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const key = entry[0];
             const ballNode = entry[1];
             if (ballNode == e) {
@@ -1405,7 +1405,7 @@ export default class game_table extends cc.Component {
         if (this.isAutoPlaying != e) {
             this.isAutoPlaying = e;
             let i;
-            for (const entry of this.ballMgr.entries()) {
+            for (const entry of Array.from(this.ballMgr.entries())) {
                 i = entry[1];
                 i.getComponent(cc.PhysicsCircleCollider).sensor = e;
                 i.getComponent("Ball2DControl").isAutoPlaying = e;
@@ -1684,12 +1684,14 @@ export default class game_table extends cc.Component {
         const i = o.ball3D;
         const a = cc.v2(i.x, i.y);
         let r = null;
-        for (let l = 0; l < this._xiaoQiuHoleEffectArray.length; l++) {
-            const c = this._xiaoQiuHoleEffectArray[l].parent;
-            const u = cc.v2(c.x, c.y).subSelf(a);
-            if (u.angle(t) <= BallLogicMgr.ballDirModifyThreshold) {
-                r = u;
-                break;
+        if (t && t.magSqr() > 1e-8) {
+            for (let l = 0; l < this._xiaoQiuHoleEffectArray.length; l++) {
+                const c = this._xiaoQiuHoleEffectArray[l].parent;
+                const u = cc.v2(c.x, c.y).subSelf(a);
+                if (u.magSqr() > 1e-8 && u.angle(t) <= BallLogicMgr.ballDirModifyThreshold) {
+                    r = u;
+                    break;
+                }
             }
         }
         n && n(r);
@@ -1863,7 +1865,7 @@ export default class game_table extends cc.Component {
     }
 
     checkBallMatIdxInMap(e) {
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const i = entry[1];
             if (W == i.getComponent("Ball2DControl").ballID) {
             } else if (i.getComponent("Ball2DControl").ball3D.getComponent("BallMaterialComp").getMatIdx() == e) {
@@ -2040,7 +2042,7 @@ export default class game_table extends cc.Component {
         console.log("check touch p(scren p) : " + e);
         let i = o;
         let a = null;
-        for (const entry of this.ballMgr.entries()) {
+        for (const entry of Array.from(this.ballMgr.entries())) {
             const s = entry[0];
             const c = entry[1];
             if (t) {
@@ -2108,7 +2110,7 @@ export default class game_table extends cc.Component {
     getDirToTargetBall() {
         let t = null;
         let o = null;
-        for (const entry of CueHelper.ballMgr.entries()) {
+        for (const entry of Array.from(CueHelper.ballMgr.entries())) {
             const a = entry[1];
             const r = a.getComponent("Ball2DControl");
             if (W == r.ballID) {

@@ -8,8 +8,10 @@ import PropDataSys from "./PropDataSys";
 EngineUtil;
 
 const v = Math.PI / 180;
-const P = GlobalConfig.ball_radius;
-const S = P * P * 4;
+
+function aimBallRadius() {
+    return GlobalConfig.ball_radius || 18.7;
+}
 
 const { ccclass, property } = cc._decorator;
 
@@ -65,7 +67,7 @@ export default class CircleRayComp extends cc.Component {
         for (let s = (i[0], 0); s < i.length; s++) {
             i[s], i[(s + 1) % i.length];
             const c = MyCircleColliderUtility.collideWhitLine({
-                r: GlobalConfig.ball_radius,
+                r: aimBallRadius(),
                 position: new cc.v2(t.x, t.y)
             }, i[(s + 1) % i.length], i[s], o, null);
             if (c) {
@@ -79,8 +81,7 @@ export default class CircleRayComp extends cc.Component {
         return a || n.end;
     }
 
-    onLoad() {
-    }
+    onLoad() {}
 
     getLineLen(e, t) {
         e = new cc.Vec2(e.x, e.y);
@@ -155,10 +156,11 @@ export default class CircleRayComp extends cc.Component {
         let p = null;
         let d = null;
         const _ = this.node.getChildByName("plane_table").getChildByName("node_graphics").getComponent("DrawComp");
-        for (const g of t.entries()) {
+        for (const g of Array.from(t.entries())) {
             const y = g[0];
             const C = g[1];
-            if (100 * BallLogicMgr.BallIDType_White != C.getComponent("Ball2DControl").ballID) {
+            const whiteId = 100 * (BallLogicMgr.BallIDType_White || 1);
+            if (whiteId != C.getComponent("Ball2DControl").ballID) {
                 let P = null;
                 let S = null;
                 const I = C;
@@ -182,9 +184,10 @@ export default class CircleRayComp extends cc.Component {
                             P = E;
                         } else _ && _.drawcircle(cc.v2(E.x + e.x, E.y + e.y), I, "#0000ff");
                         if (P) {
-                            P.len();
                             w = P.angle(n);
-                            P.len() < .5 && w > 3 || Math.sign(n.x) == Math.sign(P.x) && Math.sign(n.y) == Math.sign(P.y) || (P = null);
+                            const aimDir = cc.v2(n.x, n.y);
+                            const forward = aimDir.magSqr() > 1e-8 && P.dot(aimDir) > 0;
+                            if (!(P.len() < .5 && w > 3) && !forward) P = null;
                             if (P) {
                                 const O = cc.v2(P.x + e.x, P.y + e.y);
                                 const M = cc.v2(S.x - O.x, S.y - O.y);
@@ -228,7 +231,7 @@ export default class CircleRayComp extends cc.Component {
                 U = k.is_polygon;
                 if (A >= k.len) p = null; else {
                     _ && _.drawcircle(cc.v2(p.x + e.x, p.y + e.y), null, "#ffff00");
-                    N.getComponent("SpriteRayComp").reset(R / v, x + (i ? GlobalConfig.ball_radius - 4 : -GlobalConfig.ball_radius), o, i);
+                    N.getComponent("SpriteRayComp").reset(R / v, x + (i ? aimBallRadius() - 4 : -aimBallRadius()), o, i);
                     N.x = e.x;
                     N.y = e.y;
                     N.active = true;
@@ -236,11 +239,12 @@ export default class CircleRayComp extends cc.Component {
                     const G = Math.atan2(M.y, M.x);
                     let F = i ? this.getLineLen(u, M).len + 25 : CueDataSys.getUsedCueAimLineLen();
                     !i && BallLogicMgr.useSimCueAttri && BallLogicMgr.simAimming && (F = BallLogicMgr.simAimming);
+                    if (!(F > 0)) F = 90;
                     j = cc.find("plane_table", this.node).getChildByName("sprite_dir_yellow");
                     j.x = u.x;
                     j.y = u.y;
-                    j.getComponent("SpriteRayComp").resetWillGo(G / v, F, o, i, d);
                     j.active = true;
+                    j.getComponent("SpriteRayComp").resetWillGo(G / v, F, o, i, d);
                 }
             } else p = null;
         }
@@ -258,12 +262,12 @@ export default class CircleRayComp extends cc.Component {
             U = H.is_polygon;
             x = H.len;
             const V = i ? x + 4 : x;
-            const Y = n.normalize().mulSelf(U ? V : x - GlobalConfig.ball_radius).addSelf(this.mid);
+            const Y = n.normalize().mulSelf(U ? V : x - aimBallRadius()).addSelf(this.mid);
             this.virtualball.x = Y.x;
             this.virtualball.y = Y.y;
             this.virtualball.active = true;
-            const W = U ? -GlobalConfig.ball_radius : -2 * GlobalConfig.ball_radius;
-            const J = U ? GlobalConfig.ball_radius : -4;
+            const W = U ? -aimBallRadius() : -2 * aimBallRadius();
+            const J = U ? aimBallRadius() : -4;
             N.getComponent("SpriteRayComp").reset(R / v, x + (i ? J : W), o, i);
         }
         return {
@@ -281,29 +285,23 @@ export default class CircleRayComp extends cc.Component {
     }
 
     foundCirclePoint(e, t, o) {
-        if (0 == o.y) {
-            o.y = 1e-10;
-        }
-        if (0 == o.x) {
-            o.x = 1e-10;
-        }
-        const n = cc.v2(t.x - e.x, t.y - e.y);
-        const i = o.y / o.x;
-        const a = S;
-        const r = 1 + i * i;
-        const l = -(2 * n.x + 2 * n.y * i);
-        const s = l * l - 4 * r * (n.x * n.x + n.y * n.y - a);
-        const c = Math.sqrt(s);
-        const u = (-l + c) / (2 * r);
-        const p = (-l - c) / (2 * r);
-        const d = u * i;
-        const _ = p * i;
-        if (u && p && d && _) {
-            o = cc.v2(u, d);
-            const f = cc.v2(p, _);
-            return o.mag() < f.mag() ? o : f;
-        }
-        return null;
+        const radius = aimBallRadius() * 2;
+        const dir = cc.v2(o.x, o.y);
+        if (dir.magSqr() < 1e-8) return null;
+        dir.normalizeSelf();
+        const center = cc.v2(t.x - e.x, t.y - e.y);
+        const b = -2 * dir.dot(center);
+        const c = center.magSqr() - radius * radius;
+        const disc = b * b - 4 * c;
+        if (disc < 0) return null;
+        const root = Math.sqrt(disc);
+        const t1 = (-b - root) / 2;
+        const t2 = (-b + root) / 2;
+        let hit = -1;
+        if (t1 >= 0) hit = t1;
+        if (t2 >= 0 && (hit < 0 || t2 < hit)) hit = t2;
+        if (hit < 0) return null;
+        return dir.mul(hit);
     }
 
     getColliderP(e, t) {
