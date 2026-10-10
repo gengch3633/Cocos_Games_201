@@ -1,8 +1,5 @@
-let e = require;let t = module;let o = exports;
-    "use strict";
-
-    cc._RF.push(t, "c4f990Bjp1JXoiizUkmYKM1", "crypto-js");
-    n = function () {
+"use strict";
+var n = function () {
       var e,
         t,
         o,
@@ -2449,6 +2446,5 @@ let e = require;let t = module;let o = exports;
         }
       };
       return n;
-    }, "object" == typeof o ? t.exports = o = n() : "function" == typeof define && define.amd ? define([], n) : (void 0).CryptoJS = n();
-    var n;
-    cc._RF.pop();
+    };
+module.exports = n();

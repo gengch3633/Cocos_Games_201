@@ -1,7 +1,4 @@
-let e = require;let t = module;
-    "use strict";
-
-    cc._RF.push(t, "8b0fbftuYdJwr+9tS9+ITEB", "regeneratorRuntime");
+"use strict";
     function o(e) {
       return (o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
         return typeof e;
@@ -310,4 +307,3 @@ let e = require;let t = module;
         }
       };
     })();
-    cc._RF.pop();

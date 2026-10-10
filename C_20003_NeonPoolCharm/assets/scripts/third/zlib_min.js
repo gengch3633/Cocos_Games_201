@@ -1,8 +1,5 @@
-let e = require;let t = module;
-    "use strict";
-
-    cc._RF.push(t, "d53e4HtJVJBhbqWTPhO7RUM", "zlib_min");
-    t.exports = function () {
+"use strict";
+module.exports = function () {
       this || window;
       function e(e) {
         throw e;
@@ -1051,4 +1048,3 @@ let e = require;let t = module;
         DYNAMIC: Z.k
       });
     };
-    cc._RF.pop();
