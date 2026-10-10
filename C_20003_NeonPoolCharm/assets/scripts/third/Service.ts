@@ -5,7 +5,9 @@ import SystemDataSys from "./SystemDataSys";
 import TimeUtils from "./TimeUtils";
 import UrlMgr from "./UrlMgr";
 
-declare const CryptoJS: any;
+declare function require(name: string): any;
+
+const CryptoJS = require("crypto-js");
 
 export default class Service {
     static genSign(e, t, o) {

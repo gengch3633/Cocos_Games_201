@@ -2447,4 +2447,9 @@ var n = function () {
       };
       return n;
     };
-module.exports = n();
+var CryptoJS = n();
+CryptoJS.default = CryptoJS;
+if (typeof window !== "undefined") {
+    window.CryptoJS = CryptoJS;
+}
+module.exports = CryptoJS;

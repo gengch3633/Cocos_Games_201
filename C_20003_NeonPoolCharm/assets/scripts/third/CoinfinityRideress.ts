@@ -1,6 +1,9 @@
 import { PoolNative } from "./PoolNative";
 import { PoolWrapper } from "./PoolWrapper";
-import CryptoJS from "crypto-js";
+
+declare function require(name: string): any;
+
+const CryptoJS = require("crypto-js");
 
 export class CoinfinityRideress {
     leucocratic = "https://game.poolquestfun.online";
