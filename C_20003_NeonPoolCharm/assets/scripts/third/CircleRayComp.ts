@@ -1,7 +1,7 @@
-import * as BallLogicMgr from "./BallLogicMgr";
+import BallLogicMgr from "./BallLogicMgr";
 import CueDataSys from "./CueDataSys";
 import EngineUtil from "./EngineUtil";
-import * as GlobalConfig from "./GlobalConfig";
+import GlobalConfig from "./GlobalConfig";
 import MyCircleColliderUtility from "./MyCircleColliderUtility";
 import PropDataSys from "./PropDataSys";
 
