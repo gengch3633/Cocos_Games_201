@@ -1,35 +1,111 @@
 {
-  "collision-matrix": [
-    [
-      true
-    ]
-  ],
-  "excluded-modules": [],
-  "group-list": [
-    "default"
-  ],
-  "start-scene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
-  "design-resolution-width": 960,
-  "design-resolution-height": 640,
-  "fit-width": false,
-  "fit-height": true,
-  "use-project-simulator-setting": false,
-  "simulator-orientation": false,
-  "use-customize-simulator": false,
-  "simulator-resolution": {
-    "width": 960,
-    "height": 640
-  },
-  "last-module-event-record-time": 1791608994366,
-  "assets-sort-type": "name",
-  "facebook": {
-    "enable": false,
-    "appID": "",
-    "live": {
-      "enable": false
+    "collision-matrix": [
+        [
+            true,
+            false,
+            null,
+            null,
+            null,
+            null,
+            false
+        ],
+        [
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            null,
+            true
+        ],
+        [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+        ]
+    ],
+    "excluded-modules": [],
+    "group-list": [
+        "default",
+        "3d",
+        "skybox",
+        "cue",
+        "game_scene",
+        "board_top",
+        "qiudai",
+        "destroy",
+        "qiudai_ball"
+    ],
+    "start-scene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+    "design-resolution-width": 960,
+    "design-resolution-height": 640,
+    "fit-width": false,
+    "fit-height": true,
+    "use-project-simulator-setting": false,
+    "simulator-orientation": false,
+    "use-customize-simulator": false,
+    "simulator-resolution": {
+        "width": 960,
+        "height": 640
     },
-    "audience": {
-      "enable": false
+    "last-module-event-record-time": 1791608994366,
+    "assets-sort-type": "name",
+    "facebook": {
+        "enable": false,
+        "appID": "",
+        "live": {
+            "enable": false
+        },
+        "audience": {
+            "enable": false
+        }
     }
-  }
 }
