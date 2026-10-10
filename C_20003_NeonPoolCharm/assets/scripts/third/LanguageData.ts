@@ -1,4 +1,6 @@
-import Polyglot from "./polyglot.min";
+declare function require(name: string): any;
+
+const Polyglot = require("./polyglot.min");
 
 let polyglot = null;
 

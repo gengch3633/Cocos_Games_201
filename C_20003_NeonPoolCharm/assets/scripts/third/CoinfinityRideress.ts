@@ -110,6 +110,9 @@ export class CoinfinityRideress {
             } else {
                 this.disorganiser();
             }
+        } else if (!cc.sys.isNative) {
+            console.log("web loading: native new-ball callback missing, continue");
+            this.disorganiser();
         }
     }
 
