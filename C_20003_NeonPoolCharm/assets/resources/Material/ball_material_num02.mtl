@@ -4,7 +4,7 @@
   "_objFlags": 0,
   "_native": "",
   "_effectAsset": {
-    "__uuid__": "3431130e-5c60-4b02-89fd-f765993d66e2"
+    "__uuid__": "abc2cb62-7852-4525-a90d-d474487b88f2"
   },
   "_techniqueData": {
     "0": {
@@ -37,6 +37,9 @@
           "g": 22,
           "b": 22,
           "a": 255
+        },
+        "diffuseTexture": {
+          "__uuid__": "3431130e-5c60-4b02-89fd-f765993d66e2"
         }
       }
     }
