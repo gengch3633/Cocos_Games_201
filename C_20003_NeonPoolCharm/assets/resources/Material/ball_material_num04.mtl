@@ -14,26 +14,11 @@
         "USE_ALPHA_TEST": false
       },
       "props": {
-        "glossiness": 1,
         "diffuseColor": {
           "__type__": "cc.Color",
           "r": 255,
           "g": 255,
           "b": 255,
-          "a": 255
-        },
-        "specularColor": {
-          "__type__": "cc.Color",
-          "r": 255,
-          "g": 255,
-          "b": 255,
-          "a": 255
-        },
-        "emissiveColor": {
-          "__type__": "cc.Color",
-          "r": 22,
-          "g": 22,
-          "b": 22,
           "a": 255
         },
         "diffuseTexture": {
