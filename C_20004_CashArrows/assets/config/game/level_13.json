@@ -1,0 +1,182 @@
+{
+  "XSize": 8,
+  "YSize": 8,
+  "Arrows": [
+    {
+      "Dx": 0,
+      "Dy": -1,
+      "X": 3,
+      "Y": 3,
+      "BendCount": 2,
+      "Color": "50E4DAFF",
+      "Indices": [
+        27,
+        35,
+        36,
+        44,
+        52
+      ]
+    },
+    {
+      "Dx": 0,
+      "Dy": -1,
+      "X": 3,
+      "Y": 5,
+      "BendCount": 3,
+      "Color": "51E5DBFF",
+      "Indices": [
+        43,
+        51,
+        59,
+        60,
+        61,
+        53,
+        45,
+        37,
+        38
+      ]
+    },
+    {
+      "Dx": -1,
+      "Dy": 0,
+      "X": 6,
+      "Y": 5,
+      "BendCount": 3,
+      "Color": "F38181FF",
+      "Indices": [
+        46,
+        47,
+        39,
+        31,
+        30,
+        29,
+        28,
+        20
+      ]
+    },
+    {
+      "Dx": -1,
+      "Dy": 0,
+      "X": 2,
+      "Y": 1,
+      "BendCount": 0,
+      "Color": "F38181FF",
+      "Indices": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "Dx": -1,
+      "Dy": 0,
+      "X": 5,
+      "Y": 2,
+      "BendCount": 2,
+      "Color": "F38181FF",
+      "Indices": [
+        21,
+        22,
+        23,
+        15,
+        7,
+        6,
+        5,
+        4
+      ]
+    },
+    {
+      "Dx": 0,
+      "Dy": 1,
+      "X": 2,
+      "Y": 4,
+      "BendCount": 1,
+      "Color": "FCC2F0FF",
+      "Indices": [
+        34,
+        26,
+        18,
+        19
+      ]
+    },
+    {
+      "Dx": -1,
+      "Dy": 0,
+      "X": 1,
+      "Y": 5,
+      "BendCount": 4,
+      "Color": "F38181FF",
+      "Indices": [
+        41,
+        42,
+        50,
+        58,
+        57,
+        56,
+        48,
+        49
+      ]
+    },
+    {
+      "Dx": 0,
+      "Dy": 1,
+      "X": 1,
+      "Y": 1,
+      "BendCount": 1,
+      "Color": "FCC2F0FF",
+      "Indices": [
+        9,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "Dx": 0,
+      "Dy": -1,
+      "X": 0,
+      "Y": 0,
+      "BendCount": 1,
+      "Color": "51E5DBFF",
+      "Indices": [
+        0,
+        8,
+        16,
+        17
+      ]
+    },
+    {
+      "Dx": -1,
+      "Dy": 0,
+      "X": 0,
+      "Y": 3,
+      "BendCount": 3,
+      "Color": "F28181FF",
+      "Indices": [
+        24,
+        25,
+        33,
+        32,
+        40
+      ]
+    },
+    {
+      "Dx": 1,
+      "Dy": 0,
+      "X": 7,
+      "Y": 6,
+      "BendCount": 2,
+      "Color": "FFDB42FF",
+      "Indices": [
+        55,
+        54,
+        62,
+        63
+      ]
+    }
+  ],
+  "WayBlockers": [],
+  "BlackHoles": []
+}

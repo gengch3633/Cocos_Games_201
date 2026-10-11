@@ -1,0 +1,71 @@
+{
+  "sidebar": 10000,
+  "money": 3000,
+  "speedtime": 300,
+  "moneytime": 300,
+  "autotime": 300,
+  "exitmoney": 600,
+  "signmoney": 10000,
+  "rubishgold": 20,
+  "storeshuaxin": 600,
+  "assessspend": 10000,
+  "jianbao_clock": 3,
+  "dushi_clock": 4,
+  "fenxiang_time": 3,
+  "cuigeng_time": 3,
+  "fuzhuline_clear_limit": 10,
+  "dushi_time": 1800,
+  "qitaoauto": 300,
+  "rubish6": [
+    4,
+    8
+  ],
+  "rubish5": [
+    3,
+    5
+  ],
+  "rubish4": [
+    3,
+    6
+  ],
+  "rubish3": [
+    5,
+    8
+  ],
+  "rubish2": [
+    6,
+    10
+  ],
+  "rubish1": [
+    8,
+    12
+  ],
+  "qitaomoney": [
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.5,
+    1,
+    2,
+    5,
+    10,
+    100,
+    500,
+    1000
+  ],
+  "qitaopoint": [
+    4000,
+    1250,
+    1250,
+    2000,
+    647,
+    450,
+    270,
+    90,
+    30,
+    9,
+    3,
+    1
+  ]
+}

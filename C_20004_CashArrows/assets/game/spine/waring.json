@@ -1,0 +1,1077 @@
+{
+  "skeleton": {
+    "hash": "D6tNpRSuIThjV7aIDUVDRBBfzUU",
+    "spine": "3.8.75",
+    "x": -1158.66,
+    "y": -848.39,
+    "width": 2437.09,
+    "height": 1700,
+    "images": "",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "bianyuan1",
+      "parent": "root"
+    },
+    {
+      "name": "骨骼",
+      "parent": "bianyuan1",
+      "y": -456
+    },
+    {
+      "name": "bianyuan2",
+      "parent": "root"
+    },
+    {
+      "name": "骨骼2",
+      "parent": "bianyuan2",
+      "y": 456
+    },
+    {
+      "name": "zhongjian",
+      "parent": "root"
+    },
+    {
+      "name": "jiantou",
+      "parent": "zhongjian"
+    },
+    {
+      "name": "you",
+      "parent": "jiantou"
+    },
+    {
+      "name": "zuo",
+      "parent": "jiantou"
+    },
+    {
+      "name": "kulou",
+      "parent": "root",
+      "y": 130
+    },
+    {
+      "name": "骨骼3",
+      "parent": "kulou"
+    }
+  ],
+  "slots": [
+    {
+      "name": "img/组 100",
+      "bone": "bianyuan1",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "img/组 102",
+      "bone": "bianyuan2",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "img/组 101",
+      "bone": "bianyuan1",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "img/组 103",
+      "bone": "bianyuan2",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "bianyuan1",
+      "bone": "bianyuan1",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "bianyuan2",
+      "bone": "bianyuan2",
+      "attachment": "img/组 100"
+    },
+    {
+      "name": "img/矩形 1109",
+      "bone": "zhongjian",
+      "attachment": "img/矩形 1109"
+    },
+    {
+      "name": "jiantou",
+      "bone": "jiantou"
+    },
+    {
+      "name": "img/箭头",
+      "bone": "you",
+      "attachment": "img/箭头"
+    },
+    {
+      "name": "img/箭头3",
+      "bone": "zuo",
+      "attachment": "img/箭头2"
+    },
+    {
+      "name": "img/箭头4",
+      "bone": "zuo",
+      "attachment": "img/箭头2"
+    },
+    {
+      "name": "img/箭头2",
+      "bone": "you",
+      "attachment": "img/箭头"
+    },
+    {
+      "name": "zhongjian",
+      "bone": "zhongjian",
+      "attachment": "img/困难"
+    },
+    {
+      "name": "img/矩形 1113",
+      "bone": "kulou",
+      "attachment": "img/矩形 1113"
+    },
+    {
+      "name": "zhongjian2",
+      "bone": "骨骼3",
+      "attachment": "img/骷髅"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "img/矩形 1109": {
+          "img/矩形 1109": {
+            "width": 424,
+            "height": 116
+          }
+        },
+        "img/组 100": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              2,
+              160.59,
+              -20.39,
+              1,
+              1,
+              2,
+              -372.41,
+              -20.39,
+              1,
+              1,
+              2,
+              -372.41,
+              23.61,
+              1,
+              1,
+              2,
+              160.59,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "img/组 101": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              2,
+              718.96,
+              -20.39,
+              1,
+              1,
+              2,
+              185.96,
+              -20.39,
+              1,
+              1,
+              2,
+              185.96,
+              23.61,
+              1,
+              1,
+              2,
+              718.96,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "img/组 102": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              4,
+              -625.66,
+              -20.39,
+              1,
+              1,
+              4,
+              -1158.66,
+              -20.39,
+              1,
+              1,
+              4,
+              -1158.66,
+              23.61,
+              1,
+              1,
+              4,
+              -625.66,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "img/组 103": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              4,
+              -67.29,
+              -20.39,
+              1,
+              1,
+              4,
+              -600.29,
+              -20.39,
+              1,
+              1,
+              4,
+              -600.29,
+              23.61,
+              1,
+              1,
+              4,
+              -67.29,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "zhongjian2": {
+          "img/骷髅": {
+            "x": 0.5,
+            "width": 75,
+            "height": 67
+          }
+        },
+        "bianyuan1": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              2,
+              1278.43,
+              -20.39,
+              1,
+              1,
+              2,
+              745.43,
+              -20.39,
+              1,
+              1,
+              2,
+              745.43,
+              23.61,
+              1,
+              1,
+              2,
+              1278.43,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "bianyuan2": {
+          "img/组 100": {
+            "type": "mesh",
+            "hull": 4,
+            "width": 533,
+            "height": 44,
+            "uvs": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              1,
+              3,
+              0
+            ],
+            "vertices": [
+              1,
+              4,
+              492.18,
+              -20.39,
+              1,
+              1,
+              4,
+              -40.82,
+              -20.39,
+              1,
+              1,
+              4,
+              -40.82,
+              23.61,
+              1,
+              1,
+              4,
+              492.18,
+              23.61,
+              1
+            ],
+            "edges": [
+              0,
+              2,
+              2,
+              4,
+              4,
+              6,
+              0,
+              6
+            ]
+          }
+        },
+        "img/矩形 1113": {
+          "img/矩形 1113": {
+            "x": 0.5,
+            "width": 165,
+            "height": 170
+          }
+        },
+        "img/箭头2": {
+          "img/箭头": {
+            "x": 151.87,
+            "y": 1.09,
+            "width": 92,
+            "height": 112
+          }
+        },
+        "img/箭头3": {
+          "img/箭头2": {
+            "path": "img/箭头",
+            "color": "ffffff64",
+            "x": -61.8,
+            "y": 1.09,
+            "scaleX": -1,
+            "width": 92,
+            "height": 112
+          }
+        },
+        "img/箭头4": {
+          "img/箭头2": {
+            "path": "img/箭头",
+            "x": -153.89,
+            "y": 1.09,
+            "scaleX": -1,
+            "width": 92,
+            "height": 112
+          }
+        },
+        "zhongjian": {
+          "img/困难": {
+            "x": 0.5,
+            "width": 113,
+            "height": 60
+          }
+        },
+        "jiantou": {
+          "jiantoumengban": {
+            "type": "clipping",
+            "end": "jiantou",
+            "vertexCount": 12,
+            "color": "ce3a3aff",
+            "vertices": [
+              -190.74,
+              54.43,
+              -186.79,
+              56.89,
+              205.88,
+              57.9,
+              210.46,
+              55.01,
+              212.23,
+              49.01,
+              193.18,
+              -48.53,
+              190.17,
+              -54.1,
+              183.79,
+              -56.66,
+              -206.93,
+              -57.16,
+              -210.67,
+              -53.72,
+              -212.52,
+              -47,
+              -193.47,
+              50.28
+            ]
+          }
+        },
+        "img/箭头": {
+          "img/箭头": {
+            "color": "ffffff64",
+            "x": 66.28,
+            "y": 1.09,
+            "width": 92,
+            "height": 112
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "bianyuan1": {
+      "slots": {
+        "img/矩形 1113": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "zhongjian2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 101": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 100": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头4": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/矩形 1109": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头3": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "zhongjian": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "bianyuan1": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "骨骼": {
+          "translate": [
+            {},
+            {
+              "time": 3,
+              "x": -435.07
+            }
+          ],
+          "scale": [
+            {
+              "y": 0.1
+            },
+            {
+              "time": 0.5,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5
+            },
+            {
+              "time": 3,
+              "y": 0.1
+            }
+          ]
+        },
+        "骨骼2": {
+          "translate": [
+            {},
+            {
+              "time": 3,
+              "x": 677.44
+            }
+          ],
+          "scale": [
+            {
+              "y": 0.1
+            },
+            {
+              "time": 0.5,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5
+            },
+            {
+              "time": 3,
+              "y": 0.1
+            }
+          ]
+        }
+      }
+    },
+    "bianyuan2": {
+      "slots": {
+        "bianyuan2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "zhongjian2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/矩形 1113": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 103": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头4": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 102": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/矩形 1109": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/箭头3": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "zhongjian": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "骨骼": {
+          "translate": [
+            {},
+            {
+              "time": 3,
+              "x": -435.07
+            }
+          ],
+          "scale": [
+            {
+              "y": 0.1
+            },
+            {
+              "time": 0.5,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5
+            },
+            {
+              "time": 3,
+              "y": 0.1
+            }
+          ]
+        },
+        "骨骼2": {
+          "translate": [
+            {},
+            {
+              "time": 3,
+              "x": -435.07
+            }
+          ],
+          "scale": [
+            {
+              "y": 0.1
+            },
+            {
+              "time": 0.5,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5
+            },
+            {
+              "time": 3,
+              "y": 0.1
+            }
+          ]
+        }
+      }
+    },
+    "zhongjian": {
+      "slots": {
+        "bianyuan2": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 101": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 103": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 100": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/组 102": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "bianyuan1": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "zhongjian": {
+          "scale": [
+            {
+              "x": 1.74,
+              "y": 0.02
+            },
+            {
+              "time": 0.2,
+              "x": 0.791,
+              "y": 1.607
+            },
+            {
+              "time": 0.3333,
+              "x": 1.243,
+              "y": 0.913
+            },
+            {
+              "time": 0.6333,
+              "x": 1.054,
+              "y": 1.394
+            },
+            {
+              "time": 0.8333
+            },
+            {
+              "time": 1.4333,
+              "x": 1.057,
+              "y": 1.057
+            },
+            {
+              "time": 1.6667,
+              "x": 1.011,
+              "y": 1.011
+            },
+            {
+              "time": 2.3333
+            },
+            {
+              "time": 2.4,
+              "y": 1.304
+            },
+            {
+              "time": 2.4333,
+              "y": 1.179
+            },
+            {
+              "time": 2.6,
+              "x": 1.679,
+              "y": 0.154
+            },
+            {
+              "time": 2.8333,
+              "x": 1.784,
+              "y": 0.01
+            }
+          ]
+        },
+        "kulou": {
+          "rotate": [
+            {
+              "angle": 180
+            },
+            {
+              "time": 0.7333,
+              "angle": -10
+            },
+            {
+              "time": 0.7667,
+              "angle": -90
+            },
+            {
+              "time": 0.8333,
+              "angle": 140
+            },
+            {
+              "time": 0.9,
+              "angle": 60
+            },
+            {
+              "time": 1.1
+            }
+          ],
+          "scale": [
+            {
+              "x": 0,
+              "y": 0,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.7333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.9,
+              "x": 0.88,
+              "y": 0.88
+            },
+            {
+              "time": 1.1,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.2333
+            },
+            {
+              "time": 1.6,
+              "x": 1.038,
+              "y": 1.038
+            },
+            {
+              "time": 2.3333
+            },
+            {
+              "time": 2.4333,
+              "x": 1.435,
+              "y": 1.565
+            },
+            {
+              "time": 2.5333,
+              "x": 1.288,
+              "y": 1.451
+            },
+            {
+              "time": 2.7667,
+              "x": 0.231,
+              "y": 0.231
+            },
+            {
+              "time": 2.9,
+              "x": 0.1,
+              "y": 0.158
+            },
+            {
+              "time": 3,
+              "x": 0.01,
+              "y": 0.01
+            }
+          ]
+        },
+        "骨骼3": {
+          "scale": [
+            {
+              "x": 0,
+              "y": 0,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.1,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.2333
+            },
+            {
+              "time": 1.3,
+              "x": 1.647,
+              "y": 1.647,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.4,
+              "x": 1.647,
+              "y": 1.647
+            },
+            {
+              "time": 1.5667
+            }
+          ]
+        }
+      }
+    }
+  }
+}

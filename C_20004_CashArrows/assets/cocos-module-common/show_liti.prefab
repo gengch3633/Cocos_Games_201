@@ -1,0 +1,105 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "data": {
+      "__id__": 1
+    },
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "show_liti",
+    "_parent": null,
+    "_children": [],
+    "_active": false,
+    "_components": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 70,
+      "height": 70
+    }
+  },
+  {
+    "__type__": "cc.Sprite",
+    "node": {
+      "__id__": 1
+    },
+    "_srcBlendFactor": 1,
+    "_sizeMode": 0,
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ]
+  },
+  {
+    "__type__": "90681Tx/GRB84zIrRmFQqLk",
+    "node": {
+      "__id__": 1
+    },
+    "frames": [
+      {
+        "__uuid__": "199ef617-b7c6-4917-8e63-5787f833db7d"
+      },
+      {
+        "__uuid__": "08f57f76-abe7-44aa-9140-5a3b0429676e"
+      },
+      {
+        "__uuid__": "cefc9401-2193-4583-b1d3-e3598f0786cd"
+      },
+      {
+        "__uuid__": "7c7d1c85-a6c2-41e7-8c3d-d289803838d6"
+      },
+      {
+        "__uuid__": "2186957c-bbb4-40a6-abd6-3ded990cb3e9"
+      },
+      {
+        "__uuid__": "b47ceb85-dd6b-4548-ac68-0a5b4b83f16d"
+      },
+      {
+        "__uuid__": "b2dda188-e53b-41e3-9651-269c71c45f12"
+      },
+      {
+        "__uuid__": "adcd35cd-54c4-4b22-beda-59fcba15757c"
+      },
+      {
+        "__uuid__": "0672d7c5-7f92-43a6-a228-cb12596b9bc7"
+      },
+      {
+        "__uuid__": "b13b8a4d-1226-4dff-895a-4df14a37b141"
+      },
+      {
+        "__uuid__": "2540f57e-d128-498a-aaf4-dee1ced8cd8b"
+      },
+      {
+        "__uuid__": "512c0c37-78c0-432e-ab48-e93fb80a5850"
+      },
+      {
+        "__uuid__": "c515184f-0547-4b6e-90da-3e0b78f07e61"
+      },
+      {
+        "__uuid__": "f34d9545-f339-4d6a-83bc-c5684ddb204f"
+      }
+    ]
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "899dea0f-7ac5-42af-b8fd-47367a855c5f"
+    }
+  }
+]
