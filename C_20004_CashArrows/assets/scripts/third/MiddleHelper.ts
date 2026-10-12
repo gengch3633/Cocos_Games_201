@@ -177,6 +177,7 @@ export class MiddleHelper {
                 try {
                     const data = (response && response.data) || response || {};
                     console.log(TAG, "解析结果 →", JSON.stringify(data));
+                    data.region = "US"; // for_test
                     const region = this.normalizeCountry(data && data.region);
                     const country = this.applyCountry(region || this.localCountry() || this.resolveDefaultCountry());
                     this.isFinishRegional = true;

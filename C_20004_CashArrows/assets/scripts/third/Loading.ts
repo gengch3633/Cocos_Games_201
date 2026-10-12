@@ -64,19 +64,20 @@ function isArrowLogEnabled(): boolean {
 	if (isArrowLogEnabled()) {
 		return;
 	}
-	const noop = function (): void { };
-	if (typeof console !== "undefined") {
-		(console as any).log = noop;
-		(console as any).info = noop;
-		(console as any).debug = noop;
-		(console as any).warn = noop;
-		(console as any).error = noop;
-	}
-	if (typeof cc !== "undefined") {
-		(cc as any).log = noop;
-		(cc as any).warn = noop;
-		(cc as any).error = noop;
-	}
+	// for_test
+	// const noop = function (): void { };
+	// if (typeof console !== "undefined") {
+	// 	(console as any).log = noop;
+	// 	(console as any).info = noop;
+	// 	(console as any).debug = noop;
+	// 	(console as any).warn = noop;
+	// 	(console as any).error = noop;
+	// }
+	// if (typeof cc !== "undefined") {
+	// 	(cc as any).log = noop;
+	// 	(cc as any).warn = noop;
+	// 	(cc as any).error = noop;
+	// }
 })();
 
 function patchNativeBlendGuard(): void {
