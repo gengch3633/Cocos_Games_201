@@ -80,7 +80,7 @@ function isArrowLogEnabled(): boolean {
 })();
 
 function patchNativeBlendGuard(): void {
-	if (!cc.sys || !cc.sys.isNative || (cc as any).__spineBlendGuardPatched) {
+	if (!cc.sys || (cc as any).__spineBlendGuardPatched) {
 		return;
 	}
 
@@ -95,15 +95,11 @@ function patchNativeBlendGuard(): void {
 	const srcAlpha = gfx.BLEND_SRC_ALPHA != null ? gfx.BLEND_SRC_ALPHA : cc.macro.SRC_ALPHA;
 	const oneMinusSrcAlpha = gfx.BLEND_ONE_MINUS_SRC_ALPHA != null ? gfx.BLEND_ONE_MINUS_SRC_ALPHA : cc.macro.ONE_MINUS_SRC_ALPHA;
 	const one = gfx.BLEND_ONE != null ? gfx.BLEND_ONE : cc.macro.ONE;
-	const srcColor = gfx.BLEND_SRC_COLOR != null ? gfx.BLEND_SRC_COLOR : cc.macro.SRC_COLOR;
-	const oneMinusSrcColor = gfx.BLEND_ONE_MINUS_SRC_COLOR != null ? gfx.BLEND_ONE_MINUS_SRC_COLOR : cc.macro.ONE_MINUS_SRC_COLOR;
-	const dstColor = gfx.BLEND_DST_COLOR != null ? gfx.BLEND_DST_COLOR : cc.macro.DST_COLOR;
-	const oneMinusDstColor = gfx.BLEND_ONE_MINUS_DST_COLOR != null ? gfx.BLEND_ONE_MINUS_DST_COLOR : cc.macro.ONE_MINUS_DST_COLOR;
-	const srcAlphaSaturate = gfx.BLEND_SRC_ALPHA_SATURATE != null ? gfx.BLEND_SRC_ALPHA_SATURATE : cc.macro.SRC_ALPHA_SATURATE;
 
-	const isInvalidBlendFactor = function (value: any): boolean {
-		return value == null || value === srcColor || value === oneMinusSrcColor ||
-			value === dstColor || value === oneMinusDstColor || value === srcAlphaSaturate;
+	// 合法 GL 混合因子白名单: ZERO, ONE, SRC_COLOR, ONE_MINUS_SRC_COLOR, SRC_ALPHA,
+	// ONE_MINUS_SRC_ALPHA, DST_ALPHA, ONE_MINUS_DST_ALPHA, DST_COLOR, ONE_MINUS_DST_COLOR, SRC_ALPHA_SATURATE
+	const isValidBlendFactor = function (value: any): boolean {
+		return value === 0 || value === 1 || (typeof value === "number" && value >= 768 && value <= 776);
 	};
 
 	materialProto.setBlend = function (
@@ -123,22 +119,28 @@ function patchNativeBlendGuard(): void {
 		if (p4 == null) {
 			p4 = blendFuncAdd;
 		}
-		if (p2 == null) {
+		if (!isValidBlendFactor(p2)) {
+			if (p2 != null) {
+				console.warn("[BlendGuard] invalid blendSrc " + p2 + " -> SRC_ALPHA");
+			}
 			p2 = srcAlpha;
 		}
-		if (p3 == null) {
+		if (!isValidBlendFactor(p3)) {
+			if (p3 != null) {
+				console.warn("[BlendGuard] invalid blendDst " + p3 + " -> ONE_MINUS_SRC_ALPHA");
+			}
 			p3 = oneMinusSrcAlpha;
 		}
-		if (isInvalidBlendFactor(p5)) {
+		if (!isValidBlendFactor(p5)) {
+			if (p5 != null) {
+				console.warn("[BlendGuard] invalid blendSrcAlpha " + p5 + " -> ONE");
+			}
 			p5 = one;
 		}
-		if (isInvalidBlendFactor(p6)) {
-			p6 = oneMinusSrcAlpha;
-		}
-		if (p5 == null) {
-			p5 = one;
-		}
-		if (p6 == null) {
+		if (!isValidBlendFactor(p6)) {
+			if (p6 != null) {
+				console.warn("[BlendGuard] invalid blendDstAlpha " + p6 + " -> ONE_MINUS_SRC_ALPHA");
+			}
 			p6 = oneMinusSrcAlpha;
 		}
 		if (p7 == null) {
@@ -148,7 +150,7 @@ function patchNativeBlendGuard(): void {
 	};
 
 	(cc as any).__spineBlendGuardPatched = true;
-	console.warn("[BlendGuard] Native blend guard enabled");
+	console.warn("[BlendGuard] blend guard enabled");
 }
 
 @ccclass

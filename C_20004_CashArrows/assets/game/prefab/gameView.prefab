@@ -3370,7 +3370,7 @@
       "__id__": 162
     },
     "_sizeMode": 0,
-    "_srcBlendFactor": 2,
+    "_srcBlendFactor": 770,
     "_materials": [
       {
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
@@ -3526,7 +3526,7 @@
       "__id__": 171
     },
     "_sizeMode": 0,
-    "_srcBlendFactor": 2,
+    "_srcBlendFactor": 770,
     "_materials": [
       {
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
@@ -3679,7 +3679,7 @@
       "__id__": 179
     },
     "_sizeMode": 0,
-    "_srcBlendFactor": 2,
+    "_srcBlendFactor": 770,
     "_materials": [
       {
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
@@ -5698,7 +5698,7 @@
     },
     "_sizeMode": 0,
     "_type": 1,
-    "_srcBlendFactor": 2,
+    "_srcBlendFactor": 770,
     "_materials": [
       {
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
