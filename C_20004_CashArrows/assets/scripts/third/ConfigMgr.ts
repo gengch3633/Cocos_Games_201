@@ -6,7 +6,8 @@ import InterfaceMgr from "./InterfaceMgr";
 import ResMgr from "./ResMgr";
 import Singleton from "./Singleton";
 import URL from "./URL";
-import UserData from "./UserData";
+
+declare function require(path: string): any;
 
 enum LoadState {
     None = 0,
@@ -303,6 +304,7 @@ export default class ConfigMgr extends Singleton {
     public async checkMac(): Promise<boolean> {
         const list = await this.getMackList();
         for (let i = 0; i < list.length; i++) {
+            const UserData = require("./UserData").default;
             if (UserData.getInstance().userID == list[i].macId) {
                 return true;
             }

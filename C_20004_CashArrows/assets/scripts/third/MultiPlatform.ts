@@ -8,10 +8,17 @@ import Singleton from "./Singleton";
 import Tips from "./Tips";
 import UIMgr from "./UIMgr";
 import UMengManger from "./UMengManger";
-import UserAudioData from "./UserAudioData";
-import UserData from "./UserData";
 
 declare const ZYSDK: any;
+declare function require(path: string): any;
+
+function userAudioData(): any {
+    return require("./UserAudioData").default;
+}
+
+function userData(): any {
+    return require("./UserData").default;
+}
 
 export enum PlatformType {
     ByteDance = 0,
@@ -101,7 +108,7 @@ export default class MultiPlatform extends Singleton {
     }
 
     public get vibrateEnabled(): boolean {
-        return UserAudioData.getInstance().vibrate;
+        return userAudioData().getInstance().vibrate;
     }
 
     public init(adConfig: any): void {
@@ -147,16 +154,16 @@ export default class MultiPlatform extends Singleton {
                     resolve(state === Platform.RewardVideoState.CloseReward);
                     GEMgr.trackEvent("adNode", {
                         adtype: mode,
-                        adlevel: UserData.getInstance().level
+                        adlevel: userData().getInstance().level
                     });
                     if (!cc.sys.isBrowser) {
                         GEMgr.ge.track("userAction", {
                             action: "AD_" + mode,
-                            module: "关卡" + UserData.getInstance().level,
+                            module: "关卡" + userData().getInstance().level,
                             isAD: 1
                         }, new Date());
                     }
-                    (this as any).zyReportUserAction("关卡" + UserData.getInstance().level, mode, true);
+                    (this as any).zyReportUserAction("关卡" + userData().getInstance().level, mode, true);
                     if (state === Platform.RewardVideoState.PlayErr) {
                         Tips.show(LanguageService.t("key_tip_reward_video_play_fail"));
                     }
@@ -224,12 +231,12 @@ export default class MultiPlatform extends Singleton {
                     resolve(!!compensation);
                     GEMgr.trackEvent("adNode", {
                         adtype: mode,
-                        adlevel: UserData.getInstance().level
+                        adlevel: userData().getInstance().level
                     });
                     if (!cc.sys.isBrowser) {
                         GEMgr.ge.track("userAction", {
                             action: "AD_" + mode,
-                            module: "关卡" + UserData.getInstance().level,
+                            module: "关卡" + userData().getInstance().level,
                             isAD: 1
                         }, new Date());
                     }
@@ -443,12 +450,12 @@ export default class MultiPlatform extends Singleton {
         }
         GEMgr.trackEvent("adNode", {
             adtype: "插屏广告",
-            adlevel: UserData.getInstance().level
+            adlevel: userData().getInstance().level
         });
         if (!cc.sys.isBrowser) {
             GEMgr.ge.track("userAction", {
                 action: "AD_插屏广告",
-                module: "关卡" + UserData.getInstance().level,
+                module: "关卡" + userData().getInstance().level,
                 isAD: 1
             }, new Date());
         }

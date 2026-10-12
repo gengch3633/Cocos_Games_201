@@ -1,6 +1,11 @@
 import ResMgr from "./ResMgr";
 import Singleton from "./Singleton";
-import UserAudioData from "./UserAudioData";
+
+declare function require(path: string): any;
+
+function userAudioData(): any {
+    return require("./UserAudioData").default;
+}
 
 interface AudioClickOption {
     success: string;
@@ -31,8 +36,8 @@ export default class AudioMgr extends Singleton {
 
     constructor() {
         super();
-        this.musicMute = UserAudioData.getInstance().musicMute;
-        this.effectMute = UserAudioData.getInstance().effectMute;
+        this.musicMute = userAudioData().getInstance().musicMute;
+        this.effectMute = userAudioData().getInstance().effectMute;
     }
 
     public setGlobalOption(option: Partial<AudioOption>): void {
@@ -138,20 +143,20 @@ export default class AudioMgr extends Singleton {
     }
 
     public get musicMute(): boolean {
-        return UserAudioData.getInstance().musicMute;
+        return userAudioData().getInstance().musicMute;
     }
 
     public set musicMute(value: boolean) {
-        UserAudioData.getInstance().musicMute = value;
+        userAudioData().getInstance().musicMute = value;
         cc.audioEngine.setMusicVolume(value ? 0 : 1);
     }
 
     public get effectMute(): boolean {
-        return UserAudioData.getInstance().effectMute;
+        return userAudioData().getInstance().effectMute;
     }
 
     public set effectMute(value: boolean) {
-        UserAudioData.getInstance().effectMute = value;
+        userAudioData().getInstance().effectMute = value;
         cc.audioEngine.setEffectsVolume(value ? 0 : 1);
     }
 
