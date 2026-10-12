@@ -1,5 +1,5 @@
 import { BUSINESS_COMMON_CONFIG } from "./BusinessCommonConfig";
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
 import NativeSdkBridgeAdapter from "./NativeSdkBridgeAdapter";
 
 const defaultLanguage: string = BUSINESS_COMMON_CONFIG.defaultLanguage;

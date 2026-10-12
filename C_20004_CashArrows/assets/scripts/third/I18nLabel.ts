@@ -1,7 +1,7 @@
 import GlobalEventMgr from "./GlobalEventMgr";
 import InterfaceMgr from "./InterfaceMgr";
-import LanguageService from "./LanguageService.js";
-import RTLFontService from "./RTLFontService.js";
+import LanguageService from "./LanguageService";
+import RTLFontService from "./RTLFontService";
 
 const { ccclass, property, executeInEditMode } = cc._decorator;
 

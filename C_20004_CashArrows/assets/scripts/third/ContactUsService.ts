@@ -1,7 +1,7 @@
-import * as BusinessAnalyticsServiceModule from "../migration-bundle/business-common/report/BusinessAnalyticsService";
-import * as ClientDataStoreModule from "../migration-bundle/business-common/data/ClientDataStore";
-import * as MiddleHelperModule from "../migration-bundle/business-common/middle/MiddleHelper";
-import * as PlatformBridgeModule from "../migration-bundle/business-common/platform/PlatformBridge";
+import * as BusinessAnalyticsServiceModule from "./BusinessAnalyticsService";
+import * as ClientDataStoreModule from "./ClientDataStore";
+import * as MiddleHelperModule from "./MiddleHelper";
+import * as PlatformBridgeModule from "./PlatformBridge";
 
 /**
  * 兼容 CommonJS / ES Module 两种导出形态：

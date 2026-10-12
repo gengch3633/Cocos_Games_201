@@ -1,9 +1,8 @@
 import GlobalEventMgr from "./GlobalEventMgr";
 import InterfaceMgr from "./InterfaceMgr";
 import LanguageService from "./LanguageService";
+import Tips from "./Tips";
 import UIMgr from "./UIMgr";
-
-declare const require: any;
 
 const { ccclass, property } = cc._decorator;
 
@@ -543,12 +542,7 @@ export default class cashArrowCheckView extends cc.Component {
 
 	private showToast(message: string): void {
 		try {
-			const Tips: any = require("Tips");
-			if (Tips.default) {
-				Tips.default.show(message);
-			} else if (Tips.show) {
-				Tips.show(message);
-			}
+			Tips.show(message);
 		} catch (err) {
 			cc.log("[cashArrowCheckView] toast:", message);
 		}

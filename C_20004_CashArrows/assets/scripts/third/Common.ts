@@ -1,4 +1,4 @@
-import ConfigDefine from "./ConfigDefine";
+import * as ConfigDefine from "./ConfigDefine";
 import ConfigMgr from "./ConfigMgr";
 import MultiPlatform from "./MultiPlatform";
 

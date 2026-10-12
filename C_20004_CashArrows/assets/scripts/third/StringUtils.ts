@@ -1,5 +1,3 @@
-import StringUtils from "./StringUtils";
-
 export default class StringUtils {
     public static format(str: string, ...args: any[]): string {
         if (!str) {

@@ -1,8 +1,8 @@
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import MiddleHandler from "./MiddleHandler";
 import MiddleNetwork from "./MiddleNetwork";
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
-import MiddleReqType from "./MiddleReqType";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import { MiddleReqType } from "./MiddleReqType";
 import MiddleService from "./MiddleService";
 import PlatformBridge from "./PlatformBridge";
 

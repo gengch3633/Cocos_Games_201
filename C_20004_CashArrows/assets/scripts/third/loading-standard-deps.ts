@@ -1,6 +1,6 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import ClientDataStore from "./ClientDataStore";
-import EventSystem from "./EventSystem";
+import EventSystem, { CLOSE_RECONNECT } from "./EventSystem";
 import GameConfigStore from "./GameConfigStore";
 import GameHelper from "./GameHelper";
 import GlobalErrorHandler from "./GlobalErrorHandler";
@@ -124,7 +124,7 @@ export function buildStandardDeps(): any {
                 UIHelper.reconnectFai();
             },
             emitCloseReconnect: function (): void {
-                EventSystem.trigger(EventSystem.CLOSE_RECONNECT);
+                EventSystem.trigger(CLOSE_RECONNECT);
             },
             applySystemConfig: function (systemConfig: any): void {
                 SystemDataStore.init_config(systemConfig);

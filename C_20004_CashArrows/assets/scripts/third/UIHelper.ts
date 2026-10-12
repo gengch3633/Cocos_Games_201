@@ -1,5 +1,5 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
-import EventSystem from "./EventSystem";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
+import EventSystem, { CLOSE_RECONNECT } from "./EventSystem";
 
 interface IBasePageCtrl extends cc.Component {
     _init?(data?: any): void;
@@ -163,7 +163,7 @@ class UIHelper {
 
     public reconnectSuc(): void {
         this.hidePage("LoadingPage");
-        EventSystem.trigger(EventSystem.CLOSE_RECONNECT);
+        EventSystem.trigger(CLOSE_RECONNECT);
     }
 
     public reconnectFai(): void {

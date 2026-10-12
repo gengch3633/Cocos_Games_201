@@ -1,13 +1,13 @@
-import ArrowRewardService from "./ArrowRewardService.js";
+import ArrowRewardService from "./ArrowRewardService";
 import AudioMgr from "./AudioMgr";
-import BusinessAnalyticsService from "./BusinessAnalyticsService.js";
-import CountryAssetService from "./CountryAssetService.js";
+import BusinessAnalyticsService from "./BusinessAnalyticsService";
+import CountryAssetService from "./CountryAssetService";
 import GlobalEventMgr from "./GlobalEventMgr";
 import InterfaceMgr from "./InterfaceMgr";
-import LanguageService from "./LanguageService.js";
+import LanguageService from "./LanguageService";
 import UIMgr from "./UIMgr";
 import UIParams from "./UIParams";
-import UserData from "./UserData.js";
+import UserData from "./UserData";
 
 const { ccclass, property } = cc._decorator;
 
@@ -156,7 +156,7 @@ export default class ArrowSettleRewardView extends cc.Component {
     }
 
     protected start(): void {
-        const params = UIParams.UIParams.parse(this.node, 0, null) || {};
+        const params = UIParams.parse(this.node, 0, null) || {};
         if (!this.entryData || Object.keys(this.entryData).length === 0) {
             this.entryData = params;
         }

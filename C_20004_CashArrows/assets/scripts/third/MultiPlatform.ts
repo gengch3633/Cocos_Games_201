@@ -3,7 +3,7 @@ import AdManager from "./AdManager";
 import ConfigMgr from "./ConfigMgr";
 import GEMgr from "./GEMgr";
 import LanguageService from "./LanguageService";
-import Platform from "./Platform";
+import * as Platform from "./Platform";
 import Singleton from "./Singleton";
 import Tips from "./Tips";
 import UIMgr from "./UIMgr";

@@ -1,6 +1,6 @@
 import ArchiveMgr from "./ArchiveMgr";
 import Common from "./Common";
-import Watch from "./Watch";
+import Watch, { ignoreWatch } from "./Watch";
 
 const NON_SERIALIZED_KEYS = "_$nonSerializedKeys";
 
@@ -27,11 +27,11 @@ export default class UserArchive {
 	@nonSerialized()
 	public _$watch: Watch = null;
 
-	@Watch.ignoreWatch()
+	@ignoreWatch()
 	public _$version: number = 0;
 
 	@nonSerialized()
-	@Watch.ignoreWatch()
+	@ignoreWatch()
 	public _id: string = "";
 
 	public static getInstance(): Watch {

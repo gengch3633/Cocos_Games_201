@@ -4,7 +4,7 @@ import CryptoHelper from "./CryptoHelper";
 import MiddleHandler from "./MiddleHandler";
 import MiddleHelper from "./MiddleHelper";
 import MiddleNetwork from "./MiddleNetwork";
-import MiddleReqType from "./MiddleReqType";
+import { MiddleReqType } from "./MiddleReqType";
 import MiddleSdkEventService from "./MiddleSdkEventService";
 import MiddleService from "./MiddleService";
 import MiddleUploadScheduler from "./MiddleUploadScheduler";
@@ -146,7 +146,7 @@ export default class MiddleManager {
 
     public getAdConfig(onSuccess?: (config: any) => void, onFail?: (err: any) => void): void {
         this.syncRegionalStateFromHelper();
-        if (1 != this.mfi) {
+        if (!this.mfi) {
             BusinessAnalyticsService.reportData("wp_mfi_false");
             console.log("[MiddleManager] 开始获取广告配置");
             const params = MiddleService.paramData(MiddleReqType.ADCONFIG);

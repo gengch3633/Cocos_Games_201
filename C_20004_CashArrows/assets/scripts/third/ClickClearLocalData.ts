@@ -1,4 +1,4 @@
-import LanguageService from "./LanguageService.js";
+import LanguageService from "./LanguageService";
 import Tips from "./Tips";
 
 const { ccclass, property, menu } = cc._decorator;

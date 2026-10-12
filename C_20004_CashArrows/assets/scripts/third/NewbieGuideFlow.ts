@@ -1,7 +1,6 @@
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
+import SystemDataStore from "./SystemDataStore";
 import UserData from "./UserData";
-
-declare const require: (path: string) => any;
 
 const STEP_STORAGE_KEY = "arrow_newbie_guide_step_v1";
 const REPORTED_STORAGE_KEY = "arrow_newbie_guide_step_reported_v1";
@@ -48,9 +47,7 @@ function writeStoredStep(step: number): void {
 
 function shouldEnableGuide(): boolean {
     try {
-        const SystemDataStore = require("./SystemDataStore");
-        const store = SystemDataStore && (SystemDataStore.default || SystemDataStore);
-        if (store && typeof store.is_new_user === "function" && store.is_new_user()) {
+        if (SystemDataStore && typeof SystemDataStore.is_new_user === "function" && SystemDataStore.is_new_user()) {
             return true;
         }
     } catch (err) {

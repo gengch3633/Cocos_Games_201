@@ -1,4 +1,4 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import BusinessRequestDescriptors from "./BusinessRequestDescriptors";
 import RequestDescriptor from "./RequestDescriptor";
 

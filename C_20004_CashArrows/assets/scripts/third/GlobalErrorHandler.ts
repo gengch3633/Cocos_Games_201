@@ -1,4 +1,4 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import ClientDataStore from "./ClientDataStore";
 import HotUpdateManager from "./HotUpdateManager";
 import PlayerDataStore from "./PlayerDataStore";

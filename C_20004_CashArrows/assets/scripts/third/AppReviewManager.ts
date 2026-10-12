@@ -1,8 +1,8 @@
-import BusinessAnalyticsService from "../migration-bundle/business-common/report/BusinessAnalyticsService";
+import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import Common from "./Common";
 import GlobalEventMgr from "./GlobalEventMgr";
 import InterfaceMgr from "./InterfaceMgr";
-import NativeSdkBridgeAdapter from "../migration-bundle/src/framework/Platform/NativeSdkBridgeAdapter";
+import NativeSdkBridgeAdapter from "./NativeSdkBridgeAdapter";
 import UIDefine from "./UIDefine";
 import UIMgr from "./UIMgr";
 

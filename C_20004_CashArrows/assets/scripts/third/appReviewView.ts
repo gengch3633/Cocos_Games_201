@@ -1,6 +1,6 @@
 import AppReviewManager from "./AppReviewManager";
-import BusinessAnalyticsService from "../migration-bundle/business-common/report/BusinessAnalyticsService";
-import MiddleHelper from "../migration-bundle/business-common/middle/MiddleHelper";
+import BusinessAnalyticsService from "./BusinessAnalyticsService";
+import MiddleHelper from "./MiddleHelper";
 import UIMgr from "./UIMgr";
 
 const { ccclass } = cc._decorator;

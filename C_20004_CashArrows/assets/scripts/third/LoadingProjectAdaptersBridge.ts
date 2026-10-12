@@ -5,7 +5,7 @@ import Handler from "./Handler";
 import LanguageHelper from "./LanguageHelper";
 import LanguageService from "./LanguageService";
 import LoadingHttpService from "./LoadingHttpService";
-import LoadingProjectAdapters from "./loading-project-adapters";
+import * as LoadingProjectAdapters from "./loading-project-adapters";
 import MiddleHelper from "./MiddleHelper";
 import MiddleManager from "./MiddleManager";
 import NetErrorPopupService from "./NetErrorPopupService";

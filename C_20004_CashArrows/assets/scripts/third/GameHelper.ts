@@ -1,4 +1,4 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import ClientDataStore from "./ClientDataStore";
 
 export default class GameHelper {

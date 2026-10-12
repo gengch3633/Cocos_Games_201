@@ -1,4 +1,4 @@
-import LoadingAdapterRegistry from "./LoadingAdapterRegistry";
+import * as LoadingAdapterRegistry from "./LoadingAdapterRegistry";
 
 const adapterOverrides: any = {};
 

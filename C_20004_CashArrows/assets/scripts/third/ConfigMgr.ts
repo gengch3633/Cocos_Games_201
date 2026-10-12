@@ -1,6 +1,6 @@
 const { ccclass, property } = cc._decorator;
 
-import ConfigDefine from "./ConfigDefine";
+import * as ConfigDefine from "./ConfigDefine";
 import EncryptXOR from "./EncryptXOR";
 import InterfaceMgr from "./InterfaceMgr";
 import ResMgr from "./ResMgr";

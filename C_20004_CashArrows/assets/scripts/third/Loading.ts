@@ -7,12 +7,12 @@ import Handler from "./Handler";
 import LanguageService from "./LanguageService";
 import Launch from "./Launch";
 import LoadingHttpService from "./LoadingHttpService";
-import LoadingProjectAdaptersBridge from "./LoadingProjectAdaptersBridge";
+import * as LoadingProjectAdaptersBridge from "./LoadingProjectAdaptersBridge";
 import LoadingUmpDialogService from "./LoadingUmpDialogService";
 import PlatformBridge from "./PlatformBridge";
 import PlayerDataStore from "./PlayerDataStore";
 import SceneMgr from "./SceneMgr";
-import UIDefine from "./UIDefine";
+import { UILayer } from "./UIDefine";
 import UIMgr from "./UIMgr";
 import UiPageAnalyticsService from "./UiPageAnalyticsService";
 import UserData from "./UserData";
@@ -255,7 +255,7 @@ export default class Loading extends cc.Component {
 			}
 		}
 
-		UIMgr.getInstance().initLayer(Object.keys(UIDefine.UILayer), UIDefine.UILayer.Bottom);
+		UIMgr.getInstance().initLayer(Object.keys(UILayer), UILayer.Bottom);
 		AppReviewManager.getInstance().init();
 		UiPageAnalyticsService.init();
 		UiPageAnalyticsService.trackEnter("launch_page");

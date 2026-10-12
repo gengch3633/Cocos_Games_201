@@ -1,6 +1,6 @@
-import LoadingAdapterRegistry from "./LoadingAdapterRegistry";
-import LoadingProjectAdapterCore from "./loading-project-adapter-core";
-import LoadingStandardDeps from "./loading-standard-deps";
+import * as LoadingAdapterRegistry from "./LoadingAdapterRegistry";
+import * as LoadingProjectAdapterCore from "./loading-project-adapter-core";
+import * as LoadingStandardDeps from "./loading-standard-deps";
 
 function applyOverrides(deps: any): void {
     LoadingAdapterRegistry.applyLoadingAdapterOverrides(LoadingProjectAdapterCore.createLoadingProjectAdapterOverrides(deps));

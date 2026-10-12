@@ -1,3 +1,4 @@
+import "./MultiPlatform";
 import AudioMgr from "./AudioMgr";
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import GEMgr from "./GEMgr";
@@ -58,7 +59,7 @@ export default class resultView extends cc.Component {
     nodeMoneyIcon: cc.Node = null;
 
     start(): void {
-        this.entryData = UIParams.UIParams.parse(this.node, 0, null) || this.entryData || {};
+        this.entryData = UIParams.parse(this.node, 0, null) || this.entryData || {};
         if (this.entryData.level > 0) {
             this.winLevel = this.entryData.level;
         }

@@ -4,11 +4,10 @@ import InterfaceMgr from "./InterfaceMgr";
 import LanguageService from "./LanguageService";
 import LoadingHttpService from "./LoadingHttpService";
 import NetErrorPopupService from "./NetErrorPopupService";
+import Tips from "./Tips";
 import UIMgr from "./UIMgr";
 
 const { ccclass, property } = cc._decorator;
-
-declare const require: any;
 
 interface ChannelField {
     field_value: string;
@@ -1235,12 +1234,7 @@ export default class cashArrowSetView extends cc.Component {
 
     private showToast(content: string): void {
         try {
-            const Tips: any = require("Tips");
-            if (Tips.default) {
-                Tips.default.show(content);
-            } else if (Tips.show) {
-                Tips.show(content);
-            }
+            Tips.show(content);
         } catch (err) {
             cc.log("[cashArrowSetView] toast:", content);
         }

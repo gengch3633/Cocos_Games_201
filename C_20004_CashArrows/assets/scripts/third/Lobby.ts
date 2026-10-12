@@ -1,7 +1,7 @@
 import AudioPlay from "./AudioPlay";
 import UIDefine from "./UIDefine";
 import UIMgr from "./UIMgr";
-import UiPageAnalyticsService from "./UiPageAnalyticsService.js";
+import UiPageAnalyticsService from "./UiPageAnalyticsService";
 
 const { ccclass, property } = cc._decorator;
 

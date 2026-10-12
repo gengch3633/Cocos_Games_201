@@ -2,7 +2,7 @@ import Agent from "./Agent";
 import KdTree from "./KdTree";
 import Obstacle from "./Obstacle";
 import RVOMath from "./RVOMath";
-import { SMap } from "./SMap";
+import SMap from "./SMap";
 import Vector2 from "./Vector2";
 
 export class AgentCfg {

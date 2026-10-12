@@ -1,8 +1,8 @@
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import ClientDataStore from "./ClientDataStore";
 import MiddleNetwork from "./MiddleNetwork";
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
-import MiddleRequestDescriptors from "./MiddleRequestDescriptors";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import * as MiddleRequestDescriptors from "./MiddleRequestDescriptors";
 import PlatformBridge from "./PlatformBridge";
 
 export interface MiddleRegionalState {

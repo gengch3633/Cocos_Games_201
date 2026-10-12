@@ -1,4 +1,4 @@
-import BusinessCommonConfig from "./BusinessCommonConfig";
+import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import SystemDataStore from "./SystemDataStore";
 
 const SUPPORTED_LANGUAGES: string[] = [

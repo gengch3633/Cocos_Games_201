@@ -1,4 +1,4 @@
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
 
 export const MIDDLE_REQUEST_DESCRIPTORS = {
 	Regional: {

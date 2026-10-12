@@ -1,8 +1,8 @@
-import ListView from "./ListView";
+import ListView, { AbsAdapter } from "./ListView";
 
 const { ccclass, property } = cc._decorator;
 
-class Adapter extends ListView.AbsAdapter {
+class Adapter extends AbsAdapter {
     public constructor(dataSet: string[]) {
         super();
         this.setDataSet(dataSet);

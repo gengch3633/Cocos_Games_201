@@ -1,5 +1,5 @@
-import BusinessAnalyticsService from "./BusinessAnalyticsService.js";
-import LoadingAgreementAdapter from "./LoadingAgreementAdapter.js";
+import BusinessAnalyticsService from "./BusinessAnalyticsService";
+import LoadingAgreementAdapter from "./LoadingAgreementAdapter";
 
 interface ILoadingAgreementDeps {
     welcomeNode: cc.Node;

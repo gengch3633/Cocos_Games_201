@@ -1,5 +1,5 @@
 import UIMgr from "./UIMgr";
-import { UIParams } from "./UIParams";
+import UIParams from "./UIParams";
 
 const { ccclass, property, menu, executionOrder, requireComponent } = cc._decorator;
 

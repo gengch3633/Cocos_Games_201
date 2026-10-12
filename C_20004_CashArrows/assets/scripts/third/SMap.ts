@@ -1,42 +1,44 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class SMap {
+export default class SMap<K extends string | number = string, V = any> {
     private _size: number = 0;
     private _keyMap: { [key: string]: boolean } = {};
     private _change: number = 0;
     private _keys: string[] = null;
-    private _values: any[] = null;
-    private _kvs: Array<[string, any]> = null;
+    private _values: V[] = null;
+    private _kvs: Array<[string, V]> = null;
 
     public get size(): number {
         return this._size;
     }
 
-    public set(key: string, value: any): void {
-        if (!this._keyMap[key]) {
+    public set(key: K, value: V): void {
+        const id = String(key);
+        if (!this._keyMap[id]) {
             this._size++;
         }
-        (this as any)[key] = value;
-        this._keyMap[key] = true;
+        (this as any)[id] = value;
+        this._keyMap[id] = true;
         this._change |= 7;
     }
 
-    public delete(key: string): void {
-        if (this._keyMap[key]) {
-            delete (this as any)[key];
-            delete this._keyMap[key];
+    public delete(key: K): void {
+        const id = String(key);
+        if (this._keyMap[id]) {
+            delete (this as any)[id];
+            delete this._keyMap[id];
             this._size--;
             this._change |= 7;
         }
     }
 
-    public has(key: string): boolean {
-        return !!this._keyMap[key];
+    public has(key: K): boolean {
+        return !!this._keyMap[String(key)];
     }
 
-    public get(key: string): any {
-        return (this as any)[key];
+    public get(key: K): V {
+        return (this as any)[String(key)];
     }
 
     public clear(): void {
@@ -71,7 +73,7 @@ export default class SMap {
         return this._keys;
     }
 
-    public values(): any[] {
+    public values(): V[] {
         if (!this._values) {
             this._values = [];
         }
@@ -86,7 +88,7 @@ export default class SMap {
         return this._values;
     }
 
-    public kvs(): Array<[string, any]> {
+    public kvs(): Array<[string, V]> {
         if (!this._kvs) {
             this._kvs = [];
         }
@@ -101,7 +103,7 @@ export default class SMap {
         return this._kvs;
     }
 
-    public forEach(callback: (key: string, value: any) => boolean | void, thisArg?: any): void {
+    public forEach(callback: (key: string, value: V) => boolean | void, thisArg?: any): void {
         for (const key in this._keyMap) {
             if (callback.call(thisArg, key, (this as any)[key]) === false) {
                 return;

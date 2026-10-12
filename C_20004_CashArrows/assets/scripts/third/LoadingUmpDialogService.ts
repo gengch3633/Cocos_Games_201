@@ -1,4 +1,4 @@
-import BusinessAnalyticsService from "./BusinessAnalyticsService.js";
+import BusinessAnalyticsService from "./BusinessAnalyticsService";
 
 interface LoadingUmpDialogDeps {
     umpNode: cc.Node;

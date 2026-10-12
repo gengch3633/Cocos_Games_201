@@ -1,7 +1,7 @@
 import ClientDataStore from "./ClientDataStore";
 import MiddleHelper from "./MiddleHelper";
 import MiddleNetwork from "./MiddleNetwork";
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
 
 const storageKeys = MiddleProjectAdapterConfig.MIDDLE_PROJECT_ADAPTER_CONFIG.storageKeys;
 

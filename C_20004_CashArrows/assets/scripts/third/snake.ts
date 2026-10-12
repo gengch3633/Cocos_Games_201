@@ -5,7 +5,7 @@ import MultiPlatform from "./MultiPlatform";
 import ResMgr from "./ResMgr";
 import SpriteFrames from "./SpriteFrames";
 import UserData from "./UserData";
-import game from "./game";
+import { ClickState } from "./game";
 
 declare const jsb: any;
 
@@ -182,13 +182,13 @@ export default class snake extends cc.Component {
         console.log("tc_end");
         if (!this.bool_moveflag) {
             this.unschedule(this.showFuzhuline);
-            if (this.gameManager.clickState === game.ClickState.change) {
+            if (this.gameManager.clickState === ClickState.change) {
                 AudioMgr.getInstance().playClickEff();
                 this.ShowChange();
-                this.gameManager.setState(game.ClickState.norlmal);
-            } else if (this.gameManager.clickState === game.ClickState.yichu) {
+                this.gameManager.setState(ClickState.norlmal);
+            } else if (this.gameManager.clickState === ClickState.yichu) {
                 this.ShowYichu();
-                this.gameManager.setState(game.ClickState.norlmal);
+                this.gameManager.setState(ClickState.norlmal);
             } else if (this.bool_isLongtimeTouch) {
                 if (this.bool_longtouchShowFuzhulline && this.node_fuzhuline) {
                     this.node_fuzhuline.active = false;

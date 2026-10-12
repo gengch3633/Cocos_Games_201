@@ -1,8 +1,8 @@
 import ClientDataStore from "./ClientDataStore";
 import CryptoHelper from "./CryptoHelper";
 import HotUpdateManager from "./HotUpdateManager";
-import MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
-import MiddleRequestDescriptors from "./MiddleRequestDescriptors";
+import * as MiddleProjectAdapterConfig from "./MiddleProjectAdapterConfig";
+import * as MiddleRequestDescriptors from "./MiddleRequestDescriptors";
 
 const LOG_TAG = "[MiddleNetwork]";
 const COUNTRY_STORAGE_KEY = "com.sdk.country";
