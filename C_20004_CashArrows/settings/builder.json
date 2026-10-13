@@ -50,10 +50,10 @@
     "skipRecord": false,
     "recordPath": ""
   },
-  "openharmony": {
+  "appBundle": false,
+  "agreements": {},
+  "harmonyos-next": {
     "packageName": "com.cocos.openharmony",
     "REMOTE_SERVER_ROOT": ""
-  },
-  "appBundle": false,
-  "agreements": {}
+  }
 }
