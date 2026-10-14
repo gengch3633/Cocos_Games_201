@@ -1,5 +1,3 @@
-cc._RF.push(module, "5ea09ujWkZAbI0SyUnDuO6p", "AdEventType");
-
 export default class AdEventType {
     public static SPLASH_SHOW: string = "SPLASH_SHOW";
     public static SPLASH_FINISH: string = "SPLASH_FINISH";
@@ -13,5 +11,3 @@ export default class AdEventType {
     public static INSERT_CLOSE: string = "INSERT_CLOSE";
     public static INSERT_CHECK: string = "INSERT_CHECK";
 }
-
-cc._RF.pop();

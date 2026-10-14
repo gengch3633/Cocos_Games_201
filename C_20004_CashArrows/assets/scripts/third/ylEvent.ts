@@ -2,8 +2,6 @@ import GEMgr from "./GEMgr";
 
 const { ccclass } = cc._decorator;
 
-cc._RF.push(module, "31319TkuzxGhapzu3fCJHYn", "ylEvent");
-
 @ccclass
 export default class ylEvent {
     public static tiemStep: number = 10;
@@ -55,5 +53,3 @@ export default class ylEvent {
         });
     }
 }
-
-cc._RF.pop();

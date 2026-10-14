@@ -1,7 +1,5 @@
 import MiddleTrackManager from "./MiddleTrackManager";
 
-cc._RF.push(module, "0bea8/VJ1tOxpd9f0hEC4BZ", "BusinessAnalyticsService");
-
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -37,5 +35,3 @@ export default class BusinessAnalyticsService {
         MiddleTrackManager.getInstance().trackAll();
     }
 }
-
-cc._RF.pop();

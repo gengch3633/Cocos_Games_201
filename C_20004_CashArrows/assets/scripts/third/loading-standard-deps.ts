@@ -14,8 +14,6 @@ import PlayerDataStore from "./PlayerDataStore";
 import SystemDataStore from "./SystemDataStore";
 import UIHelper from "./UIHelper";
 
-cc._RF.push(module, "f8e48e1OuJOFKUBOiKvAJGV", "loading-standard-deps");
-
 function initUserAndClientData(): void {
     let yid = "yid_read_failed";
     try {
@@ -210,5 +208,3 @@ export function buildStandardDeps(): any {
         }
     };
 }
-
-cc._RF.pop();
