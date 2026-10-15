@@ -1,0 +1,48 @@
+已在 `assets/scripts` 文件夹中定位所有调用 Android 原生广告相关的代码。核心是通过 `jsb.reflection.callStaticMethod` 反射调用 Java 层 `AppActivity.moveTo`，广告回调经 `window.callAndroid` → `window.branch` 桥接回 TS。
+
+## 一、Android 原生广告反射调用入口（关键）
+
+__`assets/scripts/third/NativeSdkBridgeAdapter.ts`__
+
+- `getJsbReflection()`（第47-50行）：获取 `window.jsb.reflection`
+
+- `invokeMoveTo()`（第97-133行）：核心反射方法
+
+  ```ts
+  reflection.callStaticMethod(
+      "org/cocos2dx/javascript/AppActivity",
+      "moveTo",
+      "(Ljava/lang/String;)Ljava/lang/String;",
+      encodedPayload   // Base64(methodName|arg1|arg2|...|)
+  );
+  ```
+
+- `showRewardVideoAd(placementId)`（第157-159行）：__Android 激励视频广告直接入口__ → `invokeMoveTo("layCouponCanvas", [placementId])`
+
+- `bindAndroidCallbacks()`（第512-557行）：绑定 `window.callAndroid.*` 广告回调映射
+
+  - `onVideoError` → `branch.backedFeatureCrumbled` → `AdEventType.VIDEO_ERROR`
+  - `onVideoClose` → `branch.backedFeatureWithdrawn` → `AdEventType.VIDEO_CLOSE`
+  - `onVideoOpensuccess` → `branch.backedFeatureRipened` → `AdEventType.VIDEO_OPEN_SUCCESS`
+
+## 二、广告调用链（业务 → 原生）
+
+1. `AdManager.ts`：`playNormalVideoAd()`/`playForceVideoAd()`（第174-241行）→ `AdRequestService.requestRewardVideo()`；`showInsertAd()`（第341行，注释"播放插屏android"）
+2. `AdRequestService.ts`（第16-20行）→ `AdLegacyBridge.showRewardVideoByPlatform()`
+3. `AdLegacyBridge.ts` `showRewardVideoByPlatform()`（第65-77行）：Android 分支 `nativeBridge.showRewardVideoAd(...)`；iOS 分支 `window.calliOS.showRewardVideoAd`
+4. `PlatformBridge.ts` `getNativeBridge()`（第160-162行）→ `NativeSdkBridgeAdapter.getBridge()`
+5. `NativeSdkBridgeAdapter.getBridge()`（第559-584行）：`OS_ANDROID` 时创建 `AndroidSdkBridgeAdapter`
+
+## 三、业务层调用方
+
+- `ArrowRewardService.ts`、`arrowTaskPopupView.ts`、`cashArrowReviveView.ts`、`gameView.ts`（道具/复活/任务广告）
+- `MultiPlatform.ts` `showRewardedVideoAd()`/`showInterstitialAd()`（字节/微信渠道，非 Android 反射）
+- `AdEventType.ts`（广告事件常量）
+
+## 四、非广告的原生反射（排除项）
+
+- `gravityengine.mg.cocoscreator.min.ts`：`com/cocos/game/CocosCreatorProxyApi`（数数科技埋点）
+- `snake.ts`：`org/cocos2dx/lib/Cocos2dxHelper.vibrate`（震动）
+- `HotUpdateManager.ts`：`jsb.AssetsManager`（热更新）
+
+__结论__：Android 原生广告真正触发点为 `NativeSdkBridgeAdapter.ts` 的 `showRewardVideoAd()` → `invokeMoveTo("layCouponCanvas", ...)` → `callStaticMethod("org/cocos2dx/javascript/AppActivity", "moveTo", ...)`；回调经 `window.callAndroid` 桥接。插屏/开屏广告在 Android 端无实际原生反射调用。
