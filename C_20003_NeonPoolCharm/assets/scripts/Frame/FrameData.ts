@@ -57,7 +57,10 @@ class FrameSaveData {
             this[key] = stored[key];
         }
         cc.game.on(cc.game.EVENT_HIDE, function () {
-            FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
+            // localStorage 被外部清除（如 devTools）后，不再把内存中的旧数据写回
+            if (null != cc.sys.localStorage.getItem("FrameData")) {
+                FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
+            }
         });
     }
 
