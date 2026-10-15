@@ -217,18 +217,7 @@ export class FrameData {
         return FrameData.saveData.CharityStep[id].status;
     }
 
-    static saveData = new Proxy(new FrameSaveData(), {
-        get: function (target, key) {
-            return target[key];
-        },
-        set: function (target, key, value) {
-            const ok = Reflect.set(target, key, value);
-            if (ok) {
-                FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
-            }
-            return ok;
-        }
-    });
+    static saveData = new FrameSaveData();
 
     static isTest = false;
     static countryIndex = 2;
