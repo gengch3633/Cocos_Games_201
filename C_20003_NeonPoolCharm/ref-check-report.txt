@@ -1,0 +1,83 @@
+引用检查报告  2026-10-16 00:38
+工程: D:\work\github\Unity_Games\Cocos_Games_201\C_20003_NeonPoolCharm
+扫描文件: 81    错误: 1    警告: 1    提示: 14
+
+[错误] Frame/Prefab/Panel_Account.prefab
+  节点: Panel_Account/panel_window/pop/card/New Label
+  组件: cc.Label
+  问题: 引用的资源不存在（uuid: bbcf4aa3-4ab0-4b85-9b1f-b91ee7e0398c），资源可能已丢失或被替换
+
+[警告] Frame/Prefab/Panel_GM.prefab
+  节点: Panel_GM/Lang
+  组件: cc.ClickEvent
+  问题: ClickEvent(handler=closePage) 引用的组件 4a766XEDi5CDp2+5cYNBHz5 不在目标节点上
+
+[提示] Frame/Prefab/Panel_Account.prefab
+  节点: Panel_Account/panel_window/pop/di12/editbox/BACKGROUND_SPRITE
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] Frame/Prefab/Panel_Activity.prefab
+  节点: Panel_Activity/panel_window/sprite_splash
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] Frame/Prefab/Panel_GuideTips.prefab
+  节点: Panel_GuideTips/bg/title
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
+
+[提示] Frame/Prefab/Panel_Rating.prefab
+  节点: Panel_Rating/panel_window/root2/kuan
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] Frame/Prefab/Panel_RedeemTips.prefab
+  节点: Panel_RedeemTips/bg/levelLayoutNode/level_label
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
+
+[提示] Frame/Prefab/Panel_Toast.prefab
+  节点: Panel_Toast/panel_window/sprite_bg/lbl_toast
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
+
+[提示] Frame/Prefab/PaymentItem.prefab
+  节点: PaymentItem
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] resources/pages/DebugCodePage.prefab
+  节点: DebugCodePage
+  组件: cc.ClickEvent
+  问题: ClickEvent 的 handler "hide" 在脚本 DebugCodePageCtrl 中未找到（可能定义在父类或已改名）
+
+[提示] resources/pages/DebugPage.prefab
+  节点: DebugPage
+  组件: cc.ClickEvent
+  问题: ClickEvent 的 handler "hide" 在脚本 DebugPageCtrl 中未找到（可能定义在父类或已改名）
+
+[提示] resources/pages/LoadingPage.prefab
+  节点: LoadingPage/spr_loading
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] resources/pages/LoadingPage.prefab
+  节点: LoadingPage/label_text
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
+
+[提示] third/game_tabel.fire
+  节点: New Node/Canvas/plane_table/node_cue_container
+  组件: cc.Sprite
+  问题: Sprite 未设置 SpriteFrame（如非占位符请检查）
+
+[提示] third/loadingCN.fire
+  节点: New Node/Canvas/bottom/pro_title
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
+
+[提示] third/loadingCN.fire
+  节点: New Node/Canvas/bottom/versionLabel
+  组件: cc.Label
+  问题: Label 未使用系统字体且未绑定字体文件
