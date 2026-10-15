@@ -1,0 +1,21 @@
+{
+  "name": "prefab-ref-checker",
+  "version": "1.0.0",
+  "description": "检查 .prefab / .fire 文件中组件缺失引用（Missing Script、丢失资源、内置组件未绑定资源等）",
+  "author": "NeonPoolCharm",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.package.title/prefab-ref-checker": {
+      "message": "prefab-ref-checker:open"
+    }
+  },
+  "panel": {
+    "main": "panel/index.js",
+    "type": "dockable",
+    "title": "引用检查",
+    "width": 640,
+    "height": 480,
+    "min-width": 480,
+    "min-height": 320
+  }
+}
