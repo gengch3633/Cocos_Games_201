@@ -57,10 +57,11 @@ class FrameSaveData {
             this[key] = stored[key];
         }
         cc.game.on(cc.game.EVENT_HIDE, function () {
-            // localStorage 被外部清除（如 devTools）后，不再把内存中的旧数据写回
-            if (null != cc.sys.localStorage.getItem("FrameData")) {
-                FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
-            }
+            FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData"); // for_test
+            // // localStorage 被外部清除（如 devTools）后，不再把内存中的旧数据写回 // for_test
+            // if (null != cc.sys.localStorage.getItem("FrameData")) {
+            //     FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
+            // }
         });
     }
 
@@ -220,7 +221,20 @@ export class FrameData {
         return FrameData.saveData.CharityStep[id].status;
     }
 
-    static saveData = new FrameSaveData();
+    static saveData = new Proxy(new FrameSaveData(), {
+      get: function (target, key) {
+          return target[key];
+      },
+      set: function (target, key, value) {
+          const ok = Reflect.set(target, key, value);
+          if (ok) {
+              FrameSaveData.setlocalStorageItem(null, FrameData.saveData, "FrameData");
+          }
+          return ok;
+      }
+  });
+
+    // static saveData = new FrameSaveData(); // for_test
 
     static isTest = false;
     static countryIndex = 2;
