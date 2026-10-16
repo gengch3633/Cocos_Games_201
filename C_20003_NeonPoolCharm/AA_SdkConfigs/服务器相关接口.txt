@@ -1,0 +1,89 @@
+一、唯一真实的服务器接口（third/CoinfinityRideress.ts）
+Base URL：https://game.poolquestfun.online，自定义请求头携带包名、版本、设备 UUID、语言、系统、网络类型等。返回协议是 {code: 0=成功, data, mimickers=错误信息}。
+1. GET /api/user/kickstart — 启动配置（geomUndefinablenessUnunitable，:359）
+启动时拉取，失败 1 秒后无限重试。返回 data 各字段含义：
+字段
+含义
+cyber
+运行模式标志 → intranet。0 = 正式模式（需走 panel 远程资源流程）；非 0 = 内网/审核模式
+panel
+AES 加密，解密后 {domain[], path, options}：远程资源/热更的域名列表+路径，带备用域名轮询（domainindex 记录可用域名）
+coding
+游戏运营配置 → GameConfigurations.updateWebConfig，即 FRAME_CONF（关卡/广告/提现配置）来源
+powerup
+AES 加密配置，与 panel 合并后作为完整下发数据
+database
+AES 加密的文本配置
+spawn / dragons
+渠道标记 / 国家码
+IP_RESTRICT / VPN_RESTRICT
+IP 限制、VPN/代理限制开关（命中时登录返回 101/102 拦截）
+layered/strategy/mercy/exploit
+4 个埋点上报开关，分别控制 700-799、330-399、500-599、100-299 号段的状态码是否允许上报
+2. POST /client/data-log — 埋点/日志上报（leporidMoldedConstrained，:421）
+两种 body：
+•
+{empire: {plugin: 状态码, search: 附加信息}} — 启动流程状态码（300=初始化、305=登录成功、308=A/B 进新球杆流程、314=资源加载完成、702/701=域名加载成功/失败等）
+•
+{crossfire: [...]} — AES 加密的事件记录批量上传，本地先存 __league__，90 秒定时或满 20 条 flush
+3. POST /api/v4/readout/page（labioglossopharyngeal）
+已封装但无任何调用点，死代码。
+4. 远程资源加载（非 API）
+用 kickstart 下发的 panel.domain[i] + panel.path 通过 cc.assetManager.loadAny 加载远程 bundle/热更资源，失败依次轮询备用域名。
+二、业务接口（已全部 mock，无真实请求）
+GameServiceMgr（业务层）→ GameService（固定返回 {code:1, data:{}, ecp:0, message:""}）或 LocalServer（localStorage + 本地 resources/config/info.json 模拟）。协议统一：code: 1=成功 / 2=失败，message 为失败提示（toast 直接弹出）。各接口及返回值含义：
+接口
+用途
+data 关键字段
+getUserInfo
+初始化取用户信息
+tables（配置表）、user_info、game_info（level_a/b/c 三段关卡进度、roundCount/turnCount、table 球桌、get_clubs/use_club_id/next_club_id 球杆、prop 道具）
+touristsLogin
+游客登录
+特殊 code:101=IP 限制拦截、102=VPN 限制拦截
+submitLevel
+过关上报
+新进度 level_a/b/c、roundCount/turnCount、table、cash_balance/gold_balance（红包/现金余额）、gold_prize、show_draw/show_level_reward（弹窗标记）、level_ad、total_video_count、extract_gold_cash_record（提现进度）
+reportAd
+看完广告上报（AD_TYPE 枚举区分场景）
+level_ad、cash_balance、prop、cash_prize、total_video_count
+getClub/exchangeClub/changeClub/refreshNextClub
+球杆解锁/兑换/换装/刷新下一杆
+get_clubs（拥有表）、use_club_id（使用中）、next_club_id（下一解锁）
+signIn
+签到
+rewards[]（type/count/cash_balance/gold_balance/prop/get_clubs/sign_balance）
+extractCash/extractGold
+红包/现金提现
+success、fail_message、extract_money、gold_balance/cash_balance
+extractRecord
+提现记录
+记录列表
+chouJiang
+抽奖（is_ad 是否广告抽）
+level_ad、total_video_count、提现进度
+submitGuideLevel/GuideGift
+新手引导完成/礼包
+gold_balance
+clubGold
+球杆金币领取
+club_gold_index、gold_prize
+UseClubProp/UseMoveCueBallProp
+消耗道具
+prop（最新道具库存）
+GetGameLevelConfig
+关卡球桌配置
+实际读本地 resources/config/lv/ 资源
+GmChangeLevel/GmChangeRound/GmChangeCash/GmOpenCues 等
+GM 调试
+同 submitLevel 的进度结构
+三、其他"看似联网"实际无效的
+•
+SdkHelper.reportData（SdkHelper.ts:300）：空函数，所有 app_start/pay/level_statis 等埋点全是 no-op
+•
+FrameSDK.HttpGet（FrameSDK.ts:172）：定义了但无调用点
+•
+PoolWrapper/PoolNative：广告聚合 SDK 原生桥，广告请求在原生层完成，JS 层不可见
+•
+SuperReward 任务墙、openWeb 的 H5 链接（zephyrona.com、vortexiax.com）：WebView 加载外链页面，非接口调用
+总结：这个包对外只有 game.poolquestfun.online 的 kickstart 配置下发和 data-log 埋点上传两个真实接口，加一套远程资源域名热更；玩法相关的"服务器"全部是本地 LocalServer 模拟的。

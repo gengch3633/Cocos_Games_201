@@ -1,0 +1,74 @@
+整体结构：两套广告通道
+1.
+FrameSDK 体系（主通道，assets/scripts/Frame/）：FrameSDK.openVideo/openInters/openSplash/openWeb → 经 sdkFuc 桥接（loadingCN.ts:307-340 注入）→ PoolWrapper（混淆封装的聚合广告 SDK）
+2.
+AdManager 体系（旧原生通道，third/AdManager.ts）：直接反射调用 Android/iOS 原生 SDK，仅残留在冷启动开屏和道具页
+全局总开关：
+•
+noProfitAd（loadingCN.ts:405，= !GameHelper.pocketed，由原生侧按服务器配置设置）：为 true 时插屏全禁、奖励类广告全部转免广告直接发奖
+•
+SDK_CONF.NO_VIDEO（GM/Debug 面板可切）：跳过所有视频/插屏/Web 广告且视为成功
+•
+isFree 判定（FrameData.ts:128）：noProfitAd || passLevel < abAdStartLevel(默认3) → 低关卡免广告
+激励视频（openVideo，FrameSDK.ts:720）
+统一门槛：beforeOpenVideo（非 pocketed 先弹 VideoAlertPage 确认）→ NO_VIDEO 检查 → isReadyVideo() 轮询重试至多 videoRetryTime(3s) → 失败降级插屏 → 再失败降级 Web 广告。
+触发点（placement）：
+placement
+位置
+说明
+reward_1
+Panel_Award_3.ts:270
+关卡结算奖励（A/B 面板之一，转倍数），isFree 时直接发
+reward_2
+Panel_Award_1.ts:218
+另一种结算面板
+reward_sup
+Panel_Award_Super1/2.ts
+超级奖励，isFree 判断同上
+fly_sup
+FlyingBonus.ts:133
+飞行宝箱，4 关解锁，noProfitAd 时不出现
+enter_level
+FrameSDK.ts:358
+关卡开始前（与插屏二选一，见下）
+game_rev
+FuHuoPageCtrl.ts:94
+复活
+item_1/item_2
+UsePropPageCtrl.ts:97
+白球/瞄准线道具
+unlock_cue
+NewCueListLitemCtr.ts:100
+解锁球杆
+另外 Panel_Award_* 用 getNoAdDelayTime()（按 noAdConfig 配）给"免费领取"按钮加延迟，引导看广告。
+插屏广告开启条件（isShowInters，FrameSDK.ts:285）
+同时满足：
+1.
+!noProfitAd
+2.
+passLevel >= InterConfig.maxFreeLevel（默认 9 关）
+3.
+冷却结束：按当前关卡从 InterConfig.cooldown 取 cd（默认 0 关起 30 秒，18 关起 0 秒），Date.now() - _lastVideoEndTime >= cd
+触发点：
+•
+关卡开始前 beforeGameLevelStart（FrameSDK.ts:342）：满足条件后按 InterConfig.beforeLevelAd.videoFirst 决定先弹视频还是插屏（默认 false → 插屏），placement enter_level，看完发慈善币
+•
+激励视频失败时的降级（FrameSDK.ts:771/799），插屏失败也会反过来降级视频（:1246），形成互备
+其他广告类型
+1.
+开屏 Splash（两种）：
+◦
+原生开屏：loadingCN.ts:198 冷启动时 AdManager.showSplashAd(0)（非新用户、非审核期）
+◦
+Frame 开屏（PoolWrapper）：冷启动 beforeEnterGame（:544）、热启动回前台 onAppLifecycleChange（:1145，离屏超过 splashShowInterval 才弹）。需 SDK_CONF.splashEnabled，默认 false 关闭
+2.
+Banner：FrameSDK.openBanner 受 isShowBanner（默认 true）控制，但注入的 sdkFuc.openBanner 是空函数（loadingCN.ts:326）→ 当前实际未启用；AdManager/PoolWrapper 里也有 Banner 接口闲置
+3.
+Web 广告（openWeb，:1058）：视频→插屏双失败后的兜底，弹 Panel_AdAlternate H5 页面发奖。需 adAlternateEnabled（默认 false）且按 AdAlternateConfig 的国家/权重/每日与总量上限投放
+4.
+原生图文广告：AdManager.showGraphicAd → showImgAd，无调用点，闲置
+5.
+AdManager 原生激励视频：PropPageCtrl.ts:99（道具页 playNormalVideoAd）；playForceVideoAd（强弹）无调用点
+6.
+任务墙/外链任务：Panel_SuperReward（SuperRewardTask 配置的 H5 任务），superRewardEnabled 默认 false
+关键配置默认值（FrameData.ts:807-843）：abAdStartLevel:3、InterConfig.maxFreeLevel:9、cooldown: 30s→0s(18关)、splashEnabled:false、adAlternateEnabled:false、videoRetryTime:3s。这些都可被服务器下发的 FRAME_CONF 覆盖
