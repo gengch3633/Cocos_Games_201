@@ -1,3 +1,4 @@
+import ApiLog from "./ApiLog";
 import AudioManager from "./AudioManager";
 import BaseSystem from "./BaseSystem";
 import ConfigDataSys from "./ConfigDataSys";
@@ -49,7 +50,7 @@ class GameServiceMgr {
     submitLevel(e, t, o) {
         PlayerDataSys.getUserCpm() && Object.assign(e, PlayerDataSys.getUserCpm());
         GameService.submitLevel(e, Handler.create(this, function (e) {
-            console.log(" submitLevel 返回 ", e);
+            ApiLog.response("submitLevel", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.user_level = n.level_a;
@@ -94,7 +95,7 @@ class GameServiceMgr {
 
     GmOpenCues(e, t, o) {
         GameService.GmOpenCues(e, Handler.create(this, function (e) {
-            console.log(" GmOpenCues 返回 ", e);
+            ApiLog.response("GmOpenCues", e);
             if (e && 1 == e.code) {
                 const t = e.data;
                 CueDataSys.get_clubs = t.get_clubs;
@@ -114,7 +115,7 @@ class GameServiceMgr {
         GameService.exchangeClub({
             club_id: e
         }, Handler.create(this, function (e) {
-            console.log(" exchangeClub 返回 ", e);
+            ApiLog.response("exchangeClub", e);
             if (e && 1 == e.code) {
                 const a = e.data,
                     l = (a.level_ad, a.get_clubs),
@@ -142,6 +143,7 @@ class GameServiceMgr {
 
     GmGetCpmRecord(e) {
         GameService.GmGetCpmRecord({}, Handler.create(this, function (t) {
+            ApiLog.response("GmGetCpmRecord", t);
             t && 1 == t.code && e && e(t.data);
         }));
     }
@@ -150,7 +152,7 @@ class GameServiceMgr {
         GameService.submitGuideLevel({
             guide_id: e
         }, Handler.create(this, function (n) {
-            console.log(" submitGuideLevel 返回 ", e, n);
+            ApiLog.response("submitGuideLevel", n);
             if (n && 1 == n.code) {
                 const i = n.data;
                 i.gold_balance && (PlayerDataSys.gold_balance = i.gold_balance);
@@ -169,7 +171,7 @@ class GameServiceMgr {
         GameService.GetGameLevelConfig({
             level_name: e
         }, Handler.create(this, function (n) {
-            console.log("  获取关卡球桌配置文件 ", n);
+            ApiLog.response("GetGameLevelConfig", n);
             if (n && 1 == n.code) t && t(n.data.config); else if (n && n.message) {
                 o && o();
                 console.log("GetGameLevelConfig failed : ", e);
@@ -182,7 +184,7 @@ class GameServiceMgr {
 
     refreshNextClub(e, t, o) {
         GameService.refreshNextClub(null, Handler.create(this, function (e) {
-            console.log(" refreshNextClub 返回 ", e);
+            ApiLog.response("refreshNextClub", e);
             if (e && 1 == e.code) {
                 const t = e.data;
                 CueDataSys.get_clubs = t.get_clubs;
@@ -200,7 +202,7 @@ class GameServiceMgr {
         GameService.GmChangeRound({
             round: e
         }, Handler.create(this, function (e) {
-            console.log(" GmChangeRound 返回 ", e);
+            ApiLog.response("GmChangeRound", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.user_level = n.level_a;
@@ -230,7 +232,7 @@ class GameServiceMgr {
     reportAd(e, t, o) {
         e.success && PlayerDataSys.getUserCpm() && Object.assign(e, PlayerDataSys.getUserCpm());
         GameService.reportAd(e, Handler.create(this, function (i) {
-            console.log(" reportAd 返回 ", i);
+            ApiLog.response("reportAd", i);
             if (i && 1 == i.code) {
                 const a = i.data,
                     r = a.level_ad,
@@ -284,7 +286,7 @@ class GameServiceMgr {
 
     GmChangeLevel(e, t, o) {
         GameService.GmChangeLevel(e, Handler.create(this, function (e) {
-            console.log(" GmChangeLevel 返回 ", e);
+            ApiLog.response("GmChangeLevel", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.user_level = n.level_a;
@@ -313,7 +315,7 @@ class GameServiceMgr {
 
     deprecatedGmChangeLevel(e, t, o) {
         GameService.deprecatedGmChangeLevel(e, Handler.create(this, function (e) {
-            console.log(" GmChangeLevel 返回 ", e);
+            ApiLog.response("deprecatedGmChangeLevel", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.user_level = n.level_a;
@@ -342,7 +344,7 @@ class GameServiceMgr {
 
     extractRecord(e, t) {
         GameService.extractRecord(Handler.create(this, function (o) {
-            console.log(" extractRecord 返回 ", o);
+            ApiLog.response("extractRecord", o);
             if (o && 1 == o.code) {
                 o.data;
                 e && e(o.data);
@@ -358,7 +360,7 @@ class GameServiceMgr {
 
     UseMoveCueBallProp(e, t, o) {
         GameService.UseMoveCueBallProp({}, Handler.create(this, function (e) {
-            console.log(" UseClubProp 返回 ", e);
+            ApiLog.response("UseMoveCueBallProp", e);
             if (e && 1 == e.code) {
                 const n = e.data.prop;
                 if (n) {
@@ -384,7 +386,7 @@ class GameServiceMgr {
         };
         PlayerDataSys.getUserCpm() && Object.assign(n, PlayerDataSys.getUserCpm());
         GameService.getClub(n, Handler.create(this, function (e) {
-            console.log(" getClub 返回 ", e);
+            ApiLog.response("getClub", e);
             if (e && 1 == e.code) {
                 const n = e.data,
                     a = n.level_ad,
@@ -423,7 +425,7 @@ class GameServiceMgr {
         PlayerDataSys.cash_balance * n.withdraw_percent < 10 ? EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积红包") : GameService.extractCash({
             extract_id: e
         }, Handler.create(this, function (e) {
-            console.log(" 提现返回 ", e);
+            ApiLog.response("extractCash", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.cash_balance = n.cash_balance;
@@ -442,7 +444,7 @@ class GameServiceMgr {
     GuideGift(e, t) {
         console.log(" 领取引导奖励 ");
         GameService.GuideGift(Handler.create(this, function (o) {
-            console.log(" 领取引导奖励 ", o);
+            ApiLog.response("GuideGift", o);
             if (o && 1 == o.code) {
                 const n = o.data;
                 PlayerDataSys.total_gold += n.gold_balance - PlayerDataSys.gold_balance;
@@ -460,7 +462,7 @@ class GameServiceMgr {
 
     signIn(e, t) {
         GameService.signIn(Handler.create(this, function (o) {
-            console.log(" signIn 返回 ", o);
+            ApiLog.response("signIn", o);
             if (o && 1 == o.code) {
                 const n = o.data;
                 PlayerDataSys.sign_today = true;
@@ -509,6 +511,7 @@ class GameServiceMgr {
         GameService.GMAddSignInCount({
             sign_in_count: e
         }, Handler.create(this, function (e) {
+            ApiLog.response("GMAddSignInCount", e);
             t && t(e.data);
             const o = e.data.sign_in_count;
             PlayerDataSys.sign_in_count = o;
@@ -520,7 +523,7 @@ class GameServiceMgr {
         PlayerDataSys.gold_balance < 10 ? EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积现金") : GameService.extractGold({
             extract_id: e
         }, Handler.create(this, function (e) {
-            console.log(" 现金提现返回 ", e);
+            ApiLog.response("extractGold", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.gold_balance = n.gold_balance;
@@ -541,7 +544,7 @@ class GameServiceMgr {
         GameService.UseClubProp({
             prop_id: e
         }, Handler.create(this, function (e) {
-            console.log(" UseClubProp 返回 ", e);
+            ApiLog.response("UseClubProp", e);
             if (e && 1 == e.code) {
                 const n = e.data.prop;
                 if (n) {
@@ -565,7 +568,7 @@ class GameServiceMgr {
             type: e,
             num: t
         }, Handler.create(this, function (e) {
-            console.log(" GmChangeCash返回 ", e);
+            ApiLog.response("GmChangeCash", e);
             if (e && 1 == e.code) {
                 const t = e.data,
                     i = t.cash_balance,
@@ -590,7 +593,7 @@ class GameServiceMgr {
         GameService.clubGold({
             id: e
         }, Handler.create(this, function (e) {
-            console.log(" clubGold 返回 ", e);
+            ApiLog.response("clubGold", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 CueDataSys.club_gold_index = n.club_gold_index;
@@ -610,6 +613,7 @@ class GameServiceMgr {
 
     GmGetClubShard() {
         GameService.GmGetClubShard({}, Handler.create(this, function (e) {
+            ApiLog.response("GmGetClubShard", e);
             if (e && 1 == e.code) for (let t = e.data.club_shard, o = 0, n = t; o < n.length; o++) {
                 const a = n[o];
                 CueDataSys.club_shard[a] = t[a];
@@ -621,7 +625,7 @@ class GameServiceMgr {
         GameService.deprecatedGmChangeTurn({
             turn: e
         }, Handler.create(this, function (e) {
-            console.log(" GmChangeTurn 返回 ", e);
+            ApiLog.response("deprecatedGmChangeTurn", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 PlayerDataSys.user_level = n.level_a;
@@ -652,7 +656,7 @@ class GameServiceMgr {
         GameService.changeClub({
             club_id: e
         }, Handler.create(this, function (e) {
-            console.log(" changeClub 返回 ", e);
+            ApiLog.response("changeClub", e);
             if (e && 1 == e.code) {
                 const n = e.data,
                     a = (n.level_ad, n.get_clubs),
@@ -677,7 +681,7 @@ class GameServiceMgr {
         BaseSystem.logoff({
             yid: PlayerDataSys.yid
         }, Handler.create(this, function (e) {
-            console.log("用户注销接口返回====", e);
+            ApiLog.response("logoff", e);
             if (e && 1 == e.code) {
                 PageMgr.clear();
                 EngineUtil.setLocalData("yid", "");
@@ -695,7 +699,7 @@ class GameServiceMgr {
         };
         e && PlayerDataSys.getUserCpm() && Object.assign(n, PlayerDataSys.getUserCpm());
         GameService.chouJiang(n, Handler.create(this, function (e) {
-            console.log(" 抽奖返回 ", e);
+            ApiLog.response("chouJiang", e);
             if (e && 1 == e.code) {
                 const n = e.data;
                 n.level_ad && (PlayerDataSys.level_ad = n.level_ad);

@@ -1,3 +1,4 @@
+import ApiLog from "./ApiLog";
 import { PoolNative } from "./PoolNative";
 import { PoolWrapper } from "./PoolWrapper";
 
@@ -275,7 +276,9 @@ export class CoinfinityRideress {
         for (const key in headers) {
             xhr.setRequestHeader(key, headers[key]);
         }
+        ApiLog.request(method + " " + this.leucocratic + url, body);
         xhr.onload = function () {
+            ApiLog.response(method + " " + url + " [HTTP " + xhr.status + "]", xhr.responseText);
             if (4 == xhr.readyState && 200 == xhr.status) {
                 if (callback) {
                     callback(null, xhr.responseText);
@@ -285,6 +288,7 @@ export class CoinfinityRideress {
             }
         };
         xhr.onerror = function () {
+            ApiLog.response(method + " " + url + " [网络错误]", null);
             if (callback) {
                 callback("connection fail", null);
             }

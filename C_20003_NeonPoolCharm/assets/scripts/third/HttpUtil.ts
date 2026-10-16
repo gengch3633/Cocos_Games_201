@@ -1,3 +1,4 @@
+import ApiLog from "./ApiLog";
 import EngineUtil from "./EngineUtil";
 import SdkHelper from "./SdkHelper";
 import Service from "./Service";
@@ -73,7 +74,7 @@ export default class HttpUtil {
                             n = SdkHelper.getAesDncrypData(o.data);
                             n = JSON.parse(n);
                         }
-                        console.log("网络 ", e, JSON.stringify(o));
+                        ApiLog.response("POST " + e, o);
                         if (e.includes(SystemDataSys.getServerTestUrl()) || e.includes(SystemDataSys.getServerReleaseUrl())) {
                             var l = n.code;
                             if (-1 == l || -1e3 == l) {
@@ -85,7 +86,7 @@ export default class HttpUtil {
                         }
                         c(true, n);
                     } else {
-                        console.log("返回数据不存在");
+                        ApiLog.response("POST " + e + " [返回数据不存在]", { http_status: s.status });
                         c(false, {
                             code: -1,
                             message: "返回数据不存在",
@@ -93,7 +94,7 @@ export default class HttpUtil {
                         });
                     }
                 } else {
-                    console.log("请求失败");
+                    ApiLog.response("POST " + e + " [请求失败]", { http_status: s.status });
                     c(false, {
                         code: -1,
                         message: "xhr.status" + s.status,
@@ -155,11 +156,12 @@ export default class HttpUtil {
                         n = SdkHelper.getAesDncrypData(e.data);
                         n = JSON.parse(n);
                     }
+                    ApiLog.response("GET " + e, n);
                     n ? t(n) : a(false, "parseErr");
                 } else a(false, "onreadystatechange");
             };
             i.onerror = function () {
-                console.log("There was an error!");
+                ApiLog.response("GET " + e + " [网络错误]", null);
                 a(false, "onerror");
             };
             i.open("GET", encodeURI(e), true);

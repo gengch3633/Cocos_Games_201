@@ -1,3 +1,5 @@
+import ApiLog from "./ApiLog";
+
 export default class HotUpdate {
 
     _updating = false;
@@ -251,17 +253,16 @@ export default class HotUpdate {
                     const text = request.responseText;
                     if (text) {
                         if (callback) {
-                            console.log("返回版本信息");
-                            console.log(text);
+                            ApiLog.response("getGrayVersion " + url, text);
                             const data = JSON.parse(text);
                             callback(data);
                         }
                     } else {
-                        console.log("返回数据不存在");
+                        ApiLog.response("getGrayVersion " + url + " [返回数据不存在]", null);
                         callback && callback(false);
                     }
                 } else {
-                    console.log("请求失败");
+                    ApiLog.response("getGrayVersion " + url + " [请求失败 HTTP " + request.status + "]", null);
                 }
             }
         };
