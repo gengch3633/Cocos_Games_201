@@ -1,3 +1,4 @@
+import { AdDisplayLogger } from "./AdDisplayLogger";
 import { CLICKLOCK } from "./CLICKLOCK";
 import Frame from "./Frame";
 import { FrameData } from "./FrameData";
@@ -557,6 +558,7 @@ export class FrameSDK {
                         splash.zIndex = cc.macro.MAX_ZINDEX;
                         splash.active = true;
                     }
+                    AdDisplayLogger.logShow("splash", "cold_start");
                     FrameSDK.frameData.sdkFuc.openSplash(function (event) {
                         if (event === EVideoEvent.END || event === EVideoEvent.FAIL) {
                             FrameSDK.logGameEvent("thepool_sad", {
@@ -772,6 +774,7 @@ export class FrameSDK {
                                         }
                                         break;
                                     case EVideoEvent.START:
+                                        AdDisplayLogger.logShow("video", placement);
                                         FrameSDK.frameData.gameFuc.closeLoad();
                                         FrameSDK.frameData.sdkFuc.earlierStageEvent("ad_success");
                                         FrameSDK.logLiftEvent("first_ad");
@@ -1103,6 +1106,7 @@ export class FrameSDK {
                         reward: data.reward,
                         isMax: data.isMax,
                         startCallback: function () {
+                            AdDisplayLogger.logShow("web", "ad_alternate_" + picked.fill_id);
                             FrameSDK.frameData.sdkFuc.earlierStageEvent("ad_success");
                             FrameSDK.logLiftEvent("first_ad");
                             if (onStart != null) {
@@ -1181,6 +1185,7 @@ export class FrameSDK {
                     cc.director.emit("HIDE_SPLASH");
                     return;
                 }
+                AdDisplayLogger.logShow("splash", "hot_start");
                 FrameSDK.frameData.sdkFuc.openSplash(function (event) {
                     if (event === EVideoEvent.END || event === EVideoEvent.FAIL) {
                         FrameSDK.logGameEvent("thepool_sad", {
@@ -1247,6 +1252,7 @@ export class FrameSDK {
                         }
                         break;
                     case EVideoEvent.START:
+                        AdDisplayLogger.logShow("interstitial", placement);
                         FrameSDK.frameData.gameFuc.closeLoad();
                         FrameSDK.frameData.sdkFuc.earlierStageEvent("ad_success");
                         FrameSDK.logLiftEvent("first_ad");

@@ -1,3 +1,4 @@
+import { AdDisplayLogger } from "../Frame/AdDisplayLogger";
 import AdvertEventType from "./AdvertEventType";
 import AudioManager from "./AudioManager";
 import CallAndroid from "./CallAndroid";
@@ -22,6 +23,7 @@ export default class AdManager {
     adSwitch = true;
     lastTouchDate = 0;
     interval = 1.5;
+    _pendingVideoPlacement = "prop_page";
 
     static _instance: AdManager = null;
 
@@ -71,6 +73,7 @@ export default class AdManager {
                 }
             }
             if (cc.sys.isNative && this.adSwitch) {
+                this._pendingVideoPlacement = "prop_force";
                 if (music) {
                     AudioManager.getInstance().playMusic(music);
                 }
@@ -92,6 +95,7 @@ export default class AdManager {
                     CalliOS.getInstance().showRewardVideoAd(data);
                 }
             } else {
+                AdManager._logAdShow("native_video", "prop_force");
                 EngineUtil.localStorageSetItem("last_vd_time", String(TimeUtils.getTimeinSeconds()));
                 success();
             }
@@ -238,9 +242,14 @@ export default class AdManager {
     }
 
     clearSplashTimer() {
+        AdManager._logAdShow("splash", "native_splash");
         if (this.splash_timer) {
             clearTimeout(this.splash_timer);
         }
+    }
+
+    static _logAdShow(type: string, placement: string) {
+        AdDisplayLogger.logShow(type as any, placement);
     }
 
     preLoadBannerAd() {
@@ -279,6 +288,7 @@ export default class AdManager {
             }
             this.lastTouchDate = now;
             if (cc.sys.isNative && this.adSwitch) {
+                this._pendingVideoPlacement = "prop_normal";
                 this.startVideoTimer();
                 if (success) {
                     this.videoSuccessFun = success;
@@ -298,6 +308,7 @@ export default class AdManager {
                     CalliOS.getInstance().showRewardVideoAd(data);
                 }
             } else {
+                AdManager._logAdShow("native_video", "prop_normal");
                 EngineUtil.localStorageSetItem("last_vd_time", String(TimeUtils.getTimeinSeconds()));
                 success();
             }
@@ -347,6 +358,7 @@ export default class AdManager {
     }
 
     onVideoOpensuccess() {
+        AdManager._logAdShow("native_video", this._pendingVideoPlacement);
         this.stopVideoTimer();
     }
 }
