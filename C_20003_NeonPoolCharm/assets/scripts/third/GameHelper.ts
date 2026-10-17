@@ -10,8 +10,8 @@ class GameHelper {
     _lastVideoEndTime = 0;
 
     static _instance: GameHelper = null;
-    // static __Nhwi8h85e9sfgz__: any;
-    static __Nhwi8h85e9sfgz__: any = true; // for_test 开启广告
+    static __Nhwi8h85e9sfgz__: any;
+    // static __Nhwi8h85e9sfgz__: any = true; // for_test 开启广告
 
     static get instance() {
         return this._instance != null ? this._instance : this._instance = new GameHelper();
