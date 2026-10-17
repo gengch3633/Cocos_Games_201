@@ -9,6 +9,7 @@ export class GameConfigurations {
     static _originalGameConfig = undefined;
     static _customConfig = {
         startLevelForClearAward: 3,
+        quickPassOnCueHit: true,
         maxLevelForFreeAimProp: 3,
         initialPlacePropNum: 3,
         minBallNumberForPropHint: 11,

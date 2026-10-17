@@ -830,6 +830,25 @@ export default class game_table extends cc.Component {
         const a = cc.find("node_condition_title", this.node);
         this.mode == BallLogicMgr.MODE.PVE_Challenge || this.mode == BallLogicMgr.MODE.ME_Editing ? a.getComponent("ConditionTitleComp").updateGunNum(this.ganNum) : this.mode == BallLogicMgr.MODE.ME_Free && (BallLogicMgr.freeMode_totalGanNum = BallLogicMgr.freeMode_totalGanNum + 1);
         this.oneCueFinish();
+        this.tryQuickPassOnCueHit();
+    }
+
+    tryQuickPassOnCueHit() {
+        if (!GameConfigurations.customConfig.quickPassOnCueHit) {
+            return;
+        }
+        if (!this.isIngame || BallLogicMgr.isWin) {
+            return;
+        }
+        if (this.mode !== BallLogicMgr.MODE.ME_Free) {
+            return;
+        }
+        console.log("[QuickPass] cue ball hit, auto level success");
+        this.scheduleOnce(function () {
+            if (this.isIngame && !BallLogicMgr.isWin) {
+                this.doGameSuccess(true);
+            }
+        }, 0);
     }
 
     checkCanOP() {
