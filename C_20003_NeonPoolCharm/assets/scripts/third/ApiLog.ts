@@ -21,13 +21,13 @@ export default class ApiLog {
 
     static request(name: string, data?: any) {
         if (ApiLog.enabled) {
-            console.log("[API] " + name + " 请求", data);
+            console.warn("[API] " + name + " 请求", data);
         }
     }
 
     static response(name: string, data?: any) {
         if (ApiLog.enabled) {
-            console.log("[API] " + name + " 返回", data);
+            console.warn("[API] " + name + " 返回", data);
         }
     }
 }
