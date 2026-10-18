@@ -127,7 +127,7 @@ export default class ApiRequestLogger {
             params: normalizeLogValue(params),
             response: normalizeLogValue(response),
         };
-        console.warn(LOG_TAG, payload.functionName, payload.url, payload.params, payload.response);
+        console.error(LOG_TAG, payload.functionName, payload.url, payload.params, payload.response);
         // console.warn(LOG_TAG, payload);
     }
 }
