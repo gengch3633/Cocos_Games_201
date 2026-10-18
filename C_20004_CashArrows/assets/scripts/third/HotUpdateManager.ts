@@ -251,10 +251,10 @@ export default class HotUpdateManager {
                         content = xhr.responseText;
                     }
                     const response = JSON.parse(content);
-                    ApiRequestLogger.log(url, requestParams, response);
+                    ApiRequestLogger.log("getGrayVersion", url, requestParams, response);
                     callback(response);
                 } else {
-                    ApiRequestLogger.log(url, requestParams, null);
+                    ApiRequestLogger.log("getGrayVersion", url, requestParams, null);
                     callback(false);
                 }
             }
@@ -263,15 +263,15 @@ export default class HotUpdateManager {
         xhr.setRequestHeader("Content-type", "text/plain");
         xhr.send(data);
         xhr.addEventListener("abort", () => {
-            ApiRequestLogger.log(url, requestParams, null);
+            ApiRequestLogger.log("getGrayVersion", url, requestParams, null);
             callback(false);
         });
         xhr.addEventListener("error", () => {
-            ApiRequestLogger.log(url, requestParams, null);
+            ApiRequestLogger.log("getGrayVersion", url, requestParams, null);
             callback(false);
         });
         xhr.addEventListener("timeout", () => {
-            ApiRequestLogger.log(url, requestParams, null);
+            ApiRequestLogger.log("getGrayVersion", url, requestParams, null);
             callback(false);
         });
     }

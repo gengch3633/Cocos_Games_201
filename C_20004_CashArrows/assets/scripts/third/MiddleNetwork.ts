@@ -244,7 +244,8 @@ function buildRequestPayload(descriptorKey: string, inputParams?: any): string {
 
 export default class MiddleNetwork {
 
-    public static request(descriptorKey: string, params: any, onSuccess?: any, onFail?: any): void {
+    public static request(descriptorKey: string, params: any, onSuccess?: any, onFail?: any, functionName?: string): void {
+        const apiFunctionName = functionName || descriptorKey;
         const descriptor = MiddleRequestDescriptors.MIDDLE_REQUEST_DESCRIPTORS[descriptorKey];
         const baseUrl = descriptor && descriptor.url;
 
@@ -286,7 +287,7 @@ export default class MiddleNetwork {
                     http_status: status,
                     raw: raw
                 };
-                ApiRequestLogger.log(url, params, failData);
+                ApiRequestLogger.log(apiFunctionName, url, params, failData);
                 invokeCallback(onFail, failData);
                 return;
             }
@@ -303,7 +304,7 @@ export default class MiddleNetwork {
 
             try {
                 const json = JSON.parse(text);
-                ApiRequestLogger.log(url, params, json);
+                ApiRequestLogger.log(apiFunctionName, url, params, json);
                 if (json && (json.code === -1 || json.code === -1000)) {
                     invokeCallback(onFail, json);
                     return;
@@ -315,7 +316,7 @@ export default class MiddleNetwork {
                     message: "response parse fail",
                     raw: raw
                 };
-                ApiRequestLogger.log(url, params, parseFail);
+                ApiRequestLogger.log(apiFunctionName, url, params, parseFail);
                 console.error(LOG_TAG, "RESP_PARSE_FAIL", descriptorKey, e, "raw ->", raw);
                 invokeCallback(onFail, parseFail);
             }
@@ -327,7 +328,7 @@ export default class MiddleNetwork {
                 message: "xhr.error",
                 http_status: xhr.status
             };
-            ApiRequestLogger.log(url, params, failData);
+            ApiRequestLogger.log(apiFunctionName, url, params, failData);
             invokeCallback(onFail, failData);
         };
 
@@ -337,7 +338,7 @@ export default class MiddleNetwork {
                 message: "xhr.timeout",
                 http_status: xhr.status
             };
-            ApiRequestLogger.log(url, params, failData);
+            ApiRequestLogger.log(apiFunctionName, url, params, failData);
             invokeCallback(onFail, failData);
         };
 
@@ -347,38 +348,38 @@ export default class MiddleNetwork {
     }
 
     public static getSDKEvent(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("event", params, onSuccess, onFail);
+        MiddleNetwork.request("event", params, onSuccess, onFail, "getSDKEvent");
     }
 
     public static getMiddleCountry(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("Regional", params, onSuccess, onFail);
+        MiddleNetwork.request("Regional", params, onSuccess, onFail, "getMiddleCountry");
     }
 
     public static trackAdSdk(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("ADSDK", params, onSuccess, onFail);
+        MiddleNetwork.request("ADSDK", params, onSuccess, onFail, "trackAdSdk");
     }
 
     public static trackCoreData(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("COREDATA", params, onSuccess, onFail);
+        MiddleNetwork.request("COREDATA", params, onSuccess, onFail, "trackCoreData");
     }
 
     public static trackAppLog(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("APPLOG", params, onSuccess, onFail);
+        MiddleNetwork.request("APPLOG", params, onSuccess, onFail, "trackAppLog");
     }
 
     public static getMiddleTFRegional(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("TFRegional", params, onSuccess, onFail);
+        MiddleNetwork.request("TFRegional", params, onSuccess, onFail, "getMiddleTFRegional");
     }
 
     public static getPlatform(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("Platform", params, onSuccess, onFail);
+        MiddleNetwork.request("Platform", params, onSuccess, onFail, "getPlatform");
     }
 
     public static submitWithdrawal(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("BindWithdrawal", params, onSuccess, onFail);
+        MiddleNetwork.request("BindWithdrawal", params, onSuccess, onFail, "submitWithdrawal");
     }
 
     public static getAdConfig(params: any, onSuccess?: any, onFail?: any): void {
-        MiddleNetwork.request("AdConfig", params, onSuccess, onFail);
+        MiddleNetwork.request("AdConfig", params, onSuccess, onFail, "getAdConfig");
     }
 }

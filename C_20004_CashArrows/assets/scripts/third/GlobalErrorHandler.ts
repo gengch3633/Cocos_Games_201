@@ -57,7 +57,7 @@ function reportError(data: ErrorReportInfo, title: string = "异常上报"): voi
                 }
             }
         };
-        ApiRequestLogger.log(BusinessCommonConfig.BUSINESS_COMMON_CONFIG.feishuWebhookUrl, requestBody, null);
+        ApiRequestLogger.log("reportError", BusinessCommonConfig.BUSINESS_COMMON_CONFIG.feishuWebhookUrl, requestBody, null);
         xhr.send(JSON.stringify(requestBody));
     } catch (e) { }
 }

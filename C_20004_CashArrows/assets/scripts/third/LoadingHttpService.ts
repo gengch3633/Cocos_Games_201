@@ -21,6 +21,7 @@ interface XhrTrace {
     requestKey: string;
     uri: string;
     startedAt: number;
+    functionName?: string;
     businessPlainData?: any;
 }
 
@@ -218,12 +219,13 @@ function buildLParams(uri: string, gameVersion: string): { [key: string]: any } 
     return params;
 }
 
-function buildRequestPayload(body: any, requestKey: string, gameVersion: string): HttpRequestPayload {
+function buildRequestPayload(body: any, requestKey: string, gameVersion: string, functionName?: string): HttpRequestPayload {
     const uri = descriptorRegistry.getUri(requestKey);
     const payload = new HttpRequestPayload({
         requestKey: requestKey,
         uri: uri,
         startedAt: now(),
+        functionName: functionName || requestKey,
     });
     const requestData = Object.assign({}, body);
     requestData.l_params = buildLParams(uri, gameVersion);
@@ -476,10 +478,11 @@ export default class LoadingHttpService {
         requestKey: string,
         body: any,
         successHandle: HttpCallbackHandle | null,
-        failHandle: HttpCallbackHandle | null
+        failHandle: HttpCallbackHandle | null,
+        functionName?: string
     ): void {
         const url = resolveRequestUrl(requestKey);
-        const payload = buildRequestPayload(body || {}, requestKey, this.gameVersion);
+        const payload = buildRequestPayload(body || {}, requestKey, this.gameVersion, functionName);
         const dispatcher = new HttpResultDispatcher(requestKey, successHandle, failHandle);
         this.engine.queuePost(url, payload, dispatcher);
     }
@@ -494,7 +497,7 @@ export default class LoadingHttpService {
         });
         const trimmed = String(token || "").trim();
         if (trimmed) {
-            this.request("FirebaseToken", { firebase_token: trimmed }, successHandle, failHandle);
+            this.request("FirebaseToken", { firebase_token: trimmed }, successHandle, failHandle, "syncFirebaseToken");
         } else if (failHandle) {
             failHandle.runWith({
                 code: -1,
@@ -504,7 +507,7 @@ export default class LoadingHttpService {
     }
 
     public static getSystemConfig(successHandle: HttpCallbackHandle | null, failHandle: HttpCallbackHandle | null): void {
-        this.request("config", null, successHandle, failHandle);
+        this.request("config", null, successHandle, failHandle, "getSystemConfig");
     }
 
     public static autoLogin(
@@ -512,7 +515,7 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("auto_submit", body, successHandle, failHandle);
+        this.request("auto_submit", body, successHandle, failHandle, "autoLogin");
     }
 
     public static touristsLogin(
@@ -520,19 +523,19 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("TouristLogin", body, successHandle, failHandle);
+        this.request("TouristLogin", body, successHandle, failHandle, "touristsLogin");
     }
 
     public static getGameConfig(successHandle: HttpCallbackHandle | null, failHandle: HttpCallbackHandle | null): void {
-        this.request("GetGameConfig", null, successHandle, failHandle);
+        this.request("GetGameConfig", null, successHandle, failHandle, "getGameConfig");
     }
 
     public static getUserInfo(successHandle: HttpCallbackHandle | null, failHandle: HttpCallbackHandle | null): void {
-        this.request("UserInfo", null, successHandle, failHandle);
+        this.request("UserInfo", null, successHandle, failHandle, "getUserInfo");
     }
 
     public static getWithdrawInfo(successHandle: HttpCallbackHandle | null, failHandle: HttpCallbackHandle | null): void {
-        this.request("WithdrawInfo", null, successHandle, failHandle);
+        this.request("WithdrawInfo", null, successHandle, failHandle, "getWithdrawInfo");
     }
 
     public static withdrawCash(
@@ -540,7 +543,7 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("WithdrawCash", body, successHandle, failHandle);
+        this.request("WithdrawCash", body, successHandle, failHandle, "withdrawCash");
     }
 
     public static bindTxAccount(
@@ -548,11 +551,11 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("BindTxAccount", body, successHandle, failHandle);
+        this.request("BindTxAccount", body, successHandle, failHandle, "bindTxAccount");
     }
 
     public static getBarrageList(successHandle: HttpCallbackHandle | null, failHandle: HttpCallbackHandle | null): void {
-        this.request("BarrageList", null, successHandle, failHandle);
+        this.request("BarrageList", null, successHandle, failHandle, "getBarrageList");
     }
 
     public static getTaskInfo(
@@ -577,7 +580,7 @@ export default class LoadingHttpService {
         if (taskType) {
             body.task_type = taskType;
         }
-        this.request("TaskInfo", Object.keys(body).length > 0 ? body : null, onSuccess, onFail);
+        this.request("TaskInfo", Object.keys(body).length > 0 ? body : null, onSuccess, onFail, "getTaskInfo");
     }
 
     public static claimTaskReward(
@@ -592,7 +595,7 @@ export default class LoadingHttpService {
         if (taskType) {
             body.task_type = taskType;
         }
-        this.request("TaskOnlyReward", body, successHandle, failHandle);
+        this.request("TaskOnlyReward", body, successHandle, failHandle, "claimTaskReward");
     }
 
     public static claimTaskAdReward(
@@ -608,7 +611,7 @@ export default class LoadingHttpService {
         if (taskType) {
             merged.task_type = taskType;
         }
-        this.request("TaskShowReward", merged, successHandle, failHandle);
+        this.request("TaskShowReward", merged, successHandle, failHandle, "claimTaskAdReward");
     }
 
     public static buildSdkQueryString(extraParams: { [key: string]: any } | null): string {
@@ -668,8 +671,10 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null,
         includeRawParams: boolean = false,
-        stringifyParams: boolean = true
+        stringifyParams: boolean = true,
+        functionName?: string
     ): void {
+        const apiFunctionName = functionName || requestKey;
         const uri = descriptorRegistry.getUri(requestKey);
         const country = ClientDataStore.local_country || "";
         const url =
@@ -745,7 +750,7 @@ export default class LoadingHttpService {
 
                 try {
                     const parsed = JSON.parse(decoded);
-                    ApiRequestLogger.log(url, requestParams, parsed);
+                    ApiRequestLogger.log(apiFunctionName, url, requestParams, parsed);
                     logEvent("SUCCESS", {
                         url: url,
                         status: xhr.status,
@@ -759,7 +764,7 @@ export default class LoadingHttpService {
                         code: -1,
                         message: "响应解析失败",
                     };
-                    ApiRequestLogger.log(url, requestParams, parseError);
+                    ApiRequestLogger.log(apiFunctionName, url, requestParams, parseError);
                     logEvent("FAIL", {
                         url: url,
                         status: xhr.status,
@@ -776,7 +781,7 @@ export default class LoadingHttpService {
                     message: "请求失败",
                     http_status: xhr.status,
                 };
-                ApiRequestLogger.log(url, requestParams, httpError);
+                ApiRequestLogger.log(apiFunctionName, url, requestParams, httpError);
                 logEvent("FAIL", {
                     url: url,
                     status: xhr.status,
@@ -792,7 +797,7 @@ export default class LoadingHttpService {
                 code: -1,
                 message: "网络错误",
             };
-            ApiRequestLogger.log(url, requestParams, networkError);
+            ApiRequestLogger.log(apiFunctionName, url, requestParams, networkError);
             logEvent("FAIL", {
                 url: url,
                 message: "network error",
@@ -806,7 +811,7 @@ export default class LoadingHttpService {
                 code: -1,
                 message: "请求超时",
             };
-            ApiRequestLogger.log(url, requestParams, timeoutError);
+            ApiRequestLogger.log(apiFunctionName, url, requestParams, timeoutError);
             logEvent("FAIL", {
                 url: url,
                 message: "timeout",
@@ -829,7 +834,7 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.sdkRequest("WithdrawChannels", null, successHandle, failHandle);
+        this.sdkRequest("WithdrawChannels", null, successHandle, failHandle, false, true, "getWithdrawChannels");
     }
 
     public static verifyWithdrawBindInfo(
@@ -848,7 +853,8 @@ export default class LoadingHttpService {
             successHandle,
             failHandle,
             true,
-            false
+            false,
+            "verifyWithdrawBindInfo"
         );
     }
 
@@ -857,7 +863,7 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("ArrowLevelConfig", body, successHandle, failHandle);
+        this.request("ArrowLevelConfig", body, successHandle, failHandle, "getArrowLevelConfig");
     }
 
     public static arrowRewardSettle(
@@ -865,7 +871,7 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("ArrowRewardSettle", body, successHandle, failHandle);
+        this.request("ArrowRewardSettle", body, successHandle, failHandle, "arrowRewardSettle");
     }
 
     public static claimArrowReward(
@@ -882,7 +888,7 @@ export default class LoadingHttpService {
         } else if ("ltv" !== String(merged.task_type || "").toLowerCase()) {
             delete merged.task_type;
         }
-        this.request("ArrowClaimReward", merged, successHandle, failHandle);
+        this.request("ArrowClaimReward", merged, successHandle, failHandle, "claimArrowReward");
     }
 
     public static claimArrowAdReward(
@@ -899,7 +905,7 @@ export default class LoadingHttpService {
         } else if ("ltv" !== String(merged.task_type || "").toLowerCase()) {
             delete merged.task_type;
         }
-        this.request("ArrowClaimAdReward", merged, successHandle, failHandle);
+        this.request("ArrowClaimAdReward", merged, successHandle, failHandle, "claimArrowAdReward");
     }
 
     public static consumeArrowProp(
@@ -907,10 +913,10 @@ export default class LoadingHttpService {
         successHandle: HttpCallbackHandle | null,
         failHandle: HttpCallbackHandle | null
     ): void {
-        this.request("ArrowConsumeProp", body, successHandle, failHandle);
+        this.request("ArrowConsumeProp", body, successHandle, failHandle, "consumeArrowProp");
     }
 
     public static buildHotUpdateBody(body: any): string {
-        return buildRequestPayload(body, "HotUpdate", this.gameVersion).toText();
+        return buildRequestPayload(body, "HotUpdate", this.gameVersion, "buildHotUpdateBody").toText();
     }
 }

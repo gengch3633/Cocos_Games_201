@@ -61,6 +61,25 @@ export default class ApiRequestLogger {
         }
     }
 
+    public static extractFunctionName(reqData: any): string | null {
+        if (!reqData) {
+            return null;
+        }
+        try {
+            if (typeof reqData.trace === "function") {
+                const trace = reqData.trace();
+                if (trace && trace.functionName) {
+                    return trace.functionName;
+                }
+                if (trace && trace.requestKey) {
+                    return trace.requestKey;
+                }
+            }
+        } catch (error) {
+        }
+        return null;
+    }
+
     public static extractParams(reqData: any): any {
         if (!reqData) {
             return null;
@@ -98,15 +117,17 @@ export default class ApiRequestLogger {
         return null;
     }
 
-    public static log(url: string, params: any, response: any): void {
+    public static log(functionName: string | null, url: string, params: any, response: any): void {
         if (!this.isEnabled()) {
             return;
         }
         const payload = {
+            functionName: functionName || null,
             url: url || null,
             params: normalizeLogValue(params),
             response: normalizeLogValue(response),
         };
-        console.log(LOG_TAG, payload);
+        console.warn(LOG_TAG, payload.functionName, payload.url, payload.params, payload.response);
+        // console.warn(LOG_TAG, payload);
     }
 }
