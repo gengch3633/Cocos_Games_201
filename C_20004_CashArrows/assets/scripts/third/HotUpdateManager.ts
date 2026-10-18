@@ -1,3 +1,4 @@
+import ApiRequestLogger from "./ApiRequestLogger";
 import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import ClientDataStore from "./ClientDataStore";
 import CryptoHelper from "./CryptoHelper";
@@ -240,6 +241,7 @@ export default class HotUpdateManager {
     }
 
     public getGrayVersion(url: string, data: any, callback: (result: any) => void): void {
+        const requestParams = data || null;
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400) {
@@ -248,8 +250,11 @@ export default class HotUpdateManager {
                     if (!content) {
                         content = xhr.responseText;
                     }
-                    callback(JSON.parse(content));
+                    const response = JSON.parse(content);
+                    ApiRequestLogger.log(url, requestParams, response);
+                    callback(response);
                 } else {
+                    ApiRequestLogger.log(url, requestParams, null);
                     callback(false);
                 }
             }
@@ -257,8 +262,17 @@ export default class HotUpdateManager {
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-type", "text/plain");
         xhr.send(data);
-        xhr.addEventListener("abort", () => callback(false));
-        xhr.addEventListener("error", () => callback(false));
-        xhr.addEventListener("timeout", () => callback(false));
+        xhr.addEventListener("abort", () => {
+            ApiRequestLogger.log(url, requestParams, null);
+            callback(false);
+        });
+        xhr.addEventListener("error", () => {
+            ApiRequestLogger.log(url, requestParams, null);
+            callback(false);
+        });
+        xhr.addEventListener("timeout", () => {
+            ApiRequestLogger.log(url, requestParams, null);
+            callback(false);
+        });
     }
 }

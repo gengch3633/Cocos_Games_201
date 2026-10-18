@@ -1,3 +1,4 @@
+import ApiRequestLogger from "./ApiRequestLogger";
 import * as BusinessCommonConfig from "./BusinessCommonConfig";
 import ClientDataStore from "./ClientDataStore";
 import HotUpdateManager from "./HotUpdateManager";
@@ -39,7 +40,7 @@ function reportError(data: ErrorReportInfo, title: string = "异常上报"): voi
             uid: PlayerDataStore.user_id,
             yid: PlayerDataStore.yid
         };
-        xhr.send(JSON.stringify({
+        const requestBody = {
             msg_type: "post",
             content: {
                 post: {
@@ -55,7 +56,9 @@ function reportError(data: ErrorReportInfo, title: string = "异常上报"): voi
                     }
                 }
             }
-        }));
+        };
+        ApiRequestLogger.log(BusinessCommonConfig.BUSINESS_COMMON_CONFIG.feishuWebhookUrl, requestBody, null);
+        xhr.send(JSON.stringify(requestBody));
     } catch (e) { }
 }
 

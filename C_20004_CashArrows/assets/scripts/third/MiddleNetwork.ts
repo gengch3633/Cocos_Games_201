@@ -1,3 +1,4 @@
+import ApiRequestLogger from "./ApiRequestLogger";
 import ClientDataStore from "./ClientDataStore";
 import CryptoHelper from "./CryptoHelper";
 import HotUpdateManager from "./HotUpdateManager";
@@ -279,12 +280,14 @@ export default class MiddleNetwork {
             console.log(LOG_TAG, "RESP", descriptorKey, "status ->", status, "raw length ->", raw.length);
 
             if (status < 200 || status >= 400 || !raw) {
-                invokeCallback(onFail, {
+                const failData = {
                     code: -1,
                     message: "http status " + status,
                     http_status: status,
                     raw: raw
-                });
+                };
+                ApiRequestLogger.log(url, params, failData);
+                invokeCallback(onFail, failData);
                 return;
             }
 
@@ -300,35 +303,42 @@ export default class MiddleNetwork {
 
             try {
                 const json = JSON.parse(text);
+                ApiRequestLogger.log(url, params, json);
                 if (json && (json.code === -1 || json.code === -1000)) {
                     invokeCallback(onFail, json);
                     return;
                 }
                 invokeCallback(onSuccess, json);
             } catch (e) {
-                console.error(LOG_TAG, "RESP_PARSE_FAIL", descriptorKey, e, "raw ->", raw);
-                invokeCallback(onFail, {
+                const parseFail = {
                     code: -1,
                     message: "response parse fail",
                     raw: raw
-                });
+                };
+                ApiRequestLogger.log(url, params, parseFail);
+                console.error(LOG_TAG, "RESP_PARSE_FAIL", descriptorKey, e, "raw ->", raw);
+                invokeCallback(onFail, parseFail);
             }
         };
 
         xhr.onerror = function (): void {
-            invokeCallback(onFail, {
+            const failData = {
                 code: -1,
                 message: "xhr.error",
                 http_status: xhr.status
-            });
+            };
+            ApiRequestLogger.log(url, params, failData);
+            invokeCallback(onFail, failData);
         };
 
         xhr.ontimeout = function (): void {
-            invokeCallback(onFail, {
+            const failData = {
                 code: -1,
                 message: "xhr.timeout",
                 http_status: xhr.status
-            });
+            };
+            ApiRequestLogger.log(url, params, failData);
+            invokeCallback(onFail, failData);
         };
 
         xhr.open("POST", url, true);

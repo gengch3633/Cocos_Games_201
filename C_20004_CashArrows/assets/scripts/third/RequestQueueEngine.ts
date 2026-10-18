@@ -1,3 +1,5 @@
+import ApiRequestLogger from "./ApiRequestLogger";
+
 interface RequestQueueItem {
     url: string;
     reqData: any;
@@ -100,6 +102,7 @@ export default class RequestQueueEngine {
         const requestBody: any = this.hooks.buildRequestBody(reqData);
 
         const finish = (success: boolean, res: any): void => {
+            ApiRequestLogger.log(url, ApiRequestLogger.extractParams(reqData), res);
             if (handler && this.hooks.shouldEnqueue(handler)) {
                 this.queuePostCallback(requestTime, responseCode, success, res);
             } else {

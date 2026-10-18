@@ -1,3 +1,4 @@
+import ApiRequestLogger from "./ApiRequestLogger";
 import BusinessAnalyticsService from "./BusinessAnalyticsService";
 import BusinessRequestDescriptors from "./BusinessRequestDescriptors";
 import ClientDataStore from "./ClientDataStore";
@@ -716,6 +717,7 @@ export default class LoadingHttpService {
             "  encrypted   : " + (encryptedBody || "").substring(0, 120) + "...",
         ]);
 
+        const requestParams = body && "object" === typeof body ? body : null;
         const xhr = new XMLHttpRequest();
         xhr.timeout = 15e3;
         xhr.onreadystatechange = () => {
@@ -743,6 +745,7 @@ export default class LoadingHttpService {
 
                 try {
                     const parsed = JSON.parse(decoded);
+                    ApiRequestLogger.log(url, requestParams, parsed);
                     logEvent("SUCCESS", {
                         url: url,
                         status: xhr.status,
@@ -752,6 +755,11 @@ export default class LoadingHttpService {
                         successHandle.runWith(parsed);
                     }
                 } catch (error) {
+                    const parseError = {
+                        code: -1,
+                        message: "响应解析失败",
+                    };
+                    ApiRequestLogger.log(url, requestParams, parseError);
                     logEvent("FAIL", {
                         url: url,
                         status: xhr.status,
@@ -759,49 +767,52 @@ export default class LoadingHttpService {
                     });
                     console.error(LOG_TAG + " SDK_RESP_PARSE_FAIL | respText=" + decoded.substring(0, 500));
                     if (failHandle) {
-                        failHandle.runWith({
-                            code: -1,
-                            message: "响应解析失败",
-                        });
+                        failHandle.runWith(parseError);
                     }
                 }
             } else {
+                const httpError = {
+                    code: -1,
+                    message: "请求失败",
+                    http_status: xhr.status,
+                };
+                ApiRequestLogger.log(url, requestParams, httpError);
                 logEvent("FAIL", {
                     url: url,
                     status: xhr.status,
                     message: "http error " + xhr.status,
                 });
                 if (failHandle) {
-                    failHandle.runWith({
-                        code: -1,
-                        message: "请求失败",
-                        http_status: xhr.status,
-                    });
+                    failHandle.runWith(httpError);
                 }
             }
         };
         xhr.onerror = () => {
+            const networkError = {
+                code: -1,
+                message: "网络错误",
+            };
+            ApiRequestLogger.log(url, requestParams, networkError);
             logEvent("FAIL", {
                 url: url,
                 message: "network error",
             });
             if (failHandle) {
-                failHandle.runWith({
-                    code: -1,
-                    message: "网络错误",
-                });
+                failHandle.runWith(networkError);
             }
         };
         xhr.ontimeout = () => {
+            const timeoutError = {
+                code: -1,
+                message: "请求超时",
+            };
+            ApiRequestLogger.log(url, requestParams, timeoutError);
             logEvent("FAIL", {
                 url: url,
                 message: "timeout",
             });
             if (failHandle) {
-                failHandle.runWith({
-                    code: -1,
-                    message: "请求超时",
-                });
+                failHandle.runWith(timeoutError);
             }
         };
 
