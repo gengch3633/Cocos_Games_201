@@ -25,9 +25,14 @@ export default class ApiLog {
         }
     }
 
-    static response(name: string, data?: any) {
+    static response(name: string, params?: any, data?: any) {
         if (ApiLog.enabled) {
-            console.warn("[API] " + name + " 返回", data);
+            if (undefined !== data) {
+                console.warn("[API] " + name + " 请求", params);
+                console.warn("[API] " + name + " 返回", data);
+            } else {
+                console.warn("[API] " + name + " 返回", params);
+            }
         }
     }
 }

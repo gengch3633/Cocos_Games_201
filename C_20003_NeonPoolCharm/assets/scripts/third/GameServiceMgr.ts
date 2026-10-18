@@ -49,10 +49,10 @@ class GameServiceMgr {
 
     submitLevel(e, t, o) {
         PlayerDataSys.getUserCpm() && Object.assign(e, PlayerDataSys.getUserCpm());
-        GameService.submitLevel(e, Handler.create(this, function (e) {
-            ApiLog.response("submitLevel", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        GameService.submitLevel(e, Handler.create(this, function (res) {
+            ApiLog.response("submitLevel", e, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.user_level = n.level_a;
                 PlayerDataSys.level_info = {
                     level_a: n.level_a,
@@ -79,9 +79,9 @@ class GameServiceMgr {
                 CueDataSys.checkUnlockCue();
                 PlayerDataSys.updateCashRecord(n.extract_gold_cash_record);
                 t && t();
-            } else if (e && e.message) {
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -94,10 +94,10 @@ class GameServiceMgr {
     }
 
     GmOpenCues(e, t, o) {
-        GameService.GmOpenCues(e, Handler.create(this, function (e) {
-            ApiLog.response("GmOpenCues", e);
-            if (e && 1 == e.code) {
-                const t = e.data;
+        GameService.GmOpenCues(e, Handler.create(this, function (res) {
+            ApiLog.response("GmOpenCues", e, res);
+            if (res && 1 == res.code) {
+                const t = res.data;
                 CueDataSys.get_clubs = t.get_clubs;
                 CueDataSys.usedCueId = t.use_club_id;
                 CueDataSys.nextCueID = t.next_club_id;
@@ -111,13 +111,14 @@ class GameServiceMgr {
     }
 
     exchangeClub(e, t, o) {
-        const n = this;
-        GameService.exchangeClub({
-            club_id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("exchangeClub", e);
-            if (e && 1 == e.code) {
-                const a = e.data,
+        const n = this,
+            req = {
+                club_id: e
+            };
+        GameService.exchangeClub(req, Handler.create(this, function (res) {
+            ApiLog.response("exchangeClub", req, res);
+            if (res && 1 == res.code) {
+                const a = res.data,
                     l = (a.level_ad, a.get_clubs),
                     c = a.use_club_id,
                     u = a.level_pass,
@@ -130,10 +131,10 @@ class GameServiceMgr {
                 AudioManager.getInstance().playMusic("pool_cueunlock");
                 EventMgr.trigger(GameEventType.ON_GETTED_CLUBS_CHANGED);
                 EventMgr.trigger(GameEventType.ON_USED_CLUB_CHANGED);
-                t && t(e);
-            } else if (e && e.message) {
+                t && t(res);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -142,17 +143,19 @@ class GameServiceMgr {
     }
 
     GmGetCpmRecord(e) {
-        GameService.GmGetCpmRecord({}, Handler.create(this, function (t) {
-            ApiLog.response("GmGetCpmRecord", t);
-            t && 1 == t.code && e && e(t.data);
+        const req = {};
+        GameService.GmGetCpmRecord(req, Handler.create(this, function (res) {
+            ApiLog.response("GmGetCpmRecord", req, res);
+            res && 1 == res.code && e && e(res.data);
         }));
     }
 
     submitGuideLevel(e, t, o) {
-        GameService.submitGuideLevel({
+        const req = {
             guide_id: e
-        }, Handler.create(this, function (n) {
-            ApiLog.response("submitGuideLevel", n);
+        };
+        GameService.submitGuideLevel(req, Handler.create(this, function (n) {
+            ApiLog.response("submitGuideLevel", req, n);
             if (n && 1 == n.code) {
                 const i = n.data;
                 i.gold_balance && (PlayerDataSys.gold_balance = i.gold_balance);
@@ -168,10 +171,11 @@ class GameServiceMgr {
     }
 
     GetGameLevelConfig(e, t, o) {
-        GameService.GetGameLevelConfig({
+        const req = {
             level_name: e
-        }, Handler.create(this, function (n) {
-            ApiLog.response("GetGameLevelConfig", n);
+        };
+        GameService.GetGameLevelConfig(req, Handler.create(this, function (n) {
+            ApiLog.response("GetGameLevelConfig", req, n);
             if (n && 1 == n.code) t && t(n.data.config); else if (n && n.message) {
                 o && o();
                 console.log("GetGameLevelConfig failed : ", e);
@@ -183,10 +187,10 @@ class GameServiceMgr {
     }
 
     refreshNextClub(e, t, o) {
-        GameService.refreshNextClub(null, Handler.create(this, function (e) {
-            ApiLog.response("refreshNextClub", e);
-            if (e && 1 == e.code) {
-                const t = e.data;
+        GameService.refreshNextClub(null, Handler.create(this, function (res) {
+            ApiLog.response("refreshNextClub", null, res);
+            if (res && 1 == res.code) {
+                const t = res.data;
                 CueDataSys.get_clubs = t.get_clubs;
                 CueDataSys.usedCueId = t.use_club_id;
                 CueDataSys.nextCueID = t.next_club_id;
@@ -199,12 +203,13 @@ class GameServiceMgr {
     }
 
     GmChangeRound(e, t, o) {
-        GameService.GmChangeRound({
+        const req = {
             round: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("GmChangeRound", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        };
+        GameService.GmChangeRound(req, Handler.create(this, function (res) {
+            ApiLog.response("GmChangeRound", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.user_level = n.level_a;
                 PlayerDataSys.level_info = {
                     level_a: n.level_a,
@@ -218,10 +223,10 @@ class GameServiceMgr {
                 PlayerDataSys.table = n.table;
                 PlayerDataSys.level_loop = n.level_loop;
                 console.log("jump to level: " + n.level_a + "-" + n.level_b + "-" + n.level_c);
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -232,7 +237,7 @@ class GameServiceMgr {
     reportAd(e, t, o) {
         e.success && PlayerDataSys.getUserCpm() && Object.assign(e, PlayerDataSys.getUserCpm());
         GameService.reportAd(e, Handler.create(this, function (i) {
-            ApiLog.response("reportAd", i);
+            ApiLog.response("reportAd", e, i);
             if (i && 1 == i.code) {
                 const a = i.data,
                     r = a.level_ad,
@@ -285,10 +290,10 @@ class GameServiceMgr {
     }
 
     GmChangeLevel(e, t, o) {
-        GameService.GmChangeLevel(e, Handler.create(this, function (e) {
-            ApiLog.response("GmChangeLevel", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        GameService.GmChangeLevel(e, Handler.create(this, function (res) {
+            ApiLog.response("GmChangeLevel", e, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.user_level = n.level_a;
                 PlayerDataSys.level_info = {
                     level_a: n.level_a,
@@ -302,10 +307,10 @@ class GameServiceMgr {
                 PlayerDataSys.table = n.table;
                 PlayerDataSys.level_loop = n.level_loop;
                 console.log("jump to level: " + n.level_a + "-" + n.level_b);
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -314,10 +319,10 @@ class GameServiceMgr {
     }
 
     deprecatedGmChangeLevel(e, t, o) {
-        GameService.deprecatedGmChangeLevel(e, Handler.create(this, function (e) {
-            ApiLog.response("deprecatedGmChangeLevel", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        GameService.deprecatedGmChangeLevel(e, Handler.create(this, function (res) {
+            ApiLog.response("deprecatedGmChangeLevel", e, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.user_level = n.level_a;
                 PlayerDataSys.level_info = {
                     level_a: n.level_a,
@@ -331,10 +336,10 @@ class GameServiceMgr {
                 PlayerDataSys.table = n.table;
                 PlayerDataSys.level_loop = n.level_loop;
                 console.log("jump to level: " + n.level_a + "-" + n.level_b + "-" + n.level_c);
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -344,7 +349,7 @@ class GameServiceMgr {
 
     extractRecord(e, t) {
         GameService.extractRecord(Handler.create(this, function (o) {
-            ApiLog.response("extractRecord", o);
+            ApiLog.response("extractRecord", null, o);
             if (o && 1 == o.code) {
                 o.data;
                 e && e(o.data);
@@ -359,19 +364,20 @@ class GameServiceMgr {
     }
 
     UseMoveCueBallProp(e, t, o) {
-        GameService.UseMoveCueBallProp({}, Handler.create(this, function (e) {
-            ApiLog.response("UseMoveCueBallProp", e);
-            if (e && 1 == e.code) {
-                const n = e.data.prop;
+        const req = {};
+        GameService.UseMoveCueBallProp(req, Handler.create(this, function (res) {
+            ApiLog.response("UseMoveCueBallProp", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data.prop;
                 if (n) {
                     PlayerDataSys.prop_info = n;
                     PropDataSys.usePropBaiQiu(true);
                     EventMgr.trigger(GameEventType.ON_PROP_COUNT_CHANGED);
                 }
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -385,33 +391,33 @@ class GameServiceMgr {
             use: true
         };
         PlayerDataSys.getUserCpm() && Object.assign(n, PlayerDataSys.getUserCpm());
-        GameService.getClub(n, Handler.create(this, function (e) {
-            ApiLog.response("getClub", e);
-            if (e && 1 == e.code) {
-                const n = e.data,
-                    a = n.level_ad,
-                    l = n.get_clubs,
-                    c = n.use_club_id,
-                    u = n.level_pass,
-                    maxExtractId = n.max_extract_id,
-                    f = (n.cash_prize, n.cash_balance),
-                    h = n.total_video_count;
-                n.extract_gold_cash_record;
-                l && (CueDataSys.get_clubs = l);
-                c && (CueDataSys.usedCueId = c);
-                CueDataSys.nextCueID = n.next_club_id;
-                null != u && (PlayerDataSys.level_pass = u);
+        GameService.getClub(n, Handler.create(this, function (res) {
+            ApiLog.response("getClub", n, res);
+            if (res && 1 == res.code) {
+                const a = res.data,
+                    l = a.level_ad,
+                    c = a.get_clubs,
+                    u = a.use_club_id,
+                    p = a.level_pass,
+                    maxExtractId = a.max_extract_id,
+                    f = (a.cash_prize, a.cash_balance),
+                    h = a.total_video_count;
+                a.extract_gold_cash_record;
+                c && (CueDataSys.get_clubs = c);
+                u && (CueDataSys.usedCueId = u);
+                CueDataSys.nextCueID = a.next_club_id;
+                null != p && (PlayerDataSys.level_pass = p);
                 null != maxExtractId && (PlayerDataSys.max_extract_id = maxExtractId);
-                null != a && (PlayerDataSys.level_ad = a);
+                null != l && (PlayerDataSys.level_ad = l);
                 null != h && (PlayerDataSys.total_video_count = h);
                 AudioManager.getInstance().playMusic("pool_cueunlock");
                 f && (PlayerDataSys.cash_balance = f);
                 EventMgr.trigger(GameEventType.ON_GETTED_CLUBS_CHANGED);
                 EventMgr.trigger(GameEventType.ON_USED_CLUB_CHANGED);
-                t && t(e);
-            } else if (e && e.message) {
+                t && t(res);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -422,18 +428,23 @@ class GameServiceMgr {
     extractCash(e, t, o) {
         console.log(" 提现红包挡位 ", e);
         const n = ConfigDataSys.cash_extract_configMap.get(e);
-        PlayerDataSys.cash_balance * n.withdraw_percent < 10 ? EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积红包") : GameService.extractCash({
+        if (PlayerDataSys.cash_balance * n.withdraw_percent < 10) {
+            EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积红包");
+            return;
+        }
+        const req = {
             extract_id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("extractCash", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
-                PlayerDataSys.cash_balance = n.cash_balance;
-                n.success || EngineUtil.showManageViewToast(n.fail_message);
-                t && t(n);
-            } else if (e && e.message) {
+        };
+        GameService.extractCash(req, Handler.create(this, function (res) {
+            ApiLog.response("extractCash", req, res);
+            if (res && 1 == res.code) {
+                const data = res.data;
+                PlayerDataSys.cash_balance = data.cash_balance;
+                data.success || EngineUtil.showManageViewToast(data.fail_message);
+                t && t(data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -444,7 +455,7 @@ class GameServiceMgr {
     GuideGift(e, t) {
         console.log(" 领取引导奖励 ");
         GameService.GuideGift(Handler.create(this, function (o) {
-            ApiLog.response("GuideGift", o);
+            ApiLog.response("GuideGift", null, o);
             if (o && 1 == o.code) {
                 const n = o.data;
                 PlayerDataSys.total_gold += n.gold_balance - PlayerDataSys.gold_balance;
@@ -462,7 +473,7 @@ class GameServiceMgr {
 
     signIn(e, t) {
         GameService.signIn(Handler.create(this, function (o) {
-            ApiLog.response("signIn", o);
+            ApiLog.response("signIn", null, o);
             if (o && 1 == o.code) {
                 const n = o.data;
                 PlayerDataSys.sign_today = true;
@@ -508,31 +519,37 @@ class GameServiceMgr {
     }
 
     GMAddSignInCount(e, t) {
-        GameService.GMAddSignInCount({
+        const req = {
             sign_in_count: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("GMAddSignInCount", e);
-            t && t(e.data);
-            const o = e.data.sign_in_count;
+        };
+        GameService.GMAddSignInCount(req, Handler.create(this, function (res) {
+            ApiLog.response("GMAddSignInCount", req, res);
+            t && t(res.data);
+            const o = res.data.sign_in_count;
             PlayerDataSys.sign_in_count = o;
         }));
     }
 
     extractGold(e, t, o) {
         console.log(" 提现现金挡位 ", e);
-        PlayerDataSys.gold_balance < 10 ? EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积现金") : GameService.extractGold({
+        if (PlayerDataSys.gold_balance < 10) {
+            EngineUtil.showManageViewToast("满0.1元可提现，看视频可快速累积现金");
+            return;
+        }
+        const req = {
             extract_id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("extractGold", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        };
+        GameService.extractGold(req, Handler.create(this, function (res) {
+            ApiLog.response("extractGold", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.gold_balance = n.gold_balance;
                 PlayerDataSys.updateCashRecord(n.extract_gold_cash_record);
                 EventMgr.trigger(GameEventType.UPDATE_QIPAO);
                 t && t(n);
-            } else if (e && e.message) {
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -541,21 +558,22 @@ class GameServiceMgr {
     }
 
     UseClubProp(e, t, o) {
-        GameService.UseClubProp({
+        const req = {
             prop_id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("UseClubProp", e);
-            if (e && 1 == e.code) {
-                const n = e.data.prop;
+        };
+        GameService.UseClubProp(req, Handler.create(this, function (res) {
+            ApiLog.response("UseClubProp", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data.prop;
                 if (n) {
                     PlayerDataSys.prop_info = n;
                     PropDataSys.usePropBaiQiu(true);
                     EventMgr.trigger(GameEventType.ON_PROP_COUNT_CHANGED);
                 }
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -564,24 +582,25 @@ class GameServiceMgr {
     }
 
     GmChangeCash(e, t, o, n) {
-        GameService.GmChangeCash({
+        const req = {
             type: e,
             num: t
-        }, Handler.create(this, function (e) {
-            ApiLog.response("GmChangeCash", e);
-            if (e && 1 == e.code) {
-                const t = e.data,
-                    i = t.cash_balance,
-                    a = t.gold_balance;
+        };
+        GameService.GmChangeCash(req, Handler.create(this, function (res) {
+            ApiLog.response("GmChangeCash", req, res);
+            if (res && 1 == res.code) {
+                const data = res.data,
+                    i = data.cash_balance,
+                    a = data.gold_balance;
                 i && (PlayerDataSys.cash_balance = i);
                 if (a) {
                     PlayerDataSys.total_gold += a - PlayerDataSys.gold_balance;
                     PlayerDataSys.gold_balance = a;
                 }
-                o && o(e);
-            } else if (e && e.message) {
+                o && o(res);
+            } else if (res && res.message) {
                 n && n();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             n && n(e);
@@ -590,20 +609,21 @@ class GameServiceMgr {
     }
 
     clubGold(e, t, o) {
-        GameService.clubGold({
+        const req = {
             id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("clubGold", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        };
+        GameService.clubGold(req, Handler.create(this, function (res) {
+            ApiLog.response("clubGold", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 CueDataSys.club_gold_index = n.club_gold_index;
                 PlayerDataSys.gold_balance = n.gold_balance;
                 PlayerDataSys.total_gold += n.gold_prize;
                 EventMgr.trigger(GameEventType.ON_UNLOCKED_CLUBS_GOLD);
-                t && t(e);
-            } else if (e && e.message) {
+                t && t(res);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -612,9 +632,10 @@ class GameServiceMgr {
     }
 
     GmGetClubShard() {
-        GameService.GmGetClubShard({}, Handler.create(this, function (e) {
-            ApiLog.response("GmGetClubShard", e);
-            if (e && 1 == e.code) for (let t = e.data.club_shard, o = 0, n = t; o < n.length; o++) {
+        const req = {};
+        GameService.GmGetClubShard(req, Handler.create(this, function (res) {
+            ApiLog.response("GmGetClubShard", req, res);
+            if (res && 1 == res.code) for (let t = res.data.club_shard, o = 0, n = t; o < n.length; o++) {
                 const a = n[o];
                 CueDataSys.club_shard[a] = t[a];
             }
@@ -622,12 +643,13 @@ class GameServiceMgr {
     }
 
     deprecatedGmChangeTurn(e, t, o) {
-        GameService.deprecatedGmChangeTurn({
+        const req = {
             turn: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("deprecatedGmChangeTurn", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
+        };
+        GameService.deprecatedGmChangeTurn(req, Handler.create(this, function (res) {
+            ApiLog.response("deprecatedGmChangeTurn", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data;
                 PlayerDataSys.user_level = n.level_a;
                 PlayerDataSys.level_info = {
                     level_a: n.level_a,
@@ -641,10 +663,10 @@ class GameServiceMgr {
                 PlayerDataSys.table = n.table;
                 PlayerDataSys.level_loop = n.level_loop;
                 console.log("jump to level: " + n.level_a + "-" + n.level_b + "-" + n.level_c);
-                t && t(e.data);
-            } else if (e && e.message) {
+                t && t(res.data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -653,12 +675,13 @@ class GameServiceMgr {
     }
 
     changeClub(e, t, o) {
-        GameService.changeClub({
+        const req = {
             club_id: e
-        }, Handler.create(this, function (e) {
-            ApiLog.response("changeClub", e);
-            if (e && 1 == e.code) {
-                const n = e.data,
+        };
+        GameService.changeClub(req, Handler.create(this, function (res) {
+            ApiLog.response("changeClub", req, res);
+            if (res && 1 == res.code) {
+                const n = res.data,
                     a = (n.level_ad, n.get_clubs),
                     r = n.use_club_id;
                 a && (CueDataSys.get_clubs = a);
@@ -666,10 +689,10 @@ class GameServiceMgr {
                 CueDataSys.nextCueID = n.next_club_id;
                 EventMgr.trigger(GameEventType.ON_GETTED_CLUBS_CHANGED);
                 EventMgr.trigger(GameEventType.ON_USED_CLUB_CHANGED);
-                t && t(e);
-            } else if (e && e.message) {
+                t && t(res);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);
@@ -678,10 +701,11 @@ class GameServiceMgr {
     }
 
     logoff() {
-        BaseSystem.logoff({
+        const req = {
             yid: PlayerDataSys.yid
-        }, Handler.create(this, function (e) {
-            ApiLog.response("logoff", e);
+        };
+        BaseSystem.logoff(req, Handler.create(this, function (e) {
+            ApiLog.response("logoff", req, e);
             if (e && 1 == e.code) {
                 PageMgr.clear();
                 EngineUtil.setLocalData("yid", "");
@@ -698,17 +722,17 @@ class GameServiceMgr {
             is_ad: e
         };
         e && PlayerDataSys.getUserCpm() && Object.assign(n, PlayerDataSys.getUserCpm());
-        GameService.chouJiang(n, Handler.create(this, function (e) {
-            ApiLog.response("chouJiang", e);
-            if (e && 1 == e.code) {
-                const n = e.data;
-                n.level_ad && (PlayerDataSys.level_ad = n.level_ad);
-                n.total_video_count && (PlayerDataSys.total_video_count = n.total_video_count);
-                PlayerDataSys.updateCashRecord(n.extract_gold_cash_record);
-                t && t(n);
-            } else if (e && e.message) {
+        GameService.chouJiang(n, Handler.create(this, function (res) {
+            ApiLog.response("chouJiang", n, res);
+            if (res && 1 == res.code) {
+                const data = res.data;
+                data.level_ad && (PlayerDataSys.level_ad = data.level_ad);
+                data.total_video_count && (PlayerDataSys.total_video_count = data.total_video_count);
+                PlayerDataSys.updateCashRecord(data.extract_gold_cash_record);
+                t && t(data);
+            } else if (res && res.message) {
                 o && o();
-                EngineUtil.showManageViewToast(e.message);
+                EngineUtil.showManageViewToast(res.message);
             }
         }), Handler.create(this, function (e) {
             o && o(e);

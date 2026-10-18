@@ -56,6 +56,7 @@ export default class HttpUtil {
     }
 
     static _Post(e, o, n) {
+        const reqData = o;
         let a = 9999,
             l = Date.now(),
             s = new XMLHttpRequest(),
@@ -74,7 +75,7 @@ export default class HttpUtil {
                             n = SdkHelper.getAesDncrypData(o.data);
                             n = JSON.parse(n);
                         }
-                        ApiLog.response("POST " + e, o);
+                        ApiLog.response("POST " + e, reqData, n);
                         if (e.includes(SystemDataSys.getServerTestUrl()) || e.includes(SystemDataSys.getServerReleaseUrl())) {
                             var l = n.code;
                             if (-1 == l || -1e3 == l) {
@@ -86,7 +87,7 @@ export default class HttpUtil {
                         }
                         c(true, n);
                     } else {
-                        ApiLog.response("POST " + e + " [返回数据不存在]", { http_status: s.status });
+                        ApiLog.response("POST " + e + " [返回数据不存在]", reqData, { http_status: s.status });
                         c(false, {
                             code: -1,
                             message: "返回数据不存在",
@@ -94,7 +95,7 @@ export default class HttpUtil {
                         });
                     }
                 } else {
-                    ApiLog.response("POST " + e + " [请求失败]", { http_status: s.status });
+                    ApiLog.response("POST " + e + " [请求失败]", reqData, { http_status: s.status });
                     c(false, {
                         code: -1,
                         message: "xhr.status" + s.status,
@@ -133,7 +134,7 @@ export default class HttpUtil {
         });
     }
 
-    static Get(e, t, o) {
+    static Get(url, t, o) {
         if (o === undefined) o = false;
         return new Promise(function (t, n) {
             var i = new XMLHttpRequest();
@@ -156,15 +157,15 @@ export default class HttpUtil {
                         n = SdkHelper.getAesDncrypData(e.data);
                         n = JSON.parse(n);
                     }
-                    ApiLog.response("GET " + e, n);
+                    ApiLog.response("GET " + url, null, n);
                     n ? t(n) : a(false, "parseErr");
                 } else a(false, "onreadystatechange");
             };
             i.onerror = function () {
-                ApiLog.response("GET " + e + " [网络错误]", null);
+                ApiLog.response("GET " + url + " [网络错误]", null, null);
                 a(false, "onerror");
             };
-            i.open("GET", encodeURI(e), true);
+            i.open("GET", encodeURI(url), true);
             i.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             i.send();
         });

@@ -253,16 +253,16 @@ export default class HotUpdate {
                     const text = request.responseText;
                     if (text) {
                         if (callback) {
-                            ApiLog.response("getGrayVersion " + url, text);
+                            ApiLog.response("getGrayVersion", url, text);
                             const data = JSON.parse(text);
                             callback(data);
                         }
                     } else {
-                        ApiLog.response("getGrayVersion " + url + " [返回数据不存在]", null);
+                        ApiLog.response("getGrayVersion [返回数据不存在]", url, null);
                         callback && callback(false);
                     }
                 } else {
-                    ApiLog.response("getGrayVersion " + url + " [请求失败 HTTP " + request.status + "]", null);
+                    ApiLog.response("getGrayVersion [请求失败 HTTP " + request.status + "]", url, null);
                 }
             }
         };
