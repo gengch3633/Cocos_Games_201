@@ -1,0 +1,328 @@
+{
+  "skeleton": {
+    "hash": "e747QOrhmZS6xM0wvDGM8S/GX+8",
+    "spine": "3.8.75",
+    "x": -262,
+    "y": 48.5,
+    "width": 525,
+    "height": 501.5,
+    "images": "",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "zi",
+      "parent": "root"
+    },
+    {
+      "name": "huizhang",
+      "parent": "root",
+      "y": 320
+    },
+    {
+      "name": "caidai",
+      "parent": "root",
+      "y": 308.24
+    },
+    {
+      "name": "faguang",
+      "parent": "root",
+      "y": 315
+    },
+    {
+      "name": "daaosui2",
+      "parent": "zi",
+      "x": 159.22,
+      "y": 83.78
+    },
+    {
+      "name": "daosui1",
+      "parent": "zi",
+      "x": -159.94,
+      "y": 78.3
+    },
+    {
+      "name": "faguang2",
+      "parent": "root",
+      "y": 315
+    }
+  ],
+  "slots": [
+    {
+      "name": "img/成功通关",
+      "bone": "zi",
+      "attachment": "img/成功通关"
+    },
+    {
+      "name": "img/稻穗",
+      "bone": "daosui1",
+      "attachment": "img/稻穗"
+    },
+    {
+      "name": "img/稻穗2",
+      "bone": "daaosui2",
+      "attachment": "img/稻穗"
+    },
+    {
+      "name": "faguang",
+      "bone": "faguang2",
+      "attachment": "faguang"
+    },
+    {
+      "name": "img/发光",
+      "bone": "faguang",
+      "attachment": "img/发光"
+    },
+    {
+      "name": "img/横幅",
+      "bone": "caidai",
+      "attachment": "img/横幅"
+    },
+    {
+      "name": "img/徽章",
+      "bone": "huizhang",
+      "attachment": "img/徽章"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "img/稻穗": {
+          "img/稻穗": {
+            "x": 2.94,
+            "y": 18.7,
+            "width": 68,
+            "height": 97
+          }
+        },
+        "img/徽章": {
+          "img/徽章": {
+            "width": 230,
+            "height": 252
+          }
+        },
+        "faguang": {
+          "faguang": {
+            "type": "clipping",
+            "end": "img/发光",
+            "vertexCount": 7,
+            "color": "ce3a3aff",
+            "vertices": [
+              -246.12,
+              -12.44,
+              246.68,
+              -12.44,
+              307.85,
+              106.64,
+              135.61,
+              264.54,
+              -105.52,
+              277.9,
+              -245.42,
+              209.71,
+              -294.63,
+              69.11
+            ]
+          }
+        },
+        "img/发光": {
+          "img/发光": {
+            "width": 470,
+            "height": 470
+          }
+        },
+        "img/横幅": {
+          "img/横幅": {
+            "x": 0.5,
+            "width": 525,
+            "height": 106
+          }
+        },
+        "img/稻穗2": {
+          "img/稻穗": {
+            "x": -2.22,
+            "y": 13.22,
+            "scaleX": -1,
+            "width": 68,
+            "height": 97
+          }
+        },
+        "img/成功通关": {
+          "img/成功通关": {
+            "x": 0.5,
+            "y": 112,
+            "width": 237,
+            "height": 59
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "win": {
+      "slots": {
+        "img/发光": {
+          "color": [
+            {
+              "time": 0.5667,
+              "color": "ffffff00"
+            },
+            {
+              "time": 0.6667,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.5667,
+              "name": "img/发光"
+            }
+          ]
+        },
+        "img/稻穗2": {
+          "color": [
+            {
+              "color": "ffffff06"
+            },
+            {
+              "time": 0.5,
+              "color": "ffffffff"
+            }
+          ]
+        },
+        "img/徽章": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.2,
+              "name": "img/徽章"
+            }
+          ]
+        },
+        "img/成功通关": {
+          "color": [
+            {
+              "color": "ffffff0b"
+            },
+            {
+              "time": 0.4,
+              "color": "ffffffff"
+            }
+          ]
+        },
+        "img/稻穗": {
+          "color": [
+            {
+              "color": "ffffff06"
+            },
+            {
+              "time": 0.5,
+              "color": "ffffffff"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "zi": {
+          "translate": [
+            {
+              "y": -18.67
+            },
+            {
+              "time": 0.2,
+              "y": -4.67
+            },
+            {
+              "time": 0.4
+            }
+          ]
+        },
+        "huizhang": {
+          "scale": [
+            {
+              "time": 0.2,
+              "x": 0.001,
+              "y": 0.001
+            },
+            {
+              "time": 0.4,
+              "x": 1.373,
+              "y": 1.219
+            },
+            {
+              "time": 0.5667
+            }
+          ]
+        },
+        "faguang": {
+          "rotate": [
+            {
+              "time": 0.5667
+            },
+            {
+              "time": 2.3,
+              "angle": 180
+            },
+            {
+              "time": 4
+            }
+          ],
+          "scale": [
+            {
+              "time": 0.5667
+            },
+            {
+              "time": 0.6667,
+              "x": 1.2,
+              "y": 1.2
+            },
+            {
+              "time": 0.7333
+            }
+          ]
+        },
+        "caidai": {
+          "scale": [
+            {
+              "x": 0.64,
+              "y": 0.008
+            },
+            {
+              "time": 0.1667,
+              "x": 0.949,
+              "y": 1.373
+            },
+            {
+              "time": 0.2333
+            }
+          ]
+        }
+      }
+    },
+    "winidle": {
+      "bones": {
+        "faguang": {
+          "rotate": [
+            {},
+            {
+              "time": 1.7333,
+              "angle": 180
+            },
+            {
+              "time": 3.4333
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "skeleton": {
+    "hash": "tETVw/0s4Zb/LYgY+/eLd81nFr4",
+    "spine": "3.8.75",
+    "x": -45,
+    "y": -45,
+    "width": 90,
+    "height": 90,
+    "images": "",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "img/障碍",
+      "parent": "root"
+    },
+    {
+      "name": "heidong",
+      "parent": "root"
+    }
+  ],
+  "slots": [
+    {
+      "name": "img/障碍",
+      "bone": "img/障碍",
+      "attachment": "img/障碍"
+    },
+    {
+      "name": "img/洞",
+      "bone": "heidong",
+      "attachment": "img/洞"
+    },
+    {
+      "name": "heidong",
+      "bone": "heidong",
+      "attachment": "img/洞小"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "heidong": {
+          "img/洞小": {
+            "width": 90,
+            "height": 90
+          }
+        },
+        "img/洞": {
+          "img/洞": {
+            "width": 90,
+            "height": 90
+          }
+        },
+        "img/障碍": {
+          "img/障碍": {
+            "width": 90,
+            "height": 90
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "daiji1": {
+      "slots": {
+        "img/洞": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "heidong": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      }
+    },
+    "daiji2": {
+      "slots": {
+        "img/洞": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/障碍": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      }
+    },
+    "heidong": {
+      "slots": {
+        "img/洞": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.1,
+              "name": "img/洞"
+            }
+          ]
+        },
+        "heidong": {
+          "attachment": [
+            {
+              "time": 0.1,
+              "name": null
+            }
+          ]
+        },
+        "img/障碍": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "heidong": {
+          "scale": [
+            {
+              "time": 0.1,
+              "x": 0.8,
+              "y": 0.8
+            },
+            {
+              "time": 0.2333,
+              "x": 1.2,
+              "y": 1.2
+            }
+          ]
+        }
+      }
+    },
+    "heidongidle": {
+      "slots": {
+        "heidong": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/障碍": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "heidong": {
+          "scale": [
+            {
+              "x": 1.2,
+              "y": 1.2
+            }
+          ]
+        }
+      }
+    },
+    "zhangaixiaochu": {
+      "slots": {
+        "img/洞": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "heidong": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "img/障碍": {
+          "color": [
+            {
+              "time": 0.3,
+              "color": "ffffffff"
+            },
+            {
+              "time": 0.7,
+              "color": "ffffff00"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "img/障碍": {
+          "translate": [
+            {
+              "time": 0.3
+            },
+            {
+              "time": 0.7,
+              "y": 48
+            }
+          ],
+          "scale": [
+            {},
+            {
+              "time": 0.1667,
+              "x": 1.09,
+              "y": 0.95
+            },
+            {
+              "time": 0.3
+            }
+          ]
+        }
+      }
+    }
+  }
+}
