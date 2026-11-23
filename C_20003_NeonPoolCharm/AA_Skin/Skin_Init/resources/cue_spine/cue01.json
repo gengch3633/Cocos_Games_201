@@ -1,0 +1,39 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -15,
+    "y": -515.5,
+    "width": 30,
+    "height": 523,
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    }
+  ],
+  "slots": [
+    {
+      "name": "20240321-193602",
+      "bone": "root",
+      "attachment": "20240321-193602"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "20240321-193602": {
+          "20240321-193602": {
+            "y": -254,
+            "width": 30,
+            "height": 523
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {}
+  }
+}

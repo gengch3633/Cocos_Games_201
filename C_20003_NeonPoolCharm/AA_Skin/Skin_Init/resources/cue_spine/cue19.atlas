@@ -1,0 +1,62 @@
+
+cue19.png
+size: 641,29
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+korea
+  rotate: true
+  xy: 195, 11
+  size: 16, 414
+  orig: 18, 416
+  offset: 1, 1
+  index: -1
+korea01
+  rotate: false
+  xy: 179, 9
+  size: 14, 18
+  orig: 16, 20
+  offset: 1, 1
+  index: -1
+korea02
+  rotate: true
+  xy: 611, 12
+  size: 15, 28
+  orig: 17, 30
+  offset: 1, 1
+  index: -1
+korea03
+  rotate: false
+  xy: 143, 9
+  size: 16, 18
+  orig: 17, 20
+  offset: 1, 1
+  index: -1
+korea04
+  rotate: true
+  xy: 2, 2
+  size: 25, 45
+  orig: 30, 55
+  offset: 3, 4
+  index: -1
+korea05
+  rotate: true
+  xy: 49, 2
+  size: 25, 45
+  orig: 30, 55
+  offset: 3, 4
+  index: -1
+korea06
+  rotate: true
+  xy: 96, 2
+  size: 25, 45
+  orig: 30, 55
+  offset: 3, 4
+  index: -1
+korea07
+  rotate: true
+  xy: 161, 9
+  size: 18, 16
+  orig: 20, 18
+  offset: 1, 1
+  index: -1

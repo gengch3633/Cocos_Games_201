@@ -1,0 +1,27 @@
+
+cueb_xila.png
+size: 620,45
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+argentina1
+  rotate: true
+  xy: 525, 12
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1
+cueb_xila
+  rotate: true
+  xy: 2, 2
+  size: 41, 521
+  orig: 45, 524
+  offset: 2, 1
+  index: -1
+egy_00
+  rotate: false
+  xy: 596, 19
+  size: 22, 24
+  orig: 26, 28
+  offset: 2, 2
+  index: -1

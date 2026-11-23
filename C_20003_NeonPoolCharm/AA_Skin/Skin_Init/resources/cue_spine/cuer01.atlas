@@ -1,0 +1,34 @@
+
+cuer01.png
+size: 536,115
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jianqi
+  rotate: false
+  xy: 160, 39
+  size: 161, 38
+  orig: 170, 44
+  offset: 5, 3
+  index: -1
+jianqi2
+  rotate: true
+  xy: 2, 18
+  size: 59, 156
+  orig: 67, 178
+  offset: 4, 12
+  index: -1
+keycue394
+  rotate: true
+  xy: 2, 79
+  size: 34, 418
+  orig: 40, 422
+  offset: 3, 2
+  index: -1
+xingyue394
+  rotate: true
+  xy: 422, 2
+  size: 111, 112
+  orig: 128, 146
+  offset: 8, 10
+  index: -1

@@ -1,0 +1,27 @@
+
+cue03.png
+size: 506,35
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+holland01
+  rotate: false
+  xy: 479, 6
+  size: 25, 27
+  orig: 31, 31
+  offset: 3, 2
+  index: -1
+holland02
+  rotate: true
+  xy: 2, 7
+  size: 26, 404
+  orig: 31, 405
+  offset: 1, 0
+  index: -1
+holland03
+  rotate: true
+  xy: 408, 2
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1

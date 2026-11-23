@@ -1,0 +1,153 @@
+
+taiq_pig.png
+size: 777,775
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2ap_taiqpiaozhi
+  rotate: false
+  xy: 329, 11
+  size: 120, 76
+  orig: 120, 76
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: false
+  xy: 2, 137
+  size: 194, 147
+  orig: 194, 147
+  offset: 0, 0
+  index: -1
+taiq_boll1
+  rotate: false
+  xy: 446, 124
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+taiq_boll2
+  rotate: false
+  xy: 451, 21
+  size: 64, 66
+  orig: 64, 66
+  offset: 0, 0
+  index: -1
+taiq_liang
+  rotate: true
+  xy: 338, 319
+  size: 454, 193
+  orig: 454, 193
+  offset: 0, 0
+  index: -1
+taiq_pig
+  rotate: false
+  xy: 2, 435
+  size: 334, 338
+  orig: 334, 338
+  offset: 0, 0
+  index: -1
+taiq_pigeye1
+  rotate: false
+  xy: 517, 2
+  size: 36, 32
+  orig: 36, 32
+  offset: 0, 0
+  index: -1
+taiq_pigeye2
+  rotate: true
+  xy: 654, 243
+  size: 40, 28
+  orig: 40, 28
+  offset: 0, 0
+  index: -1
+taiq_pignose
+  rotate: true
+  xy: 2, 2
+  size: 133, 130
+  orig: 133, 130
+  offset: 0, 0
+  index: -1
+taiq_pigw
+  rotate: false
+  xy: 517, 36
+  size: 44, 51
+  orig: 44, 51
+  offset: 0, 0
+  index: -1
+taiq_ty
+  rotate: true
+  xy: 533, 285
+  size: 488, 149
+  orig: 488, 149
+  offset: 0, 0
+  index: -1
+taiq_yy
+  rotate: true
+  xy: 684, 201
+  size: 572, 86
+  orig: 572, 86
+  offset: 0, 0
+  index: -1
+taiq_z1
+  rotate: true
+  xy: 198, 167
+  size: 117, 89
+  orig: 117, 89
+  offset: 0, 0
+  index: -1
+taiq_z2
+  rotate: false
+  xy: 654, 101
+  size: 121, 98
+  orig: 121, 98
+  offset: 0, 0
+  index: -1
+taiq_z3
+  rotate: false
+  xy: 331, 198
+  size: 193, 119
+  orig: 193, 119
+  offset: 0, 0
+  index: -1
+taiq_z4
+  rotate: false
+  xy: 329, 89
+  size: 115, 107
+  orig: 115, 107
+  offset: 0, 0
+  index: -1
+taiq_z5
+  rotate: true
+  xy: 233, 297
+  size: 136, 96
+  orig: 136, 96
+  offset: 0, 0
+  index: -1
+taiq_z6
+  rotate: true
+  xy: 526, 171
+  size: 112, 126
+  orig: 112, 126
+  offset: 0, 0
+  index: -1
+taiq_z7
+  rotate: false
+  xy: 512, 89
+  size: 117, 80
+  orig: 117, 80
+  offset: 0, 0
+  index: -1
+taiq_z8
+  rotate: false
+  xy: 134, 11
+  size: 193, 124
+  orig: 193, 124
+  offset: 0, 0
+  index: -1
+taiq_z9
+  rotate: false
+  xy: 2, 286
+  size: 229, 147
+  orig: 229, 147
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,27 @@
+
+light_taiq.png
+size: 1214,212
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light
+  rotate: true
+  xy: 2, 68
+  size: 142, 711
+  orig: 142, 711
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: true
+  xy: 1065, 16
+  size: 194, 147
+  orig: 194, 147
+  offset: 0, 0
+  index: -1
+star_taiq2
+  rotate: false
+  xy: 715, 2
+  size: 348, 208
+  orig: 348, 208
+  offset: 0, 0
+  index: -1

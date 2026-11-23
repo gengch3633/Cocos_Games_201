@@ -1,0 +1,139 @@
+
+cuer04.png
+size: 502,74
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chilunz
+  rotate: true
+  xy: 348, 15
+  size: 34, 30
+  orig: 38, 33
+  offset: 2, 1
+  index: -1
+clguang1_00000
+  rotate: false
+  xy: 477, 13
+  size: 23, 27
+  orig: 25, 30
+  offset: 1, 1
+  index: -1
+clguang_00000
+  rotate: false
+  xy: 450, 42
+  size: 30, 30
+  orig: 33, 34
+  offset: 1, 2
+  index: -1
+gankulou
+  rotate: true
+  xy: 2, 51
+  size: 21, 408
+  orig: 29, 411
+  offset: 2, 1
+  index: -1
+tqchilun_00000
+  rotate: true
+  xy: 482, 49
+  size: 23, 18
+  orig: 45, 168
+  offset: 12, 8
+  index: -1
+tqchilun_00001
+  rotate: true
+  xy: 253, 11
+  size: 38, 31
+  orig: 45, 168
+  offset: 5, 5
+  index: -1
+tqchilun_00002
+  rotate: false
+  xy: 39, 10
+  size: 38, 39
+  orig: 45, 168
+  offset: 5, 6
+  index: -1
+tqchilun_00003
+  rotate: false
+  xy: 412, 28
+  size: 36, 44
+  orig: 45, 168
+  offset: 6, 11
+  index: -1
+tqchilun_00004
+  rotate: false
+  xy: 79, 7
+  size: 35, 42
+  orig: 45, 168
+  offset: 6, 22
+  index: -1
+tqchilun_00005
+  rotate: false
+  xy: 188, 6
+  size: 30, 43
+  orig: 45, 168
+  offset: 9, 32
+  index: -1
+tqchilun_00006
+  rotate: false
+  xy: 153, 7
+  size: 33, 42
+  orig: 45, 168
+  offset: 7, 45
+  index: -1
+tqchilun_00007
+  rotate: false
+  xy: 2, 5
+  size: 35, 44
+  orig: 45, 168
+  offset: 6, 54
+  index: -1
+tqchilun_00008
+  rotate: false
+  xy: 116, 7
+  size: 35, 42
+  orig: 45, 168
+  offset: 6, 64
+  index: -1
+tqchilun_00009
+  rotate: false
+  xy: 220, 8
+  size: 31, 41
+  orig: 45, 168
+  offset: 8, 75
+  index: -1
+tqchilun_00010
+  rotate: true
+  xy: 408, 2
+  size: 24, 40
+  orig: 45, 168
+  offset: 11, 87
+  index: -1
+tqchilun_00011
+  rotate: false
+  xy: 319, 9
+  size: 27, 40
+  orig: 45, 168
+  offset: 10, 99
+  index: -1
+tqchilun_00012
+  rotate: false
+  xy: 286, 11
+  size: 31, 38
+  orig: 45, 168
+  offset: 8, 110
+  index: -1
+tqchilun_00013
+  rotate: false
+  xy: 380, 10
+  size: 26, 39
+  orig: 45, 168
+  offset: 10, 118
+  index: -1
+tqchilun_00014
+  rotate: false
+  xy: 450, 11
+  size: 25, 29
+  orig: 45, 168
+  offset: 11, 130
+  index: -1

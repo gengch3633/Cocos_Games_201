@@ -1,0 +1,466 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -12.63,
+    "y": -516.38,
+    "width": 27.73,
+    "height": 520.04
+  },
+  "bones": [
+    {
+      "name": "root",
+      "rotation": 0.08
+    },
+    {
+      "name": "bone3",
+      "parent": "root",
+      "x": 1.07,
+      "y": -404.31,
+      "scaleX": 0.5,
+      "scaleY": 0.5
+    },
+    {
+      "name": "bone",
+      "parent": "bone3",
+      "x": -0.39,
+      "y": 39.58
+    },
+    {
+      "name": "bone2",
+      "parent": "bone3",
+      "x": -0.39,
+      "y": 39.58
+    }
+  ],
+  "slots": [
+    {
+      "name": "denmark",
+      "bone": "bone3",
+      "dark": "000000",
+      "attachment": "denmark"
+    },
+    {
+      "name": "dengx_00",
+      "bone": "bone",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "dengx_0",
+      "bone": "bone2",
+      "dark": "000000",
+      "blend": "additive"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "dengx_0": {
+          "dengx_01": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_02": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_03": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_04": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_05": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_06": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_07": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_08": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_09": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_10": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_11": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_12": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_13": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_14": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          }
+        },
+        "dengx_00": {
+          "dengx_01": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_02": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_03": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_04": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_05": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_06": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_07": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_08": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_09": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_10": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_11": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_12": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_13": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          },
+          "dengx_14": {
+            "x": -0.01,
+            "y": 13.33,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 30,
+            "height": 105
+          }
+        },
+        "denmark": {
+          "denmark": {
+            "x": -0.39,
+            "y": 295.89,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 27,
+            "height": 520
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "dengx_0": {
+          "twoColor": [
+            {
+              "light": "ffffff00",
+              "dark": "000000"
+            },
+            {
+              "time": 0.1,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3,
+              "light": "ffffffff",
+              "dark": "000000"
+            },
+            {
+              "time": 0.4667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "dengx_01"
+            },
+            {
+              "time": 0.0333,
+              "name": "dengx_02"
+            },
+            {
+              "time": 0.0667,
+              "name": "dengx_03"
+            },
+            {
+              "time": 0.1,
+              "name": "dengx_04"
+            },
+            {
+              "time": 0.1333,
+              "name": "dengx_05"
+            },
+            {
+              "time": 0.1667,
+              "name": "dengx_06"
+            },
+            {
+              "time": 0.2,
+              "name": "dengx_07"
+            },
+            {
+              "time": 0.2333,
+              "name": "dengx_08"
+            },
+            {
+              "time": 0.2667,
+              "name": "dengx_09"
+            },
+            {
+              "time": 0.3,
+              "name": "dengx_10"
+            },
+            {
+              "time": 0.3333,
+              "name": "dengx_11"
+            },
+            {
+              "time": 0.3667,
+              "name": "dengx_12"
+            },
+            {
+              "time": 0.4,
+              "name": "dengx_13"
+            },
+            {
+              "time": 0.4333,
+              "name": "dengx_14"
+            }
+          ]
+        },
+        "dengx_00": {
+          "twoColor": [
+            {
+              "light": "ffffff00",
+              "dark": "000000"
+            },
+            {
+              "time": 0.1,
+              "light": "ffffffd0",
+              "dark": "000000"
+            },
+            {
+              "time": 0.4667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "dengx_01"
+            },
+            {
+              "time": 0.0333,
+              "name": "dengx_02"
+            },
+            {
+              "time": 0.0667,
+              "name": "dengx_03"
+            },
+            {
+              "time": 0.1,
+              "name": "dengx_04"
+            },
+            {
+              "time": 0.1333,
+              "name": "dengx_05"
+            },
+            {
+              "time": 0.1667,
+              "name": "dengx_06"
+            },
+            {
+              "time": 0.2,
+              "name": "dengx_07"
+            },
+            {
+              "time": 0.2333,
+              "name": "dengx_08"
+            },
+            {
+              "time": 0.2667,
+              "name": "dengx_09"
+            },
+            {
+              "time": 0.3,
+              "name": "dengx_10"
+            },
+            {
+              "time": 0.3333,
+              "name": "dengx_11"
+            },
+            {
+              "time": 0.3667,
+              "name": "dengx_12"
+            },
+            {
+              "time": 0.4,
+              "name": "dengx_13"
+            },
+            {
+              "time": 0.4333,
+              "name": "dengx_14"
+            },
+            {
+              "time": 2.6667,
+              "name": null
+            }
+          ]
+        }
+      }
+    }
+  }
+}

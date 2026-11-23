@@ -1,0 +1,69 @@
+
+flybox_taiq.png
+size: 296,222
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2_taiq
+  rotate: true
+  xy: 230, 4
+  size: 72, 58
+  orig: 72, 58
+  offset: 0, 0
+  index: -1
+2ap_taiqpiaozhi
+  rotate: true
+  xy: 253, 79
+  size: 60, 38
+  orig: 60, 38
+  offset: 0, 0
+  index: -1
+3_taiq
+  rotate: false
+  xy: 2, 4
+  size: 85, 53
+  orig: 86, 53
+  offset: 0, 0
+  index: -1
+4_taiq
+  rotate: true
+  xy: 165, 2
+  size: 74, 63
+  orig: 75, 64
+  offset: 1, 1
+  index: -1
+5_taiq
+  rotate: false
+  xy: 164, 141
+  size: 97, 79
+  orig: 99, 82
+  offset: 1, 2
+  index: -1
+ad
+  rotate: false
+  xy: 263, 185
+  size: 31, 35
+  orig: 31, 35
+  offset: 0, 0
+  index: -1
+fly1_taiq
+  rotate: false
+  xy: 164, 78
+  size: 87, 61
+  orig: 87, 64
+  offset: 0, 3
+  index: -1
+s_taiq
+  rotate: true
+  xy: 89, 6
+  size: 51, 74
+  orig: 59, 83
+  offset: 2, 4
+  index: -1
+zhuanguang_card
+  rotate: true
+  xy: 2, 59
+  size: 161, 160
+  orig: 163, 162
+  offset: 1, 1
+  index: -1

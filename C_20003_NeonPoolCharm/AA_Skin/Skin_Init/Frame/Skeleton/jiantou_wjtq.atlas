@@ -1,0 +1,34 @@
+
+jiantou_wjtq.png
+size: 676,69
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+load2
+  rotate: false
+  xy: 73, 31
+  size: 601, 36
+  orig: 601, 36
+  offset: 0, 0
+  index: -1
+wjtq_homejdt_01
+  rotate: false
+  xy: 73, 2
+  size: 591, 27
+  orig: 591, 27
+  offset: 0, 0
+  index: -1
+wjtq_jindu
+  rotate: true
+  xy: 2, 12
+  size: 55, 20
+  orig: 55, 20
+  offset: 0, 0
+  index: -1
+wjtq_xg
+  rotate: false
+  xy: 24, 15
+  size: 47, 52
+  orig: 49, 60
+  offset: 1, 4
+  index: -1

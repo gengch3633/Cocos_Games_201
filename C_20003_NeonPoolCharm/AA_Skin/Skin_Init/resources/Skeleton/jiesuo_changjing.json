@@ -1,0 +1,2872 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -214.07,
+    "y": -155.05,
+    "width": 441,
+    "height": 341
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "aa",
+      "parent": "root"
+    },
+    {
+      "name": "bone2",
+      "parent": "aa",
+      "y": -344.25,
+      "scaleX": 0.5421,
+      "scaleY": 0.5421
+    },
+    {
+      "name": "di",
+      "parent": "bone2"
+    },
+    {
+      "name": "bone3",
+      "parent": "bone2",
+      "scaleX": 1.428,
+      "scaleY": 1.428
+    },
+    {
+      "name": "bone4",
+      "parent": "root",
+      "x": 6.43,
+      "y": 37.13
+    },
+    {
+      "name": "扫光",
+      "parent": "bone2",
+      "length": 508.82,
+      "rotation": 179.37,
+      "x": -104.28,
+      "y": 688.93,
+      "scaleX": 1.2171,
+      "scaleY": 1.2171
+    },
+    {
+      "name": "前_发亮",
+      "parent": "bone2",
+      "length": 256.2,
+      "rotation": -90,
+      "x": -2.12,
+      "y": -14.98
+    },
+    {
+      "name": "线",
+      "parent": "bone2",
+      "length": 143.56,
+      "rotation": 90,
+      "x": 930.87,
+      "y": 79.41
+    },
+    {
+      "name": "bone5",
+      "parent": "bone2",
+      "y": 272.79
+    },
+    {
+      "name": "星星",
+      "parent": "bone5",
+      "x": -108.92,
+      "y": 319.56
+    },
+    {
+      "name": "diandian",
+      "parent": "bone2",
+      "x": 3007.79,
+      "y": -35.75
+    },
+    {
+      "name": "点点",
+      "parent": "diandian",
+      "x": -71.14,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "di2",
+      "parent": "di",
+      "y": 634.97
+    },
+    {
+      "name": "箭头",
+      "parent": "bone3",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "组 14",
+      "parent": "root",
+      "y": 95.84
+    },
+    {
+      "name": "di3",
+      "parent": "di2"
+    },
+    {
+      "name": "点点2",
+      "parent": "diandian",
+      "x": -168.83,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点3",
+      "parent": "diandian",
+      "x": 185.28,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点4",
+      "parent": "diandian",
+      "x": 239.93,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点5",
+      "parent": "diandian",
+      "x": -361.19,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点6",
+      "parent": "diandian",
+      "x": 378.65,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点7",
+      "parent": "diandian",
+      "x": -239.29,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点8",
+      "parent": "diandian",
+      "x": -327.28,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点9",
+      "parent": "diandian",
+      "x": 416.7,
+      "y": 78.17,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "点点10",
+      "parent": "diandian",
+      "x": 277.98,
+      "y": 78.16,
+      "scaleX": 3.0187,
+      "scaleY": 3.0187
+    },
+    {
+      "name": "线2",
+      "parent": "线",
+      "x": 1.37,
+      "y": -484.4,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "线3",
+      "parent": "线",
+      "x": 1.37,
+      "y": -424.05,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "线4",
+      "parent": "线",
+      "x": 1.37,
+      "y": -240.12,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "线5",
+      "parent": "线",
+      "x": 1.37,
+      "y": -70.57,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "线6",
+      "parent": "线",
+      "x": 1.37,
+      "y": 104.73,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "线7",
+      "parent": "线",
+      "x": 1.37,
+      "y": 156.46,
+      "scaleX": 1.3266
+    },
+    {
+      "name": "星星2",
+      "parent": "bone5",
+      "x": -329.66,
+      "y": 99.35,
+      "scaleX": 1.5161,
+      "scaleY": 1.5161
+    },
+    {
+      "name": "星星3",
+      "parent": "bone5",
+      "x": -276.55,
+      "y": 639.65
+    },
+    {
+      "name": "星星4",
+      "parent": "bone5",
+      "x": 143.17,
+      "y": 580.98,
+      "scaleX": 1.6502,
+      "scaleY": 1.6502
+    },
+    {
+      "name": "星星5",
+      "parent": "bone5",
+      "x": 405.24,
+      "y": 526.15,
+      "scaleX": 1.7967,
+      "scaleY": 1.7967
+    },
+    {
+      "name": "星星6",
+      "parent": "bone5",
+      "x": 184.67,
+      "y": 172.35
+    },
+    {
+      "name": "箭头2",
+      "parent": "bone3",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "箭头3",
+      "parent": "bone3",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "bone6",
+      "parent": "bone2",
+      "scaleX": -1.428,
+      "scaleY": 1.428
+    },
+    {
+      "name": "箭头4",
+      "parent": "bone6",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "箭头5",
+      "parent": "bone6",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "箭头6",
+      "parent": "bone6",
+      "x": -307.36,
+      "y": 466.56
+    },
+    {
+      "name": "bone7",
+      "parent": "bone2"
+    },
+    {
+      "name": "spng51",
+      "parent": "root",
+      "y": 167.85
+    }
+  ],
+  "slots": [
+    {
+      "name": "背景",
+      "bone": "di"
+    },
+    {
+      "name": "外圈",
+      "bone": "di"
+    },
+    {
+      "name": "外圈2",
+      "bone": "di",
+      "blend": "additive"
+    },
+    {
+      "name": "内圈",
+      "bone": "di2"
+    },
+    {
+      "name": "内圈2",
+      "bone": "di3",
+      "blend": "additive"
+    },
+    {
+      "name": "箭头",
+      "bone": "箭头"
+    },
+    {
+      "name": "箭头4",
+      "bone": "箭头4"
+    },
+    {
+      "name": "箭头2",
+      "bone": "箭头2"
+    },
+    {
+      "name": "箭头5",
+      "bone": "箭头5"
+    },
+    {
+      "name": "箭头3",
+      "bone": "箭头3"
+    },
+    {
+      "name": "箭头6",
+      "bone": "箭头6"
+    },
+    {
+      "name": "前_发亮",
+      "bone": "前_发亮",
+      "blend": "additive"
+    },
+    {
+      "name": "前_发亮2",
+      "bone": "前_发亮",
+      "blend": "additive"
+    },
+    {
+      "name": "组 14",
+      "bone": "组 14"
+    },
+    {
+      "name": "spng51",
+      "bone": "spng51"
+    },
+    {
+      "name": "扩散",
+      "bone": "bone4",
+      "attachment": "扩散",
+      "blend": "additive"
+    },
+    {
+      "name": "root",
+      "bone": "bone7",
+      "attachment": "root"
+    },
+    {
+      "name": "扫光",
+      "bone": "扫光",
+      "blend": "additive"
+    },
+    {
+      "name": "星星",
+      "bone": "星星"
+    },
+    {
+      "name": "星星2",
+      "bone": "星星2"
+    },
+    {
+      "name": "星星3",
+      "bone": "星星3"
+    },
+    {
+      "name": "星星4",
+      "bone": "星星4"
+    },
+    {
+      "name": "星星5",
+      "bone": "星星5"
+    },
+    {
+      "name": "星星6",
+      "bone": "星星6"
+    },
+    {
+      "name": "点点",
+      "bone": "点点"
+    },
+    {
+      "name": "点点2",
+      "bone": "点点2"
+    },
+    {
+      "name": "点点3",
+      "bone": "点点3"
+    },
+    {
+      "name": "点点4",
+      "bone": "点点4"
+    },
+    {
+      "name": "点点10",
+      "bone": "点点10"
+    },
+    {
+      "name": "点点5",
+      "bone": "点点5"
+    },
+    {
+      "name": "点点6",
+      "bone": "点点6"
+    },
+    {
+      "name": "点点9",
+      "bone": "点点9"
+    },
+    {
+      "name": "点点7",
+      "bone": "点点7"
+    },
+    {
+      "name": "点点8",
+      "bone": "点点8"
+    },
+    {
+      "name": "线",
+      "bone": "线2"
+    },
+    {
+      "name": "线2",
+      "bone": "线3"
+    },
+    {
+      "name": "线3",
+      "bone": "线4"
+    },
+    {
+      "name": "线4",
+      "bone": "线5"
+    },
+    {
+      "name": "线5",
+      "bone": "线6"
+    },
+    {
+      "name": "线6",
+      "bone": "线7"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "root": {
+          "root": {
+            "type": "clipping",
+            "end": "扫光",
+            "vertexCount": 17,
+            "vertices": [
+              -391.39,
+              1215.11,
+              -389.46,
+              1222.09,
+              -383.41,
+              1228.22,
+              -377.66,
+              1230.83,
+              372.99,
+              1230.59,
+              381.09,
+              1229.72,
+              387.38,
+              1224.92,
+              390.91,
+              1218.81,
+              391.84,
+              1203.09,
+              391.38,
+              636.98,
+              386.94,
+              629.68,
+              381.16,
+              624.87,
+              373.97,
+              622.98,
+              -375.75,
+              622.7,
+              -383.49,
+              625.82,
+              -388.81,
+              631.06,
+              -391.8,
+              637.42
+            ]
+          }
+        },
+        "内圈": {
+          "内圈": {
+            "y": -600,
+            "width": 710,
+            "height": 148
+          }
+        },
+        "内圈2": {
+          "内圈": {
+            "y": -600,
+            "width": 710,
+            "height": 148
+          }
+        },
+        "前_发亮": {
+          "前_发亮": {
+            "x": -215.41,
+            "y": 12.39,
+            "rotation": 90,
+            "width": 910,
+            "height": 497
+          }
+        },
+        "前_发亮2": {
+          "前_发亮": {
+            "x": -215.41,
+            "y": 12.39,
+            "rotation": 90,
+            "width": 910,
+            "height": 497
+          }
+        },
+        "外圈": {
+          "外圈": {
+            "width": 1237,
+            "height": 293
+          }
+        },
+        "外圈2": {
+          "外圈": {
+            "width": 1237,
+            "height": 293
+          }
+        },
+        "扩散": {
+          "扩散": {
+            "y": -21.68,
+            "width": 441,
+            "height": 341
+          }
+        },
+        "扫光": {
+          "扫光": {
+            "type": "mesh",
+            "hull": 6,
+            "uvs": [
+              1,
+              1,
+              0.50882,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0.93399,
+              0,
+              1,
+              0
+            ],
+            "triangles": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              3,
+              4,
+              5,
+              0,
+              1,
+              4,
+              0
+            ],
+            "vertices": [
+              -167.33,
+              708.85,
+              59.96,
+              711.36,
+              835.21,
+              719.93,
+              1578.37,
+              -1191.6,
+              60.53,
+              -1208.37,
+              -4.55,
+              -1209.09
+            ]
+          }
+        },
+        "星星": {
+          "星星": {
+            "x": -1.73,
+            "y": -6.51,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "星星2": {
+          "星星": {
+            "x": -7.99,
+            "y": -8.82,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "星星3": {
+          "星星": {
+            "x": -7.1,
+            "y": -2.99,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "星星4": {
+          "星星": {
+            "x": -8.63,
+            "y": -6.69,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "星星5": {
+          "星星": {
+            "x": -6.23,
+            "y": -2.54,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "星星6": {
+          "星星": {
+            "x": -6.23,
+            "y": -2.54,
+            "width": 162,
+            "height": 159
+          }
+        },
+        "点点": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点2": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点3": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点4": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点5": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点6": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点7": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点8": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点9": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "点点10": {
+          "点点": {
+            "x": 0.01,
+            "y": 0.29,
+            "width": 28,
+            "height": 27
+          }
+        },
+        "箭头": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "箭头2": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "箭头3": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "箭头4": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "箭头5": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "箭头6": {
+          "箭头": {
+            "x": -12.36,
+            "y": -3.24,
+            "width": 262,
+            "height": 349
+          }
+        },
+        "线": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "线2": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "线3": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "线4": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "线5": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "线6": {
+          "线": {
+            "x": 64.22,
+            "y": 16.52,
+            "rotation": -90,
+            "width": 37,
+            "height": 153
+          }
+        },
+        "背景": {
+          "背景": {
+            "y": 439.24,
+            "scaleX": 1.3622,
+            "scaleY": 1.3622,
+            "width": 1185,
+            "height": 1069
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "shang": {
+      "slots": {
+        "前_发亮": {
+          "color": [
+            {
+              "color": "ffffffff"
+            },
+            {
+              "time": 0.8333,
+              "color": "ffffff4f"
+            },
+            {
+              "time": 1.6667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.5,
+              "color": "ffffff4f"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "前_发亮"
+            }
+          ]
+        },
+        "前_发亮2": {
+          "color": [
+            {
+              "color": "ffffff6c"
+            },
+            {
+              "time": 0.8333,
+              "color": "ffffff4f"
+            },
+            {
+              "time": 1.6667,
+              "color": "ffffff6c"
+            },
+            {
+              "time": 2.5,
+              "color": "ffffff4f"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffff6c"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "前_发亮"
+            }
+          ]
+        },
+        "扩散": {
+          "color": [
+            {
+              "time": 1,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1.1667,
+              "color": "ffffffdf",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "color": "ffffffdf",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.75,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffff00"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 1,
+              "name": "扩散"
+            }
+          ]
+        },
+        "扫光": {
+          "color": [
+            {
+              "color": "ffffff67"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "扫光"
+            }
+          ]
+        },
+        "星星": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "星星2": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "星星3": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "星星4": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "星星5": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "星星6": {
+          "attachment": [
+            {
+              "name": "星星"
+            },
+            {
+              "time": 1.6667,
+              "name": "星星"
+            }
+          ]
+        },
+        "点点": {
+          "color": [
+            {
+              "color": "ffffff48"
+            },
+            {
+              "time": 0.2333,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.25,
+              "color": "ffffff00"
+            },
+            {
+              "time": 0.5833,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.75,
+              "color": "ffffffff"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffff48"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点2": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.85,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.6667,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6833,
+              "color": "ffffff00"
+            },
+            {
+              "time": 2.0167,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点3": {
+          "color": [
+            {
+              "color": "ffffffda"
+            },
+            {
+              "time": 0.7,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.7167,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1.05,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.2167,
+              "color": "ffffffff"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffda"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点4": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.7833,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.6,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6167,
+              "color": "ffffff00"
+            },
+            {
+              "time": 2.95,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点5": {
+          "color": [
+            {
+              "color": "ffffff24"
+            },
+            {
+              "time": 0.1167,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.1333,
+              "color": "ffffff00"
+            },
+            {
+              "time": 0.4667,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6333,
+              "color": "ffffffff"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffff24"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点6": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.7,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.5167,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5333,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1.8667,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点7": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.0167,
+              "color": "ffffffff"
+            },
+            {
+              "time": 0.8333,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.85,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1.1833,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0.85,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点8": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.4333,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.25,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.2667,
+              "color": "ffffff00"
+            },
+            {
+              "time": 2.6,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点9": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.8333,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.65,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6667,
+              "color": "ffffff00"
+            },
+            {
+              "time": 2,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            },
+            {
+              "time": 3.3333,
+              "name": "点点"
+            }
+          ]
+        },
+        "点点10": {
+          "color": [
+            {
+              "color": "ffffffca"
+            },
+            {
+              "time": 0.65,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.6667,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.1667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffca"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "点点"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "星星2": {
+          "scale": [
+            {
+              "x": 0.725,
+              "y": 0.725
+            },
+            {
+              "time": 0.2333
+            },
+            {
+              "time": 1.0667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.6667,
+              "x": 0.725,
+              "y": 0.725
+            },
+            {
+              "time": 1.9
+            },
+            {
+              "time": 2.7333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.3333,
+              "x": 0.725,
+              "y": 0.725
+            }
+          ]
+        },
+        "星星4": {
+          "scale": [
+            {
+              "x": 0.4,
+              "y": 0.4
+            },
+            {
+              "time": 0.5
+            },
+            {
+              "time": 1.3333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.6667,
+              "x": 0.4,
+              "y": 0.4
+            },
+            {
+              "time": 2.1667
+            },
+            {
+              "time": 3,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.3333,
+              "x": 0.4,
+              "y": 0.4
+            }
+          ]
+        },
+        "星星": {
+          "scale": [
+            {
+              "x": 0.55,
+              "y": 0.55
+            },
+            {
+              "time": 0.4667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.3
+            },
+            {
+              "time": 1.6667,
+              "x": 0.55,
+              "y": 0.55
+            },
+            {
+              "time": 2.1333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.9667
+            },
+            {
+              "time": 3.3333,
+              "x": 0.55,
+              "y": 0.55
+            }
+          ]
+        },
+        "星星5": {
+          "scale": [
+            {
+              "x": 0.725,
+              "y": 0.725
+            },
+            {
+              "time": 0.6,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.45
+            },
+            {
+              "time": 1.6667,
+              "x": 0.725,
+              "y": 0.725
+            },
+            {
+              "time": 2.2667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.1167
+            },
+            {
+              "time": 3.3333,
+              "x": 0.725,
+              "y": 0.725
+            }
+          ]
+        },
+        "星星3": {
+          "scale": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.8333
+            },
+            {
+              "time": 1.6667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.5
+            },
+            {
+              "time": 3.3333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "星星6": {
+          "scale": [
+            {
+              "x": 0.325,
+              "y": 0.325
+            },
+            {
+              "time": 0.2667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.1167
+            },
+            {
+              "time": 1.6667,
+              "x": 0.325,
+              "y": 0.325
+            },
+            {
+              "time": 1.9333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.7833
+            },
+            {
+              "time": 3.3333,
+              "x": 0.325,
+              "y": 0.325
+            }
+          ]
+        },
+        "扫光": {
+          "translate": [
+            {
+              "x": -352.21,
+              "y": 147.3,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3333,
+              "x": -352.21,
+              "y": 147.3
+            },
+            {
+              "time": 1.0833,
+              "x": 873.5,
+              "y": 146.37
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.275,
+              "y": 0.684
+            }
+          ]
+        },
+        "bone4": {
+          "translate": [
+            {
+              "time": 1,
+              "x": -4.82,
+              "y": 258.92
+            }
+          ],
+          "scale": [
+            {
+              "time": 1,
+              "x": 0.944,
+              "y": 0.944,
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 1.75,
+              "x": 0.998,
+              "y": 0.998
+            }
+          ]
+        },
+        "点点4": {
+          "translate": [
+            {
+              "y": 152.23
+            },
+            {
+              "time": 2.2333,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.25
+            },
+            {
+              "time": 3.3333,
+              "y": 152.23
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.15,
+              "y": 0.15
+            },
+            {
+              "time": 0.2833
+            },
+            {
+              "time": 0.6167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.95
+            },
+            {
+              "time": 1.2833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.6167
+            },
+            {
+              "time": 1.95,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.2833,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6167,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.95
+            },
+            {
+              "time": 3.2833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.3333,
+              "x": 0.15,
+              "y": 0.15
+            }
+          ]
+        },
+        "点点3": {
+          "translate": [
+            {
+              "y": 391.12
+            },
+            {
+              "time": 0.5333,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.55
+            },
+            {
+              "time": 3.3333,
+              "y": 391.12
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.15,
+              "y": 0.15
+            },
+            {
+              "time": 0.05,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.3833,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.7,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.7167,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.05
+            },
+            {
+              "time": 1.3833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.7167
+            },
+            {
+              "time": 2.05,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.3833
+            },
+            {
+              "time": 2.7167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.05
+            },
+            {
+              "time": 3.3333,
+              "x": 0.15,
+              "y": 0.15
+            }
+          ]
+        },
+        "点点": {
+          "translate": [
+            {
+              "y": 398.14
+            },
+            {
+              "time": 0.4833,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.5
+            },
+            {
+              "time": 3.3333,
+              "y": 398.14
+            }
+          ],
+          "scale": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 0.2333,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.25,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.5833
+            },
+            {
+              "time": 0.9167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.25
+            },
+            {
+              "time": 1.5833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.9167
+            },
+            {
+              "time": 2.25,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.5833
+            },
+            {
+              "time": 2.9167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.25,
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333
+            }
+          ]
+        },
+        "点点8": {
+          "translate": [
+            {
+              "y": 149.89
+            },
+            {
+              "time": 2.25,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.2667
+            },
+            {
+              "time": 3.3333,
+              "y": 149.89
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.8,
+              "y": 0.8
+            },
+            {
+              "time": 0.2667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6
+            },
+            {
+              "time": 0.9333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.2667
+            },
+            {
+              "time": 1.6,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.9333,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.25,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.2667,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6
+            },
+            {
+              "time": 2.9333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.2667
+            },
+            {
+              "time": 3.3333,
+              "x": 0.8,
+              "y": 0.8
+            }
+          ]
+        },
+        "点点5": {
+          "translate": [
+            {
+              "y": 243.57
+            },
+            {
+              "time": 1.5833,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6
+            },
+            {
+              "time": 3.3333,
+              "y": 243.57
+            }
+          ],
+          "scale": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 0.1167,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.1333,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4667
+            },
+            {
+              "time": 0.8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.1333
+            },
+            {
+              "time": 1.4667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.8
+            },
+            {
+              "time": 2.1333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.4667
+            },
+            {
+              "time": 2.8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.1333,
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333
+            }
+          ]
+        },
+        "点点6": {
+          "translate": [
+            {
+              "y": 419.22
+            },
+            {
+              "time": 0.3333,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.35
+            },
+            {
+              "time": 3.3333,
+              "y": 419.22
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.6,
+              "y": 0.6
+            },
+            {
+              "time": 0.2,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.5333
+            },
+            {
+              "time": 0.8667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.2,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5167,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5333,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.8667
+            },
+            {
+              "time": 2.2,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.5333
+            },
+            {
+              "time": 2.8667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.2
+            },
+            {
+              "time": 3.3333,
+              "x": 0.6,
+              "y": 0.6
+            }
+          ]
+        },
+        "点点9": {
+          "translate": [
+            {
+              "y": 264.65
+            },
+            {
+              "time": 1.4333,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.45
+            },
+            {
+              "time": 3.3333,
+              "y": 264.65
+            }
+          ],
+          "scale": [
+            {},
+            {
+              "time": 0.3333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6667
+            },
+            {
+              "time": 1,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.3333,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.65,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6667,
+              "curve": "stepped"
+            },
+            {
+              "time": 2
+            },
+            {
+              "time": 2.3333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.6667
+            },
+            {
+              "time": 3,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.3333
+            }
+          ]
+        },
+        "点点7": {
+          "translate": [
+            {
+              "y": 121.78
+            },
+            {
+              "time": 1.6167,
+              "y": 348.96
+            },
+            {
+              "time": 2.45,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.4667
+            },
+            {
+              "time": 3.3333,
+              "y": 121.78
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.55,
+              "y": 0.55
+            },
+            {
+              "time": 0.1833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.5167,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.8333,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.85,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.1833
+            },
+            {
+              "time": 1.5167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.85
+            },
+            {
+              "time": 2.1833,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.5167
+            },
+            {
+              "time": 2.85,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.1833
+            },
+            {
+              "time": 3.3333,
+              "x": 0.55,
+              "y": 0.55
+            }
+          ]
+        },
+        "点点2": {
+          "translate": [
+            {
+              "y": 255.28
+            },
+            {
+              "time": 1.5,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5167
+            },
+            {
+              "time": 3.3333,
+              "y": 255.28
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.95,
+              "y": 0.95
+            },
+            {
+              "time": 0.0167
+            },
+            {
+              "time": 0.35,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6833
+            },
+            {
+              "time": 1.0167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.35,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6667,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.6833,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.0167
+            },
+            {
+              "time": 2.35,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.6833
+            },
+            {
+              "time": 3.0167,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3.3333,
+              "x": 0.95,
+              "y": 0.95
+            }
+          ]
+        },
+        "diandian": {
+          "translate": [
+            {
+              "x": -3007.79,
+              "y": 157.15
+            }
+          ]
+        },
+        "点点10": {
+          "translate": [
+            {
+              "y": 374.72
+            },
+            {
+              "time": 0.65,
+              "y": 466.06,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.6667
+            },
+            {
+              "time": 3.3333,
+              "y": 374.72
+            }
+          ],
+          "scale": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.3333,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.65,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.6667,
+              "curve": "stepped"
+            },
+            {
+              "time": 1
+            },
+            {
+              "time": 1.3333,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 1.6667
+            },
+            {
+              "time": 2,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 2.3333
+            },
+            {
+              "time": 2.6667,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 3
+            },
+            {
+              "time": 3.3333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "前_发亮": {
+          "translate": [
+            {
+              "y": 156.05
+            }
+          ],
+          "scale": [
+            {
+              "y": 1.326
+            }
+          ]
+        },
+        "aa": {
+          "translate": [
+            {
+              "y": 116.11
+            }
+          ]
+        },
+        "组 14": {
+          "translate": [
+            {
+              "y": 116.52
+            }
+          ]
+        },
+        "spng51": {
+          "translate": [
+            {
+              "y": 115.63
+            }
+          ]
+        }
+      },
+      "deform": {
+        "default": {
+          "扫光": {
+            "扫光": [
+              {
+                "time": 0.3333,
+                "offset": 4,
+                "vertices": [
+                  343.948,
+                  1.52994,
+                  343.948,
+                  1.52994
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "xia": {
+      "slots": {
+        "内圈": {
+          "attachment": [
+            {
+              "name": "内圈"
+            }
+          ]
+        },
+        "内圈2": {
+          "color": [
+            {
+              "color": "ffffffff"
+            },
+            {
+              "time": 0.55,
+              "color": "ffffff22"
+            },
+            {
+              "time": 1.1167,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.6667,
+              "color": "ffffff22"
+            },
+            {
+              "time": 2.2167,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.7833,
+              "color": "ffffff22"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "内圈"
+            }
+          ]
+        },
+        "外圈": {
+          "attachment": [
+            {
+              "name": "外圈"
+            }
+          ]
+        },
+        "外圈2": {
+          "attachment": [
+            {
+              "name": "外圈"
+            }
+          ]
+        },
+        "扩散": {
+          "attachment": [
+            {
+              "name": null
+            }
+          ]
+        },
+        "箭头": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.15,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.4833,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "箭头2": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.4833,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.0167,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "箭头3": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.1667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.5,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5167,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "箭头4": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.15,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.4833,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "箭头5": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.4833,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.0167,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "箭头6": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.1667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.5,
+              "color": "ffffff00",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5167,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 3.3333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "箭头"
+            }
+          ]
+        },
+        "背景": {
+          "attachment": [
+            {
+              "name": "背景"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "di2": {
+          "translate": [
+            {
+              "y": 68.02
+            }
+          ],
+          "scale": [
+            {
+              "x": 1.291,
+              "y": 1.097
+            }
+          ]
+        },
+        "箭头4": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.5,
+              "x": -285.15
+            },
+            {
+              "time": 1.4833,
+              "x": 171.86,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "x": -285.15
+            }
+          ]
+        },
+        "箭头5": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 1,
+              "x": -285.15
+            },
+            {
+              "time": 2,
+              "x": 171.87,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.0167,
+              "x": -285.15
+            }
+          ]
+        },
+        "箭头": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.5,
+              "x": -285.15
+            },
+            {
+              "time": 1.4833,
+              "x": 171.86,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "x": -285.15
+            }
+          ]
+        },
+        "箭头2": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 1,
+              "x": -285.15
+            },
+            {
+              "time": 2,
+              "x": 171.87,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.0167,
+              "x": -285.15
+            }
+          ]
+        },
+        "箭头3": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "x": -285.15
+            },
+            {
+              "time": 2.5,
+              "x": 171.87,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5167,
+              "x": -285.15
+            }
+          ]
+        },
+        "箭头6": {
+          "translate": [
+            {
+              "x": -285.15,
+              "curve": "stepped"
+            },
+            {
+              "time": 1.5,
+              "x": -285.15
+            },
+            {
+              "time": 2.5,
+              "x": 171.87,
+              "curve": "stepped"
+            },
+            {
+              "time": 2.5167,
+              "x": -285.15
+            }
+          ]
+        },
+        "aa": {
+          "translate": [
+            {
+              "y": 116.11
+            }
+          ]
+        },
+        "bone6": {
+          "translate": [
+            {
+              "y": -110.23
+            }
+          ]
+        },
+        "bone3": {
+          "translate": [
+            {
+              "y": -110.23
+            }
+          ]
+        }
+      }
+    }
+  }
+}

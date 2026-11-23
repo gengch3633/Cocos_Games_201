@@ -1,0 +1,286 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -19.69,
+    "y": -516,
+    "width": 39,
+    "height": 520
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "bone2",
+      "parent": "root",
+      "y": -391.45,
+      "scaleX": 0.5,
+      "scaleY": 0.5
+    },
+    {
+      "name": "bone",
+      "parent": "bone2",
+      "x": -0.38,
+      "y": 15.04
+    }
+  ],
+  "slots": [
+    {
+      "name": "japan",
+      "bone": "bone2",
+      "dark": "000000",
+      "attachment": "japan"
+    },
+    {
+      "name": "japansg_00",
+      "bone": "bone",
+      "dark": "000000",
+      "blend": "additive"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "japan": {
+          "japan": {
+            "x": -0.38,
+            "y": 270.89,
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 39,
+            "height": 520
+          }
+        },
+        "japansg_00": {
+          "japansg_00": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_01": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_02": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_03": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_04": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_05": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_06": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_07": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_08": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_09": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_10": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_11": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_12": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_13": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_14": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_15": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          },
+          "japansg_16": {
+            "scaleX": 2,
+            "scaleY": 2,
+            "width": 56,
+            "height": 65
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "japansg_00": {
+          "twoColor": [
+            {
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": 0,
+              "c2": 0.11,
+              "c3": 0.75
+            },
+            {
+              "time": 0.2,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4302,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": 0.25,
+              "c3": 0.75
+            },
+            {
+              "time": 0.7256,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "japansg_00"
+            },
+            {
+              "time": 0.0333,
+              "name": "japansg_01"
+            },
+            {
+              "time": 0.0667,
+              "name": "japansg_02"
+            },
+            {
+              "time": 0.1,
+              "name": "japansg_03"
+            },
+            {
+              "time": 0.1333,
+              "name": "japansg_04"
+            },
+            {
+              "time": 0.1667,
+              "name": "japansg_05"
+            },
+            {
+              "time": 0.2,
+              "name": "japansg_06"
+            },
+            {
+              "time": 0.2333,
+              "name": "japansg_07"
+            },
+            {
+              "time": 0.2826,
+              "name": "japansg_08"
+            },
+            {
+              "time": 0.3318,
+              "name": "japansg_09"
+            },
+            {
+              "time": 0.381,
+              "name": "japansg_10"
+            },
+            {
+              "time": 0.4302,
+              "name": "japansg_11"
+            },
+            {
+              "time": 0.4795,
+              "name": "japansg_12"
+            },
+            {
+              "time": 0.5287,
+              "name": "japansg_13"
+            },
+            {
+              "time": 0.5779,
+              "name": "japansg_14"
+            },
+            {
+              "time": 0.6271,
+              "name": "japansg_15"
+            },
+            {
+              "time": 0.6763,
+              "name": "japansg_16"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "bone": {
+          "translate": [
+            {
+              "y": -225.84,
+              "curve": "stepped"
+            },
+            {
+              "time": 5,
+              "y": -225.84
+            }
+          ],
+          "scale": [
+            {
+              "x": 0.945,
+              "y": 0.945
+            }
+          ]
+        }
+      }
+    }
+  }
+}

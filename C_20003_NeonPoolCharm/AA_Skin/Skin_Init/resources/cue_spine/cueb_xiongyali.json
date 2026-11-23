@@ -1,0 +1,157 @@
+{
+  "skeleton": {
+    "spine": "3.8.99",
+    "x": -14.89,
+    "y": -528.43,
+    "width": 30.27,
+    "height": 535.87,
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "bone4",
+      "parent": "root",
+      "y": -392.64,
+      "scaleX": 0.61,
+      "scaleY": 0.61
+    },
+    {
+      "name": "bone2",
+      "parent": "bone4",
+      "x": 0.82,
+      "y": 126.32,
+      "scaleX": 1.006
+    }
+  ],
+  "slots": [
+    {
+      "name": "australia",
+      "bone": "bone4",
+      "dark": "000000",
+      "attachment": "australia"
+    },
+    {
+      "name": "australia003",
+      "bone": "bone2",
+      "dark": "000000",
+      "blend": "additive"
+    },
+    {
+      "name": "20240321-193602",
+      "bone": "root"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "australia": {
+          "australia": {
+            "path": "cueb_xiongyali",
+            "x": 0.41,
+            "y": 216.64,
+            "scaleX": 1.3412,
+            "scaleY": 1.3412,
+            "width": 37,
+            "height": 655
+          }
+        },
+        "australia003": {
+          "australia003": {
+            "x": 0.19,
+            "y": -39.19,
+            "scaleX": 2,
+            "scaleY": 2,
+            "rotation": 90,
+            "width": 115,
+            "height": 25
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "australia003": {
+          "twoColor": [
+            {
+              "light": "ffffff00",
+              "dark": "000000"
+            },
+            {
+              "time": 0.3333,
+              "light": "ffffffff",
+              "dark": "000000",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.6667,
+              "light": "ffffffff",
+              "dark": "000000"
+            },
+            {
+              "time": 1.1333,
+              "light": "ffffff00",
+              "dark": "000000",
+              "curve": "stepped"
+            },
+            {
+              "time": 2.6667,
+              "light": "ffffff00",
+              "dark": "000000"
+            }
+          ],
+          "attachment": [
+            {
+              "name": "australia003"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "bone2": {
+          "translate": [
+            {
+              "x": -0.16,
+              "y": -360.28,
+              "curve": 0.173,
+              "c2": 0.32,
+              "c3": 0.647
+            },
+            {
+              "time": 0.9667,
+              "x": -0.45,
+              "y": 378.85
+            }
+          ],
+          "scale": [
+            {
+              "x": 2.073,
+              "curve": 0,
+              "c2": 0.09,
+              "c3": 0.426,
+              "c4": 0.55
+            },
+            {
+              "time": 0.9667,
+              "x": 0.807,
+              "y": 1.176,
+              "curve": 0.303,
+              "c2": 0.51,
+              "c3": 0.685
+            },
+            {
+              "time": 1.1333,
+              "x": 0.799,
+              "y": 0.073
+            }
+          ]
+        }
+      }
+    }
+  }
+}

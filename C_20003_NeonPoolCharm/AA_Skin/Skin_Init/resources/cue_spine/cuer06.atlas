@@ -1,0 +1,139 @@
+
+cuer06.png
+size: 172,579
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cuer06
+  rotate: false
+  xy: 147, 55
+  size: 23, 522
+  orig: 26, 526
+  offset: 2, 2
+  index: -1
+mexih_00
+  rotate: true
+  xy: 2, 534
+  size: 43, 95
+  orig: 64, 101
+  offset: 11, 4
+  index: -1
+mexih_01
+  rotate: true
+  xy: 2, 443
+  size: 44, 95
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_02
+  rotate: true
+  xy: 2, 397
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_03
+  rotate: true
+  xy: 2, 351
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_04
+  rotate: false
+  xy: 99, 483
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_05
+  rotate: false
+  xy: 100, 387
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_06
+  rotate: true
+  xy: 2, 489
+  size: 43, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_07
+  rotate: true
+  xy: 2, 305
+  size: 44, 94
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_08
+  rotate: true
+  xy: 2, 259
+  size: 44, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_09
+  rotate: true
+  xy: 2, 213
+  size: 44, 96
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_10
+  rotate: true
+  xy: 2, 167
+  size: 44, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_11
+  rotate: true
+  xy: 2, 121
+  size: 44, 96
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_12
+  rotate: false
+  xy: 100, 2
+  size: 45, 95
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_13
+  rotate: false
+  xy: 100, 291
+  size: 45, 94
+  orig: 64, 101
+  offset: 9, 4
+  index: -1
+mexih_14
+  rotate: false
+  xy: 100, 195
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_15
+  rotate: false
+  xy: 100, 99
+  size: 44, 94
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_16
+  rotate: true
+  xy: 2, 75
+  size: 44, 95
+  orig: 64, 101
+  offset: 10, 4
+  index: -1
+mexih_17
+  rotate: true
+  xy: 2, 29
+  size: 44, 96
+  orig: 64, 101
+  offset: 10, 4
+  index: -1

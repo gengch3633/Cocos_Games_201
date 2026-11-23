@@ -1,0 +1,55 @@
+
+lv_taiq.png
+size: 178,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+alv_taiq
+  rotate: true
+  xy: 93, 37
+  size: 99, 68
+  orig: 99, 68
+  offset: 0, 0
+  index: -1
+azhi2_taiq
+  rotate: true
+  xy: 135, 223
+  size: 47, 41
+  orig: 47, 41
+  offset: 0, 0
+  index: -1
+azhi3_taiq
+  rotate: true
+  xy: 135, 164
+  size: 57, 37
+  orig: 57, 37
+  offset: 0, 0
+  index: -1
+azhi4_taiq
+  rotate: false
+  xy: 135, 139
+  size: 41, 23
+  orig: 41, 23
+  offset: 0, 0
+  index: -1
+azhi_taiq
+  rotate: false
+  xy: 93, 2
+  size: 49, 33
+  orig: 49, 33
+  offset: 0, 0
+  index: -1
+guang_taiq
+  rotate: false
+  xy: 2, 138
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: false
+  xy: 2, 21
+  size: 89, 115
+  orig: 89, 115
+  offset: 0, 0
+  index: -1

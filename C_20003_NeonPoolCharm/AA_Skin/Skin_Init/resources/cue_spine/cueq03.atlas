@@ -1,0 +1,181 @@
+
+cueq03.png
+size: 1075,74
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chetou5_4_00000
+  rotate: true
+  xy: 2, 2
+  size: 35, 77
+  orig: 39, 81
+  offset: 2, 3
+  index: -1
+chetou5_4_00001
+  rotate: true
+  xy: 160, 2
+  size: 35, 76
+  orig: 39, 81
+  offset: 2, 3
+  index: -1
+chetou5_4_00002
+  rotate: true
+  xy: 420, 39
+  size: 33, 76
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00003
+  rotate: true
+  xy: 498, 39
+  size: 33, 76
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00004
+  rotate: true
+  xy: 576, 39
+  size: 33, 76
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00005
+  rotate: true
+  xy: 654, 39
+  size: 33, 76
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00006
+  rotate: true
+  xy: 395, 3
+  size: 34, 76
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00007
+  rotate: true
+  xy: 238, 2
+  size: 35, 76
+  orig: 39, 81
+  offset: 2, 3
+  index: -1
+chetou5_4_00008
+  rotate: true
+  xy: 81, 2
+  size: 35, 77
+  orig: 39, 81
+  offset: 2, 3
+  index: -1
+chetou5_4_00009
+  rotate: true
+  xy: 316, 3
+  size: 34, 77
+  orig: 39, 81
+  offset: 3, 3
+  index: -1
+chetou5_4_00010
+  rotate: true
+  xy: 473, 3
+  size: 34, 76
+  orig: 39, 81
+  offset: 3, 4
+  index: -1
+chetou5_4_00011
+  rotate: true
+  xy: 706, 4
+  size: 33, 75
+  orig: 39, 81
+  offset: 4, 5
+  index: -1
+chetou5_4_00012
+  rotate: true
+  xy: 629, 3
+  size: 34, 75
+  orig: 39, 81
+  offset: 3, 5
+  index: -1
+chetou5_4_00013
+  rotate: true
+  xy: 551, 3
+  size: 34, 76
+  orig: 39, 81
+  offset: 3, 4
+  index: -1
+key5_4
+  rotate: true
+  xy: 2, 39
+  size: 33, 416
+  orig: 36, 420
+  offset: 1, 2
+  index: -1
+shehuoy_00000
+  rotate: true
+  xy: 783, 11
+  size: 19, 82
+  orig: 27, 90
+  offset: 4, 5
+  index: -1
+shehuoy_00002
+  rotate: true
+  xy: 820, 53
+  size: 19, 83
+  orig: 27, 90
+  offset: 4, 3
+  index: -1
+shehuoy_00004
+  rotate: true
+  xy: 870, 32
+  size: 19, 81
+  orig: 27, 90
+  offset: 4, 5
+  index: -1
+shehuoy_00006
+  rotate: true
+  xy: 783, 32
+  size: 19, 85
+  orig: 27, 90
+  offset: 4, 2
+  index: -1
+shehuoy_00008
+  rotate: true
+  xy: 991, 55
+  size: 17, 82
+  orig: 27, 90
+  offset: 5, 4
+  index: -1
+shehuoy_00010
+  rotate: true
+  xy: 953, 35
+  size: 17, 84
+  orig: 27, 90
+  offset: 5, 3
+  index: -1
+shehuoy_00012
+  rotate: true
+  xy: 732, 53
+  size: 19, 86
+  orig: 27, 90
+  offset: 4, 2
+  index: -1
+shehuoy_00014
+  rotate: true
+  xy: 867, 12
+  size: 18, 86
+  orig: 27, 90
+  offset: 4, 3
+  index: -1
+shehuoy_00016
+  rotate: true
+  xy: 905, 54
+  size: 18, 84
+  orig: 27, 90
+  offset: 4, 3
+  index: -1
+sudux5_4
+  rotate: false
+  xy: 955, 17
+  size: 86, 16
+  orig: 92, 20
+  offset: 3, 2
+  index: -1

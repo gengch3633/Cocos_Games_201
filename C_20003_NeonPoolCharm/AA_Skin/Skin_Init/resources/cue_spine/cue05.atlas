@@ -1,0 +1,139 @@
+
+cue05.png
+size: 63,825
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+germany
+  rotate: false
+  xy: 2, 204
+  size: 52, 413
+  orig: 54, 416
+  offset: 1, 2
+  index: -1
+germany1_00
+  rotate: false
+  xy: 41, 2
+  size: 18, 68
+  orig: 22, 73
+  offset: 2, 2
+  index: -1
+germsg_02
+  rotate: true
+  xy: 49, 106
+  size: 23, 12
+  orig: 68, 52
+  offset: 23, 29
+  index: -1
+germsg_03
+  rotate: false
+  xy: 2, 2
+  size: 28, 17
+  orig: 68, 52
+  offset: 20, 26
+  index: -1
+germsg_04
+  rotate: false
+  xy: 2, 21
+  size: 32, 22
+  orig: 68, 52
+  offset: 18, 22
+  index: -1
+germsg_05
+  rotate: false
+  xy: 2, 45
+  size: 37, 25
+  orig: 68, 52
+  offset: 15, 20
+  index: -1
+germsg_06
+  rotate: false
+  xy: 2, 72
+  size: 42, 27
+  orig: 68, 52
+  offset: 13, 18
+  index: -1
+germsg_07
+  rotate: false
+  xy: 2, 101
+  size: 45, 28
+  orig: 68, 52
+  offset: 11, 16
+  index: -1
+germsg_08
+  rotate: false
+  xy: 2, 131
+  size: 48, 29
+  orig: 68, 52
+  offset: 10, 14
+  index: -1
+germsg_09
+  rotate: false
+  xy: 2, 173
+  size: 52, 29
+  orig: 68, 52
+  offset: 8, 13
+  index: -1
+germsg_10
+  rotate: false
+  xy: 2, 635
+  size: 54, 29
+  orig: 68, 52
+  offset: 7, 11
+  index: -1
+germsg_11
+  rotate: false
+  xy: 2, 687
+  size: 56, 29
+  orig: 68, 52
+  offset: 6, 9
+  index: -1
+germsg_12
+  rotate: false
+  xy: 2, 771
+  size: 58, 26
+  orig: 68, 52
+  offset: 5, 9
+  index: -1
+germsg_13
+  rotate: false
+  xy: 2, 743
+  size: 58, 26
+  orig: 68, 52
+  offset: 5, 7
+  index: -1
+germsg_14
+  rotate: false
+  xy: 2, 799
+  size: 59, 24
+  orig: 68, 52
+  offset: 5, 7
+  index: -1
+germsg_15
+  rotate: false
+  xy: 2, 718
+  size: 58, 23
+  orig: 68, 52
+  offset: 5, 6
+  index: -1
+germsg_16
+  rotate: false
+  xy: 2, 666
+  size: 56, 19
+  orig: 68, 52
+  offset: 6, 7
+  index: -1
+germsg_17
+  rotate: false
+  xy: 2, 619
+  size: 54, 14
+  orig: 68, 52
+  offset: 7, 9
+  index: -1
+germsg_18
+  rotate: false
+  xy: 2, 162
+  size: 50, 9
+  orig: 68, 52
+  offset: 9, 10
+  index: -1

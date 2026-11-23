@@ -1,0 +1,160 @@
+
+cue06.png
+size: 476,62
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+austria
+  rotate: true
+  xy: 52, 2
+  size: 25, 414
+  orig: 27, 416
+  offset: 1, 1
+  index: -1
+austria002
+  rotate: true
+  xy: 396, 41
+  size: 19, 78
+  orig: 19, 80
+  offset: 0, 1
+  index: -1
+austria1_00
+  rotate: false
+  xy: 322, 34
+  size: 20, 26
+  orig: 24, 31
+  offset: 2, 2
+  index: -1
+austriaue5_2
+  rotate: false
+  xy: 2, 11
+  size: 48, 49
+  orig: 56, 64
+  offset: 4, 4
+  index: -1
+austsd_00
+  rotate: true
+  xy: 2, 2
+  size: 7, 12
+  orig: 40, 40
+  offset: 26, 9
+  index: -1
+austsd_01
+  rotate: true
+  xy: 396, 29
+  size: 10, 15
+  orig: 40, 40
+  offset: 24, 8
+  index: -1
+austsd_02
+  rotate: false
+  xy: 363, 35
+  size: 16, 25
+  orig: 40, 40
+  offset: 19, 7
+  index: -1
+austsd_03
+  rotate: false
+  xy: 280, 33
+  size: 19, 27
+  orig: 40, 40
+  offset: 17, 6
+  index: -1
+austsd_04
+  rotate: false
+  xy: 233, 30
+  size: 22, 30
+  orig: 40, 40
+  offset: 15, 5
+  index: -1
+austsd_05
+  rotate: false
+  xy: 52, 29
+  size: 23, 31
+  orig: 40, 40
+  offset: 13, 5
+  index: -1
+austsd_06
+  rotate: false
+  xy: 77, 29
+  size: 23, 31
+  orig: 40, 40
+  offset: 12, 5
+  index: -1
+austsd_07
+  rotate: false
+  xy: 181, 30
+  size: 24, 30
+  orig: 40, 40
+  offset: 10, 5
+  index: -1
+austsd_08
+  rotate: false
+  xy: 127, 30
+  size: 25, 30
+  orig: 40, 40
+  offset: 8, 5
+  index: -1
+austsd_09
+  rotate: false
+  xy: 154, 30
+  size: 25, 30
+  orig: 40, 40
+  offset: 6, 5
+  index: -1
+austsd_10
+  rotate: false
+  xy: 207, 30
+  size: 24, 30
+  orig: 40, 40
+  offset: 5, 5
+  index: -1
+austsd_11
+  rotate: false
+  xy: 102, 29
+  size: 23, 31
+  orig: 40, 40
+  offset: 5, 4
+  index: -1
+austsd_12
+  rotate: false
+  xy: 257, 31
+  size: 21, 29
+  orig: 40, 40
+  offset: 6, 5
+  index: -1
+austsd_13
+  rotate: false
+  xy: 301, 33
+  size: 19, 27
+  orig: 40, 40
+  offset: 7, 5
+  index: -1
+austsd_14
+  rotate: false
+  xy: 344, 35
+  size: 17, 25
+  orig: 40, 40
+  offset: 8, 5
+  index: -1
+austsd_15
+  rotate: false
+  xy: 381, 39
+  size: 13, 21
+  orig: 40, 40
+  offset: 10, 6
+  index: -1
+austsd_16
+  rotate: true
+  xy: 381, 29
+  size: 8, 13
+  orig: 40, 40
+  offset: 13, 7
+  index: -1
+austsd_17
+  rotate: false
+  xy: 16, 2
+  size: 4, 7
+  orig: 40, 40
+  offset: 15, 9
+  index: -1

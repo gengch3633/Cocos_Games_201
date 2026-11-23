@@ -1,0 +1,153 @@
+
+cue16.png
+size: 418,78
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eghh_00
+  rotate: false
+  xy: 398, 19
+  size: 17, 13
+  orig: 22, 17
+  offset: 3, 2
+  index: -1
+egy_00
+  rotate: false
+  xy: 314, 8
+  size: 22, 24
+  orig: 26, 28
+  offset: 2, 2
+  index: -1
+egypt
+  rotate: true
+  xy: 2, 34
+  size: 42, 414
+  orig: 44, 416
+  offset: 1, 1
+  index: -1
+egyu_00
+  rotate: false
+  xy: 2, 2
+  size: 20, 30
+  orig: 40, 48
+  offset: 10, 9
+  index: -1
+egyu_01
+  rotate: false
+  xy: 24, 2
+  size: 20, 30
+  orig: 40, 48
+  offset: 10, 9
+  index: -1
+egyu_02
+  rotate: false
+  xy: 68, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_03
+  rotate: false
+  xy: 89, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_04
+  rotate: false
+  xy: 110, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_05
+  rotate: false
+  xy: 194, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_06
+  rotate: false
+  xy: 214, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_07
+  rotate: false
+  xy: 234, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_08
+  rotate: false
+  xy: 338, 4
+  size: 18, 28
+  orig: 40, 48
+  offset: 11, 10
+  index: -1
+egyu_09
+  rotate: false
+  xy: 358, 4
+  size: 18, 28
+  orig: 40, 48
+  offset: 11, 10
+  index: -1
+egyu_10
+  rotate: false
+  xy: 378, 4
+  size: 18, 28
+  orig: 40, 48
+  offset: 11, 10
+  index: -1
+egyu_11
+  rotate: false
+  xy: 254, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_12
+  rotate: false
+  xy: 274, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_13
+  rotate: false
+  xy: 294, 2
+  size: 18, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_14
+  rotate: false
+  xy: 131, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_15
+  rotate: false
+  xy: 152, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_16
+  rotate: false
+  xy: 173, 2
+  size: 19, 30
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+egyu_17
+  rotate: false
+  xy: 46, 2
+  size: 20, 30
+  orig: 40, 48
+  offset: 10, 9
+  index: -1

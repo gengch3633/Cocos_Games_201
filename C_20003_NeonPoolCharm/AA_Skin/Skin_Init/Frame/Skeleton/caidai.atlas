@@ -1,0 +1,41 @@
+
+caidai.png
+size: 273,204
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+caizhisuipian
+  rotate: true
+  xy: 2, 2
+  size: 200, 219
+  orig: 256, 256
+  offset: 35, 15
+  index: -1
+sidai_hong2
+  rotate: true
+  xy: 223, 2
+  size: 92, 20
+  orig: 92, 20
+  offset: 0, 0
+  index: -1
+sidai_huang2
+  rotate: false
+  xy: 245, 3
+  size: 16, 61
+  orig: 16, 61
+  offset: 0, 0
+  index: -1
+sidai_lv
+  rotate: false
+  xy: 223, 96
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+xingxing
+  rotate: true
+  xy: 245, 66
+  size: 28, 26
+  orig: 34, 35
+  offset: 3, 4
+  index: -1

@@ -1,0 +1,48 @@
+
+p3_zhib2.png
+size: 624,329
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+p4_taiq_body
+  rotate: true
+  xy: 2, 2
+  size: 325, 455
+  orig: 325, 455
+  offset: 0, 0
+  index: -1
+p4_taiq_eh
+  rotate: false
+  xy: 597, 80
+  size: 13, 24
+  orig: 15, 26
+  offset: 1, 1
+  index: -1
+p4_taiq_eyer
+  rotate: true
+  xy: 597, 129
+  size: 24, 17
+  orig: 25, 18
+  offset: 0, 1
+  index: -1
+p4_taiq_eyer2
+  rotate: true
+  xy: 597, 106
+  size: 21, 15
+  orig: 21, 15
+  offset: 0, 0
+  index: -1
+p4_taiq_hairh
+  rotate: true
+  xy: 459, 155
+  size: 172, 163
+  orig: 172, 163
+  offset: 0, 0
+  index: -1
+p4_taiq_hairq
+  rotate: true
+  xy: 459, 79
+  size: 74, 136
+  orig: 74, 136
+  offset: 0, 0
+  index: -1

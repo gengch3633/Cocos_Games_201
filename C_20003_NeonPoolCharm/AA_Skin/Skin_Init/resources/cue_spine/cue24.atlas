@@ -1,0 +1,27 @@
+
+cue24.png
+size: 524,39
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arge_00
+  rotate: false
+  xy: 488, 3
+  size: 34, 34
+  orig: 38, 38
+  offset: 2, 2
+  index: -1
+argentina
+  rotate: true
+  xy: 2, 2
+  size: 35, 413
+  orig: 39, 416
+  offset: 2, 2
+  index: -1
+argentina1
+  rotate: true
+  xy: 417, 6
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1

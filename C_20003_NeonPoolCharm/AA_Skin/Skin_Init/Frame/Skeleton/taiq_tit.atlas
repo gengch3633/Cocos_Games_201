@@ -1,0 +1,41 @@
+
+taiq_tit.png
+size: 640,307
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TAIQsg
+  rotate: true
+  xy: 409, 106
+  size: 42, 167
+  orig: 42, 167
+  offset: 0, 0
+  index: -1
+congr_taiq
+  rotate: false
+  xy: 2, 80
+  size: 405, 68
+  orig: 407, 70
+  offset: 1, 1
+  index: -1
+nc_taiq
+  rotate: false
+  xy: 365, 18
+  size: 273, 60
+  orig: 273, 60
+  offset: 0, 0
+  index: -1
+sp_taiq
+  rotate: false
+  xy: 2, 2
+  size: 361, 76
+  orig: 362, 76
+  offset: 0, 0
+  index: -1
+tit_taiq
+  rotate: false
+  xy: 2, 150
+  size: 635, 155
+  orig: 635, 155
+  offset: 0, 0
+  index: -1

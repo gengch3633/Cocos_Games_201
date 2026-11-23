@@ -1,0 +1,125 @@
+
+card_taiq.png
+size: 1248,258
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+box_taiq
+  rotate: false
+  xy: 570, 81
+  size: 171, 175
+  orig: 171, 175
+  offset: 0, 0
+  index: -1
+men_taiq
+  rotate: true
+  xy: 640, 21
+  size: 58, 138
+  orig: 58, 138
+  offset: 0, 0
+  index: -1
+pan_taiq
+  rotate: false
+  xy: 1159, 32
+  size: 87, 97
+  orig: 87, 97
+  offset: 0, 0
+  index: -1
+pang_taiq
+  rotate: false
+  xy: 957, 11
+  size: 87, 99
+  orig: 87, 99
+  offset: 0, 0
+  index: -1
+panq_taiq
+  rotate: false
+  xy: 572, 13
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+qian_taiq1
+  rotate: false
+  xy: 958, 131
+  size: 111, 125
+  orig: 111, 125
+  offset: 0, 0
+  index: -1
+qian_taiq2
+  rotate: false
+  xy: 1046, 4
+  size: 111, 125
+  orig: 111, 125
+  offset: 0, 0
+  index: -1
+qian_taiq3
+  rotate: false
+  xy: 1071, 131
+  size: 111, 125
+  orig: 111, 125
+  offset: 0, 0
+  index: -1
+star_taiq
+  rotate: true
+  xy: 871, 9
+  size: 101, 84
+  orig: 101, 84
+  offset: 0, 0
+  index: -1
+tai_taiq
+  rotate: true
+  xy: 485, 67
+  size: 189, 83
+  orig: 189, 83
+  offset: 0, 0
+  index: -1
+tit_taiq
+  rotate: true
+  xy: 431, 53
+  size: 203, 52
+  orig: 203, 52
+  offset: 0, 0
+  index: -1
+white_taiq
+  rotate: true
+  xy: 241, 44
+  size: 212, 188
+  orig: 212, 188
+  offset: 0, 0
+  index: -1
+yy_taiq
+  rotate: false
+  xy: 431, 2
+  size: 139, 49
+  orig: 139, 49
+  offset: 0, 0
+  index: -1
+zhib2_taiq
+  rotate: true
+  xy: 862, 112
+  size: 144, 94
+  orig: 144, 94
+  offset: 0, 0
+  index: -1
+zhib3_taiq
+  rotate: true
+  xy: 743, 109
+  size: 147, 117
+  orig: 147, 117
+  offset: 0, 0
+  index: -1
+zhib_taiq
+  rotate: true
+  xy: 780, 4
+  size: 103, 89
+  orig: 103, 89
+  offset: 0, 0
+  index: -1
+zhuanguang_event_taiq
+  rotate: false
+  xy: 2, 18
+  size: 237, 238
+  orig: 237, 238
+  offset: 0, 0
+  index: -1

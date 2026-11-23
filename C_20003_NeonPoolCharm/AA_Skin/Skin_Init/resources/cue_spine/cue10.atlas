@@ -1,0 +1,27 @@
+
+cue10.png
+size: 481,84
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+portue5_5
+  rotate: false
+  xy: 2, 20
+  size: 61, 62
+  orig: 70, 80
+  offset: 4, 5
+  index: -1
+portugal
+  rotate: true
+  xy: 65, 42
+  size: 40, 414
+  orig: 42, 416
+  offset: 1, 1
+  index: -1
+portugal5_6_00000
+  rotate: true
+  xy: 65, 2
+  size: 38, 148
+  orig: 41, 169
+  offset: 2, 13
+  index: -1

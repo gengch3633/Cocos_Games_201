@@ -1,0 +1,20 @@
+
+cueb_xiongyali.png
+size: 612,30
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+australia003
+  rotate: false
+  xy: 524, 12
+  size: 86, 16
+  orig: 92, 20
+  offset: 3, 2
+  index: -1
+cueb_xiongyali
+  rotate: true
+  xy: 2, 2
+  size: 26, 520
+  orig: 30, 524
+  offset: 2, 2
+  index: -1

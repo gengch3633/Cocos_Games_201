@@ -1,0 +1,160 @@
+
+cue27.png
+size: 570,78
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+canada
+  rotate: true
+  xy: 2, 43
+  size: 33, 414
+  orig: 35, 416
+  offset: 1, 1
+  index: -1
+cansg_00
+  rotate: true
+  xy: 557, 53
+  size: 23, 11
+  orig: 60, 60
+  offset: 18, 35
+  index: -1
+cansg_01
+  rotate: false
+  xy: 426, 3
+  size: 30, 38
+  orig: 60, 60
+  offset: 15, 10
+  index: -1
+cansg_02
+  rotate: true
+  xy: 348, 9
+  size: 32, 40
+  orig: 60, 60
+  offset: 14, 10
+  index: -1
+cansg_03
+  rotate: false
+  xy: 184, 2
+  size: 39, 39
+  orig: 60, 60
+  offset: 10, 11
+  index: -1
+cansg_04
+  rotate: false
+  xy: 141, 2
+  size: 41, 39
+  orig: 60, 60
+  offset: 9, 11
+  index: -1
+cansg_05
+  rotate: false
+  xy: 2, 2
+  size: 43, 39
+  orig: 60, 60
+  offset: 9, 11
+  index: -1
+cansg_06
+  rotate: false
+  xy: 47, 4
+  size: 45, 37
+  orig: 60, 60
+  offset: 8, 11
+  index: -1
+cansg_07
+  rotate: false
+  xy: 94, 5
+  size: 45, 36
+  orig: 60, 60
+  offset: 8, 11
+  index: -1
+cansg_08
+  rotate: false
+  xy: 225, 6
+  size: 43, 35
+  orig: 60, 60
+  offset: 9, 10
+  index: -1
+cansg_09
+  rotate: false
+  xy: 270, 7
+  size: 40, 34
+  orig: 60, 60
+  offset: 10, 8
+  index: -1
+cansg_10
+  rotate: true
+  xy: 312, 3
+  size: 38, 34
+  orig: 60, 60
+  offset: 11, 7
+  index: -1
+cansg_11
+  rotate: true
+  xy: 390, 4
+  size: 37, 34
+  orig: 60, 60
+  offset: 12, 6
+  index: -1
+cansg_12
+  rotate: false
+  xy: 418, 43
+  size: 36, 33
+  orig: 60, 60
+  offset: 12, 7
+  index: -1
+cansg_13
+  rotate: false
+  xy: 456, 45
+  size: 35, 31
+  orig: 60, 60
+  offset: 13, 8
+  index: -1
+cansg_14
+  rotate: true
+  xy: 492, 9
+  size: 34, 27
+  orig: 60, 60
+  offset: 13, 10
+  index: -1
+cansg_15
+  rotate: false
+  xy: 493, 52
+  size: 32, 24
+  orig: 60, 60
+  offset: 14, 12
+  index: -1
+cansg_16
+  rotate: false
+  xy: 527, 58
+  size: 28, 18
+  orig: 60, 60
+  offset: 16, 12
+  index: -1
+cansg_17
+  rotate: false
+  xy: 527, 58
+  size: 28, 18
+  orig: 60, 60
+  offset: 16, 12
+  index: -1
+cansg_18
+  rotate: false
+  xy: 527, 58
+  size: 28, 18
+  orig: 60, 60
+  offset: 16, 12
+  index: -1
+fy_05
+  rotate: true
+  xy: 521, 2
+  size: 48, 47
+  orig: 53, 53
+  offset: 3, 3
+  index: -1
+fy_06
+  rotate: true
+  xy: 458, 10
+  size: 33, 32
+  orig: 35, 34
+  offset: 1, 1
+  index: -1

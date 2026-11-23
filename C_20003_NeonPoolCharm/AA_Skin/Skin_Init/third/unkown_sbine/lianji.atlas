@@ -1,0 +1,153 @@
+
+lianji.png
+size: 433,1190
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+caizhisuipian
+  rotate: true
+  xy: 2, 131
+  size: 233, 250
+  orig: 256, 256
+  offset: 19, 0
+  index: -1
+glg_00000
+  rotate: false
+  xy: 2, 762
+  size: 268, 130
+  orig: 271, 136
+  offset: 2, 3
+  index: -1
+hong
+  rotate: false
+  xy: 2, 630
+  size: 268, 130
+  orig: 271, 136
+  offset: 2, 3
+  index: -1
+hong1
+  rotate: false
+  xy: 2, 1116
+  size: 411, 72
+  orig: 458, 78
+  offset: 10, 2
+  index: -1
+huang
+  rotate: false
+  xy: 2, 1042
+  size: 411, 72
+  orig: 458, 78
+  offset: 10, 2
+  index: -1
+huang1
+  rotate: false
+  xy: 2, 498
+  size: 268, 130
+  orig: 271, 136
+  offset: 2, 3
+  index: -1
+jinbifeitt01
+  rotate: true
+  xy: 368, 259
+  size: 61, 62
+  orig: 120, 120
+  offset: 27, 27
+  index: -1
+sidai_hong2
+  rotate: true
+  xy: 403, 137
+  size: 92, 20
+  orig: 92, 20
+  offset: 0, 0
+  index: -1
+sidai_huang2
+  rotate: false
+  xy: 415, 1127
+  size: 16, 61
+  orig: 16, 61
+  offset: 0, 0
+  index: -1
+sidai_lv
+  rotate: false
+  xy: 368, 151
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+xing
+  rotate: true
+  xy: 272, 751
+  size: 141, 142
+  orig: 300, 300
+  offset: 78, 81
+  index: -1
+xing2
+  rotate: true
+  xy: 272, 608
+  size: 141, 142
+  orig: 160, 183
+  offset: 9, 12
+  index: -1
+xing3
+  rotate: true
+  xy: 272, 465
+  size: 141, 142
+  orig: 160, 183
+  offset: 9, 12
+  index: -1
+xing4
+  rotate: true
+  xy: 272, 322
+  size: 141, 142
+  orig: 160, 183
+  offset: 9, 12
+  index: -1
+xingxing
+  rotate: false
+  xy: 403, 231
+  size: 28, 26
+  orig: 34, 35
+  offset: 3, 4
+  index: -1
+zi
+  rotate: false
+  xy: 2, 968
+  size: 411, 72
+  orig: 458, 78
+  offset: 10, 2
+  index: -1
+zi1
+  rotate: false
+  xy: 2, 366
+  size: 268, 130
+  orig: 271, 136
+  offset: 2, 3
+  index: -1
+zzz
+  rotate: false
+  xy: 2, 894
+  size: 411, 72
+  orig: 458, 78
+  offset: 10, 2
+  index: -1
+出色一击
+  rotate: true
+  xy: 254, 113
+  size: 207, 112
+  orig: 209, 114
+  offset: 1, 1
+  index: -1
+完美一击
+  rotate: false
+  xy: 219, 2
+  size: 208, 109
+  orig: 210, 111
+  offset: 1, 1
+  index: -1
+难以置信
+  rotate: false
+  xy: 2, 19
+  size: 215, 110
+  orig: 217, 112
+  offset: 1, 1
+  index: -1

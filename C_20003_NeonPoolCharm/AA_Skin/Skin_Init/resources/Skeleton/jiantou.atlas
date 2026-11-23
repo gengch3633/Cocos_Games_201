@@ -1,0 +1,13 @@
+
+jiantou.png
+size: 86,65
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sp_yindao
+  rotate: false
+  xy: 2, 2
+  size: 82, 61
+  orig: 82, 61
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,125 @@
+
+cue11.png
+size: 426,74
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sweden
+  rotate: true
+  xy: 2, 38
+  size: 34, 414
+  orig: 36, 416
+  offset: 1, 1
+  index: -1
+sweden001
+  rotate: true
+  xy: 2, 2
+  size: 31, 69
+  orig: 37, 80
+  offset: 3, 3
+  index: -1
+swedwd_00
+  rotate: false
+  xy: 375, 17
+  size: 16, 19
+  orig: 32, 33
+  offset: 9, 6
+  index: -1
+swrd_01
+  rotate: false
+  xy: 358, 11
+  size: 15, 25
+  orig: 40, 41
+  offset: 12, 7
+  index: -1
+swrd_02
+  rotate: false
+  xy: 293, 5
+  size: 19, 28
+  orig: 40, 41
+  offset: 9, 6
+  index: -1
+swrd_03
+  rotate: false
+  xy: 243, 3
+  size: 22, 30
+  orig: 40, 41
+  offset: 7, 5
+  index: -1
+swrd_04
+  rotate: false
+  xy: 217, 3
+  size: 24, 30
+  orig: 40, 41
+  offset: 6, 5
+  index: -1
+swrd_05
+  rotate: false
+  xy: 132, 3
+  size: 26, 30
+  orig: 40, 41
+  offset: 5, 5
+  index: -1
+swrd_06
+  rotate: false
+  xy: 160, 3
+  size: 26, 30
+  orig: 40, 41
+  offset: 5, 5
+  index: -1
+swrd_07
+  rotate: false
+  xy: 73, 3
+  size: 27, 30
+  orig: 40, 41
+  offset: 4, 5
+  index: -1
+swrd_08
+  rotate: false
+  xy: 102, 5
+  size: 28, 28
+  orig: 40, 41
+  offset: 4, 6
+  index: -1
+swrd_09
+  rotate: true
+  xy: 188, 5
+  size: 28, 27
+  orig: 40, 41
+  offset: 4, 6
+  index: -1
+swrd_10
+  rotate: true
+  xy: 267, 7
+  size: 26, 24
+  orig: 40, 41
+  offset: 5, 7
+  index: -1
+swrd_11
+  rotate: true
+  xy: 314, 11
+  size: 25, 21
+  orig: 40, 41
+  offset: 6, 8
+  index: -1
+swrd_12
+  rotate: true
+  xy: 337, 12
+  size: 24, 19
+  orig: 40, 41
+  offset: 7, 10
+  index: -1
+swrd_13
+  rotate: false
+  xy: 418, 54
+  size: 6, 18
+  orig: 40, 41
+  offset: 9, 11
+  index: -1
+swrd_14
+  rotate: false
+  xy: 418, 35
+  size: 5, 17
+  orig: 40, 41
+  offset: 9, 11
+  index: -1

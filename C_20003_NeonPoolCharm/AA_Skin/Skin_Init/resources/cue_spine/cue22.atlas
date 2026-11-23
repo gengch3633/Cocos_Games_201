@@ -1,0 +1,20 @@
+
+cue22.png
+size: 612,38
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cue22
+  rotate: true
+  xy: 2, 2
+  size: 34, 520
+  orig: 36, 522
+  offset: 1, 1
+  index: -1
+sudux5_4
+  rotate: false
+  xy: 524, 20
+  size: 86, 16
+  orig: 92, 20
+  offset: 3, 2
+  index: -1

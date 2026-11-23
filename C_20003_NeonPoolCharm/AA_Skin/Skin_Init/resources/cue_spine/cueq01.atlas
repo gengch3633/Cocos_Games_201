@@ -1,0 +1,34 @@
+
+cueq01.png
+size: 630,42
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+uk
+  rotate: true
+  xy: 126, 13
+  size: 27, 414
+  orig: 29, 416
+  offset: 1, 1
+  index: -1
+uk001
+  rotate: false
+  xy: 98, 11
+  size: 26, 29
+  orig: 32, 36
+  offset: 3, 4
+  index: -1
+uk002
+  rotate: true
+  xy: 2, 2
+  size: 38, 94
+  orig: 38, 96
+  offset: 0, 1
+  index: -1
+uk003
+  rotate: false
+  xy: 542, 24
+  size: 86, 16
+  orig: 92, 20
+  offset: 3, 2
+  index: -1

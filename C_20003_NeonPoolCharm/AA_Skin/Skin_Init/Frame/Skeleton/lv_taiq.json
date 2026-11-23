@@ -1,0 +1,482 @@
+{
+  "skeleton": {
+    "spine": "3.6.53",
+    "width": 140.13,
+    "height": 136.94
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "guang_taiq",
+      "parent": "root"
+    },
+    {
+      "name": "pig_taiq",
+      "parent": "root",
+      "x": -0.3,
+      "y": -40.18
+    },
+    {
+      "name": "star_taiq",
+      "parent": "root",
+      "x": -31.3,
+      "y": 27.71
+    },
+    {
+      "name": "star_taiq2",
+      "parent": "root",
+      "x": 38.01,
+      "y": -9.36
+    },
+    {
+      "name": "zhi2_taiq",
+      "parent": "pig_taiq",
+      "x": 24.41,
+      "y": 16.09
+    },
+    {
+      "name": "zhi3_taiq",
+      "parent": "pig_taiq",
+      "x": -39.03,
+      "y": 59.58
+    },
+    {
+      "name": "zhi4_taiq",
+      "parent": "pig_taiq",
+      "x": -19.64,
+      "y": 25.79
+    },
+    {
+      "name": "zhi_taiq",
+      "parent": "pig_taiq",
+      "x": 27.73,
+      "y": 74.26
+    }
+  ],
+  "slots": [
+    {
+      "name": "guang_taiq",
+      "bone": "guang_taiq",
+      "attachment": "guang_taiq"
+    },
+    {
+      "name": "azhi4_taiq",
+      "bone": "zhi_taiq",
+      "attachment": "azhi4_taiq"
+    },
+    {
+      "name": "alv_taiq",
+      "bone": "pig_taiq",
+      "attachment": "alv_taiq"
+    },
+    {
+      "name": "azhi3_taiq",
+      "bone": "zhi3_taiq",
+      "attachment": "azhi3_taiq"
+    },
+    {
+      "name": "azhi2_taiq",
+      "bone": "zhi2_taiq",
+      "attachment": "azhi2_taiq"
+    },
+    {
+      "name": "azhi_taiq",
+      "bone": "zhi4_taiq",
+      "attachment": "azhi_taiq"
+    },
+    {
+      "name": "star_taiq",
+      "bone": "star_taiq",
+      "attachment": "star_taiq",
+      "blend": "additive"
+    },
+    {
+      "name": "star_taiq2",
+      "bone": "star_taiq2",
+      "attachment": "star_taiq",
+      "blend": "additive"
+    }
+  ],
+  "skins": {
+    "default": {
+      "alv_taiq": {
+        "alv_taiq": {
+          "x": -2.33,
+          "y": 48.82,
+          "width": 99,
+          "height": 68
+        }
+      },
+      "azhi2_taiq": {
+        "azhi2_taiq": {
+          "x": 13.27,
+          "y": 4.23,
+          "width": 47,
+          "height": 41
+        }
+      },
+      "azhi3_taiq": {
+        "azhi3_taiq": {
+          "x": 47.7,
+          "y": -41.26,
+          "width": 57,
+          "height": 37
+        }
+      },
+      "azhi4_taiq": {
+        "azhi4_taiq": {
+          "x": -39.06,
+          "y": 2.06,
+          "width": 41,
+          "height": 23
+        }
+      },
+      "azhi_taiq": {
+        "azhi_taiq": {
+          "x": -13.69,
+          "y": -8.47,
+          "width": 49,
+          "height": 33
+        }
+      },
+      "guang_taiq": {
+        "guang_taiq": {
+          "width": 131,
+          "height": 132
+        }
+      },
+      "star_taiq": {
+        "star_taiq": {
+          "scaleX": 0.6,
+          "scaleY": 0.6,
+          "rotation": 45.52,
+          "width": 89,
+          "height": 115
+        }
+      },
+      "star_taiq2": {
+        "star_taiq": {
+          "scaleX": 0.3,
+          "scaleY": 0.3,
+          "rotation": 45.52,
+          "width": 89,
+          "height": 115
+        }
+      }
+    }
+  },
+  "animations": {
+    "animation": {
+      "slots": {
+        "azhi4_taiq": {
+          "color": [
+            {
+              "time": 1.1667,
+              "color": "ffffff00"
+            },
+            {
+              "time": 1.8333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0,
+              "name": null
+            },
+            {
+              "time": 1.1667,
+              "name": "azhi4_taiq"
+            }
+          ]
+        },
+        "star_taiq": {
+          "color": [
+            {
+              "time": 1.1667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 1.3333,
+              "color": "ffffff00"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0,
+              "name": null
+            },
+            {
+              "time": 0.8333,
+              "name": "star_taiq"
+            }
+          ]
+        },
+        "star_taiq2": {
+          "color": [
+            {
+              "time": 2.1667,
+              "color": "ffffffff"
+            },
+            {
+              "time": 2.3333,
+              "color": "ffffff00"
+            }
+          ],
+          "attachment": [
+            {
+              "time": 0,
+              "name": null
+            },
+            {
+              "time": 1.8333,
+              "name": "star_taiq"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "star_taiq": {
+          "scale": [
+            {
+              "time": 0.8333,
+              "x": 1,
+              "y": 1,
+              "curve": [
+                0,
+                0.45,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 1,
+              "x": 1.5,
+              "y": 1.5,
+              "curve": [
+                0.394,
+                0,
+                1,
+                0.55
+              ]
+            },
+            {
+              "time": 1.3333,
+              "x": 1,
+              "y": 1
+            }
+          ]
+        },
+        "pig_taiq": {
+          "scale": [
+            {
+              "time": 0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "time": 0.3333,
+              "x": 1.2,
+              "y": 1.2
+            },
+            {
+              "time": 0.5,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "time": 0.6667,
+              "x": 1.1,
+              "y": 1.1
+            },
+            {
+              "time": 0.8333,
+              "x": 1,
+              "y": 1
+            }
+          ]
+        },
+        "zhi4_taiq": {
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.3333,
+              "x": 0,
+              "y": 21.06
+            },
+            {
+              "time": 0.5,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6667,
+              "x": 0,
+              "y": 6.63
+            },
+            {
+              "time": 0.8333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "zhi2_taiq": {
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.3333,
+              "x": 0,
+              "y": 20.25
+            },
+            {
+              "time": 0.5,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6667,
+              "x": 0,
+              "y": 6.63
+            },
+            {
+              "time": 0.8333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "guang_taiq": {
+          "rotate": [
+            {
+              "time": 0,
+              "angle": 0
+            },
+            {
+              "time": 2,
+              "angle": 180
+            },
+            {
+              "time": 4,
+              "angle": 0
+            }
+          ],
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": -18.98
+            },
+            {
+              "time": 0.3333,
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "scale": [
+            {
+              "time": 0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "time": 0.3333,
+              "x": 1,
+              "y": 1
+            }
+          ]
+        },
+        "zhi_taiq": {
+          "translate": [
+            {
+              "time": 1.1667,
+              "x": 0,
+              "y": 24.72,
+              "curve": [
+                0.25,
+                0,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 1.8333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "zhi3_taiq": {
+          "translate": [
+            {
+              "time": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.3333,
+              "x": 0,
+              "y": 25.62
+            },
+            {
+              "time": 0.5,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.6667,
+              "x": 0,
+              "y": 11.39
+            },
+            {
+              "time": 0.8333,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        "star_taiq2": {
+          "scale": [
+            {
+              "time": 1.8333,
+              "x": 1,
+              "y": 1,
+              "curve": [
+                0,
+                0.45,
+                0.75,
+                1
+              ]
+            },
+            {
+              "time": 2,
+              "x": 1.5,
+              "y": 1.5,
+              "curve": [
+                0.394,
+                0,
+                1,
+                0.55
+              ]
+            },
+            {
+              "time": 2.3333,
+              "x": 1,
+              "y": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}
