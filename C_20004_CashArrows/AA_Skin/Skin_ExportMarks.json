@@ -1,15 +1,5 @@
 {
   "folders": [
-    "game/texture/gameing",
-    "third/unkown",
-    "ui/spine",
-    "ui/texture",
-    "ui/texture/arrow_task",
-    "ui/texture/bindinfo",
-    "ui/texture/cash_arrow_revive_fail",
-    "ui/texture/cash_arrow_setting",
-    "ui/texture/settle_reward",
-    "ui/texture/tips",
     "ui/texture/with"
   ],
   "show_export_only": true
