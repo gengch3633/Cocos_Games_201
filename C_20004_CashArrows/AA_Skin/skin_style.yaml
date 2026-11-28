@@ -1,0 +1,56 @@
+# UI 换皮风格配置 — 放在 AA_Skin/ 根目录
+# Copy to your project's AA_Skin/skin_style.yaml and edit.
+#
+# style_prompt：仅写本项目「视觉风格」（配色、材质、圆角、主题意象）。
+# 几何、布局、透明通道、底色均匀等通用约束由工具在 API 请求时自动追加，无需在此重复。
+
+style_prompt: >
+  将游戏 UI 切图换为新主题风格：仅更换配色与材质，保持原有造型、
+  层次与细节结构不变。请在此补充本项目目标配色、圆角、材质质感等描述。
+
+resize_filter: lanczos  # lanczos | nearest
+
+reference_frames: []
+#  - ui/texture/btn_ok.png
+
+# 追加到 API 提示词末尾；留空则只使用下方通用缺省项
+forbidden: []
+#  - 背景内嵌套的图标或徽章
+#  - 面板边缘高亮条或装饰描边
+
+# 跨子文件夹相同控件 — 显式映射（优先级最高）
+components:
+  btn_close: []
+  #  - ui/texture/tips/btn_close.png
+  #  - ui/texture/cash_arrow_setting/btn_x.png
+
+dedup_rules:
+  strip_size_suffix: true   # btn_close_2x -> btn_close
+  same_content_auto_merge: true  # 内容 MD5 相同自动合并
+  unpack_fingerprint_dedup: true  # 导入时同 fingerprint+尺寸复用同一裁切
+
+variants:
+  btn_ok_wide:
+    aspect: "3:1"
+  btn_ok_square:
+    aspect: "1:1"
+
+# 换皮前按 packed 原图逐帧检测描边（方案 E），自动写入 API prompt
+stroke_detect:
+  enabled: true
+  weak_threshold: 0.35
+  strong_threshold: 0.55
+
+# 换皮/导入前将 reskinned 对齐到 packed 槽位（修复裁切缺边）
+unpack_align:
+  enabled: true
+  mode: slot_auto       # slot_auto | slot_bbox | slot_centroid | constrain | global_shift
+  slot_bbox_anchor: center  # center=alpha 外接框中心对齐；topleft=左上；slot_centroid=质量质心
+  aspect_threshold: 3.0
+  small_slot_bbox_max: 200
+  alpha_threshold: 16
+  max_shift: 48
+  use_packed_mask: true
+  contain_in_packed_bbox: true   # 平移后不超出 packed alpha 外接框
+  clip_to_packed_alpha: true     # 裁掉 packed 透明区内的 reskin 像素
+  on_reskin: true
